@@ -1,0 +1,137 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+
+\title{Local thermodynamic equilibrium in the long cascade chain:\\
+code status and LTE fits}
+\author{Jayleen Jiang}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section*{Code status (answers to the four questions)}
+
+\paragraph{Q1. Is the inner loop vectorized? 8/16 entries per cycle?}
+Only partially. The code is compiled with \texttt{-O3 -mcpu=native -ffast-math},
+so the compiler can emit NEON/AVX instructions for the Eigen array operations
+over the $n=25$ modes. I have \emph{not} confirmed (by inspecting the assembly or
+measuring IPC) that the inner loop attains full lane-width throughput, and two
+features make this doubtful: the time-stepping loop allocates several temporary
+length-$n$ vectors \emph{at every step}, and $n=25$ is short relative to a SIMD
+register. Two ways to improve it:
+\begin{enumerate}
+\item a structure-of-arrays (SoA) layout that vectorizes \emph{across independent
+trajectories} rather than across modes, so each arithmetic op fills a register
+with one lane per trajectory;
+\item a vectorized math library such as SLEEF for the transcendentals.
+\end{enumerate}
+(The SoA version is implemented in the updated code.)
+
+\paragraph{Q2. Fast sin / fast RNG?}
+\emph{RNG:} done. \texttt{std::mt19937} $+$ \texttt{std::normal\_distribution}
+have been replaced by a xoshiro256++ uniform generator and a Box--Muller
+Gaussian with one cached value.\\
+\emph{sin/cos:} not yet, in this version. The code still calls \texttt{std::sin}
+and \texttt{std::cos}; with \texttt{-ffast-math} the compiler may fuse adjacent
+calls of the same argument into a single \texttt{sincos}, but that is not a
+vectorized polynomial approximation. A polynomial \texttt{fast\_sin} (and a
+\texttt{fast\_log} for the Box--Muller step) is added in the updated code.
+
+\paragraph{Q3. C++-side marginal histogram.}
+Implemented in the updated code: the 1D marginals $P(I_a)$, $P(I_b)$ and
+$P(\theta)$ are accumulated on the fly alongside the 3D histogram (on a finer
+grid) and written to a separate file, so the marginals no longer have to be
+recovered from the overflow-clipped 3D histogram.
+
+\paragraph{Q4. $\sim 10^9$ sample points.}
+This version produces $5.07\times 10^8$ samples per site pair
+(${\sim}0.5\times 10^9$). Reaching $10^9$ requires doubling $N_{\mathrm{traj}}$
+to $512$ (or lengthening $T_{\mathrm{final}}$); the updated SoA version reaches
+${\sim}1.01\times 10^9$ by default.
+
+\section*{Setup}
+\begin{itemize}
+\item Chain length $n=25$, Case~0 (closed chain), $\gamma=0.1$, $dt=0.001$.
+\item Two conditions: NESS ($T_1=10$, $T_n=2$) and equilibrium ($T_1=T_n=6$).
+\item Per run: $N_{\mathrm{traj}}=256$, $T_{\mathrm{burnin}}=2000$,
+$T_{\mathrm{final}}=200000$, sampling every $0.1$ time units;
+$5.07\times 10^8$ samples per site pair.
+\item Three site pairs in the bulk: $j=6,12,18$.
+\item $80$ bins per axis on $[0,4]\times[0,4]\times[-\pi,\pi)$; overflow $<1\%$.
+\item Statistical errors via Poisson resampling of the bin counts
+($200$ bootstrap rounds).
+\item Two simulation bugs were fixed before any of this: (i) the sign of the
+boundary $\varphi$ drift, and (ii) a missing $\sqrt{2}$ in the boundary noise.
+Sanity checks: at $T_1=T_n=5$ the flux is consistent with zero, and the
+equilibrium profile $\langle I_j\rangle$ scales as $\sqrt{T}$ to within $0.5\%$.
+\end{itemize}
+
+\section*{Fit forms}
+We fit $\log\rho(I_a,I_b,\theta)$ for an adjacent pair $(I_a,I_b)=(I_j,I_{j+1})$,
+$\theta=\theta_j$, to three forms:
+\begin{align*}
+\text{Form A (conjecture)}\quad
+& \log\rho = a + b\bigl[-\tfrac{1}{4}(I_a^2+I_b^2) + I_a I_b\cos\theta\bigr], \\
+\text{Form B (strict local Gibbs)}\quad
+& \log\rho = a + b\bigl[\tfrac{1}{4}(I_a^2+I_b^2) + I_a I_b(1+\cos\theta)\bigr], \\
+\text{Form C (general quadratic)}\quad
+& \log\rho = c_0 + c_1 I_a^2 + c_2 I_b^2 + c_3 I_a I_b + c_4 I_a I_b\cos\theta .
+\end{align*}
+Form B is obtained by restricting the Hamiltonian (summary eq.~2.6) to the terms
+in $(I_{12}, I_{13}, \theta_{12})$. Form C lets the data choose all four
+coefficients; strict local Gibbs (Form B) requires $c_1=c_2$ and $c_3=c_4$, with
+$c_1/c_3 = 1/4$.
+
+\section*{Result 1: the conjecture (Form A) does not hold}
+Form A gives $R^2 \approx 0.27$--$0.33$ across all sites and both conditions. It
+has the wrong sign on the $\cos\theta$ term and omits the $I_a I_b$ (no-$\cos$)
+cross term, which arises from the non-local $\tfrac{1}{2}(\sum_j I_j)^2$ piece of
+the Hamiltonian.
+
+\section*{Result 2: strict local Gibbs (Form B) does not hold either}
+\paragraph{At equilibrium.} All three sites give $c_3/c_4$ in the range
+$1.47$--$1.62$ and $c_1/c_3 \approx 0.33$--$0.36$, with a bootstrap standard
+deviation of ${\sim}0.0005$ on these ratios. The departures from $c_3/c_4=1$ and
+$c_1/c_3=0.25$ are hundreds of $\sigma$, i.e.\ intrinsic to the model and not a
+sample-size or fit artifact.
+
+\paragraph{At NESS.} The same ratios are smaller and depend on position.
+
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+ & $c_3/c_4$ & $c_1/c_3$ & $R^2$ (Form C) \\
+\midrule
+Eq, $j=6$  & $1.5735 \pm 0.0005$ & $0.3513 \pm 0.0001$ & $0.94$ \\
+Eq, $j=12$ & $1.4703 \pm 0.0004$ & $0.3340 \pm 0.0001$ & $0.94$ \\
+Eq, $j=18$ & $1.6245 \pm 0.0005$ & $0.3556 \pm 0.0001$ & $0.94$ \\[2pt]
+NESS, $j=6$  & $1.2223 \pm 0.0004$ & $0.4380 \pm 0.0002$ & $0.93$ \\
+NESS, $j=12$ & $1.0686 \pm 0.0002$ & $0.3489 \pm 0.0002$ & $0.91$ \\
+NESS, $j=18$ & $1.0322 \pm 0.0002$ & $0.2878 \pm 0.0001$ & $0.88$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The symmetry between $I_j$ and $I_{j+1}$ holds throughout:
+$c_1/c_2 \in [0.99, 1.00]$ everywhere (not shown in the table).
+
+The quoted uncertainties come from a Poisson bootstrap, which treats bin counts
+as independent and is therefore a lower bound; trajectory autocorrelation will
+inflate the true error, but by a factor unlikely to close the hundred-$\sigma$
+gaps reported above.
+
+\section*{Result 3: NESS-specific structure}
+Two features appear under NESS but not at equilibrium:
+\begin{enumerate}
+\item \textbf{Monotonic spatial gradient.} Under NESS, $c_3/c_4$ decreases
+monotonically from the hot to the cold side ($1.22 \to 1.07 \to 1.03$), as does
+$c_1/c_3$ ($0.44 \to 0.35 \to 0.29$). At equilibrium the three sites are flat to
+within ${\sim}6\%$, with no monotonic trend.
+\item \textbf{Smaller absolute values under NESS.} The NESS range
+$c_3/c_4\in[1.03,1.22]$ does not overlap the equilibrium range $[1.47,1.62]$.
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,54 @@
+# ---- compiled C++ / build artifacts ----
+*.o
+*.out
+*.exe
+a.out
+build/
+cmake-build-*/
+CMakeCache.txt
+CMakeFiles/
+
+# ---- simulation data / outputs (regenerable, often large) ----
+*.hist
+*.marg
+*.csv
+*.txt
+*.dat
+*.numbers
+*.fig
+
+# ---- figures (regenerable) ----
+*.png
+*.pdf
+*.jpg
+*.jpeg
+*.svg
+
+# ---- LaTeX aux ----
+*.aux
+*.log
+*.bbl
+*.blg
+*.toc
+*.out
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+
+# ---- Python ----
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# ---- OS ----
+.DS_Store
+Thumbs.db
+
+# ---- keep these despite rules above ----
+!README.md
+!requirements.txt
+!CMakeLists.txt
+!**/CMakeLists.txt
