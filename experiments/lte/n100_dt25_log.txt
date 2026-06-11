@@ -1,0 +1,662 @@
+T_burnin=32000  T_final=230000
+LTE SIMD histogram (Case 0 closed chain)
+T1=10 Tn=2 n=100  W=16 lanes  N_GROUPS=32 -> 512 chains
+samples/chain=7920000  total expected=4.05504e+09 (~4.05504e9)
+sites: (24,25) (48,49) (72,73)
+[burnin] t=3200  M/W=28.2778
+[burnin] t=3200  M/W=27.2506
+[burnin] t=3200  M/W=28.1401
+[burnin] t=3200  M/W=28.0415
+[burnin] t=3200  M/W=28.6684
+[burnin] t=3200  M/W=28.3072
+[burnin] t=3200  M/W=26.7098
+[burnin] t=3200  M/W=28.7967
+[burnin] t=6400  M/W=26.4113
+[burnin] t=6400  M/W=27.6414
+[burnin] t=6400  M/W=28.5863
+[burnin] t=6400  M/W=29.0211
+[burnin] t=6400  M/W=27.376
+[burnin] t=6400  M/W=27.1891
+[burnin] t=6400  M/W=28.0412
+[burnin] t=6400  M/W=26.9895
+[burnin] t=9600  M/W=27.6693
+[burnin] t=9600  M/W=27.8819
+[burnin] t=9600  M/W=28.1567
+[burnin] t=9600  M/W=28.9506
+[burnin] t=9600  M/W=28.6783
+[burnin] t=9600  M/W=28.4104
+[burnin] t=9600  M/W=27.8735
+[burnin] t=9600  M/W=27.8954
+[burnin] t=12800  M/W=28.401
+[burnin] t=12800  M/W=26.4994
+[burnin] t=12800  M/W=27.2339
+[burnin] t=12800  M/W=27.9357
+[burnin] t=12800  M/W=26.6567
+[burnin] t=12800  M/W=27.7732
+[burnin] t=12800  M/W=28.39
+[burnin] t=12800  M/W=27.7185
+[burnin] t=16000  M/W=28.3682
+[burnin] t=16000  M/W=27.4091
+[burnin] t=16000  M/W=27.3288
+[burnin] t=16000  M/W=29.2998
+[burnin] t=16000  M/W=27.535
+[burnin] t=16000  M/W=27.3286
+[burnin] t=16000  M/W=27.9957
+[burnin] t=16000  M/W=28.4212
+[burnin] t=19200  M/W=27.5698
+[burnin] t=19200  M/W=27.7477
+[burnin] t=19200  M/W=27.9541
+[burnin] t=19200  M/W=28.5106
+[burnin] t=19200  M/W=27.8365
+[burnin] t=19200  M/W=27.8548
+[burnin] t=19200  M/W=27.2452
+[burnin] t=19200  M/W=28.1303
+[burnin] t=22400  M/W=27.532
+[burnin] t=22400  M/W=27.4436
+[burnin] t=22400  M/W=27.6242
+[burnin] t=22400  M/W=27.7391
+[burnin] t=22400  M/W=27.4338
+[burnin] t=22400  M/W=27.8761
+[burnin] t=22400  M/W=27.5061
+[burnin] t=22400  M/W=27.1447
+[burnin] t=25600  M/W=28.6444
+[burnin] t=25600  M/W=27.7103
+[burnin] t=25600  M/W=27.749
+[burnin] t=25600  M/W=27.7894
+[burnin] t=25600  M/W=26.7885
+[burnin] t=25600  M/W=27.9365
+[burnin] t=25600  M/W=28.0003
+[burnin] t=25600  M/W=28.4381
+[burnin] t=28800  M/W=28.0475
+[burnin] t=28800  M/W=27.1181
+[burnin] t=28800  M/W=27.1144
+[burnin] t=28800  M/W=27.1577
+[burnin] t=28800  M/W=27.8762
+[burnin] t=28800  M/W=27.6765
+[burnin] t=28800  M/W=28.6864
+[burnin] t=28800  M/W=27.7468
+  group 12 done
+  group 8 done
+  group 4 done
+  group 28 done
+  group 16 done
+  group 24 done
+  group 20 done
+  group 0 done
+[burnin] t=3200  M/W=28.3637
+[burnin] t=3200  M/W=28.0313
+[burnin] t=3200  M/W=27.0554
+[burnin] t=3200  M/W=28.73
+[burnin] t=3200  M/W=27.5239
+[burnin] t=3200  M/W=26.7714
+[burnin] t=3200  M/W=27.5806
+[burnin] t=3200  M/W=27.6316
+[burnin] t=6400  M/W=28.1048
+[burnin] t=6400  M/W=28.8089
+[burnin] t=6400  M/W=27.4856
+[burnin] t=6400  M/W=28.9264
+[burnin] t=6400  M/W=27.7828
+[burnin] t=6400  M/W=27.6771
+[burnin] t=6400  M/W=28.8223
+[burnin] t=6400  M/W=27.6078
+[burnin] t=9600  M/W=27.7369
+[burnin] t=9600  M/W=28.2437
+[burnin] t=9600  M/W=28.3574
+[burnin] t=9600  M/W=28.3223
+[burnin] t=9600  M/W=28.806
+[burnin] t=9600  M/W=27.5842
+[burnin] t=9600  M/W=27.472
+[burnin] t=9600  M/W=27.2084
+[burnin] t=12800  M/W=27.9016
+[burnin] t=12800  M/W=28.7846
+[burnin] t=12800  M/W=29.2738
+[burnin] t=12800  M/W=28.7213
+[burnin] t=12800  M/W=27.7433
+[burnin] t=12800  M/W=27.6538
+[burnin] t=12800  M/W=27.4879
+[burnin] t=12800  M/W=28.8142
+[burnin] t=16000  M/W=28.1443
+[burnin] t=16000  M/W=28.8795
+[burnin] t=16000  M/W=27.5985
+[burnin] t=16000  M/W=29.2551
+[burnin] t=16000  M/W=27.7098
+[burnin] t=16000  M/W=28.076
+[burnin] t=16000  M/W=27.1604
+[burnin] t=16000  M/W=28.1423
+[burnin] t=19200  M/W=28.472
+[burnin] t=19200  M/W=27.6134
+[burnin] t=19200  M/W=28.025
+[burnin] t=19200  M/W=28.1082
+[burnin] t=19200  M/W=28.016
+[burnin] t=19200  M/W=27.5365
+[burnin] t=19200  M/W=27.5243
+[burnin] t=19200  M/W=28.59
+[burnin] t=22400  M/W=28.4746
+[burnin] t=22400  M/W=28.1524
+[burnin] t=22400  M/W=27.3623
+[burnin] t=22400  M/W=27.6769
+[burnin] t=22400  M/W=27.4453
+[burnin] t=22400  M/W=27.826
+[burnin] t=22400  M/W=27.2055
+[burnin] t=22400  M/W=26.5611
+[burnin] t=25600  M/W=26.9943
+[burnin] t=25600  M/W=27.8145
+[burnin] t=25600  M/W=27.7508
+[burnin] t=25600  M/W=28.6478
+[burnin] t=25600  M/W=27.7143
+[burnin] t=25600  M/W=28.145
+[burnin] t=25600  M/W=26.4414
+[burnin] t=25600  M/W=27.5221
+[burnin] t=28800  M/W=26.7175
+[burnin] t=28800  M/W=28.2929
+[burnin] t=28800  M/W=28.419
+[burnin] t=28800  M/W=28.3094
+[burnin] t=28800  M/W=27.8037
+[burnin] t=28800  M/W=27.4662
+[burnin] t=28800  M/W=28.5628
+[burnin] t=28800  M/W=27.2982
+  group 5 done
+  group 13 done
+  group 1 done
+  group 29 done
+  group 9 done
+  group 17 done
+  group 25 done
+  group 21 done
+[burnin] t=3200  M/W=28.3537
+[burnin] t=3200  M/W=27.5044
+[burnin] t=3200  M/W=27.9829
+[burnin] t=3200  M/W=27.4409
+[burnin] t=3200  M/W=27.2163
+[burnin] t=3200  M/W=27.0362
+[burnin] t=3200  M/W=27.7814
+[burnin] t=3200  M/W=27.2954
+[burnin] t=6400  M/W=28.0438
+[burnin] t=6400  M/W=28.6179
+[burnin] t=6400  M/W=27.8559
+[burnin] t=6400  M/W=28.5806
+[burnin] t=6400  M/W=28.9873
+[burnin] t=6400  M/W=28.3735
+[burnin] t=6400  M/W=27.7599
+[burnin] t=6400  M/W=28.0042
+[burnin] t=9600  M/W=26.4056
+[burnin] t=9600  M/W=28.1168
+[burnin] t=9600  M/W=27.9536
+[burnin] t=9600  M/W=27.4106
+[burnin] t=9600  M/W=27.7244
+[burnin] t=9600  M/W=28.5394
+[burnin] t=9600  M/W=28.7224
+[burnin] t=9600  M/W=27.3006
+[burnin] t=12800  M/W=28.543
+[burnin] t=12800  M/W=27.0434
+[burnin] t=12800  M/W=27.2454
+[burnin] t=12800  M/W=28.049
+[burnin] t=12800  M/W=27.4279
+[burnin] t=12800  M/W=28.2538
+[burnin] t=12800  M/W=28.0311
+[burnin] t=12800  M/W=27.1434
+[burnin] t=16000  M/W=27.6704
+[burnin] t=16000  M/W=27.8071
+[burnin] t=16000  M/W=28.7098
+[burnin] t=16000  M/W=28.1887
+[burnin] t=16000  M/W=27.9433
+[burnin] t=16000  M/W=27.2375
+[burnin] t=16000  M/W=27.6277
+[burnin] t=16000  M/W=27.5562
+[burnin] t=19200  M/W=28.2538
+[burnin] t=19200  M/W=27.4898
+[burnin] t=19200  M/W=28.6192
+[burnin] t=19200  M/W=29.4798
+[burnin] t=19200  M/W=27.6691
+[burnin] t=19200  M/W=27.7028
+[burnin] t=19200  M/W=26.8669
+[burnin] t=19200  M/W=27.5337
+[burnin] t=22400  M/W=29.8423
+[burnin] t=22400  M/W=27.6055
+[burnin] t=22400  M/W=27.1141
+[burnin] t=22400  M/W=27.2284
+[burnin] t=22400  M/W=27.5416
+[burnin] t=22400  M/W=28.7947
+[burnin] t=22400  M/W=26.7975
+[burnin] t=22400  M/W=28.1375
+[burnin] t=25600  M/W=28.0025
+[burnin] t=25600  M/W=27.3606
+[burnin] t=25600  M/W=28.3884
+[burnin] t=25600  M/W=27.2581
+[burnin] t=25600  M/W=27.7423
+[burnin] t=25600  M/W=27.5147
+[burnin] t=25600  M/W=27.6084
+[burnin] t=25600  M/W=28.2754
+[burnin] t=28800  M/W=27.9981
+[burnin] t=28800  M/W=26.2886
+[burnin] t=28800  M/W=28.3266
+[burnin] t=28800  M/W=28.4284
+[burnin] t=28800  M/W=29.4035
+[burnin] t=28800  M/W=28.1403
+[burnin] t=28800  M/W=27.0489
+[burnin] t=28800  M/W=29.1365
+  group 6 done
+  group 14 done
+  group 18 done
+  group 30 done
+  group 10 done
+  group 26 done
+  group 2 done
+  group 22 done
+[burnin] t=3200  M/W=27.3631
+[burnin] t=3200  M/W=27.7534
+[burnin] t=3200  M/W=28.105
+[burnin] t=3200  M/W=28.3544
+[burnin] t=3200  M/W=28.1473
+[burnin] t=3200  M/W=27.786
+[burnin] t=3200  M/W=28.6465
+[burnin] t=3200  M/W=27.966
+[burnin] t=6400  M/W=26.7241
+[burnin] t=6400  M/W=27.9364
+[burnin] t=6400  M/W=27.7932
+[burnin] t=6400  M/W=27.4034
+[burnin] t=6400  M/W=27.7945
+[burnin] t=6400  M/W=27.181
+[burnin] t=6400  M/W=28.4522
+[burnin] t=6400  M/W=27.8048
+[burnin] t=9600  M/W=28.2781
+[burnin] t=9600  M/W=28.4225
+[burnin] t=9600  M/W=28.1476
+[burnin] t=9600  M/W=27.9568
+[burnin] t=9600  M/W=27.7068
+[burnin] t=9600  M/W=27.5362
+[burnin] t=9600  M/W=26.871
+[burnin] t=9600  M/W=28.3296
+[burnin] t=12800  M/W=27.4468
+[burnin] t=12800  M/W=29.0481
+[burnin] t=12800  M/W=28.3931
+[burnin] t=12800  M/W=27.6161
+[burnin] t=12800  M/W=27.7276
+[burnin] t=12800  M/W=28.8313
+[burnin] t=12800  M/W=28.7338
+[burnin] t=12800  M/W=27.5818
+[burnin] t=16000  M/W=27.1998
+[burnin] t=16000  M/W=27.9476
+[burnin] t=16000  M/W=27.5376
+[burnin] t=16000  M/W=26.9588
+[burnin] t=16000  M/W=27.6408
+[burnin] t=16000  M/W=27.5807
+[burnin] t=16000  M/W=28.4802
+[burnin] t=16000  M/W=28.4576
+[burnin] t=19200  M/W=26.8853
+[burnin] t=19200  M/W=27.6503
+[burnin] t=19200  M/W=27.1231
+[burnin] t=19200  M/W=28.511
+[burnin] t=19200  M/W=28.0106
+[burnin] t=19200  M/W=27.7382
+[burnin] t=19200  M/W=27.2868
+[burnin] t=19200  M/W=26.7927
+[burnin] t=22400  M/W=28.1749
+[burnin] t=22400  M/W=27.86
+[burnin] t=22400  M/W=26.002
+[burnin] t=22400  M/W=28.3932
+[burnin] t=22400  M/W=27.079
+[burnin] t=22400  M/W=28.6625
+[burnin] t=22400  M/W=28.231
+[burnin] t=22400  M/W=27.6136
+[burnin] t=25600  M/W=26.9861
+[burnin] t=25600  M/W=26.7711
+[burnin] t=25600  M/W=28.0287
+[burnin] t=25600  M/W=28.1821
+[burnin] t=25600  M/W=27.9981
+[burnin] t=25600  M/W=28.9793
+[burnin] t=25600  M/W=27.4955
+[burnin] t=25600  M/W=28.5978
+[burnin] t=28800  M/W=28.1139
+[burnin] t=28800  M/W=27.8122
+[burnin] t=28800  M/W=27.8254
+[burnin] t=28800  M/W=27.7911
+[burnin] t=28800  M/W=27.2855
+[burnin] t=28800  M/W=28.3147
+[burnin] t=28800  M/W=27.0198
+[burnin] t=28800  M/W=27.7768
+  group 7 done
+  group 15 done
+  group 31 done
+  group 27 done
+  group 19 done
+  group 3 done
+  group 11 done
+  group 23 done
+Wrote n100_dt25_j24.hist and n100_dt25_j24.marg  (4055040000 samples, 2820842 I-overflow)
+Wrote n100_dt25_j48.hist and n100_dt25_j48.marg  (4055040000 samples, 3915525 I-overflow)
+Wrote n100_dt25_j72.hist and n100_dt25_j72.marg  (4055040000 samples, 2691491 I-overflow)
+Wrote n100_dt25_profile.txt
+Total samples: 4055040000 (~4.05504e9)
+Done in 30448s.
+T_burnin=32000  T_final=230000
+LTE SIMD histogram (Case 0 closed chain)
+T1=6 Tn=6 n=100  W=16 lanes  N_GROUPS=32 -> 512 chains
+samples/chain=7920000  total expected=4.05504e+09 (~4.05504e9)
+sites: (24,25) (48,49) (72,73)
+[burnin] t=3200  M/W=24.5551
+[burnin] t=3200  M/W=24.4589
+[burnin] t=3200  M/W=24.9761
+[burnin] t=3200  M/W=24.3572
+[burnin] t=3200  M/W=25.0334
+[burnin] t=3200  M/W=25.3037
+[burnin] t=3200  M/W=25.2371
+[burnin] t=3200  M/W=24.1227
+[burnin] t=6400  M/W=24.9825
+[burnin] t=6400  M/W=24.5639
+[burnin] t=6400  M/W=24.5743
+[burnin] t=6400  M/W=24.2755
+[burnin] t=6400  M/W=24.0784
+[burnin] t=6400  M/W=24.5724
+[burnin] t=6400  M/W=24.7218
+[burnin] t=6400  M/W=24.3494
+[burnin] t=9600  M/W=25.3067
+[burnin] t=9600  M/W=24.508
+[burnin] t=9600  M/W=25.1079
+[burnin] t=9600  M/W=24.7257
+[burnin] t=9600  M/W=24.7934
+[burnin] t=9600  M/W=25.0594
+[burnin] t=9600  M/W=24.312
+[burnin] t=9600  M/W=24.8099
+[burnin] t=12800  M/W=24.3871
+[burnin] t=12800  M/W=24.3453
+[burnin] t=12800  M/W=25.0474
+[burnin] t=12800  M/W=25.0562
+[burnin] t=12800  M/W=24.2307
+[burnin] t=12800  M/W=23.6054
+[burnin] t=12800  M/W=23.7301
+[burnin] t=12800  M/W=24.5532
+[burnin] t=16000  M/W=24.1811
+[burnin] t=16000  M/W=25.0068
+[burnin] t=16000  M/W=23.9589
+[burnin] t=16000  M/W=24.9223
+[burnin] t=16000  M/W=23.7656
+[burnin] t=16000  M/W=25.3705
+[burnin] t=16000  M/W=24.2135
+[burnin] t=16000  M/W=24.3574
+[burnin] t=19200  M/W=24.3058
+[burnin] t=19200  M/W=24.2542
+[burnin] t=19200  M/W=24.3777
+[burnin] t=19200  M/W=24.0811
+[burnin] t=19200  M/W=24.3918
+[burnin] t=19200  M/W=24.3479
+[burnin] t=19200  M/W=24.2322
+[burnin] t=19200  M/W=24.5598
+[burnin] t=22400  M/W=24.6241
+[burnin] t=22400  M/W=24.2999
+[burnin] t=22400  M/W=24.9718
+[burnin] t=22400  M/W=24.5685
+[burnin] t=22400  M/W=24.929
+[burnin] t=22400  M/W=24.9728
+[burnin] t=22400  M/W=24.1774
+[burnin] t=22400  M/W=24.5603
+[burnin] t=25600  M/W=24.6248
+[burnin] t=25600  M/W=24.2251
+[burnin] t=25600  M/W=25.3324
+[burnin] t=25600  M/W=24.7932
+[burnin] t=25600  M/W=24.0954
+[burnin] t=25600  M/W=24.2157
+[burnin] t=25600  M/W=24.2289
+[burnin] t=25600  M/W=23.9261
+[burnin] t=28800  M/W=25.4477
+[burnin] t=28800  M/W=24.5476
+[burnin] t=28800  M/W=24.4921
+[burnin] t=28800  M/W=24.4225
+[burnin] t=28800  M/W=24.3677
+[burnin] t=28800  M/W=24.9977
+[burnin] t=28800  M/W=24.1775
+[burnin] t=28800  M/W=25.0281
+  group 24 done
+  group 20 done
+  group 0 done
+  group 28 done
+  group 16 done
+  group 12 done
+  group 8 done
+  group 4 done
+[burnin] t=3200  M/W=24.2574
+[burnin] t=3200  M/W=24.2598
+[burnin] t=3200  M/W=23.883
+[burnin] t=3200  M/W=23.7041
+[burnin] t=3200  M/W=24.6578
+[burnin] t=3200  M/W=24.3512
+[burnin] t=3200  M/W=24.9447
+[burnin] t=3200  M/W=24.6139
+[burnin] t=6400  M/W=24.5463
+[burnin] t=6400  M/W=24.9026
+[burnin] t=6400  M/W=24.4089
+[burnin] t=6400  M/W=24.2476
+[burnin] t=6400  M/W=24.7185
+[burnin] t=6400  M/W=24.1482
+[burnin] t=6400  M/W=24.2564
+[burnin] t=6400  M/W=24.0707
+[burnin] t=9600  M/W=24.5502
+[burnin] t=9600  M/W=24.4993
+[burnin] t=9600  M/W=24.4972
+[burnin] t=9600  M/W=23.7022
+[burnin] t=9600  M/W=23.8609
+[burnin] t=9600  M/W=25.0816
+[burnin] t=9600  M/W=25.4429
+[burnin] t=9600  M/W=24.1429
+[burnin] t=12800  M/W=24.6942
+[burnin] t=12800  M/W=23.9046
+[burnin] t=12800  M/W=24.8267
+[burnin] t=12800  M/W=24.9219
+[burnin] t=12800  M/W=25.058
+[burnin] t=12800  M/W=24.8853
+[burnin] t=12800  M/W=23.9511
+[burnin] t=12800  M/W=23.871
+[burnin] t=16000  M/W=24.5224
+[burnin] t=16000  M/W=24.6353
+[burnin] t=16000  M/W=23.975
+[burnin] t=16000  M/W=24.1405
+[burnin] t=16000  M/W=24.3501
+[burnin] t=16000  M/W=24.9196
+[burnin] t=16000  M/W=24.2793
+[burnin] t=16000  M/W=24.7953
+[burnin] t=19200  M/W=24.6972
+[burnin] t=19200  M/W=24.6284
+[burnin] t=19200  M/W=24.5641
+[burnin] t=19200  M/W=24.2582
+[burnin] t=19200  M/W=24.5951
+[burnin] t=19200  M/W=24.3365
+[burnin] t=19200  M/W=25.3185
+[burnin] t=19200  M/W=24.2479
+[burnin] t=22400  M/W=25.0122
+[burnin] t=22400  M/W=24.4216
+[burnin] t=22400  M/W=24.3915
+[burnin] t=22400  M/W=23.681
+[burnin] t=22400  M/W=24.9512
+[burnin] t=22400  M/W=24.7865
+[burnin] t=22400  M/W=24.9366
+[burnin] t=22400  M/W=23.9365
+[burnin] t=25600  M/W=24.5403
+[burnin] t=25600  M/W=24.9566
+[burnin] t=25600  M/W=25.7956
+[burnin] t=25600  M/W=25.0409
+[burnin] t=25600  M/W=23.8126
+[burnin] t=25600  M/W=24.8485
+[burnin] t=25600  M/W=24.0724
+[burnin] t=25600  M/W=24.8992
+[burnin] t=28800  M/W=24.7967
+[burnin] t=28800  M/W=24.7977
+[burnin] t=28800  M/W=24.2775
+[burnin] t=28800  M/W=24.6978
+[burnin] t=28800  M/W=24.3164
+[burnin] t=28800  M/W=24.9128
+[burnin] t=28800  M/W=23.5475
+[burnin] t=28800  M/W=25.1343
+  group 21 done
+  group 13 done
+  group 17 done
+  group 25 done
+  group 1 done
+  group 5 done
+  group 9 done
+  group 29 done
+[burnin] t=3200  M/W=24.6386
+[burnin] t=3200  M/W=24.6441
+[burnin] t=3200  M/W=24.2533
+[burnin] t=3200  M/W=24.4908
+[burnin] t=3200  M/W=24.1961
+[burnin] t=3200  M/W=23.8485
+[burnin] t=3200  M/W=24.6482
+[burnin] t=3200  M/W=25.0585
+[burnin] t=6400  M/W=25.2366
+[burnin] t=6400  M/W=24.5916
+[burnin] t=6400  M/W=25.3405
+[burnin] t=6400  M/W=23.9463
+[burnin] t=6400  M/W=23.7114
+[burnin] t=6400  M/W=24.0082
+[burnin] t=6400  M/W=24.1406
+[burnin] t=6400  M/W=24.8879
+[burnin] t=9600  M/W=24.2507
+[burnin] t=9600  M/W=24.52
+[burnin] t=9600  M/W=24.5337
+[burnin] t=9600  M/W=24.9155
+[burnin] t=9600  M/W=23.9891
+[burnin] t=9600  M/W=24.3253
+[burnin] t=9600  M/W=24.6172
+[burnin] t=9600  M/W=24.4842
+[burnin] t=12800  M/W=24.0111
+[burnin] t=12800  M/W=25.3438
+[burnin] t=12800  M/W=23.9587
+[burnin] t=12800  M/W=25.4958
+[burnin] t=12800  M/W=25.8147
+[burnin] t=12800  M/W=24.8763
+[burnin] t=12800  M/W=25.0536
+[burnin] t=12800  M/W=24.0987
+[burnin] t=16000  M/W=23.7635
+[burnin] t=16000  M/W=24.6729
+[burnin] t=16000  M/W=24.7221
+[burnin] t=16000  M/W=25.1943
+[burnin] t=16000  M/W=24.5877
+[burnin] t=16000  M/W=24.2034
+[burnin] t=16000  M/W=24.194
+[burnin] t=16000  M/W=24.9659
+[burnin] t=19200  M/W=24.8827
+[burnin] t=19200  M/W=23.9197
+[burnin] t=19200  M/W=24.701
+[burnin] t=19200  M/W=24.7106
+[burnin] t=19200  M/W=24.4141
+[burnin] t=19200  M/W=23.9925
+[burnin] t=19200  M/W=24.3495
+[burnin] t=19200  M/W=24.8644
+[burnin] t=22400  M/W=24.0373
+[burnin] t=22400  M/W=23.7377
+[burnin] t=22400  M/W=24.9369
+[burnin] t=22400  M/W=24.2644
+[burnin] t=22400  M/W=24.1217
+[burnin] t=22400  M/W=24.607
+[burnin] t=22400  M/W=24.2846
+[burnin] t=22400  M/W=24.357
+[burnin] t=25600  M/W=24.4336
+[burnin] t=25600  M/W=24.1991
+[burnin] t=25600  M/W=24.6469
+[burnin] t=25600  M/W=25.1868
+[burnin] t=25600  M/W=25.1144
+[burnin] t=25600  M/W=24.828
+[burnin] t=25600  M/W=24.3178
+[burnin] t=25600  M/W=23.9705
+[burnin] t=28800  M/W=24.799
+[burnin] t=28800  M/W=24.5191
+[burnin] t=28800  M/W=24.7365
+[burnin] t=28800  M/W=24.7913
+[burnin] t=28800  M/W=24.0468
+[burnin] t=28800  M/W=25.053
+[burnin] t=28800  M/W=23.9183
+[burnin] t=28800  M/W=25.287
+  group 22 done
+  group 14 done
+  group 18 done
+  group 26 done
+  group 6 done
+  group 30 done
+  group 10 done
+  group 2 done
+[burnin] t=3200  M/W=24.7901
+[burnin] t=3200  M/W=24.5812
+[burnin] t=3200  M/W=24.6342
+[burnin] t=3200  M/W=23.5801
+[burnin] t=3200  M/W=23.821
+[burnin] t=3200  M/W=25.3514
+[burnin] t=3200  M/W=24.7692
+[burnin] t=3200  M/W=23.8113
+[burnin] t=6400  M/W=24.0949
+[burnin] t=6400  M/W=24.1224
+[burnin] t=6400  M/W=24.8563
+[burnin] t=6400  M/W=24.3179
+[burnin] t=6400  M/W=23.6981
+[burnin] t=6400  M/W=24.6032
+[burnin] t=6400  M/W=24.2393
+[burnin] t=6400  M/W=25.0152
+[burnin] t=9600  M/W=25.6377
+[burnin] t=9600  M/W=24.9916
+[burnin] t=9600  M/W=24.8076
+[burnin] t=9600  M/W=24.7056
+[burnin] t=9600  M/W=24.7865
+[burnin] t=9600  M/W=24.2455
+[burnin] t=9600  M/W=24.9157
+[burnin] t=9600  M/W=24.5883
+[burnin] t=12800  M/W=24.7273
+[burnin] t=12800  M/W=24.3594
+[burnin] t=12800  M/W=24.2568
+[burnin] t=12800  M/W=24.9112
+[burnin] t=12800  M/W=24.321
+[burnin] t=12800  M/W=24.853
+[burnin] t=12800  M/W=24.0044
+[burnin] t=12800  M/W=24.3514
+[burnin] t=16000  M/W=24.026
+[burnin] t=16000  M/W=24.3232
+[burnin] t=16000  M/W=25.2621
+[burnin] t=16000  M/W=24.1296
+[burnin] t=16000  M/W=24.3293
+[burnin] t=16000  M/W=24.702
+[burnin] t=16000  M/W=24.2456
+[burnin] t=16000  M/W=24.5779
+[burnin] t=19200  M/W=24.2167
+[burnin] t=19200  M/W=23.5721
+[burnin] t=19200  M/W=24.6677
+[burnin] t=19200  M/W=25.0115
+[burnin] t=19200  M/W=24.8397
+[burnin] t=19200  M/W=24.2037
+[burnin] t=19200  M/W=24.4339
+[burnin] t=19200  M/W=24.516
+[burnin] t=22400  M/W=24.3812
+[burnin] t=22400  M/W=24.2742
+[burnin] t=22400  M/W=24.1765
+[burnin] t=22400  M/W=24.439
+[burnin] t=22400  M/W=25.2152
+[burnin] t=22400  M/W=24.1975
+[burnin] t=22400  M/W=24.3882
+[burnin] t=22400  M/W=23.9342
+[burnin] t=25600  M/W=25.4795
+[burnin] t=25600  M/W=24.7333
+[burnin] t=25600  M/W=24.2928
+[burnin] t=25600  M/W=24.7301
+[burnin] t=25600  M/W=24.7633
+[burnin] t=25600  M/W=24.1972
+[burnin] t=25600  M/W=25.2873
+[burnin] t=25600  M/W=24.3774
+[burnin] t=28800  M/W=24.1367
+[burnin] t=28800  M/W=24.5258
+[burnin] t=28800  M/W=24.0557
+[burnin] t=28800  M/W=23.8689
+[burnin] t=28800  M/W=24.1867
+[burnin] t=28800  M/W=24.5044
+[burnin] t=28800  M/W=23.9483
+[burnin] t=28800  M/W=24.4307
+  group 15 done
+  group 19 done
+  group 23 done
+  group 27 done
+  group 7 done
+  group 31 done
+  group 11 done
+  group 3 done
+Wrote n100_dt25_eq_j24.hist and n100_dt25_eq_j24.marg  (4055040000 samples, 223879 I-overflow)
+Wrote n100_dt25_eq_j48.hist and n100_dt25_eq_j48.marg  (4055040000 samples, 342647 I-overflow)
+Wrote n100_dt25_eq_j72.hist and n100_dt25_eq_j72.marg  (4055040000 samples, 245417 I-overflow)
+Wrote n100_dt25_eq_profile.txt
+Total samples: 4055040000 (~4.05504e9)
+Done in 32491s.

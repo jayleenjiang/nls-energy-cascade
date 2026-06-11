@@ -52,3 +52,20 @@ Thumbs.db
 !requirements.txt
 !CMakeLists.txt
 !**/CMakeLists.txt
+
+# ---- curated imported experiments ----
+!experiments/
+!experiments/**
+experiments/**/.DS_Store
+experiments/**/__pycache__/
+experiments/**/*.pyc
+experiments/**/*.pyo
+experiments/**/*.hist
+experiments/**/*.marg
+experiments/**/*.keras
+experiments/**/*.h5
+experiments/**/*.hdf5
+experiments/**/*.pdf
+experiments/**/*_train.txt
+experiments/**/traj_*.csv
+experiments/**/h5_files*/
