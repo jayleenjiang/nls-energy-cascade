@@ -192,6 +192,9 @@ static void run_group(int n, double T1d, double Tnd,
     Xoshiro rng; rng.seed(seed_val);
 
     long step = 0; double t = 0.0; bool measuring = false;
+    // --- DIAGNOSTIC: largest drift over the run (dt-stability probe) ---
+    float maxDriftI = 0.0f, maxDriftI_I = 0.0f, maxRelStep = 0.0f, maxDriftPhi = 0.0f;
+    int   maxDriftI_mode = -1, maxRelStep_mode = -1;
     while (t < T_final) {
         // --- per-lane total mass M = sum_j I[j] ---
         #pragma omp simd
@@ -241,6 +244,25 @@ static void run_group(int n, double T1d, double Tnd,
                               (2.0f * M[l] * In - In * In + 2.0f * Inm * In * fast_cos(dprev)));
                 dph[jn+l] += g * (2.0f * Inm * fast_sin(dprev));
             }
+        }
+
+        // --- DIAGNOSTIC: scan fully-assembled drift for running max ---
+        for (int j = 0; j < n; ++j) {
+            for (int l = 0; l < W; ++l) {
+                float adI = std::fabs(dI[j*W+l]);
+                if (adI > maxDriftI) { maxDriftI = adI; maxDriftI_mode = j; maxDriftI_I = I[j*W+l]; }
+                float rel = adI * dtf / std::max(I[j*W+l], 1e-6f);  // |dI*dt|/I, the per-step relative change
+                if (rel > maxRelStep) { maxRelStep = rel; maxRelStep_mode = j; }
+                float adp = std::fabs(dph[j*W+l]);
+                if (adp > maxDriftPhi) maxDriftPhi = adp;
+            }
+        }
+
+        if (step % 2000000 == 0) {
+            #pragma omp critical
+            std::cerr << "[drift t=" << t << "] max|dI|=" << maxDriftI
+                      << " (mode " << maxDriftI_mode << ", I=" << maxDriftI_I << ")"
+                      << "  max|dI*dt|/I=" << maxRelStep << "\n";
         }
 
         // --- boundary noise (sqrt(2) factor; sigma from CURRENT I) ---
@@ -314,6 +336,11 @@ static void run_group(int n, double T1d, double Tnd,
             }
         }
     }
+    #pragma omp critical
+    std::cerr << "[drift] max|dI|=" << maxDriftI
+              << "  at mode " << maxDriftI_mode << " (I=" << maxDriftI_I << ")"
+              << "   max|dI*dt|/I=" << maxRelStep << " at mode " << maxRelStep_mode
+              << "   max|dphi|=" << maxDriftPhi << "\n";
 }
 
 // ============================================================

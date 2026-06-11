@@ -27,8 +27,8 @@ static const double gamma_val = 0.1;
 // window T_final - T_burnin is held fixed so all n have equal sample counts.
 static double T_final    = 200000.0;   // set in main
 static double T_burnin   = 2000.0;     // set in main: 2000 * (n/25)^2
-static const double T_measure  = 198000.0;  // fixed measuring window
-static const double dt         = 0.001;
+static const double T_measure  = 19800.0;  // fixed measuring window
+static const double dt         = 0.0005;
 static const int    dump_every_steps = 100;  // keep samples ~decorrelated
 static const int    N_GROUPS   = 32;          // groups of W chains  (32*16=512 chains)
 static const int    N_thread   = 8;

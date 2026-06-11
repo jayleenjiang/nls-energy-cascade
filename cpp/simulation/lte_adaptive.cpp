@@ -28,7 +28,11 @@ static const double gamma_val = 0.1;
 static double T_final    = 200000.0;   // set in main
 static double T_burnin   = 2000.0;     // set in main: 2000 * (n/25)^2
 static const double T_measure  = 198000.0;  // fixed measuring window
-static const double dt         = 0.001;
+static const double dt         = 0.001;  // dt_max: cap on the adaptive step
+static const double dt_min     = 1e-7;   // adaptive floor (safety)
+static const double eta_I      = 0.02;   // max relative change in I per step
+static const double eta_phi    = 0.05;   // max phase advance per step (rad)
+static const double record_dt  = 0.1;    // fixed-time sampling interval (= old 100*dt_max)
 static const int    dump_every_steps = 100;  // keep samples ~decorrelated
 static const int    N_GROUPS   = 32;          // groups of W chains  (32*16=512 chains)
 static const int    N_thread   = 8;
@@ -173,7 +177,8 @@ static void run_group(int n, double T1d, double Tnd,
 {
     const float  g    = (float)gamma_val;
     const float  T1   = (float)T1d, Tn = (float)Tnd;
-    const float  dtf  = (float)dt, sdt = std::sqrt((float)dt);
+    const float  dt_cap = (float)dt;
+    float        dtf = dt_cap, sdt = std::sqrt(dt_cap);  // recomputed each step (adaptive)
     const int    NS   = (int)sites.size();
 
     // state: I[j*W+l], phi[j*W+l]   (allocated ONCE, not per step)
@@ -192,6 +197,8 @@ static void run_group(int n, double T1d, double Tnd,
     Xoshiro rng; rng.seed(seed_val);
 
     long step = 0; double t = 0.0; bool measuring = false;
+    double next_record_time = T_burnin;        // first sample at start of measuring
+    double next_mon_time    = T_burnin / 10.0;  // burn-in monitor cadence
     while (t < T_final) {
         // --- per-lane total mass M = sum_j I[j] ---
         #pragma omp simd
@@ -243,6 +250,26 @@ static void run_group(int n, double T1d, double Tnd,
             }
         }
 
+        // --- adaptive shared step: dt = min over all (mode,lane) of accuracy limits ---
+        // (predictive: dt fixed from current state/drift BEFORE noise is drawn, so this
+        //  is a valid adaptive Euler-Maruyama; the explosive part is the deterministic
+        //  interior drift, the noise lives only on the two boundary modes.)
+        {
+            float dtA = dt_cap;
+            for (int j = 0; j < n; ++j) {
+                for (int l = 0; l < W; ++l) {
+                    float Ij  = I[j*W+l];
+                    float Ifl = Ij > 1e-6f ? Ij : 1e-6f;
+                    float adI = std::fabs(dI[j*W+l]);
+                    if (adI > 0.0f) { float lim = (float)eta_I * Ifl / adI; if (lim < dtA) dtA = lim; }
+                    float adp = std::fabs(dph[j*W+l]);
+                    if (adp > 0.0f) { float lim = (float)eta_phi / adp;     if (lim < dtA) dtA = lim; }
+                }
+            }
+            if (dtA < (float)dt_min) dtA = (float)dt_min;
+            dtf = dtA; sdt = std::sqrt(dtA);
+        }
+
         // --- boundary noise (sqrt(2) factor; sigma from CURRENT I) ---
         fill_gauss(nI0, rng); fill_gauss(nIn, rng);
         fill_gauss(nph0, rng); fill_gauss(nphn, rng);
@@ -280,23 +307,24 @@ static void run_group(int n, double T1d, double Tnd,
             }
         }
 
-        t += dt; ++step;
-        if (!measuring && t >= T_burnin) measuring = true;
+        t += dtf; ++step;
+        if (!measuring && t >= T_burnin) { measuring = true; next_record_time = t; }
 
-        // burn-in convergence monitor: lane-averaged total action M(t),
-        // printed ~10 times during burn-in. NESS should climb to its
-        // stationary plateau and flatten before measuring starts.
-        static const long mon_every =
-            std::max(1L, (long)(T_burnin / 10.0 / dt));
-        if (!measuring && step % mon_every == 0) {
+        // burn-in convergence monitor (time-based now that dt varies)
+        if (!measuring && t >= next_mon_time) {
             double Mtot = 0.0;
             for (int j = 0; j < n; ++j)
                 for (int l = 0; l < W; ++l) Mtot += I[j*W+l];
             #pragma omp critical
-            std::cerr << "[burnin] t=" << t << "  M/W=" << Mtot / W << "\n";
+            std::cerr << "[burnin] t=" << t << "  M/W=" << Mtot / W << "  dt=" << dtf << "\n";
+            next_mon_time += T_burnin / 10.0;
         }
 
-        if (measuring && (step % dump_every_steps == 0)) {
+        // record at fixed TIME checkpoints (dt_cap < record_dt => <=1 per step),
+        // so samples stay uniform-in-time and the count-based histograms/profile
+        // and the count>50 fit are unchanged.
+        if (measuring && t >= next_record_time) {
+            next_record_time += record_dt;
             for (int j = 0; j < n; ++j) {
                 double s = 0.0;
                 for (int l = 0; l < W; ++l) s += I[j*W+l];
@@ -314,6 +342,10 @@ static void run_group(int n, double T1d, double Tnd,
             }
         }
     }
+    #pragma omp critical
+    std::cerr << "[adaptive] group done: steps=" << step
+              << "  mean dt=" << (t / std::max(1L, step))
+              << "  (vs cap " << dt_cap << ")\n";
 }
 
 // ============================================================
