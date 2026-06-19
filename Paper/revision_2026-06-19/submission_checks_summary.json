@@ -1,0 +1,134 @@
+{
+  "commands": [
+    {
+      "command": [
+        "/Library/TeX/texbin/latexmk",
+        "-norc",
+        "-pdf",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-synctex=1",
+        "-outdir=/Users/jayleenjiang/Documents/NLS/tmp/paper_build/revision",
+        "draft.tex"
+      ],
+      "duration_seconds": 0.051,
+      "name": "latex_compile",
+      "returncode": 0,
+      "stderr_tail": "",
+      "stdout_tail": "Rc files read:\n  NONE\nLatexmk: This is Latexmk, John Collins, 7 Jan. 2023. Version 4.79.\nLatexmk: Nothing to do for 'draft.tex'.\nLatexmk: All targets () are up-to-date\n\n"
+    },
+    {
+      "command": [
+        "python3",
+        "/Users/jayleenjiang/Documents/NLS/Paper/revision_2026-06-19/scripts/audit_availability_paths.py"
+      ],
+      "duration_seconds": 0.14,
+      "name": "availability_path_audit",
+      "returncode": 0,
+      "stderr_tail": "",
+      "stdout_tail": "{\n  \"total_paths\": 31,\n  \"missing_paths\": 0,\n  \"untracked_files\": 0\n}\n"
+    },
+    {
+      "command": [
+        "python3",
+        "/Users/jayleenjiang/Documents/NLS/Paper/revision_2026-06-19/scripts/audit_manuscript_claims.py"
+      ],
+      "duration_seconds": 0.034,
+      "name": "manuscript_claim_audit",
+      "returncode": 0,
+      "stderr_tail": "",
+      "stdout_tail": "{\n  \"claims\": 14,\n  \"failed\": [],\n  \"json\": \"Paper/revision_2026-06-19/manuscript_claim_audit.json\",\n  \"md\": \"Paper/revision_2026-06-19/manuscript_claim_audit.md\"\n}\n"
+    },
+    {
+      "command": [
+        "python3",
+        "/Users/jayleenjiang/Documents/NLS/Paper/revision_2026-06-19/scripts/build_submission_bundle_manifest.py"
+      ],
+      "duration_seconds": 0.56,
+      "name": "submission_bundle_manifest_initial",
+      "returncode": 0,
+      "stderr_tail": "",
+      "stdout_tail": "{\n  \"release_file_count\": 49,\n  \"release_directory_count\": 1,\n  \"missing_release_files\": 0,\n  \"untracked_release_files\": 0,\n  \"local_raw_dependency_count\": 44,\n  \"untracked_local_raw_dependencies\": 44,\n  \"status\": \"PASS_WITH_LOCAL_RAW_DATA_LIMITATION\"\n}\n"
+    },
+    {
+      "command": [
+        "python3",
+        "/Users/jayleenjiang/Documents/NLS/Paper/revision_2026-06-19/scripts/build_raw_data_archive_manifest.py"
+      ],
+      "duration_seconds": 0.179,
+      "name": "raw_data_archive_manifest",
+      "returncode": 0,
+      "stderr_tail": "",
+      "stdout_tail": "{\n  \"referenced_file_count\": 40,\n  \"missing_file_count\": 0,\n  \"referenced_total_bytes\": 138875181,\n  \"status\": \"PASS\"\n}\n"
+    },
+    {
+      "command": [
+        "python3",
+        "/Users/jayleenjiang/Documents/NLS/Paper/revision_2026-06-19/scripts/build_submission_bundle_manifest.py"
+      ],
+      "duration_seconds": 0.534,
+      "name": "submission_bundle_manifest_final",
+      "returncode": 0,
+      "stderr_tail": "",
+      "stdout_tail": "{\n  \"release_file_count\": 49,\n  \"release_directory_count\": 1,\n  \"missing_release_files\": 0,\n  \"untracked_release_files\": 0,\n  \"local_raw_dependency_count\": 44,\n  \"untracked_local_raw_dependencies\": 44,\n  \"status\": \"PASS_WITH_LOCAL_RAW_DATA_LIMITATION\"\n}\n"
+    }
+  ],
+  "gates": [
+    {
+      "name": "latex_log",
+      "numbers": {
+        "issues": 0
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "availability_path_audit",
+      "numbers": {
+        "missing_paths": 0,
+        "total_paths": 31,
+        "untracked_files": 0
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "manuscript_claim_audit",
+      "numbers": {
+        "failed": 0,
+        "total_claims": 14,
+        "verified": 14
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "raw_data_archive_manifest",
+      "numbers": {
+        "missing_file_count": 0,
+        "referenced_file_count": 40,
+        "referenced_total_bytes": 138875181,
+        "status": "PASS"
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "submission_bundle_manifest",
+      "numbers": {
+        "local_raw_dependency_count": 44,
+        "missing_release_files": 0,
+        "release_directory_count": 1,
+        "release_file_count": 49,
+        "status": "PASS_WITH_LOCAL_RAW_DATA_LIMITATION",
+        "untracked_local_raw_dependencies": 44,
+        "untracked_release_files": 0
+      },
+      "status": "PASS_WITH_LOCAL_RAW_DATA_LIMITATION"
+    }
+  ],
+  "generated_at_utc": "2026-06-19T17:50:24.247189+00:00",
+  "latex_log": {
+    "issues": [],
+    "log": "/Users/jayleenjiang/Documents/NLS/tmp/paper_build/revision/draft.log",
+    "status": "PASS"
+  },
+  "overall_status": "PASS_WITH_LOCAL_RAW_DATA_LIMITATION",
+  "script": "Paper/revision_2026-06-19/scripts/run_submission_checks.py"
+}

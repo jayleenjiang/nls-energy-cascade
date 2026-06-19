@@ -32,6 +32,10 @@ SELF_GENERATED_MANIFEST_FILES = {
     str(REVISION_REL / "submission_bundle_manifest.json"),
     str(REVISION_REL / "submission_bundle_manifest.md"),
 }
+VOLATILE_GENERATED_FILES = SELF_GENERATED_MANIFEST_FILES | {
+    str(REVISION_REL / "submission_checks_summary.json"),
+    str(REVISION_REL / "submission_checks_summary.md"),
+}
 
 
 @dataclass
@@ -165,6 +169,8 @@ def collect_handoff_docs(root: Path, revision_dir: Path, release: dict[str, set[
         "submission_bundle_manifest.md",
         "raw_data_archive_manifest.json",
         "raw_data_archive_manifest.md",
+        "submission_checks_summary.json",
+        "submission_checks_summary.md",
     ]:
         add_role(release, str((revision_dir / name).relative_to(root)), "handoff-document")
     add_role(
@@ -176,6 +182,11 @@ def collect_handoff_docs(root: Path, revision_dir: Path, release: dict[str, set[
         release,
         str((revision_dir / "scripts/build_raw_data_archive_manifest.py").relative_to(root)),
         "manifest-builder",
+    )
+    add_role(
+        release,
+        str((revision_dir / "scripts/run_submission_checks.py").relative_to(root)),
+        "submission-check-runner",
     )
 
 
@@ -248,8 +259,8 @@ def make_file_records(root: Path, release: dict[str, set[str]]) -> list[FileReco
                 roles=sorted(roles),
                 exists=exists,
                 git_tracked=git_tracked(root, rel) if exists else False,
-                size_bytes=path.stat().st_size if exists and path.is_file() else None,
-                sha256=None if rel in SELF_GENERATED_MANIFEST_FILES else (sha256_file(path) if exists and path.is_file() else None),
+                size_bytes=None if rel in VOLATILE_GENERATED_FILES else (path.stat().st_size if exists and path.is_file() else None),
+                sha256=None if rel in VOLATILE_GENERATED_FILES else (sha256_file(path) if exists and path.is_file() else None),
             )
         )
     return records

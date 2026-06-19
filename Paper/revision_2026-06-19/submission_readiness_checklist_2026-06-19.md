@@ -18,6 +18,7 @@ paper can be called journal-ready.
 | Data/code and figure path availability | Passing local path audit | `scripts/audit_availability_paths.py`; `availability_path_audit.json`; `availability_path_audit.md` |
 | Submission/release bundle | Passing for tracked release files; raw-data limitation recorded | `scripts/build_submission_bundle_manifest.py`; `submission_bundle_manifest.json`; `submission_bundle_manifest.md` |
 | Minimal raw-data archive plan | Passing local raw-file manifest; archive not yet uploaded | `scripts/build_raw_data_archive_manifest.py`; `raw_data_archive_manifest.json`; `raw_data_archive_manifest.md` |
+| One-command local gate | Passing with raw-data archive limitation | `scripts/run_submission_checks.py`; `submission_checks_summary.json`; `submission_checks_summary.md` |
 | Originality pre-screen | Clean within sampled web-query scope | `originality_spotcheck_2026-06-19.md` |
 
 ## Author confirmations still required
@@ -77,23 +78,29 @@ These items cannot be completed from the local code/data alone.
 
 Run these only after the author-supplied items above have been inserted.
 
-1. Compile `draft.tex` from a clean build directory.
-2. Check the LaTeX log for unresolved references/citations and overfull or
+1. Run
+   `python3 Paper/revision_2026-06-19/scripts/run_submission_checks.py --compile-latex`
+   from the repository root.
+2. Confirm `submission_checks_summary.md` reports
+   `PASS_WITH_LOCAL_RAW_DATA_LIMITATION` or better.
+3. Compile `draft.tex` from a clean build directory if the runner was not run
+   with `--compile-latex`.
+4. Check the LaTeX log for unresolved references/citations and overfull or
    underfull box warnings.
-3. Visually inspect every page of the compiled PDF.
-4. Rerun `scripts/audit_manuscript_claims.py` and confirm all registered
+5. Visually inspect every page of the compiled PDF.
+6. Rerun `scripts/audit_manuscript_claims.py` and confirm all registered
    numerical/data claims pass.
-5. Rerun `scripts/audit_availability_paths.py` and confirm every manuscript
+7. Rerun `scripts/audit_availability_paths.py` and confirm every manuscript
    `\path{...}` entry and figure include exists in the release branch or
    archive.
-6. Rerun `scripts/build_submission_bundle_manifest.py` and confirm the tracked
+8. Rerun `scripts/build_submission_bundle_manifest.py` and confirm the tracked
    release bundle has no missing or untracked required files. If a raw-data
    archive is created, rerun the manifest/checklist against that archive.
-7. Rerun `scripts/build_raw_data_archive_manifest.py` if any source-trace JSON
+9. Rerun `scripts/build_raw_data_archive_manifest.py` if any source-trace JSON
    or raw-data dependency changes; if a Zenodo/OSF upload is made, verify the
    archived file set against `raw_data_archive_manifest.md`.
-8. Recheck `references.bib` for dangling or orphan citation keys.
-9. Update `integrity_audit_2026-06-19.md` or create a new dated final audit
+10. Recheck `references.bib` for dangling or orphan citation keys.
+11. Update `integrity_audit_2026-06-19.md` or create a new dated final audit
    snapshot with the final compile/audit results.
 
 ## Suggested final submission bundle
@@ -109,6 +116,7 @@ Run these only after the author-supplied items above have been inserted.
   - `availability_path_audit.md`
   - `submission_bundle_manifest.md`
   - `raw_data_archive_manifest.md`
+  - `submission_checks_summary.md`
   - `submission_readiness_checklist_2026-06-19.md`
 - Optional supplementary archive:
   - current-scaling validation artifacts under `experiments/flux_validation/`

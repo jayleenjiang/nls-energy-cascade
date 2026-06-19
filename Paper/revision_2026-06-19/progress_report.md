@@ -134,6 +134,12 @@
     (`Energy Cascade/`, `KDE/`, and `lte/`), so a future DOI-backed supplement
     can be prepared deliberately without committing multi-GB directories to
     Git.
+24. Added `scripts/run_submission_checks.py` plus
+    `submission_checks_summary.json` and `submission_checks_summary.md`. Running
+    the script with `--compile-latex` performs the local submission gate in one
+    command: LaTeX compile/log scan, availability-path audit, manuscript-claim
+    audit, raw-data archive manifest, and submission-bundle manifest. The
+    current result is `PASS_WITH_LOCAL_RAW_DATA_LIMITATION`.
 
 ## Key validated numerical result
 
@@ -167,7 +173,8 @@ Power-law fit:
 - Rerun the final citation/data/claim/path audit after author declarations and
   any last journal-format edits are settled. The current local core numerical
   audit passes 14/14 checks, and the current availability-path audit passes
-  31/31 checks.
+  31/31 checks. The preferred one-command local gate is now
+  `python3 Paper/revision_2026-06-19/scripts/run_submission_checks.py --compile-latex`.
 - Decide whether the final release should include only the audited derived
   artifacts in GitHub or also a DOI-backed raw-data archive. The bundle
   manifest currently flags 44 local raw-data dependency records that are not

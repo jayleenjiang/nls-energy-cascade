@@ -72,6 +72,7 @@ Result:
 | Data/code and figure path availability | data/code availability statement and all manuscript figure includes | `availability_path_audit.json`; `availability_path_audit.md`; script `scripts/audit_availability_paths.py` | VERIFIED locally for 31/31 referenced paths after rewriting the availability statement to use repository-root paths where appropriate. This check proves local path existence and hashes, but should be rerun against the final release branch/archive. |
 | Submission/release bundle manifest | manuscript source, bibliography, figures, availability paths, claim-audit evidence, and handoff documents | `submission_bundle_manifest.json`; `submission_bundle_manifest.md`; script `scripts/build_submission_bundle_manifest.py` | PASS WITH LOCAL RAW-DATA LIMITATION: the tracked release bundle has no missing required files after staging, but 44 local raw-data dependency records referenced by source-trace JSON exist only in local roots such as `Energy Cascade/`, `KDE/`, and `lte/`. A DOI-backed raw-data archive is still needed if the journal requires full raw-data release. |
 | Minimal raw-data archive manifest | source-trace raw files under `Energy Cascade/`, `KDE/`, and `lte/` | `raw_data_archive_manifest.json`; `raw_data_archive_manifest.md`; script `scripts/build_raw_data_archive_manifest.py` | VERIFIED locally for 40/40 unique referenced raw files, total 138,875,181 bytes. This is a preparation manifest only: it does not upload an archive, but it identifies a compact raw-data subset much smaller than the full local raw roots. |
+| One-command local submission checks | LaTeX compile/log scan, availability audit, claim audit, raw-data manifest, and release bundle manifest | `submission_checks_summary.json`; `submission_checks_summary.md`; script `scripts/run_submission_checks.py` | PASS WITH LOCAL RAW-DATA LIMITATION when run with `--compile-latex`: LaTeX log has zero flagged issues, availability audit passes 31/31, claim audit passes 14/14, raw-data archive manifest passes 40/40, and the tracked release bundle has no missing or untracked required files. |
 | Originality spot-check | sampled abstract, methods/results, short-chain, conclusion, and author/title queries | `originality_spotcheck_2026-06-19.md`; exact-phrase web queries over short manuscript fragments | PASS WITH LIMITATION: no exact external phrase reuse was visible in returned titles/snippets. Expected public `HLNS` prior work was found and is already cited. Professional plagiarism/self-plagiarism screening is still required before formal submission. |
 
 ## AI research failure mode checklist
@@ -97,7 +98,9 @@ Result:
 3. Rerun the final citation/data/claim/path audit after author declarations and
    any last journal-format edits are finalized. The current local core
    numerical claim audit passes 14/14 checks and the availability-path audit
-   passes 31/31 checks, but both should be repeated after final edits.
+   passes 31/31 checks; the one-command runner
+   `scripts/run_submission_checks.py --compile-latex` should be repeated after
+   final edits.
 4. Decide the raw-data release policy. The local source-trace artifacts point
    to large untracked raw-data roots (`Energy Cascade/`, `KDE/`, and `lte/`);
    however, the minimal raw-data archive manifest identifies 40 unique
