@@ -97,6 +97,12 @@
     source-traced check, and retained claim scope. This addresses the previous
     recommendation to include a concise reproducibility table without adding
     new unsupported numerical claims.
+19. Added `originality_spotcheck_2026-06-19.md`, a local web exact-phrase
+    spot-check over short manuscript fragments and author/title queries. The
+    spot-check found no visible exact external phrase reuse in returned
+    titles/snippets and identified only expected topical sources, including the
+    cited `HLNS` prior work. It remains a limited pre-screen, not a substitute
+    for iThenticate/Turnitin-style professional checking.
 
 ## Key validated numerical result
 
@@ -124,6 +130,9 @@ Power-law fit:
   materials.
 - Author-contribution and competing-interest declarations should be confirmed
   by the authors before submission.
+- Professional plagiarism/self-plagiarism screening is still required before
+  formal submission. The local short-fragment web spot-check is clean within its
+  sampled scope, but it is not a corpus-scale similarity report.
 - Rerun the final citation/data/claim audit after author declarations and any
   last journal-format edits are settled. The current local core numerical audit
   passes 14/14 checks.

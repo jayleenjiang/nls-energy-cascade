@@ -6,8 +6,11 @@ short-chain diagnostic tightening.
 Verdict: **PASS WITH BLOCKING NOTES for submission**.  Bibliographic existence,
 ghost citations, main current-scaling claims, LTE table values, and the
 manuscript-used short-chain neural-network diagnostics pass the checks below.
-Before journal submission, the authors must still confirm funding /
-author-contribution declarations and run the final external originality check.
+The local short-fragment originality spot-check found no visible exact external
+phrase reuse in returned web snippets, but it is not a substitute for a
+professional similarity report.  Before journal submission, the authors must
+still confirm funding / author-contribution declarations and run the final
+external originality check.
 
 ## Reference verification
 
@@ -66,6 +69,7 @@ Result:
 | Eigen relaxation diagnostic `lambda_diag≈-0.934` and window sensitivity | eigenfunction section | `eigen_fit_sensitivity.json`; script `scripts/analyze_eigen_fit_windows.py`; source `KDE/NLS_backward_Y_train.txt` | VERIFIED as observable-dependent diagnostic rate, not a spectral-gap claim. |
 | Symmetry breaking | stabilization section | `short_chain_nn_rerun_metrics.json`; manuscript now uses qualitative wording; old unsupported `15%` claim removed. | VERIFIED as a qualitative diagnostic. The saved-model rerun reports masked and unmasked asymmetry metrics, but the manuscript intentionally avoids a standalone percentage because the value is sensitive to low-density regions and network normalization. |
 | Core numerical manuscript claims | abstract, long-chain section, LTE table, short-chain section, reproducibility summary, data availability | `manuscript_claim_audit.json`; `manuscript_claim_audit.md`; script `scripts/audit_manuscript_claims.py` | VERIFIED for 14/14 code-verifiable numerical/data claims. This audit also caught and corrected the LTE notation so the local equilibrium marginal uses the manuscript convention `exp[-H/(2T)]`, not the ambiguous `exp(-H/beta)`. |
+| Originality spot-check | sampled abstract, methods/results, short-chain, conclusion, and author/title queries | `originality_spotcheck_2026-06-19.md`; exact-phrase web queries over short manuscript fragments | PASS WITH LIMITATION: no exact external phrase reuse was visible in returned titles/snippets. Expected public `HLNS` prior work was found and is already cited. Professional plagiarism/self-plagiarism screening is still required before formal submission. |
 
 ## AI research failure mode checklist
 
@@ -84,8 +88,9 @@ Result:
 1. Confirm funding information and author-contribution / competing-interest
    declarations with the authors.
 2. Run a professional plagiarism/self-plagiarism check outside this repository
-   before formal submission; this audit only performed source and metadata
-   integrity checks plus local claim/data traceability.
+   before formal submission; the local short-snippet web spot-check is clean
+   within its sampled scope but is not a replacement for a professional
+   similarity report.
 3. Rerun the final citation/data/claim audit after author declarations and any
    last journal-format edits are finalized. The current local core numerical
    claim audit passes 14/14 checks, but it should be repeated after final edits.
