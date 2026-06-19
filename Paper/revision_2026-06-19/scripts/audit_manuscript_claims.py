@@ -126,6 +126,8 @@ def build_registry() -> list[dict[str, Any]]:
     source_trace_path = REVISION / "source_trace_metrics.json"
     rerun_path = REVISION / "short_chain_nn_rerun_metrics.json"
     eigen_path = REVISION / "eigen_fit_sensitivity.json"
+    availability_audit_json = REVISION / "availability_path_audit.json"
+    availability_audit_md = REVISION / "availability_path_audit.md"
 
     flux = load_json(flux_path)
     figures = load_json(figure_metrics_path)
@@ -420,15 +422,19 @@ def build_registry() -> list[dict[str, Any]]:
         registry,
         claim_id="data_availability_artifacts",
         section="data and code availability",
-        claim="Data/code availability lists source-trace and rerun artifacts needed for this audit.",
-        evidence=[DRAFT],
+        claim="Data/code availability lists repo-root paths for the source-trace, rerun, and availability-audit artifacts needed for this audit.",
+        evidence=[DRAFT, availability_audit_json, availability_audit_md],
         expected_text=[
-            r"\path{scripts/export_source_trace_metrics.py}",
-            r"\path{source_trace_metrics.json}",
-            r"\path{scripts/recompute_short_chain_nn_metrics.py}",
-            r"\path{short_chain_nn_rerun_metrics.json}",
-            r"\path{scripts/analyze_eigen_fit_windows.py}",
-            r"\path{eigen_fit_sensitivity.json}",
+            r"paths below are relative to the repository root",
+            r"\path{Paper/revision_2026-06-19/scripts/export_source_trace_metrics.py}",
+            r"\path{Paper/revision_2026-06-19/source_trace_metrics.json}",
+            r"\path{Paper/revision_2026-06-19/scripts/recompute_short_chain_nn_metrics.py}",
+            r"\path{Paper/revision_2026-06-19/short_chain_nn_rerun_metrics.json}",
+            r"\path{Paper/revision_2026-06-19/scripts/analyze_eigen_fit_windows.py}",
+            r"\path{Paper/revision_2026-06-19/eigen_fit_sensitivity.json}",
+            r"\path{Paper/revision_2026-06-19/scripts/audit_availability_paths.py}",
+            r"\path{Paper/revision_2026-06-19/availability_path_audit.json}",
+            r"\path{Paper/revision_2026-06-19/availability_path_audit.md}",
         ],
     )
 

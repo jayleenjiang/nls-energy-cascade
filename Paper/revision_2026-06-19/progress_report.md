@@ -109,6 +109,14 @@
     resolution-status updates to the initial audit, material inventory, and
     revision roadmap. The old documents now explicitly distinguish their
     initial-draft findings from the current revised-manuscript state.
+21. Tightened the data/code availability statement so listed artifacts use
+    repository-root paths where appropriate, then added
+    `scripts/audit_availability_paths.py`, `availability_path_audit.json`, and
+    `availability_path_audit.md`. The audit checks every `\path{...}` entry and
+    every manuscript figure include; the current local result is 31/31 paths
+    present. The LaTeX build remains 18 pages with no unresolved
+    citations/references and no overfull or underfull box warnings after the
+    path-list formatting adjustment.
 
 ## Key validated numerical result
 
@@ -139,9 +147,10 @@ Power-law fit:
 - Professional plagiarism/self-plagiarism screening is still required before
   formal submission. The local short-fragment web spot-check is clean within its
   sampled scope, but it is not a corpus-scale similarity report.
-- Rerun the final citation/data/claim audit after author declarations and any
-  last journal-format edits are settled. The current local core numerical audit
-  passes 14/14 checks.
+- Rerun the final citation/data/claim/path audit after author declarations and
+  any last journal-format edits are settled. The current local core numerical
+  audit passes 14/14 checks, and the current availability-path audit passes
+  31/31 checks.
 - Optional but recommended before final release: package a full TensorFlow
   retraining environment if the target journal expects re-training
   reproducibility beyond saved-model inference.
