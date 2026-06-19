@@ -34,8 +34,10 @@ Expected current result:
 - `latex_log`: `PASS`
 - `availability_path_audit`: `PASS`
 - `manuscript_claim_audit`: `PASS`
+- `reference_integrity_audit`: `PASS`
 - `raw_data_archive_manifest`: `PASS`
 - `submission_bundle_manifest`: `PASS_WITH_LOCAL_RAW_DATA_LIMITATION`
+- `submission_source_bundle`: `PASS`
 
 The generated summary is:
 
@@ -52,6 +54,7 @@ The generated summary is:
 | Check numerical-claim support | `manuscript_claim_audit.md`; `manuscript_claim_audit.json` | Code-verifiable numerical/data claims currently pass 14/14 registered checks. |
 | Check file/path availability | `availability_path_audit.md`; `availability_path_audit.json` | Manuscript-declared files and figure paths exist locally and have hashes where applicable. |
 | Check submission-bundle completeness | `submission_bundle_manifest.md`; `submission_bundle_manifest.json` | Tracked release files are present, git-tracked, and categorized by role. |
+| Build a source-only submission archive | `submission_source_bundle_report.md`; `scripts/build_submission_source_bundle.py` | A source-only `.tar.gz` can be generated under `tmp/`, with checksums and raw-data exclusions recorded. |
 | Check compiled-PDF layout QA | `pdf_layout_qa_2026-06-19.md` | The generic compiled PDF has been rendered and checked for obvious layout defects. |
 | Check source-traced raw files | `raw_data_archive_manifest.md`; `raw_data_archive_manifest.json` | The compact raw-data subset contains 40 unique local files totaling 138,875,181 bytes. |
 | Check current-scaling validation | `experiments/flux_validation/production_manifest.md`; `experiments/flux_validation/production_dt5e-4/validation_report.md` | Production flux/current scaling artifacts and validation summaries. |
@@ -101,9 +104,10 @@ For a reviewer or coauthor who has not seen the project before:
 4. inspect `submission_checks_summary.md`;
 5. inspect `pdf_layout_qa_2026-06-19.md` for compiled-PDF layout status;
 6. inspect `reference_integrity_audit.md` for citation/reference integrity;
-7. inspect `manuscript_claim_audit.md` for claim-by-claim support;
-8. inspect `submission_bundle_manifest.md` and
+7. inspect `submission_source_bundle_report.md` for source-archive packaging status;
+8. inspect `manuscript_claim_audit.md` for claim-by-claim support;
+9. inspect `submission_bundle_manifest.md` and
    `raw_data_archive_manifest.md` before deciding whether a raw-data supplement
    is needed;
-9. complete the author-facing items in
+10. complete the author-facing items in
    `author_submission_action_packet_2026-06-19.md`.

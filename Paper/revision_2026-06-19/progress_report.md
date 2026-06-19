@@ -166,6 +166,15 @@
     citations, orphan references, missing required fields, missing DOI/URL
     identifiers, missing recorded external verification sources, or duplicate
     BibTeX keys.
+30. Added `scripts/build_submission_source_bundle.py` plus
+    `submission_source_bundle_report.json` and
+    `submission_source_bundle_report.md`. The script builds a source-only
+    submission `.tar.gz` under `tmp/` from the release manifest, records an
+    archive SHA-256 checksum, and deliberately excludes self-referential
+    generated summaries and the large local raw-data roots. The current
+    packaging run includes 168 regular files plus an internal checksum index,
+    has zero missing files, and records 44 local raw-data dependency records as
+    excluded pending any DOI-backed raw-data archive decision.
 
 ## Key validated numerical result
 
@@ -208,7 +217,8 @@ Power-law fit:
   The reviewer/editor-facing navigation file is
   `submission_reproducibility_readme_2026-06-19.md`; the compiled-PDF layout
   QA snapshot is `pdf_layout_qa_2026-06-19.md`; the local citation/reference
-  graph audit is `reference_integrity_audit.md`.
+  graph audit is `reference_integrity_audit.md`; the source-only submission
+  packaging report is `submission_source_bundle_report.md`.
 - Decide whether the final release should include only the audited derived
   artifacts in GitHub or also a DOI-backed raw-data archive. The bundle
   manifest currently flags 44 local raw-data dependency records that are not

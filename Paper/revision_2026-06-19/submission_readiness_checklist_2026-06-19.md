@@ -18,6 +18,7 @@ paper can be called journal-ready.
 | Short-chain saved-model diagnostics | Rerun from saved TensorFlow/Keras models | `scripts/recompute_short_chain_nn_metrics.py`; `short_chain_nn_rerun_metrics.json` |
 | Data/code and figure path availability | Passing local path audit | `scripts/audit_availability_paths.py`; `availability_path_audit.json`; `availability_path_audit.md` |
 | Submission/release bundle | Passing for tracked release files; raw-data limitation recorded | `scripts/build_submission_bundle_manifest.py`; `submission_bundle_manifest.json`; `submission_bundle_manifest.md` |
+| Source-only submission archive | Passing packaging dry run; archive written under `tmp/` | `scripts/build_submission_source_bundle.py`; `submission_source_bundle_report.json`; `submission_source_bundle_report.md` |
 | Minimal raw-data archive plan | Passing local raw-file manifest; archive not yet uploaded | `scripts/build_raw_data_archive_manifest.py`; `raw_data_archive_manifest.json`; `raw_data_archive_manifest.md` |
 | One-command local gate | Passing with raw-data archive limitation | `scripts/run_submission_checks.py`; `submission_checks_summary.json`; `submission_checks_summary.md` |
 | Reproducibility entry point | Prepared for reviewer/editor navigation | `submission_reproducibility_readme_2026-06-19.md` |
@@ -105,11 +106,13 @@ Run these only after the author-supplied items above have been inserted.
 8. Rerun `scripts/build_submission_bundle_manifest.py` and confirm the tracked
    release bundle has no missing or untracked required files. If a raw-data
    archive is created, rerun the manifest/checklist against that archive.
-9. Rerun `scripts/build_raw_data_archive_manifest.py` if any source-trace JSON
+9. Rerun `scripts/build_submission_source_bundle.py` and confirm
+   `submission_source_bundle_report.md` reports `PASS`.
+10. Rerun `scripts/build_raw_data_archive_manifest.py` if any source-trace JSON
    or raw-data dependency changes; if a Zenodo/OSF upload is made, verify the
    archived file set against `raw_data_archive_manifest.md`.
-10. Recheck `references.bib` for dangling or orphan citation keys.
-11. Update `integrity_audit_2026-06-19.md` or create a new dated final audit
+11. Recheck `references.bib` for dangling or orphan citation keys.
+12. Update `integrity_audit_2026-06-19.md` or create a new dated final audit
    snapshot with the final compile/audit results.
 
 ## Suggested final submission bundle
@@ -125,6 +128,7 @@ Run these only after the author-supplied items above have been inserted.
   - `manuscript_claim_audit.md`
   - `availability_path_audit.md`
   - `submission_bundle_manifest.md`
+  - `submission_source_bundle_report.md`
   - `raw_data_archive_manifest.md`
   - `submission_checks_summary.md`
   - `submission_reproducibility_readme_2026-06-19.md`

@@ -47,6 +47,9 @@ venv/
 .DS_Store
 Thumbs.db
 
+# ---- local generated QA/build bundles ----
+tmp/
+
 # ---- keep these despite rules above ----
 !README.md
 !requirements.txt

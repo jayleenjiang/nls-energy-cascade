@@ -10,7 +10,8 @@ without author-only information or external services:
 4. citation/reference integrity audit;
 5. submission bundle manifest;
 6. minimal raw-data archive manifest;
-7. final submission bundle manifest refresh.
+7. final submission bundle manifest refresh;
+8. source-only submission bundle packaging dry run.
 
 The script intentionally does not run professional plagiarism checking, upload
 raw data, select a journal template, or fill author/funding declarations.
@@ -195,6 +196,7 @@ def main() -> int:
         ("submission_bundle_manifest_initial", "build_submission_bundle_manifest.py"),
         ("raw_data_archive_manifest", "build_raw_data_archive_manifest.py"),
         ("submission_bundle_manifest_final", "build_submission_bundle_manifest.py"),
+        ("submission_source_bundle", "build_submission_source_bundle.py"),
     ]:
         result = run_command(root, name, [py, str(revision / "scripts" / script)])
         commands.append(result)
@@ -204,6 +206,7 @@ def main() -> int:
     references = load_json(revision / "reference_integrity_audit.json")
     raw = load_json(revision / "raw_data_archive_manifest.json")
     bundle = load_json(revision / "submission_bundle_manifest.json")
+    source_bundle = load_json(revision / "submission_source_bundle_report.json")
 
     gates = [
         {
@@ -239,6 +242,11 @@ def main() -> int:
             "name": "submission_bundle_manifest",
             "status": bundle["summary"]["status"],
             "numbers": bundle["summary"],
+        },
+        {
+            "name": "submission_source_bundle",
+            "status": source_bundle["status"],
+            "numbers": source_bundle["summary"],
         },
     ]
 

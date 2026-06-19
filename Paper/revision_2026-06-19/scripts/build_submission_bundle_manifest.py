@@ -35,6 +35,8 @@ SELF_GENERATED_MANIFEST_FILES = {
 VOLATILE_GENERATED_FILES = SELF_GENERATED_MANIFEST_FILES | {
     str(REVISION_REL / "submission_checks_summary.json"),
     str(REVISION_REL / "submission_checks_summary.md"),
+    str(REVISION_REL / "submission_source_bundle_report.json"),
+    str(REVISION_REL / "submission_source_bundle_report.md"),
 }
 
 
@@ -173,6 +175,8 @@ def collect_handoff_docs(root: Path, revision_dir: Path, release: dict[str, set[
         "reference_integrity_audit.md",
         "submission_checks_summary.json",
         "submission_checks_summary.md",
+        "submission_source_bundle_report.json",
+        "submission_source_bundle_report.md",
         "pdf_layout_qa_2026-06-19.md",
         "author_submission_action_packet_2026-06-19.md",
         "target_journal_shortlist_2026-06-19.md",
@@ -193,6 +197,11 @@ def collect_handoff_docs(root: Path, revision_dir: Path, release: dict[str, set[
         release,
         str((revision_dir / "scripts/run_submission_checks.py").relative_to(root)),
         "submission-check-runner",
+    )
+    add_role(
+        release,
+        str((revision_dir / "scripts/build_submission_source_bundle.py").relative_to(root)),
+        "source-bundle-builder",
     )
     add_role(
         release,
