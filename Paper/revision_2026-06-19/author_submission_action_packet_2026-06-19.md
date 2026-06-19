@@ -25,6 +25,9 @@ Please fill or confirm the following before formal submission.
 
 ### Target journal
 
+See `target_journal_shortlist_2026-06-19.md` for a preliminary shortlist based
+on official journal/publisher pages checked on 2026-06-19.
+
 - Target journal:
 - Article type:
 - Does the journal require a specific LaTeX class/template? yes / no

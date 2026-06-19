@@ -1,7 +1,7 @@
 {
-  "generated_at_utc": "2026-06-19T17:53:20.386949+00:00",
+  "generated_at_utc": "2026-06-19T18:01:09.656876+00:00",
   "git_branch": "codex/paper-journal-revision",
-  "git_head": "17a4734d45b2d910a4b530017b481c5ff29a200a",
+  "git_head": "fe5117bd3f05bcccfc99717c6b59fc4fe12b1d06",
   "local_raw_dependencies": [
     {
       "exists": true,
@@ -387,8 +387,8 @@
       "roles": [
         "handoff-document"
       ],
-      "sha256": "3e043f658e7876d216fea8a0238359a532cda3b4144911fd29e9e75cdb0bc3f4",
-      "size_bytes": 8726
+      "sha256": "d3b3439fbf649ebf49e1fbf69f5e8b2ffd70b0274f0de511c6ee8118ffe2f546",
+      "size_bytes": 8865
     },
     {
       "exists": true,
@@ -399,7 +399,7 @@
         "availability-declared",
         "claim-evidence:data_availability_artifacts"
       ],
-      "sha256": "4a3fb79f6641c4a6e3d8ff315df4f9b8df641e3fd0fb0c13cf2c589033cee475",
+      "sha256": "05744049949a92a3f7a340c05312382d360dc72b599c3f33bbbd105d6f28974d",
       "size_bytes": 13225
     },
     {
@@ -411,7 +411,7 @@
         "availability-declared",
         "claim-evidence:data_availability_artifacts"
       ],
-      "sha256": "0f5b44ea0944ff454a98aebb8aae72c3f8545b8e76080ab715756be0f0c87e67",
+      "sha256": "24d0df645b83649b4ee990077e1b24e58dfeb28f6d912bc6266ee38816dade5c",
       "size_bytes": 5969
     },
     {
@@ -527,8 +527,8 @@
         "availability-declared",
         "handoff-document"
       ],
-      "sha256": "608886dcc8e261bb8f5d96b578002f8ef6d5367eb99de43bba96ab59a75ba8b6",
-      "size_bytes": 14221
+      "sha256": "beac8f9f4c8393aceaebbecedaf6e9ac18ee16453a931116cdc4ebb88005a62e",
+      "size_bytes": 14547
     },
     {
       "exists": true,
@@ -549,7 +549,7 @@
         "availability-declared",
         "claim-audit"
       ],
-      "sha256": "2217258ad16d01eac20fe0f7e8bd6bb7772989e74fe65ad58233d2a9b504ac8d",
+      "sha256": "5f7c216a999c4bfcb8d96f499259969113115319dad78a753a03906619b91c8a",
       "size_bytes": 29255
     },
     {
@@ -560,7 +560,7 @@
         "availability-declared",
         "claim-audit"
       ],
-      "sha256": "bc22537c889bd526da1050ca0f3091cc1160d090df25c3f3acc36ca6cefb1e77",
+      "sha256": "78f97c97029fff1b8d7a6120c03edf87f2cb15d4fa3c1f8e79ea307a40997353",
       "size_bytes": 3402
     },
     {
@@ -613,8 +613,8 @@
       "roles": [
         "handoff-document"
       ],
-      "sha256": "624ddc86b13d83fe138aa9f99a5711a3cf5d39dc6277749b61aecc78a32f0a0f",
-      "size_bytes": 10921
+      "sha256": "fe59108bdccec0b43c1a2972964278e403ab14eaee420a4c39c17b955d9149ab",
+      "size_bytes": 11398
     },
     {
       "exists": true,
@@ -623,7 +623,7 @@
       "roles": [
         "handoff-document"
       ],
-      "sha256": "c0a1ed984a636c0a2c0fbb8c3410ea7395645c9c91442e71d488149bfb37de5d",
+      "sha256": "8b625b654b3042de8220c00b968c6dfc20c3d18bce473dd2e8c7e5b6f72a89e2",
       "size_bytes": 16196
     },
     {
@@ -633,7 +633,7 @@
       "roles": [
         "handoff-document"
       ],
-      "sha256": "1056b5b1c28c3c9c1306a213d6b175e27487856bd1e546c2f7479f11a0a0c84c",
+      "sha256": "2970f672e0f60b92b8befe66565ec31e1eac1e18f1e799272017c5040c2ca170",
       "size_bytes": 8187
     },
     {
@@ -704,8 +704,8 @@
       "roles": [
         "manifest-builder"
       ],
-      "sha256": "92c0413fc172926bd33f58a422f00e601a23f7f7188c9642b1098baabdc14307",
-      "size_bytes": 16335
+      "sha256": "d38f7f370c8cc3ae130ee1e17f51fc5a451d1196a77695c6b5ab82683f84e738",
+      "size_bytes": 16385
     },
     {
       "exists": true,
@@ -822,8 +822,8 @@
       "roles": [
         "handoff-document"
       ],
-      "sha256": "56aa9b330bf961d05dee1662a63f040efa8eeaad8c8b7b3b3ee5a5d5d7976223",
-      "size_bytes": 7604
+      "sha256": "223c44b2b3a2e3e0bc408288d7064f95f94fce82feb095d654cf791976de7396",
+      "size_bytes": 7859
     },
     {
       "exists": true,
@@ -835,6 +835,16 @@
       ],
       "sha256": "883ca0d5b7786ba59f7c06fefabb22a5a859a17fcb76e8302a977f34666f8378",
       "size_bytes": 75925
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/target_journal_shortlist_2026-06-19.md",
+      "roles": [
+        "handoff-document"
+      ],
+      "sha256": "0fa22bfddfe240588d891c940d42a51e289743ba367ee7dc0d819a72f83c88d2",
+      "size_bytes": 10361
     },
     {
       "exists": true,
@@ -892,7 +902,7 @@
     "local_raw_dependency_count": 44,
     "missing_release_files": 0,
     "release_directory_count": 1,
-    "release_file_count": 50,
+    "release_file_count": 51,
     "status": "PASS_WITH_LOCAL_RAW_DATA_LIMITATION",
     "untracked_local_raw_dependencies": 44,
     "untracked_release_files": 0

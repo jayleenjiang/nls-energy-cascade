@@ -20,6 +20,7 @@ paper can be called journal-ready.
 | Minimal raw-data archive plan | Passing local raw-file manifest; archive not yet uploaded | `scripts/build_raw_data_archive_manifest.py`; `raw_data_archive_manifest.json`; `raw_data_archive_manifest.md` |
 | One-command local gate | Passing with raw-data archive limitation | `scripts/run_submission_checks.py`; `submission_checks_summary.json`; `submission_checks_summary.md` |
 | Author/journal action packet | Prepared; requires author completion | `author_submission_action_packet_2026-06-19.md` |
+| Target-journal shortlist | Prepared from official pages; requires author choice | `target_journal_shortlist_2026-06-19.md` |
 | Originality pre-screen | Clean within sampled web-query scope | `originality_spotcheck_2026-06-19.md` |
 
 ## Author confirmations still required
@@ -27,7 +28,8 @@ paper can be called journal-ready.
 These items cannot be completed from the local code/data alone.
 
 Use `author_submission_action_packet_2026-06-19.md` as the fillable handoff
-document for these confirmations.
+document for these confirmations and `target_journal_shortlist_2026-06-19.md`
+as the preliminary venue-decision aid.
 
 1. **Target journal and template**
    - Confirm target journal.
@@ -122,6 +124,7 @@ Run these only after the author-supplied items above have been inserted.
   - `raw_data_archive_manifest.md`
   - `submission_checks_summary.md`
   - `author_submission_action_packet_2026-06-19.md`
+  - `target_journal_shortlist_2026-06-19.md`
   - `submission_readiness_checklist_2026-06-19.md`
 - Optional supplementary archive:
   - current-scaling validation artifacts under `experiments/flux_validation/`
