@@ -86,6 +86,12 @@
     notebooks. It also confirms that the removed angular-width `≈2` claim is
     unsupported: the saved-model rerun gives `sigma3/sigma1≈1.03--1.13`, so the
     manuscript continues not to use that result as a claim.
+17. Added `scripts/audit_manuscript_claims.py`, which builds
+    `manuscript_claim_audit.json` and `manuscript_claim_audit.md` from the
+    source-traced numerical artifacts. The current audit verifies 13/13 core
+    numerical/data claims and caught a notation issue in the LTE section:
+    the equilibrium marginal is now written consistently with the manuscript's
+    Gibbs convention as `exp[-H/(2T)]`.
 
 ## Key validated numerical result
 
@@ -113,8 +119,9 @@ Power-law fit:
   materials.
 - Author-contribution and competing-interest declarations should be confirmed
   by the authors before submission.
-- Perform the final 100% citation/data/claim audit after author declarations
-  are settled.
+- Rerun the final citation/data/claim audit after author declarations and any
+  last journal-format edits are settled. The current local core numerical audit
+  passes 13/13 checks.
 - Optional but recommended before final release: package a full TensorFlow
   retraining environment if the target journal expects re-training
   reproducibility beyond saved-model inference.

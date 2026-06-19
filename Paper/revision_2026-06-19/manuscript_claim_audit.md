@@ -1,0 +1,32 @@
+# Manuscript claim audit
+
+Generated: `2026-06-19T16:01:52.270266+00:00`
+
+Scope note: Core numerical/data claims only; author declarations and external plagiarism checks remain outside code-verifiable scope.
+
+Summary: **13 / 13** claims verified; **0** failed.
+
+| ID | Section | Verdict | Evidence |
+|---|---|---:|---|
+| `flux_scaling_main` | abstract / thermal conductivity | VERIFIED | `Paper/revision_2026-06-19/experiments/flux_validation/production_dt5e-4/flux_primary_scaling.json`<br>`Paper/revision_2026-06-19/experiments/flux_validation/validation_report.md` |
+| `conductivity_scaling` | abstract / thermal conductivity | VERIFIED | `Paper/revision_2026-06-19/experiments/flux_validation/production_dt5e-4/flux_primary_scaling.json` |
+| `flux_table_values` | thermal conductivity | VERIFIED | `Paper/revision_2026-06-19/experiments/flux_validation/validation_report.md`<br>`Paper/revision_2026-06-19/experiments/flux_validation/production_dt5e-4/flux_primary_scaling.json` |
+| `flux_diagnostics` | thermal conductivity | VERIFIED | `Paper/revision_2026-06-19/experiments/flux_validation/validation_report.md` |
+| `finite_window_current_statistics` | finite-time current fluctuations | VERIFIED | `Paper/revision_2026-06-19/experiments/flux_validation/production_dt5e-4/current_windows_window_statistics.csv` |
+| `long_chain_action_profiles` | nonequilibrium steady state | VERIFIED | `Paper/revision_2026-06-19/manuscript_figure_metrics.json` |
+| `lte_table_values` | local thermodynamic equilibrium | VERIFIED | `Paper/revision_2026-06-19/source_trace_metrics.json` |
+| `lte_control_values` | local thermodynamic equilibrium | VERIFIED | `Paper/revision_2026-06-19/source_trace_metrics.json` |
+| `lte_equilibrium_convention` | local thermodynamic equilibrium | VERIFIED | `Paper/revision_2026-06-19/draft.tex` |
+| `short_chain_equilibrium_validation` | short-chain Fokker--Planck | VERIFIED | `Paper/revision_2026-06-19/short_chain_nn_rerun_metrics.json`<br>`Paper/revision_2026-06-19/source_trace_metrics.json` |
+| `short_chain_symmetry_scope` | stabilization | VERIFIED | `Paper/revision_2026-06-19/short_chain_nn_rerun_metrics.json` |
+| `eigen_relaxation_diagnostic` | eigenfunction | VERIFIED | `Paper/revision_2026-06-19/eigen_fit_sensitivity.json`<br>`Paper/revision_2026-06-19/short_chain_nn_rerun_metrics.json` |
+| `data_availability_artifacts` | data and code availability | VERIFIED | `Paper/revision_2026-06-19/draft.tex` |
+
+## Failed text checks
+
+None.
+
+## Notes
+
+- This report is a local claim/data audit. It does not replace author confirmation of funding, contributions, or competing interests.
+- It also does not replace a professional plagiarism/self-plagiarism service check before formal journal submission.

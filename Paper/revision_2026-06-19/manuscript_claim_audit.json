@@ -1,0 +1,918 @@
+{
+  "generated_at_utc": "2026-06-19T16:01:52.270266+00:00",
+  "script": "Paper/revision_2026-06-19/scripts/audit_manuscript_claims.py",
+  "draft": "Paper/revision_2026-06-19/draft.tex",
+  "total_claims": 13,
+  "verified": 13,
+  "failed": 0,
+  "scope_note": "Core numerical/data claims only; author declarations and external plagiarism checks remain outside code-verifiable scope.",
+  "claims": [
+    {
+      "id": "flux_scaling_main",
+      "section": "abstract / thermal conductivity",
+      "claim": "Mean action current follows a finite-size power law over n=10,20,30,40.",
+      "verdict": "VERIFIED",
+      "evidence": [
+        "Paper/revision_2026-06-19/experiments/flux_validation/production_dt5e-4/flux_primary_scaling.json",
+        "Paper/revision_2026-06-19/experiments/flux_validation/validation_report.md"
+      ],
+      "computed": {
+        "prefactor": 28.74566399014203,
+        "exponent": -1.8500817897623119,
+        "exponent_ci": [
+          -1.8703445456178744,
+          -1.8304859625628034
+        ],
+        "r_squared": 0.9980133250496377
+      },
+      "text_checks": [
+        {
+          "text": "\\E[J(n)]=28.75\\,n^{-1.850}",
+          "present": true,
+          "line": 59
+        },
+        {
+          "text": "$[-1.870,-1.830]$",
+          "present": true,
+          "line": 60
+        },
+        {
+          "text": "$n=10,20,30,40$",
+          "present": true,
+          "line": 59
+        },
+        {
+          "text": "R^2=0.9980",
+          "present": true,
+          "line": 645
+        }
+      ],
+      "note": ""
+    },
+    {
+      "id": "conductivity_scaling",
+      "section": "abstract / thermal conductivity",
+      "claim": "Finite-chain action conductivity decays as an insulating power law.",
+      "verdict": "VERIFIED",
+      "evidence": [
+        "Paper/revision_2026-06-19/experiments/flux_validation/production_dt5e-4/flux_primary_scaling.json"
+      ],
+      "computed": {
+        "conductivity_prefactor": 3.593207998767754,
+        "conductivity_exponent": -0.8500817897623119
+      },
+      "text_checks": [
+        {
+          "text": "\\kappa_n\\sim n^{-0.850}",
+          "present": true,
+          "line": 61
+        },
+        {
+          "text": "\\sim 3.59\\,n^{-0.850}",
+          "present": true,
+          "line": 652
+        }
+      ],
+      "note": "Computed as n*E[J(n)]/(T1-Tn) with T1-Tn=8."
+    },
+    {
+      "id": "flux_table_values",
+      "section": "thermal conductivity",
+      "claim": "Current table reports the four production means and standard errors.",
+      "verdict": "VERIFIED",
+      "evidence": [
+        "Paper/revision_2026-06-19/experiments/flux_validation/validation_report.md",
+        "Paper/revision_2026-06-19/experiments/flux_validation/production_dt5e-4/flux_primary_scaling.json"
+      ],
+      "computed": {
+        "n=10": {
+          "mean": 0.3925219606,
+          "se": 0.001890208
+        },
+        "n=20": {
+          "mean": 0.1191693526,
+          "se": 0.0009195305
+        },
+        "n=30": {
+          "mean": 0.0545731139,
+          "se": 0.0006191849
+        },
+        "n=40": {
+          "mean": 0.029747554,
+          "se": 0.0004827205
+        }
+      },
+      "text_checks": [
+        {
+          "text": "$\\Delta t=5\\times10^{-4}$",
+          "present": true,
+          "line": 628
+        },
+        {
+          "text": "$1024$ independent trajectories",
+          "present": true,
+          "line": 628
+        },
+        {
+          "text": "($1000,1280,2880,5120$ for $n=10,20,30,40$)",
+          "present": true,
+          "line": 630
+        },
+        {
+          "text": "0.39252 & 0.11917 & 0.05457 & 0.02975",
+          "present": true,
+          "line": 636
+        },
+        {
+          "text": "0.00189 & 0.00092 & 0.00062 & 0.00048",
+          "present": true,
+          "line": 638
+        }
+      ],
+      "note": ""
+    },
+    {
+      "id": "flux_diagnostics",
+      "section": "thermal conductivity",
+      "claim": "Stationarity and timestep diagnostics are reported with limited scope.",
+      "verdict": "VERIFIED",
+      "evidence": [
+        "Paper/revision_2026-06-19/experiments/flux_validation/validation_report.md"
+      ],
+      "computed": {
+        "stationarity_max_abs_z": 0.9021134176568653,
+        "validation_report_source": "Paper/revision_2026-06-19/experiments/flux_validation/validation_report.md"
+      },
+      "text_checks": [
+        {
+          "text": "only $0.90$",
+          "present": true,
+          "line": 661
+        },
+        {
+          "text": "relative difference about $3.9\\%$",
+          "present": true,
+          "line": 665
+        },
+        {
+          "text": "$0.60$ pooled standard errors",
+          "present": true,
+          "line": 665
+        }
+      ],
+      "note": ""
+    },
+    {
+      "id": "finite_window_current_statistics",
+      "section": "finite-time current fluctuations",
+      "claim": "Finite-window current statistics at n=40 are descriptive, not a large-deviation claim.",
+      "verdict": "VERIFIED",
+      "evidence": [
+        "Paper/revision_2026-06-19/experiments/flux_validation/production_dt5e-4/current_windows_window_statistics.csv"
+      ],
+      "computed": {
+        "50": {
+          "negative_fraction": 0.23291015625,
+          "skewness": 0.010188157028162087,
+          "window_times_variance": 0.09537651450089957
+        },
+        "100": {
+          "negative_fraction": 0.1181640625,
+          "skewness": 0.02428942418140312,
+          "window_times_variance": 0.06733873279093455
+        },
+        "200": {
+          "negative_fraction": 0.0263671875,
+          "skewness": 0.07545697727582046,
+          "window_times_variance": 0.04767569968636888
+        }
+      },
+      "text_checks": [
+        {
+          "text": "$\\Pr(\\overline J_\\tau<0)$ decreases from $0.233$ at $\\tau=50$ to $0.026$ at",
+          "present": true,
+          "line": 689
+        },
+        {
+          "text": "($0.010$, $0.024$, $0.075$ for the three windows)",
+          "present": true,
+          "line": null
+        },
+        {
+          "text": "($0.095$, $0.067$, $0.048$)",
+          "present": true,
+          "line": 693
+        },
+        {
+          "text": "not infer an asymptotic large-deviation",
+          "present": true,
+          "line": 687
+        }
+      ],
+      "note": ""
+    },
+    {
+      "id": "long_chain_action_profiles",
+      "section": "nonequilibrium steady state",
+      "claim": "Profile endpoints and sample counts match the figure source metrics.",
+      "verdict": "VERIFIED",
+      "evidence": [
+        "Paper/revision_2026-06-19/manuscript_figure_metrics.json"
+      ],
+      "computed": {
+        "n=25": {
+          "source": "experiments/lte/test_profile.txt",
+          "samples": 506880000,
+          "first": 0.737907,
+          "middle": 0.572656,
+          "last": 0.165409,
+          "min": 0.165409,
+          "max": 0.737907
+        },
+        "n=50": {
+          "source": "experiments/lte/simd_n50_profile.txt",
+          "samples": 1013760512,
+          "first": 0.514213,
+          "middle": 0.413972,
+          "last": 0.105599,
+          "min": 0.105599,
+          "max": 0.514213
+        },
+        "n=100": {
+          "source": "experiments/lte/n100_dt25_profile.txt",
+          "samples": 4055040000,
+          "first": 0.361686,
+          "middle": 0.288808,
+          "last": 0.0728212,
+          "min": 0.0728212,
+          "max": 0.361686
+        }
+      },
+      "text_checks": [
+        {
+          "text": "$\\langle I_1\\rangle=0.738$",
+          "present": true,
+          "line": 456
+        },
+        {
+          "text": "$\\langle I_{13}\\rangle=0.573$",
+          "present": true,
+          "line": 456
+        },
+        {
+          "text": "$\\langle I_{25}\\rangle=0.165$",
+          "present": true,
+          "line": 457
+        },
+        {
+          "text": "$(0.514,0.106)$ at $n=50$",
+          "present": true,
+          "line": 458
+        },
+        {
+          "text": "$(0.362,0.073)$ at $n=100$",
+          "present": true,
+          "line": 459
+        },
+        {
+          "text": "$5.07\\times10^8$, $1.01\\times10^9$, and $4.06\\times10^9$",
+          "present": true,
+          "line": 468
+        }
+      ],
+      "note": ""
+    },
+    {
+      "id": "lte_table_values",
+      "section": "local thermodynamic equilibrium",
+      "claim": "Table tab:lte values match source-traced histogram/profile recomputation.",
+      "verdict": "VERIFIED",
+      "evidence": [
+        "Paper/revision_2026-06-19/source_trace_metrics.json"
+      ],
+      "computed": {
+        "n=25,a/n=0.24": {
+          "x": 0.8202590962370496,
+          "weighted_r2": 0.9969688003853546,
+          "six_over_x": 7.314761917941643,
+          "T_kin": 7.682758133170409
+        },
+        "n=25,a/n=0.48": {
+          "x": 0.9360486344125818,
+          "weighted_r2": 0.9942828659573528,
+          "six_over_x": 6.409923351648609,
+          "T_kin": 6.850822255811352
+        },
+        "n=25,a/n=0.72": {
+          "x": 1.0932697169541739,
+          "weighted_r2": 0.9861843321457395,
+          "six_over_x": 5.488124208466939,
+          "T_kin": 5.7998479561013685
+        },
+        "n=50,a/n=0.24": {
+          "x": 0.8268728907454963,
+          "weighted_r2": 0.9984357439194392,
+          "six_over_x": 7.256254337459883,
+          "T_kin": 7.78557831134316
+        },
+        "n=50,a/n=0.48": {
+          "x": 0.9308128639242221,
+          "weighted_r2": 0.9988300438983483,
+          "six_over_x": 6.445978813297173,
+          "T_kin": 7.033394708407353
+        },
+        "n=50,a/n=0.72": {
+          "x": 1.061028944902206,
+          "weighted_r2": 0.9919414355867346,
+          "six_over_x": 5.6548881430873825,
+          "T_kin": 6.039807973307091
+        },
+        "n=100,a/n=0.24": {
+          "x": 0.8429298979786197,
+          "weighted_r2": 0.9966945170041472,
+          "six_over_x": 7.118029642071357,
+          "T_kin": 7.817693160227993
+        },
+        "n=100,a/n=0.48": {
+          "x": 0.9304296075801309,
+          "weighted_r2": 0.9989201102528968,
+          "six_over_x": 6.448633997798985,
+          "T_kin": 7.005885873902635
+        },
+        "n=100,a/n=0.72": {
+          "x": 1.0411709430073903,
+          "weighted_r2": 0.9980185809439267,
+          "six_over_x": 5.762742458667915,
+          "T_kin": 6.016398252270807
+        }
+      },
+      "text_checks": [
+        {
+          "text": "0.8203",
+          "present": true,
+          "line": 558
+        },
+        {
+          "text": "0.8269",
+          "present": true,
+          "line": 559
+        },
+        {
+          "text": "0.8429",
+          "present": true,
+          "line": 560
+        },
+        {
+          "text": "0.9304",
+          "present": true,
+          "line": 564
+        },
+        {
+          "text": "0.9308",
+          "present": true,
+          "line": 563
+        },
+        {
+          "text": "0.9360",
+          "present": true,
+          "line": 562
+        },
+        {
+          "text": "0.9862",
+          "present": true,
+          "line": 566
+        },
+        {
+          "text": "0.9919",
+          "present": true,
+          "line": 567
+        },
+        {
+          "text": "0.9943",
+          "present": true,
+          "line": 562
+        },
+        {
+          "text": "0.9967",
+          "present": true,
+          "line": 560
+        },
+        {
+          "text": "0.9970",
+          "present": true,
+          "line": 558
+        },
+        {
+          "text": "0.9980",
+          "present": true,
+          "line": 568
+        },
+        {
+          "text": "0.9984",
+          "present": true,
+          "line": 559
+        },
+        {
+          "text": "0.9988",
+          "present": true,
+          "line": 563
+        },
+        {
+          "text": "0.9989",
+          "present": true,
+          "line": 564
+        },
+        {
+          "text": "1.0412",
+          "present": true,
+          "line": 568
+        },
+        {
+          "text": "1.0610",
+          "present": true,
+          "line": 567
+        },
+        {
+          "text": "1.0933",
+          "present": true,
+          "line": 566
+        },
+        {
+          "text": "5.49",
+          "present": true,
+          "line": 566
+        },
+        {
+          "text": "5.65",
+          "present": true,
+          "line": 567
+        },
+        {
+          "text": "5.76",
+          "present": true,
+          "line": 568
+        },
+        {
+          "text": "5.80",
+          "present": true,
+          "line": 566
+        },
+        {
+          "text": "6.02",
+          "present": true,
+          "line": 568
+        },
+        {
+          "text": "6.04",
+          "present": true,
+          "line": 567
+        },
+        {
+          "text": "6.41",
+          "present": true,
+          "line": 562
+        },
+        {
+          "text": "6.45",
+          "present": true,
+          "line": 563
+        },
+        {
+          "text": "6.85",
+          "present": true,
+          "line": 544
+        },
+        {
+          "text": "7.01",
+          "present": true,
+          "line": 564
+        },
+        {
+          "text": "7.03",
+          "present": true,
+          "line": 563
+        },
+        {
+          "text": "7.12",
+          "present": true,
+          "line": 528
+        },
+        {
+          "text": "7.26",
+          "present": true,
+          "line": 559
+        },
+        {
+          "text": "7.31",
+          "present": true,
+          "line": 558
+        },
+        {
+          "text": "7.68",
+          "present": true,
+          "line": 558
+        },
+        {
+          "text": "7.79",
+          "present": true,
+          "line": 559
+        },
+        {
+          "text": "7.82",
+          "present": true,
+          "line": 560
+        }
+      ],
+      "note": "Text check is intentionally value-based; repeated rounded values need appear at least once in the table."
+    },
+    {
+      "id": "lte_control_values",
+      "section": "local thermodynamic equilibrium",
+      "claim": "Equilibrium and matched-equilibrium control fits match source-traced controls.",
+      "verdict": "VERIFIED",
+      "evidence": [
+        "Paper/revision_2026-06-19/source_trace_metrics.json"
+      ],
+      "computed": {
+        "sitewise": [
+          {
+            "label": "p_7.12_vs_p_6",
+            "j": 6,
+            "q_hist": {
+              "path": "lte/T712:8:9 data/simd_eq_T712_j6.hist",
+              "exists": true,
+              "bytes": 6171101,
+              "sha256": "f91d8a3d16c13f02b5366d33cff9d0bca68ef55d5fc5bb04eb51220067ef1ea5"
+            },
+            "p_hist": {
+              "path": "lte/n25 data/n25_eq_j6.hist",
+              "exists": true,
+              "bytes": 6105980,
+              "sha256": "d510635e024990d1a5548159078587a7a861fd6d2fd0e25088343bd4f4483687"
+            },
+            "slope_x": 0.925955101668959,
+            "weighted_r2": 0.9997156738020757,
+            "six_over_x": 6.479795822913537,
+            "bins_used": 198205
+          },
+          {
+            "label": "p_7.12_vs_p_6",
+            "j": 12,
+            "q_hist": {
+              "path": "lte/T712:8:9 data/simd_eq_T712_j12.hist",
+              "exists": true,
+              "bytes": 6172784,
+              "sha256": "224fdf068f49fa05ed7af47544464557cee32ef3c559c394d2dddc7c248dc0e7"
+            },
+            "p_hist": {
+              "path": "lte/n25 data/n25_eq_j12.hist",
+              "exists": true,
+              "bytes": 6108031,
+              "sha256": "e50ff4014ffa2742d9be13249002d72e38e35f12d4809aeca8a9586c936e52a6"
+            },
+            "slope_x": 0.9270708149061309,
+            "weighted_r2": 0.999712857512882,
+            "six_over_x": 6.471997503888115,
+            "bins_used": 197364
+          },
+          {
+            "label": "p_7.12_vs_p_6",
+            "j": 18,
+            "q_hist": {
+              "path": "lte/T712:8:9 data/simd_eq_T712_j18.hist",
+              "exists": true,
+              "bytes": 6170535,
+              "sha256": "fcb1ac2744996fcc2f736900c21d944b306c06e599d466c10628b344e1c6793f"
+            },
+            "p_hist": {
+              "path": "lte/n25 data/n25_eq_j18.hist",
+              "exists": true,
+              "bytes": 6104886,
+              "sha256": "549febdc41dc1efb0c70b63e86ba7d67d1609756583d62aea8b5a7f91eabe189"
+            },
+            "slope_x": 0.9255361951364751,
+            "weighted_r2": 0.9997168273631538,
+            "six_over_x": 6.482728640466912,
+            "bins_used": 198528
+          },
+          {
+            "label": "NESS_vs_p_7.12_midchain",
+            "j": 12,
+            "q_hist": {
+              "path": "lte/n25 data/n25_j12.hist",
+              "exists": true,
+              "bytes": 6230723,
+              "sha256": "d646260f167ce7820daaac9c74a3fda7d659e40042b4cc3b9d54ec755d2751ab"
+            },
+            "p_hist": {
+              "path": "lte/T712:8:9 data/simd_eq_T712_j12.hist",
+              "exists": true,
+              "bytes": 6172784,
+              "sha256": "224fdf068f49fa05ed7af47544464557cee32ef3c559c394d2dddc7c248dc0e7"
+            },
+            "slope_x": 1.0093463007744288,
+            "weighted_r2": 0.9944448188699769,
+            "six_over_x": 5.94444146215868,
+            "bins_used": 198771
+          }
+        ],
+        "p_7.12_vs_p_6_mean_slope": 0.9261873705705216,
+        "p_7.12_vs_p_6_mean_weighted_r2": 0.9997151195593705
+      },
+      "text_checks": [
+        {
+          "text": "$x=0.926$",
+          "present": true,
+          "line": 528
+        },
+        {
+          "text": "$6/7.12=0.843$",
+          "present": true,
+          "line": 529
+        },
+        {
+          "text": "$p_{7.12}$ vs.\\ $p_6$",
+          "present": true,
+          "line": 571
+        },
+        {
+          "text": "$0.9261$",
+          "present": true,
+          "line": 571
+        },
+        {
+          "text": "$0.9997$",
+          "present": true,
+          "line": 571
+        },
+        {
+          "text": "$1.0093$",
+          "present": true,
+          "line": 572
+        },
+        {
+          "text": "$0.9944$",
+          "present": true,
+          "line": 572
+        }
+      ],
+      "note": ""
+    },
+    {
+      "id": "lte_equilibrium_convention",
+      "section": "local thermodynamic equilibrium",
+      "claim": "Local equilibrium marginal notation follows the global Gibbs convention exp[-H/(2T)].",
+      "verdict": "VERIFIED",
+      "evidence": [
+        "Paper/revision_2026-06-19/draft.tex"
+      ],
+      "computed": {
+        "forbidden_old_form_present": false
+      },
+      "text_checks": [
+        {
+          "text": "$p_T(I_a,I_{a+1},\\theta_a)$",
+          "present": true,
+          "line": 499
+        },
+        {
+          "text": "First, neither $q$ nor $p_T$",
+          "present": true,
+          "line": 507
+        },
+        {
+          "text": "$\\exp[-H/(2T)]$",
+          "present": true,
+          "line": 501
+        },
+        {
+          "text": "$p_T=p_6^{\\,6/T}$",
+          "present": true,
+          "line": 529
+        }
+      ],
+      "note": "This guards against mixing inverse-temperature beta with the manuscript's temperature T."
+    },
+    {
+      "id": "short_chain_equilibrium_validation",
+      "section": "short-chain Fokker--Planck",
+      "claim": "Neural-network density reproduces the equilibrium Gibbs slices to the reported relative errors.",
+      "verdict": "VERIFIED",
+      "evidence": [
+        "Paper/revision_2026-06-19/short_chain_nn_rerun_metrics.json",
+        "Paper/revision_2026-06-19/source_trace_metrics.json"
+      ],
+      "computed": {
+        "0.5": {
+          "mean_relative_error_percent": 1.4705729484558105,
+          "max_relative_error_percent": 3.948901653289795
+        },
+        "1.0": {
+          "mean_relative_error_percent": 2.620353937149048,
+          "max_relative_error_percent": 7.1776909828186035
+        },
+        "2.0": {
+          "mean_relative_error_percent": 6.403645038604736,
+          "max_relative_error_percent": 18.836673736572266
+        }
+      },
+      "text_checks": [
+        {
+          "text": "$1.5\\%$",
+          "present": true,
+          "line": 746
+        },
+        {
+          "text": "$2.6\\%$",
+          "present": true,
+          "line": 746
+        },
+        {
+          "text": "$6.4\\%$",
+          "present": true,
+          "line": 747
+        },
+        {
+          "text": "$I=0.5,1,2$",
+          "present": true,
+          "line": 747
+        }
+      ],
+      "note": ""
+    },
+    {
+      "id": "short_chain_symmetry_scope",
+      "section": "stabilization",
+      "claim": "Symmetry breaking is reported qualitatively rather than as a standalone percentage estimator.",
+      "verdict": "VERIFIED",
+      "evidence": [
+        "Paper/revision_2026-06-19/short_chain_nn_rerun_metrics.json"
+      ],
+      "computed": {
+        "I": 2.0,
+        "grid": 100,
+        "unmasked_max_abs_asymmetry_percent": 67.18444061279297,
+        "unmasked_mean_abs_asymmetry_percent": 28.122753143310547,
+        "high_density_mask_threshold": "p+p.T >= 20% of max(p+p.T)",
+        "high_density_bins": 5253,
+        "masked_max_abs_asymmetry_percent": 56.23780059814453,
+        "masked_mean_abs_asymmetry_percent": 17.467784881591797
+      },
+      "text_checks": [
+        {
+          "text": "qualitative evidence",
+          "present": true,
+          "line": 850
+        },
+        {
+          "text": "rather than as a standalone quantitative estimator",
+          "present": true,
+          "line": 851
+        },
+        {
+          "text": "$\\pm0.15$",
+          "present": true,
+          "line": 848
+        }
+      ],
+      "note": ""
+    },
+    {
+      "id": "eigen_relaxation_diagnostic",
+      "section": "eigenfunction",
+      "claim": "Eigen relaxation rate is framed as an observable-dependent diagnostic with window sensitivity.",
+      "verdict": "VERIFIED",
+      "evidence": [
+        "Paper/revision_2026-06-19/eigen_fit_sensitivity.json",
+        "Paper/revision_2026-06-19/short_chain_nn_rerun_metrics.json"
+      ],
+      "computed": {
+        "main_window": {
+          "start_index": 0,
+          "stop_index": 501,
+          "time_start": 0.0,
+          "time_stop": 5.0,
+          "valid_fits": 2895,
+          "total_curves": 4096,
+          "failed_optimizations": 0,
+          "median_lambda_R": -0.9344670167713216,
+          "mean_lambda_R": -1.4991500969191809,
+          "q25_lambda_R": -2.4810653703203487,
+          "q75_lambda_R": -0.3266705056060837,
+          "median_ssr": 0.0051029031283620135,
+          "label": "0--5"
+        },
+        "late_window": {
+          "start_index": 50,
+          "stop_index": 501,
+          "time_start": 0.5,
+          "time_stop": 5.0,
+          "valid_fits": 3446,
+          "total_curves": 4096,
+          "failed_optimizations": 0,
+          "median_lambda_R": -0.6757623488098456,
+          "mean_lambda_R": -1.245158378308394,
+          "q25_lambda_R": -1.8732069275708823,
+          "q75_lambda_R": -0.49607985954018946,
+          "median_ssr": 9.331577251489408e-05,
+          "label": "0.5--5"
+        },
+        "eigen_surrogate_data_fit": {
+          "data_points": 33603,
+          "Q1_min": -0.9251305460929871,
+          "Q1_max": 1.6053279638290405,
+          "Q1_mean": 0.034597333520650864,
+          "Q1_std": 0.5342271327972412,
+          "rmse": 0.38094013929367065,
+          "relative_rmse": 0.7130677494777328
+        }
+      },
+      "text_checks": [
+        {
+          "text": "retain $2895$ of $4096$",
+          "present": true,
+          "line": 868
+        },
+        {
+          "text": "\\lambda_{\\mathrm{diag}} \\;\\approx\\; -0.934",
+          "present": true,
+          "line": 871
+        },
+        {
+          "text": "from $-1.60$ on $t\\in[0,2]$ to $-0.68$ on $t\\in[0.5,5]$",
+          "present": true,
+          "line": 875
+        },
+        {
+          "text": "root-mean-square error is $0.38$",
+          "present": true,
+          "line": 885
+        },
+        {
+          "text": "relative error $0.71$",
+          "present": true,
+          "line": 885
+        },
+        {
+          "text": "median normalized PDE residual",
+          "present": true,
+          "line": null
+        },
+        {
+          "text": "$0.35$",
+          "present": true,
+          "line": 886
+        },
+        {
+          "text": "not as a resolved statement about the full generator spectrum",
+          "present": true,
+          "line": null
+        }
+      ],
+      "note": ""
+    },
+    {
+      "id": "data_availability_artifacts",
+      "section": "data and code availability",
+      "claim": "Data/code availability lists source-trace and rerun artifacts needed for this audit.",
+      "verdict": "VERIFIED",
+      "evidence": [
+        "Paper/revision_2026-06-19/draft.tex"
+      ],
+      "computed": {},
+      "text_checks": [
+        {
+          "text": "\\path{scripts/export_source_trace_metrics.py}",
+          "present": true,
+          "line": 977
+        },
+        {
+          "text": "\\path{source_trace_metrics.json}",
+          "present": true,
+          "line": 978
+        },
+        {
+          "text": "\\path{scripts/recompute_short_chain_nn_metrics.py}",
+          "present": true,
+          "line": 980
+        },
+        {
+          "text": "\\path{short_chain_nn_rerun_metrics.json}",
+          "present": true,
+          "line": 981
+        },
+        {
+          "text": "\\path{scripts/analyze_eigen_fit_windows.py}",
+          "present": true,
+          "line": 983
+        },
+        {
+          "text": "\\path{eigen_fit_sensitivity.json}",
+          "present": true,
+          "line": 984
+        }
+      ],
+      "note": ""
+    }
+  ]
+}

@@ -496,14 +496,15 @@ A central question is whether, despite the global nonequilibrium drive,
 adjacent modes in the bulk are described \emph{locally} by an equilibrium
 measure. Let $q(I_a,I_{a+1},\theta_a)$ denote the joint pair density in the
 NESS, with $(I_a,I_b)=(I_j,I_{j+1})$, and let
-$p_\beta(I_a,I_{a+1},\theta_a)=\int \exp(-H/\beta)\,\mathrm dx$ be the
-corresponding marginal of the equilibrium measure at temperature $\beta$
-(integrating out all other modes). We accumulate $q$ and $p_\beta$ on
+$p_T(I_a,I_{a+1},\theta_a)$ be the corresponding marginal of the equilibrium
+measure at temperature $T$, whose full density is proportional to
+$\exp[-H/(2T)]$ under the convention of \cref{rem:convention} (integrating out
+all other modes). We accumulate $q$ and $p_T$ on
 $80^3$ histograms over $[0,4]^2\times[-\pi,\pi)$ from $\sim10^9$ samples per
 site, at interior pairs of the closed chain ($T_1=10,T_n=2$) for
 $n=25,50,100$.
 
-First, neither $q$ nor $p_\beta$ equals the two-mode Gibbs density
+First, neither $q$ nor $p_T$ equals the two-mode Gibbs density
 $\exp\!\big[-(\tfrac12(I_a{+}I_b)^2-\tfrac14(I_a^2{+}I_b^2)+I_aI_b\cos\theta)\big]$:
 comparing $-\log(\text{PDF})$ to this form, the NESS and the equilibrium
 marginal deviate in the \emph{same} way (both rise along the axes where the
@@ -525,7 +526,7 @@ $p_6^{\,x}$ matches $q$ closely (\cref{fig:lte-resid}).
 We caution against reading the slope as a temperature through the naive
 relation $6/x$. A control fit between two simulated equilibria,
 $\log p_{7.12}=x\log p_6+c$, returns $x=0.926$ rather than the naive
-$6/7.12=0.843$: the marginals do not scale as $p_\beta=p_6^{\,6/\beta}$,
+$6/7.12=0.843$: the marginals do not scale as $p_T=p_6^{\,6/T}$,
 because the mean field $\langle\sum_j I_j\rangle\propto\sqrt{nT}$ shifts with
 temperature. Hence $6/x$ systematically underestimates the effective
 temperature.
@@ -981,6 +982,11 @@ project repository. The key reproducibility artifacts are:
   \item eigen-relaxation diagnostic script and output:
   \path{scripts/analyze_eigen_fit_windows.py} and
   \path{eigen_fit_sensitivity.json};
+  \item core numerical claim-audit script:
+  \path{scripts/audit_manuscript_claims.py};
+  \item core numerical claim-audit outputs:
+  \path{manuscript_claim_audit.json} and
+  \path{manuscript_claim_audit.md};
   \item BibTeX reference database and integrity-audit snapshot:
   \path{references.bib} and \path{integrity_audit_2026-06-19.md}.
 \end{itemize}
