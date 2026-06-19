@@ -46,6 +46,31 @@
 \begin{document}
 \maketitle
 
+\begin{abstract}
+We study a stochastic energy-cascade chain obtained from the resonant toy model
+for the cubic nonlinear Schr\"odinger equation. The deterministic chain
+transports action between generations of resonant Fourier modes; coupling the
+two endpoints to heat baths produces a nonequilibrium steady state (NESS) whose
+long-chain behavior is analytically open. We use a Gibbs-preserving
+fluctuation--dissipation bath, validate the resulting equilibrium law against
+an independent Gibbs sampler, and compute the NESS by high-throughput Monte
+Carlo and mesh-free Fokker--Planck solvers. For closed chains with
+$T_1=10$, $T_n=2$, and $\gamma=0.1$, the mean conserved action current obeys
+$\E[J(n)]=28.75\,n^{-1.850}$ over $n=10,20,30,40$, with bootstrap exponent
+confidence interval $[-1.870,-1.830]$. Thus the finite-chain action
+conductivity scales as $\kappa_n\sim n^{-0.850}$, indicating an insulating
+action-transport regime rather than Fourier transport. Long-chain pair
+marginals are well described by rescaled equilibrium marginals at the local
+kinetic temperature, but strict local Gibbs structure fails even at
+equilibrium because of the nonlocal mass term in the Hamiltonian. For the
+three-mode chain we validate a neural-network Fokker--Planck solver against the
+explicit Gibbs density, then use it to visualize symmetry breaking,
+phase-locking stabilization, and qualitative slow relaxation modes. The
+transport and local-equilibrium conclusions are supported by reproducible
+simulation code and finite-time diagnostics; bath-energy entropy production and
+asymptotic current large deviations are left for future work.
+\end{abstract}
+
 
 \section{Introduction}
 
@@ -423,50 +448,44 @@ a short run can report a spuriously uniform profile that has not yet developed
 the steady gradient. We return to this point below.
 
 \paragraph{Energy profile.}
-\Cref{fig:profile} shows the mean action profile $\langle I_j\rangle$ for the
-closed chain with $T_1=10$, $T_n=2$ at $n=25$. A long run
-($T_{\mathrm{final}}=2\times10^{5}$, $\sim5\times10^{8}$ samples) exhibits a
-clear monotone profile, decreasing smoothly from $\langle I_1\rangle\approx0.74$
-at the hot end to $\langle I_{24}\rangle\approx0.39$ in the bulk, with a sharp
-drop to $\langle I_{25}\rangle\approx0.17$ at the cold contact. A much shorter
-run ($T_{\mathrm{final}}=3\times10^{4}$) instead reports an almost flat profile
-$\langle I_j\rangle\approx0.64$; we attribute the discrepancy to insufficient
-equilibration in the short run rather than to a genuine plateau, and the
-profiles reported here use the long, converged runs.
-% TODO: confirm with a burn-in convergence study; add profiles at several N and
-%       the open-chain (case 4) profile on the same axes.
+\Cref{fig:profile} shows the mean action profiles $\langle I_j\rangle$ for
+closed chains with $T_1=10$, $T_n=2$ at $n=25,50,100$. The profiles are
+monotone after a short boundary layer at the hot contact and show the sharpest
+drop at the cold bath. For $n=25$, the profile decreases from
+$\langle I_1\rangle=0.738$ at the hot end to $\langle I_{13}\rangle=0.573$ near
+mid-chain and $\langle I_{25}\rangle=0.165$ at the cold contact. The
+corresponding endpoint values are $(0.514,0.106)$ at $n=50$ and
+$(0.362,0.073)$ at $n=100$. These profile estimates are the data used below to
+define the local kinetic temperature in the LTE comparison.
 
 \begin{figure}[ht]
   \centering
-  % \includegraphics[width=0.9\textwidth]{thermal_profile.png} % TODO: insert PNG
-  \fbox{\parbox{0.7\textwidth}{\centering\textit{[figure placeholder]}\\
-  Mean action profile $\langle I_j\rangle$ vs.\ mode index $j$, closed chain,
-  $T_1=10,T_n=2$, $n=25$ (linear and log scales); short- vs.\ long-run
-  comparison.}}
-  \caption{Steady-state action profile of the long closed chain.}
+  \includegraphics[width=0.82\textwidth]{action_profiles.pdf}
+  \caption{Steady-state action profiles of the long closed chain. The
+  horizontal coordinate is normalized as $j/(n-1)$ to compare
+  $n=25,50,100$ on the same axis. The sample counts are
+  $5.07\times10^8$, $1.01\times10^9$, and $4.06\times10^9$, respectively.}
   \label{fig:profile}
 \end{figure}
 
-\paragraph{Terminal energy and the cascade geometry.}
-For the open chain one expects the action to settle, far from the driven end, to
-a length-dependent \emph{terminal energy}; tracking this terminal value as $n$
-grows probes how deep the cascade penetrates. The interpretation connects the
-chain index to genuine Fourier modes through the frequency embedding of
-\cite{CKSTT}: each generation of the resonant ``nuclear family'' construction
-places a group of modes on $\mathbb{Z}^2$ by exact rational (Pythagorean)
-rotations, so that the abstract chain position $j$ corresponds to a concrete set
-of frequencies $\Lambda_j$. \Cref{fig:embedding} plots the locations of the
-first several groups, computed with exact rational arithmetic.
-% TODO(data): terminal-energy-vs-N curve for the open chain (case 4).
-% Embedding figure available from the rational-arithmetic construction.
+\paragraph{Cascade geometry.}
+The interpretation of the chain as an energy cascade rests on the frequency
+embedding of \cite{CKSTT}: each generation of the resonant ``nuclear family''
+construction places a group of modes on $\mathbb{Z}^2$ by exact rational
+(Pythagorean) rotations, so that the abstract chain position $j$ corresponds to
+a concrete set of frequencies $\Lambda_j$. \Cref{fig:embedding} plots the
+locations of the first five generations used in the CKSTT construction. The
+open-chain terminal-energy scaling is not used as evidence in the present
+paper; establishing it would require a separate convergence study under the
+same corrected thermostat used for the closed-chain transport measurements.
 
 \begin{figure}[ht]
   \centering
-  % \includegraphics[width=0.7\textwidth]{combined_plot_N5_R100.png} % TODO: insert PNG
-  \fbox{\parbox{0.7\textwidth}{\centering\textit{[figure placeholder]}\\
-  Locations on $\mathbb{Z}^2$ of the first generations of the CKSTT frequency
-  embedding; (inset/TODO) terminal energy vs.\ $n$ for the open chain.}}
-  \caption{Cascade geometry: frequency embedding and terminal energy.}
+  \includegraphics[width=0.62\textwidth]{cascade_embedding.pdf}
+  \caption{Cascade geometry: the first five generations in the CKSTT resonant
+  frequency embedding. Points are Fourier modes $K\in\mathbb{Z}^2$ (or exact
+  rational intermediate coordinates in the displayed construction), and
+  segments indicate resonant family transitions between adjacent generations.}
   \label{fig:embedding}
 \end{figure}
 
@@ -587,12 +606,14 @@ exactly in either ensemble.
 
 \begin{figure}[ht]
   \centering
-  % \includegraphics[width=0.95\textwidth]{lte_residual_n50_n100.png} % TODO
-  \fbox{\parbox{0.8\textwidth}{\centering\textit{[figure placeholder]}\\
-  Core residual $\log q - (x\log p_6 + c)$ over $(I_a,I_b)$ at fixed $\theta$,
-  for $n=50$ and $n=100$ at $a/n=0.48$; the core flattens toward zero as $n$
-  grows (tail bins, count $<200$, masked).}}
-  \caption{Residual of the rescaled-equilibrium fit, $n=50$ vs.\ $n=100$.}
+  \includegraphics[width=0.82\textwidth]{lte_residual_midchain.pdf}
+  \caption{Residual of the rescaled-equilibrium fit,
+  $\log q-(x\log p_6+c)$, for the mid-chain pair $a/n=0.48$ at fixed
+  $\theta\approx0$. Low-count bins (fewer than $200$ samples in either the NESS
+  or equilibrium histogram on the displayed slice) are masked. The fitted slopes
+  and weighted $R^2$ values agree with the core values in \cref{tab:lte}; the
+  remaining structured residual is the finite, non-Gibbs component discussed in
+  the text.}
   \label{fig:lte-resid}
 \end{figure}
 
@@ -798,9 +819,19 @@ the stable branch that tends to $2\pi/3$ as $\gamma\to0$. The network density
 is consistent with this branch at the measured value of $\gamma$.
 
 \begin{remark}\label{rem:eq47}
-The derivation of \eqref{eq:phase-lock} (the fixed point of the angular drift
-balanced against dissipation) is to be supplied; the formula is recorded here so
-the numerical comparison can be stated.
+Equivalently, writing $s=\sin\theta_0$, the reduced angular fixed-point
+condition gives the quadratic
+\[
+  4(1+\gamma^2)s^2+4\gamma s-3=0 .
+\]
+The positive root is
+\[
+  s=\frac{\sqrt{4\gamma^2+3}-\gamma}{2(1+\gamma^2)} .
+\]
+The inverse sine has two branches. The branch in \eqref{eq:phase-lock} lies in
+$(\pi/2,\pi)$ and tends to $2\pi/3$ as $\gamma\to0$, matching the stable
+high-energy phase-locking equilibrium; the complementary branch tends to
+$\pi/3$ and is not the observed stable lock.
 \end{remark}
 
 Finally, current conservation through the unforced middle mode gives a balance
@@ -880,6 +911,94 @@ nonetheless sufficient to exhibit the qualitative structure of $Q$
   structure of $Q$ rather than as a high-accuracy solution.}
   \label{fig:eigenfunction}
 \end{figure}
+
+\section{Conclusion and limitations}\label{sec:conclusion}
+
+The numerical evidence supports three conclusions. First, the
+Gibbs-preserving bath \eqref{eq:bath} gives a well-controlled statistical model
+for the resonant NLS cascade chain: at equal bath temperatures the invariant
+law agrees with the Gibbs density \eqref{eq:gibbs}, and at unequal temperatures
+the same code produces a stationary action current with reproducible
+time-reversal, timestep, and stationarity checks. Second, the long closed chain
+does not exhibit Fourier action transport over the accessible lengths. The
+corrected production runs give $\E[J(n)]\sim n^{-1.850}$, so the finite-chain
+conductivity decays as $\kappa_n\sim n^{-0.850}$. The result should be read as
+a finite-size numerical law for the conserved action current, not as a theorem
+for Hamiltonian heat conduction. Third, the long-chain NESS has an approximate
+local-equilibrium structure: adjacent-mode marginals are close to rescaled
+equilibrium marginals at the local kinetic temperature, while the residual
+odd-in-angle component and the equilibrium marginalization effect rule out
+strict local Gibbs structure.
+
+The short-chain computations complement this transport picture by resolving the
+five-dimensional stationary density directly. The neural Fokker--Planck solver
+recovers the known Gibbs equilibrium and, out of equilibrium, visualizes the
+symmetry breaking and phase locking that underlie the stabilization mechanism
+proved for the three-mode model in \cite{HLNS}. The generator-eigenfunction
+calculation is less mature: it gives a consistent qualitative slow mode for the
+observable $\cos\theta_1$, but the fitted eigenfunction has substantial
+backward-Monte-Carlo noise and should be used as a diagnostic rather than as a
+high-accuracy spectral computation.
+
+Several limitations remain. The long-chain ergodicity theory is open, so the
+stationarity of the long simulations is assessed numerically rather than
+proved. The transport exponent is fitted over $n=10,20,30,40$ and should be
+rechecked at larger lengths and smaller timesteps when computational resources
+permit. The current statistics reported here concern finite-time averages of
+the action current only; bath-energy entropy production and a genuine
+Gallavotti--Cohen large-deviation test require a separate boundary-energy
+accumulator. Finally, the open-chain terminal-energy scaling suggested by the
+cascade geometry is not claimed here, because it has not yet been recomputed
+with the corrected Gibbs-preserving workflow.
+
+\section*{Data and code availability}
+
+The code and numerical artifacts used for this revision are kept with the
+project repository. The key reproducibility artifacts are:
+\begin{itemize}[leftmargin=*]
+  \item canonical current simulator: \path{flux/NLS_flux_canonical.cpp};
+  \item current-analysis scripts in \path{flux/}:
+  \path{analyze_canonical_flux.py}, \path{analyze_current_windows.py},
+  \path{gibbs_mcmc_reference.py}, and \path{compare_gibbs_sde.py};
+  \item production current data and validation reports:
+  \path{Paper/revision_2026-06-19/} with subdirectory
+  \path{experiments/flux_validation/};
+  \item figure-generation script for
+  \cref{fig:profile,fig:embedding,fig:lte-resid}:
+  \path{scripts/generate_manuscript_figures.py};
+  \item source metrics for those figures:
+  \path{manuscript_figure_metrics.json}.
+\end{itemize}
+A public repository snapshot is maintained at
+\href{https://github.com/jayleenjiang/nls-energy-cascade}{the project
+repository on GitHub}.
+
+\section*{Declarations}
+
+\paragraph{Ethics approval.}
+This study is a numerical and theoretical investigation of stochastic
+dynamical systems and does not involve human participants, animal subjects, or
+personal data.
+
+\paragraph{Author contributions.}
+Jayleen Jiang performed the numerical experiments, assembled the computational
+artifacts, and drafted the manuscript. Yao Li supervised the project and
+contributed to the model formulation, theoretical framing, and interpretation.
+Both authors should review and approve the final submitted version.
+
+\paragraph{Competing interests.}
+No competing interests are declared in the materials supplied for this draft.
+
+\paragraph{Funding.}
+Funding information was not supplied in the current manuscript materials and
+should be completed by the authors before submission if required by the target
+journal.
+
+\paragraph{AI-assisted preparation.}
+AI assistance was used during revision for code audit, consistency checking,
+LaTeX editing, and reproducibility organization under author direction. The
+authors remain responsible for verifying the scientific claims, numerical
+results, and final wording before submission.
 
 
 \begin{thebibliography}{9}

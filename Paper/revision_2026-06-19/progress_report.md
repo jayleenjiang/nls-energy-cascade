@@ -35,6 +35,28 @@
    - insert the corrected scaling figure.
 8. Restored local image resources needed by the short-chain figures and compiled
    the revision cleanly.
+9. Added submission-critical manuscript sections:
+   - English abstract;
+   - conclusion and limitations;
+   - data/code availability;
+   - declarations for ethics, author contributions, competing interests,
+     funding status, and AI-assisted preparation.
+10. Replaced the remaining long-chain figure placeholders with reproducible
+    generated figures:
+    - `action_profiles.pdf/png`;
+    - `cascade_embedding.pdf/png`;
+    - `lte_residual_midchain.pdf/png`.
+    The generation script is
+    `Paper/revision_2026-06-19/scripts/generate_manuscript_figures.py`, and
+    source metrics are recorded in
+    `Paper/revision_2026-06-19/manuscript_figure_metrics.json`.
+11. Replaced the phase-locking “derivation to be supplied” note with the
+    reduced fixed-point quadratic
+    `4(1+gamma^2) sin(theta)^2 + 4 gamma sin(theta) - 3 = 0` and the stable
+    branch selection.
+12. Recompiled the manuscript with TeX Live. The current PDF has 17 pages and
+    the LaTeX log has no unresolved citations/references and no overfull or
+    underfull box warnings.
 
 ## Key validated numerical result
 
@@ -57,14 +79,18 @@ Power-law fit:
 
 ## Remaining blockers before journal submission
 
-- Add abstract and conclusion.
-- Replace remaining long-chain figure placeholders:
-  action profile, frequency embedding/terminal-energy, LTE residual.
-- Recompute short-chain symmetry-breaking numbers from saved arrays to remove
-  the remaining qualitative placeholder.
+- Funding statement still needs author confirmation. The current manuscript
+  explicitly says funding information was not supplied in the available
+  materials.
+- Author-contribution and competing-interest declarations should be confirmed
+  by the authors before submission.
+- Recompute short-chain symmetry-breaking numbers from saved arrays if the
+  paper should keep the quantitative “about 15%” caption claim rather than a
+  qualitative statement.
 - Resolve the generator/eigenfunction section with a held-out fit-window
   sensitivity table, or further demote it.
-- Add a numerical-methods/reproducibility table and data/code availability
-  statement.
 - Convert references to a maintainable BibTeX file and perform a final
   100% citation/data/claim audit.
+- Optional but recommended: add an appendix or supplementary note documenting
+  LTE histogram generation and current-scaling validation in a compact
+  reproducibility table.
