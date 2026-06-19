@@ -17,6 +17,7 @@ paper can be called journal-ready.
 | Short-chain saved-model diagnostics | Rerun from saved TensorFlow/Keras models | `scripts/recompute_short_chain_nn_metrics.py`; `short_chain_nn_rerun_metrics.json` |
 | Data/code and figure path availability | Passing local path audit | `scripts/audit_availability_paths.py`; `availability_path_audit.json`; `availability_path_audit.md` |
 | Submission/release bundle | Passing for tracked release files; raw-data limitation recorded | `scripts/build_submission_bundle_manifest.py`; `submission_bundle_manifest.json`; `submission_bundle_manifest.md` |
+| Minimal raw-data archive plan | Passing local raw-file manifest; archive not yet uploaded | `scripts/build_raw_data_archive_manifest.py`; `raw_data_archive_manifest.json`; `raw_data_archive_manifest.md` |
 | Originality pre-screen | Clean within sampled web-query scope | `originality_spotcheck_2026-06-19.md` |
 
 ## Author confirmations still required
@@ -63,7 +64,8 @@ These items cannot be completed from the local code/data alone.
    - Decide whether large local raw-data roots (`Energy Cascade/`, `KDE/`, and
      `lte/`) should be archived outside GitHub. The current bundle manifest
      records 44 local source-trace raw-data dependency records that exist
-     locally but are not git-tracked.
+     locally but are not git-tracked; the raw-data archive manifest
+     deduplicates these to 40 unique files totaling 138,875,181 bytes.
 
 7. **Neural-network reproducibility level**
    - Decide whether saved-model inference reproducibility is enough.
@@ -87,8 +89,11 @@ Run these only after the author-supplied items above have been inserted.
 6. Rerun `scripts/build_submission_bundle_manifest.py` and confirm the tracked
    release bundle has no missing or untracked required files. If a raw-data
    archive is created, rerun the manifest/checklist against that archive.
-7. Recheck `references.bib` for dangling or orphan citation keys.
-8. Update `integrity_audit_2026-06-19.md` or create a new dated final audit
+7. Rerun `scripts/build_raw_data_archive_manifest.py` if any source-trace JSON
+   or raw-data dependency changes; if a Zenodo/OSF upload is made, verify the
+   archived file set against `raw_data_archive_manifest.md`.
+8. Recheck `references.bib` for dangling or orphan citation keys.
+9. Update `integrity_audit_2026-06-19.md` or create a new dated final audit
    snapshot with the final compile/audit results.
 
 ## Suggested final submission bundle
@@ -103,6 +108,7 @@ Run these only after the author-supplied items above have been inserted.
   - `manuscript_claim_audit.md`
   - `availability_path_audit.md`
   - `submission_bundle_manifest.md`
+  - `raw_data_archive_manifest.md`
   - `submission_readiness_checklist_2026-06-19.md`
 - Optional supplementary archive:
   - current-scaling validation artifacts under `experiments/flux_validation/`

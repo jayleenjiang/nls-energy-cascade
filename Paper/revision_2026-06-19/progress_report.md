@@ -126,6 +126,14 @@
     `Energy Cascade/`, `KDE/`, and `lte/`; these should be handled by a
     deliberate archive/Zenodo/OSF policy if the target journal requires full
     raw-data release.
+23. Added `scripts/build_raw_data_archive_manifest.py`,
+    `raw_data_archive_manifest.json`, and `raw_data_archive_manifest.md`. This
+    converts the raw-data limitation into an actionable archive subset: 40
+    unique source-trace raw files, all present locally, totaling 138,875,181
+    bytes. The referenced subset is much smaller than the full local roots
+    (`Energy Cascade/`, `KDE/`, and `lte/`), so a future DOI-backed supplement
+    can be prepared deliberately without committing multi-GB directories to
+    Git.
 
 ## Key validated numerical result
 
@@ -163,7 +171,8 @@ Power-law fit:
 - Decide whether the final release should include only the audited derived
   artifacts in GitHub or also a DOI-backed raw-data archive. The bundle
   manifest currently flags 44 local raw-data dependency records that are not
-  git-tracked.
+  git-tracked; the raw-data archive manifest deduplicates them to 40 unique
+  files totaling 138,875,181 bytes.
 - Optional but recommended before final release: package a full TensorFlow
   retraining environment if the target journal expects re-training
   reproducibility beyond saved-model inference.
