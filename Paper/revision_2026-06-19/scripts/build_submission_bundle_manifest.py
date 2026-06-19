@@ -171,6 +171,7 @@ def collect_handoff_docs(root: Path, revision_dir: Path, release: dict[str, set[
         "raw_data_archive_manifest.md",
         "submission_checks_summary.json",
         "submission_checks_summary.md",
+        "author_submission_action_packet_2026-06-19.md",
     ]:
         add_role(release, str((revision_dir / name).relative_to(root)), "handoff-document")
     add_role(

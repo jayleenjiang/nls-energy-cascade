@@ -140,6 +140,11 @@
     command: LaTeX compile/log scan, availability-path audit, manuscript-claim
     audit, raw-data archive manifest, and submission-bundle manifest. The
     current result is `PASS_WITH_LOCAL_RAW_DATA_LIMITATION`.
+25. Added `author_submission_action_packet_2026-06-19.md`, an author-facing
+    packet that turns the remaining non-code blockers into fillable decisions:
+    target journal/template, author metadata, funding, competing interests,
+    CRediT-style contributions, professional similarity checking, raw-data DOI
+    archive choice, and a generic cover-letter template.
 
 ## Key validated numerical result
 
@@ -167,6 +172,8 @@ Power-law fit:
   materials.
 - Author-contribution and competing-interest declarations should be confirmed
   by the authors before submission.
+- Target journal, article type, and author metadata should be filled in using
+  `author_submission_action_packet_2026-06-19.md`.
 - Professional plagiarism/self-plagiarism screening is still required before
   formal submission. The local short-fragment web spot-check is clean within its
   sampled scope, but it is not a corpus-scale similarity report.
