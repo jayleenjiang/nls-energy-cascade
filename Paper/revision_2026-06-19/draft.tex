@@ -556,14 +556,14 @@ $a/n$ & $n$ & $x$ & $R^2_{\mathrm w}$ & $6/x$ \quad $T_{\mathrm{kin}}$ \\
 \hline
        & $25$  & $0.8203$ & $0.9970$ & $7.31\quad 7.68$ \\
 $0.24$ & $50$  & $0.8269$ & $0.9984$ & $7.26\quad 7.79$ \\
-       & $100$ & $0.8429$ & $0.9967$ & $7.12\quad 7.81$ \\
+       & $100$ & $0.8429$ & $0.9967$ & $7.12\quad 7.82$ \\
 \hline
        & $25$  & $0.9360$ & $0.9943$ & $6.41\quad 6.85$ \\
-$0.48$ & $50$  & $0.9308$ & $0.9988$ & $6.45\quad 7.04$ \\
-       & $100$ & $0.9304$ & $0.9989$ & $6.45\quad 6.99$ \\
+$0.48$ & $50$  & $0.9308$ & $0.9988$ & $6.45\quad 7.03$ \\
+       & $100$ & $0.9304$ & $0.9989$ & $6.45\quad 7.01$ \\
 \hline
        & $25$  & $1.0933$ & $0.9862$ & $5.49\quad 5.80$ \\
-$0.72$ & $50$  & $1.0610$ & $0.9919$ & $5.66\quad 6.05$ \\
+$0.72$ & $50$  & $1.0610$ & $0.9919$ & $5.65\quad 6.04$ \\
        & $100$ & $1.0412$ & $0.9980$ & $5.76\quad 6.02$ \\
 \hline
 \multicolumn{5}{l}{\emph{Controls} ($n=25$):}\\
@@ -792,8 +792,9 @@ with the $\gamma(T-I^3)$ thermostat of \cite{HLNS}, isolates this mechanism; we
 solve its stationary Fokker--Planck equation by the same network method and
 recover the predicted concentration of $\theta_3$.
 
-Three diagnostic signatures of the nonequilibrium drive are read off from the
-$T_1=2,T_3=8$ steady state.
+We retain two source-traced diagnostics of the nonequilibrium drive at
+$T_1=2,T_3=8$: symmetry breaking in the angular density and the phase-locking
+branch predicted by the reduced equation.
 
 \emph{(i) Symmetry breaking.} At equilibrium the density is symmetric under
 $\theta_1\leftrightarrow\theta_3$. Out of equilibrium this symmetry is broken:
@@ -805,19 +806,14 @@ qualitative effect here and reserve the precise max/mean asymmetry for the
 source-traced grid recomputation, since it depends sensitively on the density
 mask and normalization.
 
-\emph{(ii) Angular width.} The two angles relax with widths set by their bath
-temperatures: the ratio of circular standard deviations satisfies
-$\sigma(\theta_3)/\sigma(\theta_1)\approx\sqrt{T_3/T_1}=2$ across the range of
-actions, consistent with each angle behaving locally like an overdamped
-oscillator thermalized to its own bath.
-
-\emph{(iii) Phase-locking angle.} The most probable bond angle is shifted from
+\emph{(ii) Phase-locking angle.} The most probable bond angle is shifted from
 its equilibrium value to
 \begin{equation}\label{eq:phase-lock}
   \theta_0 \;=\; \pi-\arcsin\!\frac{\sqrt{4\gamma^2+3}-\gamma}{2(\gamma^2+1)},
 \end{equation}
-the stable branch that tends to $2\pi/3$ as $\gamma\to0$. The network density
-is consistent with this branch at the measured value of $\gamma$.
+the stable branch that tends to $2\pi/3$ as $\gamma\to0$. We use the density
+plots qualitatively to display concentration near the stable sector; no
+quantitative peak-location table is used as an independent result here.
 
 \begin{remark}\label{rem:eq47}
 Equivalently, writing $s=\sin\theta_0$, the reduced angular fixed-point
@@ -835,11 +831,11 @@ high-energy phase-locking equilibrium; the complementary branch tends to
 $\pi/3$ and is not the observed stable lock.
 \end{remark}
 
-Finally, current conservation through the unforced middle mode gives a balance
-condition: in the NESS the two action currents into $I_2$ cancel in the mean,
-$\E[\,I_2 I_1\sin\theta_1\,]+\E[\,I_2 I_3\sin\theta_3\,]\approx 0$, which the
-steady-state density satisfies and which we use as an internal consistency check
-on the solver.
+Finally, current conservation through the unforced middle mode gives the
+balance condition
+$\E[\,I_2 I_1\sin\theta_1\,]+\E[\,I_2 I_3\sin\theta_3\,]\approx0$ in a
+stationary state. We use this identity as a rerun diagnostic for the solver,
+but do not report it as a separate quantitative result here.
 
 \begin{figure}[ht]
   \centering
@@ -976,6 +972,10 @@ project repository. The key reproducibility artifacts are:
   \path{scripts/generate_manuscript_figures.py};
   \item source metrics for those figures:
   \path{manuscript_figure_metrics.json};
+  \item source-trace export for the LTE table and short-chain neural-network
+  diagnostics:
+  \path{scripts/export_source_trace_metrics.py} and
+  \path{source_trace_metrics.json};
   \item eigen-relaxation diagnostic script and output:
   \path{scripts/analyze_eigen_fit_windows.py} and
   \path{eigen_fit_sensitivity.json};

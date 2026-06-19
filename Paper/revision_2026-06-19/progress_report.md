@@ -70,6 +70,14 @@
     `references.bib`, verified all eight references against publisher/arXiv/DOI
     metadata, updated `DobsonLiZhai` to its published CMS version, and recorded
     the audit in `integrity_audit_2026-06-19.md`.
+15. Added `scripts/export_source_trace_metrics.py` and
+    `source_trace_metrics.json`, which regenerate all LTE table values from
+    histogram/profile files and export archived short-chain neural-network
+    notebook outputs plus figure hashes. The draft now aligns the LTE
+    `T_kin` values with this source-trace export and removes/downgrades
+    short-chain quantitative claims whose notebook cells had no saved output
+    (angular-width ratio, phase-locking peak table, middle-mode current
+    balance).
 
 ## Key validated numerical result
 
@@ -97,14 +105,10 @@ Power-law fit:
   materials.
 - Author-contribution and competing-interest declarations should be confirmed
   by the authors before submission.
-- The complete LTE table (`tab:lte`) needs a tracked regeneration/export file;
-  the current mid-chain residual figure is source-traced, but all table entries
-  are not yet captured in a unified metrics artifact.
-- Short-chain neural-network figure metrics (`eq_validation`, `neq_density`,
-  `symmetry_breaking`, `Q1_slices`) should be exported from notebooks/scripts to
-  a tracked metrics file before final submission.
-- Perform the final 100% citation/data/claim audit after the LTE and
-  short-chain NN metrics are exported.
+- Perform the final 100% citation/data/claim audit after author declarations
+  and the short-chain TensorFlow reproducibility decision are settled.
+- Recommended before final release: package a TensorFlow environment or
+  non-notebook rerun script for the short-chain neural-network diagnostics.
 - Optional but recommended: add an appendix or supplementary note documenting
   LTE histogram generation and current-scaling validation in a compact
   reproducibility table.

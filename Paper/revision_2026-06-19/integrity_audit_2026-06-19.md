@@ -61,8 +61,8 @@ Result:
 | Long-chain action profiles and sample counts | action-profile section and figure caption | `manuscript_figure_metrics.json`; script `scripts/generate_manuscript_figures.py` | VERIFIED for `n=25,50,100` plotted profile values and sample counts. |
 | Cascade embedding figure | CKSTT embedding paragraph and figure | `manuscript_figure_metrics.json`; source CSVs under `Energy Cascade/Rect Plots/` | VERIFIED as a generated visualization from local CSVs. |
 | Mid-chain LTE residual figure | `fig:lte-resid` | `manuscript_figure_metrics.json`; script `scripts/generate_manuscript_figures.py`; hist files `lte/n50 data/simd_n50_j24.hist` and `lte/n100 data/n100_j48.hist` | VERIFIED for displayed residual slices and recorded fit metrics. |
-| Full LTE table (`tab:lte`) slopes/R²/temperature comparisons | LTE section | Searched local scripts and metrics. Exact table values currently appear in manuscript/backups, not in a unified generated metrics file. | **BLOCKING NOTE:** regenerate/export complete LTE table metrics before submission. |
-| Equilibrium Fokker--Planck validation errors `1.5%, 2.6%, 6.4%`; short-chain density figures | short-chain Fokker--Planck section | Notebook outputs exist in local KDE materials, but not yet exported as a versioned metrics JSON. | **BLOCKING NOTE:** export short-chain NN figure metrics from notebooks/scripts before submission. |
+| Full LTE table (`tab:lte`) slopes/R²/temperature comparisons | LTE section | `source_trace_metrics.json`; script `scripts/export_source_trace_metrics.py`; hist/profile source hashes recorded for each row. | VERIFIED for all table rows after aligning `T_kin` entries to the exported pair-averaged profile values. |
+| Equilibrium Fokker--Planck validation errors `1.5%, 2.6%, 6.4%`; short-chain density figures | short-chain Fokker--Planck section | `source_trace_metrics.json`; archived notebook outputs from `KDE/4:15_NN/FKE_5d_NLS.ipynb`; figure SHA256 records for `eq_validation.png`, `neq_density.png`, `symmetry_breaking.png`, and `Q1_slices.png`. | VERIFIED for archived equilibrium-error values and figure provenance. Notebook diagnostics without saved output (angular-width ratio, phase-locking peak table, middle-mode balance) are recorded as unverified and no longer used as quantitative manuscript claims. |
 | Eigen relaxation diagnostic `lambda_diag≈-0.934` and window sensitivity | eigenfunction section | `eigen_fit_sensitivity.json`; script `scripts/analyze_eigen_fit_windows.py`; source `KDE/NLS_backward_Y_train.txt` | VERIFIED as observable-dependent diagnostic rate, not a spectral-gap claim. |
 | Symmetry breaking | stabilization section | Manuscript now uses qualitative wording; old unsupported `15%` claim removed. | ACCEPTABLE as qualitative diagnostic; optional quantitative metric can be added later if recomputed from saved arrays. |
 
@@ -70,23 +70,22 @@ Result:
 
 | Mode | Status | Evidence / note |
 |---|---|---|
-| 1. Implementation bug passing self-review | CLEAR for canonical flux experiment; INSUFFICIENT for LTE/short-chain NN metrics | Flux code has frozen hashes, sanitizer smoke run, deterministic threading check, equal-temperature and hot/cold gates. LTE and short-chain NN metrics need a unified regeneration log. |
+| 1. Implementation bug passing self-review | CLEAR for canonical flux experiment and LTE table export; QUALIFIED for short-chain NN archive | Flux code has frozen hashes, sanitizer smoke run, deterministic threading check, equal-temperature and hot/cold gates. LTE table values are regenerated from hist/profile files. Short-chain NN values are exported from archived notebook outputs; TensorFlow rerun remains a recommended reproducibility supplement. |
 | 2. Hallucinated citation | CLEAR | 8/8 references verified; no dangling/orphan citation keys. |
-| 3. Hallucinated experimental result | CLEAR for flux/eigen/action-profile claims; INSUFFICIENT for full LTE table and some NN metrics | Main scaling and eigen diagnostics are tied to JSON/manifest outputs. LTE table and NN error metrics need export/regeneration. |
+| 3. Hallucinated experimental result | CLEAR for flux/eigen/action-profile/LTE-table claims; QUALIFIED for archived NN figures | Main scaling, eigen diagnostics, action profiles, and LTE table entries are tied to JSON/manifest outputs. Short-chain NN equilibrium-error and symmetry metrics are tied to archived notebook outputs; unarchived diagnostics were removed or downgraded. |
 | 4. Shortcut reliance | CLEAR / not applicable | Numerical SDE simulation; no ML benchmark shortcut claim. Neural FP solver is now described diagnostically and validated against Gibbs where possible. |
 | 5. Bug reframed as insight | CLEAR for corrected current-scaling narrative | Unsupported GC/entropy and spectral-gap claims were demoted; the paper labels finite-size and diagnostic limitations explicitly. |
-| 6. Methodology fabrication | CLEAR for flux workflow; INSUFFICIENT for LTE/short-chain NN workflow | Flux methods match manifest. LTE and NN methods should be tied to scripts/logs before submission. |
+| 6. Methodology fabrication | CLEAR for flux and LTE workflows; QUALIFIED for short-chain NN workflow | Flux methods match manifest. LTE table computation is scripted. Short-chain NN workflow is traced to notebooks, model/data hashes, and figure hashes, but a clean non-notebook TensorFlow rerun script remains advisable before final release. |
 | 7. Frame-lock | CLEAR WITH LIMITATION | Current framing is explicitly numerical/finite-size and no longer claims asymptotic theorem or full GC test. Remaining limitations are acknowledged. |
 
 ## Remaining required actions before calling the paper journal-ready
 
-1. Regenerate/export complete LTE table values into a tracked JSON/CSV and make
-   `tab:lte` source-traceable.
-2. Export the short-chain neural-network validation metrics used for
-   `eq_validation.png`, `neq_density.png`, `symmetry_breaking.png`, and
-   `Q1_slices.png` into a tracked metrics file or reproducible script.
-3. Confirm funding information and author-contribution / competing-interest
+1. Confirm funding information and author-contribution / competing-interest
    declarations with the authors.
-4. Run a professional plagiarism/self-plagiarism check outside this repository
+2. Run a professional plagiarism/self-plagiarism check outside this repository
    before formal submission; this audit only performed source and metadata
    integrity checks plus local claim/data traceability.
+3. Recommended before final release: archive a TensorFlow environment or
+   non-notebook rerun script for the short-chain neural-network diagnostics.
+4. Perform the final 100% citation/data/claim audit after author declarations
+   and the optional TensorFlow reproducibility supplement are decided.
