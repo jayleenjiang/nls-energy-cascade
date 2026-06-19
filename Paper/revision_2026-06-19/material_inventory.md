@@ -70,3 +70,33 @@ byte-identical to the corresponding repository copies (verified by SHA-256).
   reproducibility/data-availability statement, and no appendix documenting
   numerical convergence.
 
+## Current revision status update — 2026-06-19
+
+The build and visual baseline above describes the imported draft at the start
+of the revision pass.  The active revision is
+`Paper/revision_2026-06-19/draft.tex`; its current status is recorded in
+`progress_report.md` and `integrity_audit_2026-06-19.md`.
+
+Key updates since the initial inventory:
+
+- The manuscript now includes an abstract, conclusion/limitations, data and
+  code availability, declarations, AI-assisted-preparation disclosure, and a
+  numerical reproducibility summary.
+- The long-chain placeholder figures were replaced by source-traced figures:
+  `action_profiles.pdf`, `cascade_embedding.pdf`, and
+  `lte_residual_midchain.pdf`.
+- The corrected current-scaling workflow is documented under
+  `experiments/flux_validation/`, with canonical simulator/source hashes,
+  validation gates, production data, and the manuscript scaling figure.
+- LTE table values, short-chain diagnostics, eigen-relaxation diagnostics, and
+  manuscript figure metrics are recorded in machine-readable JSON artifacts and
+  supporting scripts.
+- References were converted to `references.bib` and checked for dangling or
+  orphan citation keys.
+- The local core numerical claim audit passes 14/14 registered checks; see
+  `manuscript_claim_audit.md`.
+
+The remaining items before formal journal submission are author/journal
+confirmations rather than missing local data files: final declarations,
+professional originality screening, target-journal formatting, and a final
+post-edit compile/audit pass.

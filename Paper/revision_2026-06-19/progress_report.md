@@ -54,9 +54,11 @@
     reduced fixed-point quadratic
     `4(1+gamma^2) sin(theta)^2 + 4 gamma sin(theta) - 3 = 0` and the stable
     branch selection.
-12. Recompiled the manuscript with TeX Live. The current PDF has 17 pages and
-    the LaTeX log has no unresolved citations/references and no overfull or
-    underfull box warnings.
+12. Recompiled the manuscript with TeX Live at that stage of the revision. The
+    PDF then had 17 pages and the LaTeX log had no unresolved
+    citations/references and no overfull or underfull box warnings. Later
+    reproducibility-summary additions increased the current build artifact to
+    18 pages.
 13. Resolved two remaining rigor issues in the short-chain section:
     - removed the unsupported quantitative “about 15%” symmetry-breaking claim
       and made the figure caption explicitly qualitative;
@@ -103,6 +105,10 @@
     titles/snippets and identified only expected topical sources, including the
     cited `HLNS` prior work. It remains a limited pre-screen, not a substitute
     for iThenticate/Turnitin-style professional checking.
+20. Added `submission_readiness_checklist_2026-06-19.md` and appended current
+    resolution-status updates to the initial audit, material inventory, and
+    revision roadmap. The old documents now explicitly distinguish their
+    initial-draft findings from the current revised-manuscript state.
 
 ## Key validated numerical result
 

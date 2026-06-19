@@ -41,3 +41,17 @@
 - Perform an independent reviewer-style methodology and presentation review.
 - Commit and push only coherent, reproducible milestones.
 
+## Gate status update — 2026-06-19
+
+This roadmap is retained as the initial repair plan.  Current status:
+
+| Gate | Status | Notes |
+|---|---|---|
+| Gate A: canonical model and reproducible simulation | Complete for manuscript claims | Canonical Gibbs-preserving current simulator, validation gates, reproducible seeds/metadata, and source hashes are recorded. |
+| Gate B: long-chain evidence | Complete within narrowed claim scope | Action profiles, corrected current scaling, LTE diagnostics, and reproducibility artifacts are included. Entropy-production/GC and open-chain terminal-energy claims are intentionally not claimed. Larger-chain and smaller-timestep studies remain future work. |
+| Gate C: short-chain evidence | Complete within saved-model diagnostic scope | Equilibrium validation, qualitative symmetry breaking, phase-locking branch, and eigen-relaxation diagnostics are source-traced. Full neural-network retraining remains optional if requested by the journal. |
+| Gate D: manuscript | Complete except author-supplied declarations | Abstract, conclusion, limitations, availability, reproducibility summary, source-traced figures, and BibTeX references are in place. Funding/contribution/competing-interest confirmations still require author review. |
+| Gate E: final quality | Partially complete; final pass still required | Current local claim audit passes, and major updates are pushed to GitHub. After author/journal edits, rerun compile, visual PDF QA, citation/data/claim audit, and professional originality screening. |
+
+See `submission_readiness_checklist_2026-06-19.md` for the remaining
+author-facing and journal-facing checklist.

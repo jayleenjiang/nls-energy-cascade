@@ -131,3 +131,29 @@ but it is not yet suitable for journal submission.
 5. Add trajectory/block-bootstrap uncertainty for LTE and transport metrics.
 6. Replace all figure placeholders and add numerical-convergence appendices.
 
+## Resolution update — 2026-06-19
+
+This file is the initial audit and is retained as a historical record.  The
+current manuscript state is tracked in `progress_report.md`,
+`integrity_audit_2026-06-19.md`, and
+`submission_readiness_checklist_2026-06-19.md`.
+
+Initial blocking issues have been addressed as follows:
+
+| Initial issue | Current resolution status |
+|---|---|
+| Invalid June 18 flux workflow | Replaced by the canonical Gibbs-preserving simulator and production validation artifacts. The manuscript now reports the corrected finite-size action-current scaling. |
+| Incorrect confidence intervals | Replaced by trajectory-standard-error and bootstrap exponent summaries in the canonical workflow. |
+| Boundary phase-drift sign and diffusion convention | Corrected in the manuscript's SDE/specification narrative and claim audit. |
+| Heat-current terminology | Standardized to action/mass current unless a Hamiltonian-energy current is explicitly discussed as future work. |
+| Unsupported entropy/fluctuation-theorem claims | Removed from the results and retained only as a limitation/future-work item. |
+| Phase-locking branch | Replaced by the stable reduced fixed-point branch. |
+| Spectral-gap/eigenfunction overclaiming | Demoted to an observable-dependent relaxation diagnostic with window sensitivity. |
+| Short-chain quantitative inconsistencies | Unsupported percentages and angular-width claims were removed; saved-model diagnostics were rerun and source-traced. |
+| Missing abstract, conclusion, availability, limitations, and reproducibility material | Added to `draft.tex`, with a compact numerical reproducibility summary and supporting audit artifacts. |
+| Figure placeholders | Replaced by source-traced figures or removed from the manuscript claim set. |
+
+Remaining pre-submission blockers are external or author-supplied:
+funding/competing-interest/contribution confirmations, target-journal
+formatting decisions, professional plagiarism/self-plagiarism screening, and a
+final audit after those edits.
