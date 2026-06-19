@@ -1,7 +1,7 @@
 {
-  "generated_at_utc": "2026-06-19T18:01:09.656876+00:00",
+  "generated_at_utc": "2026-06-19T18:03:59.850956+00:00",
   "git_branch": "codex/paper-journal-revision",
-  "git_head": "fe5117bd3f05bcccfc99717c6b59fc4fe12b1d06",
+  "git_head": "01ae7ee6c50b4218b1b53e39d6175cf8184e9ad4",
   "local_raw_dependencies": [
     {
       "exists": true,
@@ -399,7 +399,7 @@
         "availability-declared",
         "claim-evidence:data_availability_artifacts"
       ],
-      "sha256": "05744049949a92a3f7a340c05312382d360dc72b599c3f33bbbd105d6f28974d",
+      "sha256": "767f21e373c792363ed6c529ff399425faba9f4535ff1504bf16040b28f63908",
       "size_bytes": 13225
     },
     {
@@ -411,7 +411,7 @@
         "availability-declared",
         "claim-evidence:data_availability_artifacts"
       ],
-      "sha256": "24d0df645b83649b4ee990077e1b24e58dfeb28f6d912bc6266ee38816dade5c",
+      "sha256": "5c3ef089d289e4f4d301c931cece43c3a1586376a0731686b90d39926590ea9b",
       "size_bytes": 5969
     },
     {
@@ -527,8 +527,8 @@
         "availability-declared",
         "handoff-document"
       ],
-      "sha256": "beac8f9f4c8393aceaebbecedaf6e9ac18ee16453a931116cdc4ebb88005a62e",
-      "size_bytes": 14547
+      "sha256": "d92d6ea4a294316f947c65c3bb6d1d424ae61a56c31412360f06dbf31bf201b3",
+      "size_bytes": 14847
     },
     {
       "exists": true,
@@ -549,7 +549,7 @@
         "availability-declared",
         "claim-audit"
       ],
-      "sha256": "5f7c216a999c4bfcb8d96f499259969113115319dad78a753a03906619b91c8a",
+      "sha256": "de89746577683016674f3accea3f06d3e71bd2213c0f8a59b8b00ff2dd45bc1e",
       "size_bytes": 29255
     },
     {
@@ -560,7 +560,7 @@
         "availability-declared",
         "claim-audit"
       ],
-      "sha256": "78f97c97029fff1b8d7a6120c03edf87f2cb15d4fa3c1f8e79ea307a40997353",
+      "sha256": "a4653bebb69a6ba3cd5549978ccb427fbc39b43d93f17e5c62b3405a5aea7667",
       "size_bytes": 3402
     },
     {
@@ -613,8 +613,8 @@
       "roles": [
         "handoff-document"
       ],
-      "sha256": "fe59108bdccec0b43c1a2972964278e403ab14eaee420a4c39c17b955d9149ab",
-      "size_bytes": 11398
+      "sha256": "37ff4f1f2a6c68807f314bb1b02313e32b200af4481c84efec2a7e2f48f9b86b",
+      "size_bytes": 11783
     },
     {
       "exists": true,
@@ -623,7 +623,7 @@
       "roles": [
         "handoff-document"
       ],
-      "sha256": "8b625b654b3042de8220c00b968c6dfc20c3d18bce473dd2e8c7e5b6f72a89e2",
+      "sha256": "e05ecebf386bad3f93281446b7c9c199d28f3f7134963012b86e1480779a36dd",
       "size_bytes": 16196
     },
     {
@@ -633,7 +633,7 @@
       "roles": [
         "handoff-document"
       ],
-      "sha256": "2970f672e0f60b92b8befe66565ec31e1eac1e18f1e799272017c5040c2ca170",
+      "sha256": "da4e9b7791a333ce0e222ba8d7ddebf6de6bce5dae49ba79cd6780b92c5bc8e6",
       "size_bytes": 8187
     },
     {
@@ -704,8 +704,8 @@
       "roles": [
         "manifest-builder"
       ],
-      "sha256": "d38f7f370c8cc3ae130ee1e17f51fc5a451d1196a77695c6b5ab82683f84e738",
-      "size_bytes": 16385
+      "sha256": "bc6a7df3c6cfdf0da9f1ffd6ec8be8d824be206d495b119ccffa6e7da98dd6e5",
+      "size_bytes": 16444
     },
     {
       "exists": true,
@@ -822,8 +822,18 @@
       "roles": [
         "handoff-document"
       ],
-      "sha256": "223c44b2b3a2e3e0bc408288d7064f95f94fce82feb095d654cf791976de7396",
-      "size_bytes": 7859
+      "sha256": "d8825711127965ebb147240c3af6d21a5f95850882e3f5be1b569387044ddcc7",
+      "size_bytes": 8039
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/submission_reproducibility_readme_2026-06-19.md",
+      "roles": [
+        "handoff-document"
+      ],
+      "sha256": "077984ecb33a8fa74c7666119fe8495aafd5392a19306ecabc3a4faab0c347ea",
+      "size_bytes": 4958
     },
     {
       "exists": true,
@@ -902,7 +912,7 @@
     "local_raw_dependency_count": 44,
     "missing_release_files": 0,
     "release_directory_count": 1,
-    "release_file_count": 51,
+    "release_file_count": 52,
     "status": "PASS_WITH_LOCAL_RAW_DATA_LIMITATION",
     "untracked_local_raw_dependencies": 44,
     "untracked_release_files": 0

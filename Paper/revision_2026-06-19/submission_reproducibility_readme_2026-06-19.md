@@ -1,0 +1,105 @@
+# Submission reproducibility README — 2026-06-19
+
+Scope: entry point for editors, reviewers, and future authors using the
+submission materials for `Paper/revision_2026-06-19/draft.tex`.
+
+This file is intentionally journal-neutral.  It describes how to navigate the
+current reproducibility package before a final target journal, template, author
+metadata, and possible DOI-backed raw-data archive are chosen.
+
+## Current local status
+
+The local submission gate currently reports:
+
+```text
+PASS_WITH_LOCAL_RAW_DATA_LIMITATION
+```
+
+This means that the manuscript source, figures, bibliography, source-traced
+derived artifacts, claim audit, availability-path audit, LaTeX compile/log
+scan, and minimal raw-data manifest pass local checks.  It does **not** mean
+that author declarations, professional similarity checking, journal-specific
+formatting, or a DOI-backed raw-data archive have been completed.
+
+## Fast verification path
+
+From the repository root, run:
+
+```sh
+python3 Paper/revision_2026-06-19/scripts/run_submission_checks.py --compile-latex
+```
+
+Expected current result:
+
+- `latex_log`: `PASS`
+- `availability_path_audit`: `PASS`
+- `manuscript_claim_audit`: `PASS`
+- `raw_data_archive_manifest`: `PASS`
+- `submission_bundle_manifest`: `PASS_WITH_LOCAL_RAW_DATA_LIMITATION`
+
+The generated summary is:
+
+- `Paper/revision_2026-06-19/submission_checks_summary.md`
+- `Paper/revision_2026-06-19/submission_checks_summary.json`
+
+## What each artifact is for
+
+| Need | Start here | What it establishes |
+|---|---|---|
+| Read or compile the paper | `draft.tex`; compiled PDF from the LaTeX gate | Current manuscript text and figures. |
+| Check the original working outline | `paper_draft_1.tex` | Preserved planning/framework source; not the active manuscript. |
+| Check numerical-claim support | `manuscript_claim_audit.md`; `manuscript_claim_audit.json` | Code-verifiable numerical/data claims currently pass 14/14 registered checks. |
+| Check file/path availability | `availability_path_audit.md`; `availability_path_audit.json` | Manuscript-declared files and figure paths exist locally and have hashes where applicable. |
+| Check submission-bundle completeness | `submission_bundle_manifest.md`; `submission_bundle_manifest.json` | Tracked release files are present, git-tracked, and categorized by role. |
+| Check source-traced raw files | `raw_data_archive_manifest.md`; `raw_data_archive_manifest.json` | The compact raw-data subset contains 40 unique local files totaling 138,875,181 bytes. |
+| Check current-scaling validation | `experiments/flux_validation/production_manifest.md`; `experiments/flux_validation/production_dt5e-4/validation_report.md` | Production flux/current scaling artifacts and validation summaries. |
+| Check author/journal blockers | `author_submission_action_packet_2026-06-19.md`; `target_journal_shortlist_2026-06-19.md`; `submission_readiness_checklist_2026-06-19.md` | Remaining human decisions before formal submission. |
+| See the full revision history | `progress_report.md`; `integrity_audit_2026-06-19.md` | What was changed, verified, limited, or left for authors. |
+
+## Raw-data archive convention
+
+If the final journal requires raw data beyond the tracked GitHub artifacts,
+archive the files listed in `raw_data_archive_manifest.json` with their relative
+paths preserved under:
+
+```text
+raw_data/
+```
+
+The Markdown manifest prints abbreviated SHA-256 digests for readability; the
+JSON manifest records the full SHA-256 value for each raw file.  After creating
+a Zenodo, OSF, institutional, or journal supplement archive, update the paper's
+data/code availability statement with the archive DOI or accession link and
+rerun the local gate.
+
+## What is deliberately not claimed
+
+The current package does not yet provide:
+
+1. final author affiliations, ORCID IDs, corresponding-author metadata, funding
+   statement, competing-interest statement, or final CRediT allocation;
+2. professional plagiarism/self-plagiarism screening such as iThenticate or
+   Turnitin;
+3. a journal-specific LaTeX class conversion;
+4. an uploaded DOI-backed raw-data archive;
+5. full neural-network retraining reproducibility beyond saved-model inference
+   and archived notebook/model outputs.
+
+These items are tracked in
+`author_submission_action_packet_2026-06-19.md` and
+`submission_readiness_checklist_2026-06-19.md`.
+
+## Suggested final handoff order
+
+For a reviewer or coauthor who has not seen the project before:
+
+1. read `draft.tex` or the compiled PDF;
+2. read `submission_reproducibility_readme_2026-06-19.md` (this file);
+3. run `scripts/run_submission_checks.py --compile-latex`;
+4. inspect `submission_checks_summary.md`;
+5. inspect `manuscript_claim_audit.md` for claim-by-claim support;
+6. inspect `submission_bundle_manifest.md` and
+   `raw_data_archive_manifest.md` before deciding whether a raw-data supplement
+   is needed;
+7. complete the author-facing items in
+   `author_submission_action_packet_2026-06-19.md`.
