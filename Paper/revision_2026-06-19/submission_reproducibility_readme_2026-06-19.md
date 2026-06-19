@@ -51,6 +51,7 @@ The generated summary is:
 | Check numerical-claim support | `manuscript_claim_audit.md`; `manuscript_claim_audit.json` | Code-verifiable numerical/data claims currently pass 14/14 registered checks. |
 | Check file/path availability | `availability_path_audit.md`; `availability_path_audit.json` | Manuscript-declared files and figure paths exist locally and have hashes where applicable. |
 | Check submission-bundle completeness | `submission_bundle_manifest.md`; `submission_bundle_manifest.json` | Tracked release files are present, git-tracked, and categorized by role. |
+| Check compiled-PDF layout QA | `pdf_layout_qa_2026-06-19.md` | The generic compiled PDF has been rendered and checked for obvious layout defects. |
 | Check source-traced raw files | `raw_data_archive_manifest.md`; `raw_data_archive_manifest.json` | The compact raw-data subset contains 40 unique local files totaling 138,875,181 bytes. |
 | Check current-scaling validation | `experiments/flux_validation/production_manifest.md`; `experiments/flux_validation/production_dt5e-4/validation_report.md` | Production flux/current scaling artifacts and validation summaries. |
 | Check author/journal blockers | `author_submission_action_packet_2026-06-19.md`; `target_journal_shortlist_2026-06-19.md`; `submission_readiness_checklist_2026-06-19.md` | Remaining human decisions before formal submission. |
@@ -97,9 +98,10 @@ For a reviewer or coauthor who has not seen the project before:
 2. read `submission_reproducibility_readme_2026-06-19.md` (this file);
 3. run `scripts/run_submission_checks.py --compile-latex`;
 4. inspect `submission_checks_summary.md`;
-5. inspect `manuscript_claim_audit.md` for claim-by-claim support;
-6. inspect `submission_bundle_manifest.md` and
+5. inspect `pdf_layout_qa_2026-06-19.md` for compiled-PDF layout status;
+6. inspect `manuscript_claim_audit.md` for claim-by-claim support;
+7. inspect `submission_bundle_manifest.md` and
    `raw_data_archive_manifest.md` before deciding whether a raw-data supplement
    is needed;
-7. complete the author-facing items in
+8. complete the author-facing items in
    `author_submission_action_packet_2026-06-19.md`.

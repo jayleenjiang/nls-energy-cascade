@@ -154,6 +154,11 @@
     reviewer/editor entry point explaining the fast verification command, the
     purpose of each audit/manifest artifact, the raw-data archive convention,
     and the remaining author/journal-only items.
+28. Added `pdf_layout_qa_2026-06-19.md`, a compiled-PDF layout QA record. The
+    generic `article` PDF builds to 18 A4 pages with no scanned LaTeX warnings,
+    overfull/underfull boxes, unresolved-reference markers, placeholder tokens,
+    blank pages, obvious clipping, or visible figure/table rendering failures in
+    the rendered-page inspection.
 
 ## Key validated numerical result
 
@@ -194,7 +199,8 @@ Power-law fit:
   31/31 checks. The preferred one-command local gate is now
   `python3 Paper/revision_2026-06-19/scripts/run_submission_checks.py --compile-latex`.
   The reviewer/editor-facing navigation file is
-  `submission_reproducibility_readme_2026-06-19.md`.
+  `submission_reproducibility_readme_2026-06-19.md`; the compiled-PDF layout
+  QA snapshot is `pdf_layout_qa_2026-06-19.md`.
 - Decide whether the final release should include only the audited derived
   artifacts in GitHub or also a DOI-backed raw-data archive. The bundle
   manifest currently flags 44 local raw-data dependency records that are not
