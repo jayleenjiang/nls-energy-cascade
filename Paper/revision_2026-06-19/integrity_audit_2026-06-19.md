@@ -70,6 +70,7 @@ Result:
 | Symmetry breaking | stabilization section | `short_chain_nn_rerun_metrics.json`; manuscript now uses qualitative wording; old unsupported `15%` claim removed. | VERIFIED as a qualitative diagnostic. The saved-model rerun reports masked and unmasked asymmetry metrics, but the manuscript intentionally avoids a standalone percentage because the value is sensitive to low-density regions and network normalization. |
 | Core numerical manuscript claims | abstract, long-chain section, LTE table, short-chain section, reproducibility summary, data availability | `manuscript_claim_audit.json`; `manuscript_claim_audit.md`; script `scripts/audit_manuscript_claims.py` | VERIFIED for 14/14 code-verifiable numerical/data claims. This audit also caught and corrected the LTE notation so the local equilibrium marginal uses the manuscript convention `exp[-H/(2T)]`, not the ambiguous `exp(-H/beta)`. |
 | Data/code and figure path availability | data/code availability statement and all manuscript figure includes | `availability_path_audit.json`; `availability_path_audit.md`; script `scripts/audit_availability_paths.py` | VERIFIED locally for 31/31 referenced paths after rewriting the availability statement to use repository-root paths where appropriate. This check proves local path existence and hashes, but should be rerun against the final release branch/archive. |
+| Submission/release bundle manifest | manuscript source, bibliography, figures, availability paths, claim-audit evidence, and handoff documents | `submission_bundle_manifest.json`; `submission_bundle_manifest.md`; script `scripts/build_submission_bundle_manifest.py` | PASS WITH LOCAL RAW-DATA LIMITATION: the tracked release bundle has no missing required files after staging, but 44 local raw-data dependency records referenced by source-trace JSON exist only in local roots such as `Energy Cascade/`, `KDE/`, and `lte/`. A DOI-backed raw-data archive is still needed if the journal requires full raw-data release. |
 | Originality spot-check | sampled abstract, methods/results, short-chain, conclusion, and author/title queries | `originality_spotcheck_2026-06-19.md`; exact-phrase web queries over short manuscript fragments | PASS WITH LIMITATION: no exact external phrase reuse was visible in returned titles/snippets. Expected public `HLNS` prior work was found and is already cited. Professional plagiarism/self-plagiarism screening is still required before formal submission. |
 
 ## AI research failure mode checklist
@@ -96,6 +97,11 @@ Result:
    any last journal-format edits are finalized. The current local core
    numerical claim audit passes 14/14 checks and the availability-path audit
    passes 31/31 checks, but both should be repeated after final edits.
-4. Optional but recommended: archive a full neural-network retraining
+4. Decide the raw-data release policy. The local source-trace artifacts point
+   to large untracked raw-data roots (`Energy Cascade/`, `KDE/`, and `lte/`);
+   if the journal requires raw data rather than audited derived artifacts,
+   create an archival DOI-backed supplement and rerun the bundle manifest
+   against it.
+5. Optional but recommended: archive a full neural-network retraining
    environment if the journal requires re-training rather than saved-model
    inference reproducibility.

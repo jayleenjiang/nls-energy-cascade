@@ -1,0 +1,830 @@
+{
+  "generated_at_utc": "2026-06-19T17:42:39.569670+00:00",
+  "git_branch": "codex/paper-journal-revision",
+  "git_head": "bdf7ab285c4c55a97016437bf644e5acb4beb777",
+  "local_raw_dependencies": [
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "Energy Cascade/Rect Plots/rectangles_N5_R100_f1_to_f2.csv",
+      "size_bytes": 697,
+      "source_artifact": "Paper/revision_2026-06-19/manuscript_figure_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "Energy Cascade/Rect Plots/rectangles_N5_R100_f2_to_f3.csv",
+      "size_bytes": 794,
+      "source_artifact": "Paper/revision_2026-06-19/manuscript_figure_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "Energy Cascade/Rect Plots/rectangles_N5_R100_f3_to_f4.csv",
+      "size_bytes": 983,
+      "source_artifact": "Paper/revision_2026-06-19/manuscript_figure_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "Energy Cascade/Rect Plots/rectangles_N5_R100_f4_to_f5.csv",
+      "size_bytes": 1432,
+      "source_artifact": "Paper/revision_2026-06-19/manuscript_figure_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "lte/n100 data/n100_eq_j48.hist",
+      "size_bytes": 5902964,
+      "source_artifact": "Paper/revision_2026-06-19/manuscript_figure_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "lte/n100 data/n100_j48.hist",
+      "size_bytes": 5978520,
+      "source_artifact": "Paper/revision_2026-06-19/manuscript_figure_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "lte/n50 data/simd_n50_eq_j24.hist",
+      "size_bytes": 5968237,
+      "source_artifact": "Paper/revision_2026-06-19/manuscript_figure_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "lte/n50 data/simd_n50_j24.hist",
+      "size_bytes": 6082222,
+      "source_artifact": "Paper/revision_2026-06-19/manuscript_figure_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "KDE/4:15_NN/FKE_5d_NLS.ipynb",
+      "size_bytes": 1030135,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "KDE/4:15_NN/NLS_FP_boxes.txt",
+      "size_bytes": 1466322,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "KDE/4:15_NN/NLS_FP_density.txt",
+      "size_bytes": 449045,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "KDE/4:15_NN/eq/NLS_FP_boxes.txt",
+      "size_bytes": 1466350,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "KDE/4:15_NN/eq/NLS_FP_density.txt",
+      "size_bytes": 411270,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "KDE/4:15_NN/h5_files/final.keras",
+      "size_bytes": 506148,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "KDE/4:15_NN/h5_files_eq/final.keras",
+      "size_bytes": 506148,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "KDE/FKE_eigen.ipynb",
+      "size_bytes": 308143,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "KDE/backward_NLS_Q1.txt",
+      "size_bytes": 858731,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "KDE/backward_NLS_X.txt",
+      "size_bytes": 4235394,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "KDE/h5_files_eigen/final.keras",
+      "size_bytes": 506192,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "lte/T712:8:9 data/simd_eq_T712_j12.hist",
+      "size_bytes": 6172784,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "lte/T712:8:9 data/simd_eq_T712_j18.hist",
+      "size_bytes": 6170535,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "lte/T712:8:9 data/simd_eq_T712_j6.hist",
+      "size_bytes": 6171101,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "lte/n100 data/n100_eq_j24.hist",
+      "size_bytes": 5875607,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "lte/n100 data/n100_eq_j48.hist",
+      "size_bytes": 5902964,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "lte/n100 data/n100_eq_j72.hist",
+      "size_bytes": 5879991,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "lte/n100 data/n100_eq_profile.txt",
+      "size_bytes": 1232,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "lte/n100 data/n100_j24.hist",
+      "size_bytes": 5989159,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "lte/n100 data/n100_j48.hist",
+      "size_bytes": 5978520,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "lte/n100 data/n100_j72.hist",
+      "size_bytes": 5914284,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "lte/n100 data/n100_profile.txt",
+      "size_bytes": 1230,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "lte/n25 data/n25_eq_j12.hist",
+      "size_bytes": 6108031,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "lte/n25 data/n25_eq_j18.hist",
+      "size_bytes": 6104886,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "lte/n25 data/n25_eq_j6.hist",
+      "size_bytes": 6105980,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "lte/n25 data/n25_j12.hist",
+      "size_bytes": 6230723,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "lte/n25 data/n25_j18.hist",
+      "size_bytes": 6139918,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "lte/n25 data/n25_j6.hist",
+      "size_bytes": 6300540,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "lte/n50 data/simd_n50_eq_j12.hist",
+      "size_bytes": 5951241,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "lte/n50 data/simd_n50_eq_j24.hist",
+      "size_bytes": 5968237,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "lte/n50 data/simd_n50_eq_j36.hist",
+      "size_bytes": 5950827,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "lte/n50 data/simd_n50_eq_profile.txt",
+      "size_bytes": 632,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "lte/n50 data/simd_n50_j12.hist",
+      "size_bytes": 6111368,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "lte/n50 data/simd_n50_j24.hist",
+      "size_bytes": 6082222,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "lte/n50 data/simd_n50_j36.hist",
+      "size_bytes": 6014749,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "lte/n50 data/simd_n50_profile.txt",
+      "size_bytes": 636,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    }
+  ],
+  "local_raw_roots": [
+    {
+      "exists": true,
+      "file_count": 12032,
+      "git_tracked_file_count": 0,
+      "root": "Energy Cascade",
+      "total_bytes": 629542099
+    },
+    {
+      "exists": true,
+      "file_count": 259,
+      "git_tracked_file_count": 0,
+      "root": "KDE",
+      "total_bytes": 427775884
+    },
+    {
+      "exists": true,
+      "file_count": 158,
+      "git_tracked_file_count": 0,
+      "root": "lte",
+      "total_bytes": 11865804645
+    }
+  ],
+  "release_directories": [
+    {
+      "exists": true,
+      "git_tracked_file_count": 119,
+      "git_tracked_total_bytes": 2038430,
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation",
+      "roles": [
+        "availability-declared-directory"
+      ],
+      "tree_sha256": "384386957a9059fb46ffa9f7496b9211b5ec3502ccc115d156dcdd476cc84c8e"
+    }
+  ],
+  "release_files": [
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/Q1_slices.png",
+      "roles": [
+        "availability-declared",
+        "manuscript-figure"
+      ],
+      "sha256": "daa934ee72a192913d66d5663ebcf160739dcd529bc2a0d87cd790be51431a89",
+      "size_bytes": 78729
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/action_profiles.pdf",
+      "roles": [
+        "availability-declared",
+        "manuscript-figure"
+      ],
+      "sha256": "b72d9cafc37cdea4a45f35a27c7c8729e13bffbda83a9f5ca8944c0d3954432c",
+      "size_bytes": 23952
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/audit_report.md",
+      "roles": [
+        "handoff-document"
+      ],
+      "sha256": "d69f2e688c9f48da007c7c74dac5f5eb00cea0a88a1c44001e2492492a8e5e40",
+      "size_bytes": 8469
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/availability_path_audit.json",
+      "roles": [
+        "availability-audit",
+        "availability-declared",
+        "claim-evidence:data_availability_artifacts"
+      ],
+      "sha256": "8deff793e881910d76dee3ade8f671a0f35c30b28d58a40b11e562068fdbbe1f",
+      "size_bytes": 13225
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/availability_path_audit.md",
+      "roles": [
+        "availability-audit",
+        "availability-declared",
+        "claim-evidence:data_availability_artifacts"
+      ],
+      "sha256": "2310227b157697b07a826ce8f99f5bbb3be22db00e471204872a1c849b7ba415",
+      "size_bytes": 5969
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/cascade_embedding.pdf",
+      "roles": [
+        "availability-declared",
+        "manuscript-figure"
+      ],
+      "sha256": "ff8a00f7a6a37c52ae08ca50c965d9f002603da5e9e5f780a246b2a86dc78af6",
+      "size_bytes": 29542
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/draft.tex",
+      "roles": [
+        "claim-evidence:data_availability_artifacts",
+        "claim-evidence:lte_equilibrium_convention",
+        "claim-evidence:reproducibility_summary_table",
+        "manuscript-source"
+      ],
+      "sha256": "de2bee43015e0c23db9f4a6d3d0b5872d98f94e194a13b755c3a2900bfcb416d",
+      "size_bytes": 57433
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/eigen_fit_sensitivity.json",
+      "roles": [
+        "availability-declared",
+        "claim-evidence:eigen_relaxation_diagnostic",
+        "claim-evidence:reproducibility_summary_table"
+      ],
+      "sha256": "cdc0d3ecba772fd7e6b943841e36ade0bb7749d8a9356a3dd7c86b2445ea03ab",
+      "size_bytes": 2375
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/eigenvalue_scatter.png",
+      "roles": [
+        "availability-declared",
+        "manuscript-figure"
+      ],
+      "sha256": "65215292c4d0ad6d7d8a438249d71c33705c55de784d52dd78f4ba1d712c3467",
+      "size_bytes": 108354
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/eq_validation.png",
+      "roles": [
+        "availability-declared",
+        "manuscript-figure"
+      ],
+      "sha256": "3bc9927e20c1c548d8a42184248aef746a954a6320ea3aafbf77d55a5203d654",
+      "size_bytes": 94546
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation/production_dt5e-4/current_windows_window_statistics.csv",
+      "roles": [
+        "claim-evidence:finite_window_current_statistics"
+      ],
+      "sha256": "b2feb717385cd929501c71674e4fe7d2c86dd7907a3beae2b158536c66a15040",
+      "size_bytes": 3634
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation/production_dt5e-4/flux_primary_scaling.json",
+      "roles": [
+        "claim-evidence:conductivity_scaling",
+        "claim-evidence:flux_scaling_main",
+        "claim-evidence:flux_table_values",
+        "claim-evidence:reproducibility_summary_table"
+      ],
+      "sha256": "f5eefe4b9510a809cb0fb699dc5dffd949438d428e1ba60ce247d73508580383",
+      "size_bytes": 739
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation/production_dt5e-4/flux_primary_scaling.pdf",
+      "roles": [
+        "availability-declared",
+        "manuscript-figure"
+      ],
+      "sha256": "c7c06317e77a12ed7c2998f93de7a5a6712cacfc7dba7662205c5d3693bdf319",
+      "size_bytes": 19190
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation/validation_report.md",
+      "roles": [
+        "claim-evidence:flux_diagnostics",
+        "claim-evidence:flux_scaling_main",
+        "claim-evidence:flux_table_values",
+        "claim-evidence:reproducibility_summary_table"
+      ],
+      "sha256": "5e6642d65430282220a421a7c9c46cf9d79ee46ca55d9e82e07c19163fc9edc0",
+      "size_bytes": 4096
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/integrity_audit_2026-06-19.md",
+      "roles": [
+        "availability-declared",
+        "handoff-document"
+      ],
+      "sha256": "d59d48d9fc34fc6c2e6a8aec67841f2cfea9ef04b7a10370ca2ea057fc0b8a2e",
+      "size_bytes": 12651
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/lte_residual_midchain.pdf",
+      "roles": [
+        "availability-declared",
+        "manuscript-figure"
+      ],
+      "sha256": "3785b901fca6969f2e50dbc64780da97cdac52d57b89cafa26974118cc43a4b8",
+      "size_bytes": 35961
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/manuscript_claim_audit.json",
+      "roles": [
+        "availability-declared",
+        "claim-audit"
+      ],
+      "sha256": "1ea9b77957a77d7a03fcf78aa06c66d8aa58df1e39b89cb1914d285029a0a669",
+      "size_bytes": 29255
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/manuscript_claim_audit.md",
+      "roles": [
+        "availability-declared",
+        "claim-audit"
+      ],
+      "sha256": "f9a9f607b0a4f0e63fc79fdfc3c06b18bb01c63cdedbd97c92092df55c181f88",
+      "size_bytes": 3402
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/manuscript_figure_metrics.json",
+      "roles": [
+        "availability-declared",
+        "claim-evidence:long_chain_action_profiles",
+        "claim-evidence:reproducibility_summary_table"
+      ],
+      "sha256": "c0dfd2a21ffd8cd2f989b36347d14f15bb77a89fb9634e20bf9398fe378a3833",
+      "size_bytes": 2650
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/material_inventory.md",
+      "roles": [
+        "handoff-document"
+      ],
+      "sha256": "f203be14a08579fc00c9a3706b8e3ab0ad3478f10e78c97d44704a5b1b0878bb",
+      "size_bytes": 5352
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/neq_density.png",
+      "roles": [
+        "availability-declared",
+        "manuscript-figure"
+      ],
+      "sha256": "959983b2bbf66b1f889c0837fae536d66d7dab53c4ddac1b4fdac4dcad95a0f1",
+      "size_bytes": 164861
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/originality_spotcheck_2026-06-19.md",
+      "roles": [
+        "handoff-document"
+      ],
+      "sha256": "257397aba6c07fcce28d4cebd0b669fb403238fc5d570de78a9e2e6c993d7a9b",
+      "size_bytes": 5528
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/progress_report.md",
+      "roles": [
+        "handoff-document"
+      ],
+      "sha256": "ca6c519dabfd2a633bf4344b2ad764b783bf37df311695e30e541bde09c32b3c",
+      "size_bytes": 9245
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/references.bib",
+      "roles": [
+        "availability-declared",
+        "handoff-document"
+      ],
+      "sha256": "8e3d2e4c9f3c854a70ea9d931863aef4266389a7b3e29e79522363c8e53602d8",
+      "size_bytes": 3025
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/revision_roadmap.md",
+      "roles": [
+        "handoff-document"
+      ],
+      "sha256": "058d0be96d5d1895024a4d74f96cae873ccaba793688b1b3c36b9a1ba8abcef7",
+      "size_bytes": 3477
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/scripts/analyze_eigen_fit_windows.py",
+      "roles": [
+        "availability-declared"
+      ],
+      "sha256": "4b766968311772130e0e164219061694b80b6851416446aaf30335e5e1971291",
+      "size_bytes": 5742
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/scripts/audit_availability_paths.py",
+      "roles": [
+        "availability-declared"
+      ],
+      "sha256": "449c7c91c7d244d1556c5bf4832d499fb368c575d8a10e5599b21389f4377bb7",
+      "size_bytes": 7096
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/scripts/audit_manuscript_claims.py",
+      "roles": [
+        "availability-declared"
+      ],
+      "sha256": "b46ee84ecc87fe0eacf3ced74eefd74e098d040a68f2f8c53012bf062f12dc64",
+      "size_bytes": 18653
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/scripts/build_submission_bundle_manifest.py",
+      "roles": [
+        "manifest-builder"
+      ],
+      "sha256": "974a60a0c9d0e968b27b75f24f4ad61dd198851e85a5686426e2ddd1797bcdf7",
+      "size_bytes": 15580
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/scripts/export_source_trace_metrics.py",
+      "roles": [
+        "availability-declared"
+      ],
+      "sha256": "5eac487deea15531e3ac158221ba8a58e1b3a374a328fb694b83a4837a9475a7",
+      "size_bytes": 17879
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/scripts/generate_manuscript_figures.py",
+      "roles": [
+        "availability-declared"
+      ],
+      "sha256": "65026eb1d396f340b05c48d0a2b5514e27af636e3f59e7c3c1491118cb6ae186",
+      "size_bytes": 13122
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/scripts/recompute_short_chain_nn_metrics.py",
+      "roles": [
+        "availability-declared"
+      ],
+      "sha256": "f403861b7a537ddf1b345097c266caba82aff7b4b9d69b5105e08359f2050e17",
+      "size_bytes": 14368
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/short_chain_nn_rerun_metrics.json",
+      "roles": [
+        "availability-declared",
+        "claim-evidence:eigen_relaxation_diagnostic",
+        "claim-evidence:reproducibility_summary_table",
+        "claim-evidence:short_chain_equilibrium_validation",
+        "claim-evidence:short_chain_symmetry_scope"
+      ],
+      "sha256": "5600a1a9f126c9cc79900e9b08c8c6b67cea24d7b16aab4366c256569e9ab7dd",
+      "size_bytes": 7594
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/source_trace_metrics.json",
+      "roles": [
+        "availability-declared",
+        "claim-evidence:lte_control_values",
+        "claim-evidence:lte_table_values",
+        "claim-evidence:reproducibility_summary_table",
+        "claim-evidence:short_chain_equilibrium_validation"
+      ],
+      "sha256": "912c4db102e7f415a0d78c0db35564159a06fc4be9b49d62b8a4396a1b70cb89",
+      "size_bytes": 25748
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/submission_bundle_manifest.json",
+      "roles": [
+        "handoff-document"
+      ],
+      "sha256": null,
+      "size_bytes": 25652
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/submission_bundle_manifest.md",
+      "roles": [
+        "handoff-document"
+      ],
+      "sha256": null,
+      "size_bytes": 12468
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/submission_readiness_checklist_2026-06-19.md",
+      "roles": [
+        "handoff-document"
+      ],
+      "sha256": "390c7704d74630a944efb7a60c587d398d1fc264360bc637692bdd64e319fbf2",
+      "size_bytes": 6270
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/symmetry_breaking.png",
+      "roles": [
+        "availability-declared",
+        "manuscript-figure"
+      ],
+      "sha256": "883ca0d5b7786ba59f7c06fefabb22a5a859a17fcb76e8302a977f34666f8378",
+      "size_bytes": 75925
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "flux/NLS_flux_canonical.cpp",
+      "roles": [
+        "availability-declared"
+      ],
+      "sha256": "76f937608280272397a555931b353ba770b06ee87d2f5b0dce08fe1e6bb3727e",
+      "size_bytes": 24805
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "flux/analyze_canonical_flux.py",
+      "roles": [
+        "availability-declared"
+      ],
+      "sha256": "a1aef076dc27891f7103da9bb5d79c4370f666ddb4a65bd0cae8d91db6917cbc",
+      "size_bytes": 12878
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "flux/analyze_current_windows.py",
+      "roles": [
+        "availability-declared"
+      ],
+      "sha256": "cc1e02ebc9d9c082537852b0fc27121a723764a5f6f6473da622615d9b4d95e1",
+      "size_bytes": 9834
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "flux/compare_gibbs_sde.py",
+      "roles": [
+        "availability-declared"
+      ],
+      "sha256": "afba16a25bd6dd40dc72b4ef2c83c4c61c3a5c0c427942b0ec13103998a857cc",
+      "size_bytes": 4785
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "flux/gibbs_mcmc_reference.py",
+      "roles": [
+        "availability-declared"
+      ],
+      "sha256": "3b443bc83012c988a050870c145a4bd82ac02e83022e2cbde6c22065892d9fe0",
+      "size_bytes": 10333
+    }
+  ],
+  "script": "Paper/revision_2026-06-19/scripts/build_submission_bundle_manifest.py",
+  "summary": {
+    "local_raw_dependency_count": 44,
+    "missing_release_files": 0,
+    "release_directory_count": 1,
+    "release_file_count": 43,
+    "status": "PASS_WITH_LOCAL_RAW_DATA_LIMITATION",
+    "untracked_local_raw_dependencies": 44,
+    "untracked_release_files": 0
+  }
+}

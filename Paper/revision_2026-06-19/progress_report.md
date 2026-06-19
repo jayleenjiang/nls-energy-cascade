@@ -117,6 +117,15 @@
     present. The LaTeX build remains 18 pages with no unresolved
     citations/references and no overfull or underfull box warnings after the
     path-list formatting adjustment.
+22. Added `scripts/build_submission_bundle_manifest.py` plus
+    `submission_bundle_manifest.json` and `submission_bundle_manifest.md`. The
+    manifest merges manuscript source, bibliography, figures, availability
+    paths, claim-audit evidence, and handoff documents into one release
+    checklist. It also records a raw-data limitation: 44 source-trace raw-data
+    dependency records exist locally under untracked roots such as
+    `Energy Cascade/`, `KDE/`, and `lte/`; these should be handled by a
+    deliberate archive/Zenodo/OSF policy if the target journal requires full
+    raw-data release.
 
 ## Key validated numerical result
 
@@ -151,6 +160,10 @@ Power-law fit:
   any last journal-format edits are settled. The current local core numerical
   audit passes 14/14 checks, and the current availability-path audit passes
   31/31 checks.
+- Decide whether the final release should include only the audited derived
+  artifacts in GitHub or also a DOI-backed raw-data archive. The bundle
+  manifest currently flags 44 local raw-data dependency records that are not
+  git-tracked.
 - Optional but recommended before final release: package a full TensorFlow
   retraining environment if the target journal expects re-training
   reproducibility beyond saved-model inference.

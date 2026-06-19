@@ -16,6 +16,7 @@ paper can be called journal-ready.
 | Figure provenance | Source-traced for manuscript-generated figures | `scripts/generate_manuscript_figures.py`; `manuscript_figure_metrics.json` |
 | Short-chain saved-model diagnostics | Rerun from saved TensorFlow/Keras models | `scripts/recompute_short_chain_nn_metrics.py`; `short_chain_nn_rerun_metrics.json` |
 | Data/code and figure path availability | Passing local path audit | `scripts/audit_availability_paths.py`; `availability_path_audit.json`; `availability_path_audit.md` |
+| Submission/release bundle | Passing for tracked release files; raw-data limitation recorded | `scripts/build_submission_bundle_manifest.py`; `submission_bundle_manifest.json`; `submission_bundle_manifest.md` |
 | Originality pre-screen | Clean within sampled web-query scope | `originality_spotcheck_2026-06-19.md` |
 
 ## Author confirmations still required
@@ -59,6 +60,10 @@ These items cannot be completed from the local code/data alone.
      create an immutable release/tag.
    - If the journal requires archival data, prepare a Zenodo/OSF release and
      replace the GitHub-only availability statement with DOI-backed language.
+   - Decide whether large local raw-data roots (`Energy Cascade/`, `KDE/`, and
+     `lte/`) should be archived outside GitHub. The current bundle manifest
+     records 44 local source-trace raw-data dependency records that exist
+     locally but are not git-tracked.
 
 7. **Neural-network reproducibility level**
    - Decide whether saved-model inference reproducibility is enough.
@@ -79,8 +84,11 @@ Run these only after the author-supplied items above have been inserted.
 5. Rerun `scripts/audit_availability_paths.py` and confirm every manuscript
    `\path{...}` entry and figure include exists in the release branch or
    archive.
-6. Recheck `references.bib` for dangling or orphan citation keys.
-7. Update `integrity_audit_2026-06-19.md` or create a new dated final audit
+6. Rerun `scripts/build_submission_bundle_manifest.py` and confirm the tracked
+   release bundle has no missing or untracked required files. If a raw-data
+   archive is created, rerun the manifest/checklist against that archive.
+7. Recheck `references.bib` for dangling or orphan citation keys.
+8. Update `integrity_audit_2026-06-19.md` or create a new dated final audit
    snapshot with the final compile/audit results.
 
 ## Suggested final submission bundle
@@ -94,6 +102,7 @@ Run these only after the author-supplied items above have been inserted.
   - `integrity_audit_2026-06-19.md`
   - `manuscript_claim_audit.md`
   - `availability_path_audit.md`
+  - `submission_bundle_manifest.md`
   - `submission_readiness_checklist_2026-06-19.md`
 - Optional supplementary archive:
   - current-scaling validation artifacts under `experiments/flux_validation/`
