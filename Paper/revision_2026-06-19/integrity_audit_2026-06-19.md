@@ -4,10 +4,10 @@ Scope: `Paper/revision_2026-06-19/draft.tex` after the BibTeX refactor and
 short-chain diagnostic tightening.
 
 Verdict: **PASS WITH BLOCKING NOTES for submission**.  Bibliographic existence,
-ghost citations, and the main current-scaling claims pass the checks below.
-Before journal submission, the LTE table and several short-chain neural-network
-diagnostics should be regenerated into machine-readable source metrics, and the
-authors must confirm funding / author-contribution declarations.
+ghost citations, main current-scaling claims, LTE table values, and the
+manuscript-used short-chain neural-network diagnostics pass the checks below.
+Before journal submission, the authors must still confirm funding /
+author-contribution declarations and run the final external originality check.
 
 ## Reference verification
 
@@ -62,20 +62,20 @@ Result:
 | Cascade embedding figure | CKSTT embedding paragraph and figure | `manuscript_figure_metrics.json`; source CSVs under `Energy Cascade/Rect Plots/` | VERIFIED as a generated visualization from local CSVs. |
 | Mid-chain LTE residual figure | `fig:lte-resid` | `manuscript_figure_metrics.json`; script `scripts/generate_manuscript_figures.py`; hist files `lte/n50 data/simd_n50_j24.hist` and `lte/n100 data/n100_j48.hist` | VERIFIED for displayed residual slices and recorded fit metrics. |
 | Full LTE table (`tab:lte`) slopes/R²/temperature comparisons | LTE section | `source_trace_metrics.json`; script `scripts/export_source_trace_metrics.py`; hist/profile source hashes recorded for each row. | VERIFIED for all table rows after aligning `T_kin` entries to the exported pair-averaged profile values. |
-| Equilibrium Fokker--Planck validation errors `1.5%, 2.6%, 6.4%`; short-chain density figures | short-chain Fokker--Planck section | `source_trace_metrics.json`; archived notebook outputs from `KDE/4:15_NN/FKE_5d_NLS.ipynb`; figure SHA256 records for `eq_validation.png`, `neq_density.png`, `symmetry_breaking.png`, and `Q1_slices.png`. | VERIFIED for archived equilibrium-error values and figure provenance. Notebook diagnostics without saved output (angular-width ratio, phase-locking peak table, middle-mode balance) are recorded as unverified and no longer used as quantitative manuscript claims. |
+| Equilibrium Fokker--Planck validation errors `1.5%, 2.6%, 6.4%`; short-chain density figures; manuscript-used short-chain NN diagnostics | short-chain Fokker--Planck section | `source_trace_metrics.json`; `short_chain_nn_rerun_metrics.json`; `scripts/export_source_trace_metrics.py`; `scripts/recompute_short_chain_nn_metrics.py`; archived notebook outputs from `KDE/4:15_NN/FKE_5d_NLS.ipynb`; figure SHA256 records for `eq_validation.png`, `neq_density.png`, `symmetry_breaking.png`, and `Q1_slices.png`. | VERIFIED for archived equilibrium-error values, figure provenance, and saved-model TensorFlow rerun (`/usr/local/bin/python3`, TensorFlow 2.21.0, Keras 3.14.0). The rerun reproduces the equilibrium errors and eigen surrogate RMSE, supports qualitative symmetry breaking, and confirms the removed angular-width `≈2` claim is unsupported (`sigma3/sigma1≈1.03--1.13`). Middle-mode current balance has an 8.9% residual in the rerun and is retained only as a solver diagnostic, not a manuscript claim. |
 | Eigen relaxation diagnostic `lambda_diag≈-0.934` and window sensitivity | eigenfunction section | `eigen_fit_sensitivity.json`; script `scripts/analyze_eigen_fit_windows.py`; source `KDE/NLS_backward_Y_train.txt` | VERIFIED as observable-dependent diagnostic rate, not a spectral-gap claim. |
-| Symmetry breaking | stabilization section | Manuscript now uses qualitative wording; old unsupported `15%` claim removed. | ACCEPTABLE as qualitative diagnostic; optional quantitative metric can be added later if recomputed from saved arrays. |
+| Symmetry breaking | stabilization section | `short_chain_nn_rerun_metrics.json`; manuscript now uses qualitative wording; old unsupported `15%` claim removed. | VERIFIED as a qualitative diagnostic. The saved-model rerun reports masked and unmasked asymmetry metrics, but the manuscript intentionally avoids a standalone percentage because the value is sensitive to low-density regions and network normalization. |
 
 ## AI research failure mode checklist
 
 | Mode | Status | Evidence / note |
 |---|---|---|
-| 1. Implementation bug passing self-review | CLEAR for canonical flux experiment and LTE table export; QUALIFIED for short-chain NN archive | Flux code has frozen hashes, sanitizer smoke run, deterministic threading check, equal-temperature and hot/cold gates. LTE table values are regenerated from hist/profile files. Short-chain NN values are exported from archived notebook outputs; TensorFlow rerun remains a recommended reproducibility supplement. |
+| 1. Implementation bug passing self-review | CLEAR for canonical flux experiment, LTE table export, and saved-model short-chain NN inference; QUALIFIED for full NN retraining | Flux code has frozen hashes, sanitizer smoke run, deterministic threading check, equal-temperature and hot/cold gates. LTE table values are regenerated from hist/profile files. Short-chain NN values are exported from archived notebook outputs and rerun from saved Keras models in `scripts/recompute_short_chain_nn_metrics.py`; model retraining itself is not rerun here. |
 | 2. Hallucinated citation | CLEAR | 8/8 references verified; no dangling/orphan citation keys. |
-| 3. Hallucinated experimental result | CLEAR for flux/eigen/action-profile/LTE-table claims; QUALIFIED for archived NN figures | Main scaling, eigen diagnostics, action profiles, and LTE table entries are tied to JSON/manifest outputs. Short-chain NN equilibrium-error and symmetry metrics are tied to archived notebook outputs; unarchived diagnostics were removed or downgraded. |
+| 3. Hallucinated experimental result | CLEAR for flux/eigen/action-profile/LTE-table and manuscript-used short-chain NN claims | Main scaling, eigen diagnostics, action profiles, and LTE table entries are tied to JSON/manifest outputs. Short-chain NN equilibrium-error, qualitative symmetry, phase-locking branch, and eigen-surrogate fit values are source-traced through archived outputs and the saved-model rerun. The middle-mode current balance is source-traced only as a solver diagnostic, not as a manuscript claim. Unsupported unarchived quantitative claims were removed or downgraded. |
 | 4. Shortcut reliance | CLEAR / not applicable | Numerical SDE simulation; no ML benchmark shortcut claim. Neural FP solver is now described diagnostically and validated against Gibbs where possible. |
 | 5. Bug reframed as insight | CLEAR for corrected current-scaling narrative | Unsupported GC/entropy and spectral-gap claims were demoted; the paper labels finite-size and diagnostic limitations explicitly. |
-| 6. Methodology fabrication | CLEAR for flux and LTE workflows; QUALIFIED for short-chain NN workflow | Flux methods match manifest. LTE table computation is scripted. Short-chain NN workflow is traced to notebooks, model/data hashes, and figure hashes, but a clean non-notebook TensorFlow rerun script remains advisable before final release. |
+| 6. Methodology fabrication | CLEAR for flux, LTE, and saved-model short-chain NN workflows; QUALIFIED for full NN retraining | Flux methods match manifest. LTE table computation is scripted. Short-chain NN workflow is traced to notebooks, model/data hashes, figure hashes, and a clean non-notebook TensorFlow rerun script. Full retraining of the neural networks is not part of the current release audit. |
 | 7. Frame-lock | CLEAR WITH LIMITATION | Current framing is explicitly numerical/finite-size and no longer claims asymptotic theorem or full GC test. Remaining limitations are acknowledged. |
 
 ## Remaining required actions before calling the paper journal-ready
@@ -85,7 +85,8 @@ Result:
 2. Run a professional plagiarism/self-plagiarism check outside this repository
    before formal submission; this audit only performed source and metadata
    integrity checks plus local claim/data traceability.
-3. Recommended before final release: archive a TensorFlow environment or
-   non-notebook rerun script for the short-chain neural-network diagnostics.
-4. Perform the final 100% citation/data/claim audit after author declarations
-   and the optional TensorFlow reproducibility supplement are decided.
+3. Perform the final 100% citation/data/claim audit after author declarations
+   are finalized.
+4. Optional but recommended: archive a full neural-network retraining
+   environment if the journal requires re-training rather than saved-model
+   inference reproducibility.

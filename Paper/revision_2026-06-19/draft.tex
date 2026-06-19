@@ -972,10 +972,12 @@ project repository. The key reproducibility artifacts are:
   \path{scripts/generate_manuscript_figures.py};
   \item source metrics for those figures:
   \path{manuscript_figure_metrics.json};
-  \item source-trace export for the LTE table and short-chain neural-network
-  diagnostics:
+  \item source-trace export for the LTE table and short-chain diagnostics:
   \path{scripts/export_source_trace_metrics.py} and
   \path{source_trace_metrics.json};
+  \item short-chain TensorFlow saved-model rerun:
+  \path{scripts/recompute_short_chain_nn_metrics.py} and
+  \path{short_chain_nn_rerun_metrics.json};
   \item eigen-relaxation diagnostic script and output:
   \path{scripts/analyze_eigen_fit_windows.py} and
   \path{eigen_fit_sensitivity.json};

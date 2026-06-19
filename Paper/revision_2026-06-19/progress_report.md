@@ -78,6 +78,14 @@
     short-chain quantitative claims whose notebook cells had no saved output
     (angular-width ratio, phase-locking peak table, middle-mode current
     balance).
+16. Extracted short-chain neural-network diagnostics into
+    `scripts/recompute_short_chain_nn_metrics.py` and reran them with
+    `/usr/local/bin/python3` (TensorFlow 2.21.0 / Keras 3.14.0), generating
+    `short_chain_nn_rerun_metrics.json`. The rerun reproduces the equilibrium
+    validation errors and eigen-surrogate data-fit RMSE from the archived
+    notebooks. It also confirms that the removed angular-width `≈2` claim is
+    unsupported: the saved-model rerun gives `sigma3/sigma1≈1.03--1.13`, so the
+    manuscript continues not to use that result as a claim.
 
 ## Key validated numerical result
 
@@ -106,9 +114,10 @@ Power-law fit:
 - Author-contribution and competing-interest declarations should be confirmed
   by the authors before submission.
 - Perform the final 100% citation/data/claim audit after author declarations
-  and the short-chain TensorFlow reproducibility decision are settled.
-- Recommended before final release: package a TensorFlow environment or
-  non-notebook rerun script for the short-chain neural-network diagnostics.
+  are settled.
+- Optional but recommended before final release: package a full TensorFlow
+  retraining environment if the target journal expects re-training
+  reproducibility beyond saved-model inference.
 - Optional but recommended: add an appendix or supplementary note documenting
   LTE histogram generation and current-scaling validation in a compact
   reproducibility table.

@@ -373,12 +373,14 @@ def export_short_chain() -> dict[str, Any]:
         "symmetry_breaking": image_record(REVISION / "symmetry_breaking.png"),
         "Q1_slices": image_record(REVISION / "Q1_slices.png"),
     }
+    companion_rerun = REVISION / "short_chain_nn_rerun_metrics.json"
 
     return {
         "description": "Archived notebook-output metrics and figure hashes for the short-chain Fokker--Planck and eigenfunction sections.",
         "tensorflow_rerun": {
-            "attempted": False,
-            "reason": "Current local Python environments do not provide TensorFlow; this export records archived notebook outputs instead of rerunning models.",
+            "attempted_by_this_script": False,
+            "reason": "This exporter records archived notebook outputs. Use scripts/recompute_short_chain_nn_metrics.py for a TensorFlow rerun from saved Keras models.",
+            "companion_rerun_metrics": file_record(companion_rerun),
         },
         "source_files": {
             "fokker_planck_notebook": file_record(fp_nb_path),
