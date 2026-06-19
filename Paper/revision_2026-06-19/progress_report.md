@@ -66,6 +66,10 @@
       with a reproducible relaxation-rate diagnostic figure. The historical
       `lambda_R=-0.934` value is now described as an observable-dependent
       diagnostic rate, not a high-accuracy spectral-gap estimate.
+14. Converted the reference list from an inline `thebibliography` block to
+    `references.bib`, verified all eight references against publisher/arXiv/DOI
+    metadata, updated `DobsonLiZhai` to its published CMS version, and recorded
+    the audit in `integrity_audit_2026-06-19.md`.
 
 ## Key validated numerical result
 
@@ -93,8 +97,14 @@ Power-law fit:
   materials.
 - Author-contribution and competing-interest declarations should be confirmed
   by the authors before submission.
-- Convert references to a maintainable BibTeX file and perform a final
-  100% citation/data/claim audit.
+- The complete LTE table (`tab:lte`) needs a tracked regeneration/export file;
+  the current mid-chain residual figure is source-traced, but all table entries
+  are not yet captured in a unified metrics artifact.
+- Short-chain neural-network figure metrics (`eq_validation`, `neq_density`,
+  `symmetry_breaking`, `Q1_slices`) should be exported from notebooks/scripts to
+  a tracked metrics file before final submission.
+- Perform the final 100% citation/data/claim audit after the LTE and
+  short-chain NN metrics are exported.
 - Optional but recommended: add an appendix or supplementary note documenting
   LTE histogram generation and current-scaling validation in a compact
   reproducibility table.

@@ -15,7 +15,7 @@
 \usepackage{algorithm}
 \usepackage{algpseudocode}
 \usepackage[numbers]{natbib}   % [numbers] added: plain style -> numeric citations
-\bibliographystyle{plain}
+\bibliographystyle{plainnat}
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{proposition}[theorem]{Proposition}
@@ -975,7 +975,12 @@ project repository. The key reproducibility artifacts are:
   \cref{fig:profile,fig:embedding,fig:lte-resid}:
   \path{scripts/generate_manuscript_figures.py};
   \item source metrics for those figures:
-  \path{manuscript_figure_metrics.json}.
+  \path{manuscript_figure_metrics.json};
+  \item eigen-relaxation diagnostic script and output:
+  \path{scripts/analyze_eigen_fit_windows.py} and
+  \path{eigen_fit_sensitivity.json};
+  \item BibTeX reference database and integrity-audit snapshot:
+  \path{references.bib} and \path{integrity_audit_2026-06-19.md}.
 \end{itemize}
 A public repository snapshot is maintained at
 \href{https://github.com/jayleenjiang/nls-energy-cascade}{the project
@@ -1009,47 +1014,7 @@ authors remain responsible for verifying the scientific claims, numerical
 results, and final wording before submission.
 
 
-\begin{thebibliography}{9}
-
-\bibitem{CKSTT}
-J.~Colliander, M.~Keel, G.~Staffilani, H.~Takaoka, T.~Tao,
-\emph{Transfer of energy to high frequencies in the cubic defocusing nonlinear
-Schr\"odinger equation}, Invent. Math. \textbf{181} (2010), 39--113.
-
-\bibitem{HLNS}
-Z.~Hani, Y.~Li, A.~R.~Nahmod, G.~Staffilani,
-\emph{Nonequilibrium steady states for a three-mode energy cascade model},
-arXiv:2505.16018.
-
-\bibitem{ZhaiDobsonLi}
-J.~Zhai, M.~Dobson, Y.~Li,
-\emph{A deep learning method for solving Fokker--Planck equations},
-Proc. Mach. Learn. Res. (MSML) \textbf{145} (2022), 568--597.
-
-\bibitem{Li2019}
-Y.~Li,
-\emph{A data-driven method for the steady state of randomly perturbed dynamics},
-Commun. Math. Sci. \textbf{17} (2019), no.~4, 1045--1059.
-
-\bibitem{DobsonLiZhai}
-M.~Dobson, Y.~Li, J.~Zhai,
-\emph{An efficient data-driven solver for Fokker--Planck equations: algorithm
-and analysis}, arXiv:1906.02600 (2019).
-
-\bibitem{GallavottiCohen}
-G.~Gallavotti, E.~G.~D.~Cohen,
-\emph{Dynamical ensembles in nonequilibrium statistical mechanics},
-Phys. Rev. Lett. \textbf{74} (1995), 2694--2697.
-
-\bibitem{LepriLiviPoliti}
-S.~Lepri, R.~Livi, A.~Politi,
-\emph{Thermal conduction in classical low-dimensional lattices},
-Phys. Rep. \textbf{377} (2003), 1--80.
-
-\bibitem{Nazarenko}
-S.~Nazarenko, \emph{Wave Turbulence}, Lecture Notes in Physics \textbf{825}, Springer, 2011.
-
-\end{thebibliography}
+\bibliography{references}
 
 
 \end{document}
