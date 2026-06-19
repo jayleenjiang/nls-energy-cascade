@@ -88,10 +88,15 @@
     manuscript continues not to use that result as a claim.
 17. Added `scripts/audit_manuscript_claims.py`, which builds
     `manuscript_claim_audit.json` and `manuscript_claim_audit.md` from the
-    source-traced numerical artifacts. The current audit verifies 13/13 core
+    source-traced numerical artifacts. The current audit verifies 14/14 core
     numerical/data claims and caught a notation issue in the LTE section:
     the equilibrium marginal is now written consistently with the manuscript's
     Gibbs convention as `exp[-H/(2T)]`.
+18. Added a compact `Numerical reproducibility summary` table to the manuscript,
+    mapping each numerical result family to its evidence bundle, automated or
+    source-traced check, and retained claim scope. This addresses the previous
+    recommendation to include a concise reproducibility table without adding
+    new unsupported numerical claims.
 
 ## Key validated numerical result
 
@@ -121,10 +126,7 @@ Power-law fit:
   by the authors before submission.
 - Rerun the final citation/data/claim audit after author declarations and any
   last journal-format edits are settled. The current local core numerical audit
-  passes 13/13 checks.
+  passes 14/14 checks.
 - Optional but recommended before final release: package a full TensorFlow
   retraining environment if the target journal expects re-training
   reproducibility beyond saved-model inference.
-- Optional but recommended: add an appendix or supplementary note documenting
-  LTE histogram generation and current-scaling validation in a compact
-  reproducibility table.

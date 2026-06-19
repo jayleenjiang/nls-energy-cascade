@@ -380,6 +380,44 @@ def build_registry() -> list[dict[str, Any]]:
 
     add_claim(
         registry,
+        claim_id="reproducibility_summary_table",
+        section="numerical reproducibility summary",
+        claim="The manuscript contains a compact reproducibility map with scope limitations for each numerical result family.",
+        evidence=[
+            DRAFT,
+            flux_path,
+            validation_path,
+            figure_metrics_path,
+            source_trace_path,
+            rerun_path,
+            eigen_path,
+        ],
+        expected_text=[
+            r"\section*{Numerical reproducibility summary}",
+            r"\label{tab:repro-summary}",
+            r"Action-current scaling",
+            r"Long-chain profiles and local equilibrium",
+            r"Short-chain Fokker--Planck density",
+            r"Eigenfunction diagnostic",
+            r"Manuscript-level claim audit",
+            r"finite-size action-current law over $n=10,20,30,40$",
+            r"saved-model inference reproducibility, not full neural-network retraining",
+            r"observable-dependent slow-mode diagnostic, not resolved spectral gap",
+            r"local audit to rerun after final author and journal-format edits",
+        ],
+        computed={
+            "registered_artifact_families": [
+                "flux_scaling",
+                "long_chain_profiles_lte",
+                "short_chain_fokker_planck",
+                "eigen_diagnostic",
+                "claim_audit",
+            ]
+        },
+    )
+
+    add_claim(
+        registry,
         claim_id="data_availability_artifacts",
         section="data and code availability",
         claim="Data/code availability lists source-trace and rerun artifacts needed for this audit.",

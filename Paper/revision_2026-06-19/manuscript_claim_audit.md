@@ -1,10 +1,10 @@
 # Manuscript claim audit
 
-Generated: `2026-06-19T16:01:52.270266+00:00`
+Generated: `2026-06-19T16:05:46.076634+00:00`
 
 Scope note: Core numerical/data claims only; author declarations and external plagiarism checks remain outside code-verifiable scope.
 
-Summary: **13 / 13** claims verified; **0** failed.
+Summary: **14 / 14** claims verified; **0** failed.
 
 | ID | Section | Verdict | Evidence |
 |---|---|---:|---|
@@ -20,6 +20,7 @@ Summary: **13 / 13** claims verified; **0** failed.
 | `short_chain_equilibrium_validation` | short-chain Fokker--Planck | VERIFIED | `Paper/revision_2026-06-19/short_chain_nn_rerun_metrics.json`<br>`Paper/revision_2026-06-19/source_trace_metrics.json` |
 | `short_chain_symmetry_scope` | stabilization | VERIFIED | `Paper/revision_2026-06-19/short_chain_nn_rerun_metrics.json` |
 | `eigen_relaxation_diagnostic` | eigenfunction | VERIFIED | `Paper/revision_2026-06-19/eigen_fit_sensitivity.json`<br>`Paper/revision_2026-06-19/short_chain_nn_rerun_metrics.json` |
+| `reproducibility_summary_table` | numerical reproducibility summary | VERIFIED | `Paper/revision_2026-06-19/draft.tex`<br>`Paper/revision_2026-06-19/experiments/flux_validation/production_dt5e-4/flux_primary_scaling.json`<br>`Paper/revision_2026-06-19/experiments/flux_validation/validation_report.md`<br>`Paper/revision_2026-06-19/manuscript_figure_metrics.json`<br>`Paper/revision_2026-06-19/source_trace_metrics.json`<br>`Paper/revision_2026-06-19/short_chain_nn_rerun_metrics.json`<br>`Paper/revision_2026-06-19/eigen_fit_sensitivity.json` |
 | `data_availability_artifacts` | data and code availability | VERIFIED | `Paper/revision_2026-06-19/draft.tex` |
 
 ## Failed text checks
