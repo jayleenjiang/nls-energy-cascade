@@ -398,11 +398,12 @@ $v$ is obtained by a high-throughput MC simulation of \eqref{eq:sde-bulk}
 together with a kernel density estimate; see \cref{sec:fp-numerics}.
 
 \subsubsection{Eigenfunctions of the generator}
-To probe \eqref{eq:decay} we estimate the dominant nontrivial eigenpair of
-$\Lgen$ directly from trajectories. For a localized observable $g$ (we use
-$g=\cos\theta_1$) we evolve a large ensemble of trajectories from each of many
-initial points $x$ and record the conditional expectation $\E_x[g(X_t)]$ as a
-function of $t$. Fitting a late-time exponential window gives an
+To probe \eqref{eq:decay} we estimate the relaxation rate and slow-mode
+amplitude visible to a chosen observable directly from trajectories. For a
+localized observable $g$ (we use $g=\cos\theta_1$) we evolve a large ensemble
+of trajectories from each of many initial points $x$ and record the conditional
+expectation $\E_x[g(X_t)]$ as a function of $t$. Fitting a late-time
+exponential window gives an
 observable-dependent estimate of the dominant decay rate visible to $g$; if a
 damped oscillatory fit is also stable, it gives an estimate of an imaginary
 part. The fitted amplitude gives a pointwise sample $Q(x)$ of the associated
@@ -791,7 +792,7 @@ with the $\gamma(T-I^3)$ thermostat of \cite{HLNS}, isolates this mechanism; we
 solve its stationary Fokker--Planck equation by the same network method and
 recover the predicted concentration of $\theta_3$.
 
-Three quantitative signatures of the nonequilibrium drive are read off from the
+Three diagnostic signatures of the nonequilibrium drive are read off from the
 $T_1=2,T_3=8$ steady state.
 
 \emph{(i) Symmetry breaking.} At equilibrium the density is symmetric under
@@ -847,8 +848,10 @@ on the solver.
   nonequilibrium steady state. At $I_1=I_2=I_3=2$ and $T_1=2,\,T_3=8$, the
   network density $\rho(\theta_1,\theta_3)$ (left) and its transpose (centre)
   differ; the relative asymmetry $(\rho-\rho^{\mathsf T})/(\rho+\rho^{\mathsf
-  T})$ (right) reaches about $15\%$ along the diagonal, vanishing only in the
-  equilibrium limit.}
+  T})$ (right) is shown with the colour scale clipped at $\pm0.15$ for
+  readability. Since unmasked max/mean asymmetry is sensitive to low-density
+  regions and network normalization, this panel is used as qualitative evidence
+  of symmetry breaking rather than as a standalone quantitative estimator.}
   \label{fig:symmetry}
 \end{figure}
 
@@ -856,59 +859,64 @@ on the solver.
 
 To probe the relaxation spectrum we apply the trajectory method of
 \cref{sec:methods} with the localized observable $g=\cos\theta_1$. From each of
-a large set of initial points we evolve an ensemble and record
+$4096$ initial points we evolve an ensemble and record
 $\E_x[\cos\theta_1(X_t)]$; fitting the decay \eqref{eq:decay} returns, at each
-initial point, an estimate of the relaxation rate and amplitude.
+initial point, an estimate of the observable-dependent relaxation rate and
+amplitude.
 
-At $\gamma=0.1$ the distribution of fitted imaginary parts $\lambda_I$ is
-sharply peaked at zero for this observable, so the measured response is
-compatible with a dominant real decay over the fitted window
-(\cref{fig:eigenvalues}). The decay rate estimated from the pure-exponential
-fits is
-\begin{equation}\label{eq:lambdaR}
-  \lambda_R \;\approx\; -0.93 .
+At $\gamma=0.1$, pure-exponential fits
+\[
+  \E_x[\cos\theta_1(X_t)] \approx A(x)e^{\lambda t}+c(x)
+\]
+over the full recorded window $t\in[0,5]$ retain $2895$ of $4096$ curves under
+the filter $-5<\lambda<0$, with median
+\begin{equation}\label{eq:lambda_diag}
+  \lambda_{\mathrm{diag}} \;\approx\; -0.934 .
 \end{equation}
-(An oscillatory five-parameter fit applied indiscriminately to all trajectories
-returns a more negative mean, $\approx-1.90$; this mixes in faster modes and the
-early transient and is reported only as a diagnostic confirming that most
-trajectories do not oscillate.)
+This number is reproducible from the saved backward-Monte-Carlo curves, but it
+is not a window-independent spectral gap estimate: the retained median shifts
+from $-1.60$ on $t\in[0,2]$ to $-0.68$ on $t\in[0.5,5]$
+(\cref{fig:eigenvalues}). We therefore use $\lambda_{\mathrm{diag}}$ as a
+diagnostic relaxation rate for the observable $\cos\theta_1$, not as a resolved
+statement about the full generator spectrum.
 
-The fitted amplitudes provide pointwise samples $Q(x)$ of the dominant
-nontrivial eigenfunction. A second network is trained to represent $Q$ subject
-to the eigenvalue equation $\Lgen Q=\lambda_R Q$ with $\lambda_R$ from
-\eqref{eq:lambdaR}, using the generator $\Lgen$ of \eqref{eq:generator} (without
-the divergence terms that distinguish $\Ladj$). The reconstruction is only
-moderately accurate: the data root-mean-square error is $0.38$ (relative error
-$0.71$) and the median normalized PDE residual $|\Lgen Q-\lambda_R Q|/|Q|$ is
-$0.35$. We report these candidly: the dominant nontrivial eigenfunction is
-sign-changing and is reconstructed from intrinsically noisy backward Monte
-Carlo data, and is the hardest object computed in this work; the agreement is
-nonetheless sufficient to exhibit the qualitative structure of $Q$
-(\cref{fig:eigenfunction}).
+The fitted amplitudes provide pointwise samples $Q(x)$ of the corresponding
+slow-mode surrogate. A second network is trained to represent $Q$ subject to
+the eigenvalue equation $\Lgen Q=\lambda_{\mathrm{diag}} Q$, using the generator
+$\Lgen$ of \eqref{eq:generator} (without the divergence terms that distinguish
+$\Ladj$). The reconstruction is only moderately accurate: the data
+root-mean-square error is $0.38$ (relative error $0.71$) and the median
+normalized PDE residual $|\Lgen Q-\lambda_{\mathrm{diag}} Q|/|Q|$ is $0.35$. We
+report these candidly: the fitted amplitude data contain both signs and are
+reconstructed from intrinsically noisy backward Monte Carlo data, making this
+the hardest object computed in this work; the agreement is nonetheless
+sufficient to exhibit the qualitative structure of $Q$ on representative
+slices (\cref{fig:eigenfunction}).
 
 \begin{figure}[ht]
   \centering
   \includegraphics[width=0.95\textwidth]{eigenvalue_scatter.png}
-  \caption{Generator spectrum estimated from backward Monte Carlo at
-  $\gamma=0.1$, using the observable $\cos\theta_1=\cos 2(\varphi_1-\varphi_2)$.
-  For each of the $4096$ initial conditions the relaxation curve
-  $\mathbb{E}_x[\cos\theta_1](t)\to$ its equilibrium value is fitted for a
-  single complex rate $\lambda=\lambda_R+i\lambda_I$. Left: fitted
-  $\lambda_R$ (pure-exponential median $\approx-0.93$ in the selected fitting
-  window). Right: $|\lambda_I|$ on a logarithmic count axis; over $99\%$ of
-  fits give $\lambda_I=0$ for this observable and window.}
+  \caption{Backward-Monte-Carlo relaxation-rate diagnostic at $\gamma=0.1$,
+  using the observable $\cos\theta_1=\cos 2(\varphi_1-\varphi_2)$. Left:
+  retained pure-exponential rates from $4096$ initial conditions over
+  $t\in[0,5]$; $2895$ fits satisfy $-5<\lambda<0$, with median
+  $\lambda_{\mathrm{diag}}\approx-0.934$. Right: median and interquartile range
+  across several fitting windows, showing the window sensitivity that motivates
+  treating this quantity as a diagnostic rate rather than as a high-accuracy
+  spectral gap.}
   \label{fig:eigenvalues}
 \end{figure}
 
 \begin{figure}[ht]
   \centering
   \includegraphics[width=0.95\textwidth]{Q1_slices.png}
-  \caption{Dominant nontrivial eigenfunction of the generator. Network
+  \caption{Generator slow-mode surrogate. Network
   reconstruction of $Q(\theta_1,\theta_3)$ at $I_1=I_2=I_3=1,2,4$ (fitted
-  $\lambda_R\approx-0.93$). The eigenfunction is sign-changing and concentrated
-  near $\theta_1=\theta_3=0$; as noted in the text it is reconstructed from
-  noisy backward Monte Carlo data and is shown to exhibit the qualitative
-  structure of $Q$ rather than as a high-accuracy solution.}
+  $\lambda_{\mathrm{diag}}\approx-0.934$). The fitted amplitude data contain
+  both signs; the displayed slices show the positive lobe concentrated near
+  $\theta_1=\theta_3=0$. As noted in the text, the surrogate is reconstructed
+  from noisy backward Monte Carlo data and is shown to exhibit the qualitative
+  structure of $Q$ rather than as a high-accuracy spectral computation.}
   \label{fig:eigenfunction}
 \end{figure}
 

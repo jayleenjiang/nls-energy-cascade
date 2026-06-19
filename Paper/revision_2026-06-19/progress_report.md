@@ -57,6 +57,15 @@
 12. Recompiled the manuscript with TeX Live. The current PDF has 17 pages and
     the LaTeX log has no unresolved citations/references and no overfull or
     underfull box warnings.
+13. Resolved two remaining rigor issues in the short-chain section:
+    - removed the unsupported quantitative “about 15%” symmetry-breaking claim
+      and made the figure caption explicitly qualitative;
+    - added a source-traced eigen relaxation-rate sensitivity analysis in
+      `scripts/analyze_eigen_fit_windows.py`, with results in
+      `eigen_fit_sensitivity.json`, and replaced `eigenvalue_scatter.png`
+      with a reproducible relaxation-rate diagnostic figure. The historical
+      `lambda_R=-0.934` value is now described as an observable-dependent
+      diagnostic rate, not a high-accuracy spectral-gap estimate.
 
 ## Key validated numerical result
 
@@ -84,11 +93,6 @@ Power-law fit:
   materials.
 - Author-contribution and competing-interest declarations should be confirmed
   by the authors before submission.
-- Recompute short-chain symmetry-breaking numbers from saved arrays if the
-  paper should keep the quantitative “about 15%” caption claim rather than a
-  qualitative statement.
-- Resolve the generator/eigenfunction section with a held-out fit-window
-  sensitivity table, or further demote it.
 - Convert references to a maintainable BibTeX file and perform a final
   100% citation/data/claim audit.
 - Optional but recommended: add an appendix or supplementary note documenting
