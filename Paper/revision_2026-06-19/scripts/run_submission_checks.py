@@ -7,9 +7,10 @@ without author-only information or external services:
 1. optional LaTeX compile + log scan;
 2. data/code and figure path audit;
 3. manuscript numerical-claim audit;
-4. submission bundle manifest;
-5. minimal raw-data archive manifest;
-6. final submission bundle manifest refresh.
+4. citation/reference integrity audit;
+5. submission bundle manifest;
+6. minimal raw-data archive manifest;
+7. final submission bundle manifest refresh.
 
 The script intentionally does not run professional plagiarism checking, upload
 raw data, select a journal template, or fill author/funding declarations.
@@ -190,6 +191,7 @@ def main() -> int:
     for name, script in [
         ("availability_path_audit", "audit_availability_paths.py"),
         ("manuscript_claim_audit", "audit_manuscript_claims.py"),
+        ("reference_integrity_audit", "audit_references.py"),
         ("submission_bundle_manifest_initial", "build_submission_bundle_manifest.py"),
         ("raw_data_archive_manifest", "build_raw_data_archive_manifest.py"),
         ("submission_bundle_manifest_final", "build_submission_bundle_manifest.py"),
@@ -199,6 +201,7 @@ def main() -> int:
 
     availability = load_json(revision / "availability_path_audit.json")
     claims = load_json(revision / "manuscript_claim_audit.json")
+    references = load_json(revision / "reference_integrity_audit.json")
     raw = load_json(revision / "raw_data_archive_manifest.json")
     bundle = load_json(revision / "submission_bundle_manifest.json")
 
@@ -221,6 +224,11 @@ def main() -> int:
             "name": "manuscript_claim_audit",
             "status": "PASS" if claims["failed"] == 0 else "FAIL",
             "numbers": {"total_claims": claims["total_claims"], "verified": claims["verified"], "failed": claims["failed"]},
+        },
+        {
+            "name": "reference_integrity_audit",
+            "status": references["status"],
+            "numbers": references["summary"],
         },
         {
             "name": "raw_data_archive_manifest",

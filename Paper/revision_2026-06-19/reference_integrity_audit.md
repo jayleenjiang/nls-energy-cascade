@@ -1,0 +1,77 @@
+# Reference integrity audit
+
+Generated: `2026-06-19T18:13:38.770037+00:00`
+
+Status: **PASS**
+
+## Summary
+
+| Metric | Count |
+|---|---:|
+| BibTeX entries | 8 |
+| Citation commands | 28 |
+| Unique cited keys | 8 |
+| Citation uses | 29 |
+| Dangling cited keys | 0 |
+| Orphan BibTeX entries | 0 |
+| Entries missing required fields | 0 |
+| Entries without DOI or URL | 0 |
+| Entries without recorded external source | 0 |
+
+## Reference records
+
+| Key | Type | Cited uses | Identifier | Recorded external source | Status |
+|---|---|---:|---|---|---|
+| `CKSTT` | `article` | 4 | `10.1007/s00222-010-0242-2` | https://link.springer.com/article/10.1007/s00222-010-0242-2 | PASS |
+| `HLNS` | `misc` | 17 | `10.48550/arXiv.2505.16018` | https://arxiv.org/abs/2505.16018 | PASS |
+| `ZhaiDobsonLi` | `inproceedings` | 3 | `https://proceedings.mlr.press/v145/zhai22a.html` | https://proceedings.mlr.press/v145/zhai22a.html | PASS |
+| `Li2019` | `article` | 1 | `10.4310/CMS.2019.v17.n4.a9` | https://intlpress.com/JDetail/1806262739393794050 | PASS |
+| `DobsonLiZhai` | `article` | 1 | `10.4310/CMS.2022.v20.n3.a8` | https://link.intlpress.com/JDetail/1806261569648545793 | PASS |
+| `GallavottiCohen` | `article` | 1 | `10.1103/PhysRevLett.74.2694` | https://link.aps.org/doi/10.1103/PhysRevLett.74.2694 | PASS |
+| `LepriLiviPoliti` | `article` | 1 | `10.1016/S0370-1573(02)00558-6` | https://doi.org/10.1016/S0370-1573(02)00558-6 | PASS |
+| `Nazarenko` | `book` | 1 | `10.1007/978-3-642-15942-8` | https://link.springer.com/book/10.1007/978-3-642-15942-8 | PASS |
+
+## Citation use by key
+
+| Key | Lines |
+|---|---|
+| `CKSTT` | 110, 121, 127, 475 |
+| `DobsonLiZhai` | 379 |
+| `GallavottiCohen` | 303 |
+| `HLNS` | 90, 92, 97, 149, 155, 186, 195, 201, 213, 216, 230, 343, 420, 714, 787, 793, 943 |
+| `LepriLiviPoliti` | 657 |
+| `Li2019` | 379 |
+| `Nazarenko` | 83 |
+| `ZhaiDobsonLi` | 239, 378, 390 |
+
+## Issues
+
+### Dangling cited keys
+
+- None.
+
+### Orphan BibTeX entries
+
+- None.
+
+### Missing required fields
+
+- None.
+
+### Missing DOI/URL identifier
+
+- None.
+
+### Missing recorded external source
+
+- None.
+
+### Duplicate BibTeX keys
+
+- None.
+
+## Scope limitations
+
+- This is an offline structural audit of the local TeX/BibTeX pair.
+- The recorded external source URLs were checked manually on 2026-06-19; the script does not fetch them during the local gate.
+- This audit does not replace a professional plagiarism/self-plagiarism screen or target-journal reference-style conversion.

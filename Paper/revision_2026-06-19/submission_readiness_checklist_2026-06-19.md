@@ -12,6 +12,7 @@ paper can be called journal-ready.
 | Main manuscript | Locally revised and source-traced | `draft.tex`; `progress_report.md`; `integrity_audit_2026-06-19.md` |
 | Framework/source copy | Preserved | `paper_draft_1.tex`; `material_inventory.md`; original archive/backups |
 | References | Verified and converted to BibTeX | `references.bib`; `integrity_audit_2026-06-19.md` |
+| Citation/reference integrity | Passing local structural audit | `scripts/audit_references.py`; `reference_integrity_audit.json`; `reference_integrity_audit.md` |
 | Core numerical claims | Passing local claim audit | `scripts/audit_manuscript_claims.py`; `manuscript_claim_audit.json`; `manuscript_claim_audit.md` |
 | Figure provenance | Source-traced for manuscript-generated figures | `scripts/generate_manuscript_figures.py`; `manuscript_figure_metrics.json` |
 | Short-chain saved-model diagnostics | Rerun from saved TensorFlow/Keras models | `scripts/recompute_short_chain_nn_metrics.py`; `short_chain_nn_rerun_metrics.json` |
@@ -120,6 +121,7 @@ Run these only after the author-supplied items above have been inserted.
 - Reproducibility/readme material:
   - `progress_report.md`
   - `integrity_audit_2026-06-19.md`
+  - `reference_integrity_audit.md`
   - `manuscript_claim_audit.md`
   - `availability_path_audit.md`
   - `submission_bundle_manifest.md`

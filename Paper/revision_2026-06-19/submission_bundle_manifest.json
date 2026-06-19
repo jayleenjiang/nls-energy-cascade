@@ -1,7 +1,7 @@
 {
-  "generated_at_utc": "2026-06-19T18:08:16.432826+00:00",
+  "generated_at_utc": "2026-06-19T18:13:40.101124+00:00",
   "git_branch": "codex/paper-journal-revision",
-  "git_head": "51ac1085a7bf5e33a79de463fd8d52aa032a78b2",
+  "git_head": "0fbb6e995783f0ea1416451f30eb61360f9224ac",
   "local_raw_dependencies": [
     {
       "exists": true,
@@ -399,7 +399,7 @@
         "availability-declared",
         "claim-evidence:data_availability_artifacts"
       ],
-      "sha256": "95b4319943e8bcf6251523950ae15f6119433c6ad4643b0f86160f3ba9a33718",
+      "sha256": "5403f9247a0f870c8c75898ca7afeca74f4eca63264f6bdf43d4595629ba4c12",
       "size_bytes": 13225
     },
     {
@@ -411,7 +411,7 @@
         "availability-declared",
         "claim-evidence:data_availability_artifacts"
       ],
-      "sha256": "b59c0edfd936d72a5cd6f6ed9e1d75e7adae28bac626c4b6406e1b37b6c104fa",
+      "sha256": "27897b2b440f25be3d150f97bf65833bcd1b2e534bc4209a52bc51aedb2e9a2c",
       "size_bytes": 5969
     },
     {
@@ -527,8 +527,8 @@
         "availability-declared",
         "handoff-document"
       ],
-      "sha256": "db16c7bb4d5615e6787de96b26f46450b3e705715047c99d3b802e889de905ad",
-      "size_bytes": 15246
+      "sha256": "fe6a20dbaf99e84b5c2a3bb9ba8ef8d59ff39f658abb9aa019f88a304dd0fc0f",
+      "size_bytes": 15843
     },
     {
       "exists": true,
@@ -549,7 +549,7 @@
         "availability-declared",
         "claim-audit"
       ],
-      "sha256": "f109b584614150e59c3cad59609d92dd4e8f2ec40bfa7f3acb5e5ea50e8ff6b3",
+      "sha256": "5032db271fecbbabcd007e56c94c6ca690a40068353de7f1b32f70552a4688a5",
       "size_bytes": 29255
     },
     {
@@ -560,7 +560,7 @@
         "availability-declared",
         "claim-audit"
       ],
-      "sha256": "fd0c80b4ed30af1de6912c08613fa6651ba3e58f23f9c1df84bd25dc389da22e",
+      "sha256": "f614d446d072c0c322b2399fdc04511e37b2fbd1728c1e3835b146167f8d3263",
       "size_bytes": 3402
     },
     {
@@ -623,8 +623,8 @@
       "roles": [
         "handoff-document"
       ],
-      "sha256": "ebad0a0f9e3def28eb93908f91c05e73b57e7f81460af3359e5860d0be3a7570",
-      "size_bytes": 12208
+      "sha256": "71776c4293caaa4b81ab57c237a22105d366008bad68489f62b69bc39575c228",
+      "size_bytes": 12735
     },
     {
       "exists": true,
@@ -633,7 +633,7 @@
       "roles": [
         "handoff-document"
       ],
-      "sha256": "f31741a9008d473b89b2f16db2a5270bb407646c0bc91f72039a6a72adf9ccc5",
+      "sha256": "7536e74bbd5759d0b29e358c7317bc4a4b193f99af9e05643c071142bea3ab79",
       "size_bytes": 16196
     },
     {
@@ -643,8 +643,28 @@
       "roles": [
         "handoff-document"
       ],
-      "sha256": "85c5b806200265540a050eb3769b9aa5a54d335bc06ca8917b33dae1da41dd74",
+      "sha256": "8281a996e99b3a5c2466671dba70df51ba96026894f45d99af2113c3eb4c0480",
       "size_bytes": 8187
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/reference_integrity_audit.json",
+      "roles": [
+        "handoff-document"
+      ],
+      "sha256": "a75a4ada453cefea9f896ad75c28809a32b9388fe3a195d0b4200e884a3827ad",
+      "size_bytes": 6419
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/reference_integrity_audit.md",
+      "roles": [
+        "handoff-document"
+      ],
+      "sha256": "3fb01c055a56d588c8063518e1a6e2f9b4bf40e283cb22152d7695464ce44213",
+      "size_bytes": 2471
     },
     {
       "exists": true,
@@ -700,6 +720,16 @@
     {
       "exists": true,
       "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/scripts/audit_references.py",
+      "roles": [
+        "reference-audit"
+      ],
+      "sha256": "ac30af8dcbee03613c4bbf99473e7f65485c6c5e1040bf2d9a3298835aaff9ca",
+      "size_bytes": 13869
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
       "path": "Paper/revision_2026-06-19/scripts/build_raw_data_archive_manifest.py",
       "roles": [
         "manifest-builder"
@@ -714,8 +744,8 @@
       "roles": [
         "manifest-builder"
       ],
-      "sha256": "fdb2e00528e6fcb2e0d2f83d230702cac04129ebfd8d9dd44a9b0fa479384b2b",
-      "size_bytes": 16483
+      "sha256": "75f4f3fec25b2640b635ced0e89138514131a9d0b23ff62f1314eca08296f5ae",
+      "size_bytes": 16708
     },
     {
       "exists": true,
@@ -754,8 +784,8 @@
       "roles": [
         "submission-check-runner"
       ],
-      "sha256": "4c3b25d7cf6081777ce0ed49d6b3f5c3588d451fc439979f75375a8bdaef5756",
-      "size_bytes": 9470
+      "sha256": "b5a382ac2c745f685c4c5a72422c82876b012a0e4ca6248a15aee328853fc311",
+      "size_bytes": 9803
     },
     {
       "exists": true,
@@ -832,8 +862,8 @@
       "roles": [
         "handoff-document"
       ],
-      "sha256": "463ef0a8f5234684066b7ef2c8eeb51806e5eea96daeecca0f6914b040388254",
-      "size_bytes": 8170
+      "sha256": "f1671dd38bf2a051ecd1decf987182da9d46528e4f5a92fe00c2ffd1d6d79b43",
+      "size_bytes": 8369
     },
     {
       "exists": true,
@@ -842,8 +872,8 @@
       "roles": [
         "handoff-document"
       ],
-      "sha256": "db3529298c8dd9c8979cacd7d73628fd4569967b6b4b33e828f6c31a516d048c",
-      "size_bytes": 5181
+      "sha256": "ae9810ce9a53badffd9e0ecdcca177e25bf9303a9a61ad369e675efaed01cf9a",
+      "size_bytes": 5481
     },
     {
       "exists": true,
@@ -922,7 +952,7 @@
     "local_raw_dependency_count": 44,
     "missing_release_files": 0,
     "release_directory_count": 1,
-    "release_file_count": 53,
+    "release_file_count": 56,
     "status": "PASS_WITH_LOCAL_RAW_DATA_LIMITATION",
     "untracked_local_raw_dependencies": 44,
     "untracked_release_files": 0

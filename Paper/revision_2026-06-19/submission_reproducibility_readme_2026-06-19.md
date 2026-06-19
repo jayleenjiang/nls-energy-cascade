@@ -48,6 +48,7 @@ The generated summary is:
 |---|---|---|
 | Read or compile the paper | `draft.tex`; compiled PDF from the LaTeX gate | Current manuscript text and figures. |
 | Check the original working outline | `paper_draft_1.tex` | Preserved planning/framework source; not the active manuscript. |
+| Check citation/reference integrity | `reference_integrity_audit.md`; `reference_integrity_audit.json` | All local cite keys and BibTeX entries match, identifiers are present, and external verification URLs are recorded. |
 | Check numerical-claim support | `manuscript_claim_audit.md`; `manuscript_claim_audit.json` | Code-verifiable numerical/data claims currently pass 14/14 registered checks. |
 | Check file/path availability | `availability_path_audit.md`; `availability_path_audit.json` | Manuscript-declared files and figure paths exist locally and have hashes where applicable. |
 | Check submission-bundle completeness | `submission_bundle_manifest.md`; `submission_bundle_manifest.json` | Tracked release files are present, git-tracked, and categorized by role. |
@@ -99,9 +100,10 @@ For a reviewer or coauthor who has not seen the project before:
 3. run `scripts/run_submission_checks.py --compile-latex`;
 4. inspect `submission_checks_summary.md`;
 5. inspect `pdf_layout_qa_2026-06-19.md` for compiled-PDF layout status;
-6. inspect `manuscript_claim_audit.md` for claim-by-claim support;
-7. inspect `submission_bundle_manifest.md` and
+6. inspect `reference_integrity_audit.md` for citation/reference integrity;
+7. inspect `manuscript_claim_audit.md` for claim-by-claim support;
+8. inspect `submission_bundle_manifest.md` and
    `raw_data_archive_manifest.md` before deciding whether a raw-data supplement
    is needed;
-8. complete the author-facing items in
+9. complete the author-facing items in
    `author_submission_action_packet_2026-06-19.md`.

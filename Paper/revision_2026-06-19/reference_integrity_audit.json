@@ -1,0 +1,254 @@
+{
+  "citation_lines_by_key": {
+    "CKSTT": [
+      110,
+      121,
+      127,
+      475
+    ],
+    "DobsonLiZhai": [
+      379
+    ],
+    "GallavottiCohen": [
+      303
+    ],
+    "HLNS": [
+      90,
+      92,
+      97,
+      149,
+      155,
+      186,
+      195,
+      201,
+      213,
+      216,
+      230,
+      343,
+      420,
+      714,
+      787,
+      793,
+      943
+    ],
+    "LepriLiviPoliti": [
+      657
+    ],
+    "Li2019": [
+      379
+    ],
+    "Nazarenko": [
+      83
+    ],
+    "ZhaiDobsonLi": [
+      239,
+      378,
+      390
+    ]
+  },
+  "generated_at_utc": "2026-06-19T18:13:38.770037+00:00",
+  "issues": {
+    "dangling_citations": [],
+    "duplicate_bib_keys": [],
+    "missing_identifiers": [],
+    "missing_required_fields": [],
+    "missing_verification_sources": [],
+    "orphan_references": []
+  },
+  "references": [
+    {
+      "citation_count": 4,
+      "citation_lines": [
+        110,
+        121,
+        127,
+        475
+      ],
+      "doi": "10.1007/s00222-010-0242-2",
+      "entry_type": "article",
+      "has_identifier": true,
+      "key": "CKSTT",
+      "missing_required_fields": [],
+      "passes": true,
+      "title": "Transfer of energy to high frequencies in the cubic defocusing nonlinear {Schr{\\\"o}dinger} equation",
+      "url": "",
+      "verification_source": {
+        "checked_on": "2026-06-19",
+        "source_type": "Springer Nature article page",
+        "source_url": "https://link.springer.com/article/10.1007/s00222-010-0242-2"
+      },
+      "year": "2010"
+    },
+    {
+      "citation_count": 17,
+      "citation_lines": [
+        90,
+        92,
+        97,
+        149,
+        155,
+        186,
+        195,
+        201,
+        213,
+        216,
+        230,
+        343,
+        420,
+        714,
+        787,
+        793,
+        943
+      ],
+      "doi": "10.48550/arXiv.2505.16018",
+      "entry_type": "misc",
+      "has_identifier": true,
+      "key": "HLNS",
+      "missing_required_fields": [],
+      "passes": true,
+      "title": "Non-equilibrium steady state for a three-mode energy cascade model",
+      "url": "https://arxiv.org/abs/2505.16018",
+      "verification_source": {
+        "checked_on": "2026-06-19",
+        "source_type": "arXiv abstract page",
+        "source_url": "https://arxiv.org/abs/2505.16018"
+      },
+      "year": "2025"
+    },
+    {
+      "citation_count": 3,
+      "citation_lines": [
+        239,
+        378,
+        390
+      ],
+      "doi": "",
+      "entry_type": "inproceedings",
+      "has_identifier": true,
+      "key": "ZhaiDobsonLi",
+      "missing_required_fields": [],
+      "passes": true,
+      "title": "A deep learning method for solving {Fokker--Planck} equations",
+      "url": "https://proceedings.mlr.press/v145/zhai22a.html",
+      "verification_source": {
+        "checked_on": "2026-06-19",
+        "source_type": "PMLR proceedings page",
+        "source_url": "https://proceedings.mlr.press/v145/zhai22a.html"
+      },
+      "year": "2022"
+    },
+    {
+      "citation_count": 1,
+      "citation_lines": [
+        379
+      ],
+      "doi": "10.4310/CMS.2019.v17.n4.a9",
+      "entry_type": "article",
+      "has_identifier": true,
+      "key": "Li2019",
+      "missing_required_fields": [],
+      "passes": true,
+      "title": "A data-driven method for the steady state of randomly perturbed dynamics",
+      "url": "",
+      "verification_source": {
+        "checked_on": "2026-06-19",
+        "source_type": "International Press journal metadata page",
+        "source_url": "https://intlpress.com/JDetail/1806262739393794050"
+      },
+      "year": "2019"
+    },
+    {
+      "citation_count": 1,
+      "citation_lines": [
+        379
+      ],
+      "doi": "10.4310/CMS.2022.v20.n3.a8",
+      "entry_type": "article",
+      "has_identifier": true,
+      "key": "DobsonLiZhai",
+      "missing_required_fields": [],
+      "passes": true,
+      "title": "An efficient data-driven solver for {Fokker--Planck} equations: algorithm and analysis",
+      "url": "",
+      "verification_source": {
+        "checked_on": "2026-06-19",
+        "source_type": "International Press journal metadata page",
+        "source_url": "https://link.intlpress.com/JDetail/1806261569648545793"
+      },
+      "year": "2022"
+    },
+    {
+      "citation_count": 1,
+      "citation_lines": [
+        303
+      ],
+      "doi": "10.1103/PhysRevLett.74.2694",
+      "entry_type": "article",
+      "has_identifier": true,
+      "key": "GallavottiCohen",
+      "missing_required_fields": [],
+      "passes": true,
+      "title": "Dynamical ensembles in nonequilibrium statistical mechanics",
+      "url": "",
+      "verification_source": {
+        "checked_on": "2026-06-19",
+        "source_type": "APS DOI article page",
+        "source_url": "https://link.aps.org/doi/10.1103/PhysRevLett.74.2694"
+      },
+      "year": "1995"
+    },
+    {
+      "citation_count": 1,
+      "citation_lines": [
+        657
+      ],
+      "doi": "10.1016/S0370-1573(02)00558-6",
+      "entry_type": "article",
+      "has_identifier": true,
+      "key": "LepriLiviPoliti",
+      "missing_required_fields": [],
+      "passes": true,
+      "title": "Thermal conduction in classical low-dimensional lattices",
+      "url": "",
+      "verification_source": {
+        "checked_on": "2026-06-19",
+        "source_type": "DOI resolver for Elsevier Physics Reports article",
+        "source_url": "https://doi.org/10.1016/S0370-1573(02)00558-6"
+      },
+      "year": "2003"
+    },
+    {
+      "citation_count": 1,
+      "citation_lines": [
+        83
+      ],
+      "doi": "10.1007/978-3-642-15942-8",
+      "entry_type": "book",
+      "has_identifier": true,
+      "key": "Nazarenko",
+      "missing_required_fields": [],
+      "passes": true,
+      "title": "Wave Turbulence",
+      "url": "",
+      "verification_source": {
+        "checked_on": "2026-06-19",
+        "source_type": "Springer Nature book page",
+        "source_url": "https://link.springer.com/book/10.1007/978-3-642-15942-8"
+      },
+      "year": "2011"
+    }
+  ],
+  "script": "Paper/revision_2026-06-19/scripts/audit_references.py",
+  "status": "PASS",
+  "summary": {
+    "bib_entries": 8,
+    "citation_commands": 28,
+    "citation_uses": 29,
+    "dangling_citation_count": 0,
+    "missing_identifier_count": 0,
+    "missing_required_field_count": 0,
+    "missing_verification_source_count": 0,
+    "orphan_reference_count": 0,
+    "unique_cited_keys": 8
+  }
+}

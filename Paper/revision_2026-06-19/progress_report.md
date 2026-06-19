@@ -159,6 +159,13 @@
     overfull/underfull boxes, unresolved-reference markers, placeholder tokens,
     blank pages, obvious clipping, or visible figure/table rendering failures in
     the rendered-page inspection.
+29. Added `scripts/audit_references.py` plus
+    `reference_integrity_audit.json` and `reference_integrity_audit.md`. The
+    audit verifies the local TeX/BibTeX citation graph: 8 BibTeX entries, 28
+    citation commands, 29 citation uses, 8 unique cited keys, and zero dangling
+    citations, orphan references, missing required fields, missing DOI/URL
+    identifiers, missing recorded external verification sources, or duplicate
+    BibTeX keys.
 
 ## Key validated numerical result
 
@@ -200,7 +207,8 @@ Power-law fit:
   `python3 Paper/revision_2026-06-19/scripts/run_submission_checks.py --compile-latex`.
   The reviewer/editor-facing navigation file is
   `submission_reproducibility_readme_2026-06-19.md`; the compiled-PDF layout
-  QA snapshot is `pdf_layout_qa_2026-06-19.md`.
+  QA snapshot is `pdf_layout_qa_2026-06-19.md`; the local citation/reference
+  graph audit is `reference_integrity_audit.md`.
 - Decide whether the final release should include only the audited derived
   artifacts in GitHub or also a DOI-backed raw-data archive. The bundle
   manifest currently flags 44 local raw-data dependency records that are not
