@@ -1,9 +1,10 @@
-# Target-journal shortlist — 2026-06-19
+# Target-journal shortlist — updated 2026-06-20
 
 Scope: preliminary target-journal shortlist for
 `Paper/revision_2026-06-19/draft.tex`, based on official journal or publisher
-pages checked on 2026-06-19.  This is not a submission decision; it is a
-decision aid for the authors.
+pages checked on 2026-06-19 and spot-verified again for the top candidates on
+2026-06-20.  This is not a submission decision; it is a decision aid for the
+authors.
 
 Current manuscript profile:
 
@@ -204,6 +205,43 @@ For the current manuscript with minimal additional rewriting:
 
 If the authors choose **Journal of Nonlinear Science** or **Chaos**, plan a
 separate broad-audience introduction/framing pass before template conversion.
+
+## 2026-06-20 official-policy spot check
+
+The recommendation above remains unchanged after checking the current official
+author pages for the leading candidates:
+
+- **SIADS** remains the cleanest first target.  SIAM asks for manuscript and
+  cover letter PDFs at submission, requires inline figures, encourages SIAM
+  macros, and generally expects manuscripts not to exceed 40 pages or 10 MB
+  without cover-letter justification.  SIADS also requires an index if
+  supplementary materials are submitted.  The current 20-page generic article
+  draft is therefore comfortably within the length/file-size envelope; the main
+  remaining SIADS-specific work is template/line-number conversion and a
+  supplementary-material index if the authors choose to submit raw data or code
+  as SIADS supplement.
+- **Physica D** remains the strongest nonlinear-physics alternative.  Elsevier
+  asks for editable source files, encourages the Elsevier LaTeX template, and
+  requires a generative-AI disclosure when AI tools were used in manuscript
+  preparation.  The current manuscript already has an AI-assisted-preparation
+  statement, but it should be adapted to Elsevier's section title and wording
+  if Physica D is selected.
+- **Journal of Statistical Physics** is a good third target if the paper is
+  framed around NESS/current scaling/local equilibrium.  Springer Nature asks
+  for LaTeX source plus compiled PDF and requires a data availability statement
+  for original research articles.  The current data/code availability section
+  is close, but a DOI-backed raw-data archive would make this target safer.
+- **Nonlinearity** remains plausible but the data-package logistics are less
+  convenient for this project: IOP accepts common TeX/LaTeX variants, but its
+  supplementary files are limited to 50 MB each and 150 MB combined, with larger
+  data recommended for a repository.  The current minimal raw-data subset is
+  about 139 MB, so a repository/DOI route is preferable if Nonlinearity is
+  chosen.
+
+**Actionable recommendation:** unless the authors have a strong physics-journal
+preference, prepare the next version for SIADS first.  Do not convert the class
+file until the authors confirm this target; the current generic article PDF is
+better for internal review and coauthor comments.
 
 ## Template/conversion checklist after target selection
 

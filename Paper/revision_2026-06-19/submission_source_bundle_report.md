@@ -1,15 +1,15 @@
 # Submission source bundle report
 
-Generated: `2026-06-20T07:00:30.443167+00:00`
+Generated: `2026-06-20T12:44:38.626851+00:00`
 
 Status: **PASS**
 
 ## Archive
 
-- Archive path: `tmp/submission_source_bundle/runs/20260620T070030Z/NLS_numerical_study_source.tar.gz`
-- Archive bytes: 2444513
-- Archive SHA-256: `8e4a8048b31b9dc214cedaed50dc043f9ff527ced549ff09071cfff8fac817c0`
-- Staging directory: `tmp/submission_source_bundle/runs/20260620T070030Z/NLS_numerical_study_source`
+- Archive path: `tmp/submission_source_bundle/runs/20260620T124438Z/NLS_numerical_study_source.tar.gz`
+- Archive bytes: 2445421
+- Archive SHA-256: `16690c73ef2017121b473a41744508f9b2d43d30bf8628edd49ce3eadad67361`
+- Staging directory: `tmp/submission_source_bundle/runs/20260620T124438Z/NLS_numerical_study_source`
 
 ## Summary
 
@@ -18,7 +18,7 @@ Status: **PASS**
 | Manifest release-file records | 62 |
 | Manifest release directories | 1 |
 | Included regular files | 170 |
-| Included bytes | 3477760 |
+| Included bytes | 3480396 |
 | Excluded volatile/self-referential files | 6 |
 | Missing files | 0 |
 | Directory-tracked files copied | 113 |
