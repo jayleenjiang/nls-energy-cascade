@@ -2,11 +2,11 @@
 
 ## Material Passport
 
-- Artifact type: code experiment result and pilot validation note
+- Artifact type: code experiment result and validation note
 - Model version: `gibbs-canonical-v1`
-- Purpose: feasibility and finite-size robustness check beyond the `n=50`
-  larger-chain run.
-- Status: completed pilot; not used as a primary manuscript claim.
+- Purpose: finite-size robustness check beyond the `n=50` larger-chain run.
+- Status: completed production-size robustness extension; not used to redefine
+  the manuscript's primary `n=10,20,30,40` exponent.
 
 ## Command
 
@@ -27,7 +27,15 @@ Paper/revision_2026-06-19/experiments/flux_validation/bin/flux_canonical \
   Paper/revision_2026-06-19/experiments/flux_validation/larger_n60_pilot_2026-06-20/n60_b16
 ```
 
-Diagnostic six-length fit including the medium pilot:
+Production-size robustness extension:
+
+```sh
+Paper/revision_2026-06-19/experiments/flux_validation/bin/flux_canonical \
+  10 2 60 64 11520 200 0.0005 20260625 4 \
+  Paper/revision_2026-06-19/experiments/flux_validation/larger_n60_pilot_2026-06-20/n60_b64
+```
+
+Diagnostic six-length fit including the production-size extension:
 
 ```sh
 python3 flux/analyze_canonical_flux.py \
@@ -36,11 +44,11 @@ python3 flux/analyze_canonical_flux.py \
   Paper/revision_2026-06-19/experiments/flux_validation/production_dt5e-4/n30_summary.csv \
   Paper/revision_2026-06-19/experiments/flux_validation/production_dt5e-4/n40_summary.csv \
   Paper/revision_2026-06-19/experiments/flux_validation/larger_n_pilot_2026-06-20/n50_b64_summary.csv \
-  Paper/revision_2026-06-19/experiments/flux_validation/larger_n60_pilot_2026-06-20/n60_b16_summary.csv \
+  Paper/revision_2026-06-19/experiments/flux_validation/larger_n60_pilot_2026-06-20/n60_b64_summary.csv \
   --primary-dt 0.0005 \
   --bootstrap 10000 \
-  --seed 20260624 \
-  --output-prefix Paper/revision_2026-06-19/experiments/flux_validation/larger_n60_pilot_2026-06-20/n10_60_b16pilot_scaling
+  --seed 20260625 \
+  --output-prefix Paper/revision_2026-06-19/experiments/flux_validation/larger_n60_pilot_2026-06-20/n10_60_b64_scaling
 ```
 
 ## Result summary
@@ -69,25 +77,40 @@ Medium `n=60` pilot:
 - first-half/second-half stationarity statistic: `0.350` paired SE
 - elapsed time: `724.52` seconds
 
-Six-length diagnostic fit using the four production lengths, the `n=50`
-robustness run, and the `n=60` medium pilot:
+Production-size `n=60` run:
 
-- `E[J(n)] = 33.14 n^-1.901`
-- log-fit `R^2 = 0.9982`
-- bootstrap 95% exponent CI: `[-1.943,-1.864]`
+- trajectories: `1024`
+- burn-in: `11520`
+- measurement window: `200`
+- timestep: `5e-4`
+- mean current: `0.01244829643`
+- standard error: `0.00041661977`
+- normal 95% CI: `[0.01163173668, 0.01326485617]`
+- first-half/second-half stationarity statistic: `-0.524` paired SE
+- elapsed time: `9711.25` seconds
+
+Six-length diagnostic fit using the four production lengths, the `n=50`
+robustness run, and the `n=60` production-size extension:
+
+- `E[J(n)] = 35.94 n^-1.930`
+- log-fit `R^2 = 0.9974`
+- bootstrap 95% exponent CI: `[-1.954,-1.906]`
 - no stationarity flags with `|z| >= 2`
 
-The medium-pilot adjacent `n=50`--`60` local slope is `-1.688`.  The medium
-pilot mean is about `2.1%` below the direct `n=10,20,30,40,50` extrapolation.
-The initial and medium pilots differ by `1.17` pooled standard errors, so their
-spread is compatible with pilot-scale Monte Carlo variation.
+The production adjacent `n=50`--`60` local slope is `-2.178`.  The production
+mean is about `10.5%` below the direct `n=10,20,30,40,50` extrapolation.  The
+production mean differs from the medium pilot by `-1.28` pooled standard
+errors and from the initial pilot by `0.43` pooled standard errors, so the
+three `n=60` estimates are mutually compatible at the pilot/production Monte
+Carlo level.
 
 ## Interpretation
 
-Both `n=60` pilots are consistent with the qualitative faster-than-Fourier
-picture and do not indicate a crossover toward the Fourier exponent over the
-available window.  They should not replace the manuscript's primary
-`n=10,20,30,40` production exponent, because the larger `n=60` sample size is
-still only `256` trajectories.  If the paper needs another numerical
-strengthening pass before submission, the natural next step is a production-size
-`n=60` run, or a matched fine-timestep pilot at the largest length.
+The `n=60` production-size extension is consistent with the qualitative
+faster-than-Fourier picture and does not indicate a crossover toward the
+Fourier exponent over the available window.  It strengthens the manuscript's
+finite-size robustness evidence but does not replace the primary
+`n=10,20,30,40` exponent, because a systematic larger-length and fine-timestep
+convergence study remains outside the scope of the present revision.  If one
+more numerical strengthening pass is desired, the natural next step is a
+matched fine-timestep pilot at the largest length.

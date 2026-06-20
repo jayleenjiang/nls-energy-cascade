@@ -1,8 +1,8 @@
 # Final local pre-submission audit — 2026-06-20
 
 Scope: `Paper/revision_2026-06-19/draft.tex` and the synchronized
-`draft_siads_review.tex` after the larger-chain `n=50` robustness,
-fit-window sensitivity, and fine-timestep checks.
+`draft_siads_review.tex` after the larger-chain `n=50` and production-size
+`n=60` robustness extensions, fit-window sensitivity, and fine-timestep checks.
 
 This audit separates items that are locally complete from items that still
 require author, journal, or external-service action.  It is intentionally
@@ -26,11 +26,11 @@ Key gate numbers:
 |---|---|
 | LaTeX/log scan | PASS, `issues=0` |
 | Availability/path audit | PASS, `36/36` paths present, `0` untracked required files |
-| Numerical claim audit | PASS, `16/16` claims verified |
+| Numerical claim audit | PASS, `17/17` claims verified |
 | Reference integrity audit | PASS, `8` cited BibTeX entries, `0` dangling citations |
 | Raw-data archive manifest | PASS locally, `40` unique referenced files, `138,875,181` bytes |
-| Submission bundle manifest | `PASS_WITH_LOCAL_RAW_DATA_LIMITATION`, `72` release files, `0` missing, `0` untracked release files |
-| Source-only bundle dry run | PASS, `187` included files |
+| Submission bundle manifest | `PASS_WITH_LOCAL_RAW_DATA_LIMITATION`, `75` release files, `0` missing, `0` untracked release files |
+| Source-only bundle dry run | PASS, `191` included files |
 
 The SIADS review-preparation source also compiles locally:
 
@@ -43,24 +43,24 @@ The SIADS review-preparation source also compiles locally:
 ### Core thesis
 
 The core numerical thesis is now appropriately scoped.  The main transport
-claim remains the production fit over `n=10,20,30,40`; the new `n=50`
-experiment is explicitly described as a larger-chain robustness check, with a
-fit-window sensitivity analysis and a smaller fine-step pilot at
-`dt=2.5e-4`.  This avoids the most likely reviewer objection that a single
-larger length has been over-promoted to an asymptotic law.
+claim remains the production fit over `n=10,20,30,40`; the new `n=50` and
+`n=60` experiments are explicitly described as larger-chain robustness checks,
+with fit-window sensitivity analysis and a smaller `n=50` fine-step pilot at
+`dt=2.5e-4`.  This avoids the most likely reviewer objection that larger
+lengths have been over-promoted to an asymptotic law.
 
 ### Current-scaling vulnerability
 
 The remaining current-scaling vulnerability is not a local inconsistency: it is
 the usual finite-size limitation.  The manuscript now says this directly.  A
-reviewer could still ask for a production-size `n=60` run or production-size
-fine-step data at `n=50`; those would strengthen the paper but are not needed
-to defend the present finite-size claim as written.  The added fit-window
-sensitivity table shows that the existing `n=10`--`50` windows do not drift
-toward the Fourier exponent over the simulated range.  Separate `n=60` pilots
-with `128` and `256` trajectories give diagnostic six-length exponents near
-`-1.94` and `-1.90`, respectively, so they support production follow-up but are
-deliberately not promoted to manuscript claims.
+reviewer could still ask for production-size fine-step data at `n=50` or
+`n=60`; that would strengthen the paper but is not needed to defend the present
+finite-size claim as written.  The added fit-window sensitivity table shows
+that the existing `n=10`--`60` windows do not drift toward the Fourier exponent
+over the simulated range.  The production-size `n=60` extension gives a
+diagnostic six-length exponent near `-1.93`, so it is promoted to manuscript
+robustness evidence while the primary exponent remains the original
+four-length production fit.
 
 ### Short-chain mechanism vulnerability
 

@@ -1,6 +1,6 @@
 # Availability path audit
 
-Generated: `2026-06-20T14:56:09.079080+00:00`
+Generated: `2026-06-20T17:52:22.624069+00:00`
 
 Draft: `Paper/revision_2026-06-19/draft.tex`
 
@@ -19,9 +19,9 @@ Draft: `Paper/revision_2026-06-19/draft.tex`
 | availability | `flux/analyze_current_windows.py` | `flux/analyze_current_windows.py` | repo-root-relative | PASS (file) | yes | cc1e02ebc9d9 |
 | availability | `flux/gibbs_mcmc_reference.py` | `flux/gibbs_mcmc_reference.py` | repo-root-relative | PASS (file) | yes | 3b443bc83012 |
 | availability | `flux/compare_gibbs_sde.py` | `flux/compare_gibbs_sde.py` | repo-root-relative | PASS (file) | yes | afba16a25bd6 |
-| availability | `Paper/revision_2026-06-19/scripts/analyze_flux_scaling_sensitivity.py` | `Paper/revision_2026-06-19/scripts/analyze_flux_scaling_sensitivity.py` | repo-root-relative | PASS (file) | yes | 991ecda90ca4 |
+| availability | `Paper/revision_2026-06-19/scripts/analyze_flux_scaling_sensitivity.py` | `Paper/revision_2026-06-19/scripts/analyze_flux_scaling_sensitivity.py` | repo-root-relative | PASS (file) | yes | ef479273a910 |
 | availability | `Paper/revision_2026-06-19/experiments/flux_validation/` | `Paper/revision_2026-06-19/experiments/flux_validation` | repo-root-relative | PASS (directory) | n/a |  |
-| availability | `Paper/revision_2026-06-19/experiments/flux_validation/larger_n_pilot_2026-06-20/flux_scaling_sensitivity.json` | `Paper/revision_2026-06-19/experiments/flux_validation/larger_n_pilot_2026-06-20/flux_scaling_sensitivity.json` | repo-root-relative | PASS (file) | yes | e2c66c288f14 |
+| availability | `Paper/revision_2026-06-19/experiments/flux_validation/larger_n60_pilot_2026-06-20/flux_scaling_sensitivity_n10_60.json` | `Paper/revision_2026-06-19/experiments/flux_validation/larger_n60_pilot_2026-06-20/flux_scaling_sensitivity_n10_60.json` | repo-root-relative | PASS (file) | yes | 19315bf86b68 |
 | availability | `Paper/revision_2026-06-19/scripts/generate_manuscript_figures.py` | `Paper/revision_2026-06-19/scripts/generate_manuscript_figures.py` | repo-root-relative | PASS (file) | yes | 65026eb1d396 |
 | availability | `Paper/revision_2026-06-19/manuscript_figure_metrics.json` | `Paper/revision_2026-06-19/manuscript_figure_metrics.json` | repo-root-relative | PASS (file) | yes | c0dfd2a21ffd |
 | availability | `Paper/revision_2026-06-19/scripts/export_source_trace_metrics.py` | `Paper/revision_2026-06-19/scripts/export_source_trace_metrics.py` | repo-root-relative | PASS (file) | yes | 5eac487deea1 |
@@ -30,9 +30,9 @@ Draft: `Paper/revision_2026-06-19/draft.tex`
 | availability | `Paper/revision_2026-06-19/short_chain_nn_rerun_metrics.json` | `Paper/revision_2026-06-19/short_chain_nn_rerun_metrics.json` | repo-root-relative | PASS (file) | yes | 5600a1a9f126 |
 | availability | `Paper/revision_2026-06-19/scripts/analyze_eigen_fit_windows.py` | `Paper/revision_2026-06-19/scripts/analyze_eigen_fit_windows.py` | repo-root-relative | PASS (file) | yes | 4b7669683117 |
 | availability | `Paper/revision_2026-06-19/eigen_fit_sensitivity.json` | `Paper/revision_2026-06-19/eigen_fit_sensitivity.json` | repo-root-relative | PASS (file) | yes | cdc0d3ecba77 |
-| availability | `Paper/revision_2026-06-19/scripts/audit_manuscript_claims.py` | `Paper/revision_2026-06-19/scripts/audit_manuscript_claims.py` | repo-root-relative | PASS (file) | yes | d78965f3590e |
-| availability | `Paper/revision_2026-06-19/manuscript_claim_audit.json` | `Paper/revision_2026-06-19/manuscript_claim_audit.json` | repo-root-relative | PASS (file) | yes | 696d38b836dd |
-| availability | `Paper/revision_2026-06-19/manuscript_claim_audit.md` | `Paper/revision_2026-06-19/manuscript_claim_audit.md` | repo-root-relative | PASS (file) | yes | c35777202067 |
+| availability | `Paper/revision_2026-06-19/scripts/audit_manuscript_claims.py` | `Paper/revision_2026-06-19/scripts/audit_manuscript_claims.py` | repo-root-relative | PASS (file) | yes | 664c7656ba85 |
+| availability | `Paper/revision_2026-06-19/manuscript_claim_audit.json` | `Paper/revision_2026-06-19/manuscript_claim_audit.json` | repo-root-relative | PASS (file) | yes | 5ec4274849b1 |
+| availability | `Paper/revision_2026-06-19/manuscript_claim_audit.md` | `Paper/revision_2026-06-19/manuscript_claim_audit.md` | repo-root-relative | PASS (file) | yes | 0e1094131c54 |
 | availability | `Paper/revision_2026-06-19/scripts/audit_availability_paths.py` | `Paper/revision_2026-06-19/scripts/audit_availability_paths.py` | repo-root-relative | PASS (file) | yes | 449c7c91c7d2 |
 | availability | `Paper/revision_2026-06-19/availability_path_audit.json` | `Paper/revision_2026-06-19/availability_path_audit.json` | repo-root-relative | PASS (file) | yes |  |
 | availability | `Paper/revision_2026-06-19/availability_path_audit.md` | `Paper/revision_2026-06-19/availability_path_audit.md` | repo-root-relative | PASS (file) | yes |  |

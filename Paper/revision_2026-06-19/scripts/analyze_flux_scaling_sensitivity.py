@@ -3,9 +3,9 @@
 
 This script reads the existing canonical-current summary/sample files, verifies
 the summaries against raw trajectory samples, and reports how the fitted
-power-law exponent changes when the n=50 robustness point is included or one
-chain length is left out.  The output is intended as a finite-size robustness
-diagnostic, not as a new asymptotic theorem.
+power-law exponent changes when the n=50 and n=60 robustness points are
+included or one chain length is left out.  The output is intended as a
+finite-size robustness diagnostic, not as a new asymptotic theorem.
 """
 
 from __future__ import annotations
@@ -28,6 +28,7 @@ DEFAULT_SUMMARIES = [
     "Paper/revision_2026-06-19/experiments/flux_validation/production_dt5e-4/n30_summary.csv",
     "Paper/revision_2026-06-19/experiments/flux_validation/production_dt5e-4/n40_summary.csv",
     "Paper/revision_2026-06-19/experiments/flux_validation/larger_n_pilot_2026-06-20/n50_b64_summary.csv",
+    "Paper/revision_2026-06-19/experiments/flux_validation/larger_n60_pilot_2026-06-20/n60_b64_summary.csv",
 ]
 
 
@@ -38,14 +39,14 @@ def parse_args() -> argparse.Namespace:
         action="append",
         type=Path,
         default=[],
-        help="Canonical *_summary.csv file. Defaults to n=10,20,30,40 plus n=50.",
+        help="Canonical *_summary.csv file. Defaults to n=10,20,30,40 plus n=50,60.",
     )
     parser.add_argument(
         "--output-prefix",
         type=Path,
         default=Path(
             "Paper/revision_2026-06-19/experiments/flux_validation/"
-            "larger_n_pilot_2026-06-20/flux_scaling_sensitivity"
+            "larger_n60_pilot_2026-06-20/flux_scaling_sensitivity_n10_60"
         ),
     )
     parser.add_argument("--bootstrap", type=int, default=10_000)
@@ -240,19 +241,21 @@ def main() -> None:
     summary_paths = args.summary or [Path(p) for p in DEFAULT_SUMMARIES]
     rows = sorted([read_summary(path) for path in summary_paths], key=lambda r: r["n"])
     n_to_row = {row["n"]: row for row in rows}
-    required = {10, 20, 30, 40, 50}
+    required = {10, 20, 30, 40, 50, 60}
     if set(n_to_row) != required:
         raise ValueError(f"expected chain lengths {sorted(required)}, got {sorted(n_to_row)}")
 
     fit_specs = [
         ("primary n=10--40", [10, 20, 30, 40], "primary"),
         ("with n=50", [10, 20, 30, 40, 50], "larger_n"),
-        ("tail n=20--50", [20, 30, 40, 50], "tail"),
-        ("leave out n=10", [20, 30, 40, 50], "leave_one_out"),
-        ("leave out n=20", [10, 30, 40, 50], "leave_one_out"),
-        ("leave out n=30", [10, 20, 40, 50], "leave_one_out"),
-        ("leave out n=40", [10, 20, 30, 50], "leave_one_out"),
-        ("leave out n=50", [10, 20, 30, 40], "leave_one_out"),
+        ("with n=50,60", [10, 20, 30, 40, 50, 60], "larger_n"),
+        ("tail n=20--60", [20, 30, 40, 50, 60], "tail"),
+        ("leave out n=10", [20, 30, 40, 50, 60], "leave_one_out"),
+        ("leave out n=20", [10, 30, 40, 50, 60], "leave_one_out"),
+        ("leave out n=30", [10, 20, 40, 50, 60], "leave_one_out"),
+        ("leave out n=40", [10, 20, 30, 50, 60], "leave_one_out"),
+        ("leave out n=50", [10, 20, 30, 40, 60], "leave_one_out"),
+        ("leave out n=60", [10, 20, 30, 40, 50], "leave_one_out"),
     ]
     fit_windows = [
         make_fit_record(

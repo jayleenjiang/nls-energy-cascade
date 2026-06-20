@@ -39,10 +39,10 @@ manuscript pass clarified the division of labor between the long-chain
 transport/LTE evidence and the three-mode Fokker--Planck mechanism study, so
 the short-chain section is framed as a low-dimensional microscope rather than
 as an extrapolation of the transport exponent.  A further current-scaling
-robustness pass added a fit-window sensitivity table around the `n=50`
-larger-chain run.  The latest one-command gate reports
+robustness pass added a fit-window sensitivity table around the `n=50` and
+`n=60` larger-chain runs.  The latest one-command gate reports
 `PASS_WITH_LOCAL_RAW_DATA_LIMITATION` with 36/36 availability path records
-present and git-tracked, 16/16 registered numerical claims verified, and zero
+present and git-tracked, 17/17 registered numerical claims verified, and zero
 missing release-bundle files.
 
 ## 2026-06-20 larger-chain robustness update
@@ -56,21 +56,22 @@ current accumulator, `dt=5e-4`, burn-in `8000`, measurement window `200`, and
 fine-timestep pilot at `dt=2.5e-4` gives `E[J(50)] = 0.01879771710` with SE
 `0.00081439495`, differing from the `dt=5e-4` result by `1.52%` or `0.30`
 pooled standard errors.  The fit-window sensitivity analysis gives exponents
-`-1.85008` on `n=10,20,30,40`, `-1.89449` on `n=10,20,30,40,50`, and
-`-2.03265` on the tail `n=20,30,40,50`.  The manuscript uses this as a
-robustness check only, not as the primary quoted exponent, because `n=50` is
-still a single larger-size extension and the fine-step check is not a full
-production-size convergence study.
+`-1.85008` on `n=10,20,30,40`, `-1.89449` on `n=10,20,30,40,50`,
+`-1.92956` on `n=10,20,30,40,50,60`, and `-2.05926` on the tail
+`n=20,30,40,50,60`.  The manuscript uses these as robustness checks only, not
+as the primary quoted exponent, because a systematic larger-length and
+fine-timestep convergence study is still outside the revision scope.
 
 Subsequent `n=60` pilots were recorded under
 `experiments/flux_validation/larger_n60_pilot_2026-06-20/`.  The initial
 128-trajectory pilot gives `E[J(60)] = 0.01189574358` with SE `0.00122139546`;
 the medium 256-trajectory pilot gives `E[J(60)] = 0.01361149053` with SE
-`0.00081058642`.  Including the medium pilot in a diagnostic six-length fit
-gives exponent `-1.90127` with bootstrap 95% CI `[-1.94331,-1.86367]`.  This
-supports a production-size `n=60` follow-up but is intentionally not used as a
-primary manuscript claim because the larger pilot sample size is still only
-`256` trajectories.
+`0.00081058642`.  A production-size 1024-trajectory run gives
+`E[J(60)] = 0.01244829643` with SE `0.00041661977` and stationarity statistic
+`-0.524` paired SE.  Including the production-size `n=60` run in a diagnostic
+six-length fit gives exponent `-1.92956` with bootstrap 95% CI
+`[-1.95424,-1.90603]`.  This is now suitable as manuscript robustness
+evidence, while the primary exponent remains the four-length production fit.
 
 ## Author confirmations still required
 

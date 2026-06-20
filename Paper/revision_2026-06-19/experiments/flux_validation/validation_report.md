@@ -50,12 +50,16 @@ Larger-chain robustness and fit-window sensitivity:
 
 - the `n=50` robustness run gives `E[J(50)] = 0.01851584685` with SE
   `0.00044158954`
+- the `n=60` production-size robustness run gives
+  `E[J(60)] = 0.01244829643` with SE `0.00041661977`
 - adding `n=50` gives a diagnostic exponent `-1.89449`, bootstrap 95% CI
   `[-1.91717, -1.87295]`, and log-fit `R^2 = 0.99761`
-- fitting only the tail `n=20,30,40,50` gives exponent `-2.03265`,
-  bootstrap 95% CI `[-2.07868, -1.98781]`, and log-fit `R^2 = 0.99935`
-- adjacent local slopes range from `-1.71976` on `n=10--20` to `-2.12473`
-  on `n=40--50`
+- adding `n=50,60` gives a diagnostic exponent `-1.92956`, bootstrap 95%
+  CI `[-1.95424, -1.90603]`, and log-fit `R^2 = 0.99739`
+- fitting only the tail `n=20,30,40,50,60` gives exponent `-2.05926`,
+  bootstrap 95% CI `[-2.10697, -2.01242]`, and log-fit `R^2 = 0.99933`
+- adjacent local slopes range from `-1.71976` on `n=10--20` to `-2.17771`
+  on `n=50--60`
 
 Timestep sensitivity:
 

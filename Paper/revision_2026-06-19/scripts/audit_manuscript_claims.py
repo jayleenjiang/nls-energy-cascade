@@ -168,7 +168,11 @@ def build_registry() -> list[dict[str, Any]]:
     larger_n_fine_path = larger_n_dir / "n50_b16_dt2p5e-4_summary.csv"
     larger_n_long_burn_path = larger_n_dir / "n50_b16_burn10000_summary.csv"
     larger_n_readme_path = larger_n_dir / "README.md"
-    flux_sensitivity_path = larger_n_dir / "flux_scaling_sensitivity.json"
+    n60_dir = REVISION / "experiments/flux_validation/larger_n60_pilot_2026-06-20"
+    n60_scaling_path = n60_dir / "n10_60_b64_scaling_scaling.json"
+    n60_summary_path = n60_dir / "n60_b64_summary.csv"
+    n60_readme_path = n60_dir / "README.md"
+    flux_sensitivity_path = n60_dir / "flux_scaling_sensitivity_n10_60.json"
     figure_metrics_path = REVISION / "manuscript_figure_metrics.json"
     source_trace_path = REVISION / "source_trace_metrics.json"
     rerun_path = REVISION / "short_chain_nn_rerun_metrics.json"
@@ -186,6 +190,8 @@ def build_registry() -> list[dict[str, Any]]:
     larger_n_summary = read_summary(larger_n_summary_path)
     larger_n_fine = read_summary(larger_n_fine_path)
     larger_n_long_burn = read_summary(larger_n_long_burn_path)
+    n60_scaling = load_json(n60_scaling_path)
+    n60_summary = read_summary(n60_summary_path)
     flux_sensitivity = load_json(flux_sensitivity_path)
 
     prefactor = flux["prefactor"]
@@ -275,7 +281,7 @@ def build_registry() -> list[dict[str, Any]]:
         registry,
         claim_id="larger_n_current_robustness",
         section="thermal conductivity",
-        claim="The n=50 larger-chain current run is reported as a robustness check rather than replacing the primary exponent.",
+        claim="The n=50 larger-chain current run and fine-step pilot are reported as robustness evidence rather than replacing the primary exponent.",
         evidence=[
             larger_n_scaling_path,
             larger_n_summary_path,
@@ -293,7 +299,7 @@ def build_registry() -> list[dict[str, Any]]:
             r"standard error $0.00081$",
             r"$1.5\%$ shift, or $0.30$ pooled",
             r"$\E[J(50)]=0.01931\pm0.00086$",
-            r"smaller fine-timestep pilot rather than a full production-resolution convergence study",
+            r"$n=50$ and $n=60$ computations as evidence against",
         ],
         computed={
             "n50_primary_mean": larger_n_summary["mean_action_current"],
@@ -331,7 +337,40 @@ def build_registry() -> list[dict[str, Any]]:
             "longer_burnin_mean": larger_n_long_burn["mean_action_current"],
             "longer_burnin_se": larger_n_long_burn["standard_error"],
         },
-        note="The manuscript keeps the n=10,20,30,40 fit as the primary quoted exponent because n=50 is a single larger-length extension and the fine-timestep check is a smaller pilot.",
+        note="The manuscript keeps the n=10,20,30,40 fit as the primary quoted exponent while using larger lengths as robustness extensions.",
+    )
+
+    add_claim(
+        registry,
+        claim_id="n60_current_robustness",
+        section="thermal conductivity",
+        claim="The production-size n=60 extension supports the larger-chain robustness check without redefining the primary exponent.",
+        evidence=[
+            n60_scaling_path,
+            n60_summary_path,
+            n60_readme_path,
+        ],
+        expected_text=[
+            r"$1024$ trajectories, burn-in $11520$",
+            r"$\E[J(60)]=0.01245$",
+            r"standard error $0.00042$",
+            r"$-0.52$ paired standard",
+            r"\E[J(n)] \;=\; 35.94\,n^{-1.930}",
+            r"$[-1.954,-1.906]$",
+            r"larger lengths are robustness extensions",
+        ],
+        computed={
+            "n60_mean": n60_summary["mean_action_current"],
+            "n60_se": n60_summary["standard_error"],
+            "n60_stationarity_z": (
+                n60_summary["mean_second_minus_first"]
+                / n60_summary["paired_difference_se"]
+            ),
+            "six_length_exponent": n60_scaling["exponent"],
+            "six_length_ci": n60_scaling["exponent_normalized_95_ci"],
+            "six_length_r_squared": n60_scaling["r_squared_log_fit"],
+        },
+        note="The n=60 run has production-size trajectory count but no matched fine-step production run, so it is used as robustness evidence.",
     )
 
     sensitivity_by_label = {
@@ -341,24 +380,27 @@ def build_registry() -> list[dict[str, Any]]:
         registry,
         claim_id="flux_scaling_fit_sensitivity",
         section="thermal conductivity",
-        claim="Fit-window sensitivity around the n=50 robustness point is reported without promoting it to the primary exponent.",
+        claim="Fit-window sensitivity around the n=50 and n=60 robustness points is reported without promoting it to the primary exponent.",
         evidence=[
             flux_sensitivity_path,
             larger_n_summary_path,
+            n60_summary_path,
             flux_path,
         ],
         expected_text=[
             r"\label{tab:flux-fit-sensitivity}",
-            r"range from $-1.720$ on $10$--$20$ to $-2.125$ on",
+            r"range from $-1.720$ on $10$--$20$ to $-2.178$ on",
             r"primary $n=10,20,30,40$ & $-1.850$ & $[-1.870,-1.831]$ & $0.9980$",
             r"$n=10,20,30,40,50$ & $-1.894$ & $[-1.917,-1.873]$ & $0.9976$",
-            r"tail $n=20,30,40,50$ & $-2.033$ & $[-2.079,-1.988]$ & $0.9994$",
+            r"$n=10,20,30,40,50,60$ & $-1.930$ & $[-1.954,-1.906]$ & $0.9974$",
+            r"tail $n=20,30,40,50,60$ & $-2.059$ & $[-2.107,-2.012]$ & $0.9993$",
             r"the spread across rows is the finite-size sensitivity",
         ],
         computed={
             "primary": sensitivity_by_label["primary n=10--40"],
             "with_n50": sensitivity_by_label["with n=50"],
-            "tail_n20_50": sensitivity_by_label["tail n=20--50"],
+            "with_n50_n60": sensitivity_by_label["with n=50,60"],
+            "tail_n20_60": sensitivity_by_label["tail n=20--60"],
             "local_slopes": flux_sensitivity["local_slopes"],
         },
         note="The table is a finite-size fit-window diagnostic; it does not change the primary quoted n=10,20,30,40 exponent.",
@@ -552,6 +594,7 @@ def build_registry() -> list[dict[str, Any]]:
             r"Manuscript-level claim audit",
             r"finite-size action-current law over $n=10,20,30,40$",
             r"with an $n=50$",
+            r"and $n=60$ robustness checks",
             r"saved-model inference reproducibility, not full neural-network retraining",
             r"observable-dependent slow-mode diagnostic, not resolved spectral gap",
             r"local audit to rerun after final author and journal-format edits",
@@ -582,7 +625,7 @@ def build_registry() -> list[dict[str, Any]]:
             r"\path{Paper/revision_2026-06-19/scripts/analyze_eigen_fit_windows.py}",
             r"\path{Paper/revision_2026-06-19/eigen_fit_sensitivity.json}",
             r"\path{Paper/revision_2026-06-19/scripts/analyze_flux_scaling_sensitivity.py}",
-            r"\path{Paper/revision_2026-06-19/experiments/flux_validation/larger_n_pilot_2026-06-20/flux_scaling_sensitivity.json}",
+            r"\path{Paper/revision_2026-06-19/experiments/flux_validation/larger_n60_pilot_2026-06-20/flux_scaling_sensitivity_n10_60.json}",
             r"\path{Paper/revision_2026-06-19/scripts/audit_availability_paths.py}",
             r"\path{Paper/revision_2026-06-19/availability_path_audit.json}",
             r"\path{Paper/revision_2026-06-19/availability_path_audit.md}",
