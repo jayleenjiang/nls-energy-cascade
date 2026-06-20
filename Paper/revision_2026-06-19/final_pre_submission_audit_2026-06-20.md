@@ -33,9 +33,10 @@ Key gate numbers:
 | Author/submission-field audit | `AUTHOR_CONFIRMATION_PENDING`, `9` pending author/external items |
 | Raw-data archive manifest | PASS locally, `40` unique referenced files, `138,875,181` bytes |
 | Raw-data archive build | PASS locally, upload-ready `.tar.gz` prepared under `tmp/`, DOI/upload still external |
-| Submission bundle manifest | `PASS_WITH_LOCAL_RAW_DATA_LIMITATION`, `99` release files, `0` missing, `0` untracked release files |
+| Submission bundle manifest | `PASS_WITH_LOCAL_RAW_DATA_LIMITATION`, `100` release files, `0` missing, `0` untracked release files |
 | Submission metadata consistency audit | PASS, `21` handoff metadata checks over `9` documents |
-| Source-only bundle dry run | PASS, `268` included files |
+| Source-only bundle dry run | PASS, `269` included files |
+| Journal upload package build | PASS locally, SIADS repository-route package written under `tmp/journal_upload_package/runs/` |
 
 The SIADS review-preparation source is now included directly in the
 one-command local gate:

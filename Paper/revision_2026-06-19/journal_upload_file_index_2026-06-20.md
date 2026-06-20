@@ -28,8 +28,8 @@ Key numbers:
 | Availability paths | 37/37 |
 | Registered numerical claims | 19/19 |
 | Cited BibTeX entries | 8 |
-| Release-bundle files | 99 |
-| Source-bundle included files | 268 |
+| Release-bundle files | 100 |
+| Source-bundle included files | 269 |
 | Minimal raw-data files | 40 |
 | Missing raw-data files | 0 |
 | Author/submission-field audit | 9 pending author/external items |
@@ -57,6 +57,10 @@ machine-readable metadata for the current local PDFs is recorded in
 The source bundle is documented by `submission_source_bundle_report.md`.  The
 raw-data archive is documented by `raw_data_archive_build_report.md` and
 preserves the `raw_data/...` paths listed in `raw_data_archive_manifest.md`.
+For a local one-directory handoff, run
+`scripts/build_journal_upload_package.py`; it creates a timestamped package
+under `tmp/journal_upload_package/runs/` with the selected PDF, source archive,
+handoff documents, and checksums.
 
 ## Files to upload by route
 
@@ -115,7 +119,8 @@ Run from the repository root:
 python3 Paper/revision_2026-06-19/scripts/run_submission_checks.py --compile-latex
 python3 Paper/revision_2026-06-19/scripts/build_submission_source_bundle.py
 python3 Paper/revision_2026-06-19/scripts/build_raw_data_archive.py
+python3 Paper/revision_2026-06-19/scripts/build_journal_upload_package.py --route siads-repository
 ```
 
-The last two commands create timestamped archives under `tmp/`; update this
+The archive-building commands create timestamped artifacts under `tmp/`; update this
 file if new archive paths or SHA-256 checksums are generated for final upload.

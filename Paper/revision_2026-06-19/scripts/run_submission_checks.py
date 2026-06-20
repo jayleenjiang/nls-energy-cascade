@@ -15,7 +15,8 @@ without author-only information or external services:
 9. final submission bundle manifest refresh;
 10. submission-facing metadata consistency audit;
 11. post-metadata submission bundle manifest refresh;
-12. source-only submission bundle packaging dry run.
+12. source-only submission bundle packaging dry run;
+13. local journal upload package build under ``tmp/``.
 
 The script intentionally does not run professional plagiarism checking, upload
 raw data, select a journal template, or fill author/funding declarations.
@@ -250,6 +251,7 @@ def main() -> int:
         ("submission_metadata_consistency_audit", "audit_submission_metadata_consistency.py"),
         ("submission_bundle_manifest_post_metadata", "build_submission_bundle_manifest.py"),
         ("submission_source_bundle", "build_submission_source_bundle.py"),
+        ("journal_upload_package", "build_journal_upload_package.py"),
     ]:
         result = run_command(root, name, [py, str(revision / "scripts" / script)])
         commands.append(result)
@@ -263,6 +265,22 @@ def main() -> int:
     bundle = load_json(revision / "submission_bundle_manifest.json")
     metadata_consistency = load_json(revision / "submission_metadata_consistency_audit.json")
     source_bundle = load_json(revision / "submission_source_bundle_report.json")
+    upload_package_payload = {}
+    upload_package_status = "NOT_RUN"
+    upload_package_numbers = {}
+    for command in commands:
+        if command.name == "journal_upload_package":
+            if command.returncode != 0:
+                upload_package_status = "FAIL"
+                upload_package_numbers = {"returncode": command.returncode}
+            else:
+                try:
+                    upload_package_payload = json.loads(command.stdout_tail)
+                except json.JSONDecodeError:
+                    upload_package_payload = {}
+                upload_package_status = upload_package_payload.get("status", "PASS")
+                upload_package_numbers = upload_package_payload.get("summary", {})
+            break
 
     gates = [
         {
@@ -326,6 +344,11 @@ def main() -> int:
             "name": "submission_source_bundle",
             "status": source_bundle["status"],
             "numbers": source_bundle["summary"],
+        },
+        {
+            "name": "journal_upload_package",
+            "status": upload_package_status,
+            "numbers": upload_package_numbers,
         },
     ]
 

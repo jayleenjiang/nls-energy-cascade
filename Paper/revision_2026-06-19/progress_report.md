@@ -176,7 +176,7 @@
     submission `.tar.gz` under `tmp/` from the release manifest, records an
     archive SHA-256 checksum, and deliberately excludes self-referential
     generated summaries and the large local raw-data roots. The current
-    packaging run includes 268 regular files, has zero missing files, and
+    packaging run includes 269 regular files, has zero missing files, and
     records 44 local raw-data dependency records as
     excluded pending any DOI-backed raw-data archive decision.
 31. Performed a submission-level strengthening pass on 2026-06-20:
@@ -254,6 +254,12 @@
     checksums, page counts, release-file count, and predicted source-bundle
     included-file count.  It is included in the one-command submission check to
     prevent stale upload-packet metadata after future PDF or bundle updates.
+40. Added `scripts/build_journal_upload_package.py`, a local-only final handoff
+    packager.  The one-command submission gate now builds a timestamped
+    SIADS-repository-route package under `tmp/journal_upload_package/runs/`
+    containing the selected manuscript PDF, source archive, key handoff
+    documents, and checksum index.  A DOI/raw-data route can be built later
+    with `--include-raw-data` after the authors choose that release path.
 
 ## Key validated numerical result
 

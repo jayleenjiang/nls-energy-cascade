@@ -237,6 +237,11 @@ def collect_handoff_docs(root: Path, revision_dir: Path, release: dict[str, set[
     )
     add_role(
         release,
+        str((revision_dir / "scripts/build_journal_upload_package.py").relative_to(root)),
+        "journal-upload-package-builder",
+    )
+    add_role(
+        release,
         str((revision_dir / "scripts/audit_submission_metadata_consistency.py").relative_to(root)),
         "submission-metadata-audit",
     )
