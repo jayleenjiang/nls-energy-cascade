@@ -30,7 +30,7 @@ Key gate numbers:
 | Reference integrity audit | PASS, `8` cited BibTeX entries, `0` dangling citations |
 | Raw-data archive manifest | PASS locally, `40` unique referenced files, `138,875,181` bytes |
 | Submission bundle manifest | `PASS_WITH_LOCAL_RAW_DATA_LIMITATION`, `72` release files, `0` missing, `0` untracked release files |
-| Source-only bundle dry run | PASS, `185` included files |
+| Source-only bundle dry run | PASS, `187` included files |
 
 The SIADS review-preparation source also compiles locally:
 
@@ -57,10 +57,10 @@ reviewer could still ask for a production-size `n=60` run or production-size
 fine-step data at `n=50`; those would strengthen the paper but are not needed
 to defend the present finite-size claim as written.  The added fit-window
 sensitivity table shows that the existing `n=10`--`50` windows do not drift
-toward the Fourier exponent over the simulated range.  A separate 128-trajectory
-`n=60` pilot gives a diagnostic six-length exponent near `-1.94`, so it
-supports production follow-up but is deliberately not promoted to a manuscript
-claim.
+toward the Fourier exponent over the simulated range.  Separate `n=60` pilots
+with `128` and `256` trajectories give diagnostic six-length exponents near
+`-1.94` and `-1.90`, respectively, so they support production follow-up but are
+deliberately not promoted to manuscript claims.
 
 ### Short-chain mechanism vulnerability
 

@@ -1,6 +1,6 @@
 # Submission checks summary
 
-Generated: `2026-06-20T14:39:48.126045+00:00`
+Generated: `2026-06-20T14:56:10.795683+00:00`
 
 Overall status: **PASS_WITH_LOCAL_RAW_DATA_LIMITATION**
 
@@ -14,20 +14,20 @@ Overall status: **PASS_WITH_LOCAL_RAW_DATA_LIMITATION**
 | reference_integrity_audit | PASS | bib_entries=8, citation_commands=28, citation_uses=29, dangling_citation_count=0, missing_identifier_count=0, missing_required_field_count=0, missing_verification_source_count=0, orphan_reference_count=0, unique_cited_keys=8 |
 | raw_data_archive_manifest | PASS | missing_file_count=0, referenced_file_count=40, referenced_total_bytes=138875181, status=PASS |
 | submission_bundle_manifest | PASS_WITH_LOCAL_RAW_DATA_LIMITATION | local_raw_dependency_count=44, missing_release_files=0, release_directory_count=1, release_file_count=72, status=PASS_WITH_LOCAL_RAW_DATA_LIMITATION, untracked_local_raw_dependencies=44, untracked_release_files=0 |
-| submission_source_bundle | PASS | directory_tracked_file_count=118, excluded_self_referential_count=6, included_file_count=185, included_total_bytes=3626263, local_raw_dependency_count=44, manifest_release_directories=1, manifest_release_file_records=72, missing_file_count=0 |
+| submission_source_bundle | PASS | directory_tracked_file_count=120, excluded_self_referential_count=6, included_file_count=187, included_total_bytes=3629019, local_raw_dependency_count=44, manifest_release_directories=1, manifest_release_file_records=72, missing_file_count=0 |
 
 ## Command results
 
 | Command | Return code | Duration (s) |
 |---|---:|---:|
-| `latex_compile` | 0 | 0.055 |
-| `availability_path_audit` | 0 | 0.16 |
-| `manuscript_claim_audit` | 0 | 0.042 |
+| `latex_compile` | 0 | 0.056 |
+| `availability_path_audit` | 0 | 0.162 |
+| `manuscript_claim_audit` | 0 | 0.044 |
 | `reference_integrity_audit` | 0 | 0.028 |
-| `submission_bundle_manifest_initial` | 0 | 0.613 |
-| `raw_data_archive_manifest` | 0 | 0.187 |
-| `submission_bundle_manifest_final` | 0 | 0.614 |
-| `submission_source_bundle` | 0 | 0.249 |
+| `submission_bundle_manifest_initial` | 0 | 0.607 |
+| `raw_data_archive_manifest` | 0 | 0.18 |
+| `submission_bundle_manifest_final` | 0 | 0.603 |
+| `submission_source_bundle` | 0 | 0.248 |
 
 ## LaTeX log check
 

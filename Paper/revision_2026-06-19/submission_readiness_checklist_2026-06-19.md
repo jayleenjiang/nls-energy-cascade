@@ -62,13 +62,15 @@ robustness check only, not as the primary quoted exponent, because `n=50` is
 still a single larger-size extension and the fine-step check is not a full
 production-size convergence study.
 
-A subsequent 128-trajectory `n=60` pilot was recorded under
-`experiments/flux_validation/larger_n60_pilot_2026-06-20/`.  It gives
-`E[J(60)] = 0.01189574358` with SE `0.00122139546`; including it in a
-diagnostic six-length fit gives exponent `-1.94393` with bootstrap 95% CI
-`[-2.01755,-1.88549]`.  This supports a production-size `n=60` follow-up but
-is intentionally not used as a primary manuscript claim because the sample size
-is only `128` trajectories.
+Subsequent `n=60` pilots were recorded under
+`experiments/flux_validation/larger_n60_pilot_2026-06-20/`.  The initial
+128-trajectory pilot gives `E[J(60)] = 0.01189574358` with SE `0.00122139546`;
+the medium 256-trajectory pilot gives `E[J(60)] = 0.01361149053` with SE
+`0.00081058642`.  Including the medium pilot in a diagnostic six-length fit
+gives exponent `-1.90127` with bootstrap 95% CI `[-1.94331,-1.86367]`.  This
+supports a production-size `n=60` follow-up but is intentionally not used as a
+primary manuscript claim because the larger pilot sample size is still only
+`256` trajectories.
 
 ## Author confirmations still required
 
