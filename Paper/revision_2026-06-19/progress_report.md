@@ -209,6 +209,16 @@
     qualitative slow-mode diagnostics.  The same wording was synchronized into
     `draft_siads_review.tex`, and both manuscript sources compile under the
     local LaTeX workflow.
+35. Added a larger-chain current robustness check at `n=50` using the same
+    canonical Gibbs-preserving current accumulator, `dt=5e-4`, measurement
+    window `200`, and `1024` trajectories.  The run gives
+    `E[J(50)] = 0.01851584685` with SE `0.00044158954`; adding this point to
+    the four primary production lengths gives a diagnostic five-size exponent
+    `-1.89449` with bootstrap 95% CI `[-1.91636,-1.87340]`.  A smaller
+    independent burn-in-10000 check gives `E[J(50)] = 0.01931242054` with SE
+    `0.00085798987`.  The manuscript now records this as a robustness check
+    rather than replacing the primary `n=10,20,30,40` exponent, because no
+    matched fine-timestep pilot has yet been run at `n=50`.
 
 ## Key validated numerical result
 
@@ -261,3 +271,7 @@ Power-law fit:
 - Optional but recommended before final release: package a full TensorFlow
   retraining environment if the target journal expects re-training
   reproducibility beyond saved-model inference.
+- Optional numerical strengthening: if time permits before submission, turn the
+  `n=50` robustness check into a full larger-length convergence study by adding
+  a matched fine-timestep pilot at `n=50` and, if computationally feasible, one
+  further length such as `n=60`.

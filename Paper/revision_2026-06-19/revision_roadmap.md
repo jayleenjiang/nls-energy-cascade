@@ -65,7 +65,19 @@ uncertainty protocol, the `n=15,25,50` LTE residual mesh diagnostic from the
 table, and finite-window current diagnostics.  The current local gate reports
 `PASS_WITH_LOCAL_RAW_DATA_LIMITATION`: LaTeX/log checks pass, availability
 checks cover 34/34 paths with zero untracked required files, reference
-integrity passes, and the registered numerical claim audit verifies 14/14
+integrity passes, and the registered numerical claim audit verifies 15/15
 claims.  Remaining blockers are author/journal/external-release decisions:
 target journal/template, final declarations, professional similarity screening,
 and whether to create a DOI-backed raw-data archive.
+
+## Larger-chain robustness update — 2026-06-20
+
+An additional `n=50` current run has been completed with the canonical
+Gibbs-preserving current accumulator (`1024` trajectories, burn-in `8000`,
+measurement window `200`, `dt=5e-4`).  The result supports the insulating
+transport conclusion and steepens the diagnostic five-size fit to exponent
+`-1.89449`; however, it is retained as a robustness check rather than replacing
+the primary `n=10,20,30,40` exponent because `n=50` does not yet have a matched
+fine-timestep sensitivity pilot.  This partially addresses the previous
+larger-length recommendation; a full larger-length convergence study would
+still require at least a fine-step `n=50` check and preferably another length.

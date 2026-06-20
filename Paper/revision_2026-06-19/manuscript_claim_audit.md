@@ -1,10 +1,10 @@
 # Manuscript claim audit
 
-Generated: `2026-06-20T13:00:14.583799+00:00`
+Generated: `2026-06-20T13:52:19.304139+00:00`
 
 Scope note: Core numerical/data claims only; author declarations and external plagiarism checks remain outside code-verifiable scope.
 
-Summary: **14 / 14** claims verified; **0** failed.
+Summary: **15 / 15** claims verified; **0** failed.
 
 | ID | Section | Verdict | Evidence |
 |---|---|---:|---|
@@ -12,6 +12,7 @@ Summary: **14 / 14** claims verified; **0** failed.
 | `conductivity_scaling` | abstract / thermal conductivity | VERIFIED | `Paper/revision_2026-06-19/experiments/flux_validation/production_dt5e-4/flux_primary_scaling.json` |
 | `flux_table_values` | thermal conductivity | VERIFIED | `Paper/revision_2026-06-19/experiments/flux_validation/validation_report.md`<br>`Paper/revision_2026-06-19/experiments/flux_validation/production_dt5e-4/flux_primary_scaling.json` |
 | `flux_diagnostics` | thermal conductivity | VERIFIED | `Paper/revision_2026-06-19/experiments/flux_validation/validation_report.md` |
+| `larger_n_current_robustness` | thermal conductivity | VERIFIED | `Paper/revision_2026-06-19/experiments/flux_validation/larger_n_pilot_2026-06-20/n10_50_b64_scaling_scaling.json`<br>`Paper/revision_2026-06-19/experiments/flux_validation/larger_n_pilot_2026-06-20/n50_b64_summary.csv`<br>`Paper/revision_2026-06-19/experiments/flux_validation/larger_n_pilot_2026-06-20/n50_b16_burn10000_summary.csv`<br>`Paper/revision_2026-06-19/experiments/flux_validation/larger_n_pilot_2026-06-20/README.md` |
 | `finite_window_current_statistics` | finite-time current fluctuations | VERIFIED | `Paper/revision_2026-06-19/experiments/flux_validation/production_dt5e-4/current_windows_window_statistics.csv` |
 | `long_chain_action_profiles` | nonequilibrium steady state | VERIFIED | `Paper/revision_2026-06-19/manuscript_figure_metrics.json` |
 | `lte_table_values` | local thermodynamic equilibrium | VERIFIED | `Paper/revision_2026-06-19/source_trace_metrics.json` |

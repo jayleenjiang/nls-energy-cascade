@@ -40,8 +40,19 @@ transport/LTE evidence and the three-mode Fokker--Planck mechanism study, so
 the short-chain section is framed as a low-dimensional microscope rather than
 as an extrapolation of the transport exponent.  The latest one-command gate
 reports `PASS_WITH_LOCAL_RAW_DATA_LIMITATION` with 34/34 availability path
-records present and git-tracked, 14/14 registered numerical claims verified,
+records present and git-tracked, 15/15 registered numerical claims verified,
 and zero missing release-bundle files.
+
+## 2026-06-20 larger-chain robustness update
+
+A new `n=50` current run was added under
+`experiments/flux_validation/larger_n_pilot_2026-06-20/` using the canonical
+current accumulator, `dt=5e-4`, burn-in `8000`, measurement window `200`, and
+`1024` trajectories.  It gives `E[J(50)] = 0.01851584685` with SE
+`0.00044158954`, and the diagnostic fit over `n=10,20,30,40,50` gives exponent
+`-1.89449` with bootstrap 95% CI `[-1.91636,-1.87340]`.  The manuscript uses
+this as a robustness check only, not as the primary quoted exponent, because a
+matched fine-timestep pilot at `n=50` has not yet been run.
 
 ## Author confirmations still required
 

@@ -115,6 +115,46 @@ def read_window_stats(path: Path) -> dict[tuple[int, int], dict[str, float]]:
     return rows
 
 
+def read_summary(path: Path) -> dict[str, Any]:
+    with path.open() as f:
+        rows = list(csv.DictReader(f))
+    if len(rows) != 1:
+        raise ValueError(f"{path}: expected exactly one summary row")
+    row: dict[str, Any] = dict(rows[0])
+    for key in [
+        "n",
+        "batches",
+        "lanes",
+        "n_trajectories",
+        "bond",
+        "seed",
+        "threads",
+        "projection_count",
+    ]:
+        row[key] = int(row[key])
+    for key in [
+        "T1",
+        "Tn",
+        "gamma",
+        "dt",
+        "burnin",
+        "measure",
+        "mean_action_current",
+        "sample_sd",
+        "standard_error",
+        "normal95_ci_lower",
+        "normal95_ci_upper",
+        "mean_first_half_current",
+        "mean_second_half_current",
+        "mean_second_minus_first",
+        "paired_difference_se",
+        "projection_rate",
+        "elapsed_seconds",
+    ]:
+        row[key] = float(row[key])
+    return row
+
+
 def build_registry() -> list[dict[str, Any]]:
     tex = tex_text()
     registry: list[dict[str, Any]] = []
@@ -122,6 +162,11 @@ def build_registry() -> list[dict[str, Any]]:
     flux_path = REVISION / "experiments/flux_validation/production_dt5e-4/flux_primary_scaling.json"
     validation_path = REVISION / "experiments/flux_validation/validation_report.md"
     window_path = REVISION / "experiments/flux_validation/production_dt5e-4/current_windows_window_statistics.csv"
+    larger_n_dir = REVISION / "experiments/flux_validation/larger_n_pilot_2026-06-20"
+    larger_n_scaling_path = larger_n_dir / "n10_50_b64_scaling_scaling.json"
+    larger_n_summary_path = larger_n_dir / "n50_b64_summary.csv"
+    larger_n_long_burn_path = larger_n_dir / "n50_b16_burn10000_summary.csv"
+    larger_n_readme_path = larger_n_dir / "README.md"
     figure_metrics_path = REVISION / "manuscript_figure_metrics.json"
     source_trace_path = REVISION / "source_trace_metrics.json"
     rerun_path = REVISION / "short_chain_nn_rerun_metrics.json"
@@ -135,6 +180,9 @@ def build_registry() -> list[dict[str, Any]]:
     rerun = load_json(rerun_path)
     eigen = load_json(eigen_path)
     window = read_window_stats(window_path)
+    larger_n_scaling = load_json(larger_n_scaling_path)
+    larger_n_summary = read_summary(larger_n_summary_path)
+    larger_n_long_burn = read_summary(larger_n_long_burn_path)
 
     prefactor = flux["prefactor"]
     exponent = flux["exponent"]
@@ -217,6 +265,41 @@ def build_registry() -> list[dict[str, Any]]:
             "stationarity_max_abs_z": flux["stationarity_max_abs_z"],
             "validation_report_source": rel(validation_path),
         },
+    )
+
+    add_claim(
+        registry,
+        claim_id="larger_n_current_robustness",
+        section="thermal conductivity",
+        claim="The n=50 larger-chain current run is reported as a robustness check rather than replacing the primary exponent.",
+        evidence=[
+            larger_n_scaling_path,
+            larger_n_summary_path,
+            larger_n_long_burn_path,
+            larger_n_readme_path,
+        ],
+        expected_text=[
+            r"$\E[J(50)]=0.01852$",
+            r"standard error $0.00044$",
+            r"$-1.49$ paired standard",
+            r"\E[J(n)] \;=\; 32.50\,n^{-1.894}",
+            r"$[-1.916,-1.873]$",
+            r"$\E[J(50)]=0.01931\pm0.00086$",
+            r"not yet been paired with a fine-timestep sensitivity run",
+        ],
+        computed={
+            "n50_primary_mean": larger_n_summary["mean_action_current"],
+            "n50_primary_se": larger_n_summary["standard_error"],
+            "n50_primary_stationarity_z": (
+                larger_n_summary["mean_second_minus_first"]
+                / larger_n_summary["paired_difference_se"]
+            ),
+            "five_length_exponent": larger_n_scaling["exponent"],
+            "five_length_ci": larger_n_scaling["exponent_normalized_95_ci"],
+            "longer_burnin_mean": larger_n_long_burn["mean_action_current"],
+            "longer_burnin_se": larger_n_long_burn["standard_error"],
+        },
+        note="The manuscript keeps the n=10,20,30,40 fit as the primary quoted exponent because n=50 has no matching fine-timestep check.",
     )
 
     w40 = {tau: window[(40, tau)] for tau in (50, 100, 200)}
@@ -403,6 +486,7 @@ def build_registry() -> list[dict[str, Any]]:
             r"Eigenfunction diagnostic",
             r"Manuscript-level claim audit",
             r"finite-size action-current law over $n=10,20,30,40$",
+            r"with an $n=50$",
             r"saved-model inference reproducibility, not full neural-network retraining",
             r"observable-dependent slow-mode diagnostic, not resolved spectral gap",
             r"local audit to rerun after final author and journal-format edits",

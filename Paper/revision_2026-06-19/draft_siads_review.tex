@@ -752,6 +752,24 @@ $5\times10^{-4}$ and $2.5\times10^{-4}$ agree within the Monte Carlo error
 64-trajectory pilot). The production exponent is therefore based on
 $\Delta t=5\times10^{-4}$.
 
+As a larger-chain robustness check, we also ran the same canonical accumulator
+at $n=50$ with $1024$ trajectories, burn-in $8000$, measurement window $200$,
+and $\Delta t=5\times10^{-4}$. This run gives
+$\E[J(50)]=0.01852$ with standard error $0.00044$, and the
+first-half/second-half stationarity statistic is $-1.49$ paired standard
+errors. Adding this point to the four production lengths gives a diagnostic
+five-size fit
+\[
+  \E[J(n)] \;=\; 32.50\,n^{-1.894},
+  \qquad R^2=0.9976,
+\]
+with bootstrap exponent confidence interval $[-1.916,-1.873]$. A smaller
+independent check with burn-in $10000$ gives
+$\E[J(50)]=0.01931\pm0.00086$. We therefore use the $n=50$ computation as
+evidence against a near-term crossover to Fourier scaling, but retain
+\eqref{eq:flux-scaling} as the primary quoted exponent because the larger
+length has not yet been paired with a fine-timestep sensitivity run.
+
 \begin{figure}[ht]
   \centering
   \includegraphics[width=0.72\textwidth]{experiments/flux_validation/production_dt5e-4/flux_primary_scaling.pdf}
@@ -1092,9 +1110,10 @@ stationary density.
 
 Several limitations remain. The long-chain ergodicity theory is open, so the
 stationarity of the long simulations is assessed numerically rather than
-proved. The transport exponent is fitted over $n=10,20,30,40$ and should be
-rechecked at larger lengths and smaller timesteps when computational resources
-permit. The current statistics reported here concern finite-time averages of
+proved. The primary transport exponent is fitted over $n=10,20,30,40$; the
+$n=50$ robustness run supports the same faster-than-Fourier trend but does not
+replace a systematic larger-length and finer-timestep convergence study. The
+current statistics reported here concern finite-time averages of
 the action current only; bath-energy entropy production and a genuine
 Gallavotti--Cohen large-deviation test require a separate boundary-energy
 accumulator. Finally, the open-chain terminal-energy scaling suggested by the
@@ -1122,11 +1141,12 @@ confirmation before submission.
 Result family & Evidence bundle & Automated or source-traced check & Scope retained in manuscript \\
 \midrule
 Action-current scaling &
-canonical simulator, production manifest, validation report, current-window
-statistics &
+canonical simulator, production manifest, larger-chain robustness run,
+validation report, current-window statistics &
 frozen source/binary hashes; equal-temperature and hot/cold reversal gates;
 trajectory-bootstrap exponent CI; split-window stationarity and timestep pilot &
-finite-size action-current law over $n=10,20,30,40$ \\
+finite-size action-current law over $n=10,20,30,40$, with an $n=50$
+robustness check \\
 \midrule
 Long-chain profiles and local equilibrium &
 figure metrics, histogram/profile hashes, LTE source-trace export &
