@@ -30,7 +30,7 @@ Key gate numbers:
 | Reference integrity audit | PASS, `8` cited BibTeX entries, `0` dangling citations |
 | Raw-data archive manifest | PASS locally, `40` unique referenced files, `138,875,181` bytes |
 | Submission bundle manifest | `PASS_WITH_LOCAL_RAW_DATA_LIMITATION`, `75` release files, `0` missing, `0` untracked release files |
-| Source-only bundle dry run | PASS, `191` included files |
+| Source-only bundle dry run | PASS, `231` included files |
 
 The SIADS review-preparation source also compiles locally:
 
@@ -61,6 +61,11 @@ over the simulated range.  The production-size `n=60` extension gives a
 diagnostic six-length exponent near `-1.93`, so it is promoted to manuscript
 robustness evidence while the primary exponent remains the original
 four-length production fit.
+
+A separate bath-parameter robustness pilot has also been recorded under
+`experiments/flux_validation/parameter_robustness_2026-06-20/`.  It is treated
+as a production-upgrade plan and preliminary screening artifact, not as a new
+manuscript claim.
 
 ### Short-chain mechanism vulnerability
 
