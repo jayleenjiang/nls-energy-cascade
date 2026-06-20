@@ -1,12 +1,12 @@
 # Availability path audit
 
-Generated: `2026-06-19T18:19:15.154170+00:00`
+Generated: `2026-06-20T07:00:28.981267+00:00`
 
 Draft: `Paper/revision_2026-06-19/draft.tex`
 
 ## Summary
 
-- Total paths checked: 31
+- Total paths checked: 34
 - Missing paths: 0
 - Untracked files among existing file paths: 0
 
@@ -29,17 +29,20 @@ Draft: `Paper/revision_2026-06-19/draft.tex`
 | availability | `Paper/revision_2026-06-19/scripts/analyze_eigen_fit_windows.py` | `Paper/revision_2026-06-19/scripts/analyze_eigen_fit_windows.py` | repo-root-relative | PASS (file) | yes | 4b7669683117 |
 | availability | `Paper/revision_2026-06-19/eigen_fit_sensitivity.json` | `Paper/revision_2026-06-19/eigen_fit_sensitivity.json` | repo-root-relative | PASS (file) | yes | cdc0d3ecba77 |
 | availability | `Paper/revision_2026-06-19/scripts/audit_manuscript_claims.py` | `Paper/revision_2026-06-19/scripts/audit_manuscript_claims.py` | repo-root-relative | PASS (file) | yes | b46ee84ecc87 |
-| availability | `Paper/revision_2026-06-19/manuscript_claim_audit.json` | `Paper/revision_2026-06-19/manuscript_claim_audit.json` | repo-root-relative | PASS (file) | yes | 5032db271fec |
-| availability | `Paper/revision_2026-06-19/manuscript_claim_audit.md` | `Paper/revision_2026-06-19/manuscript_claim_audit.md` | repo-root-relative | PASS (file) | yes | f614d446d072 |
+| availability | `Paper/revision_2026-06-19/manuscript_claim_audit.json` | `Paper/revision_2026-06-19/manuscript_claim_audit.json` | repo-root-relative | PASS (file) | yes | c60a4a932b7b |
+| availability | `Paper/revision_2026-06-19/manuscript_claim_audit.md` | `Paper/revision_2026-06-19/manuscript_claim_audit.md` | repo-root-relative | PASS (file) | yes | 2440b20f427d |
 | availability | `Paper/revision_2026-06-19/scripts/audit_availability_paths.py` | `Paper/revision_2026-06-19/scripts/audit_availability_paths.py` | repo-root-relative | PASS (file) | yes | 449c7c91c7d2 |
 | availability | `Paper/revision_2026-06-19/availability_path_audit.json` | `Paper/revision_2026-06-19/availability_path_audit.json` | repo-root-relative | PASS (file) | yes |  |
 | availability | `Paper/revision_2026-06-19/availability_path_audit.md` | `Paper/revision_2026-06-19/availability_path_audit.md` | repo-root-relative | PASS (file) | yes |  |
 | availability | `Paper/revision_2026-06-19/references.bib` | `Paper/revision_2026-06-19/references.bib` | repo-root-relative | PASS (file) | yes | 8e3d2e4c9f3c |
-| availability | `Paper/revision_2026-06-19/integrity_audit_2026-06-19.md` | `Paper/revision_2026-06-19/integrity_audit_2026-06-19.md` | repo-root-relative | PASS (file) | yes | 0ed28e451a5f |
+| availability | `Paper/revision_2026-06-19/integrity_audit_2026-06-19.md` | `Paper/revision_2026-06-19/integrity_audit_2026-06-19.md` | repo-root-relative | PASS (file) | yes | 7f200c49d70f |
 | figure | `action_profiles.pdf` | `Paper/revision_2026-06-19/action_profiles.pdf` | latex-source-relative | PASS (file) | yes | b72d9cafc37c |
 | figure | `cascade_embedding.pdf` | `Paper/revision_2026-06-19/cascade_embedding.pdf` | latex-source-relative | PASS (file) | yes | ff8a00f7a6a3 |
 | figure | `lte_residual_midchain.pdf` | `Paper/revision_2026-06-19/lte_residual_midchain.pdf` | latex-source-relative | PASS (file) | yes | 3785b901fca6 |
+| figure | `report_assets/compare_residual_mesh.pdf` | `Paper/revision_2026-06-19/report_assets/compare_residual_mesh.pdf` | latex-source-relative | PASS (file) | yes | e2c7bff1ce9c |
 | figure | `experiments/flux_validation/production_dt5e-4/flux_primary_scaling.pdf` | `Paper/revision_2026-06-19/experiments/flux_validation/production_dt5e-4/flux_primary_scaling.pdf` | latex-source-relative | PASS (file) | yes | c7c06317e77a |
+| figure | `experiments/flux_validation/production_dt5e-4/current_windows_n40_windows.pdf` | `Paper/revision_2026-06-19/experiments/flux_validation/production_dt5e-4/current_windows_n40_windows.pdf` | latex-source-relative | PASS (file) | yes | c068514bde19 |
+| figure | `experiments/flux_validation/production_dt5e-4/current_windows_variance_scaling.pdf` | `Paper/revision_2026-06-19/experiments/flux_validation/production_dt5e-4/current_windows_variance_scaling.pdf` | latex-source-relative | PASS (file) | yes | 976198b14d5a |
 | figure | `eq_validation.png` | `Paper/revision_2026-06-19/eq_validation.png` | latex-source-relative | PASS (file) | yes | 3bc9927e20c1 |
 | figure | `neq_density.png` | `Paper/revision_2026-06-19/neq_density.png` | latex-source-relative | PASS (file) | yes | 959983b2bbf6 |
 | figure | `symmetry_breaking.png` | `Paper/revision_2026-06-19/symmetry_breaking.png` | latex-source-relative | PASS (file) | yes | 883ca0d5b778 |

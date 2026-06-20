@@ -55,9 +55,10 @@ The generated summary is:
 | Check file/path availability | `availability_path_audit.md`; `availability_path_audit.json` | Manuscript-declared files and figure paths exist locally and have hashes where applicable. |
 | Check submission-bundle completeness | `submission_bundle_manifest.md`; `submission_bundle_manifest.json` | Tracked release files are present, git-tracked, and categorized by role. |
 | Build a source-only submission archive | `submission_source_bundle_report.md`; `scripts/build_submission_source_bundle.py` | A source-only `.tar.gz` can be generated under `tmp/`, with checksums and raw-data exclusions recorded. |
-| Check compiled-PDF layout QA | `pdf_layout_qa_2026-06-19.md` | The generic compiled PDF has been rendered and checked for obvious layout defects. |
+| Check compiled-PDF layout QA | `pdf_layout_qa_2026-06-19.md` | The generic compiled PDF has clean LaTeX logs and the newly added figure/table pages have been rendered and checked for obvious layout defects. |
 | Check source-traced raw files | `raw_data_archive_manifest.md`; `raw_data_archive_manifest.json` | The compact raw-data subset contains 40 unique local files totaling 138,875,181 bytes. |
-| Check current-scaling validation | `experiments/flux_validation/production_manifest.md`; `experiments/flux_validation/production_dt5e-4/validation_report.md` | Production flux/current scaling artifacts and validation summaries. |
+| Check current-scaling validation | `experiments/flux_validation/production_manifest.md`; `experiments/flux_validation/validation_report.md`; `experiments/flux_validation/production_dt5e-4/current_windows_window_statistics.csv` | Production flux/current scaling artifacts, validation summaries, and finite-window diagnostics. |
+| Check LTE residual mesh diagnostic | `report_assets/compare_residual_mesh.pdf`; `draft.tex` | Structural LTE residual visualization including the `n=15` diagnostic requested in the manuscript revision pass. |
 | Check author/journal blockers | `author_submission_action_packet_2026-06-19.md`; `target_journal_shortlist_2026-06-19.md`; `submission_readiness_checklist_2026-06-19.md` | Remaining human decisions before formal submission. |
 | See the full revision history | `progress_report.md`; `integrity_audit_2026-06-19.md` | What was changed, verified, limited, or left for authors. |
 

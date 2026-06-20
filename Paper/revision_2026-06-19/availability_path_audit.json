@@ -1,6 +1,6 @@
 {
   "draft": "Paper/revision_2026-06-19/draft.tex",
-  "generated_at_utc": "2026-06-19T18:19:15.154170+00:00",
+  "generated_at_utc": "2026-06-20T07:00:28.981267+00:00",
   "missing_paths": 0,
   "records": [
     {
@@ -176,8 +176,8 @@
       "path_type": "file",
       "resolution_rule": "repo-root-relative",
       "resolved_path": "Paper/revision_2026-06-19/manuscript_claim_audit.json",
-      "sha256": "5032db271fecbbabcd007e56c94c6ca690a40068353de7f1b32f70552a4688a5",
-      "size_bytes": 29255
+      "sha256": "c60a4a932b7b6f2d6498d20ee825d711b96c98d2b254e97afe63d5d93781d245",
+      "size_bytes": 29262
     },
     {
       "exists": true,
@@ -187,7 +187,7 @@
       "path_type": "file",
       "resolution_rule": "repo-root-relative",
       "resolved_path": "Paper/revision_2026-06-19/manuscript_claim_audit.md",
-      "sha256": "f614d446d072c0c322b2399fdc04511e37b2fbd1728c1e3835b146167f8d3263",
+      "sha256": "2440b20f427d83948f5ff717e7fedd6cd1ef9ba3bf3ab3f012f07b2f68c930e7",
       "size_bytes": 3402
     },
     {
@@ -210,7 +210,7 @@
       "resolution_rule": "repo-root-relative",
       "resolved_path": "Paper/revision_2026-06-19/availability_path_audit.json",
       "sha256": null,
-      "size_bytes": 13225
+      "size_bytes": 14687
     },
     {
       "exists": true,
@@ -221,7 +221,7 @@
       "resolution_rule": "repo-root-relative",
       "resolved_path": "Paper/revision_2026-06-19/availability_path_audit.md",
       "sha256": null,
-      "size_bytes": 5969
+      "size_bytes": 6683
     },
     {
       "exists": true,
@@ -242,8 +242,8 @@
       "path_type": "file",
       "resolution_rule": "repo-root-relative",
       "resolved_path": "Paper/revision_2026-06-19/integrity_audit_2026-06-19.md",
-      "sha256": "0ed28e451a5f5789e88c0392dd93bf8074bcccb0616cfe946c1e767fc3b0f824",
-      "size_bytes": 16476
+      "sha256": "7f200c49d70ffb3bdb820987666a9e2d0892ca941d87ef908ad3c5c91c2b667b",
+      "size_bytes": 16792
     },
     {
       "exists": true,
@@ -282,12 +282,45 @@
       "exists": true,
       "git_tracked": true,
       "kind": "figure",
+      "manuscript_path": "report_assets/compare_residual_mesh.pdf",
+      "path_type": "file",
+      "resolution_rule": "latex-source-relative",
+      "resolved_path": "Paper/revision_2026-06-19/report_assets/compare_residual_mesh.pdf",
+      "sha256": "e2c7bff1ce9c529e335d263aa65b0eb3f668f59c8460cf6facf8a64673f47b87",
+      "size_bytes": 319877
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "kind": "figure",
       "manuscript_path": "experiments/flux_validation/production_dt5e-4/flux_primary_scaling.pdf",
       "path_type": "file",
       "resolution_rule": "latex-source-relative",
       "resolved_path": "Paper/revision_2026-06-19/experiments/flux_validation/production_dt5e-4/flux_primary_scaling.pdf",
       "sha256": "c7c06317e77a12ed7c2998f93de7a5a6712cacfc7dba7662205c5d3693bdf319",
       "size_bytes": 19190
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "kind": "figure",
+      "manuscript_path": "experiments/flux_validation/production_dt5e-4/current_windows_n40_windows.pdf",
+      "path_type": "file",
+      "resolution_rule": "latex-source-relative",
+      "resolved_path": "Paper/revision_2026-06-19/experiments/flux_validation/production_dt5e-4/current_windows_n40_windows.pdf",
+      "sha256": "c068514bde19d5f69c7fe0380f1872b843f3083ed40079590bd015255ea399a4",
+      "size_bytes": 16459
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "kind": "figure",
+      "manuscript_path": "experiments/flux_validation/production_dt5e-4/current_windows_variance_scaling.pdf",
+      "path_type": "file",
+      "resolution_rule": "latex-source-relative",
+      "resolved_path": "Paper/revision_2026-06-19/experiments/flux_validation/production_dt5e-4/current_windows_variance_scaling.pdf",
+      "sha256": "976198b14d5aff80e26a9524799695c569fe3822b21fecb77383e6b6e89b5c81",
+      "size_bytes": 15488
     },
     {
       "exists": true,
@@ -346,6 +379,6 @@
     }
   ],
   "script": "Paper/revision_2026-06-19/scripts/audit_availability_paths.py",
-  "total_paths": 31,
+  "total_paths": 34,
   "untracked_files": 0
 }

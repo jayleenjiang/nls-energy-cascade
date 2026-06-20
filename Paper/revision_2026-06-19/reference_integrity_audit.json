@@ -4,13 +4,13 @@
       110,
       121,
       127,
-      475
+      508
     ],
     "DobsonLiZhai": [
-      379
+      380
     ],
     "GallavottiCohen": [
-      303
+      304
     ],
     "HLNS": [
       90,
@@ -24,29 +24,29 @@
       213,
       216,
       230,
-      343,
-      420,
-      714,
-      787,
-      793,
-      943
+      344,
+      453,
+      824,
+      897,
+      903,
+      1053
     ],
     "LepriLiviPoliti": [
-      657
+      716
     ],
     "Li2019": [
-      379
+      380
     ],
     "Nazarenko": [
       83
     ],
     "ZhaiDobsonLi": [
       239,
-      378,
-      390
+      379,
+      391
     ]
   },
-  "generated_at_utc": "2026-06-19T18:19:15.212353+00:00",
+  "generated_at_utc": "2026-06-20T07:00:29.042725+00:00",
   "issues": {
     "dangling_citations": [],
     "duplicate_bib_keys": [],
@@ -62,7 +62,7 @@
         110,
         121,
         127,
-        475
+        508
       ],
       "doi": "10.1007/s00222-010-0242-2",
       "entry_type": "article",
@@ -93,12 +93,12 @@
         213,
         216,
         230,
-        343,
-        420,
-        714,
-        787,
-        793,
-        943
+        344,
+        453,
+        824,
+        897,
+        903,
+        1053
       ],
       "doi": "10.48550/arXiv.2505.16018",
       "entry_type": "misc",
@@ -119,8 +119,8 @@
       "citation_count": 3,
       "citation_lines": [
         239,
-        378,
-        390
+        379,
+        391
       ],
       "doi": "",
       "entry_type": "inproceedings",
@@ -140,7 +140,7 @@
     {
       "citation_count": 1,
       "citation_lines": [
-        379
+        380
       ],
       "doi": "10.4310/CMS.2019.v17.n4.a9",
       "entry_type": "article",
@@ -160,7 +160,7 @@
     {
       "citation_count": 1,
       "citation_lines": [
-        379
+        380
       ],
       "doi": "10.4310/CMS.2022.v20.n3.a8",
       "entry_type": "article",
@@ -180,7 +180,7 @@
     {
       "citation_count": 1,
       "citation_lines": [
-        303
+        304
       ],
       "doi": "10.1103/PhysRevLett.74.2694",
       "entry_type": "article",
@@ -200,7 +200,7 @@
     {
       "citation_count": 1,
       "citation_lines": [
-        657
+        716
       ],
       "doi": "10.1016/S0370-1573(02)00558-6",
       "entry_type": "article",

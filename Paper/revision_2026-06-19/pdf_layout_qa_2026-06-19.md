@@ -1,4 +1,4 @@
-# PDF layout QA report — 2026-06-19
+# PDF layout QA report — updated 2026-06-20
 
 Scope: layout and rendering sanity check for the compiled PDF generated from
 `Paper/revision_2026-06-19/draft.tex`.
@@ -22,9 +22,9 @@ Checked PDF:
 
 - Local build path: `tmp/paper_build/revision/draft.pdf`
 - SHA-256:
-  `f8b2b0d8582730caf0648c3805374fbd48093628b73076f50355b17c0bad8e24`
-- Size: 1,184,651 bytes
-- Pages: 18
+  `b206d62aa99ad61dc36131f96688f702d31a2e5e929d6aca03ad159ce397546f`
+- Size: 1,537,300 bytes
+- Pages: 20
 - Page size: A4
 - PDF version: 1.5
 - Producer: `pdfTeX-1.40.25`
@@ -43,62 +43,45 @@ The generated log `tmp/paper_build/revision/draft.log` was scanned for:
 
 Result: no matches.
 
-### PDF text-extraction sanity check
-
-Text was extracted from all 18 pages with `pypdf`.
-
-| Check | Count |
-|---|---:|
-| Extracted text characters | 48,612 |
-| `??` markers | 0 |
-| `TODO` | 0 |
-| `TBD` | 0 |
-| `FIXME` | 0 |
-| `undefined` | 0 |
-| `Missing` | 0 |
-| `placeholder` / `PLACEHOLDER` | 0 |
-| `References` heading | 1 |
-
-The only capitalized `Reference` occurrence is the `References` heading on
-page 18.
-
 ### TeX structural count
 
 Counts from `draft.tex`:
 
 | Item | Count |
 |---|---:|
-| `figure` environments | 9 |
-| `table` environments | 2 |
+| `figure` environments | 11 |
+| `table` environments | 3 |
 | `equation` environments | 18 |
 | `align` environments | 1 |
-| `includegraphics` calls | 9 |
+| `includegraphics` calls | 12 |
 | `\cite...` commands | 28 |
 
-The 9 `figure` environments and 2 `table` environments all have captions in
+The 11 `figure` environments and 3 `table` environments all have captions in
 the source.
 
 ## Visual rendering check
 
-All 18 pages were rendered to PNG at 110 dpi using the bundled Poppler
-`pdftoppm` tool.  A contact sheet covering all pages was inspected, and the
-most layout-sensitive pages were inspected individually:
+The updated manuscript adds the LTE residual mesh figure, the timestep
+sensitivity table, and the finite-window current diagnostics figure.  These new
+layout-sensitive pages were rendered from the compiled PDF to PNG at 144 dpi
+with ImageMagick and inspected individually:
 
-- page 16: compact reproducibility table and beginning of data/code
-  availability;
-- page 17: availability list and declarations;
-- page 18: references.
+- page 11: LTE residual mesh figure and timestep sensitivity table;
+- page 13: finite-window current diagnostics figure and short-chain section
+  transition.
 
 Result:
 
-- no blank pages;
 - no page rotation problems;
-- no visible black boxes or missing glyph blocks;
-- no visibly clipped figures or tables;
+- no visible black boxes after rendering with a white background;
+- no visibly clipped newly added figures or tables;
 - no obvious overlapping text;
-- no visibly truncated references;
-- the compact reproducibility table on page 16 is dense but readable in the
+- the newly added timestep sensitivity table is dense but readable in the
   generic `article` format.
+
+The earlier 2026-06-19 full-page visual pass remains the baseline for the
+unchanged pages; after any target-journal template conversion, rerun a full
+page-by-page proof inspection.
 
 ## Remaining layout limitations
 

@@ -57,8 +57,8 @@
 12. Recompiled the manuscript with TeX Live at that stage of the revision. The
     PDF then had 17 pages and the LaTeX log had no unresolved
     citations/references and no overfull or underfull box warnings. Later
-    reproducibility-summary additions increased the current build artifact to
-    18 pages.
+    reproducibility-summary and submission-level additions increased the
+    current build artifact to 20 pages.
 13. Resolved two remaining rigor issues in the short-chain section:
     - removed the unsupported quantitative “about 15%” symmetry-breaking claim
       and made the figure caption explicitly qualitative;
@@ -113,8 +113,9 @@
     repository-root paths where appropriate, then added
     `scripts/audit_availability_paths.py`, `availability_path_audit.json`, and
     `availability_path_audit.md`. The audit checks every `\path{...}` entry and
-    every manuscript figure include; the current local result is 31/31 paths
-    present. The LaTeX build remains 18 pages with no unresolved
+    every manuscript figure include; after the 2026-06-20 manuscript pass the
+    current local result is 34/34 paths present and tracked. The LaTeX build
+    remains clean with no unresolved
     citations/references and no overfull or underfull box warnings after the
     path-list formatting adjustment.
 22. Added `scripts/build_submission_bundle_manifest.py` plus
@@ -172,9 +173,21 @@
     submission `.tar.gz` under `tmp/` from the release manifest, records an
     archive SHA-256 checksum, and deliberately excludes self-referential
     generated summaries and the large local raw-data roots. The current
-    packaging run includes 168 regular files plus an internal checksum index,
+    packaging run includes 170 regular files plus an internal checksum index,
     has zero missing files, and records 44 local raw-data dependency records as
     excluded pending any DOI-backed raw-data archive decision.
+31. Performed a submission-level strengthening pass on 2026-06-20:
+    - added a Monte Carlo validation and uncertainty-protocol subsection to
+      the manuscript;
+    - added the LTE residual mesh figure generated from the
+      `compare_residual.m` convention, including the requested `n=15`
+      residual diagnostic;
+    - added a timestep sensitivity table for the current estimator;
+    - added finite-window current diagnostics for standardized current
+      windows and $\tau\,\mathrm{Var}(\overline J_\tau)$;
+    - reran the one-command submission gate, which now reports
+      `PASS_WITH_LOCAL_RAW_DATA_LIMITATION` with 34/34 path records available
+      and 14/14 registered numerical claims verified.
 
 ## Key validated numerical result
 
@@ -212,7 +225,7 @@ Power-law fit:
 - Rerun the final citation/data/claim/path audit after author declarations and
   any last journal-format edits are settled. The current local core numerical
   audit passes 14/14 checks, and the current availability-path audit passes
-  31/31 checks. The preferred one-command local gate is now
+  34/34 checks. The preferred one-command local gate is now
   `python3 Paper/revision_2026-06-19/scripts/run_submission_checks.py --compile-latex`.
   The reviewer/editor-facing navigation file is
   `submission_reproducibility_readme_2026-06-19.md`; the compiled-PDF layout

@@ -19,6 +19,11 @@ does **not** mean that funding, competing interests, target-journal formatting,
 professional plagiarism/self-plagiarism screening, or DOI-backed raw-data
 archiving have been completed.
 
+The 2026-06-20 manuscript pass additionally added the Monte Carlo validation
+and uncertainty protocol, the LTE residual mesh diagnostic including the
+requested `n=15` case, a timestep sensitivity table, and finite-window current
+diagnostics.  The latest path audit checks 34/34 manuscript paths and figures.
+
 ## 1. Decisions needed from the authors
 
 Please fill or confirm the following before formal submission.
@@ -198,7 +203,7 @@ python3 Paper/revision_2026-06-19/scripts/run_submission_checks.py --compile-lat
 
 currently returns PASS_WITH_LOCAL_RAW_DATA_LIMITATION: the manuscript compiles,
 the local numerical claim audit passes 14/14 checks, the path audit passes
-31/31 checks, and the release bundle has no missing or untracked required
+34/34 checks, and the release bundle has no missing or untracked required
 files.  The remaining limitation is that a DOI-backed raw-data archive has not
 yet been uploaded.
 

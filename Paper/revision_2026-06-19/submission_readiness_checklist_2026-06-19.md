@@ -14,7 +14,8 @@ paper can be called journal-ready.
 | References | Verified and converted to BibTeX | `references.bib`; `integrity_audit_2026-06-19.md` |
 | Citation/reference integrity | Passing local structural audit | `scripts/audit_references.py`; `reference_integrity_audit.json`; `reference_integrity_audit.md` |
 | Core numerical claims | Passing local claim audit | `scripts/audit_manuscript_claims.py`; `manuscript_claim_audit.json`; `manuscript_claim_audit.md` |
-| Figure provenance | Source-traced for manuscript-generated figures | `scripts/generate_manuscript_figures.py`; `manuscript_figure_metrics.json` |
+| Figure provenance | Source-traced for manuscript-generated figures; LTE mesh figure now included | `scripts/generate_manuscript_figures.py`; `manuscript_figure_metrics.json`; `report_assets/compare_residual_mesh.pdf` |
+| Monte Carlo validation and finite-window diagnostics | Added to manuscript and checked by local gate | `experiments/flux_validation/validation_report.md`; `experiments/flux_validation/production_dt5e-4/current_windows_window_statistics.csv`; `draft.tex` |
 | Short-chain saved-model diagnostics | Rerun from saved TensorFlow/Keras models | `scripts/recompute_short_chain_nn_metrics.py`; `short_chain_nn_rerun_metrics.json` |
 | Data/code and figure path availability | Passing local path audit | `scripts/audit_availability_paths.py`; `availability_path_audit.json`; `availability_path_audit.md` |
 | Submission/release bundle | Passing for tracked release files; raw-data limitation recorded | `scripts/build_submission_bundle_manifest.py`; `submission_bundle_manifest.json`; `submission_bundle_manifest.md` |
@@ -26,6 +27,16 @@ paper can be called journal-ready.
 | Author/journal action packet | Prepared; requires author completion | `author_submission_action_packet_2026-06-19.md` |
 | Target-journal shortlist | Prepared from official pages; requires author choice | `target_journal_shortlist_2026-06-19.md` |
 | Originality pre-screen | Clean within sampled web-query scope | `originality_spotcheck_2026-06-19.md` |
+
+## 2026-06-20 submission-level update
+
+The current manuscript now includes a dedicated Monte Carlo validation and
+uncertainty-protocol subsection, the `n=15,25,50` LTE residual mesh diagnostic
+from the `compare_residual.m` convention, a timestep sensitivity table for the
+current estimator, and finite-window current diagnostics.  The latest
+one-command gate reports `PASS_WITH_LOCAL_RAW_DATA_LIMITATION` with 34/34
+availability path records present and git-tracked, 14/14 registered numerical
+claims verified, and zero missing release-bundle files.
 
 ## Author confirmations still required
 

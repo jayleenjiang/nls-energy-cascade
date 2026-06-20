@@ -249,9 +249,10 @@ eigenpair---are described as they arise.
 
 This section collects the thermodynamic observables we measure for the long
 chain (\cref{sec:thermo}), the spectral (Fokker--Planck) framework for the
-short chain (\cref{sec:fp}), and the numerical methods used to solve the
-stationary Fokker--Planck equation and to extract eigenfunctions of the
-generator (\cref{sec:methods}).
+short chain (\cref{sec:fp}), the numerical methods used to solve the stationary
+Fokker--Planck equation and to extract eigenfunctions of the generator
+(\cref{sec:methods}), and the validation protocol for the Monte Carlo
+transport computations (\cref{sec:mc-validation}).
 
 \subsection{Nonequilibrium thermodynamics of the chain}\label{sec:thermo}
 
@@ -415,6 +416,38 @@ diagnostic rather than a proof that the full generator spectrum is real. Results
 are reported in
 \cref{sec:eigenfunction}.
 
+\subsection{Monte Carlo validation and uncertainty protocol}\label{sec:mc-validation}
+
+The long-chain transport claims use a separate canonical current accumulator
+for the Gibbs-preserving SDE \eqref{eq:sde-bulk}. The accumulator is written in
+double precision, uses deterministic per-trajectory random-number streams, and
+records one independent time-averaged current per trajectory together with four
+equal subwindows. We report standard errors across independent trajectory
+averages and use trajectory-cluster bootstrap resampling for scaling-exponent
+confidence intervals; the subwindows are used only as finite-time diagnostics,
+not as independent trajectories.
+
+Before production runs the code is subjected to four validation gates. First,
+the optimized build is warning-clean and a sanitizer smoke run completes.
+Second, repeating the same seeded run with one and two OpenMP threads gives
+byte-identical samples, profiles, and burn-in traces. Third, an
+equal-temperature run gives zero mean action current within confidence
+intervals, while swapping the hot and cold baths reverses the current with the
+same magnitude. Fourth, an equal-temperature SDE action profile agrees with an
+independent Metropolis sampler of the Gibbs law \eqref{eq:gibbs}, with maximum
+discrepancy $1.10$ combined standard errors in the validation run. These gates
+check the sign convention, the fluctuation--dissipation normalization, and the
+statistical independence assumptions used in the current estimates.
+
+The timestep study is used only to choose a stable production step, not to hide
+a continuum extrapolation. The coarse step $\Delta t=10^{-3}$ is acceptable at
+$n=10$ but increasingly biased at larger $n$; at $n=40$ it underestimates the
+current by $17.6\%$ relative to $\Delta t=5\times10^{-4}$. In contrast, the
+$n=40$ comparison between $\Delta t=5\times10^{-4}$ and
+$2.5\times10^{-4}$ differs by $3.9\%$, or $0.60$ pooled standard errors. The
+reported scaling exponent is therefore a finite-size numerical law conditional
+on the validated timestep and measurement window, not an asymptotic theorem.
+
 \section{Statistical physics properties of the long cascade chain}\label{sec:long-chain}
 
 The rigorous analysis of \cite{HLNS} treats the three-mode chain and lists the
@@ -437,7 +470,7 @@ closed two-bath chain \eqref{eq:bath}. The local-equilibrium histograms use
 long on-the-fly accumulation runs, while the current-scaling runs use an
 independent canonical current accumulator with double precision, deterministic
 trajectory seeds, four equal current blocks per trajectory, and explicit
-timestep and burn-in diagnostics.
+timestep and burn-in diagnostics as described in \cref{sec:mc-validation}.
 
 \subsection{Nonequilibrium steady state}\label{sec:ness-long}
 
@@ -620,6 +653,32 @@ exactly in either ensemble.
   \label{fig:lte-resid}
 \end{figure}
 
+For a more geometric view of the same approximation error,
+\cref{fig:lte-resid-mesh} shows the residual surface on the displayed
+$\theta$-slice using the MATLAB \texttt{compare\_residual.m} masking convention.
+This diagnostic includes the short $n=15$ chain and two longer chains at a
+comparable interior location. The surfaces show a coherent, mostly
+low-curvature core together with a sharper boundary/tail ridge: the dominant
+effect is therefore a smooth mismatch between the NESS marginal and a single
+rescaled equilibrium marginal, rather than unstructured Monte Carlo noise. The
+figure is used as a structural residual diagnostic; the numerical slopes in
+\cref{tab:lte} are computed by the fixed weighted-core estimator described
+above.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\textwidth]{report_assets/compare_residual_mesh.pdf}
+  \caption{Three-dimensional residual surfaces
+  $\log q-(x\log p+c)$ for the pair-marginal local-equilibrium comparison,
+  reproduced from the MATLAB \texttt{compare\_residual.m} convention. The
+  displayed slice uses $80^3$ histograms, the mask $(Q>50)$ and $(P>50)$ for
+  the fit, and an interior hot-side pair for $n=15,25,50$. The short-chain
+  $n=15$ residual has the same qualitative shape as the longer chains,
+  supporting the interpretation that the residual is a structured finite
+  nonequilibrium correction rather than a plotting artifact.}
+  \label{fig:lte-resid-mesh}
+\end{figure}
+
 \subsection{Thermal conductivity}\label{sec:thermal-conductivity}
 
 In the closed-chain NESS the mean action current $\E[J]$ of
@@ -678,6 +737,36 @@ $\Delta t=5\times10^{-4}$.
   \label{fig:flux-scaling}
 \end{figure}
 
+\begin{table}[ht]\centering
+\small
+\begin{tabular}{cccccc}
+\toprule
+$n$ & $\Delta t_{\rm fine}$ & $\Delta t_{\rm coarse}$ &
+fine mean & coarse mean & coarse--fine / fine \\
+\midrule
+10 & $5.0{\times}10^{-4}$ & $10^{-3}$ &
+0.39252 & 0.39059 & $-0.5\%$ \\
+20 & $2.5{\times}10^{-4}$ & $5.0{\times}10^{-4}$ &
+0.11815 & 0.11917 & $+0.9\%$ \\
+20 & $5.0{\times}10^{-4}$ & $10^{-3}$ &
+0.11917 & 0.11529 & $-3.3\%$ \\
+30 & $5.0{\times}10^{-4}$ & $10^{-3}$ &
+0.05457 & 0.04943 & $-9.4\%$ \\
+40 & $2.5{\times}10^{-4}$ & $5.0{\times}10^{-4}$ &
+0.02863 & 0.02975 & $+3.9\%$ \\
+40 & $5.0{\times}10^{-4}$ & $10^{-3}$ &
+0.02975 & 0.02450 & $-17.6\%$ \\
+\bottomrule
+\end{tabular}
+\caption{Timestep sensitivity for the current estimator. The production step
+$\Delta t=5\times10^{-4}$ is retained because the coarser
+$10^{-3}$ step visibly biases the longer chains, whereas the available
+finer-step pilots at $n=20$ and $n=40$ agree with the production step within
+Monte Carlo error. The table reports pilot means, so it is a convergence
+diagnostic rather than an additional scaling fit.}
+\label{tab:dt-sensitivity}
+\end{table}
+
 Beyond the mean, we examine the distribution of finite-time averaged currents
 \[
   \overline J_\tau=\frac1{\tau}\int_{t_0}^{t_0+\tau}J(t)\,\dd t .
@@ -694,6 +783,27 @@ $\tau\,\mathrm{Var}(\overline J_\tau)$ decreases over these finite windows
 ($0.095$, $0.067$, $0.048$), indicating that $\tau=200$ is not yet an
 asymptotic regime in which a single large-deviation rate can be read off
 reliably.
+
+\begin{figure}[ht]
+  \centering
+  \begin{subfigure}{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{experiments/flux_validation/production_dt5e-4/current_windows_n40_windows.pdf}
+    \caption{$n=40$ standardized current windows.}
+  \end{subfigure}\hfill
+  \begin{subfigure}{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{experiments/flux_validation/production_dt5e-4/current_windows_variance_scaling.pdf}
+    \caption{Finite-window variance scaling.}
+  \end{subfigure}
+  \caption{Finite-time current diagnostics. Left: standardized
+  $\overline J_\tau$ at $n=40$ for $\tau=50,100,200$ compared with a standard
+  normal reference. Right: $\tau\,\mathrm{Var}(\overline J_\tau)$ over the
+  available windows. The finite-window variance has not plateaued, so the data
+  are interpreted descriptively and are not used to infer an asymptotic
+  current large-deviation rate.}
+  \label{fig:current-windows}
+\end{figure}
 
 \subsection{Bath-energy entropy production: scope of the present numerics}
 \label{sec:entropy}

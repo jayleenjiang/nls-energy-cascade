@@ -95,6 +95,10 @@ Key updates since the initial inventory:
   orphan citation keys.
 - The local core numerical claim audit passes 14/14 registered checks; see
   `manuscript_claim_audit.md`.
+- The 2026-06-20 submission-level pass further added the Monte Carlo validation
+  protocol, the LTE residual mesh figure, timestep sensitivity table, and
+  finite-window current diagnostics.  The current one-command gate reports
+  `PASS_WITH_LOCAL_RAW_DATA_LIMITATION` with 34/34 availability paths present.
 
 The remaining items before formal journal submission are author/journal
 confirmations rather than missing local data files: final declarations,
