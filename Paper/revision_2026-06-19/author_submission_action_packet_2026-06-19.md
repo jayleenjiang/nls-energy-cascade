@@ -35,7 +35,10 @@ on official journal/publisher pages checked on 2026-06-19 and spot-verified for
 the leading candidates on 2026-06-20.  The current practical recommendation is
 SIADS as the first target, with Physica D as the strongest nonlinear-physics
 alternative and Journal of Statistical Physics as the strongest
-statistical-mechanics alternative.
+statistical-mechanics alternative.  If the authors choose SIADS, use
+`siads_first_submission_packet_2026-06-20.md` for the SIADS-specific cover
+letter draft, supplementary-material index, keywords/MSC candidates, and
+conversion checklist.
 
 - Target journal:
 - Article type:

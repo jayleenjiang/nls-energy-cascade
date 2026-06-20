@@ -188,6 +188,13 @@
     - reran the one-command submission gate, which now reports
       `PASS_WITH_LOCAL_RAW_DATA_LIMITATION` with 34/34 path records available
       and 14/14 registered numerical claims verified.
+32. Added `siads_first_submission_packet_2026-06-20.md`, a target-specific
+    preparation packet for the recommended first journal target.  It contains a
+    SIADS-facing cover-letter draft, supplementary-material index, keywords and
+    MSC candidates, data/code availability wording for two release routes, and
+    a conversion checklist.  It is intentionally not a template conversion:
+    SIADS still requires author confirmation before changing the manuscript
+    class/style.
 
 ## Key validated numerical result
 

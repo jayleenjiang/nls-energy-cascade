@@ -180,6 +180,7 @@ def collect_handoff_docs(root: Path, revision_dir: Path, release: dict[str, set[
         "pdf_layout_qa_2026-06-19.md",
         "author_submission_action_packet_2026-06-19.md",
         "target_journal_shortlist_2026-06-19.md",
+        "siads_first_submission_packet_2026-06-20.md",
         "submission_reproducibility_readme_2026-06-19.md",
     ]:
         add_role(release, str((revision_dir / name).relative_to(root)), "handoff-document")

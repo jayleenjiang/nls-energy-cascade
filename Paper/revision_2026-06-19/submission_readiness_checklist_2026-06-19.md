@@ -26,6 +26,7 @@ paper can be called journal-ready.
 | Compiled-PDF layout QA | Generic article PDF checked locally | `pdf_layout_qa_2026-06-19.md` |
 | Author/journal action packet | Prepared; requires author completion | `author_submission_action_packet_2026-06-19.md` |
 | Target-journal shortlist | Prepared from official pages; requires author choice | `target_journal_shortlist_2026-06-19.md` |
+| SIADS-first submission packet | Prepared for the recommended first target; requires author confirmation before use | `siads_first_submission_packet_2026-06-20.md` |
 | Originality pre-screen | Clean within sampled web-query scope | `originality_spotcheck_2026-06-19.md` |
 
 ## 2026-06-20 submission-level update
@@ -146,6 +147,7 @@ Run these only after the author-supplied items above have been inserted.
   - `pdf_layout_qa_2026-06-19.md`
   - `author_submission_action_packet_2026-06-19.md`
   - `target_journal_shortlist_2026-06-19.md`
+  - `siads_first_submission_packet_2026-06-20.md`
   - `submission_readiness_checklist_2026-06-19.md`
 - Optional supplementary archive:
   - current-scaling validation artifacts under `experiments/flux_validation/`
