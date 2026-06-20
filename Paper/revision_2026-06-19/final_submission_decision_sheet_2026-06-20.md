@@ -33,9 +33,9 @@ Key numbers from the current gate:
 | Registered numerical claims verified | 18/18 |
 | Cited BibTeX entries | 8 |
 | Dangling citations | 0 |
-| Release-bundle files | 86 |
+| Release-bundle files | 87 |
 | Missing release files | 0 |
-| Source-only bundle included files | 255 |
+| Source-only bundle included files | 256 |
 | Minimal raw-data subset | 40 files, 138,875,181 bytes |
 
 The SIADS review-preparation source compiles locally:
@@ -45,6 +45,11 @@ The SIADS review-preparation source compiles locally:
 - PDF SHA-256:
   `1534e68e0617d0f44bc3d4b856d1ee608029ba3cc84c409a64802cfc93a4950b`
 - PDF pages: 21
+
+The current upload-facing local file index is
+`journal_upload_file_index_2026-06-20.md`.  It lists the generic manuscript
+PDF, SIADS review PDF, source-only archive, and minimal raw-data archive with
+local paths and SHA-256 checksums.
 
 ## Scientific readiness decision
 

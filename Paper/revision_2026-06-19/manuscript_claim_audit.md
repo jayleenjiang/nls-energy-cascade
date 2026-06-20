@@ -1,6 +1,6 @@
 # Manuscript claim audit
 
-Generated: `2026-06-20T18:58:02.722632+00:00`
+Generated: `2026-06-20T19:01:59.464518+00:00`
 
 Scope note: Core numerical/data claims only; author declarations and external plagiarism checks remain outside code-verifiable scope.
 
