@@ -30,8 +30,8 @@ Key gate numbers:
 | Numerical claim audit | PASS, `18/18` claims verified |
 | Reference integrity audit | PASS, `8` cited BibTeX entries, `0` dangling citations |
 | Raw-data archive manifest | PASS locally, `40` unique referenced files, `138,875,181` bytes |
-| Submission bundle manifest | `PASS_WITH_LOCAL_RAW_DATA_LIMITATION`, `82` release files, `0` missing, `0` untracked release files |
-| Source-only bundle dry run | PASS, `251` included files |
+| Submission bundle manifest | `PASS_WITH_LOCAL_RAW_DATA_LIMITATION`, `83` release files, `0` missing, `0` untracked release files |
+| Source-only bundle dry run | PASS, `252` included files |
 
 The SIADS review-preparation source also compiles locally:
 

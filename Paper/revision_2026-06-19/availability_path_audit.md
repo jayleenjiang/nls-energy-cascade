@@ -1,6 +1,6 @@
 # Availability path audit
 
-Generated: `2026-06-20T18:42:58.515912+00:00`
+Generated: `2026-06-20T18:49:57.341406+00:00`
 
 Draft: `Paper/revision_2026-06-19/draft.tex`
 
@@ -32,8 +32,8 @@ Draft: `Paper/revision_2026-06-19/draft.tex`
 | availability | `Paper/revision_2026-06-19/scripts/analyze_eigen_fit_windows.py` | `Paper/revision_2026-06-19/scripts/analyze_eigen_fit_windows.py` | repo-root-relative | PASS (file) | yes | 4b7669683117 |
 | availability | `Paper/revision_2026-06-19/eigen_fit_sensitivity.json` | `Paper/revision_2026-06-19/eigen_fit_sensitivity.json` | repo-root-relative | PASS (file) | yes | cdc0d3ecba77 |
 | availability | `Paper/revision_2026-06-19/scripts/audit_manuscript_claims.py` | `Paper/revision_2026-06-19/scripts/audit_manuscript_claims.py` | repo-root-relative | PASS (file) | yes | c9cee2b34cd2 |
-| availability | `Paper/revision_2026-06-19/manuscript_claim_audit.json` | `Paper/revision_2026-06-19/manuscript_claim_audit.json` | repo-root-relative | PASS (file) | yes | 4cb9630b8a01 |
-| availability | `Paper/revision_2026-06-19/manuscript_claim_audit.md` | `Paper/revision_2026-06-19/manuscript_claim_audit.md` | repo-root-relative | PASS (file) | yes | 5dc455568316 |
+| availability | `Paper/revision_2026-06-19/manuscript_claim_audit.json` | `Paper/revision_2026-06-19/manuscript_claim_audit.json` | repo-root-relative | PASS (file) | yes | b0f5d2dcca96 |
+| availability | `Paper/revision_2026-06-19/manuscript_claim_audit.md` | `Paper/revision_2026-06-19/manuscript_claim_audit.md` | repo-root-relative | PASS (file) | yes | 351820315701 |
 | availability | `Paper/revision_2026-06-19/scripts/audit_availability_paths.py` | `Paper/revision_2026-06-19/scripts/audit_availability_paths.py` | repo-root-relative | PASS (file) | yes | 449c7c91c7d2 |
 | availability | `Paper/revision_2026-06-19/availability_path_audit.json` | `Paper/revision_2026-06-19/availability_path_audit.json` | repo-root-relative | PASS (file) | yes |  |
 | availability | `Paper/revision_2026-06-19/availability_path_audit.md` | `Paper/revision_2026-06-19/availability_path_audit.md` | repo-root-relative | PASS (file) | yes |  |

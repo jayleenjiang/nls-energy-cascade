@@ -1,6 +1,6 @@
 {
   "draft": "Paper/revision_2026-06-19/draft.tex",
-  "generated_at_utc": "2026-06-20T18:42:58.515912+00:00",
+  "generated_at_utc": "2026-06-20T18:49:57.341406+00:00",
   "missing_paths": 0,
   "records": [
     {
@@ -209,7 +209,7 @@
       "path_type": "file",
       "resolution_rule": "repo-root-relative",
       "resolved_path": "Paper/revision_2026-06-19/manuscript_claim_audit.json",
-      "sha256": "4cb9630b8a011749cf70e842a8732c2e9c8a15d116de680c9ef175c9e487cdcb",
+      "sha256": "b0f5d2dcca961b5ca36ab04b5a90dee62466072210864b37b4ba83b652963042",
       "size_bytes": 44474
     },
     {
@@ -220,7 +220,7 @@
       "path_type": "file",
       "resolution_rule": "repo-root-relative",
       "resolved_path": "Paper/revision_2026-06-19/manuscript_claim_audit.md",
-      "sha256": "5dc455568316c5e7964ffdd0238fb0b540da614f75ee2e13e0f5b67246c1124c",
+      "sha256": "351820315701c4668992dac20e262d5b1ea454ef734c2e6a0b52ae334e1f39a2",
       "size_bytes": 6169
     },
     {
