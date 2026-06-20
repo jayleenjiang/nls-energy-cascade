@@ -33,9 +33,9 @@ Key numbers from the current gate:
 | Registered numerical claims verified | 18/18 |
 | Cited BibTeX entries | 8 |
 | Dangling citations | 0 |
-| Release-bundle files | 90 |
+| Release-bundle files | 92 |
 | Missing release files | 0 |
-| Source-only bundle included files | 259 |
+| Source-only bundle included files | 261 |
 | Minimal raw-data subset | 40 files, 138,875,181 bytes |
 | Author/submission-field audit | 9 pending author/external items |
 
@@ -44,8 +44,8 @@ The SIADS review-preparation source compiles locally:
 - source: `Paper/revision_2026-06-19/draft_siads_review.tex`
 - PDF: `tmp/paper_build/siads_review/draft_siads_review.pdf`
 - PDF SHA-256:
-  `1534e68e0617d0f44bc3d4b856d1ee608029ba3cc84c409a64802cfc93a4950b`
-- PDF pages: 21
+  `7d9a359491dc9b9109b4478f442bca4c3aa5f31c56cca74c3b279f73f9845695`
+- PDF pages: 22
 
 The current upload-facing local file index is
 `journal_upload_file_index_2026-06-20.md`.  It lists the generic manuscript
@@ -133,6 +133,11 @@ The authors received no external funding for this work.
 ```
 
 or the complete grant/funding statement required by the target journal.
+
+Implementation aid: after authors confirm these fields, copy
+`author_submission_fields_template.json` to `author_submission_fields.json`,
+fill the fields, run `scripts/apply_author_submission_fields.py` in dry-run
+mode, and use `--apply` only after it reports `ready_to_apply=true`.
 
 ### 5. Similarity/self-plagiarism screening
 

@@ -32,8 +32,8 @@ Key gate numbers:
 | Author/submission-field audit | `AUTHOR_CONFIRMATION_PENDING`, `9` pending author/external items |
 | Raw-data archive manifest | PASS locally, `40` unique referenced files, `138,875,181` bytes |
 | Raw-data archive build | PASS locally, upload-ready `.tar.gz` prepared under `tmp/`, DOI/upload still external |
-| Submission bundle manifest | `PASS_WITH_LOCAL_RAW_DATA_LIMITATION`, `90` release files, `0` missing, `0` untracked release files |
-| Source-only bundle dry run | PASS, `259` included files |
+| Submission bundle manifest | `PASS_WITH_LOCAL_RAW_DATA_LIMITATION`, `92` release files, `0` missing, `0` untracked release files |
+| Source-only bundle dry run | PASS, `261` included files |
 
 The SIADS review-preparation source also compiles locally:
 

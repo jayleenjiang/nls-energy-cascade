@@ -91,6 +91,19 @@ Recommended declaration replacements after confirmation:
 If any of these suggested statements is inaccurate, replace it with the exact
 journal-required disclosure before running the final local gate.
 
+For a safer final-edit workflow, copy
+`author_submission_fields_template.json` to `author_submission_fields.json`,
+fill the confirmed fields, then run:
+
+```sh
+python3 Paper/revision_2026-06-19/scripts/apply_author_submission_fields.py \
+  --input Paper/revision_2026-06-19/author_submission_fields.json
+```
+
+This is a dry run.  Add `--apply` only after it reports
+`ready_to_apply=true`.  The apply mode backs up `draft.tex` and
+`draft_siads_review.tex` before editing.
+
 ### Authorship and contributions
 
 Current manuscript wording:

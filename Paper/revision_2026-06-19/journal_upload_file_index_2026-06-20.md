@@ -26,8 +26,8 @@ Key numbers:
 | Availability paths | 37/37 |
 | Registered numerical claims | 18/18 |
 | Cited BibTeX entries | 8 |
-| Release-bundle files | 90 |
-| Source-bundle included files | 259 |
+| Release-bundle files | 92 |
+| Source-bundle included files | 261 |
 | Minimal raw-data files | 40 |
 | Missing raw-data files | 0 |
 | Author/submission-field audit | 9 pending author/external items |
@@ -36,8 +36,8 @@ Key numbers:
 
 | Use | Local file | Pages | Size | SHA-256 | Status |
 |---|---|---:|---:|---|---|
-| Generic revised manuscript PDF | `tmp/paper_build/revision/draft.pdf` | 21 | not committed; local build artifact | `be3ce88e36f3b2324eeb058e8d2b5e9a74f072e9555cf5dd82e3d7a9ec45a37c` | Suitable for author/advisor reading; recompile after final declarations. |
-| SIADS review-preparation PDF | `tmp/paper_build/siads_review/draft_siads_review.pdf` | 21 | about 1.5 MB | `1534e68e0617d0f44bc3d4b856d1ee608029ba3cc84c409a64802cfc93a4950b` | Current SIADS-facing review PDF; use only after authors confirm SIADS and final metadata. |
+| Generic revised manuscript PDF | `tmp/paper_build/revision/draft.pdf` | 21 | 1,546,086 bytes | `8c729b647149ee4df690f1c76d566909ce861c1ff98a9f40764728522df3768a` | Suitable for author/advisor reading; recompile after final declarations. |
+| SIADS review-preparation PDF | `tmp/paper_build/siads_review/draft_siads_review.pdf` | 22 | 1,561,377 bytes | `7d9a359491dc9b9109b4478f442bca4c3aa5f31c56cca74c3b279f73f9845695` | Current SIADS-facing review PDF; use only after authors confirm SIADS and final metadata. |
 
 The PDFs are local build artifacts under `tmp/` and are intentionally not
 committed to Git.  Regenerate them after final author/journal edits.
@@ -96,6 +96,11 @@ and confirm any metadata required by the repository.
 - Target journal and article type.
 - GitHub release tag and/or DOI-backed raw-data archive route.
 - Final local gate after inserting all author/journal/release information.
+
+The dry-run-first way to insert these fields is to fill
+`author_submission_fields_template.json` as `author_submission_fields.json` and
+then run `scripts/apply_author_submission_fields.py`.  Apply mode creates a
+backup before editing both TeX sources.
 
 ## Regeneration commands
 

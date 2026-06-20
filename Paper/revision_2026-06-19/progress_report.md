@@ -176,7 +176,7 @@
     submission `.tar.gz` under `tmp/` from the release manifest, records an
     archive SHA-256 checksum, and deliberately excludes self-referential
     generated summaries and the large local raw-data roots. The current
-    packaging run includes 259 regular files, has zero missing files, and
+    packaging run includes 261 regular files, has zero missing files, and
     records 44 local raw-data dependency records as
     excluded pending any DOI-backed raw-data archive decision.
 31. Performed a submission-level strengthening pass on 2026-06-20:
@@ -204,8 +204,9 @@
     SIAM article class, so the file follows SIADS' non-SIAM-macro fallback with
     `lineno`, keywords, and MSC candidates.  It compiles cleanly to
     `tmp/paper_build/siads_review/draft_siads_review.pdf`. After the later
-    robustness edits, the current compiled review PDF is 21 pages with SHA-256
-    `1534e68e0617d0f44bc3d4b856d1ee608029ba3cc84c409a64802cfc93a4950b`.
+    robustness and interpretation edits, the current compiled review PDF is
+    22 pages with SHA-256
+    `7d9a359491dc9b9109b4478f442bca4c3aa5f31c56cca74c3b279f73f9845695`.
 34. Strengthened the manuscript narrative so the long-chain and short-chain
     results have a clearer division of labor: the long-chain simulations now
     explicitly provide macroscopic finite-size transport and LTE evidence,
@@ -228,6 +229,13 @@
     `n=10,20,30,40` exponent, because `n=50` is still a single larger-length
     extension and the fine-step run is a smaller pilot rather than a full
     production-resolution convergence study.
+36. Added a cautious current-scaling interpretation paragraph to both
+    manuscript sources.  The new text reframes the measured power law as
+    superlinear effective action resistance, connects it to the LTE residual
+    and odd-in-angle nonequilibrium component, and explicitly states that this
+    is a finite-size heuristic rather than a derivation of the exponent.
+    The claim audit now verifies this derived resistance statement under the
+    existing conductivity-scaling claim.
 
 ## Key validated numerical result
 

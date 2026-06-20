@@ -857,6 +857,30 @@ diagnostic rather than an additional scaling fit.}
 \label{tab:dt-sensitivity}
 \end{table}
 
+\paragraph{Interpretation of the insulating scaling.}
+The exponent in \eqref{eq:flux-scaling} should be read together with the
+local-equilibrium diagnostics rather than as a stand-alone curve fit.  In a
+Fourier picture, approximate local equilibrium would be accompanied by an
+$O(1)$ action conductivity, so that the resistance between the two baths grows
+linearly with $n$.  Here the even part of the pair marginal is already close to
+an equilibrium marginal at the local kinetic temperature
+(\cref{par:lte,tab:lte}), but the action flux is carried by the much smaller
+nonequilibrium, odd-in-angle component that remains after the best
+equilibrium rescaling.  The measured law is therefore more naturally phrased
+as a superlinear growth of the effective action resistance,
+\[
+  R_n^{\mathrm{act}}=\frac{T_1-T_n}{\E[J(n)]},
+  \qquad
+  R_n^{\mathrm{act}}\sim n^{1.850}
+\]
+over the primary simulated window.  The larger-chain, timestep, and
+bath-contrast checks above show that this superlinear-resistance picture is
+stable over the accessible finite sizes, while the structured LTE residuals
+show that the small nonequilibrium component is not just histogram noise.
+This is a heuristic interpretation of the finite-size data, not a derivation
+of the exponent: proving an asymptotic law would require a hydrodynamic or
+Green--Kubo theory for the long nonequilibrium chain, which is presently open.
+
 Beyond the mean, we examine the distribution of finite-time averaged currents
 \[
   \overline J_\tau=\frac1{\tau}\int_{t_0}^{t_0+\tau}J(t)\,\dd t .

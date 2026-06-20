@@ -191,6 +191,7 @@ def collect_handoff_docs(root: Path, revision_dir: Path, release: dict[str, set[
         "target_journal_shortlist_2026-06-19.md",
         "siads_first_submission_packet_2026-06-20.md",
         "journal_upload_file_index_2026-06-20.md",
+        "author_submission_fields_template.json",
         "submission_reproducibility_readme_2026-06-19.md",
     ]:
         add_role(release, str((revision_dir / name).relative_to(root)), "handoff-document")
@@ -213,6 +214,11 @@ def collect_handoff_docs(root: Path, revision_dir: Path, release: dict[str, set[
         release,
         str((revision_dir / "scripts/audit_author_submission_fields.py").relative_to(root)),
         "author-submission-audit",
+    )
+    add_role(
+        release,
+        str((revision_dir / "scripts/apply_author_submission_fields.py").relative_to(root)),
+        "author-field-applier",
     )
     add_role(
         release,

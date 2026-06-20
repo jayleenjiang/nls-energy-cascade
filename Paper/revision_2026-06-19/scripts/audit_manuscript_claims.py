@@ -239,10 +239,13 @@ def build_registry() -> list[dict[str, Any]]:
         expected_text=[
             r"\kappa_n\sim n^{-0.850}",
             r"\sim 3.59\,n^{-0.850}",
+            r"R_n^{\mathrm{act}}\sim n^{1.850}",
+            r"not a derivation of the exponent",
         ],
         computed={
             "conductivity_prefactor": conductivity_prefactor,
             "conductivity_exponent": conductivity_exponent,
+            "action_resistance_exponent": -exponent,
         },
         note="Computed as n*E[J(n)]/(T1-Tn) with T1-Tn=8.",
     )

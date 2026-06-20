@@ -1,7 +1,10 @@
 # PDF layout QA report — updated 2026-06-20
 
 Scope: layout and rendering sanity check for the compiled PDF generated from
-`Paper/revision_2026-06-19/draft.tex`.
+`Paper/revision_2026-06-19/draft.tex`.  The visual-rendering notes below are
+a baseline layout QA record; the current 2026-06-20 interpretation edit is
+text-only and still requires a final page-by-page proof review after author
+and journal edits.
 
 This is a local production-quality check, not a target-journal proof review.
 It should be rerun after any author metadata insertion, target-journal template
@@ -15,16 +18,17 @@ The PDF was generated from the repository root with:
 python3 Paper/revision_2026-06-19/scripts/run_submission_checks.py --compile-latex
 ```
 
-The runner reported `PASS_WITH_LOCAL_RAW_DATA_LIMITATION`; the LaTeX-specific
-gate reported `PASS`.
+The latest runner reported
+`PASS_WITH_AUTHOR_CONFIRMATION_PENDING_AND_LOCAL_RAW_DATA_LIMITATION`; the
+LaTeX-specific gate reported `PASS`.
 
-Checked PDF:
+Current compiled PDF after the latest text-only edit:
 
 - Local build path: `tmp/paper_build/revision/draft.pdf`
 - SHA-256:
-  `b206d62aa99ad61dc36131f96688f702d31a2e5e929d6aca03ad159ce397546f`
-- Size: 1,537,300 bytes
-- Pages: 20
+  `8c729b647149ee4df690f1c76d566909ce861c1ff98a9f40764728522df3768a`
+- Size: 1,546,086 bytes
+- Pages: 21
 - Page size: A4
 - PDF version: 1.5
 - Producer: `pdfTeX-1.40.25`
