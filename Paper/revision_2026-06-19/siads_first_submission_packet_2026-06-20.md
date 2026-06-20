@@ -19,6 +19,12 @@ Official SIADS pages checked on 2026-06-20:
 
 - Recommended first target: SIADS.
 - Current manuscript format: generic `article`, 20 A4 pages.
+- SIADS review-preparation source:
+  `Paper/revision_2026-06-19/draft_siads_review.tex`.
+- SIADS review-preparation PDF build:
+  `tmp/paper_build/siads_review/draft_siads_review.pdf`.
+- SIADS review-preparation PDF SHA-256:
+  `45a984e96a72dad22e292325b391c23ed9dbc7292ba18d323b08d77c7f031b2a`.
 - Current local gate:
   `PASS_WITH_LOCAL_RAW_DATA_LIMITATION`.
 - Current manuscript figures are embedded inline.
@@ -34,10 +40,13 @@ Official SIADS pages checked on 2026-06-20:
 Complete these only after the authors confirm SIADS as the target.
 
 1. **Manuscript format**
-   - Convert the generic `article` source to SIAM/SIADS style, preferably using
-     SIAM macros with review mode.
-   - If SIAM macros are not used for the initial submission PDF, add line
-     numbering with `lineno`.
+   - Use `draft_siads_review.tex` as the current SIADS review-preparation
+     source.  It is a line-numbered copy of `draft.tex` with keywords and MSC
+     codes added.
+   - If SIAM macros are available before submission, optionally convert the
+     source to SIAM/SIADS style with review mode.  The local TeX installation
+     used for this pass did not include SIAM's article class, so the prepared
+     version follows SIADS' non-SIAM-macro line-numbering fallback.
    - Preserve inline figures.
    - Recompile and visually inspect the converted PDF.
 

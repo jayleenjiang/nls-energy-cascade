@@ -60,7 +60,7 @@ The generated summary is:
 | Check current-scaling validation | `experiments/flux_validation/production_manifest.md`; `experiments/flux_validation/validation_report.md`; `experiments/flux_validation/production_dt5e-4/current_windows_window_statistics.csv` | Production flux/current scaling artifacts, validation summaries, and finite-window diagnostics. |
 | Check LTE residual mesh diagnostic | `report_assets/compare_residual_mesh.pdf`; `draft.tex` | Structural LTE residual visualization including the `n=15` diagnostic requested in the manuscript revision pass. |
 | Check author/journal blockers | `author_submission_action_packet_2026-06-19.md`; `target_journal_shortlist_2026-06-19.md`; `submission_readiness_checklist_2026-06-19.md` | Remaining human decisions before formal submission. |
-| Prepare SIADS-first submission | `siads_first_submission_packet_2026-06-20.md` | Cover-letter draft, supplementary-material index, keywords/MSC candidates, and SIADS conversion checklist for the recommended first target. |
+| Prepare SIADS-first submission | `draft_siads_review.tex`; `siads_first_submission_packet_2026-06-20.md` | Line-numbered SIADS review-preparation source plus cover-letter draft, supplementary-material index, keywords/MSC candidates, and SIADS conversion checklist for the recommended first target. |
 | See the full revision history | `progress_report.md`; `integrity_audit_2026-06-19.md` | What was changed, verified, limited, or left for authors. |
 
 ## Raw-data archive convention

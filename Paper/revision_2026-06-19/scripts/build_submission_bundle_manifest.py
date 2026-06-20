@@ -131,6 +131,9 @@ def extract_tex_paths(root: Path, revision_dir: Path, release: dict[str, set[str
     draft = revision_dir / "draft.tex"
     tex = draft.read_text()
     add_role(release, str(draft.relative_to(root)), "manuscript-source")
+    siads_review = revision_dir / "draft_siads_review.tex"
+    if siads_review.exists():
+        add_role(release, str(siads_review.relative_to(root)), "siads-review-source")
     for match in re.finditer(r"\\includegraphics(?:\[[^\]]*\])?\{([^}]+)\}", tex):
         rel = str((revision_dir / match.group(1)).relative_to(root))
         add_role(release, rel, "manuscript-figure")

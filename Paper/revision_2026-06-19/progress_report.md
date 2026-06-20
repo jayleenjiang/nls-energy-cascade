@@ -195,6 +195,12 @@
     a conversion checklist.  It is intentionally not a template conversion:
     SIADS still requires author confirmation before changing the manuscript
     class/style.
+33. Added `draft_siads_review.tex`, a separate line-numbered SIADS
+    review-preparation source.  The local TeX installation did not include the
+    SIAM article class, so the file follows SIADS' non-SIAM-macro fallback with
+    `lineno`, keywords, and MSC candidates.  It compiles cleanly to
+    `tmp/paper_build/siads_review/draft_siads_review.pdf` with SHA-256
+    `45a984e96a72dad22e292325b391c23ed9dbc7292ba18d323b08d77c7f031b2a`.
 
 ## Key validated numerical result
 
