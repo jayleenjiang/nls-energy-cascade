@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-20T19:59:57.024913+00:00",
+  "generated_at_utc": "2026-06-20T20:02:53.057074+00:00",
   "script": "Paper/revision_2026-06-19/scripts/audit_manuscript_claims.py",
   "draft": "Paper/revision_2026-06-19/draft.tex",
   "total_claims": 19,

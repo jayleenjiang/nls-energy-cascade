@@ -58,7 +58,7 @@
     PDF then had 17 pages and the LaTeX log had no unresolved
     citations/references and no overfull or underfull box warnings. Later
     reproducibility-summary and submission-level additions increased the
-    current build artifact to 20 pages.
+    current build artifact to 22 pages.
 13. Resolved two remaining rigor issues in the short-chain section:
     - removed the unsupported quantitative “about 15%” symmetry-breaking claim
       and made the figure caption explicitly qualitative;
@@ -176,7 +176,7 @@
     submission `.tar.gz` under `tmp/` from the release manifest, records an
     archive SHA-256 checksum, and deliberately excludes self-referential
     generated summaries and the large local raw-data roots. The current
-    packaging run includes 264 regular files, has zero missing files, and
+    packaging run includes 265 regular files, has zero missing files, and
     records 44 local raw-data dependency records as
     excluded pending any DOI-backed raw-data archive decision.
 31. Performed a submission-level strengthening pass on 2026-06-20:
@@ -206,7 +206,7 @@
     `tmp/paper_build/siads_review/draft_siads_review.pdf`. After the later
     robustness and interpretation edits, the current compiled review PDF is
     22 pages with SHA-256
-    `7d9a359491dc9b9109b4478f442bca4c3aa5f31c56cca74c3b279f73f9845695`.
+    `0ce0cab9ca547b6456bb6282431ce30ef236aff0ab904d4910b5668342921ab4`.
 34. Strengthened the manuscript narrative so the long-chain and short-chain
     results have a clearer division of labor: the long-chain simulations now
     explicitly provide macroscopic finite-size transport and LTE evidence,

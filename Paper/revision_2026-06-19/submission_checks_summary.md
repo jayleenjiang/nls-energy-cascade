@@ -1,6 +1,6 @@
 # Submission checks summary
 
-Generated: `2026-06-20T19:59:59.400166+00:00`
+Generated: `2026-06-20T20:02:55.158564+00:00`
 
 Overall status: **PASS_WITH_AUTHOR_CONFIRMATION_PENDING_AND_LOCAL_RAW_DATA_LIMITATION**
 
@@ -23,17 +23,17 @@ Overall status: **PASS_WITH_AUTHOR_CONFIRMATION_PENDING_AND_LOCAL_RAW_DATA_LIMIT
 
 | Command | Return code | Duration (s) |
 |---|---:|---:|
-| `latex_compile` | 0 | 0.053 |
-| `siads_latex_compile` | 0 | 0.06 |
-| `compiled_pdf_artifact_audit` | 0 | 0.035 |
-| `availability_path_audit` | 0 | 0.163 |
-| `manuscript_claim_audit` | 0 | 0.044 |
+| `latex_compile` | 0 | 0.055 |
+| `siads_latex_compile` | 0 | 0.053 |
+| `compiled_pdf_artifact_audit` | 0 | 0.038 |
+| `availability_path_audit` | 0 | 0.189 |
+| `manuscript_claim_audit` | 0 | 0.043 |
 | `reference_integrity_audit` | 0 | 0.027 |
-| `author_submission_fields_audit` | 0 | 0.024 |
-| `submission_bundle_manifest_initial` | 0 | 0.871 |
-| `raw_data_archive_manifest` | 0 | 0.181 |
-| `submission_bundle_manifest_final` | 0 | 0.907 |
-| `submission_source_bundle` | 0 | 0.36 |
+| `author_submission_fields_audit` | 0 | 0.023 |
+| `submission_bundle_manifest_initial` | 0 | 0.844 |
+| `raw_data_archive_manifest` | 0 | 0.19 |
+| `submission_bundle_manifest_final` | 0 | 0.687 |
+| `submission_source_bundle` | 0 | 0.326 |
 
 ## LaTeX log checks
 

@@ -1,15 +1,15 @@
 # Submission source bundle report
 
-Generated: `2026-06-20T19:59:59.075022+00:00`
+Generated: `2026-06-20T20:02:54.863478+00:00`
 
 Status: **PASS**
 
 ## Archive
 
-- Archive path: `tmp/submission_source_bundle/runs/20260620T195959Z/NLS_numerical_study_source.tar.gz`
-- Archive bytes: 2863024
-- Archive SHA-256: `0ae7d1f64867a3a60c63131a60d7ac43f56bcd5d63d20a0a95c7218507b9fab1`
-- Staging directory: `tmp/submission_source_bundle/runs/20260620T195959Z/NLS_numerical_study_source`
+- Archive path: `tmp/submission_source_bundle/runs/20260620T200254Z/NLS_numerical_study_source.tar.gz`
+- Archive bytes: 2862931
+- Archive SHA-256: `6018c75208be2dbb9e74439205bafd99d633380a80b8a2806aea4a1e9deb1f86`
+- Staging directory: `tmp/submission_source_bundle/runs/20260620T200254Z/NLS_numerical_study_source`
 
 ## Summary
 
