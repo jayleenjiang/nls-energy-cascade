@@ -1,7 +1,7 @@
 {
-  "generated_at_utc": "2026-06-20T12:53:48.264647+00:00",
+  "generated_at_utc": "2026-06-20T13:00:15.898812+00:00",
   "git_branch": "codex/paper-journal-revision",
-  "git_head": "2d5df116dc0d9495e897399897341546f903be62",
+  "git_head": "c4ff29200c605506009114550d2985ade130004b",
   "local_raw_dependencies": [
     {
       "exists": true,
@@ -399,7 +399,7 @@
         "availability-declared",
         "claim-evidence:data_availability_artifacts"
       ],
-      "sha256": "1e041d99303198e05885faf27591e09d1fc4e29d769b92c6c38869b928c737ff",
+      "sha256": "788b1dfa9729e1e829d812162a668b7582faee42c892a74ad86868cea7c738ce",
       "size_bytes": 14687
     },
     {
@@ -411,7 +411,7 @@
         "availability-declared",
         "claim-evidence:data_availability_artifacts"
       ],
-      "sha256": "8f6d38f5442d467e410c248f10f1639af1d4730346873ccd8613087e8bda9c86",
+      "sha256": "cdf7a4d5fa7740ec131f76c5b10cdc3aaf17be10e88c805545bed4bc1c28765c",
       "size_bytes": 6683
     },
     {
@@ -435,8 +435,8 @@
         "claim-evidence:reproducibility_summary_table",
         "manuscript-source"
       ],
-      "sha256": "8607e378fc514e32d3521e162abe035ae6d2bc627790378f966d75d9f464a1b3",
-      "size_bytes": 63186
+      "sha256": "cd92cfbe5b8bd8d9a87a31f0bdf9b71a7ca6549952b3d308f00ebfd24fab0063",
+      "size_bytes": 64442
     },
     {
       "exists": true,
@@ -445,8 +445,8 @@
       "roles": [
         "siads-review-source"
       ],
-      "sha256": "5cb6f72820622f063c9bf91bf53b3f89f03d6dc78d6d355a46bbf65c7139c909",
-      "size_bytes": 63820
+      "sha256": "0cfefbcd726952812f19e78bfe81c3c61157db8a72ac66f9f717efb3de4ed215",
+      "size_bytes": 65076
     },
     {
       "exists": true,
@@ -581,8 +581,8 @@
         "availability-declared",
         "claim-audit"
       ],
-      "sha256": "7e7916e535747b299bf852cefe58ac3ec9c09bcc84d72b97a570b0fbd0172ee9",
-      "size_bytes": 29262
+      "sha256": "767aabd3bfe5f28576919176a9652f40bc49b8e04b08b4cc60dd1274715865db",
+      "size_bytes": 29266
     },
     {
       "exists": true,
@@ -592,7 +592,7 @@
         "availability-declared",
         "claim-audit"
       ],
-      "sha256": "fb3bea346e10559f3a255e963d7062958179f99ccdbe3d2ab966ebbabebeb4e0",
+      "sha256": "03c996cac1d3501e5929807f3cec8538943ecce5490c8930e444bbc00b5d2681",
       "size_bytes": 3402
     },
     {
@@ -655,8 +655,8 @@
       "roles": [
         "handoff-document"
       ],
-      "sha256": "b75d85228390f9cb13ae769475567982f4f88cc3ef52e52ef542bcb8960a187b",
-      "size_bytes": 15149
+      "sha256": "265c1bbd2cd4d857825fc4bb574e5032581facba0157c0a6da80bc3a19bebcfa",
+      "size_bytes": 15696
     },
     {
       "exists": true,
@@ -665,7 +665,7 @@
       "roles": [
         "handoff-document"
       ],
-      "sha256": "a84f4574775405429a7a2fd1f777037769103d8e2768ffee3d2fe1ad4240e2cf",
+      "sha256": "4ee1b56aa05df0cab0de95fe730afd138890328053c7177f6fdbb26d0844b182",
       "size_bytes": 16196
     },
     {
@@ -675,7 +675,7 @@
       "roles": [
         "handoff-document"
       ],
-      "sha256": "640f3ec8c26cdc071b76c8838fc39dde657408651ef9b178c2a58c04b516336b",
+      "sha256": "b645e4dc2bc8dbb2adea1ec4fe0f7a467fefddf17e84d578c4fdb1f0f28a630e",
       "size_bytes": 8187
     },
     {
@@ -685,7 +685,7 @@
       "roles": [
         "handoff-document"
       ],
-      "sha256": "0f349a18158ce3e76ef87657e6e551e12b84574569c2ca1b5341b193fea309eb",
+      "sha256": "a29bf0ffabf292a13d5c7c7bf4fce4e37da7a779aa71e07279d31f4088c9fa21",
       "size_bytes": 6421
     },
     {
@@ -695,7 +695,7 @@
       "roles": [
         "handoff-document"
       ],
-      "sha256": "ad286e64ab9787ec54729bd4a0bcde96408471204f690b38c20aad39238dee99",
+      "sha256": "14c919b2432b25165d80e89bb8510ee4a10b88278808e12119b2510d19c6b2f9",
       "size_bytes": 2472
     },
     {
@@ -925,8 +925,8 @@
       "roles": [
         "handoff-document"
       ],
-      "sha256": "a577b8e98f3986c2dc6cb0a76f49b03df767f96ba6ea71220206edba38a144de",
-      "size_bytes": 9848
+      "sha256": "5df4db00735d24035089306fad64bc7ed1be7c265498a060d5658dda2eb1dbaf",
+      "size_bytes": 10135
     },
     {
       "exists": true,

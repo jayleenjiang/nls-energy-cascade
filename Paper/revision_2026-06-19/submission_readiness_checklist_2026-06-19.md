@@ -34,10 +34,14 @@ paper can be called journal-ready.
 The current manuscript now includes a dedicated Monte Carlo validation and
 uncertainty-protocol subsection, the `n=15,25,50` LTE residual mesh diagnostic
 from the `compare_residual.m` convention, a timestep sensitivity table for the
-current estimator, and finite-window current diagnostics.  The latest
-one-command gate reports `PASS_WITH_LOCAL_RAW_DATA_LIMITATION` with 34/34
-availability path records present and git-tracked, 14/14 registered numerical
-claims verified, and zero missing release-bundle files.
+current estimator, and finite-window current diagnostics.  A subsequent
+manuscript pass clarified the division of labor between the long-chain
+transport/LTE evidence and the three-mode Fokker--Planck mechanism study, so
+the short-chain section is framed as a low-dimensional microscope rather than
+as an extrapolation of the transport exponent.  The latest one-command gate
+reports `PASS_WITH_LOCAL_RAW_DATA_LIMITATION` with 34/34 availability path
+records present and git-tracked, 14/14 registered numerical claims verified,
+and zero missing release-bundle files.
 
 ## Author confirmations still required
 

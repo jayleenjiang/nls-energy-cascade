@@ -241,6 +241,15 @@ numerically.
 This paper is a numerical study of the NESS of the energy cascade model
 \eqref{eq:sde-bulk}. After collecting the thermodynamic and spectral framework in
 \cref{sec:thermo,sec:fp,sec:methods}, we present two groups of results.
+The division is deliberate: the long-chain experiments provide macroscopic
+statistical evidence for transport and local-equilibrium structure in a regime
+where no invariant-measure theory is currently available, while the short-chain
+computations provide a low-dimensional microscope for the stabilization and
+phase-locking mechanisms that make the three-mode NESS mathematically
+tractable. We therefore keep the two uses of numerics separate: the long-chain
+data support finite-size transport and LTE claims, whereas the short-chain
+Fokker--Planck calculations support mechanistic and qualitative spectral
+diagnostics.
 
 \Cref{sec:long-chain} treats the \emph{long chain}, the regime left open by
 \cite{HLNS}. We characterize the nonequilibrium steady state---the action
@@ -256,9 +265,10 @@ data-driven neural-network method \cite{ZhaiDobsonLi}, validating it against the
 exact Gibbs measure \eqref{eq:gibbs} in equilibrium; we then examine the
 nonequilibrium steady state, the phase-locking stabilization mechanism, and
 trajectory-based estimates of the slow relaxation mode. The numerical tools---a
-high-throughput SIMD Monte Carlo integrator, a kernel density estimator for the
-reference measure, and a trajectory-based backward solver for the dominant
-eigenpair---are described as they arise.
+SIMD Monte Carlo workflow for histogram and reference-density generation, an
+independent canonical current accumulator for transport measurements, kernel
+density postprocessing, and trajectory-based backward solvers for slow-mode
+diagnostics---are described as they arise.
 
 
 \section{Preliminary}
@@ -845,7 +855,11 @@ $x=(I_1,I_2,I_3,\theta_1,\theta_3)$, in which the middle mode $I_2$ carries no
 bath. This low dimension lets us solve the stationary Fokker--Planck equation
 directly and interrogate the invariant measure (\cref{sec:fp-numerics}), the
 mechanism that stabilizes the NESS (\cref{sec:stabilization}), and the spectrum
-of the generator (\cref{sec:eigenfunction}).
+of the generator (\cref{sec:eigenfunction}). The goal of this section is not to
+extrapolate the three-mode calculations to the transport exponent of
+\cref{sec:thermal-conductivity}; rather, it is to isolate the phase-dependent
+stabilization geometry that is difficult to see in the high-dimensional
+long-chain simulations.
 
 \subsection{Numerical solution of the nonequilibrium steady state}\label{sec:fp-numerics}
 
@@ -1070,7 +1084,11 @@ proved for the three-mode model in \cite{HLNS}. The generator-eigenfunction
 calculation is less mature: it gives a consistent qualitative slow mode for the
 observable $\cos\theta_1$, but the fitted eigenfunction has substantial
 backward-Monte-Carlo noise and should be used as a diagnostic rather than as a
-high-accuracy spectral computation.
+high-accuracy spectral computation. Taken together, the long-chain and
+short-chain studies therefore play complementary roles: one measures the
+macroscopic finite-size transport law, while the other explains the local
+phase geometry that can sustain a nonequilibrium cascade without a closed-form
+stationary density.
 
 Several limitations remain. The long-chain ergodicity theory is open, so the
 stationarity of the long simulations is assessed numerically rather than

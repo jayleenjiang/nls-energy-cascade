@@ -201,6 +201,14 @@
     `lineno`, keywords, and MSC candidates.  It compiles cleanly to
     `tmp/paper_build/siads_review/draft_siads_review.pdf` with SHA-256
     `45a984e96a72dad22e292325b391c23ed9dbc7292ba18d323b08d77c7f031b2a`.
+34. Strengthened the manuscript narrative so the long-chain and short-chain
+    results have a clearer division of labor: the long-chain simulations now
+    explicitly provide macroscopic finite-size transport and LTE evidence,
+    while the three-mode Fokker--Planck computations are framed as a
+    low-dimensional microscope for stabilization, phase-locking, and
+    qualitative slow-mode diagnostics.  The same wording was synchronized into
+    `draft_siads_review.tex`, and both manuscript sources compile under the
+    local LaTeX workflow.
 
 ## Key validated numerical result
 
