@@ -38,8 +38,8 @@ Key numbers:
 
 | Use | Local file | Pages | Size | SHA-256 | Status |
 |---|---|---:|---:|---|---|
-| Generic revised manuscript PDF | `tmp/paper_build/revision/draft.pdf` | 21 | 1,546,086 bytes | `8c729b647149ee4df690f1c76d566909ce861c1ff98a9f40764728522df3768a` | Suitable for author/advisor reading; recompile after final declarations. |
-| SIADS review-preparation PDF | `tmp/paper_build/siads_review/draft_siads_review.pdf` | 22 | 1,561,377 bytes | `7d9a359491dc9b9109b4478f442bca4c3aa5f31c56cca74c3b279f73f9845695` | Current SIADS-facing review PDF; use only after authors confirm SIADS and final metadata. |
+| Generic revised manuscript PDF | `tmp/paper_build/revision/draft.pdf` | 22 | 1,549,977 bytes | `98aa375d5a2698162b86b4f0c83a91417c7506c207a63679956e5fe9c8a72e02` | Suitable for author/advisor reading; recompile after final declarations. |
+| SIADS review-preparation PDF | `tmp/paper_build/siads_review/draft_siads_review.pdf` | 22 | 1,564,484 bytes | `0ce0cab9ca547b6456bb6282431ce30ef236aff0ab904d4910b5668342921ab4` | Current SIADS-facing review PDF; use only after authors confirm SIADS and final metadata. |
 
 The PDFs are local build artifacts under `tmp/` and are intentionally not
 committed to Git.  Regenerate them after final author/journal edits.  The

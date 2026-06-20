@@ -1,10 +1,11 @@
 # PDF layout QA report — updated 2026-06-20
 
-Scope: layout and rendering sanity check for the compiled PDF generated from
-`Paper/revision_2026-06-19/draft.tex`.  The visual-rendering notes below are
-a baseline layout QA record; the current 2026-06-20 interpretation edit is
-text-only and still requires a final page-by-page proof review after author
-and journal edits.
+Scope: layout and rendering sanity check for the compiled PDFs generated from
+`Paper/revision_2026-06-19/draft.tex` and
+`Paper/revision_2026-06-19/draft_siads_review.tex`.  The visual-rendering
+notes below are a targeted post-edit QA record after adding the LTE residual
+decomposition table; a final page-by-page proof review is still required after
+author and journal edits.
 
 This is a local production-quality check, not a target-journal proof review.
 It should be rerun after any author metadata insertion, target-journal template
@@ -22,16 +23,14 @@ The latest runner reported
 `PASS_WITH_AUTHOR_CONFIRMATION_PENDING_AND_LOCAL_RAW_DATA_LIMITATION`; the
 LaTeX-specific gate reported `PASS`.
 
-Current compiled PDF after the latest text-only edit:
+Current compiled PDFs after the LTE residual-decomposition update:
 
-- Local build path: `tmp/paper_build/revision/draft.pdf`
-- SHA-256:
-  `8c729b647149ee4df690f1c76d566909ce861c1ff98a9f40764728522df3768a`
-- Size: 1,546,086 bytes
-- Pages: 21
-- Page size: A4
-- PDF version: 1.5
-- Producer: `pdfTeX-1.40.25`
+| PDF | Local build path | Pages | Size bytes | SHA-256 |
+|---|---|---:|---:|---|
+| Generic revised manuscript | `tmp/paper_build/revision/draft.pdf` | 22 | 1,549,977 | `98aa375d5a2698162b86b4f0c83a91417c7506c207a63679956e5fe9c8a72e02` |
+| SIADS review-preparation source | `tmp/paper_build/siads_review/draft_siads_review.pdf` | 22 | 1,564,484 | `0ce0cab9ca547b6456bb6282431ce30ef236aff0ab904d4910b5668342921ab4` |
+
+Both PDFs use A4 media boxes and were produced by pdfTeX.
 
 ## Machine checks
 
@@ -49,39 +48,42 @@ Result: no matches.
 
 ### TeX structural count
 
-Counts from `draft.tex`:
+Counts from `draft.tex` after the LTE residual-decomposition update:
 
 | Item | Count |
 |---|---:|
 | `figure` environments | 11 |
-| `table` environments | 3 |
+| `table` environments | 4 |
 | `equation` environments | 18 |
 | `align` environments | 1 |
 | `includegraphics` calls | 12 |
 | `\cite...` commands | 28 |
 
-The 11 `figure` environments and 3 `table` environments all have captions in
+The 11 `figure` environments and 4 `table` environments all have captions in
 the source.
 
 ## Visual rendering check
 
-The updated manuscript adds the LTE residual mesh figure, the timestep
-sensitivity table, and the finite-window current diagnostics figure.  These new
-layout-sensitive pages were rendered from the compiled PDF to PNG at 144 dpi
-with ImageMagick and inspected individually:
+The current post-edit check focuses on the newly added LTE residual
+even/odd-decomposition table.  The affected pages were located by PDF text
+extraction, rendered from the compiled PDFs to PNG at 144 dpi with
+`pdfplumber`, and inspected individually:
 
-- page 11: LTE residual mesh figure and timestep sensitivity table;
-- page 13: finite-window current diagnostics figure and short-chain section
-  transition.
+- generic manuscript, page 10: new table, caption, surrounding LTE text, and
+  transition into the thermal-conductivity subsection;
+- SIADS review-preparation PDF, page 10: same table with line numbers and the
+  preceding LTE table on the same page.
 
 Result:
 
 - no page rotation problems;
 - no visible black boxes after rendering with a white background;
-- no visibly clipped newly added figures or tables;
+- no visibly clipped newly added table or caption;
 - no obvious overlapping text;
-- the newly added timestep sensitivity table is dense but readable in the
-  generic `article` format.
+- the residual-decomposition table is readable in both the generic and SIADS
+  review-preparation formats;
+- the generic PDF page transition into `Thermal conductivity` is clean, and
+  the SIADS page remains legible with line numbers.
 
 The earlier 2026-06-19 full-page visual pass remains the baseline for the
 unchanged pages; after any target-journal template conversion, rerun a full
