@@ -1,6 +1,6 @@
 # Submission checks summary
 
-Generated: `2026-06-20T20:02:55.158564+00:00`
+Generated: `2026-06-20T20:08:52.337681+00:00`
 
 Overall status: **PASS_WITH_AUTHOR_CONFIRMATION_PENDING_AND_LOCAL_RAW_DATA_LIMITATION**
 
@@ -16,24 +16,27 @@ Overall status: **PASS_WITH_AUTHOR_CONFIRMATION_PENDING_AND_LOCAL_RAW_DATA_LIMIT
 | reference_integrity_audit | PASS | bib_entries=8, citation_commands=28, citation_uses=29, dangling_citation_count=0, missing_identifier_count=0, missing_required_field_count=0, missing_verification_source_count=0, orphan_reference_count=0, unique_cited_keys=8 |
 | author_submission_fields_audit | AUTHOR_CONFIRMATION_PENDING | pass_count=0, pending_count=9, total_checks=9 |
 | raw_data_archive_manifest | PASS | missing_file_count=0, referenced_file_count=40, referenced_total_bytes=138875181, status=PASS |
-| submission_bundle_manifest | PASS_WITH_LOCAL_RAW_DATA_LIMITATION | local_raw_dependency_count=44, missing_release_files=0, release_directory_count=1, release_file_count=96, status=PASS_WITH_LOCAL_RAW_DATA_LIMITATION, untracked_local_raw_dependencies=44, untracked_release_files=0 |
-| submission_source_bundle | PASS | directory_tracked_file_count=174, excluded_self_referential_count=6, included_file_count=265, included_total_bytes=4531294, local_raw_dependency_count=44, manifest_release_directories=1, manifest_release_file_records=96, missing_file_count=0 |
+| submission_bundle_manifest | PASS_WITH_LOCAL_RAW_DATA_LIMITATION | local_raw_dependency_count=44, missing_release_files=0, release_directory_count=1, release_file_count=99, status=PASS_WITH_LOCAL_RAW_DATA_LIMITATION, untracked_local_raw_dependencies=44, untracked_release_files=0 |
+| submission_metadata_consistency_audit | PASS | checked_documents=9, failed_checks=0, predicted_source_bundle_included_count=268, release_file_count=99, total_checks=21 |
+| submission_source_bundle | PASS | directory_tracked_file_count=174, excluded_self_referential_count=6, included_file_count=268, included_total_bytes=4555161, local_raw_dependency_count=44, manifest_release_directories=1, manifest_release_file_records=99, missing_file_count=0 |
 
 ## Command results
 
 | Command | Return code | Duration (s) |
 |---|---:|---:|
-| `latex_compile` | 0 | 0.055 |
-| `siads_latex_compile` | 0 | 0.053 |
-| `compiled_pdf_artifact_audit` | 0 | 0.038 |
-| `availability_path_audit` | 0 | 0.189 |
-| `manuscript_claim_audit` | 0 | 0.043 |
-| `reference_integrity_audit` | 0 | 0.027 |
-| `author_submission_fields_audit` | 0 | 0.023 |
-| `submission_bundle_manifest_initial` | 0 | 0.844 |
-| `raw_data_archive_manifest` | 0 | 0.19 |
-| `submission_bundle_manifest_final` | 0 | 0.687 |
-| `submission_source_bundle` | 0 | 0.326 |
+| `latex_compile` | 0 | 0.051 |
+| `siads_latex_compile` | 0 | 0.048 |
+| `compiled_pdf_artifact_audit` | 0 | 0.031 |
+| `availability_path_audit` | 0 | 0.149 |
+| `manuscript_claim_audit` | 0 | 0.041 |
+| `reference_integrity_audit` | 0 | 0.025 |
+| `author_submission_fields_audit` | 0 | 0.021 |
+| `submission_bundle_manifest_initial` | 0 | 0.694 |
+| `raw_data_archive_manifest` | 0 | 0.138 |
+| `submission_bundle_manifest_final` | 0 | 0.694 |
+| `submission_metadata_consistency_audit` | 0 | 0.028 |
+| `submission_bundle_manifest_post_metadata` | 0 | 0.693 |
+| `submission_source_bundle` | 0 | 0.322 |
 
 ## LaTeX log checks
 

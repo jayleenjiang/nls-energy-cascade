@@ -28,8 +28,8 @@ Key numbers:
 | Availability paths | 37/37 |
 | Registered numerical claims | 19/19 |
 | Cited BibTeX entries | 8 |
-| Release-bundle files | 96 |
-| Source-bundle included files | 265 |
+| Release-bundle files | 99 |
+| Source-bundle included files | 268 |
 | Minimal raw-data files | 40 |
 | Missing raw-data files | 0 |
 | Author/submission-field audit | 9 pending author/external items |

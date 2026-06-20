@@ -35,9 +35,9 @@ Key numbers from the current gate:
 | Cited BibTeX entries | 8 |
 | Dangling citations | 0 |
 | Compiled PDF artifact audit | 2/2 PDFs verified |
-| Release-bundle files | 96 |
+| Release-bundle files | 99 |
 | Missing release files | 0 |
-| Source-only bundle included files | 265 |
+| Source-only bundle included files | 268 |
 | Minimal raw-data subset | 40 files, 138,875,181 bytes |
 | Author/submission-field audit | 9 pending author/external items |
 

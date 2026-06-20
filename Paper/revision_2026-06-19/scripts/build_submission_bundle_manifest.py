@@ -186,6 +186,8 @@ def collect_handoff_docs(root: Path, revision_dir: Path, release: dict[str, set[
         "submission_checks_summary.md",
         "submission_source_bundle_report.json",
         "submission_source_bundle_report.md",
+        "submission_metadata_consistency_audit.json",
+        "submission_metadata_consistency_audit.md",
         "compiled_pdf_artifact_audit.json",
         "compiled_pdf_artifact_audit.md",
         "pdf_layout_qa_2026-06-19.md",
@@ -232,6 +234,11 @@ def collect_handoff_docs(root: Path, revision_dir: Path, release: dict[str, set[
         release,
         str((revision_dir / "scripts/build_submission_source_bundle.py").relative_to(root)),
         "source-bundle-builder",
+    )
+    add_role(
+        release,
+        str((revision_dir / "scripts/audit_submission_metadata_consistency.py").relative_to(root)),
+        "submission-metadata-audit",
     )
     add_role(
         release,

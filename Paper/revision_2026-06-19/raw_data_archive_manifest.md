@@ -1,9 +1,9 @@
 # Raw-data archive manifest
 
-Generated: `2026-06-20T20:02:54.128832+00:00`
+Generated: `2026-06-20T20:08:50.587501+00:00`
 
 Git branch: `codex/paper-journal-revision`
-Git HEAD at manifest generation: `7c3dd1ceb674494f21517f05faccb3de05bc31a9`
+Git HEAD at manifest generation: `8c114a0010df7411748293417db0511f4f6eb373`
 
 ## Summary
 

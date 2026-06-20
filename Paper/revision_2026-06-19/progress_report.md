@@ -176,7 +176,7 @@
     submission `.tar.gz` under `tmp/` from the release manifest, records an
     archive SHA-256 checksum, and deliberately excludes self-referential
     generated summaries and the large local raw-data roots. The current
-    packaging run includes 265 regular files, has zero missing files, and
+    packaging run includes 268 regular files, has zero missing files, and
     records 44 local raw-data dependency records as
     excluded pending any DOI-backed raw-data archive decision.
 31. Performed a submission-level strengthening pass on 2026-06-20:
@@ -247,6 +247,13 @@
     generic and SIADS PDF paths, page counts, byte sizes, and SHA-256 checksums
     while keeping the PDF files themselves as uncommitted `tmp/` build
     artifacts.  The one-command submission gate now includes this audit.
+39. Added `scripts/audit_submission_metadata_consistency.py` plus
+    `submission_metadata_consistency_audit.json` and
+    `submission_metadata_consistency_audit.md`.  This gate checks that
+    submission-facing handoff documents quote the current compiled-PDF
+    checksums, page counts, release-file count, and predicted source-bundle
+    included-file count.  It is included in the one-command submission check to
+    prevent stale upload-packet metadata after future PDF or bundle updates.
 
 ## Key validated numerical result
 
