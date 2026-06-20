@@ -23,6 +23,9 @@ The 2026-06-20 manuscript pass additionally added the Monte Carlo validation
 and uncertainty protocol, the LTE residual mesh diagnostic including the
 requested `n=15` case, a timestep sensitivity table, and finite-window current
 diagnostics.  The latest path audit checks 34/34 manuscript paths and figures.
+A later 2026-06-20 current-scaling robustness pass added an `n=50` canonical
+current run plus a smaller fine-timestep pilot; the numerical claim audit now
+checks 15/15 registered claims.
 
 ## 1. Decisions needed from the authors
 
@@ -74,6 +77,17 @@ conversion checklist.
 - AI-assisted preparation:
   - confirm the current disclosure wording or provide journal-specific wording.
 
+Recommended declaration replacements after confirmation:
+
+| Item | Current draft status | Suggested final wording if accurate |
+|---|---|---|
+| Author approval | Provisional: "Both authors should review and approve..." | "Both authors reviewed and approved the final submitted version." |
+| Competing interests | Provisional: no competing interests declared in supplied materials | "The authors declare no competing interests." |
+| Funding | Provisional: funding information not supplied | "The authors received no external funding for this work." |
+
+If any of these suggested statements is inaccurate, replace it with the exact
+journal-required disclosure before running the final local gate.
+
 ### Authorship and contributions
 
 Current manuscript wording:
@@ -85,6 +99,11 @@ Current manuscript wording:
 > version.
 
 Please confirm, edit, or replace this statement.
+
+Before formal submission, replace the provisional final sentence after author
+approval.  Suggested final wording:
+
+> Both authors reviewed and approved the final submitted version.
 
 If the target journal uses CRediT taxonomy, a possible starting point is:
 
@@ -209,7 +228,7 @@ place.  The command
 python3 Paper/revision_2026-06-19/scripts/run_submission_checks.py --compile-latex
 
 currently returns PASS_WITH_LOCAL_RAW_DATA_LIMITATION: the manuscript compiles,
-the local numerical claim audit passes 14/14 checks, the path audit passes
+the local numerical claim audit passes 15/15 checks, the path audit passes
 34/34 checks, and the release bundle has no missing or untracked required
 files.  The remaining limitation is that a DOI-backed raw-data archive has not
 yet been uploaded.

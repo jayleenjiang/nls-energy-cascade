@@ -166,6 +166,7 @@ def collect_handoff_docs(root: Path, revision_dir: Path, release: dict[str, set[
         "progress_report.md",
         "integrity_audit_2026-06-19.md",
         "submission_readiness_checklist_2026-06-19.md",
+        "final_pre_submission_audit_2026-06-20.md",
         "originality_spotcheck_2026-06-19.md",
         "material_inventory.md",
         "revision_roadmap.md",

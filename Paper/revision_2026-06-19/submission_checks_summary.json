@@ -11,18 +11,18 @@
         "-outdir=/Users/jayleenjiang/Documents/NLS/tmp/paper_build/revision",
         "draft.tex"
       ],
-      "duration_seconds": 2.369,
+      "duration_seconds": 0.053,
       "name": "latex_compile",
       "returncode": 0,
       "stderr_tail": "",
-      "stdout_tail": "ction_profiles.pdf>] [8 <./cascade_embedding.pdf>] [9] [10 <./lte_residu\nal_midchain.pdf>] [11 <./report_assets/compare_residual_mesh.pdf>] [12 <./exper\niments/flux_validation/production_dt5e-4/flux_primary_scaling.pdf>] [13 <./expe\nriments/flux_validation/production_dt5e-4/current_windows_n40_windows.pdf> <./e\nxperiments/flux_validation/production_dt5e-4/current_windows_variance_scaling.p\ndf>] [14 <./eq_validation.png>] [15 <./neq_density.png>] [16 <./symmetry_breaki\nng.png>] [17 <./eigenvalue_scatter.png> <./Q1_slices.png>] [18]\n(/Users/jayleenjiang/Documents/NLS/tmp/paper_build/revision/draft.bbl [19])\n[20] (/Users/jayleenjiang/Documents/NLS/tmp/paper_build/revision/draft.aux) )</\nusr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></u\nsr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></us\nr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr\n/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/l\nocal/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/loc\nal/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local\n/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local\n/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/t\nexlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texl\nive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive\n/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/20\n23/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2023\n/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2023/\ntexmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2023/te\nxmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2023/texm\nf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2023/\ntexmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/local/texlive/2023/te\nxmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb></usr/local/texlive/2023/texm\nf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2023/texmf-\ndist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2023/texmf-di\nst/fonts/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/2023/texmf-dist\n/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2023/texmf-dist/f\nonts/type1/public/cm-super/sfrm0900.pfb></usr/local/texlive/2023/texmf-dist/fon\nts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2023/texmf-dist/fonts\n/type1/public/cm-super/sfrm1095.pfb></usr/local/texlive/2023/texmf-dist/fonts/t\nype1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2023/texmf-dist/fonts/typ\ne1/public/cm-super/sfrm1728.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1\n/public/cm-super/sfti1095.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/p\nublic/cm-super/sftt0900.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/pub\nlic/cm-super/sftt1000.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/publi\nc/cm-super/sftt1095.pfb>\nOutput written on /Users/jayleenjiang/Documents/NLS/tmp/paper_build/revision/dr\naft.pdf (20 pages, 1539514 bytes).\nSyncTeX written on /Users/jayleenjiang/Documents/NLS/tmp/paper_build/revision/draft.synctex.gz.\nTranscript written on /Users/jayleenjiang/Documents/NLS/tmp/paper_build/revisio\nn/draft.log.\nLatexmk: Getting log file '/Users/jayleenjiang/Documents/NLS/tmp/paper_build/revision/draft.log'\nLatexmk: Examining '/Users/jayleenjiang/Documents/NLS/tmp/paper_build/revision/draft.fls'\nLatexmk: Examining '/Users/jayleenjiang/Documents/NLS/tmp/paper_build/revision/draft.log'\nLatexmk: Found input bbl file '/Users/jayleenjiang/Documents/NLS/tmp/paper_build/revision/draft.bbl'\nLatexmk: Log file says output to '/Users/jayleenjiang/Documents/NLS/tmp/paper_build/revision/draft.pdf'\nLatexmk: Found bibliography file(s):\n  ./references.bib\nLatexmk: All targets () are up-to-date\n\n"
+      "stdout_tail": "Rc files read:\n  NONE\nLatexmk: This is Latexmk, John Collins, 7 Jan. 2023. Version 4.79.\nLatexmk: Nothing to do for 'draft.tex'.\nLatexmk: All targets () are up-to-date\n\n"
     },
     {
       "command": [
         "python3",
         "/Users/jayleenjiang/Documents/NLS/Paper/revision_2026-06-19/scripts/audit_availability_paths.py"
       ],
-      "duration_seconds": 0.156,
+      "duration_seconds": 0.167,
       "name": "availability_path_audit",
       "returncode": 0,
       "stderr_tail": "",
@@ -33,7 +33,7 @@
         "python3",
         "/Users/jayleenjiang/Documents/NLS/Paper/revision_2026-06-19/scripts/audit_manuscript_claims.py"
       ],
-      "duration_seconds": 0.036,
+      "duration_seconds": 0.04,
       "name": "manuscript_claim_audit",
       "returncode": 0,
       "stderr_tail": "",
@@ -44,7 +44,7 @@
         "python3",
         "/Users/jayleenjiang/Documents/NLS/Paper/revision_2026-06-19/scripts/audit_references.py"
       ],
-      "duration_seconds": 0.028,
+      "duration_seconds": 0.029,
       "name": "reference_integrity_audit",
       "returncode": 0,
       "stderr_tail": "",
@@ -55,18 +55,18 @@
         "python3",
         "/Users/jayleenjiang/Documents/NLS/Paper/revision_2026-06-19/scripts/build_submission_bundle_manifest.py"
       ],
-      "duration_seconds": 0.657,
+      "duration_seconds": 0.602,
       "name": "submission_bundle_manifest_initial",
       "returncode": 0,
       "stderr_tail": "",
-      "stdout_tail": "{\n  \"release_file_count\": 69,\n  \"release_directory_count\": 1,\n  \"missing_release_files\": 0,\n  \"untracked_release_files\": 0,\n  \"local_raw_dependency_count\": 44,\n  \"untracked_local_raw_dependencies\": 44,\n  \"status\": \"PASS_WITH_LOCAL_RAW_DATA_LIMITATION\"\n}\n"
+      "stdout_tail": "{\n  \"release_file_count\": 70,\n  \"release_directory_count\": 1,\n  \"missing_release_files\": 0,\n  \"untracked_release_files\": 0,\n  \"local_raw_dependency_count\": 44,\n  \"untracked_local_raw_dependencies\": 44,\n  \"status\": \"PASS_WITH_LOCAL_RAW_DATA_LIMITATION\"\n}\n"
     },
     {
       "command": [
         "python3",
         "/Users/jayleenjiang/Documents/NLS/Paper/revision_2026-06-19/scripts/build_raw_data_archive_manifest.py"
       ],
-      "duration_seconds": 0.17,
+      "duration_seconds": 0.108,
       "name": "raw_data_archive_manifest",
       "returncode": 0,
       "stderr_tail": "",
@@ -77,22 +77,22 @@
         "python3",
         "/Users/jayleenjiang/Documents/NLS/Paper/revision_2026-06-19/scripts/build_submission_bundle_manifest.py"
       ],
-      "duration_seconds": 0.61,
+      "duration_seconds": 0.602,
       "name": "submission_bundle_manifest_final",
       "returncode": 0,
       "stderr_tail": "",
-      "stdout_tail": "{\n  \"release_file_count\": 69,\n  \"release_directory_count\": 1,\n  \"missing_release_files\": 0,\n  \"untracked_release_files\": 0,\n  \"local_raw_dependency_count\": 44,\n  \"untracked_local_raw_dependencies\": 44,\n  \"status\": \"PASS_WITH_LOCAL_RAW_DATA_LIMITATION\"\n}\n"
+      "stdout_tail": "{\n  \"release_file_count\": 70,\n  \"release_directory_count\": 1,\n  \"missing_release_files\": 0,\n  \"untracked_release_files\": 0,\n  \"local_raw_dependency_count\": 44,\n  \"untracked_local_raw_dependencies\": 44,\n  \"status\": \"PASS_WITH_LOCAL_RAW_DATA_LIMITATION\"\n}\n"
     },
     {
       "command": [
         "python3",
         "/Users/jayleenjiang/Documents/NLS/Paper/revision_2026-06-19/scripts/build_submission_source_bundle.py"
       ],
-      "duration_seconds": 0.25,
+      "duration_seconds": 0.24,
       "name": "submission_source_bundle",
       "returncode": 0,
       "stderr_tail": "",
-      "stdout_tail": "{\n  \"archive\": {\n    \"path\": \"tmp/submission_source_bundle/runs/20260620T141210Z/NLS_numerical_study_source.tar.gz\",\n    \"sha256\": \"2c2d91bab618beeea34973cb213304abb563d583381951e37b4caec7479df671\",\n    \"size_bytes\": 2477004\n  },\n  \"status\": \"PASS\",\n  \"summary\": {\n    \"directory_tracked_file_count\": 114,\n    \"excluded_self_referential_count\": 6,\n    \"included_file_count\": 178,\n    \"included_total_bytes\": 3581845,\n    \"local_raw_dependency_count\": 44,\n    \"manifest_release_directories\": 1,\n    \"manifest_release_file_records\": 69,\n    \"missing_file_count\": 0\n  }\n}\n"
+      "stdout_tail": "{\n  \"archive\": {\n    \"path\": \"tmp/submission_source_bundle/runs/20260620T142125Z/NLS_numerical_study_source.tar.gz\",\n    \"sha256\": \"82983e8ee2058a9fee7320c1b87be168ff0d4204563022b75136e50212cf0b79\",\n    \"size_bytes\": 2480299\n  },\n  \"status\": \"PASS\",\n  \"summary\": {\n    \"directory_tracked_file_count\": 114,\n    \"excluded_self_referential_count\": 6,\n    \"included_file_count\": 179,\n    \"included_total_bytes\": 3588825,\n    \"local_raw_dependency_count\": 44,\n    \"manifest_release_directories\": 1,\n    \"manifest_release_file_records\": 70,\n    \"missing_file_count\": 0\n  }\n}\n"
     }
   ],
   "gates": [
@@ -152,7 +152,7 @@
         "local_raw_dependency_count": 44,
         "missing_release_files": 0,
         "release_directory_count": 1,
-        "release_file_count": 69,
+        "release_file_count": 70,
         "status": "PASS_WITH_LOCAL_RAW_DATA_LIMITATION",
         "untracked_local_raw_dependencies": 44,
         "untracked_release_files": 0
@@ -164,17 +164,17 @@
       "numbers": {
         "directory_tracked_file_count": 114,
         "excluded_self_referential_count": 6,
-        "included_file_count": 178,
-        "included_total_bytes": 3581845,
+        "included_file_count": 179,
+        "included_total_bytes": 3588825,
         "local_raw_dependency_count": 44,
         "manifest_release_directories": 1,
-        "manifest_release_file_records": 69,
+        "manifest_release_file_records": 70,
         "missing_file_count": 0
       },
       "status": "PASS"
     }
   ],
-  "generated_at_utc": "2026-06-20T14:12:10.527382+00:00",
+  "generated_at_utc": "2026-06-20T14:21:26.139120+00:00",
   "latex_log": {
     "issues": [],
     "log": "/Users/jayleenjiang/Documents/NLS/tmp/paper_build/revision/draft.log",

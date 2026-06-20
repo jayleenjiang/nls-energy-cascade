@@ -168,6 +168,7 @@ Run these only after the author-supplied items above have been inserted.
   - `target_journal_shortlist_2026-06-19.md`
   - `siads_first_submission_packet_2026-06-20.md`
   - `submission_readiness_checklist_2026-06-19.md`
+  - `final_pre_submission_audit_2026-06-20.md`
 - Optional supplementary archive:
   - current-scaling validation artifacts under `experiments/flux_validation/`
   - figure and source-trace metrics JSON files

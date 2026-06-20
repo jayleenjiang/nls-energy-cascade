@@ -1,0 +1,159 @@
+# Final local pre-submission audit — 2026-06-20
+
+Scope: `Paper/revision_2026-06-19/draft.tex` and the synchronized
+`draft_siads_review.tex` after the larger-chain `n=50` robustness and
+fine-timestep checks.
+
+This audit separates items that are locally complete from items that still
+require author, journal, or external-service action.  It is intentionally
+conservative: the paper should not be formally submitted until the
+author-required items below are resolved in the manuscript source and the local
+gate is rerun.
+
+## Local evidence status
+
+Latest local command:
+
+```sh
+python3 Paper/revision_2026-06-19/scripts/run_submission_checks.py --compile-latex
+```
+
+Latest result: `PASS_WITH_LOCAL_RAW_DATA_LIMITATION`.
+
+Key gate numbers:
+
+| Gate | Status |
+|---|---|
+| LaTeX/log scan | PASS, `issues=0` |
+| Availability/path audit | PASS, `34/34` paths present, `0` untracked required files |
+| Numerical claim audit | PASS, `15/15` claims verified |
+| Reference integrity audit | PASS, `8` cited BibTeX entries, `0` dangling citations |
+| Raw-data archive manifest | PASS locally, `40` unique referenced files, `138,875,181` bytes |
+| Submission bundle manifest | `PASS_WITH_LOCAL_RAW_DATA_LIMITATION`, `70` release files, `0` missing, `0` untracked release files |
+| Source-only bundle dry run | PASS, `179` included files |
+
+The SIADS review-preparation source also compiles locally:
+
+- source: `Paper/revision_2026-06-19/draft_siads_review.tex`
+- PDF: `tmp/paper_build/siads_review/draft_siads_review.pdf`
+- local compile status: PASS
+
+## Reviewer-style local stress test
+
+### Core thesis
+
+The core numerical thesis is now appropriately scoped.  The main transport
+claim remains the production fit over `n=10,20,30,40`; the new `n=50`
+experiment is explicitly described as a larger-chain robustness check, with a
+smaller fine-step pilot at `dt=2.5e-4`.  This avoids the most likely reviewer
+objection that a single larger length has been over-promoted to an asymptotic
+law.
+
+### Current-scaling vulnerability
+
+The remaining current-scaling vulnerability is not a local inconsistency: it is
+the usual finite-size limitation.  The manuscript now says this directly.  A
+reviewer could still ask for more lengths, such as `n=60`, or production-size
+fine-step data at `n=50`; those would strengthen the paper but are not needed
+to defend the present finite-size claim as written.
+
+### Short-chain mechanism vulnerability
+
+The short-chain Fokker--Planck/eigenfunction material is now framed as a
+mechanistic microscope rather than proof of the long-chain exponent.  The
+neural solver claims are limited to saved-model inference and source-traced
+diagnostics.  This is the safer journal posture.
+
+### Local-equilibrium vulnerability
+
+The LTE section distinguishes pair-marginal agreement from strict local Gibbs
+structure, and the residual mesh diagnostic is included.  The claim audit
+source-traces the table values and convention.  No local blocker remains.
+
+### Entropy-production and large-deviation vulnerability
+
+The manuscript explicitly does not claim bath-energy entropy production,
+Gallavotti--Cohen symmetry, or asymptotic current large deviations.  This
+removes a likely overclaim.
+
+## Author-required manuscript edits before formal submission
+
+The following are the remaining text-level blockers inside the current
+manuscript.  They require author confirmation and therefore have not been
+silently converted into final declarations.
+
+### 1. Author approval/contribution sentence
+
+Current text in `draft.tex`:
+
+```tex
+Both authors should review and approve the final submitted version.
+```
+
+Replace after confirmation with a final factual statement, for example:
+
+```tex
+Both authors reviewed and approved the final submitted version.
+```
+
+or with the exact target-journal authorship wording.
+
+### 2. Competing-interest declaration
+
+Current text:
+
+```tex
+No competing interests are declared in the materials supplied for this draft.
+```
+
+Replace after author confirmation with either:
+
+```tex
+The authors declare no competing interests.
+```
+
+or a complete disclosure.
+
+### 3. Funding declaration
+
+Current text:
+
+```tex
+Funding information was not supplied in the current manuscript materials and
+should be completed by the authors before submission if required by the target
+journal.
+```
+
+Replace after author confirmation with either:
+
+```tex
+The authors received no external funding for this work.
+```
+
+or the complete grant/funding statement required by the target journal.
+
+### 4. Author metadata
+
+Confirm final author order, affiliations, corresponding author, email, and
+ORCID identifiers if requested by the target journal.  The current source
+contains only Yao Li's affiliation/email in a footnote.
+
+## External or journal-system items still required
+
+1. Select final target journal and article type.
+2. Run professional plagiarism/self-plagiarism screening, such as
+   iThenticate/Turnitin or the target journal's required equivalent.
+3. Decide whether the GitHub release is sufficient or whether the 40-file
+   raw-data subset should be uploaded to Zenodo/OSF with a DOI.
+4. If submitting to SIADS, decide whether to keep the line-numbered fallback
+   source for review or convert to the SIAM macro package after installing the
+   journal class locally.
+5. Rerun the full local gate after inserting final declarations and any
+   journal-specific formatting changes.
+
+## Local conclusion
+
+No remaining blocker is a local numerical, citation, path, source-bundle, or
+LaTeX compilation failure.  The remaining blockers are author-confirmed
+declaration wording, journal-format decisions, professional similarity
+screening, and the optional DOI-backed raw-data archive.
