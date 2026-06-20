@@ -33,9 +33,9 @@ Key numbers from the current gate:
 | Registered numerical claims verified | 18/18 |
 | Cited BibTeX entries | 8 |
 | Dangling citations | 0 |
-| Release-bundle files | 83 |
+| Release-bundle files | 86 |
 | Missing release files | 0 |
-| Source-only bundle included files | 252 |
+| Source-only bundle included files | 255 |
 | Minimal raw-data subset | 40 files, 138,875,181 bytes |
 
 The SIADS review-preparation source compiles locally:
@@ -147,7 +147,11 @@ Choose one route before replacing the data-availability placeholder:
 | Local raw-data available on request | weakest route; use only if archive is impossible | keep the raw-data limitation explicit |
 
 The strongest route is GitHub release plus a DOI-backed raw-data archive using
-the 40-file, 138,875,181-byte subset in `raw_data_archive_manifest.md`.
+the 40-file, 138,875,181-byte subset in `raw_data_archive_manifest.md`.  A
+local upload-ready `.tar.gz` can now be built with
+`scripts/build_raw_data_archive.py`; the latest local build is recorded in
+`raw_data_archive_build_report.md`.  This still does not create a DOI or upload
+the archive.
 
 ## Optional additional studies
 

@@ -1,13 +1,13 @@
 # Submission bundle manifest
 
-Generated: `2026-06-20T18:53:27.575478+00:00`
+Generated: `2026-06-20T18:58:04.206680+00:00`
 
 Git branch: `codex/paper-journal-revision`
-Git HEAD at manifest generation: `6f7267d7044e517c497b3f88c6fa150814ee08d2`
+Git HEAD at manifest generation: `a2c88944d773774fd6a3e4dc2ea8807ed81b5ee6`
 
 ## Summary
 
-- Release files: 83
+- Release files: 86
 - Release directories: 1
 - Missing release files: 0
 - Untracked release files: 0
@@ -28,9 +28,9 @@ Git HEAD at manifest generation: `6f7267d7044e517c497b3f88c6fa150814ee08d2`
 | `Paper/revision_2026-06-19/Q1_slices.png` | availability-declared, manuscript-figure | 78729 | `daa934ee72a1` |
 | `Paper/revision_2026-06-19/action_profiles.pdf` | availability-declared, manuscript-figure | 23952 | `b72d9cafc37c` |
 | `Paper/revision_2026-06-19/audit_report.md` | handoff-document | 8469 | `d69f2e688c9f` |
-| `Paper/revision_2026-06-19/author_submission_action_packet_2026-06-19.md` | handoff-document | 10938 | `ee7630127853` |
-| `Paper/revision_2026-06-19/availability_path_audit.json` | availability-audit, availability-declared, claim-evidence:data_availability_artifacts | 16332 | `3fb400b42b38` |
-| `Paper/revision_2026-06-19/availability_path_audit.md` | availability-audit, availability-declared, claim-evidence:data_availability_artifacts | 7584 | `5e0cc24a610c` |
+| `Paper/revision_2026-06-19/author_submission_action_packet_2026-06-19.md` | handoff-document | 11304 | `ddcbac187535` |
+| `Paper/revision_2026-06-19/availability_path_audit.json` | availability-audit, availability-declared, claim-evidence:data_availability_artifacts | 16332 | `2253461e2768` |
+| `Paper/revision_2026-06-19/availability_path_audit.md` | availability-audit, availability-declared, claim-evidence:data_availability_artifacts | 7584 | `f80a44ccb809` |
 | `Paper/revision_2026-06-19/cascade_embedding.pdf` | availability-declared, manuscript-figure | 29542 | `ff8a00f7a6a3` |
 | `Paper/revision_2026-06-19/draft.tex` | claim-evidence:data_availability_artifacts, claim-evidence:lte_equilibrium_convention, claim-evidence:reproducibility_summary_table ... | 69050 | `26a18da1d08c` |
 | `Paper/revision_2026-06-19/draft_siads_review.tex` | siads-review-source | 69684 | `3a25ec0f91b7` |
@@ -59,22 +59,24 @@ Git HEAD at manifest generation: `6f7267d7044e517c497b3f88c6fa150814ee08d2`
 | `Paper/revision_2026-06-19/experiments/flux_validation/production_dt5e-4/flux_primary_scaling.json` | claim-evidence:conductivity_scaling, claim-evidence:flux_scaling_fit_sensitivity, claim-evidence:flux_scaling_main ... | 739 | `f5eefe4b9510` |
 | `Paper/revision_2026-06-19/experiments/flux_validation/production_dt5e-4/flux_primary_scaling.pdf` | availability-declared, manuscript-figure | 19190 | `c7c06317e77a` |
 | `Paper/revision_2026-06-19/experiments/flux_validation/validation_report.md` | claim-evidence:flux_diagnostics, claim-evidence:flux_scaling_main, claim-evidence:flux_table_values ... | 5726 | `a6efb96c47d0` |
-| `Paper/revision_2026-06-19/final_pre_submission_audit_2026-06-20.md` | handoff-document | 6782 | `4b61b47a88be` |
-| `Paper/revision_2026-06-19/final_submission_decision_sheet_2026-06-20.md` | handoff-document | 5994 | `4e22b7e869e9` |
+| `Paper/revision_2026-06-19/final_pre_submission_audit_2026-06-20.md` | handoff-document | 6897 | `99d7a45455eb` |
+| `Paper/revision_2026-06-19/final_submission_decision_sheet_2026-06-20.md` | handoff-document | 6216 | `d9f7f526201c` |
 | `Paper/revision_2026-06-19/integrity_audit_2026-06-19.md` | availability-declared, handoff-document | 16879 | `5166404626dd` |
 | `Paper/revision_2026-06-19/lte_residual_midchain.pdf` | availability-declared, manuscript-figure | 35961 | `3785b901fca6` |
-| `Paper/revision_2026-06-19/manuscript_claim_audit.json` | availability-declared, claim-audit | 44474 | `4b3a84066779` |
-| `Paper/revision_2026-06-19/manuscript_claim_audit.md` | availability-declared, claim-audit | 6169 | `9021cce58fb5` |
+| `Paper/revision_2026-06-19/manuscript_claim_audit.json` | availability-declared, claim-audit | 44474 | `b1d86794f8f9` |
+| `Paper/revision_2026-06-19/manuscript_claim_audit.md` | availability-declared, claim-audit | 6169 | `78b895501e4d` |
 | `Paper/revision_2026-06-19/manuscript_figure_metrics.json` | availability-declared, claim-evidence:long_chain_action_profiles, claim-evidence:reproducibility_summary_table | 2650 | `c0dfd2a21ffd` |
 | `Paper/revision_2026-06-19/material_inventory.md` | handoff-document | 5780 | `1ec79df29199` |
 | `Paper/revision_2026-06-19/neq_density.png` | availability-declared, manuscript-figure | 164861 | `959983b2bbf6` |
 | `Paper/revision_2026-06-19/originality_spotcheck_2026-06-19.md` | handoff-document | 5528 | `257397aba6c0` |
 | `Paper/revision_2026-06-19/pdf_layout_qa_2026-06-19.md` | handoff-document | 2816 | `9396d4843ec6` |
-| `Paper/revision_2026-06-19/progress_report.md` | handoff-document | 17127 | `c7d1806fd36e` |
-| `Paper/revision_2026-06-19/raw_data_archive_manifest.json` | handoff-document | 16196 | `a621d52b61b0` |
-| `Paper/revision_2026-06-19/raw_data_archive_manifest.md` | handoff-document | 8210 | `138c3132e4cd` |
-| `Paper/revision_2026-06-19/reference_integrity_audit.json` | handoff-document | 6421 | `64657ac8de5a` |
-| `Paper/revision_2026-06-19/reference_integrity_audit.md` | handoff-document | 2472 | `70d06d9a7f75` |
+| `Paper/revision_2026-06-19/progress_report.md` | handoff-document | 17127 | `15f795c64a62` |
+| `Paper/revision_2026-06-19/raw_data_archive_build_report.json` | handoff-document | 15429 | `6651de0e69b0` |
+| `Paper/revision_2026-06-19/raw_data_archive_build_report.md` | handoff-document | 1064 | `d477759f3e16` |
+| `Paper/revision_2026-06-19/raw_data_archive_manifest.json` | handoff-document | 16196 | `c99511adae21` |
+| `Paper/revision_2026-06-19/raw_data_archive_manifest.md` | handoff-document | 8210 | `a871dc17e8db` |
+| `Paper/revision_2026-06-19/reference_integrity_audit.json` | handoff-document | 6421 | `95f83f5d4d16` |
+| `Paper/revision_2026-06-19/reference_integrity_audit.md` | handoff-document | 2472 | `08e50eb82f74` |
 | `Paper/revision_2026-06-19/references.bib` | availability-declared, handoff-document | 3025 | `8e3d2e4c9f3c` |
 | `Paper/revision_2026-06-19/report_assets/compare_residual_mesh.pdf` | availability-declared, manuscript-figure | 319877 | `e2c7bff1ce9c` |
 | `Paper/revision_2026-06-19/revision_roadmap.md` | handoff-document | 5242 | `83823e4f7b87` |
@@ -83,8 +85,9 @@ Git HEAD at manifest generation: `6f7267d7044e517c497b3f88c6fa150814ee08d2`
 | `Paper/revision_2026-06-19/scripts/audit_availability_paths.py` | availability-declared | 7096 | `449c7c91c7d2` |
 | `Paper/revision_2026-06-19/scripts/audit_manuscript_claims.py` | availability-declared | 29476 | `c9cee2b34cd2` |
 | `Paper/revision_2026-06-19/scripts/audit_references.py` | reference-audit | 13869 | `ac30af8dcbee` |
+| `Paper/revision_2026-06-19/scripts/build_raw_data_archive.py` | raw-data-archive-builder | 8464 | `b5edae3b852c` |
 | `Paper/revision_2026-06-19/scripts/build_raw_data_archive_manifest.py` | manifest-builder | 7182 | `6e0c31b8aa3a` |
-| `Paper/revision_2026-06-19/scripts/build_submission_bundle_manifest.py` | manifest-builder | 17453 | `b3b94ecb411c` |
+| `Paper/revision_2026-06-19/scripts/build_submission_bundle_manifest.py` | manifest-builder | 17701 | `e96b56f0c4d6` |
 | `Paper/revision_2026-06-19/scripts/build_submission_source_bundle.py` | source-bundle-builder | 10323 | `0fa55eb22347` |
 | `Paper/revision_2026-06-19/scripts/export_source_trace_metrics.py` | availability-declared | 17879 | `5eac487deea1` |
 | `Paper/revision_2026-06-19/scripts/generate_manuscript_figures.py` | availability-declared | 13122 | `65026eb1d396` |
@@ -97,8 +100,8 @@ Git HEAD at manifest generation: `6f7267d7044e517c497b3f88c6fa150814ee08d2`
 | `Paper/revision_2026-06-19/submission_bundle_manifest.md` | handoff-document |  | `` |
 | `Paper/revision_2026-06-19/submission_checks_summary.json` | handoff-document |  | `` |
 | `Paper/revision_2026-06-19/submission_checks_summary.md` | handoff-document |  | `` |
-| `Paper/revision_2026-06-19/submission_readiness_checklist_2026-06-19.md` | handoff-document | 12999 | `d5cde5e0a583` |
-| `Paper/revision_2026-06-19/submission_reproducibility_readme_2026-06-19.md` | handoff-document | 6546 | `b73c5490b5c3` |
+| `Paper/revision_2026-06-19/submission_readiness_checklist_2026-06-19.md` | handoff-document | 13275 | `d2f8356db726` |
+| `Paper/revision_2026-06-19/submission_reproducibility_readme_2026-06-19.md` | handoff-document | 7127 | `7741b0f757ee` |
 | `Paper/revision_2026-06-19/submission_source_bundle_report.json` | handoff-document |  | `` |
 | `Paper/revision_2026-06-19/submission_source_bundle_report.md` | handoff-document |  | `` |
 | `Paper/revision_2026-06-19/symmetry_breaking.png` | availability-declared, manuscript-figure | 75925 | `883ca0d5b778` |

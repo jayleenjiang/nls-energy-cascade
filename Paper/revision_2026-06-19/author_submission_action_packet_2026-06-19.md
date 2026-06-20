@@ -124,6 +124,9 @@ Current manuscript state:
 - `raw_data_archive_manifest.md` identifies a compact raw-data subset:
   40 unique source-trace raw files, all present locally, totaling
   138,875,181 bytes.
+- `scripts/build_raw_data_archive.py` can build a timestamped local `.tar.gz`
+  for this subset under `tmp/raw_data_archive/runs/`; the latest local build is
+  summarized in `raw_data_archive_build_report.md`.
 - The full local raw roots are much larger (`Energy Cascade/`, `KDE/`, and
   `lte/`; `lte/` alone is multi-GB), so they should not be committed to GitHub
   without a deliberate release policy.
@@ -137,9 +140,10 @@ Choose one:
 
 2. **GitHub + DOI-backed minimal raw-data archive.**
    Archive the 40 files in `raw_data_archive_manifest.md`, preserving their
-   `raw_data/...` paths, then replace or supplement the data availability
-   statement with the archive DOI.  This is the recommended route if the
-   journal asks for raw data.
+   `raw_data/...` paths.  The local helper
+   `scripts/build_raw_data_archive.py` now produces this upload artifact; after
+   upload, replace or supplement the data availability statement with the
+   archive DOI.  This is the recommended route if the journal asks for raw data.
 
 3. **Full local raw-root archive.**
    Archive the full `Energy Cascade/`, `KDE/`, and `lte/` roots.  This is much
@@ -232,8 +236,8 @@ python3 Paper/revision_2026-06-19/scripts/run_submission_checks.py --compile-lat
 currently returns PASS_WITH_LOCAL_RAW_DATA_LIMITATION: the manuscript compiles,
 the local numerical claim audit passes 18/18 checks, the path audit passes
 37/37 checks, and the release bundle has no missing or untracked required
-files.  The remaining limitation is that a DOI-backed raw-data archive has not
-yet been uploaded.
+files.  A local upload-ready raw-data `.tar.gz` can now be built from the
+40-file manifest, but a DOI-backed raw-data archive has not yet been uploaded.
 
 Could you please confirm:
 

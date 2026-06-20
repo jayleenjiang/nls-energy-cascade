@@ -20,7 +20,7 @@ paper can be called journal-ready.
 | Data/code and figure path availability | Passing local path audit | `scripts/audit_availability_paths.py`; `availability_path_audit.json`; `availability_path_audit.md` |
 | Submission/release bundle | Passing for tracked release files; raw-data limitation recorded | `scripts/build_submission_bundle_manifest.py`; `submission_bundle_manifest.json`; `submission_bundle_manifest.md` |
 | Source-only submission archive | Passing packaging dry run; archive written under `tmp/` | `scripts/build_submission_source_bundle.py`; `submission_source_bundle_report.json`; `submission_source_bundle_report.md` |
-| Minimal raw-data archive plan | Passing local raw-file manifest; archive not yet uploaded | `scripts/build_raw_data_archive_manifest.py`; `raw_data_archive_manifest.json`; `raw_data_archive_manifest.md` |
+| Minimal raw-data archive plan | Passing local raw-file manifest; upload-ready local archive build prepared but not uploaded | `scripts/build_raw_data_archive_manifest.py`; `scripts/build_raw_data_archive.py`; `raw_data_archive_manifest.json`; `raw_data_archive_manifest.md`; `raw_data_archive_build_report.md` |
 | One-command local gate | Passing with raw-data archive limitation | `scripts/run_submission_checks.py`; `submission_checks_summary.json`; `submission_checks_summary.md` |
 | Reproducibility entry point | Prepared for reviewer/editor navigation | `submission_reproducibility_readme_2026-06-19.md` |
 | Compiled-PDF layout QA | Generic article PDF checked locally | `pdf_layout_qa_2026-06-19.md` |
@@ -170,8 +170,10 @@ Run these only after the author-supplied items above have been inserted.
 9. Rerun `scripts/build_submission_source_bundle.py` and confirm
    `submission_source_bundle_report.md` reports `PASS`.
 10. Rerun `scripts/build_raw_data_archive_manifest.py` if any source-trace JSON
-   or raw-data dependency changes; if a Zenodo/OSF upload is made, verify the
-   archived file set against `raw_data_archive_manifest.md`.
+    or raw-data dependency changes; rerun
+    `scripts/build_raw_data_archive.py` to produce the local upload `.tar.gz`;
+    if a Zenodo/OSF upload is made, verify the archived file set against
+    `raw_data_archive_manifest.md` and `raw_data_archive_build_report.md`.
 11. Recheck `references.bib` for dangling or orphan citation keys.
 12. Update `integrity_audit_2026-06-19.md` or create a new dated final audit
    snapshot with the final compile/audit results.
@@ -191,6 +193,7 @@ Run these only after the author-supplied items above have been inserted.
   - `submission_bundle_manifest.md`
   - `submission_source_bundle_report.md`
   - `raw_data_archive_manifest.md`
+  - `raw_data_archive_build_report.md`
   - `submission_checks_summary.md`
   - `submission_reproducibility_readme_2026-06-19.md`
   - `pdf_layout_qa_2026-06-19.md`

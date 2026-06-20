@@ -1,7 +1,7 @@
 {
-  "generated_at_utc": "2026-06-20T18:53:27.575478+00:00",
+  "generated_at_utc": "2026-06-20T18:58:04.206680+00:00",
   "git_branch": "codex/paper-journal-revision",
-  "git_head": "6f7267d7044e517c497b3f88c6fa150814ee08d2",
+  "git_head": "a2c88944d773774fd6a3e4dc2ea8807ed81b5ee6",
   "local_raw_dependencies": [
     {
       "exists": true,
@@ -387,8 +387,8 @@
       "roles": [
         "handoff-document"
       ],
-      "sha256": "ee763012785375180b9581d13b80893d1b28eb8de273012e612bb95edfdabc13",
-      "size_bytes": 10938
+      "sha256": "ddcbac187535098f20baf9459506db2e60099ab135932b45be64957168a7f9e5",
+      "size_bytes": 11304
     },
     {
       "exists": true,
@@ -399,7 +399,7 @@
         "availability-declared",
         "claim-evidence:data_availability_artifacts"
       ],
-      "sha256": "3fb400b42b3852c5b428a82b508f13496bd9cc619ea9444455d3b1a17dcdeff8",
+      "sha256": "2253461e2768764a7f0cfab512ca818f92da502a56731d57553dc6ec8a5bc613",
       "size_bytes": 16332
     },
     {
@@ -411,7 +411,7 @@
         "availability-declared",
         "claim-evidence:data_availability_artifacts"
       ],
-      "sha256": "5e0cc24a610cc3f9afc009f99342c743e98094cc93e2aeae10e557ecdd4bc3a4",
+      "sha256": "f80a44ccb8094958da8a436f94723238f11e86464b3f5804444d3bfab8c27573",
       "size_bytes": 7584
     },
     {
@@ -725,8 +725,8 @@
       "roles": [
         "handoff-document"
       ],
-      "sha256": "4b61b47a88be731a3dc15d873e8376544144eea33ad62cce92bb8245a749a8cb",
-      "size_bytes": 6782
+      "sha256": "99d7a45455ebc6ba7062058383431f4d40c9b300ddd732c03fcdc889520ade5b",
+      "size_bytes": 6897
     },
     {
       "exists": true,
@@ -735,8 +735,8 @@
       "roles": [
         "handoff-document"
       ],
-      "sha256": "4e22b7e869e9101d33f893de8ead3d93a0c5256435189d55914c0bfa5911bd7d",
-      "size_bytes": 5994
+      "sha256": "d9f7f526201ce5f4808ada064e9e83a2a65bb6f40a3977c8316f02b0a41c159e",
+      "size_bytes": 6216
     },
     {
       "exists": true,
@@ -768,7 +768,7 @@
         "availability-declared",
         "claim-audit"
       ],
-      "sha256": "4b3a84066779b05da4713d3ddae29842d9490c8db385d5ad6aa6804d65c1f9ea",
+      "sha256": "b1d86794f8f9eff6aabd450884b90f31d847067841f6cb7d240eaa511d0561eb",
       "size_bytes": 44474
     },
     {
@@ -779,7 +779,7 @@
         "availability-declared",
         "claim-audit"
       ],
-      "sha256": "9021cce58fb5aea5202e2e6af55e58c38ec7c84a581fb998efc1836e977c3357",
+      "sha256": "78b895501e4d7587dfd3b912f65c2906ecc8beb4887b0cf463245a0ef20582a8",
       "size_bytes": 6169
     },
     {
@@ -842,8 +842,28 @@
       "roles": [
         "handoff-document"
       ],
-      "sha256": "c7d1806fd36e156fb5cb077960a652677c4c01c9e23a8fd5afee772b641471aa",
+      "sha256": "15f795c64a62941fd327182183c782ea1006601972c04e76c6fa632c4bf0feab",
       "size_bytes": 17127
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/raw_data_archive_build_report.json",
+      "roles": [
+        "handoff-document"
+      ],
+      "sha256": "6651de0e69b0b783a87c600db739691f737d0ef7df6ec974d041391be311550b",
+      "size_bytes": 15429
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/raw_data_archive_build_report.md",
+      "roles": [
+        "handoff-document"
+      ],
+      "sha256": "d477759f3e161897f8678ed068549fb94a23f231c480f8d3c1348f3b89658e8b",
+      "size_bytes": 1064
     },
     {
       "exists": true,
@@ -852,7 +872,7 @@
       "roles": [
         "handoff-document"
       ],
-      "sha256": "a621d52b61b014fcc27ef8dbc0db1c12453279ef9ab1139b941fa1b42c7c3929",
+      "sha256": "c99511adae219897addde8708749249f426fad44a5dd4d3f1fd9e8b86271b183",
       "size_bytes": 16196
     },
     {
@@ -862,7 +882,7 @@
       "roles": [
         "handoff-document"
       ],
-      "sha256": "138c3132e4cd3b8118025fe4fae5f45e22d8d3c2e06f11849fddc1289051fcce",
+      "sha256": "a871dc17e8db74df5097d9a4b19694e00b39c4780773bc1b5a808333c2988d3a",
       "size_bytes": 8210
     },
     {
@@ -872,7 +892,7 @@
       "roles": [
         "handoff-document"
       ],
-      "sha256": "64657ac8de5a36f0d26777e4ac40b75fcd7fe3a57310909d33c2884b4995c673",
+      "sha256": "95f83f5d4d16c619538a1bebc8ca677fb11ad354427696c8e6e219150333e5d8",
       "size_bytes": 6421
     },
     {
@@ -882,7 +902,7 @@
       "roles": [
         "handoff-document"
       ],
-      "sha256": "70d06d9a7f7542a5b13f62d4a5f2c257288d754daa8d6aa149aef608201f9354",
+      "sha256": "08e50eb82f748959c5c76ef5d1992f5fa1f93f71b9ec7612a2f1ccb6641663b8",
       "size_bytes": 2472
     },
     {
@@ -970,6 +990,16 @@
     {
       "exists": true,
       "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/scripts/build_raw_data_archive.py",
+      "roles": [
+        "raw-data-archive-builder"
+      ],
+      "sha256": "b5edae3b852cb58cb39afefabb8609bea0a606bb9e81907798cdd869eaa60344",
+      "size_bytes": 8464
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
       "path": "Paper/revision_2026-06-19/scripts/build_raw_data_archive_manifest.py",
       "roles": [
         "manifest-builder"
@@ -984,8 +1014,8 @@
       "roles": [
         "manifest-builder"
       ],
-      "sha256": "b3b94ecb411cc61e1dbf0dbb2ef35e1eac9b8741f7fb23ed0933eea6f0885e10",
-      "size_bytes": 17453
+      "sha256": "e96b56f0c4d6f8e09a0522a4822257abe920718e6eb19a3a602418e7f0034ea2",
+      "size_bytes": 17701
     },
     {
       "exists": true,
@@ -1122,8 +1152,8 @@
       "roles": [
         "handoff-document"
       ],
-      "sha256": "d5cde5e0a583b331b8375acf29ba7c2d4aded04a73454997b2868c68c4fbcc05",
-      "size_bytes": 12999
+      "sha256": "d2f8356db7261f1109fd4540bd5120bb5fadf40423a402f14536031f4594c3a0",
+      "size_bytes": 13275
     },
     {
       "exists": true,
@@ -1132,8 +1162,8 @@
       "roles": [
         "handoff-document"
       ],
-      "sha256": "b73c5490b5c3df50aba384d245c745a3f9e78e32e843ea584c19597e63dfd412",
-      "size_bytes": 6546
+      "sha256": "7741b0f757eef3e001281ef197a1ac54ce7d0598f9b97fa03134466a55f9fc86",
+      "size_bytes": 7127
     },
     {
       "exists": true,
@@ -1232,7 +1262,7 @@
     "local_raw_dependency_count": 44,
     "missing_release_files": 0,
     "release_directory_count": 1,
-    "release_file_count": 83,
+    "release_file_count": 86,
     "status": "PASS_WITH_LOCAL_RAW_DATA_LIMITATION",
     "untracked_local_raw_dependencies": 44,
     "untracked_release_files": 0

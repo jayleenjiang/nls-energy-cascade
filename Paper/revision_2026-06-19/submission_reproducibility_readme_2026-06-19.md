@@ -57,6 +57,7 @@ The generated summary is:
 | Build a source-only submission archive | `submission_source_bundle_report.md`; `scripts/build_submission_source_bundle.py` | A source-only `.tar.gz` can be generated under `tmp/`, with checksums and raw-data exclusions recorded. |
 | Check compiled-PDF layout QA | `pdf_layout_qa_2026-06-19.md` | The generic compiled PDF has clean LaTeX logs and the newly added figure/table pages have been rendered and checked for obvious layout defects. |
 | Check source-traced raw files | `raw_data_archive_manifest.md`; `raw_data_archive_manifest.json` | The compact raw-data subset contains 40 unique local files totaling 138,875,181 bytes. |
+| Build a local raw-data upload archive | `scripts/build_raw_data_archive.py`; `raw_data_archive_build_report.md` | A timestamped `.tar.gz` preserving `raw_data/...` paths can be generated under `tmp/`; the latest local build archived 40/40 raw files with zero missing files. |
 | Check current-scaling validation | `experiments/flux_validation/production_manifest.md`; `experiments/flux_validation/validation_report.md`; `experiments/flux_validation/production_dt5e-4/current_windows_window_statistics.csv` | Production flux/current scaling artifacts, validation summaries, and finite-window diagnostics. |
 | Check LTE residual mesh diagnostic | `report_assets/compare_residual_mesh.pdf`; `draft.tex` | Structural LTE residual visualization including the `n=15` diagnostic requested in the manuscript revision pass. |
 | Check author/journal blockers | `author_submission_action_packet_2026-06-19.md`; `target_journal_shortlist_2026-06-19.md`; `submission_readiness_checklist_2026-06-19.md` | Remaining human decisions before formal submission. |
@@ -78,6 +79,16 @@ JSON manifest records the full SHA-256 value for each raw file.  After creating
 a Zenodo, OSF, institutional, or journal supplement archive, update the paper's
 data/code availability statement with the archive DOI or accession link and
 rerun the local gate.
+
+The helper
+
+```sh
+python3 Paper/revision_2026-06-19/scripts/build_raw_data_archive.py
+```
+
+creates a timestamped local `.tar.gz` under `tmp/raw_data_archive/runs/` and
+writes `raw_data_archive_build_report.md`.  This prepares the upload artifact;
+it does not itself upload the archive or create a DOI.
 
 ## What is deliberately not claimed
 
