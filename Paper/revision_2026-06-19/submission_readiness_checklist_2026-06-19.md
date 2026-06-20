@@ -21,7 +21,7 @@ paper can be called journal-ready.
 | Submission/release bundle | Passing for tracked release files; raw-data limitation recorded | `scripts/build_submission_bundle_manifest.py`; `submission_bundle_manifest.json`; `submission_bundle_manifest.md` |
 | Source-only submission archive | Passing packaging dry run; archive written under `tmp/` | `scripts/build_submission_source_bundle.py`; `submission_source_bundle_report.json`; `submission_source_bundle_report.md` |
 | Minimal raw-data archive plan | Passing local raw-file manifest; upload-ready local archive build prepared but not uploaded | `scripts/build_raw_data_archive_manifest.py`; `scripts/build_raw_data_archive.py`; `raw_data_archive_manifest.json`; `raw_data_archive_manifest.md`; `raw_data_archive_build_report.md` |
-| One-command local gate | Passing locally with explicit author-confirmation and raw-data archive limitations | `scripts/run_submission_checks.py`; `submission_checks_summary.json`; `submission_checks_summary.md`; `author_submission_fields_audit.md` |
+| One-command local gate | Passing locally with explicit author-confirmation and raw-data archive limitations; compiles both the generic manuscript and SIADS review source | `scripts/run_submission_checks.py`; `submission_checks_summary.json`; `submission_checks_summary.md`; `author_submission_fields_audit.md` |
 | Reproducibility entry point | Prepared for reviewer/editor navigation | `submission_reproducibility_readme_2026-06-19.md` |
 | Compiled-PDF layout QA | Generic article PDF checked locally | `pdf_layout_qa_2026-06-19.md` |
 | Author/journal action packet | Prepared; requires author completion | `author_submission_action_packet_2026-06-19.md` |

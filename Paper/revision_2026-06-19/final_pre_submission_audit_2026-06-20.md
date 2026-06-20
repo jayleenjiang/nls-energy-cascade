@@ -25,7 +25,7 @@ Key gate numbers:
 
 | Gate | Status |
 |---|---|
-| LaTeX/log scan | PASS, `issues=0` |
+| LaTeX/log scans | PASS for `draft.tex` and `draft_siads_review.tex`, `issues=0` in both logs |
 | Availability/path audit | PASS, `37/37` paths present, `0` untracked required files |
 | Numerical claim audit | PASS, `18/18` claims verified |
 | Reference integrity audit | PASS, `8` cited BibTeX entries, `0` dangling citations |
@@ -35,7 +35,8 @@ Key gate numbers:
 | Submission bundle manifest | `PASS_WITH_LOCAL_RAW_DATA_LIMITATION`, `92` release files, `0` missing, `0` untracked release files |
 | Source-only bundle dry run | PASS, `261` included files |
 
-The SIADS review-preparation source also compiles locally:
+The SIADS review-preparation source is now included directly in the
+one-command local gate:
 
 - source: `Paper/revision_2026-06-19/draft_siads_review.tex`
 - PDF: `tmp/paper_build/siads_review/draft_siads_review.pdf`

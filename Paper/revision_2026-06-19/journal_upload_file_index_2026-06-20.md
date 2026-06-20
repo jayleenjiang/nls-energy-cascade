@@ -23,6 +23,7 @@ Key numbers:
 
 | Gate item | Current value |
 |---|---:|
+| LaTeX/log checks | `draft.tex` PASS; `draft_siads_review.tex` PASS |
 | Availability paths | 37/37 |
 | Registered numerical claims | 18/18 |
 | Cited BibTeX entries | 8 |

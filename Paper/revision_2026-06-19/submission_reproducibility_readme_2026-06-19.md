@@ -15,9 +15,10 @@ The local submission gate currently reports:
 PASS_WITH_AUTHOR_CONFIRMATION_PENDING_AND_LOCAL_RAW_DATA_LIMITATION
 ```
 
-This means that the manuscript source, figures, bibliography, source-traced
-derived artifacts, claim audit, availability-path audit, LaTeX compile/log
-scan, and minimal raw-data manifest pass local checks.  It does **not** mean
+This means that the manuscript source, SIADS review-preparation source,
+figures, bibliography, source-traced derived artifacts, claim audit,
+availability-path audit, LaTeX compile/log scans, and minimal raw-data manifest
+pass local checks.  It does **not** mean
 that author declarations, professional similarity checking, journal-specific
 formatting, or a DOI-backed raw-data archive have been completed.
 
@@ -32,6 +33,7 @@ python3 Paper/revision_2026-06-19/scripts/run_submission_checks.py --compile-lat
 Expected current result:
 
 - `latex_log`: `PASS`
+- `siads_latex_log`: `PASS`
 - `availability_path_audit`: `PASS`
 - `manuscript_claim_audit`: `PASS`
 - `reference_integrity_audit`: `PASS`
@@ -49,7 +51,7 @@ The generated summary is:
 
 | Need | Start here | What it establishes |
 |---|---|---|
-| Read or compile the paper | `draft.tex`; compiled PDF from the LaTeX gate | Current manuscript text and figures. |
+| Read or compile the paper | `draft.tex`; `draft_siads_review.tex`; compiled PDFs from the LaTeX gates | Current manuscript text, SIADS review-preparation text, and figures. |
 | Check the original working outline | `paper_draft_1.tex` | Preserved planning/framework source; not the active manuscript. |
 | Check citation/reference integrity | `reference_integrity_audit.md`; `reference_integrity_audit.json` | All local cite keys and BibTeX entries match, identifiers are present, and external verification URLs are recorded. |
 | Check numerical-claim support | `manuscript_claim_audit.md`; `manuscript_claim_audit.json` | Code-verifiable numerical/data claims currently pass 18/18 registered checks. |

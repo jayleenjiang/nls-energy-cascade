@@ -140,9 +140,9 @@
 24. Added `scripts/run_submission_checks.py` plus
     `submission_checks_summary.json` and `submission_checks_summary.md`. Running
     the script with `--compile-latex` performs the local submission gate in one
-    command: LaTeX compile/log scan, availability-path audit, manuscript-claim
-    audit, raw-data archive manifest, and submission-bundle manifest. The
-    current result is
+    command: LaTeX compile/log scans, availability-path audit,
+    manuscript-claim audit, raw-data archive manifest, and submission-bundle
+    manifest. The current result is
     `PASS_WITH_AUTHOR_CONFIRMATION_PENDING_AND_LOCAL_RAW_DATA_LIMITATION`.
 25. Added `author_submission_action_packet_2026-06-19.md`, an author-facing
     packet that turns the remaining non-code blockers into fillable decisions:
@@ -236,6 +236,11 @@
     is a finite-size heuristic rather than a derivation of the exponent.
     The claim audit now verifies this derived resistance statement under the
     existing conductivity-scaling claim.
+37. Extended the one-command submission gate so `--compile-latex` compiles and
+    scans both `draft.tex` and `draft_siads_review.tex`.  The current gate now
+    reports `latex_log=PASS` and `siads_latex_log=PASS`, preventing the
+    SIADS-facing review source from drifting outside the local reproducibility
+    check.
 
 ## Key validated numerical result
 

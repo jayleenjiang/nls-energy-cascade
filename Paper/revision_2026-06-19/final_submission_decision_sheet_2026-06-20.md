@@ -29,6 +29,7 @@ Key numbers from the current gate:
 
 | Item | Current value |
 |---|---:|
+| LaTeX/log checks | `draft.tex` PASS; `draft_siads_review.tex` PASS |
 | Availability paths checked | 37/37 |
 | Registered numerical claims verified | 18/18 |
 | Cited BibTeX entries | 8 |

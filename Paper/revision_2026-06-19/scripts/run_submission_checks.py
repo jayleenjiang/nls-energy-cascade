@@ -4,7 +4,7 @@
 This runner standardizes the order of the local gates that can be checked
 without author-only information or external services:
 
-1. optional LaTeX compile + log scan;
+1. optional LaTeX compile + log scan for the generic and SIADS review sources;
 2. data/code and figure path audit;
 3. manuscript numerical-claim audit;
 4. citation/reference integrity audit;
@@ -32,6 +32,7 @@ from pathlib import Path
 
 REVISION_REL = Path("Paper/revision_2026-06-19")
 BUILD_REL = Path("tmp/paper_build/revision")
+SIADS_BUILD_REL = Path("tmp/paper_build/siads_review")
 
 
 @dataclass
@@ -94,16 +95,23 @@ def latex_log_check(log_path: Path) -> dict:
     return {"status": "PASS" if not issues else "FAIL", "log": str(log_path), "issues": issues}
 
 
-def compile_latex(root: Path) -> tuple[CommandResult | None, dict]:
+def compile_latex_source(
+    root: Path,
+    *,
+    source_name: str,
+    build_rel: Path,
+    log_name: str,
+    command_name: str,
+) -> tuple[CommandResult | None, dict]:
     latexmk = shutil.which("latexmk")
-    log_path = root / BUILD_REL / "draft.log"
+    log_path = root / build_rel / log_name
     if latexmk is None:
         return None, {
             "status": "NOT_RUN",
             "log": str(log_path.relative_to(root)),
             "issues": ["latexmk not found on PATH."],
         }
-    build_dir = root / BUILD_REL
+    build_dir = root / build_rel
     revision_dir = root / REVISION_REL
     build_dir.mkdir(parents=True, exist_ok=True)
     cmd = [
@@ -114,14 +122,34 @@ def compile_latex(root: Path) -> tuple[CommandResult | None, dict]:
         "-halt-on-error",
         "-synctex=1",
         f"-outdir={build_dir}",
-        "draft.tex",
+        source_name,
     ]
-    result = run_command(root, "latex_compile", cmd, cwd=revision_dir)
+    result = run_command(root, command_name, cmd, cwd=revision_dir)
     check = latex_log_check(log_path)
     if result.returncode != 0:
         check["status"] = "FAIL"
         check.setdefault("issues", []).append(f"latexmk exited with {result.returncode}")
     return result, check
+
+
+def compile_latex(root: Path) -> tuple[CommandResult | None, dict]:
+    return compile_latex_source(
+        root,
+        source_name="draft.tex",
+        build_rel=BUILD_REL,
+        log_name="draft.log",
+        command_name="latex_compile",
+    )
+
+
+def compile_siads_latex(root: Path) -> tuple[CommandResult | None, dict]:
+    return compile_latex_source(
+        root,
+        source_name="draft_siads_review.tex",
+        build_rel=SIADS_BUILD_REL,
+        log_name="draft_siads_review.log",
+        command_name="siads_latex_compile",
+    )
 
 
 def write_markdown(path: Path, payload: dict) -> None:
@@ -143,12 +171,20 @@ def write_markdown(path: Path, payload: dict) -> None:
     lines.extend(["", "## Command results", "", "| Command | Return code | Duration (s) |", "|---|---:|---:|"])
     for result in payload["commands"]:
         lines.append(f"| `{result['name']}` | {result['returncode']} | {result['duration_seconds']} |")
-    if payload.get("latex_log"):
-        lines.extend(["", "## LaTeX log check", "", f"- Status: {payload['latex_log']['status']}"])
-        if payload["latex_log"].get("issues"):
-            lines.append("- Issues:")
-            for issue in payload["latex_log"]["issues"][:20]:
-                lines.append(f"  - `{issue}`")
+    latex_checks = [
+        ("Generic manuscript", payload.get("latex_log")),
+        ("SIADS review source", payload.get("siads_latex_log")),
+    ]
+    if any(check for _, check in latex_checks):
+        lines.extend(["", "## LaTeX log checks", ""])
+        for label, check in latex_checks:
+            if not check:
+                continue
+            lines.append(f"- {label}: {check['status']}")
+            if check.get("issues"):
+                lines.append(f"  - Issues in {label}:")
+                for issue in check["issues"][:20]:
+                    lines.append(f"    - `{issue}`")
     lines.extend(
         [
             "",
@@ -179,16 +215,25 @@ def main() -> int:
     commands: list[CommandResult] = []
 
     latex_result: CommandResult | None = None
+    siads_latex_result: CommandResult | None = None
     if args.compile_latex:
         latex_result, latex_log = compile_latex(root)
         if latex_result is not None:
             commands.append(latex_result)
+        siads_latex_result, siads_latex_log = compile_siads_latex(root)
+        if siads_latex_result is not None:
+            commands.append(siads_latex_result)
     else:
         latex_log = latex_log_check(root / BUILD_REL / "draft.log")
         if latex_log["status"] == "PASS":
             latex_log["status"] = "PASS_EXISTING_LOG"
         elif not args.require_latex:
             latex_log["status"] = "NOT_REQUIRED"
+        siads_latex_log = latex_log_check(root / SIADS_BUILD_REL / "draft_siads_review.log")
+        if siads_latex_log["status"] == "PASS":
+            siads_latex_log["status"] = "PASS_EXISTING_LOG"
+        elif not args.require_latex:
+            siads_latex_log["status"] = "NOT_REQUIRED"
 
     for name, script in [
         ("availability_path_audit", "audit_availability_paths.py"),
@@ -216,6 +261,11 @@ def main() -> int:
             "name": "latex_log",
             "status": latex_log["status"],
             "numbers": {"issues": len(latex_log.get("issues", []))},
+        },
+        {
+            "name": "siads_latex_log",
+            "status": siads_latex_log["status"],
+            "numbers": {"issues": len(siads_latex_log.get("issues", []))},
         },
         {
             "name": "availability_path_audit",
@@ -260,7 +310,11 @@ def main() -> int:
 
     hard_fail = any(cmd.returncode != 0 for cmd in commands)
     hard_fail = hard_fail or any(gate["status"] == "FAIL" for gate in gates)
-    if args.require_latex and gates[0]["status"] not in {"PASS", "PASS_EXISTING_LOG"}:
+    latex_gate_statuses = {
+        "latex_log": latex_log["status"],
+        "siads_latex_log": siads_latex_log["status"],
+    }
+    if args.require_latex and any(status not in {"PASS", "PASS_EXISTING_LOG"} for status in latex_gate_statuses.values()):
         hard_fail = True
     overall = "PASS" if not hard_fail else "FAIL"
     if overall == "PASS" and bundle["summary"]["status"] == "PASS_WITH_LOCAL_RAW_DATA_LIMITATION":
@@ -270,7 +324,7 @@ def main() -> int:
             overall = "PASS_WITH_AUTHOR_CONFIRMATION_PENDING_AND_LOCAL_RAW_DATA_LIMITATION"
         else:
             overall = "PASS_WITH_AUTHOR_CONFIRMATION_PENDING"
-    if overall == "PASS" and gates[0]["status"] in {"NOT_REQUIRED", "NOT_RUN"}:
+    if overall == "PASS" and all(status in {"NOT_REQUIRED", "NOT_RUN"} for status in latex_gate_statuses.values()):
         overall = "PASS_WITHOUT_LATEX"
 
     payload = {
@@ -280,6 +334,7 @@ def main() -> int:
         "commands": [asdict(c) for c in commands],
         "gates": gates,
         "latex_log": latex_log,
+        "siads_latex_log": siads_latex_log,
     }
     json_path = revision / "submission_checks_summary.json"
     md_path = revision / "submission_checks_summary.md"

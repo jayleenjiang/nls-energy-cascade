@@ -1,6 +1,6 @@
 {
   "draft": "Paper/revision_2026-06-19/draft.tex",
-  "generated_at_utc": "2026-06-20T19:19:39.195440+00:00",
+  "generated_at_utc": "2026-06-20T19:24:46.869799+00:00",
   "missing_paths": 0,
   "records": [
     {
@@ -209,7 +209,7 @@
       "path_type": "file",
       "resolution_rule": "repo-root-relative",
       "resolved_path": "Paper/revision_2026-06-19/manuscript_claim_audit.json",
-      "sha256": "8710a6f71a09a01c44d08eab5eeabff602eb8f79cdb77cdea9b8a2401144bf05",
+      "sha256": "2069d47b0c78eeadb79d9dd37380b868379f760b25c30f72d3c5498f8aae51d3",
       "size_bytes": 44783
     },
     {
@@ -220,7 +220,7 @@
       "path_type": "file",
       "resolution_rule": "repo-root-relative",
       "resolved_path": "Paper/revision_2026-06-19/manuscript_claim_audit.md",
-      "sha256": "e9114dbe2bb7d88696fe3823ed9f563e64e632895c41a8095f3e20438b3c5e5e",
+      "sha256": "da2ffa3b60a6a9aa40829cc45e75b5750dd2dc762b8c6ed52ccec85e6375d3fa",
       "size_bytes": 6169
     },
     {
@@ -275,8 +275,8 @@
       "path_type": "file",
       "resolution_rule": "repo-root-relative",
       "resolved_path": "Paper/revision_2026-06-19/integrity_audit_2026-06-19.md",
-      "sha256": "5166404626ddd853eece72e4e1729a9aa1d24fc4fd484f0e5e1c4c4227763563",
-      "size_bytes": 16879
+      "sha256": "dec5767543b0ee594bed69f1f901ea22d50ccbda4a01f22de04aa981b6f74b83",
+      "size_bytes": 16964
     },
     {
       "exists": true,
