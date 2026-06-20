@@ -176,7 +176,7 @@
     submission `.tar.gz` under `tmp/` from the release manifest, records an
     archive SHA-256 checksum, and deliberately excludes self-referential
     generated summaries and the large local raw-data roots. The current
-    packaging run includes 261 regular files, has zero missing files, and
+    packaging run includes 264 regular files, has zero missing files, and
     records 44 local raw-data dependency records as
     excluded pending any DOI-backed raw-data archive decision.
 31. Performed a submission-level strengthening pass on 2026-06-20:
@@ -241,6 +241,12 @@
     reports `latex_log=PASS` and `siads_latex_log=PASS`, preventing the
     SIADS-facing review source from drifting outside the local reproducibility
     check.
+38. Added `scripts/audit_compiled_pdfs.py` plus
+    `compiled_pdf_artifact_audit.json` and
+    `compiled_pdf_artifact_audit.md`.  The audit records the current local
+    generic and SIADS PDF paths, page counts, byte sizes, and SHA-256 checksums
+    while keeping the PDF files themselves as uncommitted `tmp/` build
+    artifacts.  The one-command submission gate now includes this audit.
 
 ## Key validated numerical result
 

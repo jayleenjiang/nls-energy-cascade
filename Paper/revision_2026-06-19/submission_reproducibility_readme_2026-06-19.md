@@ -34,6 +34,7 @@ Expected current result:
 
 - `latex_log`: `PASS`
 - `siads_latex_log`: `PASS`
+- `compiled_pdf_artifact_audit`: `PASS`
 - `availability_path_audit`: `PASS`
 - `manuscript_claim_audit`: `PASS`
 - `reference_integrity_audit`: `PASS`
@@ -52,6 +53,7 @@ The generated summary is:
 | Need | Start here | What it establishes |
 |---|---|---|
 | Read or compile the paper | `draft.tex`; `draft_siads_review.tex`; compiled PDFs from the LaTeX gates | Current manuscript text, SIADS review-preparation text, and figures. |
+| Check compiled-PDF artifact metadata | `compiled_pdf_artifact_audit.md`; `compiled_pdf_artifact_audit.json` | The current generic and SIADS local PDFs have recorded page counts, byte sizes, and SHA-256 checksums. |
 | Check the original working outline | `paper_draft_1.tex` | Preserved planning/framework source; not the active manuscript. |
 | Check citation/reference integrity | `reference_integrity_audit.md`; `reference_integrity_audit.json` | All local cite keys and BibTeX entries match, identifiers are present, and external verification URLs are recorded. |
 | Check numerical-claim support | `manuscript_claim_audit.md`; `manuscript_claim_audit.json` | Code-verifiable numerical/data claims currently pass 18/18 registered checks. |

@@ -26,14 +26,15 @@ Key gate numbers:
 | Gate | Status |
 |---|---|
 | LaTeX/log scans | PASS for `draft.tex` and `draft_siads_review.tex`, `issues=0` in both logs |
+| Compiled PDF artifact audit | PASS, `2/2` local PDFs verified with page counts, sizes, and SHA-256 checksums |
 | Availability/path audit | PASS, `37/37` paths present, `0` untracked required files |
 | Numerical claim audit | PASS, `18/18` claims verified |
 | Reference integrity audit | PASS, `8` cited BibTeX entries, `0` dangling citations |
 | Author/submission-field audit | `AUTHOR_CONFIRMATION_PENDING`, `9` pending author/external items |
 | Raw-data archive manifest | PASS locally, `40` unique referenced files, `138,875,181` bytes |
 | Raw-data archive build | PASS locally, upload-ready `.tar.gz` prepared under `tmp/`, DOI/upload still external |
-| Submission bundle manifest | `PASS_WITH_LOCAL_RAW_DATA_LIMITATION`, `92` release files, `0` missing, `0` untracked release files |
-| Source-only bundle dry run | PASS, `261` included files |
+| Submission bundle manifest | `PASS_WITH_LOCAL_RAW_DATA_LIMITATION`, `95` release files, `0` missing, `0` untracked release files |
+| Source-only bundle dry run | PASS, `264` included files |
 
 The SIADS review-preparation source is now included directly in the
 one-command local gate:

@@ -186,6 +186,8 @@ def collect_handoff_docs(root: Path, revision_dir: Path, release: dict[str, set[
         "submission_checks_summary.md",
         "submission_source_bundle_report.json",
         "submission_source_bundle_report.md",
+        "compiled_pdf_artifact_audit.json",
+        "compiled_pdf_artifact_audit.md",
         "pdf_layout_qa_2026-06-19.md",
         "author_submission_action_packet_2026-06-19.md",
         "target_journal_shortlist_2026-06-19.md",
@@ -234,6 +236,11 @@ def collect_handoff_docs(root: Path, revision_dir: Path, release: dict[str, set[
         release,
         str((revision_dir / "scripts/audit_references.py").relative_to(root)),
         "reference-audit",
+    )
+    add_role(
+        release,
+        str((revision_dir / "scripts/audit_compiled_pdfs.py").relative_to(root)),
+        "compiled-pdf-audit",
     )
 
 

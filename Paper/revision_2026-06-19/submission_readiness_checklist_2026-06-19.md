@@ -18,6 +18,7 @@ paper can be called journal-ready.
 | Monte Carlo validation and finite-window diagnostics | Added to manuscript and checked by local gate | `experiments/flux_validation/validation_report.md`; `experiments/flux_validation/production_dt5e-4/current_windows_window_statistics.csv`; `draft.tex` |
 | Short-chain saved-model diagnostics | Rerun from saved TensorFlow/Keras models | `scripts/recompute_short_chain_nn_metrics.py`; `short_chain_nn_rerun_metrics.json` |
 | Data/code and figure path availability | Passing local path audit | `scripts/audit_availability_paths.py`; `availability_path_audit.json`; `availability_path_audit.md` |
+| Compiled-PDF artifact metadata | Passing for generic and SIADS local PDFs | `scripts/audit_compiled_pdfs.py`; `compiled_pdf_artifact_audit.json`; `compiled_pdf_artifact_audit.md` |
 | Submission/release bundle | Passing for tracked release files; raw-data limitation recorded | `scripts/build_submission_bundle_manifest.py`; `submission_bundle_manifest.json`; `submission_bundle_manifest.md` |
 | Source-only submission archive | Passing packaging dry run; archive written under `tmp/` | `scripts/build_submission_source_bundle.py`; `submission_source_bundle_report.json`; `submission_source_bundle_report.md` |
 | Minimal raw-data archive plan | Passing local raw-file manifest; upload-ready local archive build prepared but not uploaded | `scripts/build_raw_data_archive_manifest.py`; `scripts/build_raw_data_archive.py`; `raw_data_archive_manifest.json`; `raw_data_archive_manifest.md`; `raw_data_archive_build_report.md` |
@@ -196,6 +197,7 @@ Run these only after the author-supplied items above have been inserted.
   - `reference_integrity_audit.md`
   - `manuscript_claim_audit.md`
   - `availability_path_audit.md`
+  - `compiled_pdf_artifact_audit.md`
   - `submission_bundle_manifest.md`
   - `submission_source_bundle_report.md`
   - `raw_data_archive_manifest.md`

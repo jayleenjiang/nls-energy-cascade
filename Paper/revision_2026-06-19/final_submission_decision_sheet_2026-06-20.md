@@ -34,9 +34,10 @@ Key numbers from the current gate:
 | Registered numerical claims verified | 18/18 |
 | Cited BibTeX entries | 8 |
 | Dangling citations | 0 |
-| Release-bundle files | 92 |
+| Compiled PDF artifact audit | 2/2 PDFs verified |
+| Release-bundle files | 95 |
 | Missing release files | 0 |
-| Source-only bundle included files | 261 |
+| Source-only bundle included files | 264 |
 | Minimal raw-data subset | 40 files, 138,875,181 bytes |
 | Author/submission-field audit | 9 pending author/external items |
 
@@ -51,7 +52,8 @@ The SIADS review-preparation source compiles locally:
 The current upload-facing local file index is
 `journal_upload_file_index_2026-06-20.md`.  It lists the generic manuscript
 PDF, SIADS review PDF, source-only archive, and minimal raw-data archive with
-local paths and SHA-256 checksums.
+local paths and SHA-256 checksums.  The current local PDF metadata is also
+recorded in `compiled_pdf_artifact_audit.md`.
 
 ## Scientific readiness decision
 

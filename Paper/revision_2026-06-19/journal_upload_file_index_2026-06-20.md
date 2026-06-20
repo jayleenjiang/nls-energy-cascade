@@ -24,11 +24,12 @@ Key numbers:
 | Gate item | Current value |
 |---|---:|
 | LaTeX/log checks | `draft.tex` PASS; `draft_siads_review.tex` PASS |
+| Compiled PDF artifact audit | 2/2 PDFs verified |
 | Availability paths | 37/37 |
 | Registered numerical claims | 18/18 |
 | Cited BibTeX entries | 8 |
-| Release-bundle files | 92 |
-| Source-bundle included files | 261 |
+| Release-bundle files | 95 |
+| Source-bundle included files | 264 |
 | Minimal raw-data files | 40 |
 | Missing raw-data files | 0 |
 | Author/submission-field audit | 9 pending author/external items |
@@ -41,7 +42,10 @@ Key numbers:
 | SIADS review-preparation PDF | `tmp/paper_build/siads_review/draft_siads_review.pdf` | 22 | 1,561,377 bytes | `7d9a359491dc9b9109b4478f442bca4c3aa5f31c56cca74c3b279f73f9845695` | Current SIADS-facing review PDF; use only after authors confirm SIADS and final metadata. |
 
 The PDFs are local build artifacts under `tmp/` and are intentionally not
-committed to Git.  Regenerate them after final author/journal edits.
+committed to Git.  Regenerate them after final author/journal edits.  The
+machine-readable metadata for the current local PDFs is recorded in
+`compiled_pdf_artifact_audit.json` and summarized in
+`compiled_pdf_artifact_audit.md`.
 
 ## Source and reproducibility archives
 

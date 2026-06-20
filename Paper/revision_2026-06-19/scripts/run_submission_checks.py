@@ -5,14 +5,15 @@ This runner standardizes the order of the local gates that can be checked
 without author-only information or external services:
 
 1. optional LaTeX compile + log scan for the generic and SIADS review sources;
-2. data/code and figure path audit;
-3. manuscript numerical-claim audit;
-4. citation/reference integrity audit;
-5. author/journal submission-field audit;
-6. submission bundle manifest;
-7. minimal raw-data archive manifest;
-8. final submission bundle manifest refresh;
-9. source-only submission bundle packaging dry run.
+2. compiled PDF artifact audit;
+3. data/code and figure path audit;
+4. manuscript numerical-claim audit;
+5. citation/reference integrity audit;
+6. author/journal submission-field audit;
+7. submission bundle manifest;
+8. minimal raw-data archive manifest;
+9. final submission bundle manifest refresh;
+10. source-only submission bundle packaging dry run.
 
 The script intentionally does not run professional plagiarism checking, upload
 raw data, select a journal template, or fill author/funding declarations.
@@ -236,6 +237,7 @@ def main() -> int:
             siads_latex_log["status"] = "NOT_REQUIRED"
 
     for name, script in [
+        ("compiled_pdf_artifact_audit", "audit_compiled_pdfs.py"),
         ("availability_path_audit", "audit_availability_paths.py"),
         ("manuscript_claim_audit", "audit_manuscript_claims.py"),
         ("reference_integrity_audit", "audit_references.py"),
@@ -248,6 +250,7 @@ def main() -> int:
         result = run_command(root, name, [py, str(revision / "scripts" / script)])
         commands.append(result)
 
+    pdf_artifacts = load_json(revision / "compiled_pdf_artifact_audit.json")
     availability = load_json(revision / "availability_path_audit.json")
     claims = load_json(revision / "manuscript_claim_audit.json")
     references = load_json(revision / "reference_integrity_audit.json")
@@ -266,6 +269,14 @@ def main() -> int:
             "name": "siads_latex_log",
             "status": siads_latex_log["status"],
             "numbers": {"issues": len(siads_latex_log.get("issues", []))},
+        },
+        {
+            "name": "compiled_pdf_artifact_audit",
+            "status": pdf_artifacts["status"],
+            "numbers": {
+                "pdf_count": len(pdf_artifacts["pdfs"]),
+                "failed": sum(1 for rec in pdf_artifacts["pdfs"] if rec["status"] != "PASS"),
+            },
         },
         {
             "name": "availability_path_audit",
