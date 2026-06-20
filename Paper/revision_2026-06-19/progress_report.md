@@ -90,8 +90,9 @@
     manuscript continues not to use that result as a claim.
 17. Added `scripts/audit_manuscript_claims.py`, which builds
     `manuscript_claim_audit.json` and `manuscript_claim_audit.md` from the
-    source-traced numerical artifacts. The current audit verifies 14/14 core
-    numerical/data claims and caught a notation issue in the LTE section:
+    source-traced numerical artifacts. The current audit verifies 18/18 core
+    numerical/data claims after the larger-chain and bath-temperature
+    robustness updates and caught a notation issue in the LTE section:
     the equilibrium marginal is now written consistently with the manuscript's
     Gibbs convention as `exp[-H/(2T)]`.
 18. Added a compact `Numerical reproducibility summary` table to the manuscript,
@@ -113,8 +114,9 @@
     repository-root paths where appropriate, then added
     `scripts/audit_availability_paths.py`, `availability_path_audit.json`, and
     `availability_path_audit.md`. The audit checks every `\path{...}` entry and
-    every manuscript figure include; after the 2026-06-20 manuscript pass the
-    current local result is 34/34 paths present and tracked. The LaTeX build
+    every manuscript figure include; after the 2026-06-20 robustness and
+    submission-readiness passes the current local result is 37/37 paths present
+    and tracked. The LaTeX build
     remains clean with no unresolved
     citations/references and no overfull or underfull box warnings after the
     path-list formatting adjustment.
@@ -173,8 +175,8 @@
     submission `.tar.gz` under `tmp/` from the release manifest, records an
     archive SHA-256 checksum, and deliberately excludes self-referential
     generated summaries and the large local raw-data roots. The current
-    packaging run includes 170 regular files plus an internal checksum index,
-    has zero missing files, and records 44 local raw-data dependency records as
+    packaging run includes 252 regular files, has zero missing files, and
+    records 44 local raw-data dependency records as
     excluded pending any DOI-backed raw-data archive decision.
 31. Performed a submission-level strengthening pass on 2026-06-20:
     - added a Monte Carlo validation and uncertainty-protocol subsection to
@@ -186,8 +188,8 @@
     - added finite-window current diagnostics for standardized current
       windows and $\tau\,\mathrm{Var}(\overline J_\tau)$;
     - reran the one-command submission gate, which now reports
-      `PASS_WITH_LOCAL_RAW_DATA_LIMITATION` with 34/34 path records available
-      and 14/14 registered numerical claims verified.
+      `PASS_WITH_LOCAL_RAW_DATA_LIMITATION` with 37/37 path records available
+      and 18/18 registered numerical claims verified.
 32. Added `siads_first_submission_packet_2026-06-20.md`, a target-specific
     preparation packet for the recommended first journal target.  It contains a
     SIADS-facing cover-letter draft, supplementary-material index, keywords and
@@ -199,8 +201,9 @@
     review-preparation source.  The local TeX installation did not include the
     SIAM article class, so the file follows SIADS' non-SIAM-macro fallback with
     `lineno`, keywords, and MSC candidates.  It compiles cleanly to
-    `tmp/paper_build/siads_review/draft_siads_review.pdf` with SHA-256
-    `45a984e96a72dad22e292325b391c23ed9dbc7292ba18d323b08d77c7f031b2a`.
+    `tmp/paper_build/siads_review/draft_siads_review.pdf`. After the later
+    robustness edits, the current compiled review PDF is 21 pages with SHA-256
+    `1534e68e0617d0f44bc3d4b856d1ee608029ba3cc84c409a64802cfc93a4950b`.
 34. Strengthened the manuscript narrative so the long-chain and short-chain
     results have a clearer division of labor: the long-chain simulations now
     explicitly provide macroscopic finite-size transport and LTE evidence,
@@ -259,8 +262,8 @@ Power-law fit:
   sampled scope, but it is not a corpus-scale similarity report.
 - Rerun the final citation/data/claim/path audit after author declarations and
   any last journal-format edits are settled. The current local core numerical
-  audit passes 14/14 checks, and the current availability-path audit passes
-  34/34 checks. The preferred one-command local gate is now
+  audit passes 18/18 checks, and the current availability-path audit passes
+  37/37 checks. The preferred one-command local gate is now
   `python3 Paper/revision_2026-06-19/scripts/run_submission_checks.py --compile-latex`.
   The reviewer/editor-facing navigation file is
   `submission_reproducibility_readme_2026-06-19.md`; the compiled-PDF layout

@@ -1,7 +1,7 @@
 {
-  "generated_at_utc": "2026-06-20T18:49:58.903982+00:00",
+  "generated_at_utc": "2026-06-20T18:53:27.575478+00:00",
   "git_branch": "codex/paper-journal-revision",
-  "git_head": "69c5a4217fd1298607f000bb25148f3dc42facdb",
+  "git_head": "6f7267d7044e517c497b3f88c6fa150814ee08d2",
   "local_raw_dependencies": [
     {
       "exists": true,
@@ -399,7 +399,7 @@
         "availability-declared",
         "claim-evidence:data_availability_artifacts"
       ],
-      "sha256": "d89b220ddf5722819fc6e47ae0979434df498a0953a5d08e01d8d5ae1a5d718c",
+      "sha256": "3fb400b42b3852c5b428a82b508f13496bd9cc619ea9444455d3b1a17dcdeff8",
       "size_bytes": 16332
     },
     {
@@ -411,7 +411,7 @@
         "availability-declared",
         "claim-evidence:data_availability_artifacts"
       ],
-      "sha256": "81dafe7c9a42cb71fd2f1a90ffae9a0bec8b24932064101f83df71e9ee562ad9",
+      "sha256": "5e0cc24a610cc3f9afc009f99342c743e98094cc93e2aeae10e557ecdd4bc3a4",
       "size_bytes": 7584
     },
     {
@@ -746,8 +746,8 @@
         "availability-declared",
         "handoff-document"
       ],
-      "sha256": "7f200c49d70ffb3bdb820987666a9e2d0892ca941d87ef908ad3c5c91c2b667b",
-      "size_bytes": 16792
+      "sha256": "5166404626ddd853eece72e4e1729a9aa1d24fc4fd484f0e5e1c4c4227763563",
+      "size_bytes": 16879
     },
     {
       "exists": true,
@@ -768,7 +768,7 @@
         "availability-declared",
         "claim-audit"
       ],
-      "sha256": "d4704527721a58b6a61fa814a4d3d524c0d263d2edd7bd80057f4f5174b487b1",
+      "sha256": "4b3a84066779b05da4713d3ddae29842d9490c8db385d5ad6aa6804d65c1f9ea",
       "size_bytes": 44474
     },
     {
@@ -779,7 +779,7 @@
         "availability-declared",
         "claim-audit"
       ],
-      "sha256": "ff6ef236b31c3012d86e9fc06ae15afc6da64260901eac17d22346f56e819979",
+      "sha256": "9021cce58fb5aea5202e2e6af55e58c38ec7c84a581fb998efc1836e977c3357",
       "size_bytes": 6169
     },
     {
@@ -801,8 +801,8 @@
       "roles": [
         "handoff-document"
       ],
-      "sha256": "2bc7b1d88000d70954a4236830268e722e7cd6b0061c3715738b73babca674a7",
-      "size_bytes": 5660
+      "sha256": "1ec79df29199e717dba40f3026d2dbcc172eb5a52516c15ee22ffe6f421ffe81",
+      "size_bytes": 5780
     },
     {
       "exists": true,
@@ -842,8 +842,8 @@
       "roles": [
         "handoff-document"
       ],
-      "sha256": "79b4b46034e0e21ad0416d4e066f3f75bc2220f39be1a02c549c58ef9d4c5982",
-      "size_bytes": 16978
+      "sha256": "c7d1806fd36e156fb5cb077960a652677c4c01c9e23a8fd5afee772b641471aa",
+      "size_bytes": 17127
     },
     {
       "exists": true,
@@ -852,7 +852,7 @@
       "roles": [
         "handoff-document"
       ],
-      "sha256": "be2874a0b8b91b9b1f25d0711055aa33e27ce5bcb7f817f5cca0b24a151b7430",
+      "sha256": "a621d52b61b014fcc27ef8dbc0db1c12453279ef9ab1139b941fa1b42c7c3929",
       "size_bytes": 16196
     },
     {
@@ -862,8 +862,8 @@
       "roles": [
         "handoff-document"
       ],
-      "sha256": "ea1e685312cbc58bcdb28970b6a80d53d41adca8ce707d2c77c4ad619ff1581d",
-      "size_bytes": 8187
+      "sha256": "138c3132e4cd3b8118025fe4fae5f45e22d8d3c2e06f11849fddc1289051fcce",
+      "size_bytes": 8210
     },
     {
       "exists": true,
@@ -872,7 +872,7 @@
       "roles": [
         "handoff-document"
       ],
-      "sha256": "9466291642a557877af2ce8d5d7012bb05f46301cae301d7f4fe8f3c251c7756",
+      "sha256": "64657ac8de5a36f0d26777e4ac40b75fcd7fe3a57310909d33c2884b4995c673",
       "size_bytes": 6421
     },
     {
@@ -882,7 +882,7 @@
       "roles": [
         "handoff-document"
       ],
-      "sha256": "522ebed37525dff50846ff92320b6b64e21003f44f3eebb01ff845984c0cd08e",
+      "sha256": "70d06d9a7f7542a5b13f62d4a5f2c257288d754daa8d6aa149aef608201f9354",
       "size_bytes": 2472
     },
     {
@@ -914,7 +914,7 @@
       "roles": [
         "handoff-document"
       ],
-      "sha256": "c6ee38f2c90d991e172aa2b68f8dac1f0b0bf77683b1deee752d1c2a9b25cb78",
+      "sha256": "83823e4f7b87b1cbe7100171e790e5ece820227aad71d8d743c7044168e36e6d",
       "size_bytes": 5242
     },
     {
@@ -974,8 +974,8 @@
       "roles": [
         "manifest-builder"
       ],
-      "sha256": "e3760d4a9da313412ee20e3c6b46ec1fffd54ccb6f832dfe7ba2506cb524fc17",
-      "size_bytes": 7159
+      "sha256": "6e0c31b8aa3a3635acd70f8e80473049a92ef13953f1665c160b0864414c5bc9",
+      "size_bytes": 7182
     },
     {
       "exists": true,
@@ -984,8 +984,8 @@
       "roles": [
         "manifest-builder"
       ],
-      "sha256": "c7c07e4644015df2cddbbf973bf9865be57a9d3f90ee818c35d53f0e690fb40e",
-      "size_bytes": 17430
+      "sha256": "b3b94ecb411cc61e1dbf0dbb2ef35e1eac9b8741f7fb23ed0933eea6f0885e10",
+      "size_bytes": 17453
     },
     {
       "exists": true,
@@ -1132,7 +1132,7 @@
       "roles": [
         "handoff-document"
       ],
-      "sha256": "0f6b5be7b8caaa13ffe75c84789e00fe536a5d52ef5b4c87e4842281bce36718",
+      "sha256": "b73c5490b5c3df50aba384d245c745a3f9e78e32e843ea584c19597e63dfd412",
       "size_bytes": 6546
     },
     {

@@ -1,6 +1,6 @@
 # Submission checks summary
 
-Generated: `2026-06-20T18:49:59.269029+00:00`
+Generated: `2026-06-20T18:53:27.908119+00:00`
 
 Overall status: **PASS_WITH_LOCAL_RAW_DATA_LIMITATION**
 
@@ -14,20 +14,20 @@ Overall status: **PASS_WITH_LOCAL_RAW_DATA_LIMITATION**
 | reference_integrity_audit | PASS | bib_entries=8, citation_commands=28, citation_uses=29, dangling_citation_count=0, missing_identifier_count=0, missing_required_field_count=0, missing_verification_source_count=0, orphan_reference_count=0, unique_cited_keys=8 |
 | raw_data_archive_manifest | PASS | missing_file_count=0, referenced_file_count=40, referenced_total_bytes=138875181, status=PASS |
 | submission_bundle_manifest | PASS_WITH_LOCAL_RAW_DATA_LIMITATION | local_raw_dependency_count=44, missing_release_files=0, release_directory_count=1, release_file_count=83, status=PASS_WITH_LOCAL_RAW_DATA_LIMITATION, untracked_local_raw_dependencies=44, untracked_release_files=0 |
-| submission_source_bundle | PASS | directory_tracked_file_count=174, excluded_self_referential_count=6, included_file_count=252, included_total_bytes=4410003, local_raw_dependency_count=44, manifest_release_directories=1, manifest_release_file_records=83, missing_file_count=0 |
+| submission_source_bundle | PASS | directory_tracked_file_count=174, excluded_self_referential_count=6, included_file_count=252, included_total_bytes=4410428, local_raw_dependency_count=44, manifest_release_directories=1, manifest_release_file_records=83, missing_file_count=0 |
 
 ## Command results
 
 | Command | Return code | Duration (s) |
 |---|---:|---:|
-| `latex_compile` | 0 | 0.057 |
-| `availability_path_audit` | 0 | 0.174 |
-| `manuscript_claim_audit` | 0 | 0.042 |
-| `reference_integrity_audit` | 0 | 0.028 |
-| `submission_bundle_manifest_initial` | 0 | 0.663 |
-| `raw_data_archive_manifest` | 0 | 0.198 |
-| `submission_bundle_manifest_final` | 0 | 0.64 |
-| `submission_source_bundle` | 0 | 0.352 |
+| `latex_compile` | 0 | 0.06 |
+| `availability_path_audit` | 0 | 0.176 |
+| `manuscript_claim_audit` | 0 | 0.04 |
+| `reference_integrity_audit` | 0 | 0.027 |
+| `submission_bundle_manifest_initial` | 0 | 0.651 |
+| `raw_data_archive_manifest` | 0 | 0.132 |
+| `submission_bundle_manifest_final` | 0 | 0.624 |
+| `submission_source_bundle` | 0 | 0.321 |
 
 ## LaTeX log check
 

@@ -113,7 +113,7 @@ def write_markdown(path: Path, payload: dict) -> None:
         f"Generated: `{payload['generated_at_utc']}`",
         "",
         f"Git branch: `{payload['git_branch']}`",
-        f"Git HEAD: `{payload['git_head']}`",
+        f"Git HEAD at manifest generation: `{payload['git_head']}`",
         "",
         "## Summary",
         "",
