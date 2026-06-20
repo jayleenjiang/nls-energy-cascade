@@ -1,6 +1,6 @@
 # Submission checks summary
 
-Generated: `2026-06-20T13:52:20.931075+00:00`
+Generated: `2026-06-20T14:12:10.527382+00:00`
 
 Overall status: **PASS_WITH_LOCAL_RAW_DATA_LIMITATION**
 
@@ -13,21 +13,21 @@ Overall status: **PASS_WITH_LOCAL_RAW_DATA_LIMITATION**
 | manuscript_claim_audit | PASS | total_claims=15, verified=15, failed=0 |
 | reference_integrity_audit | PASS | bib_entries=8, citation_commands=28, citation_uses=29, dangling_citation_count=0, missing_identifier_count=0, missing_required_field_count=0, missing_verification_source_count=0, orphan_reference_count=0, unique_cited_keys=8 |
 | raw_data_archive_manifest | PASS | missing_file_count=0, referenced_file_count=40, referenced_total_bytes=138875181, status=PASS |
-| submission_bundle_manifest | PASS_WITH_LOCAL_RAW_DATA_LIMITATION | local_raw_dependency_count=44, missing_release_files=0, release_directory_count=1, release_file_count=68, status=PASS_WITH_LOCAL_RAW_DATA_LIMITATION, untracked_local_raw_dependencies=44, untracked_release_files=0 |
-| submission_source_bundle | PASS | directory_tracked_file_count=114, excluded_self_referential_count=6, included_file_count=177, included_total_bytes=3576532, local_raw_dependency_count=44, manifest_release_directories=1, manifest_release_file_records=68, missing_file_count=0 |
+| submission_bundle_manifest | PASS_WITH_LOCAL_RAW_DATA_LIMITATION | local_raw_dependency_count=44, missing_release_files=0, release_directory_count=1, release_file_count=69, status=PASS_WITH_LOCAL_RAW_DATA_LIMITATION, untracked_local_raw_dependencies=44, untracked_release_files=0 |
+| submission_source_bundle | PASS | directory_tracked_file_count=114, excluded_self_referential_count=6, included_file_count=178, included_total_bytes=3581845, local_raw_dependency_count=44, manifest_release_directories=1, manifest_release_file_records=69, missing_file_count=0 |
 
 ## Command results
 
 | Command | Return code | Duration (s) |
 |---|---:|---:|
-| `latex_compile` | 0 | 0.057 |
-| `availability_path_audit` | 0 | 0.162 |
+| `latex_compile` | 0 | 2.369 |
+| `availability_path_audit` | 0 | 0.156 |
 | `manuscript_claim_audit` | 0 | 0.036 |
 | `reference_integrity_audit` | 0 | 0.028 |
-| `submission_bundle_manifest_initial` | 0 | 0.615 |
-| `raw_data_archive_manifest` | 0 | 0.117 |
-| `submission_bundle_manifest_final` | 0 | 0.614 |
-| `submission_source_bundle` | 0 | 0.249 |
+| `submission_bundle_manifest_initial` | 0 | 0.657 |
+| `raw_data_archive_manifest` | 0 | 0.17 |
+| `submission_bundle_manifest_final` | 0 | 0.61 |
+| `submission_source_bundle` | 0 | 0.25 |
 
 ## LaTeX log check
 

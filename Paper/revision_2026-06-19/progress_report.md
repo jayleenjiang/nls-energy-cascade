@@ -215,10 +215,14 @@
     `E[J(50)] = 0.01851584685` with SE `0.00044158954`; adding this point to
     the four primary production lengths gives a diagnostic five-size exponent
     `-1.89449` with bootstrap 95% CI `[-1.91636,-1.87340]`.  A smaller
-    independent burn-in-10000 check gives `E[J(50)] = 0.01931242054` with SE
-    `0.00085798987`.  The manuscript now records this as a robustness check
-    rather than replacing the primary `n=10,20,30,40` exponent, because no
-    matched fine-timestep pilot has yet been run at `n=50`.
+    fine-step pilot at `dt=2.5e-4` gives `E[J(50)] = 0.01879771710` with SE
+    `0.00081439495`, only `1.52%` above the `dt=5e-4` run (`0.30` pooled
+    standard errors), and an independent burn-in-10000 check gives
+    `E[J(50)] = 0.01931242054` with SE `0.00085798987`.  The manuscript now
+    records this as a robustness check rather than replacing the primary
+    `n=10,20,30,40` exponent, because `n=50` is still a single larger-length
+    extension and the fine-step run is a smaller pilot rather than a full
+    production-resolution convergence study.
 
 ## Key validated numerical result
 
@@ -272,6 +276,6 @@ Power-law fit:
   retraining environment if the target journal expects re-training
   reproducibility beyond saved-model inference.
 - Optional numerical strengthening: if time permits before submission, turn the
-  `n=50` robustness check into a full larger-length convergence study by adding
-  a matched fine-timestep pilot at `n=50` and, if computationally feasible, one
-  further length such as `n=60`.
+  `n=50` robustness check into a full larger-length convergence study by
+  increasing the fine-step run to production resolution and, if
+  computationally feasible, adding one further length such as `n=60`.

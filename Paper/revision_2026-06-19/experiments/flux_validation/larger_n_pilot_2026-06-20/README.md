@@ -35,6 +35,14 @@ Paper/revision_2026-06-19/experiments/flux_validation/bin/flux_canonical \
   Paper/revision_2026-06-19/experiments/flux_validation/larger_n_pilot_2026-06-20/n50_b16_burn10000
 ```
 
+Fine-timestep pilot:
+
+```sh
+Paper/revision_2026-06-19/experiments/flux_validation/bin/flux_canonical \
+  10 2 50 16 8000 200 0.00025 20260622 4 \
+  Paper/revision_2026-06-19/experiments/flux_validation/larger_n_pilot_2026-06-20/n50_b16_dt2p5e-4
+```
+
 Primary scaling-analysis command:
 
 ```sh
@@ -77,11 +85,24 @@ Longer-burn-in sanity check:
 - standard error: `0.00085798987`
 - normal 95% CI: `[0.01763079128, 0.02099404979]`
 
+Fine-timestep pilot:
+
+- configuration: `n=50`, `16` batches, `256` trajectories, burn-in `8000`,
+  measurement window `200`, timestep `2.5e-4`
+- mean current: `0.01879771710`
+- standard error: `0.00081439495`
+- normal 95% CI: `[0.01720153233, 0.02039390187]`
+- first-half/second-half stationarity statistic: `-0.455` paired SE
+- difference relative to the `dt=5e-4`, `1024`-trajectory run:
+  `+0.00028187025`, or `+1.52%`, equal to `0.30` pooled standard errors
+
 ## Interpretation
 
 The larger-chain run is below the direct extrapolation of the original
 `n=10,20,30,40` fit but remains consistent with the qualitative conclusion that
-the current decays faster than the Fourier `1/n` scaling.  Because the `n=50`
-run has not yet been paired with a fine-timestep sensitivity check, the
-manuscript should keep the `n=10,20,30,40` fit as the primary production
-exponent and use `n=50` as a robustness check.
+the current decays faster than the Fourier `1/n` scaling.  The fine-timestep
+pilot is consistent with the `dt=5e-4` run within Monte Carlo error.  The
+manuscript should still keep the `n=10,20,30,40` fit as the primary production
+exponent because `n=50` is a single larger-size extension and the fine-step
+check is a smaller pilot rather than a full production-resolution convergence
+study.

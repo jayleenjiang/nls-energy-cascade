@@ -748,11 +748,15 @@ five-size fit
   \qquad R^2=0.9976,
 \]
 with bootstrap exponent confidence interval $[-1.916,-1.873]$. A smaller
-independent check with burn-in $10000$ gives
+fine-step pilot at $\Delta t=2.5\times10^{-4}$ gives
+$\E[J(50)]=0.01880$ with standard error $0.00081$; relative to the
+$\Delta t=5\times10^{-4}$ run, this is a $1.5\%$ shift, or $0.30$ pooled
+standard errors. An independent burn-in-$10000$ check gives
 $\E[J(50)]=0.01931\pm0.00086$. We therefore use the $n=50$ computation as
 evidence against a near-term crossover to Fourier scaling, but retain
 \eqref{eq:flux-scaling} as the primary quoted exponent because the larger
-length has not yet been paired with a fine-timestep sensitivity run.
+length is still a single-size extension, with only a smaller fine-timestep
+pilot rather than a full production-resolution convergence study.
 
 \begin{figure}[ht]
   \centering
@@ -1095,9 +1099,9 @@ stationary density.
 Several limitations remain. The long-chain ergodicity theory is open, so the
 stationarity of the long simulations is assessed numerically rather than
 proved. The primary transport exponent is fitted over $n=10,20,30,40$; the
-$n=50$ robustness run supports the same faster-than-Fourier trend but does not
-replace a systematic larger-length and finer-timestep convergence study. The
-current statistics reported here concern finite-time averages of
+$n=50$ robustness run and fine-step pilot support the same
+faster-than-Fourier trend but do not replace a systematic larger-length
+convergence study. The current statistics reported here concern finite-time averages of
 the action current only; bath-energy entropy production and a genuine
 Gallavotti--Cohen large-deviation test require a separate boundary-energy
 accumulator. Finally, the open-chain terminal-energy scaling suggested by the

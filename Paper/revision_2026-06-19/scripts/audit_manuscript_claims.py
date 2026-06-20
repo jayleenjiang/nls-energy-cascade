@@ -165,6 +165,7 @@ def build_registry() -> list[dict[str, Any]]:
     larger_n_dir = REVISION / "experiments/flux_validation/larger_n_pilot_2026-06-20"
     larger_n_scaling_path = larger_n_dir / "n10_50_b64_scaling_scaling.json"
     larger_n_summary_path = larger_n_dir / "n50_b64_summary.csv"
+    larger_n_fine_path = larger_n_dir / "n50_b16_dt2p5e-4_summary.csv"
     larger_n_long_burn_path = larger_n_dir / "n50_b16_burn10000_summary.csv"
     larger_n_readme_path = larger_n_dir / "README.md"
     figure_metrics_path = REVISION / "manuscript_figure_metrics.json"
@@ -182,6 +183,7 @@ def build_registry() -> list[dict[str, Any]]:
     window = read_window_stats(window_path)
     larger_n_scaling = load_json(larger_n_scaling_path)
     larger_n_summary = read_summary(larger_n_summary_path)
+    larger_n_fine = read_summary(larger_n_fine_path)
     larger_n_long_burn = read_summary(larger_n_long_burn_path)
 
     prefactor = flux["prefactor"]
@@ -275,6 +277,7 @@ def build_registry() -> list[dict[str, Any]]:
         evidence=[
             larger_n_scaling_path,
             larger_n_summary_path,
+            larger_n_fine_path,
             larger_n_long_burn_path,
             larger_n_readme_path,
         ],
@@ -284,8 +287,11 @@ def build_registry() -> list[dict[str, Any]]:
             r"$-1.49$ paired standard",
             r"\E[J(n)] \;=\; 32.50\,n^{-1.894}",
             r"$[-1.916,-1.873]$",
+            r"$\E[J(50)]=0.01880$",
+            r"standard error $0.00081$",
+            r"$1.5\%$ shift, or $0.30$ pooled",
             r"$\E[J(50)]=0.01931\pm0.00086$",
-            r"not yet been paired with a fine-timestep sensitivity run",
+            r"smaller fine-timestep pilot rather than a full production-resolution convergence study",
         ],
         computed={
             "n50_primary_mean": larger_n_summary["mean_action_current"],
@@ -294,12 +300,36 @@ def build_registry() -> list[dict[str, Any]]:
                 larger_n_summary["mean_second_minus_first"]
                 / larger_n_summary["paired_difference_se"]
             ),
+            "n50_fine_mean": larger_n_fine["mean_action_current"],
+            "n50_fine_se": larger_n_fine["standard_error"],
+            "n50_fine_minus_coarse": (
+                larger_n_fine["mean_action_current"]
+                - larger_n_summary["mean_action_current"]
+            ),
+            "n50_fine_relative_shift": (
+                (
+                    larger_n_fine["mean_action_current"]
+                    - larger_n_summary["mean_action_current"]
+                )
+                / larger_n_summary["mean_action_current"]
+            ),
+            "n50_fine_difference_over_pooled_se": (
+                (
+                    larger_n_fine["mean_action_current"]
+                    - larger_n_summary["mean_action_current"]
+                )
+                / (
+                    larger_n_fine["standard_error"] ** 2
+                    + larger_n_summary["standard_error"] ** 2
+                )
+                ** 0.5
+            ),
             "five_length_exponent": larger_n_scaling["exponent"],
             "five_length_ci": larger_n_scaling["exponent_normalized_95_ci"],
             "longer_burnin_mean": larger_n_long_burn["mean_action_current"],
             "longer_burnin_se": larger_n_long_burn["standard_error"],
         },
-        note="The manuscript keeps the n=10,20,30,40 fit as the primary quoted exponent because n=50 has no matching fine-timestep check.",
+        note="The manuscript keeps the n=10,20,30,40 fit as the primary quoted exponent because n=50 is a single larger-length extension and the fine-timestep check is a smaller pilot.",
     )
 
     w40 = {tau: window[(40, tau)] for tau in (50, 100, 200)}

@@ -50,9 +50,13 @@ A new `n=50` current run was added under
 current accumulator, `dt=5e-4`, burn-in `8000`, measurement window `200`, and
 `1024` trajectories.  It gives `E[J(50)] = 0.01851584685` with SE
 `0.00044158954`, and the diagnostic fit over `n=10,20,30,40,50` gives exponent
-`-1.89449` with bootstrap 95% CI `[-1.91636,-1.87340]`.  The manuscript uses
-this as a robustness check only, not as the primary quoted exponent, because a
-matched fine-timestep pilot at `n=50` has not yet been run.
+`-1.89449` with bootstrap 95% CI `[-1.91636,-1.87340]`.  A smaller
+fine-timestep pilot at `dt=2.5e-4` gives `E[J(50)] = 0.01879771710` with SE
+`0.00081439495`, differing from the `dt=5e-4` result by `1.52%` or `0.30`
+pooled standard errors.  The manuscript uses this as a robustness check only,
+not as the primary quoted exponent, because `n=50` is still a single
+larger-size extension and the fine-step check is not a full production-size
+convergence study.
 
 ## Author confirmations still required
 

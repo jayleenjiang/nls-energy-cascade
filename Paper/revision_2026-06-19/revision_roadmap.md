@@ -76,8 +76,11 @@ An additional `n=50` current run has been completed with the canonical
 Gibbs-preserving current accumulator (`1024` trajectories, burn-in `8000`,
 measurement window `200`, `dt=5e-4`).  The result supports the insulating
 transport conclusion and steepens the diagnostic five-size fit to exponent
-`-1.89449`; however, it is retained as a robustness check rather than replacing
-the primary `n=10,20,30,40` exponent because `n=50` does not yet have a matched
-fine-timestep sensitivity pilot.  This partially addresses the previous
-larger-length recommendation; a full larger-length convergence study would
-still require at least a fine-step `n=50` check and preferably another length.
+`-1.89449`.  A smaller `dt=2.5e-4` pilot at the same length gives a compatible
+mean current (`1.52%`, or `0.30` pooled standard errors, above the `dt=5e-4`
+run).  The result is retained as a robustness check rather than replacing the
+primary `n=10,20,30,40` exponent because `n=50` is still only one larger-size
+extension and the fine-step run is not production-resolution.  This addresses
+the immediate larger-length/timestep sanity check; a full larger-length
+convergence study would still require a production-size fine-step run and
+preferably another length.
