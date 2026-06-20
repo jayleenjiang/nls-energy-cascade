@@ -40,9 +40,11 @@ transport/LTE evidence and the three-mode Fokker--Planck mechanism study, so
 the short-chain section is framed as a low-dimensional microscope rather than
 as an extrapolation of the transport exponent.  A further current-scaling
 robustness pass added a fit-window sensitivity table around the `n=50` and
-`n=60` larger-chain runs.  The latest one-command gate reports
-`PASS_WITH_LOCAL_RAW_DATA_LIMITATION` with 36/36 availability path records
-present and git-tracked, 17/17 registered numerical claims verified, and zero
+`n=60` larger-chain runs.  A subsequent bath-parameter robustness pass added a
+production-resolution `T1=8,Tn=4` current-scaling check over
+`n=10,20,30,40`.  The latest one-command gate reports
+`PASS_WITH_LOCAL_RAW_DATA_LIMITATION` with 37/37 availability path records
+present and git-tracked, 18/18 registered numerical claims verified, and zero
 missing release-bundle files.
 
 ## 2026-06-20 larger-chain robustness update
@@ -72,6 +74,19 @@ the medium 256-trajectory pilot gives `E[J(60)] = 0.01361149053` with SE
 six-length fit gives exponent `-1.92956` with bootstrap 95% CI
 `[-1.95424,-1.90603]`.  This is now suitable as manuscript robustness
 evidence, while the primary exponent remains the four-length production fit.
+
+## 2026-06-20 bath-parameter robustness update
+
+A production-resolution bath-temperature robustness check was added under
+`experiments/flux_validation/parameter_robustness_2026-06-20/`.  The clean
+pilot set `T1=8,Tn=4` was upgraded to `1024` trajectories per length over
+`n=10,20,30,40`, with the same `dt=5e-4`, measurement window `200`, and
+burn-in schedule as the primary production runs.  The fitted exponent is
+`-1.75098` with bootstrap 95% CI `[-1.77964,-1.72269]` and log-fit
+`R^2=0.99844`; the maximum split-window stationarity statistic is `1.73684`
+paired standard errors.  The manuscript uses this as a robustness check that
+the faster-than-Fourier finite-size decay is not tied only to the single
+temperature pair `T1=10,Tn=2`, not as a systematic parameter sweep.
 
 ## Author confirmations still required
 

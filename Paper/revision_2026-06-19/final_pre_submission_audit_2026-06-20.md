@@ -1,8 +1,9 @@
 # Final local pre-submission audit — 2026-06-20
 
 Scope: `Paper/revision_2026-06-19/draft.tex` and the synchronized
-`draft_siads_review.tex` after the larger-chain `n=50` and production-size
-`n=60` robustness extensions, fit-window sensitivity, and fine-timestep checks.
+`draft_siads_review.tex` after the larger-chain `n=50`, production-size
+`n=60`, and bath-temperature robustness extensions, fit-window sensitivity,
+and fine-timestep checks.
 
 This audit separates items that are locally complete from items that still
 require author, journal, or external-service action.  It is intentionally
@@ -25,12 +26,12 @@ Key gate numbers:
 | Gate | Status |
 |---|---|
 | LaTeX/log scan | PASS, `issues=0` |
-| Availability/path audit | PASS, `36/36` paths present, `0` untracked required files |
-| Numerical claim audit | PASS, `17/17` claims verified |
+| Availability/path audit | PASS, `37/37` paths present, `0` untracked required files |
+| Numerical claim audit | PASS, `18/18` claims verified |
 | Reference integrity audit | PASS, `8` cited BibTeX entries, `0` dangling citations |
 | Raw-data archive manifest | PASS locally, `40` unique referenced files, `138,875,181` bytes |
-| Submission bundle manifest | `PASS_WITH_LOCAL_RAW_DATA_LIMITATION`, `75` release files, `0` missing, `0` untracked release files |
-| Source-only bundle dry run | PASS, `231` included files |
+| Submission bundle manifest | `PASS_WITH_LOCAL_RAW_DATA_LIMITATION`, `82` release files, `0` missing, `0` untracked release files |
+| Source-only bundle dry run | PASS, `251` included files |
 
 The SIADS review-preparation source also compiles locally:
 
@@ -45,9 +46,11 @@ The SIADS review-preparation source also compiles locally:
 The core numerical thesis is now appropriately scoped.  The main transport
 claim remains the production fit over `n=10,20,30,40`; the new `n=50` and
 `n=60` experiments are explicitly described as larger-chain robustness checks,
-with fit-window sensitivity analysis and a smaller `n=50` fine-step pilot at
-`dt=2.5e-4`.  This avoids the most likely reviewer objection that larger
-lengths have been over-promoted to an asymptotic law.
+and the `T1=8,Tn=4` production-resolution run is described as a
+bath-temperature robustness check.  Together with the fit-window sensitivity
+analysis and a smaller `n=50` fine-step pilot at `dt=2.5e-4`, this avoids the
+most likely reviewer objections that larger lengths or alternate bath
+parameters have been over-promoted to an asymptotic law.
 
 ### Current-scaling vulnerability
 
@@ -62,10 +65,13 @@ diagnostic six-length exponent near `-1.93`, so it is promoted to manuscript
 robustness evidence while the primary exponent remains the original
 four-length production fit.
 
-A separate bath-parameter robustness pilot has also been recorded under
-`experiments/flux_validation/parameter_robustness_2026-06-20/`.  It is treated
-as a production-upgrade plan and preliminary screening artifact, not as a new
-manuscript claim.
+A production-resolution bath-parameter robustness check has also been recorded
+under `experiments/flux_validation/parameter_robustness_2026-06-20/`.  The
+`T1=8,Tn=4` run gives exponent `-1.75098` with bootstrap 95% CI
+`[-1.77964,-1.72269]` and maximum stationarity statistic `1.73684` paired
+standard errors.  It supports the faster-than-Fourier finite-size trend under a
+second bath-temperature pair, while the manuscript explicitly stops short of a
+systematic parameter sweep.
 
 ### Short-chain mechanism vulnerability
 

@@ -1,8 +1,8 @@
 {
   "archive": {
-    "path": "tmp/submission_source_bundle/runs/20260620T180342Z/NLS_numerical_study_source.tar.gz",
-    "sha256": "7a75ea76d23b36f16f0fc7e4232075d548fb0a01d59482a2d0bd20192e703f38",
-    "size_bytes": 2545977
+    "path": "tmp/submission_source_bundle/runs/20260620T184300Z/NLS_numerical_study_source.tar.gz",
+    "sha256": "0bd08112b20b13bd4efed1022aee8b0af2421f02fdaf54b0ea2476f21cf8baff",
+    "size_bytes": 2837795
   },
   "excluded_self_referential_files": [
     "Paper/revision_2026-06-19/submission_bundle_manifest.json",
@@ -33,20 +33,20 @@
     },
     {
       "path": "Paper/revision_2026-06-19/author_submission_action_packet_2026-06-19.md",
-      "sha256": "900011ab6bd3ba19035be4fc11d82cf37ddee45d56381039dc0a82ff6da1efdd",
-      "size_bytes": 10806,
+      "sha256": "ee763012785375180b9581d13b80893d1b28eb8de273012e612bb95edfdabc13",
+      "size_bytes": 10938,
       "source": "release-file"
     },
     {
       "path": "Paper/revision_2026-06-19/availability_path_audit.json",
-      "sha256": "6e430a5d69252ab86102aa4549de20e3c66f85fa5e4502c1f3edf70ef438d1b1",
-      "size_bytes": 15724,
+      "sha256": "34d2069258e2dbfd19a00208725b76e22d986f09b90c0516d8d6b37a6f82b290",
+      "size_bytes": 16332,
       "source": "release-file"
     },
     {
       "path": "Paper/revision_2026-06-19/availability_path_audit.md",
-      "sha256": "a52d7b52b163c3e7dafc8e822b86118253f3db564ce729adcb9129791bf7ed01",
-      "size_bytes": 7223,
+      "sha256": "d2a17cbda59bf3b3a25f83e59fc41accb80dba1946bd74f63088c59b783505de",
+      "size_bytes": 7584,
       "source": "release-file"
     },
     {
@@ -57,14 +57,14 @@
     },
     {
       "path": "Paper/revision_2026-06-19/draft.tex",
-      "sha256": "fcef7b08d86a777f02a741e8c22aff07643165cde6bf8a9f988b58b2a29ecaff",
-      "size_bytes": 68008,
+      "sha256": "26a18da1d08c770577749edaec79e4d499cd28538062d7b8ad4709072ff9ee92",
+      "size_bytes": 69050,
       "source": "release-file"
     },
     {
       "path": "Paper/revision_2026-06-19/draft_siads_review.tex",
-      "sha256": "4f7a6a96d952731c19c0c14bf098f2749a8ee65b7a50e1cc5a1fa25ccc529f44",
-      "size_bytes": 68642,
+      "sha256": "3a25ec0f91b731e37aaa4d3cf9fed9f8e7c032790342f1cf88e0c881a1ce0816",
+      "size_bytes": 69684,
       "source": "release-file"
     },
     {
@@ -140,6 +140,48 @@
       "source": "release-file"
     },
     {
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation/parameter_robustness_2026-06-20/README.md",
+      "sha256": "6ef7521578fda5d3e6e874a93b22ac4ada7fa1df1c5c7b2e0501dad64805e79c",
+      "size_bytes": 6780,
+      "source": "release-file"
+    },
+    {
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation/parameter_robustness_2026-06-20/moderate_contrast_T8_T4_prod/b64_scaling_scaling.json",
+      "sha256": "059c81dc9203543d044bdb9eed6523fe105adaf3b72443b944f439d3a02ceaa8",
+      "size_bytes": 739,
+      "source": "release-file"
+    },
+    {
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation/parameter_robustness_2026-06-20/moderate_contrast_T8_T4_prod/n10_b64_summary.csv",
+      "sha256": "14f16bdc8267e0e3dfde109393421d229d499134c7be87ab4b2584654e94c28c",
+      "size_bytes": 769,
+      "source": "release-file"
+    },
+    {
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation/parameter_robustness_2026-06-20/moderate_contrast_T8_T4_prod/n20_b64_summary.csv",
+      "sha256": "6789198856d366b3df5513453af1d5148067c4bb565f579d5a9bb925db039e37",
+      "size_bytes": 783,
+      "source": "release-file"
+    },
+    {
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation/parameter_robustness_2026-06-20/moderate_contrast_T8_T4_prod/n30_b64_summary.csv",
+      "sha256": "f119e4c3aaf8cc9b399234ce6a3e39329b7fe1cc33a99796675a5eabc7f1af15",
+      "size_bytes": 784,
+      "source": "release-file"
+    },
+    {
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation/parameter_robustness_2026-06-20/moderate_contrast_T8_T4_prod/n40_b64_summary.csv",
+      "sha256": "f3466d4d4fafb1155e2d074befd8657b63c39ce6292e1a5abc27f902657c6622",
+      "size_bytes": 780,
+      "source": "release-file"
+    },
+    {
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation/parameter_robustness_2026-06-20/production_summary.csv",
+      "sha256": "045133374069e5f1e742bfed7a1e8f98beecce5daeb74fb92f2e0649c5416b8c",
+      "size_bytes": 975,
+      "source": "release-file"
+    },
+    {
       "path": "Paper/revision_2026-06-19/experiments/flux_validation/production_dt5e-4/current_windows_n40_windows.pdf",
       "sha256": "c068514bde19d5f69c7fe0380f1872b843f3083ed40079590bd015255ea399a4",
       "size_bytes": 16459,
@@ -171,14 +213,14 @@
     },
     {
       "path": "Paper/revision_2026-06-19/experiments/flux_validation/validation_report.md",
-      "sha256": "6f389d94398866c0c4b98c023b84a6aa3d7c6584e5019cd9d32530506b9e1b34",
-      "size_bytes": 4828,
+      "sha256": "a6efb96c47d0c9725585ac4080efc509d0f64c4769b1d3955004f90a298ce344",
+      "size_bytes": 5726,
       "source": "release-file"
     },
     {
       "path": "Paper/revision_2026-06-19/final_pre_submission_audit_2026-06-20.md",
-      "sha256": "e1b561cb2329e32b516845e224bc4ede8e9598cf199709cedf6fce638398109a",
-      "size_bytes": 6389,
+      "sha256": "df95ef4601bd3ad48b9325951f4903e0fd385c923f55abec0d83d456e0cecef4",
+      "size_bytes": 6782,
       "source": "release-file"
     },
     {
@@ -195,14 +237,14 @@
     },
     {
       "path": "Paper/revision_2026-06-19/manuscript_claim_audit.json",
-      "sha256": "34bdbb7961b938f2ee44b509cd98fdf1d86c0e13e731930c143a41bb4647130d",
-      "size_bytes": 40896,
+      "sha256": "1bf6863b69f791ea083f415637b96e76d6c4923dbc11fe06fc9d3a5a4306d47f",
+      "size_bytes": 44474,
       "source": "release-file"
     },
     {
       "path": "Paper/revision_2026-06-19/manuscript_claim_audit.md",
-      "sha256": "8d9f1a714a44e1278d6333ea02c72f85c6e69a4242e480acbde3970d185ba931",
-      "size_bytes": 5031,
+      "sha256": "47d157c82c223a7c4ef74650bbb179a975f088fab0ada5e018fdb9a2399cba0a",
+      "size_bytes": 6169,
       "source": "release-file"
     },
     {
@@ -243,25 +285,25 @@
     },
     {
       "path": "Paper/revision_2026-06-19/raw_data_archive_manifest.json",
-      "sha256": "5342d95675147d5261137ad19280bc6d5300371b2e785789fe112d7d33d98e63",
+      "sha256": "94d1f826fd30b582b6671cc316ba486203990e882f50cd38c4b9a40733e1090e",
       "size_bytes": 16196,
       "source": "release-file"
     },
     {
       "path": "Paper/revision_2026-06-19/raw_data_archive_manifest.md",
-      "sha256": "7f56752245a567099a0b99f319368b4fc7aff80b5b5afd0891976d7a8d7ad3aa",
+      "sha256": "14936349cf27dfa71383c49625a903dd2289f0ed247f9737e9c45fff6a5356eb",
       "size_bytes": 8187,
       "source": "release-file"
     },
     {
       "path": "Paper/revision_2026-06-19/reference_integrity_audit.json",
-      "sha256": "b4fcf193876ab738e2576963e1524a049d19f9a04cb4f95da1bfc4b580741895",
+      "sha256": "d86d7f8b6c2eafc9b1c39a484ac75ea2b7b294b9be21f65dfc78ae48d048bac3",
       "size_bytes": 6421,
       "source": "release-file"
     },
     {
       "path": "Paper/revision_2026-06-19/reference_integrity_audit.md",
-      "sha256": "d6b075690de0fd7b90acd87fb7c2a209e2574b6cc25518f1d1ccf11be5473abf",
+      "sha256": "f0f860a7d366586317225e94c6a97ebd8deb8c2c3a990b164d297aabd4ee7f85",
       "size_bytes": 2472,
       "source": "release-file"
     },
@@ -303,8 +345,8 @@
     },
     {
       "path": "Paper/revision_2026-06-19/scripts/audit_manuscript_claims.py",
-      "sha256": "664c7656ba85f589d087748b83eb5832f48fa77974f222df634699b44d8b2e84",
-      "size_bytes": 26808,
+      "sha256": "c9cee2b34cd2bc1b0a313c134c5fa27799bd89c092231bd5b02af5b7830f8873",
+      "size_bytes": 29476,
       "source": "release-file"
     },
     {
@@ -375,8 +417,8 @@
     },
     {
       "path": "Paper/revision_2026-06-19/submission_readiness_checklist_2026-06-19.md",
-      "sha256": "76f3b6608d2272f75cf8771e06e9a80a12c94e422e3f5cc87823c5ea4c235ab0",
-      "size_bytes": 12038,
+      "sha256": "a5462ab263585919ac39b9a97297e8442ca8c940838080405a1bc2d751a40fa0",
+      "size_bytes": 12947,
       "source": "release-file"
     },
     {
@@ -608,12 +650,6 @@
       "source": "release-directory:Paper/revision_2026-06-19/experiments/flux_validation"
     },
     {
-      "path": "Paper/revision_2026-06-19/experiments/flux_validation/parameter_robustness_2026-06-20/README.md",
-      "sha256": "bb04f309d64b41232a5d2678bc5a1d8a3e64f53485b28d3464ac1effcae1117d",
-      "size_bytes": 5491,
-      "source": "release-directory:Paper/revision_2026-06-19/experiments/flux_validation"
-    },
-    {
       "path": "Paper/revision_2026-06-19/experiments/flux_validation/parameter_robustness_2026-06-20/moderate_contrast_T8_T4/b4_scaling_dt_sensitivity.csv",
       "sha256": "c7fe950cf9de7f4b321edbcc0dfb2fb37dadafac1426cacc1cdadd7217ba0421",
       "size_bytes": 110,
@@ -725,6 +761,90 @@
       "path": "Paper/revision_2026-06-19/experiments/flux_validation/parameter_robustness_2026-06-20/moderate_contrast_T8_T4/n40_b4_summary.csv",
       "sha256": "d33a7bc8134deeafd96b5dd7f048fc5b69795c003bb535c26e1443d4cba92625",
       "size_bytes": 776,
+      "source": "release-directory:Paper/revision_2026-06-19/experiments/flux_validation"
+    },
+    {
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation/parameter_robustness_2026-06-20/moderate_contrast_T8_T4_prod/b64_scaling_dt_sensitivity.csv",
+      "sha256": "c7fe950cf9de7f4b321edbcc0dfb2fb37dadafac1426cacc1cdadd7217ba0421",
+      "size_bytes": 110,
+      "source": "release-directory:Paper/revision_2026-06-19/experiments/flux_validation"
+    },
+    {
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation/parameter_robustness_2026-06-20/moderate_contrast_T8_T4_prod/b64_scaling_runs.csv",
+      "sha256": "be423aff65dbbe879d72987ab5d1089a0b9668f9d5ae9aa50ff69cc01d0ce15b",
+      "size_bytes": 1595,
+      "source": "release-directory:Paper/revision_2026-06-19/experiments/flux_validation"
+    },
+    {
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation/parameter_robustness_2026-06-20/moderate_contrast_T8_T4_prod/n10_b64_burnin.csv",
+      "sha256": "58237cde9010bb199f53dd816721e9188ab16b3fa145015b3f73915ca38a87ae",
+      "size_bytes": 481,
+      "source": "release-directory:Paper/revision_2026-06-19/experiments/flux_validation"
+    },
+    {
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation/parameter_robustness_2026-06-20/moderate_contrast_T8_T4_prod/n10_b64_profile.csv",
+      "sha256": "0c073717b0db7f63ef986be45e2165f625f5d66c73446c4a0eb380222f87379d",
+      "size_bytes": 235,
+      "source": "release-directory:Paper/revision_2026-06-19/experiments/flux_validation"
+    },
+    {
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation/parameter_robustness_2026-06-20/moderate_contrast_T8_T4_prod/n10_b64_samples.csv",
+      "sha256": "2fdbd49b37f04d90e3aeecc5362b3d5b34b839daa3ff314acbecb0a914feef05",
+      "size_bytes": 147620,
+      "source": "release-directory:Paper/revision_2026-06-19/experiments/flux_validation"
+    },
+    {
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation/parameter_robustness_2026-06-20/moderate_contrast_T8_T4_prod/n20_b64_burnin.csv",
+      "sha256": "902c4e6cb2ad0f245d9a050d51cdc51145ce9ea895b756c17d9d4da8b9367399",
+      "size_bytes": 483,
+      "source": "release-directory:Paper/revision_2026-06-19/experiments/flux_validation"
+    },
+    {
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation/parameter_robustness_2026-06-20/moderate_contrast_T8_T4_prod/n20_b64_profile.csv",
+      "sha256": "25d8dc7514b3baee59acbf03b0ff5f0aed68d741b4b83c7c28b6e863612cec36",
+      "size_bytes": 464,
+      "source": "release-directory:Paper/revision_2026-06-19/experiments/flux_validation"
+    },
+    {
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation/parameter_robustness_2026-06-20/moderate_contrast_T8_T4_prod/n20_b64_samples.csv",
+      "sha256": "4057644811c3a4a395c4b943662b186878bad11eab8f5351762424523846598a",
+      "size_bytes": 152981,
+      "source": "release-directory:Paper/revision_2026-06-19/experiments/flux_validation"
+    },
+    {
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation/parameter_robustness_2026-06-20/moderate_contrast_T8_T4_prod/n30_b64_burnin.csv",
+      "sha256": "2fc2319832da9fc81c45402ef24471ef076b18c8748b6b2b4f04627c6c2d7f49",
+      "size_bytes": 496,
+      "source": "release-directory:Paper/revision_2026-06-19/experiments/flux_validation"
+    },
+    {
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation/parameter_robustness_2026-06-20/moderate_contrast_T8_T4_prod/n30_b64_profile.csv",
+      "sha256": "b98fd4dc83d0597cd5b2162ddeb3d9a30afe6fb9ee8564bb85318952e279b39a",
+      "size_bytes": 696,
+      "source": "release-directory:Paper/revision_2026-06-19/experiments/flux_validation"
+    },
+    {
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation/parameter_robustness_2026-06-20/moderate_contrast_T8_T4_prod/n30_b64_samples.csv",
+      "sha256": "a4cb28d699da2e90994e2e4ac859bdd2457c436e12d87f063266005bd3752b45",
+      "size_bytes": 155771,
+      "source": "release-directory:Paper/revision_2026-06-19/experiments/flux_validation"
+    },
+    {
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation/parameter_robustness_2026-06-20/moderate_contrast_T8_T4_prod/n40_b64_burnin.csv",
+      "sha256": "930c85fcff2f557ba0d573d65f2d3ce808ce41bdc9daa6e3379e8aeab81008d7",
+      "size_bytes": 497,
+      "source": "release-directory:Paper/revision_2026-06-19/experiments/flux_validation"
+    },
+    {
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation/parameter_robustness_2026-06-20/moderate_contrast_T8_T4_prod/n40_b64_profile.csv",
+      "sha256": "3df7248e252677375946d1854a56f09a586e1c33536b9c9160fb9cf214c037e5",
+      "size_bytes": 924,
+      "source": "release-directory:Paper/revision_2026-06-19/experiments/flux_validation"
+    },
+    {
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation/parameter_robustness_2026-06-20/moderate_contrast_T8_T4_prod/n40_b64_samples.csv",
+      "sha256": "2ec81e0de0acc331d8e55a4e75059bd5c4305a68754810c8820bac46223d9253",
+      "size_bytes": 157244,
       "source": "release-directory:Paper/revision_2026-06-19/experiments/flux_validation"
     },
     {
@@ -1395,25 +1515,25 @@
     },
     {
       "path": "SOURCE_BUNDLE_CONTENTS.sha256",
-      "sha256": "ea7227ae903aa3b08f229605f2bde79b6346740d809c59e2c16c9434a3ede1eb",
-      "size_bytes": 35554,
+      "sha256": "afc765074e11ef1142c219c5d7907ccc496bb8d8fa884368af39f52f4df74055",
+      "size_bytes": 39561,
       "source": "generated-checksum-index"
     }
   ],
-  "generated_at_utc": "2026-06-20T18:03:42.546935+00:00",
+  "generated_at_utc": "2026-06-20T18:43:00.178350+00:00",
   "manifest": "Paper/revision_2026-06-19/submission_bundle_manifest.json",
   "missing_files": [],
   "script": "Paper/revision_2026-06-19/scripts/build_submission_source_bundle.py",
-  "staging_directory": "tmp/submission_source_bundle/runs/20260620T180342Z/NLS_numerical_study_source",
+  "staging_directory": "tmp/submission_source_bundle/runs/20260620T184300Z/NLS_numerical_study_source",
   "status": "PASS",
   "summary": {
-    "directory_tracked_file_count": 161,
+    "directory_tracked_file_count": 174,
     "excluded_self_referential_count": 6,
-    "included_file_count": 231,
-    "included_total_bytes": 3761049,
+    "included_file_count": 251,
+    "included_total_bytes": 4403541,
     "local_raw_dependency_count": 44,
     "manifest_release_directories": 1,
-    "manifest_release_file_records": 75,
+    "manifest_release_file_records": 82,
     "missing_file_count": 0
   }
 }

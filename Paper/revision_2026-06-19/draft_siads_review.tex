@@ -75,9 +75,9 @@ three-mode chain we validate a neural-network Fokker--Planck solver against the
 explicit Gibbs density, then use it to visualize symmetry breaking,
 phase-locking stabilization, and qualitative slow relaxation modes. The
 transport and local-equilibrium conclusions are supported by reproducible
-simulation code, finite-time diagnostics, and larger-chain checks through
-$n=60$; bath-energy entropy production and asymptotic current large deviations
-are left for future work.
+simulation code, finite-time diagnostics, a bath-temperature robustness check,
+and larger-chain checks through $n=60$; bath-energy entropy production and
+asymptotic current large deviations are left for future work.
 \end{abstract}
 
 \noindent\textbf{Keywords.}
@@ -788,6 +788,22 @@ crossover to Fourier scaling, but retain \eqref{eq:flux-scaling} as the
 primary quoted exponent because the larger lengths are robustness extensions
 rather than a complete larger-$n$ and fine-timestep convergence study.
 
+Finally, we repeated the production-resolution four-length experiment at a
+second bath-temperature pair with the same total bath scale but smaller
+contrast, $T_1=8,T_n=4$.  With $1024$ trajectories per length and the same
+burn-ins, timestep, and measurement window as the primary production run, this
+parameter set gives
+\[
+  \E[J(n)] \;=\; 12.95\,n^{-1.751},
+  \qquad R^2=0.9984,
+\]
+over $n=10,20,30,40$, with bootstrap exponent confidence interval
+$[-1.780,-1.723]$.  The maximum first-half/second-half stationarity statistic
+over the four lengths is $1.74$ paired standard errors.  This check indicates
+that the faster-than-Fourier finite-size decay is not tied only to the single
+temperature pair $T_1=10,T_n=2$, although it is still not a systematic
+parameter sweep.
+
 \Cref{tab:flux-fit-sensitivity} records the finite-size sensitivity of the
 power-law fit. Adding $n=50$ and $n=60$, fitting only the tail
 $n=20,30,40,50,60$, or leaving out any one of the six available lengths all
@@ -1191,8 +1207,8 @@ canonical simulator, production manifest, larger-chain robustness run,
 fit-window sensitivity analysis, validation report, current-window statistics &
 frozen source/binary hashes; equal-temperature and hot/cold reversal gates;
 trajectory-bootstrap exponent CI; split-window stationarity, timestep pilot,
-and fit-window sensitivity &
-finite-size action-current law over $n=10,20,30,40$, with an $n=50$
+bath-temperature robustness check, and fit-window sensitivity &
+finite-size action-current law over $n=10,20,30,40$, with $n=50$
 and $n=60$ robustness checks \\
 \midrule
 Long-chain profiles and local equilibrium &
@@ -1246,6 +1262,8 @@ repository root. The key reproducibility artifacts are:
   \path{Paper/revision_2026-06-19/experiments/flux_validation/};
   \item current-scaling fit-window sensitivity output:
   \path{Paper/revision_2026-06-19/experiments/flux_validation/larger_n60_pilot_2026-06-20/flux_scaling_sensitivity_n10_60.json};
+  \item bath-parameter current-robustness output:
+  \path{Paper/revision_2026-06-19/experiments/flux_validation/parameter_robustness_2026-06-20/moderate_contrast_T8_T4_prod/b64_scaling_scaling.json};
   \item figure-generation script for
   \cref{fig:profile,fig:embedding,fig:lte-resid}:
   \path{Paper/revision_2026-06-19/scripts/generate_manuscript_figures.py};

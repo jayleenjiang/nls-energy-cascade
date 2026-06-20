@@ -173,6 +173,14 @@ def build_registry() -> list[dict[str, Any]]:
     n60_summary_path = n60_dir / "n60_b64_summary.csv"
     n60_readme_path = n60_dir / "README.md"
     flux_sensitivity_path = n60_dir / "flux_scaling_sensitivity_n10_60.json"
+    parameter_dir = REVISION / "experiments/flux_validation/parameter_robustness_2026-06-20"
+    parameter_scaling_path = parameter_dir / "moderate_contrast_T8_T4_prod/b64_scaling_scaling.json"
+    parameter_summary_paths = [
+        parameter_dir / f"moderate_contrast_T8_T4_prod/n{n}_b64_summary.csv"
+        for n in (10, 20, 30, 40)
+    ]
+    parameter_readme_path = parameter_dir / "README.md"
+    parameter_production_summary_path = parameter_dir / "production_summary.csv"
     figure_metrics_path = REVISION / "manuscript_figure_metrics.json"
     source_trace_path = REVISION / "source_trace_metrics.json"
     rerun_path = REVISION / "short_chain_nn_rerun_metrics.json"
@@ -193,6 +201,8 @@ def build_registry() -> list[dict[str, Any]]:
     n60_scaling = load_json(n60_scaling_path)
     n60_summary = read_summary(n60_summary_path)
     flux_sensitivity = load_json(flux_sensitivity_path)
+    parameter_scaling = load_json(parameter_scaling_path)
+    parameter_summaries = [read_summary(path) for path in parameter_summary_paths]
 
     prefactor = flux["prefactor"]
     exponent = flux["exponent"]
@@ -371,6 +381,50 @@ def build_registry() -> list[dict[str, Any]]:
             "six_length_r_squared": n60_scaling["r_squared_log_fit"],
         },
         note="The n=60 run has production-size trajectory count but no matched fine-step production run, so it is used as robustness evidence.",
+    )
+
+    parameter_max_abs_z = max(
+        abs(row["mean_second_minus_first"] / row["paired_difference_se"])
+        for row in parameter_summaries
+    )
+    add_claim(
+        registry,
+        claim_id="bath_parameter_current_robustness",
+        section="thermal conductivity",
+        claim="A second bath-temperature production run supports the current-scaling trend without becoming a systematic parameter sweep.",
+        evidence=[
+            parameter_scaling_path,
+            *parameter_summary_paths,
+            parameter_readme_path,
+            parameter_production_summary_path,
+        ],
+        expected_text=[
+            r"$T_1=8,T_n=4$",
+            r"$1024$ trajectories per length",
+            r"\E[J(n)] \;=\; 12.95\,n^{-1.751}",
+            r"R^2=0.9984",
+            r"$[-1.780,-1.723]$",
+            r"maximum first-half/second-half stationarity statistic",
+            r"$1.74$ paired standard errors",
+            r"not a systematic parameter sweep",
+        ],
+        computed={
+            "T1": parameter_summaries[0]["T1"],
+            "Tn": parameter_summaries[0]["Tn"],
+            "means": {
+                f"n={row['n']}": row["mean_action_current"]
+                for row in parameter_summaries
+            },
+            "standard_errors": {
+                f"n={row['n']}": row["standard_error"]
+                for row in parameter_summaries
+            },
+            "max_abs_stationarity_z": parameter_max_abs_z,
+            "exponent": parameter_scaling["exponent"],
+            "exponent_ci": parameter_scaling["exponent_normalized_95_ci"],
+            "r_squared": parameter_scaling["r_squared_log_fit"],
+        },
+        note="The manuscript uses this as a robustness check at a second bath-temperature pair, not as a full parameter sweep.",
     )
 
     sensitivity_by_label = {
@@ -576,6 +630,7 @@ def build_registry() -> list[dict[str, Any]]:
             DRAFT,
             flux_path,
             flux_sensitivity_path,
+            parameter_scaling_path,
             validation_path,
             figure_metrics_path,
             source_trace_path,
@@ -588,12 +643,13 @@ def build_registry() -> list[dict[str, Any]]:
             r"Action-current scaling",
             r"fit-window sensitivity analysis",
             r"and fit-window sensitivity",
+            r"bath-temperature robustness check",
             r"Long-chain profiles and local equilibrium",
             r"Short-chain Fokker--Planck density",
             r"Eigenfunction diagnostic",
             r"Manuscript-level claim audit",
             r"finite-size action-current law over $n=10,20,30,40$",
-            r"with an $n=50$",
+            r"with $n=50$",
             r"and $n=60$ robustness checks",
             r"saved-model inference reproducibility, not full neural-network retraining",
             r"observable-dependent slow-mode diagnostic, not resolved spectral gap",
@@ -626,6 +682,7 @@ def build_registry() -> list[dict[str, Any]]:
             r"\path{Paper/revision_2026-06-19/eigen_fit_sensitivity.json}",
             r"\path{Paper/revision_2026-06-19/scripts/analyze_flux_scaling_sensitivity.py}",
             r"\path{Paper/revision_2026-06-19/experiments/flux_validation/larger_n60_pilot_2026-06-20/flux_scaling_sensitivity_n10_60.json}",
+            r"\path{Paper/revision_2026-06-19/experiments/flux_validation/parameter_robustness_2026-06-20/moderate_contrast_T8_T4_prod/b64_scaling_scaling.json}",
             r"\path{Paper/revision_2026-06-19/scripts/audit_availability_paths.py}",
             r"\path{Paper/revision_2026-06-19/availability_path_audit.json}",
             r"\path{Paper/revision_2026-06-19/availability_path_audit.md}",

@@ -24,9 +24,10 @@ and uncertainty protocol, the LTE residual mesh diagnostic including the
 requested `n=15` case, a timestep sensitivity table, and finite-window current
 diagnostics.  A later 2026-06-20 current-scaling robustness pass added an
 `n=50` canonical current run, an `n=60` production-size robustness extension,
-a fit-window sensitivity table, and a smaller `n=50` fine-timestep pilot.  The
-latest path audit checks 36/36 manuscript paths and figures, and the numerical
-claim audit checks 17/17 registered claims.
+a fit-window sensitivity table, a smaller `n=50` fine-timestep pilot, and a
+production-resolution bath-temperature robustness check at `T1=8,Tn=4`.  The
+latest path audit checks 37/37 manuscript paths and figures, and the numerical
+claim audit checks 18/18 registered claims.
 
 ## 1. Decisions needed from the authors
 
@@ -192,7 +193,7 @@ The main contributions are:
 1. formulation and validation of a Gibbs-preserving two-bath numerical model;
 2. high-throughput finite-chain simulations showing an action-current scaling
    E[J(n)] ≈ 28.75 n^{-1.850} over n = 10, 20, 30, 40 under the reported
-   parameters;
+   parameters, with larger-chain and bath-temperature robustness checks;
 3. local-equilibrium diagnostics for long-chain pair marginals, including
    explicit limitations where strict local Gibbs structure fails;
 4. source-traced short-chain neural Fokker--Planck diagnostics, including
@@ -229,8 +230,8 @@ place.  The command
 python3 Paper/revision_2026-06-19/scripts/run_submission_checks.py --compile-latex
 
 currently returns PASS_WITH_LOCAL_RAW_DATA_LIMITATION: the manuscript compiles,
-the local numerical claim audit passes 17/17 checks, the path audit passes
-36/36 checks, and the release bundle has no missing or untracked required
+the local numerical claim audit passes 18/18 checks, the path audit passes
+37/37 checks, and the release bundle has no missing or untracked required
 files.  The remaining limitation is that a DOI-backed raw-data archive has not
 yet been uploaded.
 

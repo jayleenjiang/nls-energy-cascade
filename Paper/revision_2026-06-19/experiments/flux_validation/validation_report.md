@@ -61,6 +61,21 @@ Larger-chain robustness and fit-window sensitivity:
 - adjacent local slopes range from `-1.71976` on `n=10--20` to `-2.17771`
   on `n=50--60`
 
+Bath-temperature robustness:
+
+- a second production-resolution four-length run at `T1=8,Tn=4`, `gamma=0.1`,
+  and `dt=5e-4` gives positive currents at all four primary lengths
+- the means are `0.2233162853`, `0.07169996295`, `0.03422040656`, and
+  `0.01948996976` for `n=10,20,30,40`
+- the corresponding standard errors are `0.00177600849`, `0.00086742549`,
+  `0.00056584124`, and `0.00044790010`
+- the fitted finite-size exponent is `-1.75098`, bootstrap 95% CI
+  `[-1.77964, -1.72269]`, with log-fit `R^2 = 0.99844`
+- the maximum first-half/second-half stationarity statistic is `1.73684`
+  paired standard errors, below the `|z|>=2` red-flag threshold
+- this is a bath-temperature robustness check, not a systematic parameter
+  sweep
+
 Timestep sensitivity:
 
 - `dt=1e-3` is visibly coarse at larger `n` and underestimates the
@@ -101,7 +116,9 @@ Coverage: 11/11 checked.
 VERIFIED for the canonical action-current experiment. The evidence supports the
 manuscript claim that, for the corrected Gibbs-preserving SDE at
 `T1=10,Tn=2,gamma=0.1`, the finite-chain mean action current decays
-approximately as `n^-1.85` over `n=10,20,30,40`.
+approximately as `n^-1.85` over `n=10,20,30,40`. A production-resolution
+robustness check at `T1=8,Tn=4,gamma=0.1` gives a comparable faster-than-Fourier
+finite-size decay with exponent approximately `-1.75`.
 
 Limitations: the exponent is a finite-size numerical scaling over four chain
 lengths; the confidence interval reflects Monte Carlo uncertainty conditional

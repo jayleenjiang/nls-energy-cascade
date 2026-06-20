@@ -5,7 +5,8 @@
 - Artifact type: parameter-robustness pilot and production-upgrade plan
 - Model version: `gibbs-canonical-v1`
 - Origin date: 2026-06-20
-- Verification status: PILOT ONLY
+- Verification status: PRODUCTION UPGRADE COMPLETE for `T1=8,Tn=4`; PILOT ONLY
+  for `T1=5,Tn=1`
 - Scope: bath-temperature robustness of the canonical action-current
   accumulator; not a manuscript-level numerical claim yet
 
@@ -43,7 +44,7 @@ Parameter sets:
 2. `scaled_contrast_T5_T1`: same bath ratio as the primary run, but lower
    absolute bath scale.
 
-This is deliberately a low-cost screening run.  The pilot is sufficient for
+The first pass was deliberately a low-cost screening run.  The pilot is sufficient for
 checking sign, rough scaling, stationarity red flags, and whether a
 production-size upgrade is scientifically worthwhile.  It is not sufficient
 for a final paper claim because the bootstrap intervals still reflect only
@@ -104,13 +105,44 @@ pilot has a borderline first-half/second-half statistic at `n=10`
 a failure, but it argues for production-size replication before using the
 result in the paper.
 
-## Recommended production upgrade
+## Production upgrade: `T1=8,Tn=4`
 
-If the paper needs an additional robustness subsection, upgrade only one set
-first:
+The cleaner pilot set, `T1=8,Tn=4`, was upgraded to production size:
 
-1. `T1=8,Tn=4` is the cleaner first choice because the pilot stationarity
-   diagnostics are comfortably below `|z|=2`.
+- `64` batches = `1024` trajectories per chain length
+- `dt=5e-4`
+- measurement window: `200`
+- burn-ins: `1000,1280,2880,5120`
+- threads: `4`
+
+Production scaling result:
+
+| parameter set | fitted exponent | bootstrap 95% CI | log-fit `R^2` | max `|stationarity z|` |
+|---|---:|---:|---:|---:|
+| `T1=8,Tn=4` production | `-1.7510` | `[-1.7796,-1.7227]` | `0.9984` | `1.74` |
+
+Production mean-current table:
+
+| parameter set | `n` | mean action current | SE | stationarity z |
+|---|---:|---:|---:|---:|
+| `T1=8,Tn=4` production | 10 | `0.2233162853` | `0.0017760085` | `-0.357` |
+| `T1=8,Tn=4` production | 20 | `0.0716999629` | `0.0008674255` | `-1.039` |
+| `T1=8,Tn=4` production | 30 | `0.0342204066` | `0.0005658412` | `-1.737` |
+| `T1=8,Tn=4` production | 40 | `0.0194899698` | `0.0004479001` | `0.219` |
+
+The production upgrade supports a manuscript-level robustness statement: under
+a second bath-temperature pair with the same total bath scale but smaller
+contrast, the four-length finite-size exponent remains well below `-1`, and no
+split-window stationarity statistic crosses the `|z|>=2` red-flag threshold.
+This remains a robustness check, not a systematic parameter sweep.
+
+## Further optional production upgrade
+
+If the paper needs still more parameter robustness, upgrade only one further
+set:
+
+1. `T1=5,Tn=1` is the natural next choice because it preserves the primary
+   bath-temperature ratio at a lower absolute scale.
 2. Use the same production settings as the primary run:
    `64` batches = `1024` trajectories per length, `dt=5e-4`, measurement
    window `200`, and the existing `n`-dependent burn-ins.
@@ -123,12 +155,11 @@ first:
 Possible production commands:
 
 ```sh
-flux_canonical 8 4 10 64 1000 200 0.0005 20260630 2 parameter_robustness_2026-06-20/moderate_contrast_T8_T4_prod/n10
-flux_canonical 8 4 20 64 1280 200 0.0005 20260630 2 parameter_robustness_2026-06-20/moderate_contrast_T8_T4_prod/n20
-flux_canonical 8 4 30 64 2880 200 0.0005 20260630 2 parameter_robustness_2026-06-20/moderate_contrast_T8_T4_prod/n30
-flux_canonical 8 4 40 64 5120 200 0.0005 20260630 2 parameter_robustness_2026-06-20/moderate_contrast_T8_T4_prod/n40
+flux_canonical 5 1 10 64 1000 200 0.0005 20260631 2 parameter_robustness_2026-06-20/scaled_contrast_T5_T1_prod/n10
+flux_canonical 5 1 20 64 1280 200 0.0005 20260631 2 parameter_robustness_2026-06-20/scaled_contrast_T5_T1_prod/n20
+flux_canonical 5 1 30 64 2880 200 0.0005 20260631 2 parameter_robustness_2026-06-20/scaled_contrast_T5_T1_prod/n30
+flux_canonical 5 1 40 64 5120 200 0.0005 20260631 2 parameter_robustness_2026-06-20/scaled_contrast_T5_T1_prod/n40
 ```
 
-The production upgrade is optional.  The current manuscript is already locally
-submission-gated without this extra parameter study; this artifact records the
-next most useful numerical reinforcement if time and compute budget allow it.
+This further production upgrade is optional.  The current manuscript is already
+locally submission-gated with the `T1=8,Tn=4` production robustness check.

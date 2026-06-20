@@ -1,12 +1,12 @@
 # Availability path audit
 
-Generated: `2026-06-20T18:03:41.177271+00:00`
+Generated: `2026-06-20T18:42:58.515912+00:00`
 
 Draft: `Paper/revision_2026-06-19/draft.tex`
 
 ## Summary
 
-- Total paths checked: 36
+- Total paths checked: 37
 - Missing paths: 0
 - Untracked files among existing file paths: 0
 
@@ -22,6 +22,7 @@ Draft: `Paper/revision_2026-06-19/draft.tex`
 | availability | `Paper/revision_2026-06-19/scripts/analyze_flux_scaling_sensitivity.py` | `Paper/revision_2026-06-19/scripts/analyze_flux_scaling_sensitivity.py` | repo-root-relative | PASS (file) | yes | ef479273a910 |
 | availability | `Paper/revision_2026-06-19/experiments/flux_validation/` | `Paper/revision_2026-06-19/experiments/flux_validation` | repo-root-relative | PASS (directory) | n/a |  |
 | availability | `Paper/revision_2026-06-19/experiments/flux_validation/larger_n60_pilot_2026-06-20/flux_scaling_sensitivity_n10_60.json` | `Paper/revision_2026-06-19/experiments/flux_validation/larger_n60_pilot_2026-06-20/flux_scaling_sensitivity_n10_60.json` | repo-root-relative | PASS (file) | yes | 19315bf86b68 |
+| availability | `Paper/revision_2026-06-19/experiments/flux_validation/parameter_robustness_2026-06-20/moderate_contrast_T8_T4_prod/b64_scaling_scaling.json` | `Paper/revision_2026-06-19/experiments/flux_validation/parameter_robustness_2026-06-20/moderate_contrast_T8_T4_prod/b64_scaling_scaling.json` | repo-root-relative | PASS (file) | yes | 059c81dc9203 |
 | availability | `Paper/revision_2026-06-19/scripts/generate_manuscript_figures.py` | `Paper/revision_2026-06-19/scripts/generate_manuscript_figures.py` | repo-root-relative | PASS (file) | yes | 65026eb1d396 |
 | availability | `Paper/revision_2026-06-19/manuscript_figure_metrics.json` | `Paper/revision_2026-06-19/manuscript_figure_metrics.json` | repo-root-relative | PASS (file) | yes | c0dfd2a21ffd |
 | availability | `Paper/revision_2026-06-19/scripts/export_source_trace_metrics.py` | `Paper/revision_2026-06-19/scripts/export_source_trace_metrics.py` | repo-root-relative | PASS (file) | yes | 5eac487deea1 |
@@ -30,9 +31,9 @@ Draft: `Paper/revision_2026-06-19/draft.tex`
 | availability | `Paper/revision_2026-06-19/short_chain_nn_rerun_metrics.json` | `Paper/revision_2026-06-19/short_chain_nn_rerun_metrics.json` | repo-root-relative | PASS (file) | yes | 5600a1a9f126 |
 | availability | `Paper/revision_2026-06-19/scripts/analyze_eigen_fit_windows.py` | `Paper/revision_2026-06-19/scripts/analyze_eigen_fit_windows.py` | repo-root-relative | PASS (file) | yes | 4b7669683117 |
 | availability | `Paper/revision_2026-06-19/eigen_fit_sensitivity.json` | `Paper/revision_2026-06-19/eigen_fit_sensitivity.json` | repo-root-relative | PASS (file) | yes | cdc0d3ecba77 |
-| availability | `Paper/revision_2026-06-19/scripts/audit_manuscript_claims.py` | `Paper/revision_2026-06-19/scripts/audit_manuscript_claims.py` | repo-root-relative | PASS (file) | yes | 664c7656ba85 |
-| availability | `Paper/revision_2026-06-19/manuscript_claim_audit.json` | `Paper/revision_2026-06-19/manuscript_claim_audit.json` | repo-root-relative | PASS (file) | yes | 931cec69fee6 |
-| availability | `Paper/revision_2026-06-19/manuscript_claim_audit.md` | `Paper/revision_2026-06-19/manuscript_claim_audit.md` | repo-root-relative | PASS (file) | yes | e99b18473646 |
+| availability | `Paper/revision_2026-06-19/scripts/audit_manuscript_claims.py` | `Paper/revision_2026-06-19/scripts/audit_manuscript_claims.py` | repo-root-relative | PASS (file) | yes | c9cee2b34cd2 |
+| availability | `Paper/revision_2026-06-19/manuscript_claim_audit.json` | `Paper/revision_2026-06-19/manuscript_claim_audit.json` | repo-root-relative | PASS (file) | yes | 4cb9630b8a01 |
+| availability | `Paper/revision_2026-06-19/manuscript_claim_audit.md` | `Paper/revision_2026-06-19/manuscript_claim_audit.md` | repo-root-relative | PASS (file) | yes | 5dc455568316 |
 | availability | `Paper/revision_2026-06-19/scripts/audit_availability_paths.py` | `Paper/revision_2026-06-19/scripts/audit_availability_paths.py` | repo-root-relative | PASS (file) | yes | 449c7c91c7d2 |
 | availability | `Paper/revision_2026-06-19/availability_path_audit.json` | `Paper/revision_2026-06-19/availability_path_audit.json` | repo-root-relative | PASS (file) | yes |  |
 | availability | `Paper/revision_2026-06-19/availability_path_audit.md` | `Paper/revision_2026-06-19/availability_path_audit.md` | repo-root-relative | PASS (file) | yes |  |
