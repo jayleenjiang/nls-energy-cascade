@@ -19,7 +19,7 @@ Latest local command:
 python3 Paper/revision_2026-06-19/scripts/run_submission_checks.py --compile-latex
 ```
 
-Latest result: `PASS_WITH_LOCAL_RAW_DATA_LIMITATION`.
+Latest result: `PASS_WITH_AUTHOR_CONFIRMATION_PENDING_AND_LOCAL_RAW_DATA_LIMITATION`.
 
 Key gate numbers:
 
@@ -29,10 +29,11 @@ Key gate numbers:
 | Availability/path audit | PASS, `37/37` paths present, `0` untracked required files |
 | Numerical claim audit | PASS, `18/18` claims verified |
 | Reference integrity audit | PASS, `8` cited BibTeX entries, `0` dangling citations |
+| Author/submission-field audit | `AUTHOR_CONFIRMATION_PENDING`, `9` pending author/external items |
 | Raw-data archive manifest | PASS locally, `40` unique referenced files, `138,875,181` bytes |
 | Raw-data archive build | PASS locally, upload-ready `.tar.gz` prepared under `tmp/`, DOI/upload still external |
-| Submission bundle manifest | `PASS_WITH_LOCAL_RAW_DATA_LIMITATION`, `87` release files, `0` missing, `0` untracked release files |
-| Source-only bundle dry run | PASS, `256` included files |
+| Submission bundle manifest | `PASS_WITH_LOCAL_RAW_DATA_LIMITATION`, `90` release files, `0` missing, `0` untracked release files |
+| Source-only bundle dry run | PASS, `259` included files |
 
 The SIADS review-preparation source also compiles locally:
 

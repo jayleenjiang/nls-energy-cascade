@@ -10,7 +10,8 @@ Current local gate command:
 python3 Paper/revision_2026-06-19/scripts/run_submission_checks.py --compile-latex
 ```
 
-Current local gate status: `PASS_WITH_LOCAL_RAW_DATA_LIMITATION`.
+Current local gate status:
+`PASS_WITH_AUTHOR_CONFIRMATION_PENDING_AND_LOCAL_RAW_DATA_LIMITATION`.
 
 This means the manuscript compiles locally, the LaTeX log has no flagged
 overfull/underfull/reference/citation warnings, registered numerical claims
@@ -233,11 +234,14 @@ place.  The command
 
 python3 Paper/revision_2026-06-19/scripts/run_submission_checks.py --compile-latex
 
-currently returns PASS_WITH_LOCAL_RAW_DATA_LIMITATION: the manuscript compiles,
-the local numerical claim audit passes 18/18 checks, the path audit passes
-37/37 checks, and the release bundle has no missing or untracked required
-files.  A local upload-ready raw-data `.tar.gz` can now be built from the
-40-file manifest, but a DOI-backed raw-data archive has not yet been uploaded.
+currently returns
+PASS_WITH_AUTHOR_CONFIRMATION_PENDING_AND_LOCAL_RAW_DATA_LIMITATION: the
+manuscript compiles, the local numerical claim audit passes 18/18 checks, the
+path audit passes 37/37 checks, and the release bundle has no missing or
+untracked required files. The author/submission-field audit records 9 pending
+author or external-service items. A local upload-ready raw-data `.tar.gz` can
+now be built from the 40-file manifest, but a DOI-backed raw-data archive has
+not yet been uploaded.
 
 Could you please confirm:
 

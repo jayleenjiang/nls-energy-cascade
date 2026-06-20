@@ -21,7 +21,7 @@ paper can be called journal-ready.
 | Submission/release bundle | Passing for tracked release files; raw-data limitation recorded | `scripts/build_submission_bundle_manifest.py`; `submission_bundle_manifest.json`; `submission_bundle_manifest.md` |
 | Source-only submission archive | Passing packaging dry run; archive written under `tmp/` | `scripts/build_submission_source_bundle.py`; `submission_source_bundle_report.json`; `submission_source_bundle_report.md` |
 | Minimal raw-data archive plan | Passing local raw-file manifest; upload-ready local archive build prepared but not uploaded | `scripts/build_raw_data_archive_manifest.py`; `scripts/build_raw_data_archive.py`; `raw_data_archive_manifest.json`; `raw_data_archive_manifest.md`; `raw_data_archive_build_report.md` |
-| One-command local gate | Passing with raw-data archive limitation | `scripts/run_submission_checks.py`; `submission_checks_summary.json`; `submission_checks_summary.md` |
+| One-command local gate | Passing locally with explicit author-confirmation and raw-data archive limitations | `scripts/run_submission_checks.py`; `submission_checks_summary.json`; `submission_checks_summary.md`; `author_submission_fields_audit.md` |
 | Reproducibility entry point | Prepared for reviewer/editor navigation | `submission_reproducibility_readme_2026-06-19.md` |
 | Compiled-PDF layout QA | Generic article PDF checked locally | `pdf_layout_qa_2026-06-19.md` |
 | Author/journal action packet | Prepared; requires author completion | `author_submission_action_packet_2026-06-19.md` |
@@ -43,8 +43,9 @@ robustness pass added a fit-window sensitivity table around the `n=50` and
 `n=60` larger-chain runs.  A subsequent bath-parameter robustness pass added a
 production-resolution `T1=8,Tn=4` current-scaling check over
 `n=10,20,30,40`.  The latest one-command gate reports
-`PASS_WITH_LOCAL_RAW_DATA_LIMITATION` with 37/37 availability path records
-present and git-tracked, 18/18 registered numerical claims verified, and zero
+`PASS_WITH_AUTHOR_CONFIRMATION_PENDING_AND_LOCAL_RAW_DATA_LIMITATION` with
+37/37 availability path records present and git-tracked, 18/18 registered
+numerical claims verified, 9 author/external submission items pending, and zero
 missing release-bundle files.
 
 ## 2026-06-20 larger-chain robustness update
@@ -152,8 +153,12 @@ Run these only after the author-supplied items above have been inserted.
 1. Run
    `python3 Paper/revision_2026-06-19/scripts/run_submission_checks.py --compile-latex`
    from the repository root.
-2. Confirm `submission_checks_summary.md` reports
-   `PASS_WITH_LOCAL_RAW_DATA_LIMITATION` or better.
+2. Confirm `submission_checks_summary.md` reports no local numerical, path,
+   reference, bundle, or LaTeX failures. Before author-only items are resolved
+   the expected status is
+   `PASS_WITH_AUTHOR_CONFIRMATION_PENDING_AND_LOCAL_RAW_DATA_LIMITATION`; after
+   those items are resolved, rerun until no author-confirmation placeholders
+   remain.
 3. Compile `draft.tex` from a clean build directory if the runner was not run
    with `--compile-latex`.
 4. Check the LaTeX log for unresolved references/citations and overfull or
@@ -194,6 +199,7 @@ Run these only after the author-supplied items above have been inserted.
   - `submission_source_bundle_report.md`
   - `raw_data_archive_manifest.md`
   - `raw_data_archive_build_report.md`
+  - `author_submission_fields_audit.md`
   - `submission_checks_summary.md`
   - `submission_reproducibility_readme_2026-06-19.md`
   - `pdf_layout_qa_2026-06-19.md`

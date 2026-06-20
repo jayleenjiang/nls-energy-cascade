@@ -142,7 +142,8 @@
     the script with `--compile-latex` performs the local submission gate in one
     command: LaTeX compile/log scan, availability-path audit, manuscript-claim
     audit, raw-data archive manifest, and submission-bundle manifest. The
-    current result is `PASS_WITH_LOCAL_RAW_DATA_LIMITATION`.
+    current result is
+    `PASS_WITH_AUTHOR_CONFIRMATION_PENDING_AND_LOCAL_RAW_DATA_LIMITATION`.
 25. Added `author_submission_action_packet_2026-06-19.md`, an author-facing
     packet that turns the remaining non-code blockers into fillable decisions:
     target journal/template, author metadata, funding, competing interests,
@@ -175,7 +176,7 @@
     submission `.tar.gz` under `tmp/` from the release manifest, records an
     archive SHA-256 checksum, and deliberately excludes self-referential
     generated summaries and the large local raw-data roots. The current
-    packaging run includes 256 regular files, has zero missing files, and
+    packaging run includes 259 regular files, has zero missing files, and
     records 44 local raw-data dependency records as
     excluded pending any DOI-backed raw-data archive decision.
 31. Performed a submission-level strengthening pass on 2026-06-20:
@@ -188,8 +189,9 @@
     - added finite-window current diagnostics for standardized current
       windows and $\tau\,\mathrm{Var}(\overline J_\tau)$;
     - reran the one-command submission gate, which now reports
-      `PASS_WITH_LOCAL_RAW_DATA_LIMITATION` with 37/37 path records available
-      and 18/18 registered numerical claims verified.
+      `PASS_WITH_AUTHOR_CONFIRMATION_PENDING_AND_LOCAL_RAW_DATA_LIMITATION`
+      with 37/37 path records available, 18/18 registered numerical claims
+      verified, and 9 author/external submission items pending.
 32. Added `siads_first_submission_packet_2026-06-20.md`, a target-specific
     preparation packet for the recommended first journal target.  It contains a
     SIADS-facing cover-letter draft, supplementary-material index, keywords and

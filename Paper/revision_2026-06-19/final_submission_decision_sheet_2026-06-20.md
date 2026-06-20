@@ -23,7 +23,7 @@ Latest local gate:
 python3 Paper/revision_2026-06-19/scripts/run_submission_checks.py --compile-latex
 ```
 
-Latest status: `PASS_WITH_LOCAL_RAW_DATA_LIMITATION`.
+Latest status: `PASS_WITH_AUTHOR_CONFIRMATION_PENDING_AND_LOCAL_RAW_DATA_LIMITATION`.
 
 Key numbers from the current gate:
 
@@ -33,10 +33,11 @@ Key numbers from the current gate:
 | Registered numerical claims verified | 18/18 |
 | Cited BibTeX entries | 8 |
 | Dangling citations | 0 |
-| Release-bundle files | 87 |
+| Release-bundle files | 90 |
 | Missing release files | 0 |
-| Source-only bundle included files | 256 |
+| Source-only bundle included files | 259 |
 | Minimal raw-data subset | 40 files, 138,875,181 bytes |
+| Author/submission-field audit | 9 pending author/external items |
 
 The SIADS review-preparation source compiles locally:
 
@@ -182,5 +183,7 @@ python3 Paper/revision_2026-06-19/scripts/run_submission_checks.py --compile-lat
 ```
 
 Submission should proceed only if the gate remains
-`PASS_WITH_LOCAL_RAW_DATA_LIMITATION` or better, and the compiled PDF is
+`PASS_WITH_AUTHOR_CONFIRMATION_PENDING_AND_LOCAL_RAW_DATA_LIMITATION` or
+better before author-only items are resolved, and then a fully author-confirmed
+passing status after those items are inserted. The compiled PDF should also be
 visually inspected page by page.

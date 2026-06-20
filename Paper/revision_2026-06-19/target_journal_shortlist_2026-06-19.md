@@ -13,7 +13,8 @@ Current manuscript profile:
 - methods/results mix: stochastic dynamics, nonequilibrium steady states,
   long-chain Monte Carlo, local-equilibrium diagnostics, short-chain
   Fokker--Planck/neural diagnostics, reproducibility audits;
-- current local gate status: `PASS_WITH_LOCAL_RAW_DATA_LIMITATION`;
+- current local gate status:
+  `PASS_WITH_AUTHOR_CONFIRMATION_PENDING_AND_LOCAL_RAW_DATA_LIMITATION`;
 - remaining non-local decisions: author declarations, professional
   similarity/self-plagiarism check, journal template, and possible DOI-backed
   raw-data archive.

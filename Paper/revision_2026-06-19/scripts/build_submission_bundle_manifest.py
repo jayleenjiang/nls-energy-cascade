@@ -178,6 +178,8 @@ def collect_handoff_docs(root: Path, revision_dir: Path, release: dict[str, set[
         "raw_data_archive_manifest.md",
         "raw_data_archive_build_report.json",
         "raw_data_archive_build_report.md",
+        "author_submission_fields_audit.json",
+        "author_submission_fields_audit.md",
         "reference_integrity_audit.json",
         "reference_integrity_audit.md",
         "submission_checks_summary.json",
@@ -206,6 +208,11 @@ def collect_handoff_docs(root: Path, revision_dir: Path, release: dict[str, set[
         release,
         str((revision_dir / "scripts/build_raw_data_archive.py").relative_to(root)),
         "raw-data-archive-builder",
+    )
+    add_role(
+        release,
+        str((revision_dir / "scripts/audit_author_submission_fields.py").relative_to(root)),
+        "author-submission-audit",
     )
     add_role(
         release,

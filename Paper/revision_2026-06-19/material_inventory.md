@@ -98,8 +98,9 @@ Key updates since the initial inventory:
 - The 2026-06-20 submission-level pass further added the Monte Carlo validation
   protocol, the LTE residual mesh figure, timestep sensitivity table, and
   finite-window current diagnostics.  The current one-command gate reports
-  `PASS_WITH_LOCAL_RAW_DATA_LIMITATION` with 37/37 availability paths present,
-  18/18 registered numerical claims verified, and the larger-chain plus
+  `PASS_WITH_AUTHOR_CONFIRMATION_PENDING_AND_LOCAL_RAW_DATA_LIMITATION` with
+  37/37 availability paths present, 18/18 registered numerical claims verified,
+  9 author/external submission items pending, and the larger-chain plus
   bath-temperature robustness updates included.
 
 The remaining items before formal journal submission are author/journal

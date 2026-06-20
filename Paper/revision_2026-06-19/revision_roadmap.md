@@ -63,10 +63,12 @@ the claim scope: the manuscript now includes the Monte Carlo validation and
 uncertainty protocol, the `n=15,25,50` LTE residual mesh diagnostic from the
 `compare_residual.m` convention, a current-estimator timestep sensitivity
 table, and finite-window current diagnostics.  The current local gate reports
-`PASS_WITH_LOCAL_RAW_DATA_LIMITATION`: LaTeX/log checks pass, availability
-checks cover 37/37 paths with zero untracked required files, reference
-integrity passes, and the registered numerical claim audit verifies 18/18
-claims.  Remaining blockers are author/journal/external-release decisions:
+`PASS_WITH_AUTHOR_CONFIRMATION_PENDING_AND_LOCAL_RAW_DATA_LIMITATION`:
+LaTeX/log checks pass, availability checks cover 37/37 paths with zero
+untracked required files, reference integrity passes, and the registered
+numerical claim audit verifies 18/18 claims. The author/submission-field audit
+records 9 pending author or external-service items. Remaining blockers are
+author/journal/external-release decisions:
 target journal/template, final declarations, professional similarity screening,
 and whether to create a DOI-backed raw-data archive.
 

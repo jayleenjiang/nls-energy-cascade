@@ -17,7 +17,7 @@ Latest command:
 python3 Paper/revision_2026-06-19/scripts/run_submission_checks.py --compile-latex
 ```
 
-Latest status: `PASS_WITH_LOCAL_RAW_DATA_LIMITATION`.
+Latest status: `PASS_WITH_AUTHOR_CONFIRMATION_PENDING_AND_LOCAL_RAW_DATA_LIMITATION`.
 
 Key numbers:
 
@@ -26,10 +26,11 @@ Key numbers:
 | Availability paths | 37/37 |
 | Registered numerical claims | 18/18 |
 | Cited BibTeX entries | 8 |
-| Release-bundle files | 87 |
-| Source-bundle included files | 256 |
+| Release-bundle files | 90 |
+| Source-bundle included files | 259 |
 | Minimal raw-data files | 40 |
 | Missing raw-data files | 0 |
+| Author/submission-field audit | 9 pending author/external items |
 
 ## Manuscript PDFs
 

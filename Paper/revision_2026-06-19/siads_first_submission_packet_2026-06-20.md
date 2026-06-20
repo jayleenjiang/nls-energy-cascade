@@ -27,7 +27,7 @@ Official SIADS pages checked on 2026-06-20:
 - SIADS review-preparation PDF SHA-256:
   `1534e68e0617d0f44bc3d4b856d1ee608029ba3cc84c409a64802cfc93a4950b`.
 - Current local gate:
-  `PASS_WITH_LOCAL_RAW_DATA_LIMITATION`.
+  `PASS_WITH_AUTHOR_CONFIRMATION_PENDING_AND_LOCAL_RAW_DATA_LIMITATION`.
 - Current manuscript figures are embedded inline.
 - Current code-verifiable numerical claim audit: 18/18 claims verified.
 - Current availability-path audit: 37/37 paths present and required files
@@ -35,6 +35,8 @@ Official SIADS pages checked on 2026-06-20:
 - Remaining non-local blockers: target confirmation, author metadata,
   funding/competing-interest declarations, professional similarity check, and
   raw-data archive decision.
+- Author/submission-field audit:
+  `AUTHOR_CONFIRMATION_PENDING` with 9 pending author/external items.
 
 ## SIADS-specific checklist
 

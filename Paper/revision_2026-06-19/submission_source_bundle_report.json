@@ -1,8 +1,8 @@
 {
   "archive": {
-    "path": "tmp/submission_source_bundle/runs/20260620T190201Z/NLS_numerical_study_source.tar.gz",
-    "sha256": "6189074f742e05ea7873a5d165676e730f8813e2e3c807cc8906e1a743016176",
-    "size_bytes": 2843439
+    "path": "tmp/submission_source_bundle/runs/20260620T190759Z/NLS_numerical_study_source.tar.gz",
+    "sha256": "a6c0928a78cb78b939fca4442a340741ffdeb056bbcfb2fcd1c6168df9397271",
+    "size_bytes": 2848338
   },
   "excluded_self_referential_files": [
     "Paper/revision_2026-06-19/submission_bundle_manifest.json",
@@ -33,19 +33,31 @@
     },
     {
       "path": "Paper/revision_2026-06-19/author_submission_action_packet_2026-06-19.md",
-      "sha256": "ddcbac187535098f20baf9459506db2e60099ab135932b45be64957168a7f9e5",
-      "size_bytes": 11304,
+      "sha256": "8ee417daf3c696dd4da35828c64c5b8cb1ae40226dd7f584dea1c2d2fe0e1b3d",
+      "size_bytes": 11453,
+      "source": "release-file"
+    },
+    {
+      "path": "Paper/revision_2026-06-19/author_submission_fields_audit.json",
+      "sha256": "690dd1a4e374252451e236503affb5b8cf02481881c136dbdc9d53c7049a694a",
+      "size_bytes": 3554,
+      "source": "release-file"
+    },
+    {
+      "path": "Paper/revision_2026-06-19/author_submission_fields_audit.md",
+      "sha256": "735308146b1729d52258bcc5659bc19d155fe9bf369d16c87308adf4726907d7",
+      "size_bytes": 2958,
       "source": "release-file"
     },
     {
       "path": "Paper/revision_2026-06-19/availability_path_audit.json",
-      "sha256": "d66561500a39689665c62fad396c0ded7b080407142700c2d8b3f6b41b5cd383",
+      "sha256": "184ec466763189e6a7afcc2e9f1b9dbe46cb3b9358ea0e0542238de75c6218f2",
       "size_bytes": 16332,
       "source": "release-file"
     },
     {
       "path": "Paper/revision_2026-06-19/availability_path_audit.md",
-      "sha256": "81f8ddb5114994872e285bf80eae30066ede1985ef02268f49fbce60e71252dd",
+      "sha256": "b96a4d89a2528994b796f30629a5b1fcb6dbea61b2c56ea9d2dca819fa1f9253",
       "size_bytes": 7584,
       "source": "release-file"
     },
@@ -219,14 +231,14 @@
     },
     {
       "path": "Paper/revision_2026-06-19/final_pre_submission_audit_2026-06-20.md",
-      "sha256": "8d153dfa5d3e3cd1f4d410b612e22fe35548c376200e731aebaed14c7b8109fa",
-      "size_bytes": 6897,
+      "sha256": "9f1792c012e7eb58f498954c1620970720468b91db8025ce1bd96c9741c30757",
+      "size_bytes": 7030,
       "source": "release-file"
     },
     {
       "path": "Paper/revision_2026-06-19/final_submission_decision_sheet_2026-06-20.md",
-      "sha256": "6f715de607839803df83f31a1a19ec9db79d244fbdeb46925385d1b27b9affb5",
-      "size_bytes": 6452,
+      "sha256": "20530bec658f28955731ddc33227b3ffbaef4ca8c6de5d36c913fd4dfeec6e6f",
+      "size_bytes": 6711,
       "source": "release-file"
     },
     {
@@ -237,8 +249,8 @@
     },
     {
       "path": "Paper/revision_2026-06-19/journal_upload_file_index_2026-06-20.md",
-      "sha256": "0df730a969fe23df696908321a1c22a37ccad7965d0877af91f933984cc920f6",
-      "size_bytes": 5004,
+      "sha256": "5fea01b6f8d0b7c80233fe11ef9310fa97e6c9b839a32530fa9be436e7ab1338",
+      "size_bytes": 5104,
       "source": "release-file"
     },
     {
@@ -249,13 +261,13 @@
     },
     {
       "path": "Paper/revision_2026-06-19/manuscript_claim_audit.json",
-      "sha256": "c0641878b437a09bfd3f4d44c4af6ba1c346fb960d3cc3c64e00e4a7afe35062",
+      "sha256": "7ce9610e31f9819c5a8b1eb181c385219a080fffa861eb896537adba98d54dff",
       "size_bytes": 44474,
       "source": "release-file"
     },
     {
       "path": "Paper/revision_2026-06-19/manuscript_claim_audit.md",
-      "sha256": "c56240f880cbd238227a67e95d0a0f97d7f0e05d7e9890a529599ff17b29775c",
+      "sha256": "ebd80085f364d1e9870dcd93d9c5d5882d8d22c39bd42583ae4121bd94ee0af8",
       "size_bytes": 6169,
       "source": "release-file"
     },
@@ -267,8 +279,8 @@
     },
     {
       "path": "Paper/revision_2026-06-19/material_inventory.md",
-      "sha256": "1ec79df29199e717dba40f3026d2dbcc172eb5a52516c15ee22ffe6f421ffe81",
-      "size_bytes": 5780,
+      "sha256": "ce0e30110617ec640a202b40c1054c4772c3c78f25803c26d322e489ad741150",
+      "size_bytes": 5858,
       "source": "release-file"
     },
     {
@@ -291,8 +303,8 @@
     },
     {
       "path": "Paper/revision_2026-06-19/progress_report.md",
-      "sha256": "18c61e40c96e5f4edcc422d0f7f2b89d47153d311c49903763ddc82fdc98a4f5",
-      "size_bytes": 17127,
+      "sha256": "4bc5a8c3141dfe307752a3a84e8a26be7699f1902840f4050caf25127dd8ae32",
+      "size_bytes": 17246,
       "source": "release-file"
     },
     {
@@ -309,25 +321,25 @@
     },
     {
       "path": "Paper/revision_2026-06-19/raw_data_archive_manifest.json",
-      "sha256": "4fc3ef3f3b2bfc75e5dbaa62c017ee938ee9d34a5d982c20b6e4ad25cc5bacbf",
+      "sha256": "ce496d510c90785a56dcf15b0cf2f708e3df9df5885e467ef2239d1517d577aa",
       "size_bytes": 16196,
       "source": "release-file"
     },
     {
       "path": "Paper/revision_2026-06-19/raw_data_archive_manifest.md",
-      "sha256": "2c0324903ed79f32e335f5927876d604eec77bc2f0705ac17af678e55d2ca279",
+      "sha256": "c1a9eaeb07ca46e8fa13629e885aa2c7890a077a41a45c37d2eab74fb9c40e39",
       "size_bytes": 8210,
       "source": "release-file"
     },
     {
       "path": "Paper/revision_2026-06-19/reference_integrity_audit.json",
-      "sha256": "023db52349c56e84d4b8801cadee0b15c441a642a08ea8fe866efc6a3ebb1175",
+      "sha256": "cffcdd75737df139809fb2c937e83039d503321feffb9f6f690ec0dae0e81b9b",
       "size_bytes": 6421,
       "source": "release-file"
     },
     {
       "path": "Paper/revision_2026-06-19/reference_integrity_audit.md",
-      "sha256": "bb9654d93fb0c9c4d625bee4b22b4867d063519587066bcddc5fb287a3fc3191",
+      "sha256": "cb535640f20dd084a69165a7b93afe789384de1a32641a25804a32ced6996459",
       "size_bytes": 2472,
       "source": "release-file"
     },
@@ -345,8 +357,8 @@
     },
     {
       "path": "Paper/revision_2026-06-19/revision_roadmap.md",
-      "sha256": "83823e4f7b87b1cbe7100171e790e5ece820227aad71d8d743c7044168e36e6d",
-      "size_bytes": 5242,
+      "sha256": "f9871713b5ec35f29fbe63b6ca2bb833d7e3204038b9c53337d4eec04671b800",
+      "size_bytes": 5359,
       "source": "release-file"
     },
     {
@@ -359,6 +371,12 @@
       "path": "Paper/revision_2026-06-19/scripts/analyze_flux_scaling_sensitivity.py",
       "sha256": "ef479273a910c2bc72cf033ff2a368edfeb5e31f7e75e81d1efb2929feb2b2fb",
       "size_bytes": 10643,
+      "source": "release-file"
+    },
+    {
+      "path": "Paper/revision_2026-06-19/scripts/audit_author_submission_fields.py",
+      "sha256": "3d05801ec0007ffe0dfb4079b47f385d9a4fef9840746d55e15d4e53679cb012",
+      "size_bytes": 8096,
       "source": "release-file"
     },
     {
@@ -393,8 +411,8 @@
     },
     {
       "path": "Paper/revision_2026-06-19/scripts/build_submission_bundle_manifest.py",
-      "sha256": "2881e806eab1aff405acd419267eb0c99056c1ad89d14c252c0b24867e917135",
-      "size_bytes": 17752,
+      "sha256": "294ca4f8c2239c2865421104c6526d1fb48c08c50dd7701e405126be6c91acd8",
+      "size_bytes": 18009,
       "source": "release-file"
     },
     {
@@ -423,8 +441,8 @@
     },
     {
       "path": "Paper/revision_2026-06-19/scripts/run_submission_checks.py",
-      "sha256": "33bc66d135c8955e45cf5a86110ac8dd847e98204663caf9c276da89a98a9f94",
-      "size_bytes": 10176,
+      "sha256": "8ffe8e595623651d492c4e4916937c65d24c6e43e8520ad473a43f1ee72d4ad4",
+      "size_bytes": 10875,
       "source": "release-file"
     },
     {
@@ -435,8 +453,8 @@
     },
     {
       "path": "Paper/revision_2026-06-19/siads_first_submission_packet_2026-06-20.md",
-      "sha256": "30322bd2a5878842a9c48841ad75340b3d05cccc078574ce77a1e9b85111f365",
-      "size_bytes": 9770,
+      "sha256": "21eb99025a35e2f59c4d330f27a883f40c184a278eea563fd57148a2aa92e754",
+      "size_bytes": 9905,
       "source": "release-file"
     },
     {
@@ -447,14 +465,14 @@
     },
     {
       "path": "Paper/revision_2026-06-19/submission_readiness_checklist_2026-06-19.md",
-      "sha256": "be392a3f532bf94f14dce5b52c2d5125e66f9f9609cc81158d204e21aa6d1a29",
-      "size_bytes": 13321,
+      "sha256": "98bec44c974ac3cc5bf10e832d1df43a0a2041111d3fc63a136075164f468ea7",
+      "size_bytes": 13763,
       "source": "release-file"
     },
     {
       "path": "Paper/revision_2026-06-19/submission_reproducibility_readme_2026-06-19.md",
-      "sha256": "7741b0f757eef3e001281ef197a1ac54ce7d0598f9b97fa03134466a55f9fc86",
-      "size_bytes": 7127,
+      "sha256": "65c13b07e1179cc622cf5641f410df222c0059d5fb72cec7770b76895de30f5d",
+      "size_bytes": 7435,
       "source": "release-file"
     },
     {
@@ -465,8 +483,8 @@
     },
     {
       "path": "Paper/revision_2026-06-19/target_journal_shortlist_2026-06-19.md",
-      "sha256": "724101ce1f01d303cf8244a837f116b6e17e9044b2e002d64941660e17600c74",
-      "size_bytes": 12721,
+      "sha256": "88f07cadc0fc6d42710e1c1e69f0494634eacdfa701f6693e00b692970c166ed",
+      "size_bytes": 12755,
       "source": "release-file"
     },
     {
@@ -1545,25 +1563,25 @@
     },
     {
       "path": "SOURCE_BUNDLE_CONTENTS.sha256",
-      "sha256": "22eccc09735267c0287b81a041ee0cd6a34b3818a1d96a24817733af6bf08d2f",
-      "size_bytes": 40209,
+      "sha256": "2a1ce9b6c9362365462dca4953f5e9a38eedb1c4b733f7e09dee859a95d8e3c1",
+      "size_bytes": 40597,
       "source": "generated-checksum-index"
     }
   ],
-  "generated_at_utc": "2026-06-20T19:02:01.014888+00:00",
+  "generated_at_utc": "2026-06-20T19:07:59.110548+00:00",
   "manifest": "Paper/revision_2026-06-19/submission_bundle_manifest.json",
   "missing_files": [],
   "script": "Paper/revision_2026-06-19/scripts/build_submission_source_bundle.py",
-  "staging_directory": "tmp/submission_source_bundle/runs/20260620T190201Z/NLS_numerical_study_source",
+  "staging_directory": "tmp/submission_source_bundle/runs/20260620T190759Z/NLS_numerical_study_source",
   "status": "PASS",
   "summary": {
     "directory_tracked_file_count": 174,
     "excluded_self_referential_count": 6,
-    "included_file_count": 256,
-    "included_total_bytes": 4443040,
+    "included_file_count": 259,
+    "included_total_bytes": 4460866,
     "local_raw_dependency_count": 44,
     "manifest_release_directories": 1,
-    "manifest_release_file_records": 87,
+    "manifest_release_file_records": 90,
     "missing_file_count": 0
   }
 }

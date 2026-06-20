@@ -8,10 +8,11 @@ without author-only information or external services:
 2. data/code and figure path audit;
 3. manuscript numerical-claim audit;
 4. citation/reference integrity audit;
-5. submission bundle manifest;
-6. minimal raw-data archive manifest;
-7. final submission bundle manifest refresh;
-8. source-only submission bundle packaging dry run.
+5. author/journal submission-field audit;
+6. submission bundle manifest;
+7. minimal raw-data archive manifest;
+8. final submission bundle manifest refresh;
+9. source-only submission bundle packaging dry run.
 
 The script intentionally does not run professional plagiarism checking, upload
 raw data, select a journal template, or fill author/funding declarations.
@@ -193,6 +194,7 @@ def main() -> int:
         ("availability_path_audit", "audit_availability_paths.py"),
         ("manuscript_claim_audit", "audit_manuscript_claims.py"),
         ("reference_integrity_audit", "audit_references.py"),
+        ("author_submission_fields_audit", "audit_author_submission_fields.py"),
         ("submission_bundle_manifest_initial", "build_submission_bundle_manifest.py"),
         ("raw_data_archive_manifest", "build_raw_data_archive_manifest.py"),
         ("submission_bundle_manifest_final", "build_submission_bundle_manifest.py"),
@@ -204,6 +206,7 @@ def main() -> int:
     availability = load_json(revision / "availability_path_audit.json")
     claims = load_json(revision / "manuscript_claim_audit.json")
     references = load_json(revision / "reference_integrity_audit.json")
+    author_fields = load_json(revision / "author_submission_fields_audit.json")
     raw = load_json(revision / "raw_data_archive_manifest.json")
     bundle = load_json(revision / "submission_bundle_manifest.json")
     source_bundle = load_json(revision / "submission_source_bundle_report.json")
@@ -234,6 +237,11 @@ def main() -> int:
             "numbers": references["summary"],
         },
         {
+            "name": "author_submission_fields_audit",
+            "status": author_fields["status"],
+            "numbers": author_fields["summary"],
+        },
+        {
             "name": "raw_data_archive_manifest",
             "status": raw["summary"]["status"],
             "numbers": raw["summary"],
@@ -257,6 +265,11 @@ def main() -> int:
     overall = "PASS" if not hard_fail else "FAIL"
     if overall == "PASS" and bundle["summary"]["status"] == "PASS_WITH_LOCAL_RAW_DATA_LIMITATION":
         overall = "PASS_WITH_LOCAL_RAW_DATA_LIMITATION"
+    if author_fields["status"] == "AUTHOR_CONFIRMATION_PENDING" and overall.startswith("PASS"):
+        if overall == "PASS_WITH_LOCAL_RAW_DATA_LIMITATION":
+            overall = "PASS_WITH_AUTHOR_CONFIRMATION_PENDING_AND_LOCAL_RAW_DATA_LIMITATION"
+        else:
+            overall = "PASS_WITH_AUTHOR_CONFIRMATION_PENDING"
     if overall == "PASS" and gates[0]["status"] in {"NOT_REQUIRED", "NOT_RUN"}:
         overall = "PASS_WITHOUT_LATEX"
 
