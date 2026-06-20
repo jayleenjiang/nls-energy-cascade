@@ -26,6 +26,7 @@ paper can be called journal-ready.
 | Reproducibility entry point | Prepared for reviewer/editor navigation | `submission_reproducibility_readme_2026-06-19.md` |
 | Compiled-PDF layout QA | Generic article PDF checked locally | `pdf_layout_qa_2026-06-19.md` |
 | Author/journal action packet | Prepared; requires author completion | `author_submission_action_packet_2026-06-19.md` |
+| Final author/journal information request | Prepared as a concise fillable form mapped to `author_submission_fields_template.json` | `final_author_submission_fields_request_2026-06-20.md` |
 | Author-field application workflow | Prepared; dry-run-first and backup-on-apply | `author_submission_fields_template.json`; `scripts/apply_author_submission_fields.py` |
 | Target-journal shortlist | Prepared from official pages; requires author choice | `target_journal_shortlist_2026-06-19.md` |
 | SIADS-first submission packet | Prepared for the recommended first target; requires author confirmation before use | `siads_first_submission_packet_2026-06-20.md` |
@@ -207,6 +208,7 @@ Run these only after the author-supplied items above have been inserted.
   - `submission_reproducibility_readme_2026-06-19.md`
   - `pdf_layout_qa_2026-06-19.md`
   - `author_submission_action_packet_2026-06-19.md`
+  - `final_author_submission_fields_request_2026-06-20.md`
   - `author_submission_fields_template.json`
   - `target_journal_shortlist_2026-06-19.md`
   - `siads_first_submission_packet_2026-06-20.md`

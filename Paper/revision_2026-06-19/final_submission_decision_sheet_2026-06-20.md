@@ -137,7 +137,9 @@ The authors received no external funding for this work.
 
 or the complete grant/funding statement required by the target journal.
 
-Implementation aid: after authors confirm these fields, copy
+Implementation aid: use
+`final_author_submission_fields_request_2026-06-20.md` as the concise
+author-facing form.  After authors confirm these fields, copy
 `author_submission_fields_template.json` to `author_submission_fields.json`,
 fill the fields, run `scripts/apply_author_submission_fields.py` in dry-run
 mode, and use `--apply` only after it reports `ready_to_apply=true`.
