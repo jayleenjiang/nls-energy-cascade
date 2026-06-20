@@ -168,6 +168,7 @@ def build_registry() -> list[dict[str, Any]]:
     larger_n_fine_path = larger_n_dir / "n50_b16_dt2p5e-4_summary.csv"
     larger_n_long_burn_path = larger_n_dir / "n50_b16_burn10000_summary.csv"
     larger_n_readme_path = larger_n_dir / "README.md"
+    flux_sensitivity_path = larger_n_dir / "flux_scaling_sensitivity.json"
     figure_metrics_path = REVISION / "manuscript_figure_metrics.json"
     source_trace_path = REVISION / "source_trace_metrics.json"
     rerun_path = REVISION / "short_chain_nn_rerun_metrics.json"
@@ -185,6 +186,7 @@ def build_registry() -> list[dict[str, Any]]:
     larger_n_summary = read_summary(larger_n_summary_path)
     larger_n_fine = read_summary(larger_n_fine_path)
     larger_n_long_burn = read_summary(larger_n_long_burn_path)
+    flux_sensitivity = load_json(flux_sensitivity_path)
 
     prefactor = flux["prefactor"]
     exponent = flux["exponent"]
@@ -330,6 +332,36 @@ def build_registry() -> list[dict[str, Any]]:
             "longer_burnin_se": larger_n_long_burn["standard_error"],
         },
         note="The manuscript keeps the n=10,20,30,40 fit as the primary quoted exponent because n=50 is a single larger-length extension and the fine-timestep check is a smaller pilot.",
+    )
+
+    sensitivity_by_label = {
+        record["label"]: record for record in flux_sensitivity["fit_windows"]
+    }
+    add_claim(
+        registry,
+        claim_id="flux_scaling_fit_sensitivity",
+        section="thermal conductivity",
+        claim="Fit-window sensitivity around the n=50 robustness point is reported without promoting it to the primary exponent.",
+        evidence=[
+            flux_sensitivity_path,
+            larger_n_summary_path,
+            flux_path,
+        ],
+        expected_text=[
+            r"\label{tab:flux-fit-sensitivity}",
+            r"range from $-1.720$ on $10$--$20$ to $-2.125$ on",
+            r"primary $n=10,20,30,40$ & $-1.850$ & $[-1.870,-1.831]$ & $0.9980$",
+            r"$n=10,20,30,40,50$ & $-1.894$ & $[-1.917,-1.873]$ & $0.9976$",
+            r"tail $n=20,30,40,50$ & $-2.033$ & $[-2.079,-1.988]$ & $0.9994$",
+            r"the spread across rows is the finite-size sensitivity",
+        ],
+        computed={
+            "primary": sensitivity_by_label["primary n=10--40"],
+            "with_n50": sensitivity_by_label["with n=50"],
+            "tail_n20_50": sensitivity_by_label["tail n=20--50"],
+            "local_slopes": flux_sensitivity["local_slopes"],
+        },
+        note="The table is a finite-size fit-window diagnostic; it does not change the primary quoted n=10,20,30,40 exponent.",
     )
 
     w40 = {tau: window[(40, tau)] for tau in (50, 100, 200)}
@@ -501,6 +533,7 @@ def build_registry() -> list[dict[str, Any]]:
         evidence=[
             DRAFT,
             flux_path,
+            flux_sensitivity_path,
             validation_path,
             figure_metrics_path,
             source_trace_path,
@@ -511,6 +544,8 @@ def build_registry() -> list[dict[str, Any]]:
             r"\section*{Numerical reproducibility summary}",
             r"\label{tab:repro-summary}",
             r"Action-current scaling",
+            r"fit-window sensitivity analysis",
+            r"and fit-window sensitivity",
             r"Long-chain profiles and local equilibrium",
             r"Short-chain Fokker--Planck density",
             r"Eigenfunction diagnostic",
@@ -546,6 +581,8 @@ def build_registry() -> list[dict[str, Any]]:
             r"\path{Paper/revision_2026-06-19/short_chain_nn_rerun_metrics.json}",
             r"\path{Paper/revision_2026-06-19/scripts/analyze_eigen_fit_windows.py}",
             r"\path{Paper/revision_2026-06-19/eigen_fit_sensitivity.json}",
+            r"\path{Paper/revision_2026-06-19/scripts/analyze_flux_scaling_sensitivity.py}",
+            r"\path{Paper/revision_2026-06-19/experiments/flux_validation/larger_n_pilot_2026-06-20/flux_scaling_sensitivity.json}",
             r"\path{Paper/revision_2026-06-19/scripts/audit_availability_paths.py}",
             r"\path{Paper/revision_2026-06-19/availability_path_audit.json}",
             r"\path{Paper/revision_2026-06-19/availability_path_audit.md}",

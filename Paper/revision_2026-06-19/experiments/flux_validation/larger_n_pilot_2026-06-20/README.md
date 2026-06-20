@@ -58,6 +58,12 @@ python3 flux/analyze_canonical_flux.py \
   --output-prefix Paper/revision_2026-06-19/experiments/flux_validation/larger_n_pilot_2026-06-20/n10_50_b64_scaling
 ```
 
+Fit-window sensitivity command:
+
+```sh
+python3 Paper/revision_2026-06-19/scripts/analyze_flux_scaling_sensitivity.py
+```
+
 ## Result summary
 
 Primary `n=50` run:
@@ -96,13 +102,25 @@ Fine-timestep pilot:
 - difference relative to the `dt=5e-4`, `1024`-trajectory run:
   `+0.00028187025`, or `+1.52%`, equal to `0.30` pooled standard errors
 
+Fit-window sensitivity:
+
+- primary `n=10,20,30,40`: exponent `-1.85008`, bootstrap 95% CI
+  `[-1.87032,-1.83081]`, log-fit `R^2=0.99801`
+- with `n=50`: exponent `-1.89449`, bootstrap 95% CI
+  `[-1.91717,-1.87295]`, log-fit `R^2=0.99761`
+- tail `n=20,30,40,50`: exponent `-2.03265`, bootstrap 95% CI
+  `[-2.07868,-1.98781]`, log-fit `R^2=0.99935`
+- adjacent local slopes range from `-1.71976` on `n=10--20` to
+  `-2.12473` on `n=40--50`
+
 ## Interpretation
 
 The larger-chain run is below the direct extrapolation of the original
 `n=10,20,30,40` fit but remains consistent with the qualitative conclusion that
 the current decays faster than the Fourier `1/n` scaling.  The fine-timestep
 pilot is consistent with the `dt=5e-4` run within Monte Carlo error.  The
-manuscript should still keep the `n=10,20,30,40` fit as the primary production
-exponent because `n=50` is a single larger-size extension and the fine-step
-check is a smaller pilot rather than a full production-resolution convergence
-study.
+fit-window sensitivity analysis does not show drift toward the Fourier
+exponent over the available window.  The manuscript should still keep the
+`n=10,20,30,40` fit as the primary production exponent because `n=50` is a
+single larger-size extension and the fine-step check is a smaller pilot rather
+than a full production-resolution convergence study.

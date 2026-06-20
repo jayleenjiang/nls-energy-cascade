@@ -38,10 +38,12 @@ current estimator, and finite-window current diagnostics.  A subsequent
 manuscript pass clarified the division of labor between the long-chain
 transport/LTE evidence and the three-mode Fokker--Planck mechanism study, so
 the short-chain section is framed as a low-dimensional microscope rather than
-as an extrapolation of the transport exponent.  The latest one-command gate
-reports `PASS_WITH_LOCAL_RAW_DATA_LIMITATION` with 34/34 availability path
-records present and git-tracked, 15/15 registered numerical claims verified,
-and zero missing release-bundle files.
+as an extrapolation of the transport exponent.  A further current-scaling
+robustness pass added a fit-window sensitivity table around the `n=50`
+larger-chain run.  The latest one-command gate reports
+`PASS_WITH_LOCAL_RAW_DATA_LIMITATION` with 36/36 availability path records
+present and git-tracked, 16/16 registered numerical claims verified, and zero
+missing release-bundle files.
 
 ## 2026-06-20 larger-chain robustness update
 
@@ -53,10 +55,12 @@ current accumulator, `dt=5e-4`, burn-in `8000`, measurement window `200`, and
 `-1.89449` with bootstrap 95% CI `[-1.91636,-1.87340]`.  A smaller
 fine-timestep pilot at `dt=2.5e-4` gives `E[J(50)] = 0.01879771710` with SE
 `0.00081439495`, differing from the `dt=5e-4` result by `1.52%` or `0.30`
-pooled standard errors.  The manuscript uses this as a robustness check only,
-not as the primary quoted exponent, because `n=50` is still a single
-larger-size extension and the fine-step check is not a full production-size
-convergence study.
+pooled standard errors.  The fit-window sensitivity analysis gives exponents
+`-1.85008` on `n=10,20,30,40`, `-1.89449` on `n=10,20,30,40,50`, and
+`-2.03265` on the tail `n=20,30,40,50`.  The manuscript uses this as a
+robustness check only, not as the primary quoted exponent, because `n=50` is
+still a single larger-size extension and the fine-step check is not a full
+production-size convergence study.
 
 ## Author confirmations still required
 

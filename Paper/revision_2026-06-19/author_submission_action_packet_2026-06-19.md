@@ -22,10 +22,10 @@ archiving have been completed.
 The 2026-06-20 manuscript pass additionally added the Monte Carlo validation
 and uncertainty protocol, the LTE residual mesh diagnostic including the
 requested `n=15` case, a timestep sensitivity table, and finite-window current
-diagnostics.  The latest path audit checks 34/34 manuscript paths and figures.
-A later 2026-06-20 current-scaling robustness pass added an `n=50` canonical
-current run plus a smaller fine-timestep pilot; the numerical claim audit now
-checks 15/15 registered claims.
+diagnostics.  A later 2026-06-20 current-scaling robustness pass added an
+`n=50` canonical current run, a fit-window sensitivity table, and a smaller
+fine-timestep pilot.  The latest path audit checks 36/36 manuscript paths and
+figures, and the numerical claim audit checks 16/16 registered claims.
 
 ## 1. Decisions needed from the authors
 
@@ -228,8 +228,8 @@ place.  The command
 python3 Paper/revision_2026-06-19/scripts/run_submission_checks.py --compile-latex
 
 currently returns PASS_WITH_LOCAL_RAW_DATA_LIMITATION: the manuscript compiles,
-the local numerical claim audit passes 15/15 checks, the path audit passes
-34/34 checks, and the release bundle has no missing or untracked required
+the local numerical claim audit passes 16/16 checks, the path audit passes
+36/36 checks, and the release bundle has no missing or untracked required
 files.  The remaining limitation is that a DOI-backed raw-data archive has not
 yet been uploaded.
 

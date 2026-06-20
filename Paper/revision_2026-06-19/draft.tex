@@ -758,6 +758,32 @@ evidence against a near-term crossover to Fourier scaling, but retain
 length is still a single-size extension, with only a smaller fine-timestep
 pilot rather than a full production-resolution convergence study.
 
+\Cref{tab:flux-fit-sensitivity} records the finite-size sensitivity of the
+power-law fit. Adding $n=50$, fitting only the tail $n=20,30,40,50$, or leaving
+out any one of the five available lengths all gives an exponent below $-1$.
+The adjacent local slopes range from $-1.720$ on $10$--$20$ to $-2.125$ on
+$40$--$50$.  Thus the existing larger-chain data do not suggest a drift toward
+Fourier scaling over the simulated window, although they also do not remove
+the need for a still-larger systematic convergence study.
+
+\begin{table}[ht]\centering
+\small
+\begin{tabular}{lccc}
+\toprule
+fit window & exponent & bootstrap $95\%$ CI & log-fit $R^2$ \\
+\midrule
+primary $n=10,20,30,40$ & $-1.850$ & $[-1.870,-1.831]$ & $0.9980$ \\
+$n=10,20,30,40,50$ & $-1.894$ & $[-1.917,-1.873]$ & $0.9976$ \\
+tail $n=20,30,40,50$ & $-2.033$ & $[-2.079,-1.988]$ & $0.9994$ \\
+\bottomrule
+\end{tabular}
+\caption{Fit-window sensitivity of the corrected action-current scaling.  The
+bootstrap intervals quantify trajectory-level Monte Carlo uncertainty within
+each selected fit window; the spread across rows is the finite-size sensitivity
+and is not folded into the primary exponent in \eqref{eq:flux-scaling}.}
+\label{tab:flux-fit-sensitivity}
+\end{table}
+
 \begin{figure}[ht]
   \centering
   \includegraphics[width=0.72\textwidth]{experiments/flux_validation/production_dt5e-4/flux_primary_scaling.pdf}
@@ -1130,9 +1156,10 @@ Result family & Evidence bundle & Automated or source-traced check & Scope retai
 \midrule
 Action-current scaling &
 canonical simulator, production manifest, larger-chain robustness run,
-validation report, current-window statistics &
+fit-window sensitivity analysis, validation report, current-window statistics &
 frozen source/binary hashes; equal-temperature and hot/cold reversal gates;
-trajectory-bootstrap exponent CI; split-window stationarity and timestep pilot &
+trajectory-bootstrap exponent CI; split-window stationarity, timestep pilot,
+and fit-window sensitivity &
 finite-size action-current law over $n=10,20,30,40$, with an $n=50$
 robustness check \\
 \midrule
@@ -1180,10 +1207,13 @@ repository root. The key reproducibility artifacts are:
   \item current-analysis scripts:
   \path{flux/analyze_canonical_flux.py},
   \path{flux/analyze_current_windows.py},
-  \path{flux/gibbs_mcmc_reference.py}, and
-  \path{flux/compare_gibbs_sde.py};
+  \path{flux/gibbs_mcmc_reference.py},
+  \path{flux/compare_gibbs_sde.py}, and
+  \path{Paper/revision_2026-06-19/scripts/analyze_flux_scaling_sensitivity.py};
   \item production current data and validation reports:
   \path{Paper/revision_2026-06-19/experiments/flux_validation/};
+  \item current-scaling fit-window sensitivity output:
+  \path{Paper/revision_2026-06-19/experiments/flux_validation/larger_n_pilot_2026-06-20/flux_scaling_sensitivity.json};
   \item figure-generation script for
   \cref{fig:profile,fig:embedding,fig:lte-resid}:
   \path{Paper/revision_2026-06-19/scripts/generate_manuscript_figures.py};

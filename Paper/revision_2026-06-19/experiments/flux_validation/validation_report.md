@@ -46,6 +46,17 @@ Scaling fit over `n = 10,20,30,40`:
 - log-fit `R^2 = 0.998013`
 - trajectory-bootstrap exponent 95% CI: `[-1.87034, -1.83049]`
 
+Larger-chain robustness and fit-window sensitivity:
+
+- the `n=50` robustness run gives `E[J(50)] = 0.01851584685` with SE
+  `0.00044158954`
+- adding `n=50` gives a diagnostic exponent `-1.89449`, bootstrap 95% CI
+  `[-1.91717, -1.87295]`, and log-fit `R^2 = 0.99761`
+- fitting only the tail `n=20,30,40,50` gives exponent `-2.03265`,
+  bootstrap 95% CI `[-2.07868, -1.98781]`, and log-fit `R^2 = 0.99935`
+- adjacent local slopes range from `-1.71976` on `n=10--20` to `-2.12473`
+  on `n=40--50`
+
 Timestep sensitivity:
 
 - `dt=1e-3` is visibly coarse at larger `n` and underestimates the
