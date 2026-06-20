@@ -22,7 +22,7 @@
         "python3",
         "/Users/jayleenjiang/Documents/NLS/Paper/revision_2026-06-19/scripts/audit_availability_paths.py"
       ],
-      "duration_seconds": 0.164,
+      "duration_seconds": 0.16,
       "name": "availability_path_audit",
       "returncode": 0,
       "stderr_tail": "",
@@ -33,7 +33,7 @@
         "python3",
         "/Users/jayleenjiang/Documents/NLS/Paper/revision_2026-06-19/scripts/audit_manuscript_claims.py"
       ],
-      "duration_seconds": 0.037,
+      "duration_seconds": 0.042,
       "name": "manuscript_claim_audit",
       "returncode": 0,
       "stderr_tail": "",
@@ -44,7 +44,7 @@
         "python3",
         "/Users/jayleenjiang/Documents/NLS/Paper/revision_2026-06-19/scripts/audit_references.py"
       ],
-      "duration_seconds": 0.027,
+      "duration_seconds": 0.028,
       "name": "reference_integrity_audit",
       "returncode": 0,
       "stderr_tail": "",
@@ -66,7 +66,7 @@
         "python3",
         "/Users/jayleenjiang/Documents/NLS/Paper/revision_2026-06-19/scripts/build_raw_data_archive_manifest.py"
       ],
-      "duration_seconds": 0.11,
+      "duration_seconds": 0.187,
       "name": "raw_data_archive_manifest",
       "returncode": 0,
       "stderr_tail": "",
@@ -77,7 +77,7 @@
         "python3",
         "/Users/jayleenjiang/Documents/NLS/Paper/revision_2026-06-19/scripts/build_submission_bundle_manifest.py"
       ],
-      "duration_seconds": 0.615,
+      "duration_seconds": 0.614,
       "name": "submission_bundle_manifest_final",
       "returncode": 0,
       "stderr_tail": "",
@@ -92,7 +92,7 @@
       "name": "submission_source_bundle",
       "returncode": 0,
       "stderr_tail": "",
-      "stdout_tail": "{\n  \"archive\": {\n    \"path\": \"tmp/submission_source_bundle/runs/20260620T142842Z/NLS_numerical_study_source.tar.gz\",\n    \"sha256\": \"b27f55d429f2d3fff54f1bf2a26f4e6d3ca614e6ec7cad558c14230b5cf0d254\",\n    \"size_bytes\": 2491486\n  },\n  \"status\": \"PASS\",\n  \"summary\": {\n    \"directory_tracked_file_count\": 115,\n    \"excluded_self_referential_count\": 6,\n    \"included_file_count\": 182,\n    \"included_total_bytes\": 3620724,\n    \"local_raw_dependency_count\": 44,\n    \"manifest_release_directories\": 1,\n    \"manifest_release_file_records\": 72,\n    \"missing_file_count\": 0\n  }\n}\n"
+      "stdout_tail": "{\n  \"archive\": {\n    \"path\": \"tmp/submission_source_bundle/runs/20260620T143947Z/NLS_numerical_study_source.tar.gz\",\n    \"sha256\": \"6fece278952a80d24f9880f40fa8ad2df44eb203b298e925e71a48c0c039a7ec\",\n    \"size_bytes\": 2493708\n  },\n  \"status\": \"PASS\",\n  \"summary\": {\n    \"directory_tracked_file_count\": 118,\n    \"excluded_self_referential_count\": 6,\n    \"included_file_count\": 185,\n    \"included_total_bytes\": 3626263,\n    \"local_raw_dependency_count\": 44,\n    \"manifest_release_directories\": 1,\n    \"manifest_release_file_records\": 72,\n    \"missing_file_count\": 0\n  }\n}\n"
     }
   ],
   "gates": [
@@ -162,10 +162,10 @@
     {
       "name": "submission_source_bundle",
       "numbers": {
-        "directory_tracked_file_count": 115,
+        "directory_tracked_file_count": 118,
         "excluded_self_referential_count": 6,
-        "included_file_count": 182,
-        "included_total_bytes": 3620724,
+        "included_file_count": 185,
+        "included_total_bytes": 3626263,
         "local_raw_dependency_count": 44,
         "manifest_release_directories": 1,
         "manifest_release_file_records": 72,
@@ -174,7 +174,7 @@
       "status": "PASS"
     }
   ],
-  "generated_at_utc": "2026-06-20T14:28:42.320696+00:00",
+  "generated_at_utc": "2026-06-20T14:39:48.126045+00:00",
   "latex_log": {
     "issues": [],
     "log": "/Users/jayleenjiang/Documents/NLS/tmp/paper_build/revision/draft.log",

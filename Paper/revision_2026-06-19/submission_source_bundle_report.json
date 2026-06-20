@@ -1,8 +1,8 @@
 {
   "archive": {
-    "path": "tmp/submission_source_bundle/runs/20260620T142842Z/NLS_numerical_study_source.tar.gz",
-    "sha256": "b27f55d429f2d3fff54f1bf2a26f4e6d3ca614e6ec7cad558c14230b5cf0d254",
-    "size_bytes": 2491486
+    "path": "tmp/submission_source_bundle/runs/20260620T143947Z/NLS_numerical_study_source.tar.gz",
+    "sha256": "6fece278952a80d24f9880f40fa8ad2df44eb203b298e925e71a48c0c039a7ec",
+    "size_bytes": 2493708
   },
   "excluded_self_referential_files": [
     "Paper/revision_2026-06-19/submission_bundle_manifest.json",
@@ -39,13 +39,13 @@
     },
     {
       "path": "Paper/revision_2026-06-19/availability_path_audit.json",
-      "sha256": "39dd40cf1ffbcec7411f0bb1f6ae590d6bf35e1688855c7bf66add36c657c9ee",
+      "sha256": "5123c3a27103a5612ec0a7347c05e5e3f827db439025b1519bab7ecadf2d3638",
       "size_bytes": 15706,
       "source": "release-file"
     },
     {
       "path": "Paper/revision_2026-06-19/availability_path_audit.md",
-      "sha256": "c0bf77f36dc8616a6fdb8353be45def70e4e73beaf121ef88ae604b5254176e0",
+      "sha256": "a1c873177bc049f88fd90c088268416f00c1750a9a17954a3b617c0b5d319bdd",
       "size_bytes": 7205,
       "source": "release-file"
     },
@@ -159,8 +159,8 @@
     },
     {
       "path": "Paper/revision_2026-06-19/final_pre_submission_audit_2026-06-20.md",
-      "sha256": "2b2cff14b2198fb81cccc264d0bf36b885017a0117bb2a86dcd87b43c64bd7e6",
-      "size_bytes": 5899,
+      "sha256": "4ea22ff66137abd3ac8ae3e27591a3ac5e2a1553a9399459ea70a8598f62b536",
+      "size_bytes": 6083,
       "source": "release-file"
     },
     {
@@ -177,13 +177,13 @@
     },
     {
       "path": "Paper/revision_2026-06-19/manuscript_claim_audit.json",
-      "sha256": "6a47567122dd2a37356b7ffdd0f52deccc2345797d6bc81fb9d741fcf54d057f",
+      "sha256": "d480570c9f1fd738001f7f4802fbf84320c7347acd536651bea45eb289baa721",
       "size_bytes": 37632,
       "source": "release-file"
     },
     {
       "path": "Paper/revision_2026-06-19/manuscript_claim_audit.md",
-      "sha256": "bdeeb07a9f86fe212ff2f2077c4639b0115ab656a495af3bc86ff97238ae8e7c",
+      "sha256": "7d2ac67bea75429788c7b49cd0330599ad4a8faa1b5b22cff199cc999cca264f",
       "size_bytes": 4521,
       "source": "release-file"
     },
@@ -225,25 +225,25 @@
     },
     {
       "path": "Paper/revision_2026-06-19/raw_data_archive_manifest.json",
-      "sha256": "f444be24f0d135aea51847f9c76fe3d38315edb72ae2e1a8de4beba8dd393874",
+      "sha256": "59ac449407007af72e62cfc7aa6e694af3ba85c42e6bad17e312f8a52c13d4f9",
       "size_bytes": 16196,
       "source": "release-file"
     },
     {
       "path": "Paper/revision_2026-06-19/raw_data_archive_manifest.md",
-      "sha256": "5b7a983190e2e6069046d03b9f8ebe8a523f75b3bcccdf8c216b2064a6c48516",
+      "sha256": "92ec34ff7a415b9f91c724c018f013dbf0c67edc835ea4cce3c64785563d8abd",
       "size_bytes": 8187,
       "source": "release-file"
     },
     {
       "path": "Paper/revision_2026-06-19/reference_integrity_audit.json",
-      "sha256": "e9db2a2c8bb901e71b8f5693677a72f673eeefe39231403a934ff79caa1ec44c",
+      "sha256": "f34ec4c8a4fc89dc00ab8307abb941e3ae6554f9d92dd1d27d999422f1a40ff3",
       "size_bytes": 6421,
       "source": "release-file"
     },
     {
       "path": "Paper/revision_2026-06-19/reference_integrity_audit.md",
-      "sha256": "e29be7205cfe2b1fd7c7b34371f70b3653918a706ae8fcebf01e5e4ec49f56e9",
+      "sha256": "e58af26a83961c11fa098373e5c0ff1686f834e543d0e544ac59ce280d1bb1ad",
       "size_bytes": 2472,
       "source": "release-file"
     },
@@ -357,8 +357,8 @@
     },
     {
       "path": "Paper/revision_2026-06-19/submission_readiness_checklist_2026-06-19.md",
-      "sha256": "d582de400f80a1a36a53d93f017e36577d599ce2c9ea971504969253df845dba",
-      "size_bytes": 11307,
+      "sha256": "9bd3bbc30d936cffccc71615118589d074e5524f97793a8162a029789b79a25b",
+      "size_bytes": 11767,
       "source": "release-file"
     },
     {
@@ -539,6 +539,24 @@
       "path": "Paper/revision_2026-06-19/experiments/flux_validation/gibbs_sde/run08_summary.csv",
       "sha256": "4239c4a048c4c612ffba5bbe8ea98165ce5cf41289a3e35f4eabf833d7865166",
       "size_bytes": 786,
+      "source": "release-directory:Paper/revision_2026-06-19/experiments/flux_validation"
+    },
+    {
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation/larger_n60_pilot_2026-06-20/README.md",
+      "sha256": "0d56468bfbfc72b174062872d2bb40011ecea72a8a8265b976f83bcc11b60370",
+      "size_bytes": 2852,
+      "source": "release-directory:Paper/revision_2026-06-19/experiments/flux_validation"
+    },
+    {
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation/larger_n60_pilot_2026-06-20/n10_60_b8pilot_scaling_scaling.json",
+      "sha256": "8ae4c68199cd9590901c0b8f0dff5db4cf5658a4c21f6a5caf8dbeba54c8bc6e",
+      "size_bytes": 754,
+      "source": "release-directory:Paper/revision_2026-06-19/experiments/flux_validation"
+    },
+    {
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation/larger_n60_pilot_2026-06-20/n60_b8_summary.csv",
+      "sha256": "7192e157fd8a942a1114477e0455448bba11c6af7f0e6309f2f60cedea4971a0",
+      "size_bytes": 780,
       "source": "release-directory:Paper/revision_2026-06-19/experiments/flux_validation"
     },
     {
@@ -1101,22 +1119,22 @@
     },
     {
       "path": "SOURCE_BUNDLE_CONTENTS.sha256",
-      "sha256": "34d7e2530523e4965b968e4fbf90032933da45839e88c9456edc9ec6e5c8860c",
-      "size_bytes": 26246,
+      "sha256": "2ff7cb3bcbcf3f4d5f808fe7e72332f2827b354941f46de15d9d64a1268a9496",
+      "size_bytes": 26755,
       "source": "generated-checksum-index"
     }
   ],
-  "generated_at_utc": "2026-06-20T14:28:42.103124+00:00",
+  "generated_at_utc": "2026-06-20T14:39:47.909700+00:00",
   "manifest": "Paper/revision_2026-06-19/submission_bundle_manifest.json",
   "missing_files": [],
   "script": "Paper/revision_2026-06-19/scripts/build_submission_source_bundle.py",
-  "staging_directory": "tmp/submission_source_bundle/runs/20260620T142842Z/NLS_numerical_study_source",
+  "staging_directory": "tmp/submission_source_bundle/runs/20260620T143947Z/NLS_numerical_study_source",
   "status": "PASS",
   "summary": {
-    "directory_tracked_file_count": 115,
+    "directory_tracked_file_count": 118,
     "excluded_self_referential_count": 6,
-    "included_file_count": 182,
-    "included_total_bytes": 3620724,
+    "included_file_count": 185,
+    "included_total_bytes": 3626263,
     "local_raw_dependency_count": 44,
     "manifest_release_directories": 1,
     "manifest_release_file_records": 72,
