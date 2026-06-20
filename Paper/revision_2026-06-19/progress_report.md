@@ -58,7 +58,7 @@
     PDF then had 17 pages and the LaTeX log had no unresolved
     citations/references and no overfull or underfull box warnings. Later
     reproducibility-summary and submission-level additions increased the
-    current build artifact to 22 pages.
+    current build artifact to 23 pages.
 13. Resolved two remaining rigor issues in the short-chain section:
     - removed the unsupported quantitative “about 15%” symmetry-breaking claim
       and made the figure caption explicitly qualitative;
@@ -176,7 +176,7 @@
     submission `.tar.gz` under `tmp/` from the release manifest, records an
     archive SHA-256 checksum, and deliberately excludes self-referential
     generated summaries and the large local raw-data roots. The current
-    packaging run includes 269 regular files, has zero missing files, and
+    packaging run includes 273 regular files, has zero missing files, and
     records 44 local raw-data dependency records as
     excluded pending any DOI-backed raw-data archive decision.
 31. Performed a submission-level strengthening pass on 2026-06-20:
@@ -205,8 +205,8 @@
     `lineno`, keywords, and MSC candidates.  It compiles cleanly to
     `tmp/paper_build/siads_review/draft_siads_review.pdf`. After the later
     robustness and interpretation edits, the current compiled review PDF is
-    22 pages with SHA-256
-    `0ce0cab9ca547b6456bb6282431ce30ef236aff0ab904d4910b5668342921ab4`.
+    24 pages with SHA-256
+    `74af09e32d5af70bcc59d18b2c333242f88b1192c277b37ed30d2a35994b783d`.
 34. Strengthened the manuscript narrative so the long-chain and short-chain
     results have a clearer division of labor: the long-chain simulations now
     explicitly provide macroscopic finite-size transport and LTE evidence,
@@ -260,6 +260,16 @@
     containing the selected manuscript PDF, source archive, key handoff
     documents, and checksum index.  A DOI/raw-data route can be built later
     with `--include-raw-data` after the authors choose that release path.
+41. Added `siads_cover_letter_template.tex` and
+    `scripts/build_siads_cover_letter_template.py`.  The template compiles to
+    a local PDF under `tmp/` and is included in the SIADS upload-package
+    handoff, but it is explicitly marked as not final because the bracketed
+    author/funding/declaration fields still require author confirmation.
+42. Added a dedicated numerical validation and robustness appendix to
+    `draft.tex` and `draft_siads_review.tex`.  The appendix consolidates the
+    current-scaling protocol, implementation and physical validation gates,
+    timestep and stationarity checks, larger-chain and bath-temperature
+    robustness evidence, and the finite-time current-distribution scope.
 
 ## Key validated numerical result
 
@@ -312,7 +322,8 @@ Power-law fit:
 - Optional but recommended before final release: package a full TensorFlow
   retraining environment if the target journal expects re-training
   reproducibility beyond saved-model inference.
-- Optional numerical strengthening: if time permits before submission, turn the
-  `n=50` robustness check into a full larger-length convergence study by
-  increasing the fine-step run to production resolution and, if
-  computationally feasible, adding one further length such as `n=60`.
+- Optional numerical strengthening: if time permits before submission, run a
+  small thermostat-coupling robustness check, for example at
+  `gamma=0.05` or `gamma=0.2`, or upgrade one more bath-parameter pilot to
+  production resolution.  The existing `n=50` and `n=60` larger-chain checks
+  are already included as robustness evidence.

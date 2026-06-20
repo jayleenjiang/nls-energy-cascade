@@ -1,6 +1,6 @@
 # Compiled PDF artifact audit
 
-Generated: `2026-06-20T20:14:21.367130+00:00`
+Generated: `2026-06-20T20:28:37.155000+00:00`
 
 Status: **PASS**
 
@@ -9,5 +9,5 @@ Regenerate them after final author declarations, journal-template changes, or re
 
 | PDF | Source | Pages | Size bytes | SHA-256 | Status |
 |---|---|---:|---:|---|---|
-| Generic revised manuscript PDF | `Paper/revision_2026-06-19/draft.tex` | 22 | 1549977 | `98aa375d5a2698162b86b4f0c83a91417c7506c207a63679956e5fe9c8a72e02` | PASS |
-| SIADS review-preparation PDF | `Paper/revision_2026-06-19/draft_siads_review.tex` | 22 | 1564484 | `0ce0cab9ca547b6456bb6282431ce30ef236aff0ab904d4910b5668342921ab4` | PASS |
+| Generic revised manuscript PDF | `Paper/revision_2026-06-19/draft.tex` | 23 | 1557842 | `8178fdb88fbbf411fdcc67de20b0fe608840aa94fe803db95a14123d4cb131d4` | PASS |
+| SIADS review-preparation PDF | `Paper/revision_2026-06-19/draft_siads_review.tex` | 24 | 1573368 | `74af09e32d5af70bcc59d18b2c333242f88b1192c277b37ed30d2a35994b783d` | PASS |

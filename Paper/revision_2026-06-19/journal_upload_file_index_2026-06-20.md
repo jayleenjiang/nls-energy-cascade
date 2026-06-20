@@ -28,8 +28,8 @@ Key numbers:
 | Availability paths | 37/37 |
 | Registered numerical claims | 19/19 |
 | Cited BibTeX entries | 8 |
-| Release-bundle files | 100 |
-| Source-bundle included files | 269 |
+| Release-bundle files | 104 |
+| Source-bundle included files | 273 |
 | Minimal raw-data files | 40 |
 | Missing raw-data files | 0 |
 | Author/submission-field audit | 9 pending author/external items |
@@ -38,8 +38,8 @@ Key numbers:
 
 | Use | Local file | Pages | Size | SHA-256 | Status |
 |---|---|---:|---:|---|---|
-| Generic revised manuscript PDF | `tmp/paper_build/revision/draft.pdf` | 22 | 1,549,977 bytes | `98aa375d5a2698162b86b4f0c83a91417c7506c207a63679956e5fe9c8a72e02` | Suitable for author/advisor reading; recompile after final declarations. |
-| SIADS review-preparation PDF | `tmp/paper_build/siads_review/draft_siads_review.pdf` | 22 | 1,564,484 bytes | `0ce0cab9ca547b6456bb6282431ce30ef236aff0ab904d4910b5668342921ab4` | Current SIADS-facing review PDF; use only after authors confirm SIADS and final metadata. |
+| Generic revised manuscript PDF | `tmp/paper_build/revision/draft.pdf` | 23 | 1,557,842 bytes | `8178fdb88fbbf411fdcc67de20b0fe608840aa94fe803db95a14123d4cb131d4` | Suitable for author/advisor reading; recompile after final declarations. |
+| SIADS review-preparation PDF | `tmp/paper_build/siads_review/draft_siads_review.pdf` | 24 | 1,573,368 bytes | `74af09e32d5af70bcc59d18b2c333242f88b1192c277b37ed30d2a35994b783d` | Current SIADS-facing review PDF; use only after authors confirm SIADS and final metadata. |
 
 The PDFs are local build artifacts under `tmp/` and are intentionally not
 committed to Git.  Regenerate them after final author/journal edits.  The
@@ -53,6 +53,13 @@ machine-readable metadata for the current local PDFs is recorded in
 |---|---|---:|---|---|
 | Source-only submission bundle | See `submission_source_bundle_report.md` | See latest report | See latest report | Local upload-ready source archive; excludes large raw-data roots by design. The exact archive path/checksum changes whenever tracked handoff files change, so the report is the authoritative source. |
 | Minimal raw-data archive | `tmp/raw_data_archive/runs/20260620T185610Z/NLS_numerical_study_raw_data_minimal.tar.gz` | 42,608,549 bytes | `1f8f8faa9bd9d73c804b51013549c63abc7af3a71febe05a31eb4df63ff4997f` | Local upload-ready raw-data archive; upload to Zenodo/OSF/journal storage only after authors choose this route. |
+
+## Cover letter template
+
+| Use | Local file | Status |
+|---|---|---|
+| SIADS cover-letter template PDF | `tmp/siads_cover_letter_template/siads_cover_letter_template.pdf` | Template only; contains placeholder fields and must be edited/approved before submission. |
+| SIADS cover-letter template source | `Paper/revision_2026-06-19/siads_cover_letter_template.tex` | Tracked source template; compile status recorded in `siads_cover_letter_template_build.md`. |
 
 The source bundle is documented by `submission_source_bundle_report.md`.  The
 raw-data archive is documented by `raw_data_archive_build_report.md` and
@@ -119,6 +126,7 @@ Run from the repository root:
 python3 Paper/revision_2026-06-19/scripts/run_submission_checks.py --compile-latex
 python3 Paper/revision_2026-06-19/scripts/build_submission_source_bundle.py
 python3 Paper/revision_2026-06-19/scripts/build_raw_data_archive.py
+python3 Paper/revision_2026-06-19/scripts/build_siads_cover_letter_template.py
 python3 Paper/revision_2026-06-19/scripts/build_journal_upload_package.py --route siads-repository
 ```
 

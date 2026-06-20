@@ -27,8 +27,8 @@ Current compiled PDFs after the LTE residual-decomposition update:
 
 | PDF | Local build path | Pages | Size bytes | SHA-256 |
 |---|---|---:|---:|---|
-| Generic revised manuscript | `tmp/paper_build/revision/draft.pdf` | 22 | 1,549,977 | `98aa375d5a2698162b86b4f0c83a91417c7506c207a63679956e5fe9c8a72e02` |
-| SIADS review-preparation source | `tmp/paper_build/siads_review/draft_siads_review.pdf` | 22 | 1,564,484 | `0ce0cab9ca547b6456bb6282431ce30ef236aff0ab904d4910b5668342921ab4` |
+| Generic revised manuscript | `tmp/paper_build/revision/draft.pdf` | 23 | 1,557,842 | `8178fdb88fbbf411fdcc67de20b0fe608840aa94fe803db95a14123d4cb131d4` |
+| SIADS review-preparation source | `tmp/paper_build/siads_review/draft_siads_review.pdf` | 24 | 1,573,368 | `74af09e32d5af70bcc59d18b2c333242f88b1192c277b37ed30d2a35994b783d` |
 
 Both PDFs use A4 media boxes and were produced by pdfTeX.
 

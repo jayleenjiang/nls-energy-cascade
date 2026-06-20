@@ -19,13 +19,13 @@ Official SIADS pages checked on 2026-06-20:
 
 - Recommended first target: SIADS.
 - Current manuscript format: generic `article`; the current
-  SIADS review-preparation PDF is 22 pages.
+  SIADS review-preparation PDF is 24 pages.
 - SIADS review-preparation source:
   `Paper/revision_2026-06-19/draft_siads_review.tex`.
 - SIADS review-preparation PDF build:
   `tmp/paper_build/siads_review/draft_siads_review.pdf`.
 - SIADS review-preparation PDF SHA-256:
-  `0ce0cab9ca547b6456bb6282431ce30ef236aff0ab904d4910b5668342921ab4`.
+  `74af09e32d5af70bcc59d18b2c333242f88b1192c277b37ed30d2a35994b783d`.
 - Current local gate:
   `PASS_WITH_AUTHOR_CONFIRMATION_PENDING_AND_LOCAL_RAW_DATA_LIMITATION`.
 - Current manuscript figures are embedded inline.
@@ -114,6 +114,11 @@ Suggested MSC candidates:
 ## SIADS cover letter draft
 
 Replace bracketed fields before use.
+The same text is also available as a compilable LaTeX template in
+`siads_cover_letter_template.tex`; its local template-PDF build is audited in
+`siads_cover_letter_template_build.md`.  The template PDF is not final and
+must not be submitted until all bracketed fields are replaced and authors
+approve the cover letter.
 
 ```text
 Dear Editors,

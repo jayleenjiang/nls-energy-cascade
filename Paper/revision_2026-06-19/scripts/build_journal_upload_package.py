@@ -168,6 +168,7 @@ def build_package(route: str, include_raw_data: bool, output_runs_dir: Path) -> 
     source_bundle = load_json(REVISION_REL / "submission_source_bundle_report.json")
     raw_build = load_json(REVISION_REL / "raw_data_archive_build_report.json")
     checks = load_json(REVISION_REL / "submission_checks_summary.json")
+    cover_letter = load_json(REVISION_REL / "siads_cover_letter_template_build.json")
 
     now = _dt.datetime.now(_dt.timezone.utc)
     run_id = now.strftime("%Y%m%dT%H%M%SZ")
@@ -190,12 +191,31 @@ def build_package(route: str, include_raw_data: bool, output_runs_dir: Path) -> 
         "siads_first_submission_packet_2026-06-20.md" if route.startswith("siads") else "target_journal_shortlist_2026-06-19.md",
         "submission_checks_summary.md",
         "submission_metadata_consistency_audit.md",
+        "siads_cover_letter_template_build.md",
         "compiled_pdf_artifact_audit.md",
         "submission_source_bundle_report.md",
         "raw_data_archive_build_report.md",
     ]
     for name in handoff_docs:
         files.append(copy_into_package(ROOT / REVISION_REL / name, staging_root, f"handoff/{name}", "handoff-document"))
+
+    if route.startswith("siads"):
+        files.append(
+            copy_into_package(
+                ROOT / cover_letter["pdf"],
+                staging_root,
+                "cover_letter/siads_cover_letter_template.pdf",
+                "cover-letter-template-pdf",
+            )
+        )
+        files.append(
+            copy_into_package(
+                ROOT / cover_letter["source"],
+                staging_root,
+                "cover_letter/siads_cover_letter_template.tex",
+                "cover-letter-template-source",
+            )
+        )
 
     raw_archive_record: dict[str, Any] | None = None
     if include_raw_data:
@@ -213,6 +233,11 @@ def build_package(route: str, include_raw_data: bool, output_runs_dir: Path) -> 
         "status": "PASS",
         "selected_pdf": selected_pdf,
         "source_bundle_archive": source_bundle["archive"],
+        "cover_letter_template": {
+            "pdf": cover_letter["pdf"],
+            "sha256": cover_letter.get("sha256"),
+            "template_not_final": cover_letter.get("template_not_final", True),
+        },
         "raw_data_archive": raw_archive_record,
         "submission_checks_overall_status": checks["overall_status"],
         "files": [asdict(rec) for rec in payload_files],

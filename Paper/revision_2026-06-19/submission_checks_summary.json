@@ -11,7 +11,7 @@
         "-outdir=/Users/jayleenjiang/Documents/NLS/tmp/paper_build/revision",
         "draft.tex"
       ],
-      "duration_seconds": 0.051,
+      "duration_seconds": 0.061,
       "name": "latex_compile",
       "returncode": 0,
       "stderr_tail": "",
@@ -28,7 +28,7 @@
         "-outdir=/Users/jayleenjiang/Documents/NLS/tmp/paper_build/siads_review",
         "draft_siads_review.tex"
       ],
-      "duration_seconds": 0.049,
+      "duration_seconds": 0.054,
       "name": "siads_latex_compile",
       "returncode": 0,
       "stderr_tail": "",
@@ -39,7 +39,7 @@
         "python3",
         "/Users/jayleenjiang/Documents/NLS/Paper/revision_2026-06-19/scripts/audit_compiled_pdfs.py"
       ],
-      "duration_seconds": 0.029,
+      "duration_seconds": 0.034,
       "name": "compiled_pdf_artifact_audit",
       "returncode": 0,
       "stderr_tail": "",
@@ -50,7 +50,7 @@
         "python3",
         "/Users/jayleenjiang/Documents/NLS/Paper/revision_2026-06-19/scripts/audit_availability_paths.py"
       ],
-      "duration_seconds": 0.144,
+      "duration_seconds": 0.157,
       "name": "availability_path_audit",
       "returncode": 0,
       "stderr_tail": "",
@@ -94,18 +94,18 @@
         "python3",
         "/Users/jayleenjiang/Documents/NLS/Paper/revision_2026-06-19/scripts/build_submission_bundle_manifest.py"
       ],
-      "duration_seconds": 0.696,
+      "duration_seconds": 0.743,
       "name": "submission_bundle_manifest_initial",
       "returncode": 0,
       "stderr_tail": "",
-      "stdout_tail": "{\n  \"release_file_count\": 100,\n  \"release_directory_count\": 1,\n  \"missing_release_files\": 0,\n  \"untracked_release_files\": 0,\n  \"local_raw_dependency_count\": 44,\n  \"untracked_local_raw_dependencies\": 44,\n  \"status\": \"PASS_WITH_LOCAL_RAW_DATA_LIMITATION\"\n}\n"
+      "stdout_tail": "{\n  \"release_file_count\": 104,\n  \"release_directory_count\": 1,\n  \"missing_release_files\": 0,\n  \"untracked_release_files\": 0,\n  \"local_raw_dependency_count\": 44,\n  \"untracked_local_raw_dependencies\": 44,\n  \"status\": \"PASS_WITH_LOCAL_RAW_DATA_LIMITATION\"\n}\n"
     },
     {
       "command": [
         "python3",
         "/Users/jayleenjiang/Documents/NLS/Paper/revision_2026-06-19/scripts/build_raw_data_archive_manifest.py"
       ],
-      "duration_seconds": 0.205,
+      "duration_seconds": 0.199,
       "name": "raw_data_archive_manifest",
       "returncode": 0,
       "stderr_tail": "",
@@ -120,7 +120,7 @@
       "name": "submission_bundle_manifest_final",
       "returncode": 0,
       "stderr_tail": "",
-      "stdout_tail": "{\n  \"release_file_count\": 100,\n  \"release_directory_count\": 1,\n  \"missing_release_files\": 0,\n  \"untracked_release_files\": 0,\n  \"local_raw_dependency_count\": 44,\n  \"untracked_local_raw_dependencies\": 44,\n  \"status\": \"PASS_WITH_LOCAL_RAW_DATA_LIMITATION\"\n}\n"
+      "stdout_tail": "{\n  \"release_file_count\": 104,\n  \"release_directory_count\": 1,\n  \"missing_release_files\": 0,\n  \"untracked_release_files\": 0,\n  \"local_raw_dependency_count\": 44,\n  \"untracked_local_raw_dependencies\": 44,\n  \"status\": \"PASS_WITH_LOCAL_RAW_DATA_LIMITATION\"\n}\n"
     },
     {
       "command": [
@@ -131,40 +131,51 @@
       "name": "submission_metadata_consistency_audit",
       "returncode": 0,
       "stderr_tail": "",
-      "stdout_tail": "{\n  \"status\": \"PASS\",\n  \"summary\": {\n    \"checked_documents\": 9,\n    \"failed_checks\": 0,\n    \"predicted_source_bundle_included_count\": 269,\n    \"release_file_count\": 100,\n    \"total_checks\": 21\n  }\n}\n"
+      "stdout_tail": "{\n  \"status\": \"PASS\",\n  \"summary\": {\n    \"checked_documents\": 9,\n    \"failed_checks\": 0,\n    \"predicted_source_bundle_included_count\": 273,\n    \"release_file_count\": 104,\n    \"total_checks\": 21\n  }\n}\n"
     },
     {
       "command": [
         "python3",
         "/Users/jayleenjiang/Documents/NLS/Paper/revision_2026-06-19/scripts/build_submission_bundle_manifest.py"
       ],
-      "duration_seconds": 0.696,
+      "duration_seconds": 0.716,
       "name": "submission_bundle_manifest_post_metadata",
       "returncode": 0,
       "stderr_tail": "",
-      "stdout_tail": "{\n  \"release_file_count\": 100,\n  \"release_directory_count\": 1,\n  \"missing_release_files\": 0,\n  \"untracked_release_files\": 0,\n  \"local_raw_dependency_count\": 44,\n  \"untracked_local_raw_dependencies\": 44,\n  \"status\": \"PASS_WITH_LOCAL_RAW_DATA_LIMITATION\"\n}\n"
+      "stdout_tail": "{\n  \"release_file_count\": 104,\n  \"release_directory_count\": 1,\n  \"missing_release_files\": 0,\n  \"untracked_release_files\": 0,\n  \"local_raw_dependency_count\": 44,\n  \"untracked_local_raw_dependencies\": 44,\n  \"status\": \"PASS_WITH_LOCAL_RAW_DATA_LIMITATION\"\n}\n"
     },
     {
       "command": [
         "python3",
         "/Users/jayleenjiang/Documents/NLS/Paper/revision_2026-06-19/scripts/build_submission_source_bundle.py"
       ],
-      "duration_seconds": 0.325,
+      "duration_seconds": 0.34,
       "name": "submission_source_bundle",
       "returncode": 0,
       "stderr_tail": "",
-      "stdout_tail": "{\n  \"archive\": {\n    \"path\": \"tmp/submission_source_bundle/runs/20260620T201423Z/NLS_numerical_study_source.tar.gz\",\n    \"sha256\": \"6e2465764e51d1b6247da061daad84d382c01459472068ea15ed4c5216e53e16\",\n    \"size_bytes\": 2868883\n  },\n  \"status\": \"PASS\",\n  \"summary\": {\n    \"directory_tracked_file_count\": 174,\n    \"excluded_self_referential_count\": 6,\n    \"included_file_count\": 269,\n    \"included_total_bytes\": 4568480,\n    \"local_raw_dependency_count\": 44,\n    \"manifest_release_directories\": 1,\n    \"manifest_release_file_records\": 100,\n    \"missing_file_count\": 0\n  }\n}\n"
+      "stdout_tail": "{\n  \"archive\": {\n    \"path\": \"tmp/submission_source_bundle/runs/20260620T202839Z/NLS_numerical_study_source.tar.gz\",\n    \"sha256\": \"acb4edff48fa9a2e1711e01518cbe61dffe45aec6a1a73632cafa495acb432aa\",\n    \"size_bytes\": 2876780\n  },\n  \"status\": \"PASS\",\n  \"summary\": {\n    \"directory_tracked_file_count\": 174,\n    \"excluded_self_referential_count\": 6,\n    \"included_file_count\": 273,\n    \"included_total_bytes\": 4594197,\n    \"local_raw_dependency_count\": 44,\n    \"manifest_release_directories\": 1,\n    \"manifest_release_file_records\": 104,\n    \"missing_file_count\": 0\n  }\n}\n"
+    },
+    {
+      "command": [
+        "python3",
+        "/Users/jayleenjiang/Documents/NLS/Paper/revision_2026-06-19/scripts/build_siads_cover_letter_template.py"
+      ],
+      "duration_seconds": 0.077,
+      "name": "siads_cover_letter_template",
+      "returncode": 0,
+      "stderr_tail": "",
+      "stdout_tail": "{\n  \"pdf\": \"tmp/siads_cover_letter_template/siads_cover_letter_template.pdf\",\n  \"sha256\": \"cf31f9c90a742bf9ae9746c420dbc1c5613b1523208eec58ebe6b5867e5b643e\",\n  \"status\": \"PASS\"\n}\n"
     },
     {
       "command": [
         "python3",
         "/Users/jayleenjiang/Documents/NLS/Paper/revision_2026-06-19/scripts/build_journal_upload_package.py"
       ],
-      "duration_seconds": 0.11,
+      "duration_seconds": 0.112,
       "name": "journal_upload_package",
       "returncode": 0,
       "stderr_tail": "",
-      "stdout_tail": "{\n  \"archive\": {\n    \"path\": \"tmp/journal_upload_package/runs/20260620T201424Z/NLS_numerical_study_journal_upload_package.tar.gz\",\n    \"sha256\": \"55d06ae3ec8143d87faa6988a3654dd46ba2eb05312e04afe01fef047c2a3789\",\n    \"size_bytes\": 4283382\n  },\n  \"status\": \"PASS\",\n  \"summary\": {\n    \"contains_raw_data_archive\": false,\n    \"package_file_count\": 11,\n    \"package_total_bytes\": 4467044\n  }\n}\n"
+      "stdout_tail": "{\n  \"archive\": {\n    \"path\": \"tmp/journal_upload_package/runs/20260620T202840Z/NLS_numerical_study_journal_upload_package.tar.gz\",\n    \"sha256\": \"075cea59b368dd9915f1c46315ac72008faeb108541a3d94d59bec9907c55b8d\",\n    \"size_bytes\": 4418737\n  },\n  \"status\": \"PASS\",\n  \"summary\": {\n    \"contains_raw_data_archive\": false,\n    \"package_file_count\": 14,\n    \"package_total_bytes\": 4607053\n  }\n}\n"
     }
   ],
   "gates": [
@@ -248,7 +259,7 @@
         "local_raw_dependency_count": 44,
         "missing_release_files": 0,
         "release_directory_count": 1,
-        "release_file_count": 100,
+        "release_file_count": 104,
         "status": "PASS_WITH_LOCAL_RAW_DATA_LIMITATION",
         "untracked_local_raw_dependencies": 44,
         "untracked_release_files": 0
@@ -260,8 +271,8 @@
       "numbers": {
         "checked_documents": 9,
         "failed_checks": 0,
-        "predicted_source_bundle_included_count": 269,
-        "release_file_count": 100,
+        "predicted_source_bundle_included_count": 273,
+        "release_file_count": 104,
         "total_checks": 21
       },
       "status": "PASS"
@@ -271,12 +282,21 @@
       "numbers": {
         "directory_tracked_file_count": 174,
         "excluded_self_referential_count": 6,
-        "included_file_count": 269,
-        "included_total_bytes": 4568480,
+        "included_file_count": 273,
+        "included_total_bytes": 4594197,
         "local_raw_dependency_count": 44,
         "manifest_release_directories": 1,
-        "manifest_release_file_records": 100,
+        "manifest_release_file_records": 104,
         "missing_file_count": 0
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "siads_cover_letter_template",
+      "numbers": {
+        "issues": 0,
+        "size_bytes": 118094,
+        "template_not_final": true
       },
       "status": "PASS"
     },
@@ -284,13 +304,13 @@
       "name": "journal_upload_package",
       "numbers": {
         "contains_raw_data_archive": false,
-        "package_file_count": 11,
-        "package_total_bytes": 4467044
+        "package_file_count": 14,
+        "package_total_bytes": 4607053
       },
       "status": "PASS"
     }
   ],
-  "generated_at_utc": "2026-06-20T20:14:24.375750+00:00",
+  "generated_at_utc": "2026-06-20T20:28:40.332566+00:00",
   "latex_log": {
     "issues": [],
     "log": "/Users/jayleenjiang/Documents/NLS/tmp/paper_build/revision/draft.log",

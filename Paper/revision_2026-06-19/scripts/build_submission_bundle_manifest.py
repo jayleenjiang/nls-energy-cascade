@@ -188,6 +188,9 @@ def collect_handoff_docs(root: Path, revision_dir: Path, release: dict[str, set[
         "submission_source_bundle_report.md",
         "submission_metadata_consistency_audit.json",
         "submission_metadata_consistency_audit.md",
+        "siads_cover_letter_template.tex",
+        "siads_cover_letter_template_build.json",
+        "siads_cover_letter_template_build.md",
         "compiled_pdf_artifact_audit.json",
         "compiled_pdf_artifact_audit.md",
         "pdf_layout_qa_2026-06-19.md",
@@ -239,6 +242,11 @@ def collect_handoff_docs(root: Path, revision_dir: Path, release: dict[str, set[
         release,
         str((revision_dir / "scripts/build_journal_upload_package.py").relative_to(root)),
         "journal-upload-package-builder",
+    )
+    add_role(
+        release,
+        str((revision_dir / "scripts/build_siads_cover_letter_template.py").relative_to(root)),
+        "cover-letter-template-builder",
     )
     add_role(
         release,

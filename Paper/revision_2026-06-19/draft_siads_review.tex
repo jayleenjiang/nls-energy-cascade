@@ -1251,6 +1251,108 @@ accumulator. Finally, the open-chain terminal-energy scaling suggested by the
 cascade geometry is not claimed here, because it has not yet been recomputed
 with the corrected Gibbs-preserving workflow.
 
+\appendix
+
+\section{Numerical validation and robustness checks}
+\label{app:numerical-validation}
+
+This appendix collects the validation evidence behind the long-chain
+action-current claims. The purpose is not to strengthen the main statement
+beyond its finite-size scope, but to make explicit which numerical checks
+support the quoted law and which questions remain outside the present
+computation. All quantities below are regenerated from, or source-traced to,
+the frozen artifacts listed in the data-availability statement.
+
+\subsection{Current-scaling protocol}
+\label{app:current-protocol}
+
+The production current measurements use the canonical current accumulator for
+the Gibbs-preserving SDE \eqref{eq:sde-bulk}. For the primary bath pair
+$(T_1,T_n)=(10,2)$, the four production lengths $n=10,20,30,40$ use
+$1024$ independent trajectories per length, timestep
+$\Delta t=5\times10^{-4}$, burn-ins $1000,1280,2880,5120$, and a measurement
+window of length $200$ after burn-in. Each trajectory records the time-averaged
+middle-bond current and four equal subwindows; the trajectory averages are the
+independent statistical units, and the subwindows are used only for
+stationarity and finite-time diagnostics. The primary exponent in
+\eqref{eq:flux-scaling} is therefore a fit to four production means under a
+fixed, validated numerical protocol.
+
+\subsection{Implementation and physical validation gates}
+\label{app:validation-gates}
+
+Before the production data are used in the manuscript, the current workflow
+passes several independent checks. The optimized build is warning-clean, and a
+sanitizer smoke run completes. Repeating the same seeded calculation with one
+and two OpenMP threads gives byte-identical samples, profiles, and burn-in
+traces, which checks both deterministic seeding and thread-independent
+accumulation. Three physical smoke tests then check the stochastic
+normalization and sign convention: at equal bath temperatures the mean action
+current is zero within confidence intervals; swapping the hot and cold baths
+reverses the current with matching magnitude; and the equal-temperature action
+profile agrees with an independent Metropolis sample of the Gibbs density
+\eqref{eq:gibbs}, with maximum discrepancy $1.10$ combined standard errors in
+the validation run.
+
+\subsection{Timestep, burn-in, and stationarity}
+\label{app:timestep-stationarity}
+
+The timestep choice is fixed by direct comparison rather than by visual
+smoothness of the scaling curve. The coarse step $\Delta t=10^{-3}$ is already
+acceptable at $n=10$ but becomes biased at larger $n$, underestimating the
+$n=40$ current by $17.6\%$ relative to $\Delta t=5\times10^{-4}$. In contrast,
+the $n=40$ pilot comparison between $\Delta t=5\times10^{-4}$ and
+$2.5\times10^{-4}$ differs by $3.9\%$, or $0.60$ pooled standard errors. The
+production step $\Delta t=5\times10^{-4}$ is therefore retained for the main
+finite-size law, while the coarser step is excluded.
+
+The burn-in schedule is scaled with the observed relaxation time. For the
+primary production lengths, splitting every trajectory into first-half and
+second-half measurement windows gives a maximum discrepancy of $0.90$ paired
+standard errors. The larger $n=50$ and $n=60$ robustness runs use longer
+burn-ins, $8000$ and $11520$ respectively; their split-window statistics are
+$-1.49$ and $-0.52$ paired standard errors. These checks do not prove
+ergodicity for the long chain, but they rule out the most visible finite-time
+drift in the measured current windows.
+
+\subsection{Finite-size and parameter robustness}
+\label{app:finite-size-robustness}
+
+The main text quotes the exponent from the four production lengths because
+those runs form the matched primary design. Two larger-chain computations are
+used as robustness evidence. At $n=50$, the same accumulator with burn-in
+$8000$ gives $\E[J(50)]=0.01852\pm0.00044$; at $n=60$, burn-in $11520$ gives
+$\E[J(60)]=0.01245\pm0.00042$. Adding these points steepens, rather than
+weakens, the finite-size fit: the five-size diagnostic exponent is $-1.894$,
+and the six-size diagnostic exponent is $-1.930$. Fitting only the tail
+$n=20,30,40,50,60$ gives exponent $-2.059$. The available larger-chain data
+therefore do not suggest a drift toward Fourier scaling over the simulated
+window, although they remain a finite-size check rather than an asymptotic
+extrapolation.
+
+The bath-temperature robustness run uses the same production resolution at
+$(T_1,T_n)=(8,4)$ and the same timestep, measurement window, and burn-in
+schedule for the four primary lengths. The fitted exponent is $-1.751$ with bootstrap
+$95\%$ confidence interval $[-1.780,-1.723]$, and the maximum split-window
+stationarity statistic is $1.74$ paired standard errors. This supports the
+claim that the faster decay than Fourier scaling is not tied only to the
+single bath pair $(10,2)$. It is still not a systematic parameter sweep:
+varying the thermostat coupling $\gamma$ and extending the bath grid are
+natural future checks.
+
+\subsection{Finite-time current distributions}
+\label{app:current-distributions}
+
+The stored subwindows also give finite-time distributions of
+$\overline J_\tau$ for $\tau=50,100,200$. These data are useful for checking
+skewness, sign probability, and variance scaling, but they are not used to
+claim a current large-deviation principle. At $n=40$ the probability of a
+negative finite-time current decreases from $0.233$ at $\tau=50$ to $0.026$ at
+$\tau=200$, while $\tau\,\mathrm{Var}(\overline J_\tau)$ decreases rather than
+plateaus over the available windows. For this reason the manuscript reports
+the distributions descriptively and leaves asymptotic current tails and
+bath-energy entropy production to future work.
+
 \section*{Numerical reproducibility summary}
 
 \Cref{tab:repro-summary} summarizes the numerical audit trail used in this
