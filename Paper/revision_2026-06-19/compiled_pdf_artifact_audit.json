@@ -1,25 +1,25 @@
 {
-  "generated_at_utc": "2026-06-20T19:29:46.010128+00:00",
+  "generated_at_utc": "2026-06-20T19:40:12.597384+00:00",
   "pdfs": [
     {
-      "bytes_from_log": 1546086,
+      "bytes_from_log": 1549977,
       "bytes_match_log": true,
       "id": "generic_manuscript_pdf",
       "issues": [],
       "log": "tmp/paper_build/revision/draft.log",
       "log_exists": true,
-      "pages_from_log": 21,
+      "pages_from_log": 22,
       "pdf": "tmp/paper_build/revision/draft.pdf",
       "pdf_exists": true,
       "role": "Generic revised manuscript PDF",
-      "sha256": "8c729b647149ee4df690f1c76d566909ce861c1ff98a9f40764728522df3768a",
-      "size_bytes": 1546086,
+      "sha256": "98aa375d5a2698162b86b4f0c83a91417c7506c207a63679956e5fe9c8a72e02",
+      "size_bytes": 1549977,
       "source": "Paper/revision_2026-06-19/draft.tex",
       "source_exists": true,
       "status": "PASS"
     },
     {
-      "bytes_from_log": 1561377,
+      "bytes_from_log": 1564484,
       "bytes_match_log": true,
       "id": "siads_review_pdf",
       "issues": [],
@@ -29,8 +29,8 @@
       "pdf": "tmp/paper_build/siads_review/draft_siads_review.pdf",
       "pdf_exists": true,
       "role": "SIADS review-preparation PDF",
-      "sha256": "7d9a359491dc9b9109b4478f442bca4c3aa5f31c56cca74c3b279f73f9845695",
-      "size_bytes": 1561377,
+      "sha256": "0ce0cab9ca547b6456bb6282431ce30ef236aff0ab904d4910b5668342921ab4",
+      "size_bytes": 1564484,
       "source": "Paper/revision_2026-06-19/draft_siads_review.tex",
       "source_exists": true,
       "status": "PASS"

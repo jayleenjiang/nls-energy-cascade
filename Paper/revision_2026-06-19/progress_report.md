@@ -90,7 +90,7 @@
     manuscript continues not to use that result as a claim.
 17. Added `scripts/audit_manuscript_claims.py`, which builds
     `manuscript_claim_audit.json` and `manuscript_claim_audit.md` from the
-    source-traced numerical artifacts. The current audit verifies 18/18 core
+    source-traced numerical artifacts. The current audit verifies 19/19 core
     numerical/data claims after the larger-chain and bath-temperature
     robustness updates and caught a notation issue in the LTE section:
     the equilibrium marginal is now written consistently with the manuscript's
@@ -190,7 +190,7 @@
       windows and $\tau\,\mathrm{Var}(\overline J_\tau)$;
     - reran the one-command submission gate, which now reports
       `PASS_WITH_AUTHOR_CONFIRMATION_PENDING_AND_LOCAL_RAW_DATA_LIMITATION`
-      with 37/37 path records available, 18/18 registered numerical claims
+      with 37/37 path records available, 19/19 registered numerical claims
       verified, and 9 author/external submission items pending.
 32. Added `siads_first_submission_packet_2026-06-20.md`, a target-specific
     preparation packet for the recommended first journal target.  It contains a
@@ -283,7 +283,7 @@ Power-law fit:
   sampled scope, but it is not a corpus-scale similarity report.
 - Rerun the final citation/data/claim/path audit after author declarations and
   any last journal-format edits are settled. The current local core numerical
-  audit passes 18/18 checks, and the current availability-path audit passes
+  audit passes 19/19 checks, and the current availability-path audit passes
   37/37 checks. The preferred one-command local gate is now
   `python3 Paper/revision_2026-06-19/scripts/run_submission_checks.py --compile-latex`.
   The reviewer/editor-facing navigation file is

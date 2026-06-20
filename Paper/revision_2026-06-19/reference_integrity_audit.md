@@ -1,6 +1,6 @@
 # Reference integrity audit
 
-Generated: `2026-06-20T19:29:46.234163+00:00`
+Generated: `2026-06-20T19:40:12.818862+00:00`
 
 Status: **PASS**
 
@@ -38,8 +38,8 @@ Status: **PASS**
 | `CKSTT` | 111, 122, 128, 519 |
 | `DobsonLiZhai` | 391 |
 | `GallavottiCohen` | 315 |
-| `HLNS` | 91, 93, 98, 150, 156, 187, 196, 202, 214, 217, 240, 355, 464, 938, 1015, 1021, 1171 |
-| `LepriLiviPoliti` | 727 |
+| `HLNS` | 91, 93, 98, 150, 156, 187, 196, 202, 214, 217, 240, 355, 464, 983, 1060, 1066, 1216 |
+| `LepriLiviPoliti` | 772 |
 | `Li2019` | 391 |
 | `Nazarenko` | 84 |
 | `ZhaiDobsonLi` | 249, 390, 402 |

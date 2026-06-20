@@ -93,13 +93,13 @@ Key updates since the initial inventory:
   supporting scripts.
 - References were converted to `references.bib` and checked for dangling or
   orphan citation keys.
-- The local core numerical claim audit passes 18/18 registered checks; see
+- The local core numerical claim audit passes 19/19 registered checks; see
   `manuscript_claim_audit.md`.
 - The 2026-06-20 submission-level pass further added the Monte Carlo validation
   protocol, the LTE residual mesh figure, timestep sensitivity table, and
   finite-window current diagnostics.  The current one-command gate reports
   `PASS_WITH_AUTHOR_CONFIRMATION_PENDING_AND_LOCAL_RAW_DATA_LIMITATION` with
-  37/37 availability paths present, 18/18 registered numerical claims verified,
+  37/37 availability paths present, 19/19 registered numerical claims verified,
   9 author/external submission items pending, and the larger-chain plus
   bath-temperature robustness updates included.
 

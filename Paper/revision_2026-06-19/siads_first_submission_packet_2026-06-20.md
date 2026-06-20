@@ -29,7 +29,7 @@ Official SIADS pages checked on 2026-06-20:
 - Current local gate:
   `PASS_WITH_AUTHOR_CONFIRMATION_PENDING_AND_LOCAL_RAW_DATA_LIMITATION`.
 - Current manuscript figures are embedded inline.
-- Current code-verifiable numerical claim audit: 18/18 claims verified.
+- Current code-verifiable numerical claim audit: 19/19 claims verified.
 - Current availability-path audit: 37/37 paths present and required files
   git-tracked.
 - Remaining non-local blockers: target confirmation, author metadata,

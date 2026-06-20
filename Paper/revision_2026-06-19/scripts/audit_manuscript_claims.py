@@ -533,6 +533,49 @@ def build_registry() -> list[dict[str, Any]]:
         note="Text check is intentionally value-based; repeated rounded values need appear at least once in the table.",
     )
 
+    lte_residual_decomp = source["lte_residual_decomposition"]
+    expected_residual_decomp = [
+        r"\label{tab:lte-resid-decomp}",
+        r"$r=\log q-(c+x\log p_6)$",
+        r"r_{\rm even}(\theta)=\tfrac12\{r(\theta)+r(-\theta)\}",
+        r"r_{\rm odd}(\theta)=\tfrac12\{r(\theta)-r(-\theta)\}",
+        r"requiring at least $50$ counts",
+        r"odd part is a",
+        r"direct finite nonequilibrium correction",
+    ]
+    lte_residual_computed: dict[str, Any] = {}
+    for row in lte_residual_decomp["rows"]:
+        key = f"n={row['n']},a/n={row['a_over_n']:.2f}"
+        rounding = row["manuscript_rounding"]
+        expected_residual_decomp.extend(
+            [
+                rounding["total_rms_3dp"],
+                rounding["even_rms_3dp"],
+                rounding["odd_rms_3dp"],
+                rounding["odd_fraction_2dp"],
+            ]
+        )
+        lte_residual_computed[key] = {
+            "total_rms": row["decomposition"]["total_rms"],
+            "even_rms": row["decomposition"]["even_rms"],
+            "odd_rms": row["decomposition"]["odd_rms"],
+            "odd_fraction_of_total_rms": row["decomposition"]["odd_fraction_of_total_rms"],
+            "symmetrized_original_bin_count": row["decomposition"]["symmetrized_original_bin_count"],
+        }
+    add_claim(
+        registry,
+        claim_id="lte_residual_even_odd_decomposition",
+        section="local thermodynamic equilibrium",
+        claim="The LTE residual even/odd table matches the source-traced histogram recomputation.",
+        evidence=[source_trace_path],
+        expected_text=sorted(set(expected_residual_decomp)),
+        computed={
+            "algorithm": lte_residual_decomp["algorithm"],
+            "rows": lte_residual_computed,
+        },
+        note="The residual decomposition is descriptive and uses a stricter symmetric count mask than the slope fit.",
+    )
+
     controls = source["lte_table"]["controls"]
     add_claim(
         registry,

@@ -31,7 +31,7 @@ Key numbers from the current gate:
 |---|---:|
 | LaTeX/log checks | `draft.tex` PASS; `draft_siads_review.tex` PASS |
 | Availability paths checked | 37/37 |
-| Registered numerical claims verified | 18/18 |
+| Registered numerical claims verified | 19/19 |
 | Cited BibTeX entries | 8 |
 | Dangling citations | 0 |
 | Compiled PDF artifact audit | 2/2 PDFs verified |

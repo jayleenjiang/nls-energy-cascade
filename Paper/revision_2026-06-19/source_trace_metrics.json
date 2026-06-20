@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-19T15:53:00.949873+00:00",
+  "generated_at_utc": "2026-06-20T19:37:35.758759+00:00",
   "script": "Paper/revision_2026-06-19/scripts/export_source_trace_metrics.py",
   "lte_table": {
     "description": "Source-traced recomputation of Table tab:lte from archived histograms and profiles.",
@@ -538,6 +538,388 @@
       "p_7.12_vs_p_6_mean_slope": 0.9261873705705216,
       "p_7.12_vs_p_6_mean_weighted_r2": 0.9997151195593705
     }
+  },
+  "lte_residual_decomposition": {
+    "description": "Weighted even/odd-in-theta decomposition of the LTE residual after the rescaled-equilibrium fit.",
+    "algorithm": {
+      "residual": "r = log q - (c + x log p)",
+      "even_part": "r_even(theta) = (r(theta)+r(-theta))/2",
+      "odd_part": "r_odd(theta) = (r(theta)-r(-theta))/2",
+      "fit_mask": "same weighted core estimator as Table tab:lte",
+      "decomposition_mask": "I_a,I_b<2.5 and q,p counts >= 50 at both theta and -theta",
+      "weights": "symmetrized average of the two NESS counts q(theta), q(-theta)"
+    },
+    "rows": [
+      {
+        "n": 25,
+        "pair_index_j": 6,
+        "a_over_n": 0.24,
+        "q_hist": {
+          "path": "lte/n25 data/n25_j6.hist",
+          "exists": true,
+          "bytes": 6300540,
+          "sha256": "d0506d5ac31839aeccfcebbaaaf7a76218ae03c2ffe1abe6444958193ed6800e"
+        },
+        "p_hist": {
+          "path": "lte/n25 data/n25_eq_j6.hist",
+          "exists": true,
+          "bytes": 6105980,
+          "sha256": "d510635e024990d1a5548159078587a7a861fd6d2fd0e25088343bd4f4483687"
+        },
+        "fit_slope_x": 0.8202590962370496,
+        "fit_weighted_r2": 0.9969688003853546,
+        "fit_bins_used": 198455,
+        "decomposition": {
+          "total_rms": 0.06622658858937266,
+          "even_rms": 0.0442291126026471,
+          "odd_rms": 0.0492924602202851,
+          "odd_fraction_of_total_rms": 0.7443001560281942,
+          "even_fraction_of_total_rms": 0.667845249841912,
+          "weighted_identity_error": 4.336808689942018e-19,
+          "paired_core_bin_count": 85893,
+          "symmetrized_original_bin_count": 171786,
+          "weight_sum": 478508946.5
+        },
+        "mask": {
+          "fit": "q_count>=1 and p_count>=1 and I_a,I_b<2.5",
+          "decomposition": "I_a,I_b<2.5; q_count,p_count>=50 at both theta and -theta; symmetrized weights"
+        },
+        "manuscript_rounding": {
+          "total_rms_3dp": "0.066",
+          "even_rms_3dp": "0.044",
+          "odd_rms_3dp": "0.049",
+          "odd_fraction_2dp": "0.74"
+        }
+      },
+      {
+        "n": 25,
+        "pair_index_j": 12,
+        "a_over_n": 0.48,
+        "q_hist": {
+          "path": "lte/n25 data/n25_j12.hist",
+          "exists": true,
+          "bytes": 6230723,
+          "sha256": "d646260f167ce7820daaac9c74a3fda7d659e40042b4cc3b9d54ec755d2751ab"
+        },
+        "p_hist": {
+          "path": "lte/n25 data/n25_eq_j12.hist",
+          "exists": true,
+          "bytes": 6108031,
+          "sha256": "e50ff4014ffa2742d9be13249002d72e38e35f12d4809aeca8a9586c936e52a6"
+        },
+        "fit_slope_x": 0.9360486344125818,
+        "fit_weighted_r2": 0.9942828659573528,
+        "fit_bins_used": 197564,
+        "decomposition": {
+          "total_rms": 0.10039882279823528,
+          "even_rms": 0.08198274102974279,
+          "odd_rms": 0.05795475642707487,
+          "odd_fraction_of_total_rms": 0.577245378101122,
+          "even_fraction_of_total_rms": 0.8165707400224996,
+          "weighted_identity_error": -4.336808689942018e-19,
+          "paired_core_bin_count": 85433,
+          "symmetrized_original_bin_count": 170866,
+          "weight_sum": 483996210.5
+        },
+        "mask": {
+          "fit": "q_count>=1 and p_count>=1 and I_a,I_b<2.5",
+          "decomposition": "I_a,I_b<2.5; q_count,p_count>=50 at both theta and -theta; symmetrized weights"
+        },
+        "manuscript_rounding": {
+          "total_rms_3dp": "0.100",
+          "even_rms_3dp": "0.082",
+          "odd_rms_3dp": "0.058",
+          "odd_fraction_2dp": "0.58"
+        }
+      },
+      {
+        "n": 25,
+        "pair_index_j": 18,
+        "a_over_n": 0.72,
+        "q_hist": {
+          "path": "lte/n25 data/n25_j18.hist",
+          "exists": true,
+          "bytes": 6139918,
+          "sha256": "1d7063f5bfe8a1deb8c5fd86a06f6c152b6d887ca7f5b88a536b939f78a6785e"
+        },
+        "p_hist": {
+          "path": "lte/n25 data/n25_eq_j18.hist",
+          "exists": true,
+          "bytes": 6104886,
+          "sha256": "549febdc41dc1efb0c70b63e86ba7d67d1609756583d62aea8b5a7f91eabe189"
+        },
+        "fit_slope_x": 1.0932697169541739,
+        "fit_weighted_r2": 0.9861843321457395,
+        "fit_bins_used": 196616,
+        "decomposition": {
+          "total_rms": 0.1675075291450232,
+          "even_rms": 0.15157135758836046,
+          "odd_rms": 0.0713084558737052,
+          "odd_fraction_of_total_rms": 0.42570298921888095,
+          "even_fraction_of_total_rms": 0.9048629536952595,
+          "weighted_identity_error": -1.734723475976807e-18,
+          "paired_core_bin_count": 81583,
+          "symmetrized_original_bin_count": 163166,
+          "weight_sum": 491445516.5
+        },
+        "mask": {
+          "fit": "q_count>=1 and p_count>=1 and I_a,I_b<2.5",
+          "decomposition": "I_a,I_b<2.5; q_count,p_count>=50 at both theta and -theta; symmetrized weights"
+        },
+        "manuscript_rounding": {
+          "total_rms_3dp": "0.168",
+          "even_rms_3dp": "0.152",
+          "odd_rms_3dp": "0.071",
+          "odd_fraction_2dp": "0.43"
+        }
+      },
+      {
+        "n": 50,
+        "pair_index_j": 12,
+        "a_over_n": 0.24,
+        "q_hist": {
+          "path": "lte/n50 data/simd_n50_j12.hist",
+          "exists": true,
+          "bytes": 6111368,
+          "sha256": "4a2a538dacf036fd55237b0d5ecf80379acd268ccdd9c03180c6def4cdded27e"
+        },
+        "p_hist": {
+          "path": "lte/n50 data/simd_n50_eq_j12.hist",
+          "exists": true,
+          "bytes": 5951241,
+          "sha256": "366941a0c3deafc30b0f6e2d6f04d18d254d12b8977867299e5a5d7e92947469"
+        },
+        "fit_slope_x": 0.8268728907454963,
+        "fit_weighted_r2": 0.9984357439194392,
+        "fit_bins_used": 183586,
+        "decomposition": {
+          "total_rms": 0.05343112258167809,
+          "even_rms": 0.045679229617348716,
+          "odd_rms": 0.027718095928541738,
+          "odd_fraction_of_total_rms": 0.5187631213656452,
+          "even_fraction_of_total_rms": 0.8549180217488532,
+          "weighted_identity_error": -1.0842021724855044e-19,
+          "paired_core_bin_count": 70376,
+          "symmetrized_original_bin_count": 140752,
+          "weight_sum": 492926720.0
+        },
+        "mask": {
+          "fit": "q_count>=1 and p_count>=1 and I_a,I_b<2.5",
+          "decomposition": "I_a,I_b<2.5; q_count,p_count>=50 at both theta and -theta; symmetrized weights"
+        },
+        "manuscript_rounding": {
+          "total_rms_3dp": "0.053",
+          "even_rms_3dp": "0.046",
+          "odd_rms_3dp": "0.028",
+          "odd_fraction_2dp": "0.52"
+        }
+      },
+      {
+        "n": 50,
+        "pair_index_j": 24,
+        "a_over_n": 0.48,
+        "q_hist": {
+          "path": "lte/n50 data/simd_n50_j24.hist",
+          "exists": true,
+          "bytes": 6082222,
+          "sha256": "bea9881e88bf52bdcc814a63af7cd83c91e9a5489ea57b2afd60938f5a0ae855"
+        },
+        "p_hist": {
+          "path": "lte/n50 data/simd_n50_eq_j24.hist",
+          "exists": true,
+          "bytes": 5968237,
+          "sha256": "3c01d05d90bac26329c897315a042227a9b182e02d95ecba54d6cf79cda7089a"
+        },
+        "fit_slope_x": 0.9308128639242221,
+        "fit_weighted_r2": 0.9988300438983483,
+        "fit_bins_used": 181428,
+        "decomposition": {
+          "total_rms": 0.050558231689729845,
+          "even_rms": 0.03978285454319934,
+          "odd_rms": 0.031200308908519596,
+          "odd_fraction_of_total_rms": 0.6171163006647932,
+          "even_fraction_of_total_rms": 0.7868719536581544,
+          "weighted_identity_error": -2.168404344971009e-19,
+          "paired_core_bin_count": 70414,
+          "symmetrized_original_bin_count": 140828,
+          "weight_sum": 492454046.5
+        },
+        "mask": {
+          "fit": "q_count>=1 and p_count>=1 and I_a,I_b<2.5",
+          "decomposition": "I_a,I_b<2.5; q_count,p_count>=50 at both theta and -theta; symmetrized weights"
+        },
+        "manuscript_rounding": {
+          "total_rms_3dp": "0.051",
+          "even_rms_3dp": "0.040",
+          "odd_rms_3dp": "0.031",
+          "odd_fraction_2dp": "0.62"
+        }
+      },
+      {
+        "n": 50,
+        "pair_index_j": 36,
+        "a_over_n": 0.72,
+        "q_hist": {
+          "path": "lte/n50 data/simd_n50_j36.hist",
+          "exists": true,
+          "bytes": 6014749,
+          "sha256": "30a09efbee1cf82eca9716819816afa3d1536c398fc9787fec523e85259263d0"
+        },
+        "p_hist": {
+          "path": "lte/n50 data/simd_n50_eq_j36.hist",
+          "exists": true,
+          "bytes": 5950827,
+          "sha256": "07f7cae4790da1266eddcc5978950db7c88ed2350293ea10acb00d5fa2b6bca8"
+        },
+        "fit_slope_x": 1.061028944902206,
+        "fit_weighted_r2": 0.9919414355867346,
+        "fit_bins_used": 179204,
+        "decomposition": {
+          "total_rms": 0.14356265005453125,
+          "even_rms": 0.1379356144299244,
+          "odd_rms": 0.03979950706376934,
+          "odd_fraction_of_total_rms": 0.2772274477285825,
+          "even_fraction_of_total_rms": 0.960804320465877,
+          "weighted_identity_error": 3.686287386450715e-18,
+          "paired_core_bin_count": 67971,
+          "symmetrized_original_bin_count": 135942,
+          "weight_sum": 496098363.5
+        },
+        "mask": {
+          "fit": "q_count>=1 and p_count>=1 and I_a,I_b<2.5",
+          "decomposition": "I_a,I_b<2.5; q_count,p_count>=50 at both theta and -theta; symmetrized weights"
+        },
+        "manuscript_rounding": {
+          "total_rms_3dp": "0.144",
+          "even_rms_3dp": "0.138",
+          "odd_rms_3dp": "0.040",
+          "odd_fraction_2dp": "0.28"
+        }
+      },
+      {
+        "n": 100,
+        "pair_index_j": 24,
+        "a_over_n": 0.24,
+        "q_hist": {
+          "path": "lte/n100 data/n100_j24.hist",
+          "exists": true,
+          "bytes": 5989159,
+          "sha256": "c14100fbab7e03af8ddecc56cbf2d7a06d64dd765ccd77d3363e81ea3d2b49b7"
+        },
+        "p_hist": {
+          "path": "lte/n100 data/n100_eq_j24.hist",
+          "exists": true,
+          "bytes": 5875607,
+          "sha256": "6e775f956744c2a464751380bb8591d91416893decca84801013d3ec4c8dbe67"
+        },
+        "fit_slope_x": 0.8429298979786197,
+        "fit_weighted_r2": 0.9966945170041472,
+        "fit_bins_used": 165859,
+        "decomposition": {
+          "total_rms": 0.09080071828913766,
+          "even_rms": 0.08948643316191225,
+          "odd_rms": 0.015393138789147305,
+          "odd_fraction_of_total_rms": 0.16952661916319622,
+          "even_fraction_of_total_rms": 0.9855256086957339,
+          "weighted_identity_error": -4.607859233063394e-19,
+          "paired_core_bin_count": 58627,
+          "symmetrized_original_bin_count": 117254,
+          "weight_sum": 496745500.5
+        },
+        "mask": {
+          "fit": "q_count>=1 and p_count>=1 and I_a,I_b<2.5",
+          "decomposition": "I_a,I_b<2.5; q_count,p_count>=50 at both theta and -theta; symmetrized weights"
+        },
+        "manuscript_rounding": {
+          "total_rms_3dp": "0.091",
+          "even_rms_3dp": "0.089",
+          "odd_rms_3dp": "0.015",
+          "odd_fraction_2dp": "0.17"
+        }
+      },
+      {
+        "n": 100,
+        "pair_index_j": 48,
+        "a_over_n": 0.48,
+        "q_hist": {
+          "path": "lte/n100 data/n100_j48.hist",
+          "exists": true,
+          "bytes": 5978520,
+          "sha256": "ebd90b8363578cd2ee2366fef45a729636077b146761fff5b579df1035b1ee26"
+        },
+        "p_hist": {
+          "path": "lte/n100 data/n100_eq_j48.hist",
+          "exists": true,
+          "bytes": 5902964,
+          "sha256": "7852574e4ed1134e5083c4ea1e24824a80bae8a8621110b11e987fd5b74a63b8"
+        },
+        "fit_slope_x": 0.9304296075801309,
+        "fit_weighted_r2": 0.9989201102528968,
+        "fit_bins_used": 166562,
+        "decomposition": {
+          "total_rms": 0.05420062749925339,
+          "even_rms": 0.05164008823047514,
+          "odd_rms": 0.016462360367261,
+          "odd_fraction_of_total_rms": 0.3037300696839307,
+          "even_fraction_of_total_rms": 0.9527581250085431,
+          "weighted_identity_error": 3.7947076036992655e-19,
+          "paired_core_bin_count": 59767,
+          "symmetrized_original_bin_count": 119534,
+          "weight_sum": 495230162.5
+        },
+        "mask": {
+          "fit": "q_count>=1 and p_count>=1 and I_a,I_b<2.5",
+          "decomposition": "I_a,I_b<2.5; q_count,p_count>=50 at both theta and -theta; symmetrized weights"
+        },
+        "manuscript_rounding": {
+          "total_rms_3dp": "0.054",
+          "even_rms_3dp": "0.052",
+          "odd_rms_3dp": "0.016",
+          "odd_fraction_2dp": "0.30"
+        }
+      },
+      {
+        "n": 100,
+        "pair_index_j": 72,
+        "a_over_n": 0.72,
+        "q_hist": {
+          "path": "lte/n100 data/n100_j72.hist",
+          "exists": true,
+          "bytes": 5914284,
+          "sha256": "b583d68b1029dd14b2d6fbfc783b5dd421b3f7c41e81efb5451e30180b5a81bf"
+        },
+        "p_hist": {
+          "path": "lte/n100 data/n100_eq_j72.hist",
+          "exists": true,
+          "bytes": 5879991,
+          "sha256": "0e22b3069f142ff4fe3c66972a171f534f364a0434ecf17356934de72747aded"
+        },
+        "fit_slope_x": 1.0411709430073903,
+        "fit_weighted_r2": 0.9980185809439267,
+        "fit_bins_used": 162247,
+        "decomposition": {
+          "total_rms": 0.0761971215464918,
+          "even_rms": 0.07282599899326796,
+          "odd_rms": 0.022413727994320377,
+          "odd_fraction_of_total_rms": 0.2941545236803283,
+          "even_fraction_of_total_rms": 0.9557578753002244,
+          "weighted_identity_error": -5.421010862427522e-19,
+          "paired_core_bin_count": 58025,
+          "symmetrized_original_bin_count": 116050,
+          "weight_sum": 498798599.0
+        },
+        "mask": {
+          "fit": "q_count>=1 and p_count>=1 and I_a,I_b<2.5",
+          "decomposition": "I_a,I_b<2.5; q_count,p_count>=50 at both theta and -theta; symmetrized weights"
+        },
+        "manuscript_rounding": {
+          "total_rms_3dp": "0.076",
+          "even_rms_3dp": "0.073",
+          "odd_rms_3dp": "0.022",
+          "odd_fraction_2dp": "0.29"
+        }
+      }
+    ]
   },
   "short_chain": {
     "description": "Archived notebook-output metrics and figure hashes for the short-chain Fokker--Planck and eigenfunction sections.",

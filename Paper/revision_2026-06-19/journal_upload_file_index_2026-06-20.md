@@ -26,7 +26,7 @@ Key numbers:
 | LaTeX/log checks | `draft.tex` PASS; `draft_siads_review.tex` PASS |
 | Compiled PDF artifact audit | 2/2 PDFs verified |
 | Availability paths | 37/37 |
-| Registered numerical claims | 18/18 |
+| Registered numerical claims | 19/19 |
 | Cited BibTeX entries | 8 |
 | Release-bundle files | 95 |
 | Source-bundle included files | 264 |

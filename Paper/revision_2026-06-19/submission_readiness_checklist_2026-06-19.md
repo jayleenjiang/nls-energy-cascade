@@ -46,7 +46,7 @@ robustness pass added a fit-window sensitivity table around the `n=50` and
 production-resolution `T1=8,Tn=4` current-scaling check over
 `n=10,20,30,40`.  The latest one-command gate reports
 `PASS_WITH_AUTHOR_CONFIRMATION_PENDING_AND_LOCAL_RAW_DATA_LIMITATION` with
-37/37 availability path records present and git-tracked, 18/18 registered
+37/37 availability path records present and git-tracked, 19/19 registered
 numerical claims verified, 9 author/external submission items pending, and zero
 missing release-bundle files.
 

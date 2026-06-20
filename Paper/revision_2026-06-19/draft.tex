@@ -651,6 +651,51 @@ well described by an equilibrium marginal at the local kinetic temperature,
 increasingly so as $n$ grows, but strict local Gibbs structure does not hold
 exactly in either ensemble.
 
+To quantify the two contributions, let
+$r=\log q-(c+x\log p_6)$ be the residual after the weighted fit and decompose
+\[
+  r_{\rm even}(\theta)=\tfrac12\{r(\theta)+r(-\theta)\},\qquad
+  r_{\rm odd}(\theta)=\tfrac12\{r(\theta)-r(-\theta)\}.
+\]
+\Cref{tab:lte-resid-decomp} reports weighted root-mean-square residuals on the
+symmetric core mask $I_a,I_b<2.5$, requiring at least $50$ counts in both the
+$\theta$ and $-\theta$ bins for both histograms. The even component records the
+remaining curvature/marginalization mismatch after a single-temperature
+rescaling, while the odd component is the part incompatible with any
+equilibrium marginal. The odd residual is visible at the shorter and
+mid-length chains, but is substantially smaller in the $n=100$ interior
+diagnostics, consistent with improving local equilibrium while retaining a
+finite nonequilibrium correction.
+
+\begin{table}[ht]\centering
+\small
+\begin{tabular}{cccccc}
+\toprule
+$a/n$ & $n$ & $\|r\|_w$ & $\|r_{\rm even}\|_w$ &
+$\|r_{\rm odd}\|_w$ & $\|r_{\rm odd}\|_w/\|r\|_w$ \\
+\midrule
+0.24 & 25  & 0.066 & 0.044 & 0.049 & 0.74 \\
+0.24 & 50  & 0.053 & 0.046 & 0.028 & 0.52 \\
+0.24 & 100 & 0.091 & 0.089 & 0.015 & 0.17 \\
+\midrule
+0.48 & 25  & 0.100 & 0.082 & 0.058 & 0.58 \\
+0.48 & 50  & 0.051 & 0.040 & 0.031 & 0.62 \\
+0.48 & 100 & 0.054 & 0.052 & 0.016 & 0.30 \\
+\midrule
+0.72 & 25  & 0.168 & 0.152 & 0.071 & 0.43 \\
+0.72 & 50  & 0.144 & 0.138 & 0.040 & 0.28 \\
+0.72 & 100 & 0.076 & 0.073 & 0.022 & 0.29 \\
+\bottomrule
+\end{tabular}
+\caption{Even/odd decomposition of the local-equilibrium residual
+$r=\log q-(c+x\log p_6)$ after the rescaled-equilibrium fit. Norms are
+weighted by the symmetrized NESS counts on the paired core mask described in
+the text. Since equilibrium marginals are even in $\theta$, the odd part is a
+direct finite nonequilibrium correction rather than a temperature-rescaling
+error.}
+\label{tab:lte-resid-decomp}
+\end{table}
+
 \begin{figure}[ht]
   \centering
   \includegraphics[width=0.82\textwidth]{lte_residual_midchain.pdf}
@@ -1277,7 +1322,8 @@ repository root. The key reproducibility artifacts are:
   \path{Paper/revision_2026-06-19/scripts/generate_manuscript_figures.py};
   \item source metrics for those figures:
   \path{Paper/revision_2026-06-19/manuscript_figure_metrics.json};
-  \item source-trace export for the LTE table and short-chain diagnostics:
+  \item source-trace export for the LTE table, LTE residual decomposition, and
+  short-chain diagnostics:
   \path{Paper/revision_2026-06-19/scripts/export_source_trace_metrics.py} and
   \path{Paper/revision_2026-06-19/source_trace_metrics.json};
   \item short-chain TensorFlow saved-model rerun:

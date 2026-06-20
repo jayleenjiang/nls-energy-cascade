@@ -56,7 +56,7 @@ The generated summary is:
 | Check compiled-PDF artifact metadata | `compiled_pdf_artifact_audit.md`; `compiled_pdf_artifact_audit.json` | The current generic and SIADS local PDFs have recorded page counts, byte sizes, and SHA-256 checksums. |
 | Check the original working outline | `paper_draft_1.tex` | Preserved planning/framework source; not the active manuscript. |
 | Check citation/reference integrity | `reference_integrity_audit.md`; `reference_integrity_audit.json` | All local cite keys and BibTeX entries match, identifiers are present, and external verification URLs are recorded. |
-| Check numerical-claim support | `manuscript_claim_audit.md`; `manuscript_claim_audit.json` | Code-verifiable numerical/data claims currently pass 18/18 registered checks. |
+| Check numerical-claim support | `manuscript_claim_audit.md`; `manuscript_claim_audit.json` | Code-verifiable numerical/data claims currently pass 19/19 registered checks. |
 | Check file/path availability | `availability_path_audit.md`; `availability_path_audit.json` | Manuscript-declared files and figure paths exist locally and have hashes where applicable. |
 | Check submission-bundle completeness | `submission_bundle_manifest.md`; `submission_bundle_manifest.json` | Tracked release files are present, git-tracked, and categorized by role. |
 | Build a source-only submission archive | `submission_source_bundle_report.md`; `scripts/build_submission_source_bundle.py` | A source-only `.tar.gz` can be generated under `tmp/`, with checksums and raw-data exclusions recorded. |

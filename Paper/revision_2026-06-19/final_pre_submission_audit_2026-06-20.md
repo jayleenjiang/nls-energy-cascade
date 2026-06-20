@@ -28,7 +28,7 @@ Key gate numbers:
 | LaTeX/log scans | PASS for `draft.tex` and `draft_siads_review.tex`, `issues=0` in both logs |
 | Compiled PDF artifact audit | PASS, `2/2` local PDFs verified with page counts, sizes, and SHA-256 checksums |
 | Availability/path audit | PASS, `37/37` paths present, `0` untracked required files |
-| Numerical claim audit | PASS, `18/18` claims verified |
+| Numerical claim audit | PASS, `19/19` claims verified |
 | Reference integrity audit | PASS, `8` cited BibTeX entries, `0` dangling citations |
 | Author/submission-field audit | `AUTHOR_CONFIRMATION_PENDING`, `9` pending author/external items |
 | Raw-data archive manifest | PASS locally, `40` unique referenced files, `138,875,181` bytes |

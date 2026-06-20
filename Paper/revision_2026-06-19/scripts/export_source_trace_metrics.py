@@ -16,12 +16,17 @@ from __future__ import annotations
 
 import hashlib
 import json
+import math
+import os
 import re
 import struct
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+import numpy as np
+
+os.environ.setdefault("MPLCONFIGDIR", "/private/tmp/matplotlib-codex-cache")
 import generate_manuscript_figures as manuscript_figures
 
 
@@ -283,6 +288,147 @@ def export_lte_table() -> dict[str, Any]:
     }
 
 
+def residual_even_odd_decomposition(
+    q_hist: dict[str, Any],
+    p_hist: dict[str, Any],
+    *,
+    fit_min_count: int = 1,
+    decomp_min_count: int = 50,
+    i_max: float = 2.5,
+) -> dict[str, Any]:
+    """Split the LTE residual into even and odd parts in the bond angle.
+
+    The fit uses the same weighted-core estimator as Table ``tab:lte``.  The
+    residual norms are computed on a symmetric core mask that requires both
+    ``theta`` and ``-theta`` bins to pass the count threshold, so that the
+    weighted identity ||r||^2 = ||r_even||^2 + ||r_odd||^2 is meaningful up to
+    floating-point roundoff.
+    """
+
+    fit = manuscript_figures.fit_rescaled_equilibrium(
+        q_hist,
+        p_hist,
+        min_count=fit_min_count,
+        i_max=i_max,
+    )
+    residual = fit["residual"]
+    q_counts = fit["q_counts"]
+    p_counts = fit["p_counts"]
+    i_centers = fit["i_centers"]
+    theta_centers = fit["theta_centers"]
+    assert isinstance(residual, np.ndarray)
+    assert isinstance(q_counts, np.ndarray)
+    assert isinstance(p_counts, np.ndarray)
+    assert isinstance(i_centers, np.ndarray)
+    assert isinstance(theta_centers, np.ndarray)
+
+    ia_grid, ib_grid = np.meshgrid(i_centers, i_centers, indexing="ij")
+    weights: list[np.ndarray] = []
+    even_parts: list[np.ndarray] = []
+    odd_parts: list[np.ndarray] = []
+    paired_total_parts: list[np.ndarray] = []
+
+    nb = len(theta_centers)
+    for k in range(nb // 2):
+        mirror = nb - 1 - k
+        mask = (
+            (ia_grid < i_max)
+            & (ib_grid < i_max)
+            & np.isfinite(residual[:, :, k])
+            & np.isfinite(residual[:, :, mirror])
+            & (q_counts[:, :, k] >= decomp_min_count)
+            & (q_counts[:, :, mirror] >= decomp_min_count)
+            & (p_counts[:, :, k] >= decomp_min_count)
+            & (p_counts[:, :, mirror] >= decomp_min_count)
+        )
+        if not np.any(mask):
+            continue
+        r_pos = residual[:, :, k][mask]
+        r_neg = residual[:, :, mirror][mask]
+        weights.append(0.5 * (q_counts[:, :, k][mask].astype(float) + q_counts[:, :, mirror][mask].astype(float)))
+        even_parts.append(0.5 * (r_pos + r_neg))
+        odd_parts.append(0.5 * (r_pos - r_neg))
+        paired_total_parts.append(0.5 * (r_pos * r_pos + r_neg * r_neg))
+
+    if not weights:
+        raise ValueError("No paired residual bins passed the symmetric core mask.")
+
+    w = np.concatenate(weights)
+    r_even = np.concatenate(even_parts)
+    r_odd = np.concatenate(odd_parts)
+    paired_total = np.concatenate(paired_total_parts)
+    weight_sum = float(np.sum(w))
+    total2 = float(np.sum(w * paired_total) / weight_sum)
+    even2 = float(np.sum(w * r_even * r_even) / weight_sum)
+    odd2 = float(np.sum(w * r_odd * r_odd) / weight_sum)
+    total_rms = math.sqrt(total2)
+    even_rms = math.sqrt(even2)
+    odd_rms = math.sqrt(odd2)
+    return {
+        "fit_slope_x": float(fit["slope"]),
+        "fit_weighted_r2": float(fit["weighted_r2"]),
+        "fit_bins_used": int(fit["bins_used"]),
+        "decomposition": {
+            "total_rms": total_rms,
+            "even_rms": even_rms,
+            "odd_rms": odd_rms,
+            "odd_fraction_of_total_rms": odd_rms / total_rms,
+            "even_fraction_of_total_rms": even_rms / total_rms,
+            "weighted_identity_error": total2 - even2 - odd2,
+            "paired_core_bin_count": int(len(w)),
+            "symmetrized_original_bin_count": int(2 * len(w)),
+            "weight_sum": weight_sum,
+        },
+        "mask": {
+            "fit": f"q_count>={fit_min_count} and p_count>={fit_min_count} and I_a,I_b<{i_max}",
+            "decomposition": (
+                f"I_a,I_b<{i_max}; q_count,p_count>={decomp_min_count} "
+                "at both theta and -theta; symmetrized weights"
+            ),
+        },
+    }
+
+
+def export_lte_residual_decomposition(lte_table: dict[str, Any]) -> dict[str, Any]:
+    rows: list[dict[str, Any]] = []
+    for row in lte_table["rows"]:
+        q_path = ROOT / row["q_hist"]["path"]
+        p_path = ROOT / row["p_hist"]["path"]
+        metrics = residual_even_odd_decomposition(
+            manuscript_figures.load_hist(q_path),
+            manuscript_figures.load_hist(p_path),
+        )
+        decomp = metrics["decomposition"]
+        rows.append(
+            {
+                "n": row["n"],
+                "pair_index_j": row["pair_index_j"],
+                "a_over_n": row["a_over_n"],
+                "q_hist": file_record(q_path),
+                "p_hist": file_record(p_path),
+                **metrics,
+                "manuscript_rounding": {
+                    "total_rms_3dp": f"{decomp['total_rms']:.3f}",
+                    "even_rms_3dp": f"{decomp['even_rms']:.3f}",
+                    "odd_rms_3dp": f"{decomp['odd_rms']:.3f}",
+                    "odd_fraction_2dp": f"{decomp['odd_fraction_of_total_rms']:.2f}",
+                },
+            }
+        )
+    return {
+        "description": "Weighted even/odd-in-theta decomposition of the LTE residual after the rescaled-equilibrium fit.",
+        "algorithm": {
+            "residual": "r = log q - (c + x log p)",
+            "even_part": "r_even(theta) = (r(theta)+r(-theta))/2",
+            "odd_part": "r_odd(theta) = (r(theta)-r(-theta))/2",
+            "fit_mask": "same weighted core estimator as Table tab:lte",
+            "decomposition_mask": "I_a,I_b<2.5 and q,p counts >= 50 at both theta and -theta",
+            "weights": "symmetrized average of the two NESS counts q(theta), q(-theta)",
+        },
+        "rows": rows,
+    }
+
+
 def load_notebook(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text())
 
@@ -443,10 +589,12 @@ def export_short_chain() -> dict[str, Any]:
 
 
 def main() -> None:
+    lte_table = export_lte_table()
     payload = {
         "generated_at_utc": datetime.now(timezone.utc).isoformat(),
         "script": rel(Path(__file__).resolve()),
-        "lte_table": export_lte_table(),
+        "lte_table": lte_table,
+        "lte_residual_decomposition": export_lte_residual_decomposition(lte_table),
         "short_chain": export_short_chain(),
     }
     OUT_PATH.write_text(json.dumps(payload, indent=2) + "\n")
