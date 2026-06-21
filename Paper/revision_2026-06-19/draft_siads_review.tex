@@ -824,7 +824,11 @@ effect is therefore a smooth mismatch between the NESS marginal and a single
 rescaled equilibrium marginal, rather than unstructured Monte Carlo noise. The
 figure is used as a structural residual diagnostic; the numerical slopes in
 \cref{tab:lte} are computed by the fixed weighted-core estimator described
-above.
+above. Under the same MATLAB plotting convention, the unweighted RMS residuals
+on the displayed slice are $0.254$, $0.199$, and $0.138$ for $n=15,25,50$,
+respectively; on the core subregion $I_a,I_b<2.5$ they are $0.248$, $0.194$,
+and $0.116$. These mesh-slice norms are descriptive checks on the figure, not
+substitutes for the fixed LTE estimator in \cref{tab:lte,tab:lte-resid-decomp}.
 
 \begin{figure}[ht]
   \centering
@@ -1652,6 +1656,10 @@ repository root. The key reproducibility artifacts are:
   short-chain diagnostics:
   \path{Paper/revision_2026-06-19/scripts/export_source_trace_metrics.py} and
   \path{Paper/revision_2026-06-19/source_trace_metrics.json};
+  \item MATLAB-style LTE residual mesh metrics for \cref{fig:lte-resid-mesh}:
+  \path{Paper/revision_2026-06-19/scripts/export_compare_residual_mesh_metrics.py}
+  and
+  \path{Paper/revision_2026-06-19/report_assets/compare_residual_mesh_metrics.json};
   \item short-chain TensorFlow saved-model rerun:
   \path{Paper/revision_2026-06-19/scripts/recompute_short_chain_nn_metrics.py}
   and \path{Paper/revision_2026-06-19/short_chain_nn_rerun_metrics.json};

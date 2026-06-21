@@ -1,12 +1,12 @@
 # Availability path audit
 
-Generated: `2026-06-21T06:53:49.721472+00:00`
+Generated: `2026-06-21T14:06:43.442133+00:00`
 
 Draft: `Paper/revision_2026-06-19/draft.tex`
 
 ## Summary
 
-- Total paths checked: 38
+- Total paths checked: 40
 - Missing paths: 0
 - Untracked files among existing file paths: 0
 
@@ -28,18 +28,20 @@ Draft: `Paper/revision_2026-06-19/draft.tex`
 | availability | `Paper/revision_2026-06-19/manuscript_figure_metrics.json` | `Paper/revision_2026-06-19/manuscript_figure_metrics.json` | repo-root-relative | PASS (file) | yes | c0dfd2a21ffd |
 | availability | `Paper/revision_2026-06-19/scripts/export_source_trace_metrics.py` | `Paper/revision_2026-06-19/scripts/export_source_trace_metrics.py` | repo-root-relative | PASS (file) | yes | ae824eaa3fca |
 | availability | `Paper/revision_2026-06-19/source_trace_metrics.json` | `Paper/revision_2026-06-19/source_trace_metrics.json` | repo-root-relative | PASS (file) | yes | 3727e8adff98 |
+| availability | `Paper/revision_2026-06-19/scripts/export_compare_residual_mesh_metrics.py` | `Paper/revision_2026-06-19/scripts/export_compare_residual_mesh_metrics.py` | repo-root-relative | PASS (file) | yes | b858f764ba7f |
+| availability | `Paper/revision_2026-06-19/report_assets/compare_residual_mesh_metrics.json` | `Paper/revision_2026-06-19/report_assets/compare_residual_mesh_metrics.json` | repo-root-relative | PASS (file) | yes | b3d3dbab1b0f |
 | availability | `Paper/revision_2026-06-19/scripts/recompute_short_chain_nn_metrics.py` | `Paper/revision_2026-06-19/scripts/recompute_short_chain_nn_metrics.py` | repo-root-relative | PASS (file) | yes | f403861b7a53 |
 | availability | `Paper/revision_2026-06-19/short_chain_nn_rerun_metrics.json` | `Paper/revision_2026-06-19/short_chain_nn_rerun_metrics.json` | repo-root-relative | PASS (file) | yes | 5600a1a9f126 |
 | availability | `Paper/revision_2026-06-19/scripts/analyze_eigen_fit_windows.py` | `Paper/revision_2026-06-19/scripts/analyze_eigen_fit_windows.py` | repo-root-relative | PASS (file) | yes | 4b7669683117 |
 | availability | `Paper/revision_2026-06-19/eigen_fit_sensitivity.json` | `Paper/revision_2026-06-19/eigen_fit_sensitivity.json` | repo-root-relative | PASS (file) | yes | cdc0d3ecba77 |
-| availability | `Paper/revision_2026-06-19/scripts/audit_manuscript_claims.py` | `Paper/revision_2026-06-19/scripts/audit_manuscript_claims.py` | repo-root-relative | PASS (file) | yes | f15628eed20f |
-| availability | `Paper/revision_2026-06-19/manuscript_claim_audit.json` | `Paper/revision_2026-06-19/manuscript_claim_audit.json` | repo-root-relative | PASS (file) | yes | 49630ea34ad5 |
-| availability | `Paper/revision_2026-06-19/manuscript_claim_audit.md` | `Paper/revision_2026-06-19/manuscript_claim_audit.md` | repo-root-relative | PASS (file) | yes | 9553d0a36779 |
+| availability | `Paper/revision_2026-06-19/scripts/audit_manuscript_claims.py` | `Paper/revision_2026-06-19/scripts/audit_manuscript_claims.py` | repo-root-relative | PASS (file) | yes | e3e4039efde6 |
+| availability | `Paper/revision_2026-06-19/manuscript_claim_audit.json` | `Paper/revision_2026-06-19/manuscript_claim_audit.json` | repo-root-relative | PASS (file) | yes | b5569d2d8136 |
+| availability | `Paper/revision_2026-06-19/manuscript_claim_audit.md` | `Paper/revision_2026-06-19/manuscript_claim_audit.md` | repo-root-relative | PASS (file) | yes | d60d79e7b40f |
 | availability | `Paper/revision_2026-06-19/scripts/audit_availability_paths.py` | `Paper/revision_2026-06-19/scripts/audit_availability_paths.py` | repo-root-relative | PASS (file) | yes | 449c7c91c7d2 |
 | availability | `Paper/revision_2026-06-19/availability_path_audit.json` | `Paper/revision_2026-06-19/availability_path_audit.json` | repo-root-relative | PASS (file) | yes |  |
 | availability | `Paper/revision_2026-06-19/availability_path_audit.md` | `Paper/revision_2026-06-19/availability_path_audit.md` | repo-root-relative | PASS (file) | yes |  |
 | availability | `Paper/revision_2026-06-19/references.bib` | `Paper/revision_2026-06-19/references.bib` | repo-root-relative | PASS (file) | yes | 0fa0283b6479 |
-| availability | `Paper/revision_2026-06-19/integrity_audit_2026-06-19.md` | `Paper/revision_2026-06-19/integrity_audit_2026-06-19.md` | repo-root-relative | PASS (file) | yes | ce88a4077472 |
+| availability | `Paper/revision_2026-06-19/integrity_audit_2026-06-19.md` | `Paper/revision_2026-06-19/integrity_audit_2026-06-19.md` | repo-root-relative | PASS (file) | yes | 6ee20377a9d6 |
 | figure | `action_profiles.pdf` | `Paper/revision_2026-06-19/action_profiles.pdf` | latex-source-relative | PASS (file) | yes | b72d9cafc37c |
 | figure | `cascade_embedding.pdf` | `Paper/revision_2026-06-19/cascade_embedding.pdf` | latex-source-relative | PASS (file) | yes | ff8a00f7a6a3 |
 | figure | `lte_residual_midchain.pdf` | `Paper/revision_2026-06-19/lte_residual_midchain.pdf` | latex-source-relative | PASS (file) | yes | 3785b901fca6 |

@@ -1,6 +1,6 @@
 # Reference integrity audit
 
-Generated: `2026-06-21T06:53:49.807104+00:00`
+Generated: `2026-06-21T14:06:43.537948+00:00`
 
 Status: **PASS**
 
@@ -42,9 +42,9 @@ Status: **PASS**
 | `Dhar2008` | 237 |
 | `DobsonLiZhai` | 480 |
 | `GallavottiCohen` | 251, 404 |
-| `HLNS` | 92, 94, 99, 151, 157, 188, 197, 203, 215, 218, 233, 329, 444, 553, 1107, 1184, 1190, 1340 |
+| `HLNS` | 92, 94, 99, 151, 157, 188, 197, 203, 215, 218, 233, 329, 444, 553, 1111, 1188, 1194, 1344 |
 | `LebowitzSpohn1999` | 251 |
-| `LepriLiviPoliti` | 237, 861 |
+| `LepriLiviPoliti` | 237, 865 |
 | `Li2019` | 480 |
 | `Nazarenko` | 85, 231 |
 | `Spohn2014` | 237, 245 |

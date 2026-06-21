@@ -27,15 +27,15 @@ Key gate numbers:
 |---|---|
 | LaTeX/log scans | PASS for `draft.tex` and `draft_siads_review.tex`, `issues=0` in both logs |
 | Compiled PDF artifact audit | PASS, `2/2` local PDFs verified with page counts, sizes, and SHA-256 checksums |
-| Availability/path audit | PASS, `38/38` paths present, `0` untracked required files |
-| Numerical claim audit | PASS, `22/22` claims verified |
+| Availability/path audit | PASS, `40/40` paths present, `0` untracked required files |
+| Numerical claim audit | PASS, `23/23` claims verified |
 | Reference integrity audit | PASS, `11` cited BibTeX entries, `0` dangling citations |
 | Author/submission-field audit | `AUTHOR_CONFIRMATION_PENDING`, `9` pending author/external items |
-| Raw-data archive manifest | PASS locally, `40` unique referenced files, `138,875,181` bytes |
+| Raw-data archive manifest | PASS locally, `42` unique referenced files, `151,605,557` bytes |
 | Raw-data archive build | PASS locally, upload-ready `.tar.gz` prepared under `tmp/`, DOI/upload still external |
-| Submission bundle manifest | `PASS_WITH_LOCAL_RAW_DATA_LIMITATION`, `123` release files, `0` missing, `0` untracked release files |
+| Submission bundle manifest | `PASS_WITH_LOCAL_RAW_DATA_LIMITATION`, `127` release files, `0` missing, `0` untracked release files |
 | Submission metadata consistency audit | PASS, `21` handoff metadata checks over `9` documents |
-| Source-only bundle dry run | PASS, `319` included files |
+| Source-only bundle dry run | PASS, `323` included files |
 | SIADS cover-letter template build | PASS locally; template PDF contains placeholders and is not final |
 | Journal upload package build | PASS locally, SIADS repository-route package written under `tmp/journal_upload_package/runs/` |
 
@@ -182,7 +182,7 @@ contains only Yao Li's affiliation/email in a footnote.
 1. Select final target journal and article type.
 2. Run professional plagiarism/self-plagiarism screening, such as
    iThenticate/Turnitin or the target journal's required equivalent.
-3. Decide whether the GitHub release is sufficient or whether the 40-file
+3. Decide whether the GitHub release is sufficient or whether the 42-file
    raw-data subset should be uploaded to Zenodo/OSF with a DOI.
 4. If submitting to SIADS, decide whether to keep the line-numbered fallback
    source for review or convert to the SIAM macro package after installing the

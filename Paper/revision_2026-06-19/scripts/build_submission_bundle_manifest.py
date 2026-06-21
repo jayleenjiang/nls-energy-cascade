@@ -296,7 +296,11 @@ def find_paths_in_json(obj: Any, *, path_context: bool = False) -> Iterable[str]
 
 def collect_raw_dependencies(root: Path, revision_dir: Path) -> list[RawDependencyRecord]:
     records: dict[tuple[str, str], RawDependencyRecord] = {}
-    for artifact_name in ["manuscript_figure_metrics.json", "source_trace_metrics.json"]:
+    for artifact_name in [
+        "manuscript_figure_metrics.json",
+        "source_trace_metrics.json",
+        "report_assets/compare_residual_mesh_metrics.json",
+    ]:
         artifact = revision_dir / artifact_name
         data = json.loads(artifact.read_text())
         for value in find_paths_in_json(data):

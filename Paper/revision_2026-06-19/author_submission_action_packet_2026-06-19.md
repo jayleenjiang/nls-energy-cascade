@@ -29,8 +29,8 @@ a fit-window sensitivity table, production-resolution fine-timestep checks at
 `n=50` and `n=60`, and a production-resolution bath-temperature robustness
 check at `T1=8,Tn=4`.  A
 2026-06-21 pass added production-resolution thermostat-coupling robustness
-checks at `gamma=0.05` and `gamma=0.2`.  The latest path audit checks 38/38
-manuscript paths and figures, and the numerical claim audit checks 22/22
+checks at `gamma=0.05` and `gamma=0.2`.  The latest path audit checks 40/40
+manuscript paths and figures, and the numerical claim audit checks 23/23
 registered claims.
 
 ## 1. Decisions needed from the authors
@@ -139,8 +139,8 @@ Current manuscript state:
 - `submission_bundle_manifest.md` reports no missing or untracked required
   release files.
 - `raw_data_archive_manifest.md` identifies a compact raw-data subset:
-  40 unique source-trace raw files, all present locally, totaling
-  138,875,181 bytes.
+  42 unique source-trace raw files, all present locally, totaling
+  151,605,557 bytes.
 - `scripts/build_raw_data_archive.py` can build a timestamped local `.tar.gz`
   for this subset under `tmp/raw_data_archive/runs/`; the latest local build is
   summarized in `raw_data_archive_build_report.md`.
@@ -156,7 +156,7 @@ Choose one:
    reproducibility artifacts and does not require raw training/histogram files.
 
 2. **GitHub + DOI-backed minimal raw-data archive.**
-   Archive the 40 files in `raw_data_archive_manifest.md`, preserving their
+   Archive the 42 files in `raw_data_archive_manifest.md`, preserving their
    `raw_data/...` paths.  The local helper
    `scripts/build_raw_data_archive.py` now produces this upload artifact; after
    upload, replace or supplement the data availability statement with the
@@ -253,11 +253,11 @@ python3 Paper/revision_2026-06-19/scripts/run_submission_checks.py --compile-lat
 
 currently returns
 PASS_WITH_AUTHOR_CONFIRMATION_PENDING_AND_LOCAL_RAW_DATA_LIMITATION: the
-manuscript compiles, the local numerical claim audit passes 22/22 checks, the
-path audit passes 38/38 checks, and the release bundle has no missing or
+manuscript compiles, the local numerical claim audit passes 23/23 checks, the
+path audit passes 40/40 checks, and the release bundle has no missing or
 untracked required files. The author/submission-field audit records 9 pending
 author or external-service items. A local upload-ready raw-data `.tar.gz` can
-now be built from the 40-file manifest, but a DOI-backed raw-data archive has
+now be built from the 42-file manifest, but a DOI-backed raw-data archive has
 not yet been uploaded.
 
 Could you please confirm:

@@ -1,23 +1,23 @@
 # Raw-data archive build report
 
-Generated: `2026-06-20T18:56:10.894039+00:00`
+Generated: `2026-06-21T14:05:40.445395+00:00`
 
 Status: **PASS**
 
 ## Archive
 
-- Archive path: `tmp/raw_data_archive/runs/20260620T185610Z/NLS_numerical_study_raw_data_minimal.tar.gz`
-- Archive bytes: 42608549
-- Archive SHA-256: `1f8f8faa9bd9d73c804b51013549c63abc7af3a71febe05a31eb4df63ff4997f`
-- Staging directory: `tmp/raw_data_archive/runs/20260620T185610Z/NLS_numerical_study_raw_data_minimal`
+- Archive path: `tmp/raw_data_archive/runs/20260621T140540Z/NLS_numerical_study_raw_data_minimal.tar.gz`
+- Archive bytes: 46619175
+- Archive SHA-256: `c4b8a3253b2d2877901e5d8abee21aee15f56335f79a02244fa65138742d9414`
+- Staging directory: `tmp/raw_data_archive/runs/20260621T140540Z/NLS_numerical_study_raw_data_minimal`
 
 ## Summary
 
 | Metric | Count |
 |---|---:|
-| Manifest raw-file records | 40 |
-| Archived raw files | 40 |
-| Archived raw-data bytes | 138875181 |
+| Manifest raw-file records | 42 |
+| Archived raw files | 42 |
+| Archived raw-data bytes | 151605557 |
 | Missing raw files | 0 |
 | Checksum index files | 1 |
 

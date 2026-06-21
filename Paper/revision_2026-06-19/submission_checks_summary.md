@@ -1,6 +1,6 @@
 # Submission checks summary
 
-Generated: `2026-06-21T06:53:53.288166+00:00`
+Generated: `2026-06-21T14:06:47.447044+00:00`
 
 Overall status: **PASS_WITH_AUTHOR_CONFIRMATION_PENDING_AND_LOCAL_RAW_DATA_LIMITATION**
 
@@ -11,36 +11,36 @@ Overall status: **PASS_WITH_AUTHOR_CONFIRMATION_PENDING_AND_LOCAL_RAW_DATA_LIMIT
 | latex_log | PASS | issues=0 |
 | siads_latex_log | PASS | issues=0 |
 | compiled_pdf_artifact_audit | PASS | pdf_count=2, failed=0 |
-| availability_path_audit | PASS | total_paths=38, missing_paths=0, untracked_files=0 |
-| manuscript_claim_audit | PASS | total_claims=22, verified=22, failed=0 |
+| availability_path_audit | PASS | total_paths=40, missing_paths=0, untracked_files=0 |
+| manuscript_claim_audit | PASS | total_claims=23, verified=23, failed=0 |
 | reference_integrity_audit | PASS | bib_entries=11, citation_commands=34, citation_uses=38, dangling_citation_count=0, missing_identifier_count=0, missing_required_field_count=0, missing_verification_source_count=0, orphan_reference_count=0, unique_cited_keys=11 |
 | author_submission_fields_audit | AUTHOR_CONFIRMATION_PENDING | pass_count=0, pending_count=9, total_checks=9 |
-| raw_data_archive_manifest | PASS | missing_file_count=0, referenced_file_count=40, referenced_total_bytes=138875181, status=PASS |
-| submission_bundle_manifest | PASS_WITH_LOCAL_RAW_DATA_LIMITATION | local_raw_dependency_count=44, missing_release_files=0, release_directory_count=1, release_file_count=123, status=PASS_WITH_LOCAL_RAW_DATA_LIMITATION, untracked_local_raw_dependencies=44, untracked_release_files=0 |
-| submission_metadata_consistency_audit | PASS | checked_documents=9, failed_checks=0, predicted_source_bundle_included_count=319, release_file_count=123, total_checks=21 |
-| submission_source_bundle | PASS | directory_tracked_file_count=201, excluded_self_referential_count=6, included_file_count=319, included_total_bytes=6190459, local_raw_dependency_count=44, manifest_release_directories=1, manifest_release_file_records=123, missing_file_count=0 |
+| raw_data_archive_manifest | PASS | missing_file_count=0, referenced_file_count=42, referenced_total_bytes=151605557, status=PASS |
+| submission_bundle_manifest | PASS_WITH_LOCAL_RAW_DATA_LIMITATION | local_raw_dependency_count=50, missing_release_files=0, release_directory_count=1, release_file_count=127, status=PASS_WITH_LOCAL_RAW_DATA_LIMITATION, untracked_local_raw_dependencies=50, untracked_release_files=0 |
+| submission_metadata_consistency_audit | PASS | checked_documents=9, failed_checks=0, predicted_source_bundle_included_count=323, release_file_count=127, total_checks=21 |
+| submission_source_bundle | PASS | directory_tracked_file_count=201, excluded_self_referential_count=6, included_file_count=323, included_total_bytes=6222845, local_raw_dependency_count=50, manifest_release_directories=1, manifest_release_file_records=127, missing_file_count=0 |
 | siads_cover_letter_template | PASS | template_not_final=True, size_bytes=118094, issues=0 |
-| journal_upload_package | PASS | contains_raw_data_archive=False, package_file_count=14, package_total_bytes=5359402 |
+| journal_upload_package | PASS | contains_raw_data_archive=False, package_file_count=14, package_total_bytes=5367039 |
 
 ## Command results
 
 | Command | Return code | Duration (s) |
 |---|---:|---:|
-| `latex_compile` | 0 | 0.057 |
-| `siads_latex_compile` | 0 | 0.059 |
-| `compiled_pdf_artifact_audit` | 0 | 0.072 |
-| `availability_path_audit` | 0 | 0.19 |
-| `manuscript_claim_audit` | 0 | 0.057 |
-| `reference_integrity_audit` | 0 | 0.028 |
-| `author_submission_fields_audit` | 0 | 0.024 |
-| `submission_bundle_manifest_initial` | 0 | 0.932 |
-| `raw_data_archive_manifest` | 0 | 0.118 |
-| `submission_bundle_manifest_final` | 0 | 0.845 |
-| `submission_metadata_consistency_audit` | 0 | 0.028 |
-| `submission_bundle_manifest_post_metadata` | 0 | 0.841 |
-| `submission_source_bundle` | 0 | 0.477 |
+| `latex_compile` | 0 | 0.056 |
+| `siads_latex_compile` | 0 | 0.071 |
+| `compiled_pdf_artifact_audit` | 0 | 0.04 |
+| `availability_path_audit` | 0 | 0.217 |
+| `manuscript_claim_audit` | 0 | 0.066 |
+| `reference_integrity_audit` | 0 | 0.03 |
+| `author_submission_fields_audit` | 0 | 0.023 |
+| `submission_bundle_manifest_initial` | 0 | 0.963 |
+| `raw_data_archive_manifest` | 0 | 0.192 |
+| `submission_bundle_manifest_final` | 0 | 1.02 |
+| `submission_metadata_consistency_audit` | 0 | 0.031 |
+| `submission_bundle_manifest_post_metadata` | 0 | 0.969 |
+| `submission_source_bundle` | 0 | 0.487 |
 | `siads_cover_letter_template` | 0 | 0.082 |
-| `journal_upload_package` | 0 | 0.127 |
+| `journal_upload_package` | 0 | 0.133 |
 
 ## LaTeX log checks
 

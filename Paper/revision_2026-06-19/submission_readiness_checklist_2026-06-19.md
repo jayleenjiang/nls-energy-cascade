@@ -14,7 +14,7 @@ paper can be called journal-ready.
 | References | Verified and converted to BibTeX | `references.bib`; `integrity_audit_2026-06-19.md` |
 | Citation/reference integrity | Passing local structural audit | `scripts/audit_references.py`; `reference_integrity_audit.json`; `reference_integrity_audit.md` |
 | Core numerical claims | Passing local claim audit | `scripts/audit_manuscript_claims.py`; `manuscript_claim_audit.json`; `manuscript_claim_audit.md` |
-| Figure provenance | Source-traced for manuscript-generated figures; LTE mesh figure now included | `scripts/generate_manuscript_figures.py`; `manuscript_figure_metrics.json`; `report_assets/compare_residual_mesh.pdf` |
+| Figure provenance | Source-traced for manuscript-generated figures; LTE mesh figure now included with mesh-slice residual norms | `scripts/generate_manuscript_figures.py`; `manuscript_figure_metrics.json`; `report_assets/compare_residual_mesh.pdf`; `report_assets/compare_residual_mesh_metrics.md` |
 | Monte Carlo validation and finite-window diagnostics | Added to manuscript and checked by local gate | `experiments/flux_validation/validation_report.md`; `experiments/flux_validation/production_dt5e-4/current_windows_window_statistics.csv`; `draft.tex` |
 | Gamma-robustness production path | Smoke-tested only; not manuscript evidence | `scripts/run_gamma_robustness_smoke.py`; `gamma_robustness_smoke_report.md` |
 | Short-chain saved-model diagnostics | Rerun from saved TensorFlow/Keras models | `scripts/recompute_short_chain_nn_metrics.py`; `short_chain_nn_rerun_metrics.json` |
@@ -41,8 +41,9 @@ paper can be called journal-ready.
 
 The current manuscript now includes a dedicated Monte Carlo validation and
 uncertainty-protocol subsection, the `n=15,25,50` LTE residual mesh diagnostic
-from the `compare_residual.m` convention, a timestep sensitivity table for the
-current estimator, and finite-window current diagnostics.  A subsequent
+from the `compare_residual.m` convention with source-traced mesh-slice RMS
+metrics, a timestep sensitivity table for the current estimator, and
+finite-window current diagnostics.  A subsequent
 manuscript pass clarified the division of labor between the long-chain
 transport/LTE evidence and the three-mode Fokker--Planck mechanism study, so
 the short-chain section is framed as a low-dimensional microscope rather than
@@ -57,7 +58,7 @@ primary lengths.  A later 2026-06-21 pass added a matched production-resolution
 three additional verified transport references.  The latest one-command gate
 reports
 `PASS_WITH_AUTHOR_CONFIRMATION_PENDING_AND_LOCAL_RAW_DATA_LIMITATION` with
-38/38 availability path records present and git-tracked, 22/22 registered
+40/40 availability path records present and git-tracked, 23/23 registered
 numerical claims verified, 9 author/external submission items pending, and zero
 missing release-bundle files.
 
@@ -168,7 +169,7 @@ as the preliminary venue-decision aid.
      `lte/`) should be archived outside GitHub. The current bundle manifest
      records 44 local source-trace raw-data dependency records that exist
      locally but are not git-tracked; the raw-data archive manifest
-     deduplicates these to 40 unique files totaling 138,875,181 bytes.
+     deduplicates these to 42 unique files totaling 151,605,557 bytes.
 
 7. **Neural-network reproducibility level**
    - Decide whether saved-model inference reproducibility is enough.

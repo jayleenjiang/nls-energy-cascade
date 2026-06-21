@@ -4,8 +4,8 @@ Scope: layout and rendering sanity check for the compiled PDFs generated from
 `Paper/revision_2026-06-19/draft.tex` and
 `Paper/revision_2026-06-19/draft_siads_review.tex`.  The visual-rendering
 notes below are a targeted post-edit QA record after adding the LTE residual
-decomposition table; a final page-by-page proof review is still required after
-author and journal edits.
+decomposition table and the residual-mesh slice metrics; a final page-by-page
+proof review is still required after author and journal edits.
 
 This is a local production-quality check, not a target-journal proof review.
 It should be rerun after any author metadata insertion, target-journal template
@@ -23,12 +23,12 @@ The latest runner reported
 `PASS_WITH_AUTHOR_CONFIRMATION_PENDING_AND_LOCAL_RAW_DATA_LIMITATION`; the
 LaTeX-specific gate reported `PASS`.
 
-Current compiled PDFs after the LTE residual-decomposition update:
+Current compiled PDFs after the LTE residual-mesh metrics update:
 
 | PDF | Local build path | Pages | Size bytes | SHA-256 |
 |---|---|---:|---:|---|
-| Generic revised manuscript | `tmp/paper_build/revision/draft.pdf` | 26 | 1,571,360 | `614d186f39725c5a97d97c28a1ce68e82f9729dcbb327a1979aba7462b2611e1` |
-| SIADS review-preparation source | `tmp/paper_build/siads_review/draft_siads_review.pdf` | 26 | 1,586,117 | `a32a4958be9b2f36cf0117f5c8b20d8293bcb68ad8dfe3bc66364978d9205df0` |
+| Generic revised manuscript | `tmp/paper_build/revision/draft.pdf` | 27 | 1,572,459 | `88dcde6e7276cb903733e308d60ee4d3d8a8448893f24c5b7bb05c2c79800c29` |
+| SIADS review-preparation source | `tmp/paper_build/siads_review/draft_siads_review.pdf` | 27 | 1,587,312 | `9dc6635c46dcddd4f8d45a584629d9c3878aba016ca4675c409654b601327f91` |
 
 Both PDFs use A4 media boxes and were produced by pdfTeX.
 

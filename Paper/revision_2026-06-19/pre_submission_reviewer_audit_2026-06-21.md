@@ -32,7 +32,7 @@ scope unusually transparent for a first submission.
 
 1. **No remaining local numerical blocker was found.** The latest one-command
    gate reports `PASS_WITH_AUTHOR_CONFIRMATION_PENDING_AND_LOCAL_RAW_DATA_LIMITATION`,
-   with 22/22 registered numerical claims verified and 11/11 cited BibTeX
+   with 23/23 registered numerical claims verified and 11/11 cited BibTeX
    entries structurally checked.
 2. **The main scientific vulnerability is correctly disclosed.** The exponent
    is a finite-size law, not an asymptotic theorem. The manuscript explicitly

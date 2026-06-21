@@ -25,12 +25,12 @@ Key numbers:
 |---|---:|
 | LaTeX/log checks | `draft.tex` PASS; `draft_siads_review.tex` PASS |
 | Compiled PDF artifact audit | 2/2 PDFs verified |
-| Availability paths | 38/38 |
-| Registered numerical claims | 22/22 |
+| Availability paths | 40/40 |
+| Registered numerical claims | 23/23 |
 | Cited BibTeX entries | 11 |
-| Release-bundle files | 123 |
-| Source-bundle included files | 319 |
-| Minimal raw-data files | 40 |
+| Release-bundle files | 127 |
+| Source-bundle included files | 323 |
+| Minimal raw-data files | 42 |
 | Missing raw-data files | 0 |
 | Author/submission-field audit | 9 pending author/external items |
 
@@ -38,8 +38,8 @@ Key numbers:
 
 | Use | Local file | Pages | Size | SHA-256 | Status |
 |---|---|---:|---:|---|---|
-| Generic revised manuscript PDF | `tmp/paper_build/revision/draft.pdf` | 26 | 1,571,360 bytes | `614d186f39725c5a97d97c28a1ce68e82f9729dcbb327a1979aba7462b2611e1` | Suitable for author/advisor reading; recompile after final declarations. |
-| SIADS review-preparation PDF | `tmp/paper_build/siads_review/draft_siads_review.pdf` | 26 | 1,586,117 bytes | `a32a4958be9b2f36cf0117f5c8b20d8293bcb68ad8dfe3bc66364978d9205df0` | Current SIADS-facing review PDF; use only after authors confirm SIADS and final metadata. |
+| Generic revised manuscript PDF | `tmp/paper_build/revision/draft.pdf` | 27 | 1,572,459 bytes | `88dcde6e7276cb903733e308d60ee4d3d8a8448893f24c5b7bb05c2c79800c29` | Suitable for author/advisor reading; recompile after final declarations. |
+| SIADS review-preparation PDF | `tmp/paper_build/siads_review/draft_siads_review.pdf` | 27 | 1,587,312 bytes | `9dc6635c46dcddd4f8d45a584629d9c3878aba016ca4675c409654b601327f91` | Current SIADS-facing review PDF; use only after authors confirm SIADS and final metadata. |
 
 The PDFs are local build artifacts under `tmp/` and are intentionally not
 committed to Git.  Regenerate them after final author/journal edits.  The
@@ -52,7 +52,7 @@ machine-readable metadata for the current local PDFs is recorded in
 | Use | Local file | Size | SHA-256 | Status |
 |---|---|---:|---|---|
 | Source-only submission bundle | See `submission_source_bundle_report.md` | See latest report | See latest report | Local upload-ready source archive; excludes large raw-data roots by design. The exact archive path/checksum changes whenever tracked handoff files change, so the report is the authoritative source. |
-| Minimal raw-data archive | `tmp/raw_data_archive/runs/20260620T185610Z/NLS_numerical_study_raw_data_minimal.tar.gz` | 42,608,549 bytes | `1f8f8faa9bd9d73c804b51013549c63abc7af3a71febe05a31eb4df63ff4997f` | Local upload-ready raw-data archive; upload to Zenodo/OSF/journal storage only after authors choose this route. |
+| Minimal raw-data archive | `tmp/raw_data_archive/runs/20260621T140540Z/NLS_numerical_study_raw_data_minimal.tar.gz` | 46,619,175 bytes | `c4b8a3253b2d2877901e5d8abee21aee15f56335f79a02244fa65138742d9414` | Local upload-ready raw-data archive; upload to Zenodo/OSF/journal storage only after authors choose this route. |
 
 ## Cover letter template
 

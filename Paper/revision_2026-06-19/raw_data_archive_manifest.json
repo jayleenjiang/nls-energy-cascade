@@ -1,7 +1,7 @@
 {
-  "generated_at_utc": "2026-06-21T06:53:50.872996+00:00",
+  "generated_at_utc": "2026-06-21T14:06:44.706643+00:00",
   "git_branch": "codex/paper-journal-revision",
-  "git_head": "04448ed05840c58bc33d83ea257cb0e9aec49f81",
+  "git_head": "c191e446389b8adf99c1e3877fc402263c86e810",
   "raw_files": [
     {
       "archive_path": "raw_data/Energy Cascade/Rect Plots/rectangles_N5_R100_f1_to_f2.csv",
@@ -266,6 +266,26 @@
       ]
     },
     {
+      "archive_path": "raw_data/lte/n15 data/n15_eq_j4.hist",
+      "exists": true,
+      "local_path": "lte/n15 data/n15_eq_j4.hist",
+      "sha256": "d79564ef17da4e1da404fb802d5123b737ff8d103866978a977e801058ac04b7",
+      "size_bytes": 6291388,
+      "source_artifacts": [
+        "Paper/revision_2026-06-19/report_assets/compare_residual_mesh_metrics.json"
+      ]
+    },
+    {
+      "archive_path": "raw_data/lte/n15 data/n15_j4.hist",
+      "exists": true,
+      "local_path": "lte/n15 data/n15_j4.hist",
+      "sha256": "3cb72d2e849e5c65c59a0dc7a66027667095439e6f0d406986bc4cf1d4618314",
+      "size_bytes": 6438988,
+      "source_artifacts": [
+        "Paper/revision_2026-06-19/report_assets/compare_residual_mesh_metrics.json"
+      ]
+    },
+    {
       "archive_path": "raw_data/lte/n25 data/n25_eq_j12.hist",
       "exists": true,
       "local_path": "lte/n25 data/n25_eq_j12.hist",
@@ -292,6 +312,7 @@
       "sha256": "d510635e024990d1a5548159078587a7a861fd6d2fd0e25088343bd4f4483687",
       "size_bytes": 6105980,
       "source_artifacts": [
+        "Paper/revision_2026-06-19/report_assets/compare_residual_mesh_metrics.json",
         "Paper/revision_2026-06-19/source_trace_metrics.json"
       ]
     },
@@ -322,6 +343,7 @@
       "sha256": "d0506d5ac31839aeccfcebbaaaf7a76218ae03c2ffe1abe6444958193ed6800e",
       "size_bytes": 6300540,
       "source_artifacts": [
+        "Paper/revision_2026-06-19/report_assets/compare_residual_mesh_metrics.json",
         "Paper/revision_2026-06-19/source_trace_metrics.json"
       ]
     },
@@ -332,6 +354,7 @@
       "sha256": "366941a0c3deafc30b0f6e2d6f04d18d254d12b8977867299e5a5d7e92947469",
       "size_bytes": 5951241,
       "source_artifacts": [
+        "Paper/revision_2026-06-19/report_assets/compare_residual_mesh_metrics.json",
         "Paper/revision_2026-06-19/source_trace_metrics.json"
       ]
     },
@@ -373,6 +396,7 @@
       "sha256": "4a2a538dacf036fd55237b0d5ecf80379acd268ccdd9c03180c6def4cdded27e",
       "size_bytes": 6111368,
       "source_artifacts": [
+        "Paper/revision_2026-06-19/report_assets/compare_residual_mesh_metrics.json",
         "Paper/revision_2026-06-19/source_trace_metrics.json"
       ]
     },
@@ -426,8 +450,8 @@
     {
       "full_local_root_file_count": 158,
       "full_local_root_total_bytes": 11865804645,
-      "referenced_file_count": 25,
-      "referenced_total_bytes": 127127397,
+      "referenced_file_count": 27,
+      "referenced_total_bytes": 139857773,
       "root": "lte"
     }
   ],
@@ -435,8 +459,8 @@
   "source_manifest": "Paper/revision_2026-06-19/submission_bundle_manifest.json",
   "summary": {
     "missing_file_count": 0,
-    "referenced_file_count": 40,
-    "referenced_total_bytes": 138875181,
+    "referenced_file_count": 42,
+    "referenced_total_bytes": 151605557,
     "status": "PASS"
   }
 }

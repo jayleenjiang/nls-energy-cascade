@@ -30,15 +30,15 @@ Key numbers from the current gate:
 | Item | Current value |
 |---|---:|
 | LaTeX/log checks | `draft.tex` PASS; `draft_siads_review.tex` PASS |
-| Availability paths checked | 38/38 |
-| Registered numerical claims verified | 22/22 |
+| Availability paths checked | 40/40 |
+| Registered numerical claims verified | 23/23 |
 | Cited BibTeX entries | 11 |
 | Dangling citations | 0 |
 | Compiled PDF artifact audit | 2/2 PDFs verified |
-| Release-bundle files | 123 |
+| Release-bundle files | 127 |
 | Missing release files | 0 |
-| Source-only bundle included files | 319 |
-| Minimal raw-data subset | 40 files, 138,875,181 bytes |
+| Source-only bundle included files | 323 |
+| Minimal raw-data subset | 42 files, 151,605,557 bytes |
 | Author/submission-field audit | 9 pending author/external items |
 
 The SIADS review-preparation source compiles locally:
@@ -46,8 +46,8 @@ The SIADS review-preparation source compiles locally:
 - source: `Paper/revision_2026-06-19/draft_siads_review.tex`
 - PDF: `tmp/paper_build/siads_review/draft_siads_review.pdf`
 - PDF SHA-256:
-  `a32a4958be9b2f36cf0117f5c8b20d8293bcb68ad8dfe3bc66364978d9205df0`
-- PDF pages: 26
+  `9dc6635c46dcddd4f8d45a584629d9c3878aba016ca4675c409654b601327f91`
+- PDF pages: 27
 
 The current upload-facing local file index is
 `journal_upload_file_index_2026-06-20.md`.  It lists the generic manuscript
@@ -164,7 +164,7 @@ Choose one route before replacing the data-availability placeholder:
 | Local raw-data available on request | weakest route; use only if archive is impossible | keep the raw-data limitation explicit |
 
 The strongest route is GitHub release plus a DOI-backed raw-data archive using
-the 40-file, 138,875,181-byte subset in `raw_data_archive_manifest.md`.  A
+the 42-file, 151,605,557-byte subset in `raw_data_archive_manifest.md`.  A
 local upload-ready `.tar.gz` can now be built with
 `scripts/build_raw_data_archive.py`; the latest local build is recorded in
 `raw_data_archive_build_report.md`.  This still does not create a DOI or upload
@@ -179,7 +179,8 @@ they would strengthen a more ambitious version:
 2. a broader systematic two-parameter bath sweep beyond the checked
    `T1=10,Tn=2`, `T1=8,Tn=4`, `gamma=0.05`, `gamma=0.1`, and `gamma=0.2`
    finite-size runs;
-3. an LTE residual-norm table complementing the residual mesh figure;
+3. a fuller LTE residual-norm convergence table beyond the current
+   source-traced mesh-slice RMS audit;
 4. a separate bath-energy accumulator for entropy production and
    Gallavotti--Cohen diagnostics.
 

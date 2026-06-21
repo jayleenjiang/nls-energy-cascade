@@ -125,8 +125,8 @@ Choose exactly one route before final submission.
 | `github_release` | The journal accepts a GitHub release/tag plus tracked reproducibility artifacts. | repository release URL |
 | `doi_archive` | The journal expects DOI-backed raw data or stronger archival availability. | repository release URL, raw-data DOI/accession, upload confirmation |
 
-The local minimal raw-data archive manifest currently covers 40 unique
-source-trace raw files totaling 138,875,181 bytes.  A local upload-ready archive
+The local minimal raw-data archive manifest currently covers 42 unique
+source-trace raw files totaling 151,605,557 bytes.  A local upload-ready archive
 can be built with:
 
 ```sh

@@ -1,6 +1,6 @@
 {
   "draft": "Paper/revision_2026-06-19/draft.tex",
-  "generated_at_utc": "2026-06-21T06:53:49.721472+00:00",
+  "generated_at_utc": "2026-06-21T14:06:43.442133+00:00",
   "missing_paths": 0,
   "records": [
     {
@@ -161,6 +161,28 @@
       "exists": true,
       "git_tracked": true,
       "kind": "availability",
+      "manuscript_path": "Paper/revision_2026-06-19/scripts/export_compare_residual_mesh_metrics.py",
+      "path_type": "file",
+      "resolution_rule": "repo-root-relative",
+      "resolved_path": "Paper/revision_2026-06-19/scripts/export_compare_residual_mesh_metrics.py",
+      "sha256": "b858f764ba7ffb04cddfdaad0ec46751053f2c24b0b33bed5e0f1fe8691bc316",
+      "size_bytes": 10794
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "kind": "availability",
+      "manuscript_path": "Paper/revision_2026-06-19/report_assets/compare_residual_mesh_metrics.json",
+      "path_type": "file",
+      "resolution_rule": "repo-root-relative",
+      "resolved_path": "Paper/revision_2026-06-19/report_assets/compare_residual_mesh_metrics.json",
+      "sha256": "b3d3dbab1b0f0ae1445a8d3e9bc4b771efeb865a2847cf665f6c57766874032d",
+      "size_bytes": 6045
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "kind": "availability",
       "manuscript_path": "Paper/revision_2026-06-19/scripts/recompute_short_chain_nn_metrics.py",
       "path_type": "file",
       "resolution_rule": "repo-root-relative",
@@ -209,8 +231,8 @@
       "path_type": "file",
       "resolution_rule": "repo-root-relative",
       "resolved_path": "Paper/revision_2026-06-19/scripts/audit_manuscript_claims.py",
-      "sha256": "f15628eed20fe2838d13dd8f52764cdcbdbdbe8396e435b7eb022bbd779e390d",
-      "size_bytes": 40166
+      "sha256": "e3e4039efde6ca5ac764c46b1c97ae648141b47bfa00b63c42bedea030bdf105",
+      "size_bytes": 42460
     },
     {
       "exists": true,
@@ -220,8 +242,8 @@
       "path_type": "file",
       "resolution_rule": "repo-root-relative",
       "resolved_path": "Paper/revision_2026-06-19/manuscript_claim_audit.json",
-      "sha256": "49630ea34ad53c481fbf493219135ff2df77f9e38fc95e4fc813e31f5df12563",
-      "size_bytes": 71172
+      "sha256": "b5569d2d8136ca3f6983d1d1a023ee001ea7913987bd2bd33b450ef3af4c7959",
+      "size_bytes": 74769
     },
     {
       "exists": true,
@@ -231,8 +253,8 @@
       "path_type": "file",
       "resolution_rule": "repo-root-relative",
       "resolved_path": "Paper/revision_2026-06-19/manuscript_claim_audit.md",
-      "sha256": "9553d0a36779a4e05907efa13c25e9453c623f4dc353d7ebcc7ed71421347f31",
-      "size_bytes": 9546
+      "sha256": "d60d79e7b40f2f7fafa1a9f695c27b8834fc5d02b97b5b748ef02769e057db57",
+      "size_bytes": 10015
     },
     {
       "exists": true,
@@ -254,7 +276,7 @@
       "resolution_rule": "repo-root-relative",
       "resolved_path": "Paper/revision_2026-06-19/availability_path_audit.json",
       "sha256": null,
-      "size_bytes": 16886
+      "size_bytes": 17844
     },
     {
       "exists": true,
@@ -265,7 +287,7 @@
       "resolution_rule": "repo-root-relative",
       "resolved_path": "Paper/revision_2026-06-19/availability_path_audit.md",
       "sha256": null,
-      "size_bytes": 7889
+      "size_bytes": 8349
     },
     {
       "exists": true,
@@ -286,8 +308,8 @@
       "path_type": "file",
       "resolution_rule": "repo-root-relative",
       "resolved_path": "Paper/revision_2026-06-19/integrity_audit_2026-06-19.md",
-      "sha256": "ce88a407747207bd61a1a689233281e7689877d973ecef330e3d806ef8cd3922",
-      "size_bytes": 17760
+      "sha256": "6ee20377a9d658aef4fc0316d543d3fc04ce1378d9eac7ce66b3733ecfc7c866",
+      "size_bytes": 17944
     },
     {
       "exists": true,
@@ -423,6 +445,6 @@
     }
   ],
   "script": "Paper/revision_2026-06-19/scripts/audit_availability_paths.py",
-  "total_paths": 38,
+  "total_paths": 40,
   "untracked_files": 0
 }

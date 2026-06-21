@@ -1,10 +1,10 @@
 # Manuscript claim audit
 
-Generated: `2026-06-21T06:53:49.780018+00:00`
+Generated: `2026-06-21T14:06:43.509695+00:00`
 
 Scope note: Core numerical/data claims only; author declarations and external plagiarism checks remain outside code-verifiable scope.
 
-Summary: **22 / 22** claims verified; **0** failed.
+Summary: **23 / 23** claims verified; **0** failed.
 
 | ID | Section | Verdict | Evidence |
 |---|---|---:|---|
@@ -22,6 +22,7 @@ Summary: **22 / 22** claims verified; **0** failed.
 | `long_chain_action_profiles` | nonequilibrium steady state | VERIFIED | `Paper/revision_2026-06-19/manuscript_figure_metrics.json` |
 | `lte_table_values` | local thermodynamic equilibrium | VERIFIED | `Paper/revision_2026-06-19/source_trace_metrics.json` |
 | `lte_residual_even_odd_decomposition` | local thermodynamic equilibrium | VERIFIED | `Paper/revision_2026-06-19/source_trace_metrics.json` |
+| `lte_residual_mesh_slice_metrics` | local thermodynamic equilibrium | VERIFIED | `Paper/revision_2026-06-19/report_assets/compare_residual_mesh.pdf`<br>`Paper/revision_2026-06-19/report_assets/compare_residual_mesh_metrics.json`<br>`Paper/revision_2026-06-19/report_assets/compare_residual_mesh_metrics.md`<br>`Paper/revision_2026-06-19/report_assets/compare_residual_mesh_metrics.txt`<br>`Paper/revision_2026-06-19/scripts/export_compare_residual_mesh_metrics.py` |
 | `lte_control_values` | local thermodynamic equilibrium | VERIFIED | `Paper/revision_2026-06-19/source_trace_metrics.json` |
 | `lte_equilibrium_convention` | local thermodynamic equilibrium | VERIFIED | `Paper/revision_2026-06-19/draft.tex` |
 | `short_chain_equilibrium_validation` | short-chain Fokker--Planck | VERIFIED | `Paper/revision_2026-06-19/short_chain_nn_rerun_metrics.json`<br>`Paper/revision_2026-06-19/source_trace_metrics.json` |

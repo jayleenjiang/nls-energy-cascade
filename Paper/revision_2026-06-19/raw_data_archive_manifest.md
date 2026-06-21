@@ -1,15 +1,15 @@
 # Raw-data archive manifest
 
-Generated: `2026-06-21T06:53:50.872996+00:00`
+Generated: `2026-06-21T14:06:44.706643+00:00`
 
 Git branch: `codex/paper-journal-revision`
-Git HEAD at manifest generation: `04448ed05840c58bc33d83ea257cb0e9aec49f81`
+Git HEAD at manifest generation: `c191e446389b8adf99c1e3877fc402263c86e810`
 
 ## Summary
 
-- Referenced raw files: 40
+- Referenced raw files: 42
 - Missing referenced raw files: 0
-- Referenced raw-data bytes: 138875181
+- Referenced raw-data bytes: 151605557
 - Suggested archive root: `raw_data/`
 
 This manifest is a preparation aid only.  It does not create or upload
@@ -24,7 +24,7 @@ archive DOI.
 |---|---:|---:|---:|---:|
 | `Energy Cascade` | 4 | 3906 | 12032 | 629542099 |
 | `KDE` | 11 | 11743878 | 259 | 427775884 |
-| `lte` | 25 | 127127397 | 158 | 11865804645 |
+| `lte` | 27 | 139857773 | 158 | 11865804645 |
 
 ## Raw file records
 
@@ -56,17 +56,19 @@ archive DOI.
 | `raw_data/lte/n100 data/n100_j48.hist` | `lte/n100 data/n100_j48.hist` | 5978520 | `ebd90b8363578cd2` | `Paper/revision_2026-06-19/manuscript_figure_metrics.json`, `Paper/revision_2026-06-19/source_trace_metrics.json` |
 | `raw_data/lte/n100 data/n100_j72.hist` | `lte/n100 data/n100_j72.hist` | 5914284 | `b583d68b1029dd14` | `Paper/revision_2026-06-19/source_trace_metrics.json` |
 | `raw_data/lte/n100 data/n100_profile.txt` | `lte/n100 data/n100_profile.txt` | 1230 | `8a8fd4d1765d8015` | `Paper/revision_2026-06-19/source_trace_metrics.json` |
+| `raw_data/lte/n15 data/n15_eq_j4.hist` | `lte/n15 data/n15_eq_j4.hist` | 6291388 | `d79564ef17da4e1d` | `Paper/revision_2026-06-19/report_assets/compare_residual_mesh_metrics.json` |
+| `raw_data/lte/n15 data/n15_j4.hist` | `lte/n15 data/n15_j4.hist` | 6438988 | `3cb72d2e849e5c65` | `Paper/revision_2026-06-19/report_assets/compare_residual_mesh_metrics.json` |
 | `raw_data/lte/n25 data/n25_eq_j12.hist` | `lte/n25 data/n25_eq_j12.hist` | 6108031 | `e50ff4014ffa2742` | `Paper/revision_2026-06-19/source_trace_metrics.json` |
 | `raw_data/lte/n25 data/n25_eq_j18.hist` | `lte/n25 data/n25_eq_j18.hist` | 6104886 | `549febdc41dc1efb` | `Paper/revision_2026-06-19/source_trace_metrics.json` |
-| `raw_data/lte/n25 data/n25_eq_j6.hist` | `lte/n25 data/n25_eq_j6.hist` | 6105980 | `d510635e024990d1` | `Paper/revision_2026-06-19/source_trace_metrics.json` |
+| `raw_data/lte/n25 data/n25_eq_j6.hist` | `lte/n25 data/n25_eq_j6.hist` | 6105980 | `d510635e024990d1` | `Paper/revision_2026-06-19/report_assets/compare_residual_mesh_metrics.json`, `Paper/revision_2026-06-19/source_trace_metrics.json` |
 | `raw_data/lte/n25 data/n25_j12.hist` | `lte/n25 data/n25_j12.hist` | 6230723 | `d646260f167ce782` | `Paper/revision_2026-06-19/source_trace_metrics.json` |
 | `raw_data/lte/n25 data/n25_j18.hist` | `lte/n25 data/n25_j18.hist` | 6139918 | `1d7063f5bfe8a1de` | `Paper/revision_2026-06-19/source_trace_metrics.json` |
-| `raw_data/lte/n25 data/n25_j6.hist` | `lte/n25 data/n25_j6.hist` | 6300540 | `d0506d5ac31839ae` | `Paper/revision_2026-06-19/source_trace_metrics.json` |
-| `raw_data/lte/n50 data/simd_n50_eq_j12.hist` | `lte/n50 data/simd_n50_eq_j12.hist` | 5951241 | `366941a0c3deafc3` | `Paper/revision_2026-06-19/source_trace_metrics.json` |
+| `raw_data/lte/n25 data/n25_j6.hist` | `lte/n25 data/n25_j6.hist` | 6300540 | `d0506d5ac31839ae` | `Paper/revision_2026-06-19/report_assets/compare_residual_mesh_metrics.json`, `Paper/revision_2026-06-19/source_trace_metrics.json` |
+| `raw_data/lte/n50 data/simd_n50_eq_j12.hist` | `lte/n50 data/simd_n50_eq_j12.hist` | 5951241 | `366941a0c3deafc3` | `Paper/revision_2026-06-19/report_assets/compare_residual_mesh_metrics.json`, `Paper/revision_2026-06-19/source_trace_metrics.json` |
 | `raw_data/lte/n50 data/simd_n50_eq_j24.hist` | `lte/n50 data/simd_n50_eq_j24.hist` | 5968237 | `3c01d05d90bac263` | `Paper/revision_2026-06-19/manuscript_figure_metrics.json`, `Paper/revision_2026-06-19/source_trace_metrics.json` |
 | `raw_data/lte/n50 data/simd_n50_eq_j36.hist` | `lte/n50 data/simd_n50_eq_j36.hist` | 5950827 | `07f7cae4790da126` | `Paper/revision_2026-06-19/source_trace_metrics.json` |
 | `raw_data/lte/n50 data/simd_n50_eq_profile.txt` | `lte/n50 data/simd_n50_eq_profile.txt` | 632 | `9336618719543e05` | `Paper/revision_2026-06-19/source_trace_metrics.json` |
-| `raw_data/lte/n50 data/simd_n50_j12.hist` | `lte/n50 data/simd_n50_j12.hist` | 6111368 | `4a2a538dacf036fd` | `Paper/revision_2026-06-19/source_trace_metrics.json` |
+| `raw_data/lte/n50 data/simd_n50_j12.hist` | `lte/n50 data/simd_n50_j12.hist` | 6111368 | `4a2a538dacf036fd` | `Paper/revision_2026-06-19/report_assets/compare_residual_mesh_metrics.json`, `Paper/revision_2026-06-19/source_trace_metrics.json` |
 | `raw_data/lte/n50 data/simd_n50_j24.hist` | `lte/n50 data/simd_n50_j24.hist` | 6082222 | `bea9881e88bf52bd` | `Paper/revision_2026-06-19/manuscript_figure_metrics.json`, `Paper/revision_2026-06-19/source_trace_metrics.json` |
 | `raw_data/lte/n50 data/simd_n50_j36.hist` | `lte/n50 data/simd_n50_j36.hist` | 6014749 | `30a09efbee1cf82e` | `Paper/revision_2026-06-19/source_trace_metrics.json` |
 | `raw_data/lte/n50 data/simd_n50_profile.txt` | `lte/n50 data/simd_n50_profile.txt` | 636 | `fd49a0dc9b0803d3` | `Paper/revision_2026-06-19/source_trace_metrics.json` |

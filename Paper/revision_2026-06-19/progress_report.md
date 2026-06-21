@@ -58,7 +58,7 @@
     PDF then had 17 pages and the LaTeX log had no unresolved
     citations/references and no overfull or underfull box warnings. Later
     reproducibility-summary and submission-level additions increased the
-    current build artifact to 26 pages.
+    current build artifact to 27 pages.
 13. Resolved two remaining rigor issues in the short-chain section:
     - removed the unsupported quantitative “about 15%” symmetry-breaking claim
       and made the figure caption explicitly qualitative;
@@ -90,7 +90,7 @@
     manuscript continues not to use that result as a claim.
 17. Added `scripts/audit_manuscript_claims.py`, which builds
     `manuscript_claim_audit.json` and `manuscript_claim_audit.md` from the
-    source-traced numerical artifacts. The current audit verifies 22/22 core
+    source-traced numerical artifacts. The current audit verifies 23/23 core
     numerical/data claims after the larger-chain, bath-temperature, and
     thermostat-coupling robustness updates and caught a notation issue in the LTE section:
     the equilibrium marginal is now written consistently with the manuscript's
@@ -115,7 +115,7 @@
     `scripts/audit_availability_paths.py`, `availability_path_audit.json`, and
     `availability_path_audit.md`. The audit checks every `\path{...}` entry and
     every manuscript figure include; after the 2026-06-20 robustness and
-    submission-readiness passes the current local result is 38/38 paths present
+    submission-readiness passes the current local result is 40/40 paths present
     and tracked. The LaTeX build
     remains clean with no unresolved
     citations/references and no overfull or underfull box warnings after the
@@ -132,7 +132,7 @@
 23. Added `scripts/build_raw_data_archive_manifest.py`,
     `raw_data_archive_manifest.json`, and `raw_data_archive_manifest.md`. This
     converts the raw-data limitation into an actionable archive subset: 40
-    unique source-trace raw files, all present locally, totaling 138,875,181
+    unique source-trace raw files, all present locally, totaling 151,605,557
     bytes. The referenced subset is much smaller than the full local roots
     (`Energy Cascade/`, `KDE/`, and `lte/`), so a future DOI-backed supplement
     can be prepared deliberately without committing multi-GB directories to
@@ -176,7 +176,7 @@
     submission `.tar.gz` under `tmp/` from the release manifest, records an
     archive SHA-256 checksum, and deliberately excludes self-referential
     generated summaries and the large local raw-data roots. The current
-    packaging run includes 319 regular files, has zero missing files, and
+    packaging run includes 323 regular files, has zero missing files, and
     records 44 local raw-data dependency records as
     excluded pending any DOI-backed raw-data archive decision.
 31. Performed a submission-level strengthening pass on 2026-06-20:
@@ -190,7 +190,7 @@
       windows and $\tau\,\mathrm{Var}(\overline J_\tau)$;
     - reran the one-command submission gate, which now reports
       `PASS_WITH_AUTHOR_CONFIRMATION_PENDING_AND_LOCAL_RAW_DATA_LIMITATION`
-      with 38/38 path records available, 22/22 registered numerical claims
+      with 40/40 path records available, 23/23 registered numerical claims
       verified, and 9 author/external submission items pending.
 32. Added `siads_first_submission_packet_2026-06-20.md`, a target-specific
     preparation packet for the recommended first journal target.  It contains a
@@ -205,8 +205,8 @@
     `lineno`, keywords, and MSC candidates.  It compiles cleanly to
     `tmp/paper_build/siads_review/draft_siads_review.pdf`. After the later
     robustness and interpretation edits, the current compiled review PDF is
-    26 pages with SHA-256
-    `a32a4958be9b2f36cf0117f5c8b20d8293bcb68ad8dfe3bc66364978d9205df0`.
+    27 pages with SHA-256
+    `9dc6635c46dcddd4f8d45a584629d9c3878aba016ca4675c409654b601327f91`.
 34. Strengthened the manuscript narrative so the long-chain and short-chain
     results have a clearer division of labor: the long-chain simulations now
     explicitly provide macroscopic finite-size transport and LTE evidence,
@@ -335,6 +335,16 @@
     `Thermal conductivity` headings were renamed to `Action-current
     conductivity` / Fourier analogy wording while preserving the existing
     LaTeX label for cross-reference stability.
+51. Added a source-traced residual-norm audit for the MATLAB-style LTE
+    residual mesh diagnostic.  The new helper
+    `scripts/export_compare_residual_mesh_metrics.py` reproduces the
+    `compare_residual.m` convention for the displayed `n=15,25,50` mesh
+    slices and writes JSON/Markdown/TXT summaries under `report_assets/`.
+    Under that plotting convention the unweighted displayed-slice RMS
+    residuals are `0.254`, `0.199`, and `0.138`; the core `I_a,I_b<2.5`
+    RMS values are `0.248`, `0.194`, and `0.116`.  The manuscript now reports
+    these as descriptive checks on the figure while keeping the fixed
+    weighted-core LTE estimator as the quantitative table estimator.
 
 ## Key validated numerical result
 
@@ -371,8 +381,8 @@ Power-law fit:
   sampled scope, but it is not a corpus-scale similarity report.
 - Rerun the final citation/data/claim/path audit after author declarations and
   any last journal-format edits are settled. The current local core numerical
-  audit passes 22/22 checks, and the current availability-path audit passes
-  38/38 checks. The preferred one-command local gate is now
+  audit passes 23/23 checks, and the current availability-path audit passes
+  40/40 checks. The preferred one-command local gate is now
   `python3 Paper/revision_2026-06-19/scripts/run_submission_checks.py --compile-latex`.
   The reviewer/editor-facing navigation file is
   `submission_reproducibility_readme_2026-06-19.md`; the compiled-PDF layout
@@ -383,7 +393,7 @@ Power-law fit:
   artifacts in GitHub or also a DOI-backed raw-data archive. The bundle
   manifest currently flags 44 local raw-data dependency records that are not
   git-tracked; the raw-data archive manifest deduplicates them to 40 unique
-  files totaling 138,875,181 bytes.
+  files totaling 151,605,557 bytes.
 - Optional but recommended before final release: package a full TensorFlow
   retraining environment if the target journal expects re-training
   reproducibility beyond saved-model inference.

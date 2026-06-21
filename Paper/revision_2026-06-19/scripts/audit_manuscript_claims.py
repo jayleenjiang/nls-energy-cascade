@@ -197,6 +197,10 @@ def build_registry() -> list[dict[str, Any]]:
     ]
     figure_metrics_path = REVISION / "manuscript_figure_metrics.json"
     source_trace_path = REVISION / "source_trace_metrics.json"
+    mesh_metrics_path = REVISION / "report_assets/compare_residual_mesh_metrics.json"
+    mesh_metrics_md_path = REVISION / "report_assets/compare_residual_mesh_metrics.md"
+    mesh_metrics_txt_path = REVISION / "report_assets/compare_residual_mesh_metrics.txt"
+    mesh_metrics_script_path = REVISION / "scripts/export_compare_residual_mesh_metrics.py"
     rerun_path = REVISION / "short_chain_nn_rerun_metrics.json"
     eigen_path = REVISION / "eigen_fit_sensitivity.json"
     availability_audit_json = REVISION / "availability_path_audit.json"
@@ -205,6 +209,7 @@ def build_registry() -> list[dict[str, Any]]:
     flux = load_json(flux_path)
     figures = load_json(figure_metrics_path)
     source = load_json(source_trace_path)
+    mesh_metrics = load_json(mesh_metrics_path)
     rerun = load_json(rerun_path)
     eigen = load_json(eigen_path)
     window = read_window_stats(window_path)
@@ -723,6 +728,48 @@ def build_registry() -> list[dict[str, Any]]:
         note="The residual decomposition is descriptive and uses a stricter symmetric count mask than the slope fit.",
     )
 
+    mesh_rows = {
+        row["label"]: {
+            "n": row["n"],
+            "pair_index_j": row["pair_index_j"],
+            "slope_x": row["fit"]["slope_x"],
+            "display_rms": row["slice"]["display"]["rms"],
+            "core_rms": row["slice"]["core_IaIb_lt_2p5"]["rms"],
+            "display_bins": row["slice"]["display"]["bins"],
+            "theta_matlab_index": row["slice"]["theta_matlab_index"],
+        }
+        for row in mesh_metrics["rows"]
+    }
+    add_claim(
+        registry,
+        claim_id="lte_residual_mesh_slice_metrics",
+        section="local thermodynamic equilibrium",
+        claim="The MATLAB-style residual mesh figure is accompanied by source-traced slice RMS diagnostics for n=15,25,50.",
+        evidence=[
+            REVISION / "report_assets/compare_residual_mesh.pdf",
+            mesh_metrics_path,
+            mesh_metrics_md_path,
+            mesh_metrics_txt_path,
+            mesh_metrics_script_path,
+        ],
+        expected_text=[
+            r"\label{fig:lte-resid-mesh}",
+            r"\texttt{compare\_residual.m}",
+            r"$n=15,25,50$",
+            r"unweighted RMS residuals",
+            r"$0.254$, $0.199$, and $0.138$",
+            r"$0.248$, $0.194$,",
+            r"and $0.116$",
+            r"descriptive checks on the figure",
+            r"not substitutes for the fixed LTE estimator",
+        ],
+        computed={
+            "matlab_convention": mesh_metrics["matlab_convention"],
+            "rows": mesh_rows,
+        },
+        note="These norms use the plotting mask and theta slice from compare_residual.m; the manuscript keeps the fixed weighted-core estimator as the quantitative LTE estimator.",
+    )
+
     controls = source["lte_table"]["controls"]
     add_claim(
         registry,
@@ -908,6 +955,8 @@ def build_registry() -> list[dict[str, Any]]:
             r"paths below are relative to the repository root",
             r"\path{Paper/revision_2026-06-19/scripts/export_source_trace_metrics.py}",
             r"\path{Paper/revision_2026-06-19/source_trace_metrics.json}",
+            r"\path{Paper/revision_2026-06-19/scripts/export_compare_residual_mesh_metrics.py}",
+            r"\path{Paper/revision_2026-06-19/report_assets/compare_residual_mesh_metrics.json}",
             r"\path{Paper/revision_2026-06-19/scripts/recompute_short_chain_nn_metrics.py}",
             r"\path{Paper/revision_2026-06-19/short_chain_nn_rerun_metrics.json}",
             r"\path{Paper/revision_2026-06-19/scripts/analyze_eigen_fit_windows.py}",

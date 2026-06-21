@@ -64,9 +64,9 @@ uncertainty protocol, the `n=15,25,50` LTE residual mesh diagnostic from the
 `compare_residual.m` convention, a current-estimator timestep sensitivity
 table, and finite-window current diagnostics.  The current local gate reports
 `PASS_WITH_AUTHOR_CONFIRMATION_PENDING_AND_LOCAL_RAW_DATA_LIMITATION`:
-LaTeX/log checks pass, availability checks cover 38/38 paths with zero
+LaTeX/log checks pass, availability checks cover 40/40 paths with zero
 untracked required files, reference integrity passes, and the registered
-numerical claim audit verifies 22/22 claims. The author/submission-field audit
+numerical claim audit verifies 23/23 claims. The author/submission-field audit
 records 9 pending author or external-service items. Remaining blockers are
 author/journal/external-release decisions:
 target journal/template, final declarations, professional similarity screening,
