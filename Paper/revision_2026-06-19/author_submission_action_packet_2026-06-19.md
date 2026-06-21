@@ -29,7 +29,7 @@ a fit-window sensitivity table, a smaller `n=50` fine-timestep pilot, and a
 production-resolution bath-temperature robustness check at `T1=8,Tn=4`.  A
 2026-06-21 pass added production-resolution thermostat-coupling robustness
 checks at `gamma=0.05` and `gamma=0.2`.  The latest path audit checks 38/38
-manuscript paths and figures, and the numerical claim audit checks 21/21
+manuscript paths and figures, and the numerical claim audit checks 22/22
 registered claims.
 
 ## 1. Decisions needed from the authors
@@ -252,7 +252,7 @@ python3 Paper/revision_2026-06-19/scripts/run_submission_checks.py --compile-lat
 
 currently returns
 PASS_WITH_AUTHOR_CONFIRMATION_PENDING_AND_LOCAL_RAW_DATA_LIMITATION: the
-manuscript compiles, the local numerical claim audit passes 21/21 checks, the
+manuscript compiles, the local numerical claim audit passes 22/22 checks, the
 path audit passes 38/38 checks, and the release bundle has no missing or
 untracked required files. The author/submission-field audit records 9 pending
 author or external-service items. A local upload-ready raw-data `.tar.gz` can

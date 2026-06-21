@@ -216,7 +216,7 @@ author pages for the leading candidates:
   cover letter PDFs at submission, requires inline figures, encourages SIAM
   macros, and generally expects manuscripts not to exceed 40 pages or 10 MB
   without cover-letter justification.  SIADS also requires an index if
-  supplementary materials are submitted.  The current 25-page generic article
+  supplementary materials are submitted.  The current 26-page generic article
   draft is therefore comfortably within the length/file-size envelope; the main
   remaining SIADS-specific work is template/line-number conversion and a
   supplementary-material index if the authors choose to submit raw data or code

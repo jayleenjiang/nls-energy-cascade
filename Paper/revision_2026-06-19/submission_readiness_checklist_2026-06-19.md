@@ -53,7 +53,7 @@ production-resolution `T1=8,Tn=4` current-scaling check over
 production-resolution `gamma=0.05` and `gamma=0.2` checks over the same four
 primary lengths.  The latest one-command gate reports
 `PASS_WITH_AUTHOR_CONFIRMATION_PENDING_AND_LOCAL_RAW_DATA_LIMITATION` with
-38/38 availability path records present and git-tracked, 21/21 registered
+38/38 availability path records present and git-tracked, 22/22 registered
 numerical claims verified, 9 author/external submission items pending, and zero
 missing release-bundle files.
 

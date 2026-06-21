@@ -218,6 +218,51 @@ def build_registry() -> list[dict[str, Any]]:
     parameter_summaries = [read_summary(path) for path in parameter_summary_paths]
     gamma_scaling = load_json(gamma_scaling_path)
 
+    add_claim(
+        registry,
+        claim_id="intro_claim_evidence_map",
+        section="contributions and organization",
+        claim="The introduction includes a claim-evidence map that separates supported finite-size or diagnostic statements from deliberately unclaimed stronger interpretations.",
+        evidence=[
+            DRAFT,
+            flux_path,
+            validation_path,
+            flux_sensitivity_path,
+            parameter_scaling_path,
+            gamma_scaling_path,
+            window_path,
+            figure_metrics_path,
+            source_trace_path,
+            rerun_path,
+            eigen_path,
+        ],
+        expected_text=[
+            r"\label{tab:claim-evidence-map}",
+            r"Claim--evidence map for the manuscript",
+            r"Does the simulated SDE have the intended equilibrium structure?",
+            r"Equivalence with the original HLNS thermostat.",
+            r"Production Monte Carlo for $n=10,20,30,40$, with $n=50,60$",
+            r"Finite-size faster-than-Fourier decay of the mean action current.",
+            r"An asymptotic exponent or universal parameter law.",
+            r"Action profiles, pair-marginal comparisons, LTE table entries, and residual",
+            r"Strict local Gibbs convergence or vanishing residuals.",
+            r"Finite-window current histograms, survival fits, and",
+            r"Large-deviation asymptotics or Gallavotti--Cohen symmetry.",
+            r"Saved-model Gibbs validation, short-chain density diagnostics,",
+            r"Proof of the long-chain exponent or a resolved spectral gap.",
+        ],
+        computed={
+            "mapped_claim_families": [
+                "canonical_sde_validation",
+                "finite_size_current_scaling",
+                "local_equilibrium_diagnostics",
+                "finite_window_current_fluctuations",
+                "short_chain_mechanism_diagnostics",
+            ]
+        },
+        note="This introductory map is a scope-control device: it does not add new numerical values, but it binds each manuscript claim family to its evidence stream and explicit non-claim.",
+    )
+
     prefactor = flux["prefactor"]
     exponent = flux["exponent"]
     ci_lo, ci_hi = flux["exponent_normalized_95_ci"]

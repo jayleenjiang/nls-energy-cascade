@@ -1,13 +1,14 @@
 # Manuscript claim audit
 
-Generated: `2026-06-21T02:58:43.654403+00:00`
+Generated: `2026-06-21T03:04:55.968901+00:00`
 
 Scope note: Core numerical/data claims only; author declarations and external plagiarism checks remain outside code-verifiable scope.
 
-Summary: **21 / 21** claims verified; **0** failed.
+Summary: **22 / 22** claims verified; **0** failed.
 
 | ID | Section | Verdict | Evidence |
 |---|---|---:|---|
+| `intro_claim_evidence_map` | contributions and organization | VERIFIED | `Paper/revision_2026-06-19/draft.tex`<br>`Paper/revision_2026-06-19/experiments/flux_validation/production_dt5e-4/flux_primary_scaling.json`<br>`Paper/revision_2026-06-19/experiments/flux_validation/validation_report.md`<br>`Paper/revision_2026-06-19/experiments/flux_validation/larger_n60_pilot_2026-06-20/flux_scaling_sensitivity_n10_60.json`<br>`Paper/revision_2026-06-19/experiments/flux_validation/parameter_robustness_2026-06-20/moderate_contrast_T8_T4_prod/b64_scaling_scaling.json`<br>`Paper/revision_2026-06-19/experiments/flux_validation/gamma_robustness_2026-06-21/gamma_robustness_scaling.json`<br>`Paper/revision_2026-06-19/experiments/flux_validation/production_dt5e-4/current_windows_window_statistics.csv`<br>`Paper/revision_2026-06-19/manuscript_figure_metrics.json`<br>`Paper/revision_2026-06-19/source_trace_metrics.json`<br>`Paper/revision_2026-06-19/short_chain_nn_rerun_metrics.json`<br>`Paper/revision_2026-06-19/eigen_fit_sensitivity.json` |
 | `flux_scaling_main` | abstract / thermal conductivity | VERIFIED | `Paper/revision_2026-06-19/experiments/flux_validation/production_dt5e-4/flux_primary_scaling.json`<br>`Paper/revision_2026-06-19/experiments/flux_validation/validation_report.md` |
 | `conductivity_scaling` | abstract / thermal conductivity | VERIFIED | `Paper/revision_2026-06-19/experiments/flux_validation/production_dt5e-4/flux_primary_scaling.json` |
 | `flux_table_values` | thermal conductivity | VERIFIED | `Paper/revision_2026-06-19/experiments/flux_validation/validation_report.md`<br>`Paper/revision_2026-06-19/experiments/flux_validation/production_dt5e-4/flux_primary_scaling.json` |

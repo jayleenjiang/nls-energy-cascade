@@ -58,7 +58,7 @@
     PDF then had 17 pages and the LaTeX log had no unresolved
     citations/references and no overfull or underfull box warnings. Later
     reproducibility-summary and submission-level additions increased the
-    current build artifact to 25 pages.
+    current build artifact to 26 pages.
 13. Resolved two remaining rigor issues in the short-chain section:
     - removed the unsupported quantitative “about 15%” symmetry-breaking claim
       and made the figure caption explicitly qualitative;
@@ -90,7 +90,7 @@
     manuscript continues not to use that result as a claim.
 17. Added `scripts/audit_manuscript_claims.py`, which builds
     `manuscript_claim_audit.json` and `manuscript_claim_audit.md` from the
-    source-traced numerical artifacts. The current audit verifies 21/21 core
+    source-traced numerical artifacts. The current audit verifies 22/22 core
     numerical/data claims after the larger-chain, bath-temperature, and
     thermostat-coupling robustness updates and caught a notation issue in the LTE section:
     the equilibrium marginal is now written consistently with the manuscript's
@@ -190,7 +190,7 @@
       windows and $\tau\,\mathrm{Var}(\overline J_\tau)$;
     - reran the one-command submission gate, which now reports
       `PASS_WITH_AUTHOR_CONFIRMATION_PENDING_AND_LOCAL_RAW_DATA_LIMITATION`
-      with 38/38 path records available, 21/21 registered numerical claims
+      with 38/38 path records available, 22/22 registered numerical claims
       verified, and 9 author/external submission items pending.
 32. Added `siads_first_submission_packet_2026-06-20.md`, a target-specific
     preparation packet for the recommended first journal target.  It contains a
@@ -206,7 +206,7 @@
     `tmp/paper_build/siads_review/draft_siads_review.pdf`. After the later
     robustness and interpretation edits, the current compiled review PDF is
     25 pages with SHA-256
-    `d31938e81b09b0c6e93c4de068c96e5de3657b68eb6f4a5ce10dfd22c80f643d`.
+    `0e60e39c971731631c2176e9312067d2f8cdaef4636739ffc0a51f43edf02163`.
 34. Strengthened the manuscript narrative so the long-chain and short-chain
     results have a clearer division of labor: the long-chain simulations now
     explicitly provide macroscopic finite-size transport and LTE evidence,
@@ -299,6 +299,14 @@
     backward-Monte-Carlo window sensitivity while explicitly keeping those
     values in a diagnostic/mechanistic role rather than promoting them to
     long-chain transport or high-accuracy spectral claims.
+46. Added an introductory claim-evidence map to both manuscript sources.  The
+    table separates canonical SDE validation, finite-size long-chain current
+    scaling, LTE/local-equilibrium diagnostics, finite-window current
+    fluctuations, and the three-mode Fokker--Planck mechanism study, while
+    explicitly listing the stronger asymptotic, fluctuation-theorem, strict
+    Gibbs, and spectral-gap statements not claimed.  The map is registered in
+    the local claim audit as a scope-control device rather than a new
+    numerical result.
 
 ## Key validated numerical result
 
@@ -335,7 +343,7 @@ Power-law fit:
   sampled scope, but it is not a corpus-scale similarity report.
 - Rerun the final citation/data/claim/path audit after author declarations and
   any last journal-format edits are settled. The current local core numerical
-  audit passes 21/21 checks, and the current availability-path audit passes
+  audit passes 22/22 checks, and the current availability-path audit passes
   38/38 checks. The preferred one-command local gate is now
   `python3 Paper/revision_2026-06-19/scripts/run_submission_checks.py --compile-latex`.
   The reviewer/editor-facing navigation file is

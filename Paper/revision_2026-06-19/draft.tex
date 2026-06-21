@@ -237,6 +237,63 @@ data support finite-size transport and LTE claims, whereas the short-chain
 Fokker--Planck calculations support mechanistic and qualitative spectral
 diagnostics.
 
+\Cref{tab:claim-evidence-map} summarizes this division of labor. It is included
+near the start to make the scope of the numerical claims explicit: each
+evidence stream supports a specific finite-size or diagnostic statement, while
+stronger asymptotic, fluctuation-theorem, or high-accuracy spectral claims are
+left outside the present manuscript.
+
+\begin{table}[ht]\centering
+\small
+\setlength{\tabcolsep}{2pt}
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.20\textwidth}
+                >{\raggedright\arraybackslash}p{0.28\textwidth}
+                >{\raggedright\arraybackslash}p{0.24\textwidth}
+                >{\raggedright\arraybackslash}p{0.18\textwidth}}
+\toprule
+Question & Evidence used & Claim supported & Not claimed \\
+\midrule
+Does the simulated SDE have the intended equilibrium structure? &
+Gibbs-preserving bath construction, equal-temperature validation, and
+hot/cold reversal gates. &
+The canonical simulator represents the fluctuation--dissipation model used for
+the transport study. &
+Equivalence with the original HLNS thermostat. \\
+\midrule
+How does the long-chain action current scale in the simulated range? &
+Production Monte Carlo for $n=10,20,30,40$, with $n=50,60$,
+bath-temperature, thermostat-coupling, stationarity, and timestep checks. &
+Finite-size faster-than-Fourier decay of the mean action current. &
+An asymptotic exponent or universal parameter law. \\
+\midrule
+Is there a local-equilibrium structure in the long-chain NESS? &
+Action profiles, pair-marginal comparisons, LTE table entries, and residual
+mesh diagnostics. &
+Approximate pair-marginal agreement after local kinetic-temperature rescaling,
+with visible residual structure. &
+Strict local Gibbs convergence or vanishing residuals. \\
+\midrule
+What do the current fluctuations show? &
+Finite-window current histograms, survival fits, and
+$\tau\,\mathrm{Var}(\overline J_\tau)$ diagnostics. &
+Descriptive finite-time current-distribution behavior over the sampled
+windows. &
+Large-deviation asymptotics or Gallavotti--Cohen symmetry. \\
+\midrule
+What role does the three-mode Fokker--Planck study play? &
+Saved-model Gibbs validation, short-chain density diagnostics,
+phase-locking branch checks, and backward-Monte-Carlo fits. &
+Mechanistic visualization of stabilization, phase locking, symmetry breaking,
+and qualitative slow modes. &
+Proof of the long-chain exponent or a resolved spectral gap. \\
+\bottomrule
+\end{tabular}
+\caption{Claim--evidence map for the manuscript. The table separates the
+finite-size long-chain transport evidence from the three-mode mechanistic
+diagnostics and records the stronger statements deliberately not made.}
+\label{tab:claim-evidence-map}
+\end{table}
+
 \Cref{sec:long-chain} treats the \emph{long chain}, the regime left open by
 \cite{HLNS}. We characterize the nonequilibrium steady state---the action
 profile and an approximate local equilibrium, in which adjacent-mode pair
