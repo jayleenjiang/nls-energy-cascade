@@ -176,7 +176,7 @@
     submission `.tar.gz` under `tmp/` from the release manifest, records an
     archive SHA-256 checksum, and deliberately excludes self-referential
     generated summaries and the large local raw-data roots. The current
-    packaging run includes 273 regular files, has zero missing files, and
+    packaging run includes 276 regular files, has zero missing files, and
     records 44 local raw-data dependency records as
     excluded pending any DOI-backed raw-data archive decision.
 31. Performed a submission-level strengthening pass on 2026-06-20:
@@ -270,6 +270,14 @@
     current-scaling protocol, implementation and physical validation gates,
     timestep and stationarity checks, larger-chain and bath-temperature
     robustness evidence, and the finite-time current-distribution scope.
+43. Added `scripts/run_gamma_robustness_smoke.py` plus
+    `gamma_robustness_smoke_report.json` and
+    `gamma_robustness_smoke_report.md`.  The helper verifies that the frozen
+    canonical source still matches its production SHA-256, generates temporary
+    gamma-specific sources under `tmp/`, compiles them, and runs tiny `n=6`
+    smoke tests at `gamma=0.05` and `gamma=0.2`.  This is a production-path
+    readiness check only; it is not used as manuscript evidence for the
+    current-scaling exponent.
 
 ## Key validated numerical result
 
@@ -322,8 +330,8 @@ Power-law fit:
 - Optional but recommended before final release: package a full TensorFlow
   retraining environment if the target journal expects re-training
   reproducibility beyond saved-model inference.
-- Optional numerical strengthening: if time permits before submission, run a
-  small thermostat-coupling robustness check, for example at
+- Optional numerical strengthening: if time permits before submission, upgrade
+  the smoke-tested thermostat-coupling path to production resolution at
   `gamma=0.05` or `gamma=0.2`, or upgrade one more bath-parameter pilot to
   production resolution.  The existing `n=50` and `n=60` larger-chain checks
   are already included as robustness evidence.

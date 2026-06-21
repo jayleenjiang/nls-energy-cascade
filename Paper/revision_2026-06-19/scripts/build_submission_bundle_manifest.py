@@ -191,6 +191,8 @@ def collect_handoff_docs(root: Path, revision_dir: Path, release: dict[str, set[
         "siads_cover_letter_template.tex",
         "siads_cover_letter_template_build.json",
         "siads_cover_letter_template_build.md",
+        "gamma_robustness_smoke_report.json",
+        "gamma_robustness_smoke_report.md",
         "compiled_pdf_artifact_audit.json",
         "compiled_pdf_artifact_audit.md",
         "pdf_layout_qa_2026-06-19.md",
@@ -247,6 +249,11 @@ def collect_handoff_docs(root: Path, revision_dir: Path, release: dict[str, set[
         release,
         str((revision_dir / "scripts/build_siads_cover_letter_template.py").relative_to(root)),
         "cover-letter-template-builder",
+    )
+    add_role(
+        release,
+        str((revision_dir / "scripts/run_gamma_robustness_smoke.py").relative_to(root)),
+        "gamma-robustness-smoke-runner",
     )
     add_role(
         release,

@@ -16,6 +16,7 @@ paper can be called journal-ready.
 | Core numerical claims | Passing local claim audit | `scripts/audit_manuscript_claims.py`; `manuscript_claim_audit.json`; `manuscript_claim_audit.md` |
 | Figure provenance | Source-traced for manuscript-generated figures; LTE mesh figure now included | `scripts/generate_manuscript_figures.py`; `manuscript_figure_metrics.json`; `report_assets/compare_residual_mesh.pdf` |
 | Monte Carlo validation and finite-window diagnostics | Added to manuscript and checked by local gate | `experiments/flux_validation/validation_report.md`; `experiments/flux_validation/production_dt5e-4/current_windows_window_statistics.csv`; `draft.tex` |
+| Gamma-robustness production path | Smoke-tested only; not manuscript evidence | `scripts/run_gamma_robustness_smoke.py`; `gamma_robustness_smoke_report.md` |
 | Short-chain saved-model diagnostics | Rerun from saved TensorFlow/Keras models | `scripts/recompute_short_chain_nn_metrics.py`; `short_chain_nn_rerun_metrics.json` |
 | Data/code and figure path availability | Passing local path audit | `scripts/audit_availability_paths.py`; `availability_path_audit.json`; `availability_path_audit.md` |
 | Compiled-PDF artifact metadata | Passing for generic and SIADS local PDFs | `scripts/audit_compiled_pdfs.py`; `compiled_pdf_artifact_audit.json`; `compiled_pdf_artifact_audit.md` |
