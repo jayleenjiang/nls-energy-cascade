@@ -37,7 +37,7 @@ Key numbers from the current gate:
 | Compiled PDF artifact audit | 2/2 PDFs verified |
 | Release-bundle files | 121 |
 | Missing release files | 0 |
-| Source-only bundle included files | 316 |
+| Source-only bundle included files | 317 |
 | Minimal raw-data subset | 40 files, 138,875,181 bytes |
 | Author/submission-field audit | 9 pending author/external items |
 
@@ -46,7 +46,7 @@ The SIADS review-preparation source compiles locally:
 - source: `Paper/revision_2026-06-19/draft_siads_review.tex`
 - PDF: `tmp/paper_build/siads_review/draft_siads_review.pdf`
 - PDF SHA-256:
-  `0e60e39c971731631c2176e9312067d2f8cdaef4636739ffc0a51f43edf02163`
+  `6001924de0a819e079157e4d80f2a24d7ee7eefa7d4b0e7556fbcfaec61629f3`
 - PDF pages: 26
 
 The current upload-facing local file index is

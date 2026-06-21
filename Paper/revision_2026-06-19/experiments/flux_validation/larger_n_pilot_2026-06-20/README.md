@@ -43,6 +43,14 @@ Paper/revision_2026-06-19/experiments/flux_validation/bin/flux_canonical \
   Paper/revision_2026-06-19/experiments/flux_validation/larger_n_pilot_2026-06-20/n50_b16_dt2p5e-4
 ```
 
+Production-resolution fine-timestep check:
+
+```sh
+Paper/revision_2026-06-19/experiments/flux_validation/bin/flux_canonical \
+  10 2 50 64 8000 200 0.00025 20260623 4 \
+  Paper/revision_2026-06-19/experiments/flux_validation/larger_n_pilot_2026-06-20/n50_b64_dt2p5e-4
+```
+
 Primary scaling-analysis command:
 
 ```sh
@@ -52,6 +60,7 @@ python3 flux/analyze_canonical_flux.py \
   Paper/revision_2026-06-19/experiments/flux_validation/production_dt5e-4/n30_summary.csv \
   Paper/revision_2026-06-19/experiments/flux_validation/production_dt5e-4/n40_summary.csv \
   Paper/revision_2026-06-19/experiments/flux_validation/larger_n_pilot_2026-06-20/n50_b64_summary.csv \
+  Paper/revision_2026-06-19/experiments/flux_validation/larger_n_pilot_2026-06-20/n50_b64_dt2p5e-4_summary.csv \
   --primary-dt 0.0005 \
   --bootstrap 10000 \
   --seed 20260620 \
@@ -102,6 +111,17 @@ Fine-timestep pilot:
 - difference relative to the `dt=5e-4`, `1024`-trajectory run:
   `+0.00028187025`, or `+1.52%`, equal to `0.30` pooled standard errors
 
+Production-resolution fine-timestep check:
+
+- configuration: `n=50`, `64` batches, `1024` trajectories, burn-in `8000`,
+  measurement window `200`, timestep `2.5e-4`
+- mean current: `0.01918191598`
+- standard error: `0.00040113161`
+- normal 95% CI: `[0.01839571247, 0.01996811949]`
+- first-half/second-half stationarity statistic: `-1.557` paired SE
+- difference relative to the matched `dt=5e-4`, `1024`-trajectory run:
+  `+0.00066606913`, or `+3.60%`, equal to `1.12` pooled standard errors
+
 Fit-window sensitivity:
 
 - primary `n=10,20,30,40`: exponent `-1.85008`, bootstrap 95% CI
@@ -117,10 +137,11 @@ Fit-window sensitivity:
 
 The larger-chain run is below the direct extrapolation of the original
 `n=10,20,30,40` fit but remains consistent with the qualitative conclusion that
-the current decays faster than the Fourier `1/n` scaling.  The fine-timestep
-pilot is consistent with the `dt=5e-4` run within Monte Carlo error.  The
-fit-window sensitivity analysis does not show drift toward the Fourier
-exponent over the available window.  The manuscript should still keep the
-`n=10,20,30,40` fit as the primary production exponent because `n=50` is a
-single larger-size extension and the fine-step check is a smaller pilot rather
-than a full production-resolution convergence study.
+the current decays faster than the Fourier `1/n` scaling.  The
+production-resolution fine-timestep check is consistent with the `dt=5e-4` run
+within Monte Carlo error, with a `3.60%` shift equal to `1.12` pooled standard
+errors.  The fit-window sensitivity analysis does not show drift toward the
+Fourier exponent over the available window.  The manuscript should still keep
+the `n=10,20,30,40` fit as the primary production exponent because `n=50` and
+`n=60` are robustness extensions rather than a systematic larger-length
+convergence study.

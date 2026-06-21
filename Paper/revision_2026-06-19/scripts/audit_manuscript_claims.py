@@ -165,7 +165,7 @@ def build_registry() -> list[dict[str, Any]]:
     larger_n_dir = REVISION / "experiments/flux_validation/larger_n_pilot_2026-06-20"
     larger_n_scaling_path = larger_n_dir / "n10_50_b64_scaling_scaling.json"
     larger_n_summary_path = larger_n_dir / "n50_b64_summary.csv"
-    larger_n_fine_path = larger_n_dir / "n50_b16_dt2p5e-4_summary.csv"
+    larger_n_fine_path = larger_n_dir / "n50_b64_dt2p5e-4_summary.csv"
     larger_n_long_burn_path = larger_n_dir / "n50_b16_burn10000_summary.csv"
     larger_n_readme_path = larger_n_dir / "README.md"
     n60_dir = REVISION / "experiments/flux_validation/larger_n60_pilot_2026-06-20"
@@ -353,7 +353,7 @@ def build_registry() -> list[dict[str, Any]]:
         registry,
         claim_id="larger_n_current_robustness",
         section="thermal conductivity",
-        claim="The n=50 larger-chain current run and fine-step pilot are reported as robustness evidence rather than replacing the primary exponent.",
+        claim="The n=50 larger-chain current run and production fine-step check are reported as robustness evidence rather than replacing the primary exponent.",
         evidence=[
             larger_n_scaling_path,
             larger_n_summary_path,
@@ -367,9 +367,10 @@ def build_registry() -> list[dict[str, Any]]:
             r"$-1.49$ paired standard",
             r"\E[J(n)] \;=\; 32.50\,n^{-1.894}",
             r"$[-1.916,-1.873]$",
-            r"$\E[J(50)]=0.01880$",
-            r"standard error $0.00081$",
-            r"$1.5\%$ shift, or $0.30$ pooled",
+            r"$\E[J(50)]=0.01918$",
+            r"standard error $0.00040$",
+            r"$-1.56$ paired standard errors",
+            r"$3.6\%$ upward shift, or $1.12$",
             r"$\E[J(50)]=0.01931\pm0.00086$",
             r"$n=50$ and $n=60$ computations as evidence against",
         ],
@@ -382,6 +383,10 @@ def build_registry() -> list[dict[str, Any]]:
             ),
             "n50_fine_mean": larger_n_fine["mean_action_current"],
             "n50_fine_se": larger_n_fine["standard_error"],
+            "n50_fine_stationarity_z": (
+                larger_n_fine["mean_second_minus_first"]
+                / larger_n_fine["paired_difference_se"]
+            ),
             "n50_fine_minus_coarse": (
                 larger_n_fine["mean_action_current"]
                 - larger_n_summary["mean_action_current"]

@@ -867,11 +867,13 @@ five-size fit
   \E[J(n)] \;=\; 32.50\,n^{-1.894},
   \qquad R^2=0.9976,
 \]
-with bootstrap exponent confidence interval $[-1.916,-1.873]$. A smaller
-fine-step pilot at $\Delta t=2.5\times10^{-4}$ gives
-$\E[J(50)]=0.01880$ with standard error $0.00081$; relative to the
-$\Delta t=5\times10^{-4}$ run, this is a $1.5\%$ shift, or $0.30$ pooled
-standard errors. An independent burn-in-$10000$ check gives
+with bootstrap exponent confidence interval $[-1.916,-1.873]$. A matched
+production-resolution fine-step check at $\Delta t=2.5\times10^{-4}$ gives
+$\E[J(50)]=0.01918$ with standard error $0.00040$ and split-window statistic
+$-1.56$ paired standard errors. Relative to the $\Delta t=5\times10^{-4}$
+run, this is a $3.6\%$ upward shift, or $1.12$ pooled standard errors, so the
+available timestep evidence does not indicate a resolved discretization bias
+at $n=50$. An independent burn-in-$10000$ check gives
 $\E[J(50)]=0.01931\pm0.00086$.
 
 We then extended the same production-resolution protocol to $n=60$, with
@@ -1330,7 +1332,8 @@ stationary density.
 Several limitations remain. The long-chain ergodicity theory is open, so the
 stationarity of the long simulations is assessed numerically rather than
 proved. The primary transport exponent is fitted over $n=10,20,30,40$; the
-$n=50$ and $n=60$ robustness runs, together with the $n=50$ fine-step pilot,
+$n=50$ and $n=60$ robustness runs, together with the $n=50$ production
+fine-step check,
 support the same faster-than-Fourier trend but do not replace a systematic
 larger-length and fine-timestep convergence study. The current statistics reported here concern finite-time averages of
 the action current only; bath-energy entropy production and a genuine
@@ -1390,8 +1393,12 @@ smoothness of the scaling curve. The coarse step $\Delta t=10^{-3}$ is already
 acceptable at $n=10$ but becomes biased at larger $n$, underestimating the
 $n=40$ current by $17.6\%$ relative to $\Delta t=5\times10^{-4}$. In contrast,
 the $n=40$ pilot comparison between $\Delta t=5\times10^{-4}$ and
-$2.5\times10^{-4}$ differs by $3.9\%$, or $0.60$ pooled standard errors. The
-production step $\Delta t=5\times10^{-4}$ is therefore retained for the main
+$2.5\times10^{-4}$ differs by $3.9\%$, or $0.60$ pooled standard errors. At
+$n=50$, a production-resolution $1024$-trajectory comparison gives
+$\E[J(50)]=0.01918\pm0.00040$ at $\Delta t=2.5\times10^{-4}$ versus
+$0.01852\pm0.00044$ at $\Delta t=5\times10^{-4}$, a $3.6\%$ shift equal to
+$1.12$ pooled standard errors. The production step
+$\Delta t=5\times10^{-4}$ is therefore retained for the matched main
 finite-size law, while the coarser step is excluded.
 
 The burn-in schedule is scaled with the observed relaxation time. For the
@@ -1409,7 +1416,9 @@ drift in the measured current windows.
 The main text quotes the exponent from the four production lengths because
 those runs form the matched primary design. Two larger-chain computations are
 used as robustness evidence. At $n=50$, the same accumulator with burn-in
-$8000$ gives $\E[J(50)]=0.01852\pm0.00044$; at $n=60$, burn-in $11520$ gives
+$8000$ gives $\E[J(50)]=0.01852\pm0.00044$ at
+$\Delta t=5\times10^{-4}$, and the matched production fine-step check gives
+$0.01918\pm0.00040$ at $\Delta t=2.5\times10^{-4}$; at $n=60$, burn-in $11520$ gives
 $\E[J(60)]=0.01245\pm0.00042$. Adding these points steepens, rather than
 weakens, the finite-size fit: the five-size diagnostic exponent is $-1.894$,
 and the six-size diagnostic exponent is $-1.930$. Fitting only the tail
@@ -1535,7 +1544,8 @@ Action-current scaling &
 canonical simulator, production manifest, larger-chain robustness run,
 fit-window sensitivity analysis, validation report, current-window statistics &
 frozen source/binary hashes; equal-temperature and hot/cold reversal gates;
-trajectory-bootstrap exponent CI; split-window stationarity, timestep pilot,
+trajectory-bootstrap exponent CI; split-window stationarity, timestep pilot
+and $n=50$ production fine-step check,
 bath-temperature and thermostat-coupling robustness checks, and fit-window sensitivity &
 finite-size action-current law over $n=10,20,30,40$, with $n=50$
 and $n=60$ robustness checks \\

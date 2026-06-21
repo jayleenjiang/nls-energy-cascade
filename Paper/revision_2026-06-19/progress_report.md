@@ -176,7 +176,7 @@
     submission `.tar.gz` under `tmp/` from the release manifest, records an
     archive SHA-256 checksum, and deliberately excludes self-referential
     generated summaries and the large local raw-data roots. The current
-    packaging run includes 316 regular files, has zero missing files, and
+    packaging run includes 317 regular files, has zero missing files, and
     records 44 local raw-data dependency records as
     excluded pending any DOI-backed raw-data archive decision.
 31. Performed a submission-level strengthening pass on 2026-06-20:
@@ -206,7 +206,7 @@
     `tmp/paper_build/siads_review/draft_siads_review.pdf`. After the later
     robustness and interpretation edits, the current compiled review PDF is
     25 pages with SHA-256
-    `0e60e39c971731631c2176e9312067d2f8cdaef4636739ffc0a51f43edf02163`.
+    `6001924de0a819e079157e4d80f2a24d7ee7eefa7d4b0e7556fbcfaec61629f3`.
 34. Strengthened the manuscript narrative so the long-chain and short-chain
     results have a clearer division of labor: the long-chain simulations now
     explicitly provide macroscopic finite-size transport and LTE evidence,
@@ -220,15 +220,15 @@
     window `200`, and `1024` trajectories.  The run gives
     `E[J(50)] = 0.01851584685` with SE `0.00044158954`; adding this point to
     the four primary production lengths gives a diagnostic five-size exponent
-    `-1.89449` with bootstrap 95% CI `[-1.91636,-1.87340]`.  A smaller
-    fine-step pilot at `dt=2.5e-4` gives `E[J(50)] = 0.01879771710` with SE
-    `0.00081439495`, only `1.52%` above the `dt=5e-4` run (`0.30` pooled
-    standard errors), and an independent burn-in-10000 check gives
+    `-1.89449` with bootstrap 95% CI `[-1.91636,-1.87340]`.  A later
+    production-resolution fine-step check at `dt=2.5e-4` gives
+    `E[J(50)] = 0.01918191598` with SE `0.00040113161`, only `3.60%` above
+    the `dt=5e-4` run (`1.12` pooled standard errors), and an independent
+    burn-in-10000 check gives
     `E[J(50)] = 0.01931242054` with SE `0.00085798987`.  The manuscript now
     records this as a robustness check rather than replacing the primary
     `n=10,20,30,40` exponent, because `n=50` is still a single larger-length
-    extension and the fine-step run is a smaller pilot rather than a full
-    production-resolution convergence study.
+    extension rather than a full convergence study.
 36. Added a cautious current-scaling interpretation paragraph to both
     manuscript sources.  The new text reframes the measured power law as
     superlinear effective action resistance, connects it to the LTE residual
@@ -307,6 +307,14 @@
     Gibbs, and spectral-gap statements not claimed.  The map is registered in
     the local claim audit as a scope-control device rather than a new
     numerical result.
+47. Upgraded the `n=50` fine-timestep check from a 256-trajectory pilot to a
+    production-resolution `1024`-trajectory run at `dt=2.5e-4` using the
+    canonical current accumulator.  The run gives `E[J(50)] = 0.01918191598`
+    with SE `0.00040113161`, compared with `0.01851584685` and SE
+    `0.00044158954` at `dt=5e-4`; the `3.60%` shift is `1.12` pooled standard
+    errors, and the split-window statistic is `-1.56` paired SE.  The
+    manuscript now describes this as a production fine-step robustness check
+    rather than a pilot.
 
 ## Key validated numerical result
 
@@ -359,7 +367,7 @@ Power-law fit:
 - Optional but recommended before final release: package a full TensorFlow
   retraining environment if the target journal expects re-training
   reproducibility beyond saved-model inference.
-- Optional numerical strengthening: if time permits before submission, upgrade
-  one more bath-parameter pilot or one larger-chain fine-timestep point to
-  production resolution.  The existing `n=50`, `n=60`, bath-temperature, and
+- Optional numerical strengthening: if time permits before submission, add
+  another larger-chain length or a matched fine-step check at `n=60`.  The
+  existing `n=50` production fine-step, `n=50`, `n=60`, bath-temperature, and
   thermostat-coupling checks are already included as robustness evidence.

@@ -1,15 +1,15 @@
 # Submission source bundle report
 
-Generated: `2026-06-21T03:04:58.846698+00:00`
+Generated: `2026-06-21T04:29:02.620668+00:00`
 
 Status: **PASS**
 
 ## Archive
 
-- Archive path: `tmp/submission_source_bundle/runs/20260621T030458Z/NLS_numerical_study_source.tar.gz`
-- Archive bytes: 3611678
-- Archive SHA-256: `8cef62b64449d870d54fe10e493b8a012044d7e4a371280a8b7adbfbabe283d1`
-- Staging directory: `tmp/submission_source_bundle/runs/20260621T030458Z/NLS_numerical_study_source`
+- Archive path: `tmp/submission_source_bundle/runs/20260621T042902Z/NLS_numerical_study_source.tar.gz`
+- Archive bytes: 3612616
+- Archive SHA-256: `ea48dd553f7366821f77553eced39b9490ff408199d479074b5776f9bf83f731`
+- Staging directory: `tmp/submission_source_bundle/runs/20260621T042902Z/NLS_numerical_study_source`
 
 ## Summary
 
@@ -17,11 +17,11 @@ Status: **PASS**
 |---|---:|
 | Manifest release-file records | 121 |
 | Manifest release directories | 1 |
-| Included regular files | 316 |
-| Included bytes | 6165607 |
+| Included regular files | 317 |
+| Included bytes | 6169678 |
 | Excluded volatile/self-referential files | 6 |
 | Missing files | 0 |
-| Directory-tracked files copied | 200 |
+| Directory-tracked files copied | 201 |
 | Local raw dependency records excluded | 44 |
 
 ## Excluded self-referential files

@@ -35,7 +35,7 @@ Key gate numbers:
 | Raw-data archive build | PASS locally, upload-ready `.tar.gz` prepared under `tmp/`, DOI/upload still external |
 | Submission bundle manifest | `PASS_WITH_LOCAL_RAW_DATA_LIMITATION`, `121` release files, `0` missing, `0` untracked release files |
 | Submission metadata consistency audit | PASS, `21` handoff metadata checks over `9` documents |
-| Source-only bundle dry run | PASS, `316` included files |
+| Source-only bundle dry run | PASS, `317` included files |
 | SIADS cover-letter template build | PASS locally; template PDF contains placeholders and is not final |
 | Journal upload package build | PASS locally, SIADS repository-route package written under `tmp/journal_upload_package/runs/` |
 
@@ -56,7 +56,7 @@ claim remains the production fit over `n=10,20,30,40`; the new `n=50` and
 and the `T1=8,Tn=4` production-resolution run plus the `gamma=0.05` and
 `gamma=0.2` production-resolution runs are described as finite-size parameter
 robustness checks.  Together with the fit-window sensitivity analysis and a
-smaller `n=50` fine-step pilot at `dt=2.5e-4`, this avoids the most likely
+production-resolution `n=50` fine-step check at `dt=2.5e-4`, this avoids the most likely
 reviewer objections that larger lengths or alternate bath parameters have been
 over-promoted to an asymptotic law.
 
@@ -64,9 +64,10 @@ over-promoted to an asymptotic law.
 
 The remaining current-scaling vulnerability is not a local inconsistency: it is
 the usual finite-size limitation.  The manuscript now says this directly.  A
-reviewer could still ask for production-size fine-step data at `n=50` or
-`n=60`; that would strengthen the paper but is not needed to defend the present
-finite-size claim as written.  The added fit-window sensitivity table shows
+reviewer could still ask for production-size fine-step data at `n=60`; that
+would strengthen the paper but is not needed to defend the present finite-size
+claim as written, and the `n=50` fine-step request has now been addressed.
+The added fit-window sensitivity table shows
 that the existing `n=10`--`60` windows do not drift toward the Fourier exponent
 over the simulated range.  The production-size `n=60` extension gives a
 diagnostic six-length exponent near `-1.93`, so it is promoted to manuscript

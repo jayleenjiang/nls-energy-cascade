@@ -18,7 +18,7 @@
     -1.9163616915839081,
     -1.8733969686160041
   ],
-  "stationarity_max_abs_z": 1.4850956434848397,
+  "stationarity_max_abs_z": 1.5565038665656556,
   "stationarity_flagged_runs_abs_z_ge_2": [],
   "interpretation_scope": "Monte Carlo uncertainty conditional on the selected chain lengths, time window, timestep, and power-law model; it does not include finite-size or discretization-model uncertainty."
 }
