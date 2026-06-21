@@ -1376,6 +1376,68 @@ plateaus over the available windows. For this reason the manuscript reports
 the distributions descriptively and leaves asymptotic current tails and
 bath-energy entropy production to future work.
 
+\subsection{Short-chain solver diagnostics}
+\label{app:short-chain-diagnostics}
+
+The three-mode Fokker--Planck computations are used as a low-dimensional
+mechanistic diagnostic, not as evidence for the long-chain transport exponent.
+\Cref{tab:short-chain-diagnostics} collects the numerical checks that delimit
+this role. All entries are regenerated from the archived notebook outputs or
+from the saved TensorFlow/Keras models listed in the data-availability
+statement.
+
+\begin{table}[ht]\centering
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.22\textwidth}
+                >{\raggedright\arraybackslash}p{0.39\textwidth}
+                >{\raggedright\arraybackslash}p{0.29\textwidth}}
+\toprule
+diagnostic & source-traced value & role in the manuscript \\
+\midrule
+Equilibrium Gibbs slices &
+Mean relative errors $1.47\%,2.62\%,6.40\%$ on the slices
+$I_1=I_2=I_3=0.5,1,2$; corresponding maximum errors
+$3.95\%,7.18\%,18.84\%$. &
+Validates the saved neural density against the exact equilibrium Gibbs law on
+representative slices. \\
+\midrule
+Angular symmetry breaking &
+On the high-density mask
+$\rho+\rho^{\mathsf T}\ge 20\%\,\max(\rho+\rho^{\mathsf T})$, the mean and
+maximum absolute relative asymmetries are $17.5\%$ and $56.2\%$. &
+Used as qualitative evidence of nonequilibrium symmetry breaking; the value is
+mask dependent and not a standalone estimator. \\
+\midrule
+Phase-locking branch &
+For $\gamma=0.1$, the stable branch gives
+$\theta_0=2.191$ radians ($125.5^\circ$); grid-density maxima over the saved
+slices lie in the same sector, about $138^\circ$--$168^\circ$. &
+Checks that the observed concentration is on the stable branch of the reduced
+phase-locking equation. \\
+\midrule
+Middle-mode current balance &
+$\E[I_2I_1\sin\theta_1]=0.128$,
+$\E[I_2I_3\sin\theta_3]=-0.140$, with residual sum $-0.0114$,
+or $8.9\%$ of the first term. &
+Rerun diagnostic for stationarity of the saved density; not reported as a
+separate quantitative result. \\
+\midrule
+Backward-Monte-Carlo eigen diagnostic &
+$2895/4096$ full-window fits pass the filter $-5<\lambda<0$, with median
+$\lambda=-0.934$. The median shifts from $-1.60$ on $[0,2]$ to $-0.676$ on
+$[0.5,5]$; the surrogate $Q$ has RMSE $0.38$ (relative $0.71$) and median
+normalized PDE residual $0.35$. &
+Observable-dependent slow-mode diagnostic for $\cos\theta_1$, not a resolved
+spectral-gap computation. \\
+\bottomrule
+\end{tabular}
+\caption{Source-traced diagnostics delimiting the short-chain neural
+Fokker--Planck and backward-Monte-Carlo calculations. The table records what is
+used to support qualitative mechanism claims and what is deliberately not
+promoted to a high-accuracy spectral or quantitative NESS estimate.}
+\label{tab:short-chain-diagnostics}
+\end{table}
+
 \section*{Numerical reproducibility summary}
 
 \Cref{tab:repro-summary} summarizes the numerical audit trail used in this

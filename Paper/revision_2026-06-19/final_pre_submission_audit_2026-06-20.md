@@ -28,7 +28,7 @@ Key gate numbers:
 | LaTeX/log scans | PASS for `draft.tex` and `draft_siads_review.tex`, `issues=0` in both logs |
 | Compiled PDF artifact audit | PASS, `2/2` local PDFs verified with page counts, sizes, and SHA-256 checksums |
 | Availability/path audit | PASS, `38/38` paths present, `0` untracked required files |
-| Numerical claim audit | PASS, `20/20` claims verified |
+| Numerical claim audit | PASS, `21/21` claims verified |
 | Reference integrity audit | PASS, `8` cited BibTeX entries, `0` dangling citations |
 | Author/submission-field audit | `AUTHOR_CONFIRMATION_PENDING`, `9` pending author/external items |
 | Raw-data archive manifest | PASS locally, `40` unique referenced files, `138,875,181` bytes |
@@ -97,7 +97,10 @@ that the faster-than-Fourier finite-size trend is not tied only to
 The short-chain Fokker--Planck/eigenfunction material is now framed as a
 mechanistic microscope rather than proof of the long-chain exponent.  The
 neural solver claims are limited to saved-model inference and source-traced
-diagnostics.  This is the safer journal posture.
+diagnostics.  The added short-chain solver-diagnostics table consolidates the
+Gibbs-slice, angular-asymmetry, phase-locking, current-balance, and
+backward-Monte-Carlo checks while explicitly reserving high-accuracy spectral
+and quantitative NESS claims.  This is the safer journal posture.
 
 ### Local-equilibrium vulnerability
 

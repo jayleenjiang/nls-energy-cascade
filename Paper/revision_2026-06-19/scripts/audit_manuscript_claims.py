@@ -706,6 +706,7 @@ def build_registry() -> list[dict[str, Any]]:
 
     eig_main = eigen["summaries"][0]
     eig_late = next(x for x in eigen["summaries"] if x["label"] == "0.5--5")
+    eig_short = next(x for x in eigen["summaries"] if x["label"] == "0--2")
     add_claim(
         registry,
         claim_id="eigen_relaxation_diagnostic",
@@ -727,6 +728,43 @@ def build_registry() -> list[dict[str, Any]]:
             "late_window": eig_late,
             "eigen_surrogate_data_fit": rerun["eigen_surrogate_data_fit"],
         },
+    )
+
+    add_claim(
+        registry,
+        claim_id="short_chain_solver_diagnostics_table",
+        section="numerical validation appendix",
+        claim="A compact short-chain diagnostic table reports source-traced solver checks while preserving qualitative scope.",
+        evidence=[DRAFT, rerun_path, eigen_path],
+        expected_text=[
+            r"\label{app:short-chain-diagnostics}",
+            r"\label{tab:short-chain-diagnostics}",
+            r"$1.47\%,2.62\%,6.40\%$",
+            r"$3.95\%,7.18\%,18.84\%$",
+            r"$\rho+\rho^{\mathsf T}\ge 20\%\,\max(\rho+\rho^{\mathsf T})$",
+            r"$17.5\%$ and $56.2\%$",
+            r"$\theta_0=2.191$ radians ($125.5^\circ$)",
+            r"$138^\circ$--$168^\circ$",
+            r"$\E[I_2I_1\sin\theta_1]=0.128$",
+            r"$\E[I_2I_3\sin\theta_3]=-0.140$",
+            r"$8.9\%$ of the first term",
+            r"$2895/4096$ full-window fits",
+            r"$-1.60$ on $[0,2]$ to $-0.676$ on",
+            r"RMSE $0.38$ (relative $0.71$)",
+            r"median normalized PDE residual $0.35$",
+            r"not a resolved spectral-gap computation",
+        ],
+        computed={
+            "equilibrium_validation": rerun["equilibrium_validation"],
+            "symmetry_breaking": rerun["symmetry_breaking"],
+            "phase_locking_diagnostic": rerun["phase_locking_diagnostic"],
+            "mc_current_balance": rerun["mc_current_balance"],
+            "eigen_full_window": eig_main,
+            "eigen_short_window": eig_short,
+            "eigen_late_window": eig_late,
+            "eigen_surrogate_data_fit": rerun["eigen_surrogate_data_fit"],
+        },
+        note="The table is deliberately scoped as a solver-diagnostic summary and does not promote the short-chain NN outputs to independent transport or spectral claims.",
     )
 
     add_claim(

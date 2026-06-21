@@ -1,9 +1,9 @@
 {
-  "generated_at_utc": "2026-06-21T02:46:36.768346+00:00",
+  "generated_at_utc": "2026-06-21T02:58:43.654403+00:00",
   "script": "Paper/revision_2026-06-19/scripts/audit_manuscript_claims.py",
   "draft": "Paper/revision_2026-06-19/draft.tex",
-  "total_claims": 20,
-  "verified": 20,
+  "total_claims": 21,
+  "verified": 21,
   "failed": 0,
   "scope_note": "Core numerical/data claims only; author declarations and external plagiarism checks remain outside code-verifiable scope.",
   "claims": [
@@ -1687,6 +1687,251 @@
       "note": ""
     },
     {
+      "id": "short_chain_solver_diagnostics_table",
+      "section": "numerical validation appendix",
+      "claim": "A compact short-chain diagnostic table reports source-traced solver checks while preserving qualitative scope.",
+      "verdict": "VERIFIED",
+      "evidence": [
+        "Paper/revision_2026-06-19/draft.tex",
+        "Paper/revision_2026-06-19/short_chain_nn_rerun_metrics.json",
+        "Paper/revision_2026-06-19/eigen_fit_sensitivity.json"
+      ],
+      "computed": {
+        "equilibrium_validation": [
+          {
+            "I": 0.5,
+            "mean_relative_error_percent": 1.4705729484558105,
+            "median_relative_error_percent": 1.263271689414978,
+            "max_relative_error_percent": 3.948901653289795,
+            "log_ratio_min": -0.03546571731567383,
+            "log_ratio_max": 0.038729190826416016,
+            "grid": 100
+          },
+          {
+            "I": 1.0,
+            "mean_relative_error_percent": 2.620353937149048,
+            "median_relative_error_percent": 2.3320131301879883,
+            "max_relative_error_percent": 7.1776909828186035,
+            "log_ratio_min": -0.05774402618408203,
+            "log_ratio_max": 0.06931781768798828,
+            "grid": 100
+          },
+          {
+            "I": 2.0,
+            "mean_relative_error_percent": 6.403645038604736,
+            "median_relative_error_percent": 5.212268352508545,
+            "max_relative_error_percent": 18.836673736572266,
+            "log_ratio_min": -0.07188224792480469,
+            "log_ratio_max": 0.17257976531982422,
+            "grid": 100
+          }
+        ],
+        "symmetry_breaking": {
+          "I": 2.0,
+          "grid": 100,
+          "unmasked_max_abs_asymmetry_percent": 67.18444061279297,
+          "unmasked_mean_abs_asymmetry_percent": 28.122753143310547,
+          "high_density_mask_threshold": "p+p.T >= 20% of max(p+p.T)",
+          "high_density_bins": 5253,
+          "masked_max_abs_asymmetry_percent": 56.23780059814453,
+          "masked_mean_abs_asymmetry_percent": 17.467784881591797
+        },
+        "phase_locking_diagnostic": {
+          "gamma": 0.1,
+          "stable_branch_theta0_rad": 2.191200837470542,
+          "stable_branch_theta0_deg": 125.5465600525935,
+          "rows": [
+            {
+              "I": 0.5,
+              "argmax_density_theta_rad": 2.411282539367676,
+              "argmax_density_theta_deg": 138.15631103515625,
+              "legacy_notebook_argmin_density_theta_deg": -33.54709243774414,
+              "note": "argmax is the density peak; legacy notebook printed argmin and is retained only for provenance comparison."
+            },
+            {
+              "I": 1.0,
+              "argmax_density_theta_rad": 2.4238741397857666,
+              "argmax_density_theta_deg": 138.87774658203125,
+              "legacy_notebook_argmin_density_theta_deg": -33.54709243774414,
+              "note": "argmax is the density peak; legacy notebook printed argmin and is retained only for provenance comparison."
+            },
+            {
+              "I": 2.0,
+              "argmax_density_theta_rad": 2.512014865875244,
+              "argmax_density_theta_deg": 143.92784118652344,
+              "legacy_notebook_argmin_density_theta_deg": -34.9899787902832,
+              "note": "argmax is the density peak; legacy notebook printed argmin and is retained only for provenance comparison."
+            },
+            {
+              "I": 3.0,
+              "argmax_density_theta_rad": 2.6127474308013916,
+              "argmax_density_theta_deg": 149.6993865966797,
+              "legacy_notebook_argmin_density_theta_deg": -19.118234634399414,
+              "note": "argmax is the density peak; legacy notebook printed argmin and is retained only for provenance comparison."
+            },
+            {
+              "I": 4.0,
+              "argmax_density_theta_rad": 2.914944648742676,
+              "argmax_density_theta_deg": 167.01402282714844,
+              "legacy_notebook_argmin_density_theta_deg": -10.460921287536621,
+              "note": "argmax is the density peak; legacy notebook printed argmin and is retained only for provenance comparison."
+            },
+            {
+              "I": 5.0,
+              "argmax_density_theta_rad": 2.9275362491607666,
+              "argmax_density_theta_deg": 167.73545837402344,
+              "legacy_notebook_argmin_density_theta_deg": -12.625249862670898,
+              "note": "argmax is the density peak; legacy notebook printed argmin and is retained only for provenance comparison."
+            }
+          ]
+        },
+        "mc_current_balance": {
+          "nonzero_density_boxes": 35485,
+          "E_I2_I1_sin_theta1": 0.1282244473695755,
+          "E_I2_I3_sin_theta3": -0.1396593153476715,
+          "sum": -0.011434867978096008,
+          "relative_imbalance_vs_first_current": 0.08917853189275173
+        },
+        "eigen_full_window": {
+          "start_index": 0,
+          "stop_index": 501,
+          "time_start": 0.0,
+          "time_stop": 5.0,
+          "valid_fits": 2895,
+          "total_curves": 4096,
+          "failed_optimizations": 0,
+          "median_lambda_R": -0.9344670167713216,
+          "mean_lambda_R": -1.4991500969191809,
+          "q25_lambda_R": -2.4810653703203487,
+          "q75_lambda_R": -0.3266705056060837,
+          "median_ssr": 0.0051029031283620135,
+          "label": "0--5"
+        },
+        "eigen_short_window": {
+          "start_index": 0,
+          "stop_index": 201,
+          "time_start": 0.0,
+          "time_stop": 2.0,
+          "valid_fits": 2511,
+          "total_curves": 4096,
+          "failed_optimizations": 0,
+          "median_lambda_R": -1.5975805447568832,
+          "mean_lambda_R": -1.8207015496094354,
+          "q25_lambda_R": -3.1959702226202795,
+          "q75_lambda_R": -0.14080308726130242,
+          "median_ssr": 0.008726739404056914,
+          "label": "0--2"
+        },
+        "eigen_late_window": {
+          "start_index": 50,
+          "stop_index": 501,
+          "time_start": 0.5,
+          "time_stop": 5.0,
+          "valid_fits": 3446,
+          "total_curves": 4096,
+          "failed_optimizations": 0,
+          "median_lambda_R": -0.6757623488098456,
+          "mean_lambda_R": -1.245158378308394,
+          "q25_lambda_R": -1.8732069275708823,
+          "q75_lambda_R": -0.49607985954018946,
+          "median_ssr": 9.331577251489408e-05,
+          "label": "0.5--5"
+        },
+        "eigen_surrogate_data_fit": {
+          "data_points": 33603,
+          "Q1_min": -0.9251305460929871,
+          "Q1_max": 1.6053279638290405,
+          "Q1_mean": 0.034597333520650864,
+          "Q1_std": 0.5342271327972412,
+          "rmse": 0.38094013929367065,
+          "relative_rmse": 0.7130677494777328
+        }
+      },
+      "text_checks": [
+        {
+          "text": "\\label{app:short-chain-diagnostics}",
+          "present": true,
+          "line": 1380
+        },
+        {
+          "text": "\\label{tab:short-chain-diagnostics}",
+          "present": true,
+          "line": 1438
+        },
+        {
+          "text": "$1.47\\%,2.62\\%,6.40\\%$",
+          "present": true,
+          "line": 1398
+        },
+        {
+          "text": "$3.95\\%,7.18\\%,18.84\\%$",
+          "present": true,
+          "line": 1400
+        },
+        {
+          "text": "$\\rho+\\rho^{\\mathsf T}\\ge 20\\%\\,\\max(\\rho+\\rho^{\\mathsf T})$",
+          "present": true,
+          "line": 1406
+        },
+        {
+          "text": "$17.5\\%$ and $56.2\\%$",
+          "present": true,
+          "line": 1407
+        },
+        {
+          "text": "$\\theta_0=2.191$ radians ($125.5^\\circ$)",
+          "present": true,
+          "line": 1413
+        },
+        {
+          "text": "$138^\\circ$--$168^\\circ$",
+          "present": true,
+          "line": 1414
+        },
+        {
+          "text": "$\\E[I_2I_1\\sin\\theta_1]=0.128$",
+          "present": true,
+          "line": 1419
+        },
+        {
+          "text": "$\\E[I_2I_3\\sin\\theta_3]=-0.140$",
+          "present": true,
+          "line": 1420
+        },
+        {
+          "text": "$8.9\\%$ of the first term",
+          "present": true,
+          "line": 1421
+        },
+        {
+          "text": "$2895/4096$ full-window fits",
+          "present": true,
+          "line": 1426
+        },
+        {
+          "text": "$-1.60$ on $[0,2]$ to $-0.676$ on",
+          "present": true,
+          "line": 1427
+        },
+        {
+          "text": "RMSE $0.38$ (relative $0.71$)",
+          "present": true,
+          "line": 1428
+        },
+        {
+          "text": "median normalized PDE residual $0.35$",
+          "present": true,
+          "line": null
+        },
+        {
+          "text": "not a resolved spectral-gap computation",
+          "present": true,
+          "line": null
+        }
+      ],
+      "note": "The table is deliberately scoped as a solver-diagnostic summary and does not promote the short-chain NN outputs to independent transport or spectral claims."
+    },
+    {
       "id": "reproducibility_summary_table",
       "section": "numerical reproducibility summary",
       "claim": "The manuscript contains a compact reproducibility map with scope limitations for each numerical result family.",
@@ -1716,82 +1961,82 @@
         {
           "text": "\\section*{Numerical reproducibility summary}",
           "present": true,
-          "line": 1379
+          "line": 1441
         },
         {
           "text": "\\label{tab:repro-summary}",
           "present": true,
-          "line": 1436
+          "line": 1498
         },
         {
           "text": "Action-current scaling",
           "present": true,
-          "line": 1399
+          "line": 1461
         },
         {
           "text": "fit-window sensitivity analysis",
           "present": true,
-          "line": 1401
+          "line": 1463
         },
         {
           "text": "and fit-window sensitivity",
           "present": true,
-          "line": 1404
+          "line": 1466
         },
         {
           "text": "bath-temperature and thermostat-coupling robustness checks",
           "present": true,
-          "line": 1404
+          "line": 1466
         },
         {
           "text": "Long-chain profiles and local equilibrium",
           "present": true,
-          "line": 1408
+          "line": 1470
         },
         {
           "text": "Short-chain Fokker--Planck density",
           "present": true,
-          "line": 1414
+          "line": 1476
         },
         {
           "text": "Eigenfunction diagnostic",
           "present": true,
-          "line": 1420
+          "line": 1482
         },
         {
           "text": "Manuscript-level claim audit",
           "present": true,
-          "line": 1426
+          "line": 1488
         },
         {
           "text": "finite-size action-current law over $n=10,20,30,40$",
           "present": true,
-          "line": 1405
+          "line": 1467
         },
         {
           "text": "with $n=50$",
           "present": true,
-          "line": 1405
+          "line": 1467
         },
         {
           "text": "and $n=60$ robustness checks",
           "present": true,
-          "line": 1406
+          "line": 1468
         },
         {
           "text": "saved-model inference reproducibility, not full neural-network retraining",
           "present": true,
-          "line": 1418
+          "line": 1480
         },
         {
           "text": "observable-dependent slow-mode diagnostic, not resolved spectral gap",
           "present": true,
-          "line": 1424
+          "line": 1486
         },
         {
           "text": "local audit to rerun after final author and journal-format edits",
           "present": true,
-          "line": 1430
+          "line": 1492
         }
       ],
       "note": ""
@@ -1816,67 +2061,67 @@
         {
           "text": "\\path{Paper/revision_2026-06-19/scripts/export_source_trace_metrics.py}",
           "present": true,
-          "line": 1470
+          "line": 1532
         },
         {
           "text": "\\path{Paper/revision_2026-06-19/source_trace_metrics.json}",
           "present": true,
-          "line": 1471
+          "line": 1533
         },
         {
           "text": "\\path{Paper/revision_2026-06-19/scripts/recompute_short_chain_nn_metrics.py}",
           "present": true,
-          "line": 1473
+          "line": 1535
         },
         {
           "text": "\\path{Paper/revision_2026-06-19/short_chain_nn_rerun_metrics.json}",
           "present": true,
-          "line": 1474
+          "line": 1536
         },
         {
           "text": "\\path{Paper/revision_2026-06-19/scripts/analyze_eigen_fit_windows.py}",
           "present": true,
-          "line": 1476
+          "line": 1538
         },
         {
           "text": "\\path{Paper/revision_2026-06-19/eigen_fit_sensitivity.json}",
           "present": true,
-          "line": 1477
+          "line": 1539
         },
         {
           "text": "\\path{Paper/revision_2026-06-19/scripts/analyze_flux_scaling_sensitivity.py}",
           "present": true,
-          "line": 1454
+          "line": 1516
         },
         {
           "text": "\\path{Paper/revision_2026-06-19/experiments/flux_validation/larger_n60_pilot_2026-06-20/flux_scaling_sensitivity_n10_60.json}",
           "present": true,
-          "line": 1458
+          "line": 1520
         },
         {
           "text": "\\path{Paper/revision_2026-06-19/experiments/flux_validation/parameter_robustness_2026-06-20/moderate_contrast_T8_T4_prod/b64_scaling_scaling.json}",
           "present": true,
-          "line": 1460
+          "line": 1522
         },
         {
           "text": "\\path{Paper/revision_2026-06-19/experiments/flux_validation/gamma_robustness_2026-06-21/gamma_robustness_scaling.json}",
           "present": true,
-          "line": 1462
+          "line": 1524
         },
         {
           "text": "\\path{Paper/revision_2026-06-19/scripts/audit_availability_paths.py}",
           "present": true,
-          "line": 1484
+          "line": 1546
         },
         {
           "text": "\\path{Paper/revision_2026-06-19/availability_path_audit.json}",
           "present": true,
-          "line": 1485
+          "line": 1547
         },
         {
           "text": "\\path{Paper/revision_2026-06-19/availability_path_audit.md}",
           "present": true,
-          "line": 1486
+          "line": 1548
         }
       ],
       "note": ""
