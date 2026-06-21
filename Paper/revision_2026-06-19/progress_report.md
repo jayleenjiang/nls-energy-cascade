@@ -165,8 +165,8 @@
     the rendered-page inspection.
 29. Added `scripts/audit_references.py` plus
     `reference_integrity_audit.json` and `reference_integrity_audit.md`. The
-    audit verifies the local TeX/BibTeX citation graph: 8 BibTeX entries, 28
-    citation commands, 29 citation uses, 8 unique cited keys, and zero dangling
+    audit verifies the local TeX/BibTeX citation graph: 11 BibTeX entries, 34
+    citation commands, 38 citation uses, 11 unique cited keys, and zero dangling
     citations, orphan references, missing required fields, missing DOI/URL
     identifiers, missing recorded external verification sources, or duplicate
     BibTeX keys.
@@ -176,7 +176,7 @@
     submission `.tar.gz` under `tmp/` from the release manifest, records an
     archive SHA-256 checksum, and deliberately excludes self-referential
     generated summaries and the large local raw-data roots. The current
-    packaging run includes 317 regular files, has zero missing files, and
+    packaging run includes 318 regular files, has zero missing files, and
     records 44 local raw-data dependency records as
     excluded pending any DOI-backed raw-data archive decision.
 31. Performed a submission-level strengthening pass on 2026-06-20:
@@ -205,8 +205,8 @@
     `lineno`, keywords, and MSC candidates.  It compiles cleanly to
     `tmp/paper_build/siads_review/draft_siads_review.pdf`. After the later
     robustness and interpretation edits, the current compiled review PDF is
-    25 pages with SHA-256
-    `6001924de0a819e079157e4d80f2a24d7ee7eefa7d4b0e7556fbcfaec61629f3`.
+    26 pages with SHA-256
+    `363578a952530171162b4abbc90b980f1d6d5f735f037b18d88d6ea26d082774`.
 34. Strengthened the manuscript narrative so the long-chain and short-chain
     results have a clearer division of labor: the long-chain simulations now
     explicitly provide macroscopic finite-size transport and LTE evidence,
@@ -315,6 +315,19 @@
     errors, and the split-window statistic is `-1.56` paired SE.  The
     manuscript now describes this as a production fine-step robustness check
     rather than a pilot.
+48. Added a matched production-resolution `n=60` fine-timestep check at
+    `dt=2.5e-4` with the canonical current accumulator.  The run gives
+    `E[J(60)] = 0.01288458131` with SE `0.00036914544`, compared with
+    `0.01244829643` and SE `0.00041661977` at `dt=5e-4`; the `3.50%`
+    upward shift is `0.78` pooled standard errors, and the split-window
+    statistic is `-0.87` paired SE.  The manuscript and claim audit now use
+    the `n=50` and `n=60` matched fine-step runs as timestep robustness
+    evidence while preserving the primary `n=10,20,30,40` exponent.
+49. Added a journal-facing positioning subsection and three verified transport
+    references (`Dhar2008`, `Spohn2014`, `LebowitzSpohn1999`) to clarify that
+    the result is a finite-size action-current law for a resonant NLS cascade
+    chain, not a universal heat-conduction exponent or a claimed
+    Gallavotti--Cohen large-deviation result.
 
 ## Key validated numerical result
 
@@ -368,6 +381,7 @@ Power-law fit:
   retraining environment if the target journal expects re-training
   reproducibility beyond saved-model inference.
 - Optional numerical strengthening: if time permits before submission, add
-  another larger-chain length or a matched fine-step check at `n=60`.  The
-  existing `n=50` production fine-step, `n=50`, `n=60`, bath-temperature, and
-  thermostat-coupling checks are already included as robustness evidence.
+  another still-larger chain length or a dedicated multi-length timestep
+  convergence campaign.  The existing `n=50` and `n=60` production fine-step,
+  larger-chain, bath-temperature, and thermostat-coupling checks are already
+  included as robustness evidence.

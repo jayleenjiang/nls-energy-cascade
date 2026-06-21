@@ -35,6 +35,14 @@ Paper/revision_2026-06-19/experiments/flux_validation/bin/flux_canonical \
   Paper/revision_2026-06-19/experiments/flux_validation/larger_n60_pilot_2026-06-20/n60_b64
 ```
 
+Matched production-resolution fine-timestep check:
+
+```sh
+Paper/revision_2026-06-19/experiments/flux_validation/bin/flux_canonical \
+  10 2 60 64 11520 200 0.00025 20260626 4 \
+  Paper/revision_2026-06-19/experiments/flux_validation/larger_n60_pilot_2026-06-20/n60_b64_dt2p5e-4
+```
+
 Diagnostic six-length fit including the production-size extension:
 
 ```sh
@@ -45,6 +53,7 @@ python3 flux/analyze_canonical_flux.py \
   Paper/revision_2026-06-19/experiments/flux_validation/production_dt5e-4/n40_summary.csv \
   Paper/revision_2026-06-19/experiments/flux_validation/larger_n_pilot_2026-06-20/n50_b64_summary.csv \
   Paper/revision_2026-06-19/experiments/flux_validation/larger_n60_pilot_2026-06-20/n60_b64_summary.csv \
+  Paper/revision_2026-06-19/experiments/flux_validation/larger_n60_pilot_2026-06-20/n60_b64_dt2p5e-4_summary.csv \
   --primary-dt 0.0005 \
   --bootstrap 10000 \
   --seed 20260625 \
@@ -89,6 +98,20 @@ Production-size `n=60` run:
 - first-half/second-half stationarity statistic: `-0.524` paired SE
 - elapsed time: `9711.25` seconds
 
+Matched production-resolution fine-timestep check:
+
+- trajectories: `1024`
+- burn-in: `11520`
+- measurement window: `200`
+- timestep: `2.5e-4`
+- mean current: `0.01288458131`
+- standard error: `0.00036914544`
+- normal 95% CI: `[0.01216106954, 0.01360809308]`
+- first-half/second-half stationarity statistic: `-0.866` paired SE
+- elapsed time: `7298.92` seconds
+- difference relative to the matched `dt=5e-4`, `1024`-trajectory run:
+  `+0.00043628488`, or `+3.50%`, equal to `0.78` pooled standard errors
+
 Six-length diagnostic fit using the four production lengths, the `n=50`
 robustness run, and the `n=60` production-size extension:
 
@@ -108,9 +131,9 @@ Carlo level.
 
 The `n=60` production-size extension is consistent with the qualitative
 faster-than-Fourier picture and does not indicate a crossover toward the
-Fourier exponent over the available window.  It strengthens the manuscript's
-finite-size robustness evidence but does not replace the primary
-`n=10,20,30,40` exponent, because a systematic larger-length and fine-timestep
-convergence study remains outside the scope of the present revision.  If one
-more numerical strengthening pass is desired, the natural next step is a
-matched fine-timestep pilot at the largest length.
+Fourier exponent over the available window.  The matched fine-timestep
+production check is compatible with the `dt=5e-4` run within Monte Carlo
+uncertainty.  Together these runs strengthen the manuscript's finite-size and
+timestep robustness evidence but do not replace the primary `n=10,20,30,40`
+exponent, because a systematic larger-length convergence study remains outside
+the scope of the present revision.

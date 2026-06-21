@@ -25,8 +25,9 @@ and uncertainty protocol, the LTE residual mesh diagnostic including the
 requested `n=15` case, a timestep sensitivity table, and finite-window current
 diagnostics.  A later 2026-06-20 current-scaling robustness pass added an
 `n=50` canonical current run, an `n=60` production-size robustness extension,
-a fit-window sensitivity table, a smaller `n=50` fine-timestep pilot, and a
-production-resolution bath-temperature robustness check at `T1=8,Tn=4`.  A
+a fit-window sensitivity table, production-resolution fine-timestep checks at
+`n=50` and `n=60`, and a production-resolution bath-temperature robustness
+check at `T1=8,Tn=4`.  A
 2026-06-21 pass added production-resolution thermostat-coupling robustness
 checks at `gamma=0.05` and `gamma=0.2`.  The latest path audit checks 38/38
 manuscript paths and figures, and the numerical claim audit checks 22/22

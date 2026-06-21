@@ -1,56 +1,56 @@
 {
   "checks": [
     {
-      "expected": "| Release-bundle files | 121 |",
+      "expected": "| Release-bundle files | 122 |",
       "issue": "",
       "label": "final decision release count",
       "path": "Paper/revision_2026-06-19/final_submission_decision_sheet_2026-06-20.md",
       "status": "PASS"
     },
     {
-      "expected": "| Source-only bundle included files | 317 |",
+      "expected": "| Source-only bundle included files | 318 |",
       "issue": "",
       "label": "final decision source count",
       "path": "Paper/revision_2026-06-19/final_submission_decision_sheet_2026-06-20.md",
       "status": "PASS"
     },
     {
-      "expected": "6001924de0a819e079157e4d80f2a24d7ee7eefa7d4b0e7556fbcfaec61629f3",
+      "expected": "363578a952530171162b4abbc90b980f1d6d5f735f037b18d88d6ea26d082774",
       "issue": "",
       "label": "final decision SIADS PDF SHA",
       "path": "Paper/revision_2026-06-19/final_submission_decision_sheet_2026-06-20.md",
       "status": "PASS"
     },
     {
-      "expected": "| Release-bundle files | 121 |",
+      "expected": "| Release-bundle files | 122 |",
       "issue": "",
       "label": "upload index release count",
       "path": "Paper/revision_2026-06-19/journal_upload_file_index_2026-06-20.md",
       "status": "PASS"
     },
     {
-      "expected": "| Source-bundle included files | 317 |",
+      "expected": "| Source-bundle included files | 318 |",
       "issue": "",
       "label": "upload index source count",
       "path": "Paper/revision_2026-06-19/journal_upload_file_index_2026-06-20.md",
       "status": "PASS"
     },
     {
-      "expected": "89b3b0fa030620b78312b966fdf2d6af30c919807e4a5c5a355b1e9cc6474a25",
+      "expected": "1c68ed0553b6b1d1fcb40adaff17f0fb437c028056094c76ad00b56d142b0a43",
       "issue": "",
       "label": "upload index generic PDF SHA",
       "path": "Paper/revision_2026-06-19/journal_upload_file_index_2026-06-20.md",
       "status": "PASS"
     },
     {
-      "expected": "6001924de0a819e079157e4d80f2a24d7ee7eefa7d4b0e7556fbcfaec61629f3",
+      "expected": "363578a952530171162b4abbc90b980f1d6d5f735f037b18d88d6ea26d082774",
       "issue": "",
       "label": "upload index SIADS PDF SHA",
       "path": "Paper/revision_2026-06-19/journal_upload_file_index_2026-06-20.md",
       "status": "PASS"
     },
     {
-      "expected": "6001924de0a819e079157e4d80f2a24d7ee7eefa7d4b0e7556fbcfaec61629f3",
+      "expected": "363578a952530171162b4abbc90b980f1d6d5f735f037b18d88d6ea26d082774",
       "issue": "",
       "label": "SIADS packet PDF SHA",
       "path": "Paper/revision_2026-06-19/siads_first_submission_packet_2026-06-20.md",
@@ -64,14 +64,14 @@
       "status": "PASS"
     },
     {
-      "expected": "packaging run includes 317 regular files",
+      "expected": "packaging run includes 318 regular files",
       "issue": "",
       "label": "progress report source count",
       "path": "Paper/revision_2026-06-19/progress_report.md",
       "status": "PASS"
     },
     {
-      "expected": "6001924de0a819e079157e4d80f2a24d7ee7eefa7d4b0e7556fbcfaec61629f3",
+      "expected": "363578a952530171162b4abbc90b980f1d6d5f735f037b18d88d6ea26d082774",
       "issue": "",
       "label": "progress report SIADS PDF SHA",
       "path": "Paper/revision_2026-06-19/progress_report.md",
@@ -92,42 +92,42 @@
       "status": "PASS"
     },
     {
-      "expected": "`PASS_WITH_LOCAL_RAW_DATA_LIMITATION`, `121` release files, `0` missing, `0` untracked release files",
+      "expected": "`PASS_WITH_LOCAL_RAW_DATA_LIMITATION`, `122` release files, `0` missing, `0` untracked release files",
       "issue": "",
       "label": "final audit release count",
       "path": "Paper/revision_2026-06-19/final_pre_submission_audit_2026-06-20.md",
       "status": "PASS"
     },
     {
-      "expected": "PASS, `317` included files",
+      "expected": "PASS, `318` included files",
       "issue": "",
       "label": "final audit source count",
       "path": "Paper/revision_2026-06-19/final_pre_submission_audit_2026-06-20.md",
       "status": "PASS"
     },
     {
-      "expected": "89b3b0fa030620b78312b966fdf2d6af30c919807e4a5c5a355b1e9cc6474a25",
+      "expected": "1c68ed0553b6b1d1fcb40adaff17f0fb437c028056094c76ad00b56d142b0a43",
       "issue": "",
       "label": "layout QA generic PDF SHA",
       "path": "Paper/revision_2026-06-19/pdf_layout_qa_2026-06-19.md",
       "status": "PASS"
     },
     {
-      "expected": "6001924de0a819e079157e4d80f2a24d7ee7eefa7d4b0e7556fbcfaec61629f3",
+      "expected": "363578a952530171162b4abbc90b980f1d6d5f735f037b18d88d6ea26d082774",
       "issue": "",
       "label": "layout QA SIADS PDF SHA",
       "path": "Paper/revision_2026-06-19/pdf_layout_qa_2026-06-19.md",
       "status": "PASS"
     },
     {
-      "expected": "89b3b0fa030620b78312b966fdf2d6af30c919807e4a5c5a355b1e9cc6474a25",
+      "expected": "1c68ed0553b6b1d1fcb40adaff17f0fb437c028056094c76ad00b56d142b0a43",
       "issue": "",
       "label": "compiled PDF audit generic SHA",
       "path": "Paper/revision_2026-06-19/compiled_pdf_artifact_audit.md",
       "status": "PASS"
     },
     {
-      "expected": "6001924de0a819e079157e4d80f2a24d7ee7eefa7d4b0e7556fbcfaec61629f3",
+      "expected": "363578a952530171162b4abbc90b980f1d6d5f735f037b18d88d6ea26d082774",
       "issue": "",
       "label": "compiled PDF audit SIADS SHA",
       "path": "Paper/revision_2026-06-19/compiled_pdf_artifact_audit.md",
@@ -148,19 +148,19 @@
       "status": "PASS"
     }
   ],
-  "generated_at_utc": "2026-06-21T04:29:01.743381+00:00",
+  "generated_at_utc": "2026-06-21T06:48:12.174995+00:00",
   "script": "Paper/revision_2026-06-19/scripts/audit_submission_metadata_consistency.py",
   "status": "PASS",
   "summary": {
     "checked_documents": 9,
     "failed_checks": 0,
-    "predicted_source_bundle_included_count": 317,
-    "release_file_count": 121,
+    "predicted_source_bundle_included_count": 318,
+    "release_file_count": 122,
     "total_checks": 21
   },
   "values": {
     "generic_pdf": {
-      "bytes_from_log": 1568638,
+      "bytes_from_log": 1571352,
       "bytes_match_log": true,
       "id": "generic_manuscript_pdf",
       "issues": [],
@@ -170,16 +170,16 @@
       "pdf": "tmp/paper_build/revision/draft.pdf",
       "pdf_exists": true,
       "role": "Generic revised manuscript PDF",
-      "sha256": "89b3b0fa030620b78312b966fdf2d6af30c919807e4a5c5a355b1e9cc6474a25",
-      "size_bytes": 1568638,
+      "sha256": "1c68ed0553b6b1d1fcb40adaff17f0fb437c028056094c76ad00b56d142b0a43",
+      "size_bytes": 1571352,
       "source": "Paper/revision_2026-06-19/draft.tex",
       "source_exists": true,
       "status": "PASS"
     },
-    "predicted_source_bundle_included_count": 317,
-    "release_file_count": 121,
+    "predicted_source_bundle_included_count": 318,
+    "release_file_count": 122,
     "siads_pdf": {
-      "bytes_from_log": 1583095,
+      "bytes_from_log": 1586097,
       "bytes_match_log": true,
       "id": "siads_review_pdf",
       "issues": [],
@@ -189,8 +189,8 @@
       "pdf": "tmp/paper_build/siads_review/draft_siads_review.pdf",
       "pdf_exists": true,
       "role": "SIADS review-preparation PDF",
-      "sha256": "6001924de0a819e079157e4d80f2a24d7ee7eefa7d4b0e7556fbcfaec61629f3",
-      "size_bytes": 1583095,
+      "sha256": "363578a952530171162b4abbc90b980f1d6d5f735f037b18d88d6ea26d082774",
+      "size_bytes": 1586097,
       "source": "Paper/revision_2026-06-19/draft_siads_review.tex",
       "source_exists": true,
       "status": "PASS"

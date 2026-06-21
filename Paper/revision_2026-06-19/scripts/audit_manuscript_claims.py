@@ -171,6 +171,7 @@ def build_registry() -> list[dict[str, Any]]:
     n60_dir = REVISION / "experiments/flux_validation/larger_n60_pilot_2026-06-20"
     n60_scaling_path = n60_dir / "n10_60_b64_scaling_scaling.json"
     n60_summary_path = n60_dir / "n60_b64_summary.csv"
+    n60_fine_path = n60_dir / "n60_b64_dt2p5e-4_summary.csv"
     n60_readme_path = n60_dir / "README.md"
     flux_sensitivity_path = n60_dir / "flux_scaling_sensitivity_n10_60.json"
     parameter_dir = REVISION / "experiments/flux_validation/parameter_robustness_2026-06-20"
@@ -213,6 +214,7 @@ def build_registry() -> list[dict[str, Any]]:
     larger_n_long_burn = read_summary(larger_n_long_burn_path)
     n60_scaling = load_json(n60_scaling_path)
     n60_summary = read_summary(n60_summary_path)
+    n60_fine = read_summary(n60_fine_path)
     flux_sensitivity = load_json(flux_sensitivity_path)
     parameter_scaling = load_json(parameter_scaling_path)
     parameter_summaries = [read_summary(path) for path in parameter_summary_paths]
@@ -421,10 +423,11 @@ def build_registry() -> list[dict[str, Any]]:
         registry,
         claim_id="n60_current_robustness",
         section="thermal conductivity",
-        claim="The production-size n=60 extension supports the larger-chain robustness check without redefining the primary exponent.",
+        claim="The production-size n=60 extension and matched fine-step check support the larger-chain robustness check without redefining the primary exponent.",
         evidence=[
             n60_scaling_path,
             n60_summary_path,
+            n60_fine_path,
             n60_readme_path,
         ],
         expected_text=[
@@ -432,9 +435,13 @@ def build_registry() -> list[dict[str, Any]]:
             r"$\E[J(60)]=0.01245$",
             r"standard error $0.00042$",
             r"$-0.52$ paired standard",
+            r"$\E[J(60)]=0.01288$",
+            r"standard error $0.00037$",
+            r"$-0.87$ paired standard errors",
+            r"$3.5\%$ upward shift, or $0.78$ pooled",
             r"\E[J(n)] \;=\; 35.94\,n^{-1.930}",
             r"$[-1.954,-1.906]$",
-            r"larger lengths are robustness extensions",
+            r"$n=50$ and $n=60$ computations as evidence against",
         ],
         computed={
             "n60_mean": n60_summary["mean_action_current"],
@@ -443,11 +450,39 @@ def build_registry() -> list[dict[str, Any]]:
                 n60_summary["mean_second_minus_first"]
                 / n60_summary["paired_difference_se"]
             ),
+            "n60_fine_mean": n60_fine["mean_action_current"],
+            "n60_fine_se": n60_fine["standard_error"],
+            "n60_fine_stationarity_z": (
+                n60_fine["mean_second_minus_first"]
+                / n60_fine["paired_difference_se"]
+            ),
+            "n60_fine_minus_coarse": (
+                n60_fine["mean_action_current"]
+                - n60_summary["mean_action_current"]
+            ),
+            "n60_fine_relative_shift": (
+                (
+                    n60_fine["mean_action_current"]
+                    - n60_summary["mean_action_current"]
+                )
+                / n60_summary["mean_action_current"]
+            ),
+            "n60_fine_difference_over_pooled_se": (
+                (
+                    n60_fine["mean_action_current"]
+                    - n60_summary["mean_action_current"]
+                )
+                / (
+                    n60_fine["standard_error"] ** 2
+                    + n60_summary["standard_error"] ** 2
+                )
+                ** 0.5
+            ),
             "six_length_exponent": n60_scaling["exponent"],
             "six_length_ci": n60_scaling["exponent_normalized_95_ci"],
             "six_length_r_squared": n60_scaling["r_squared_log_fit"],
         },
-        note="The n=60 run has production-size trajectory count but no matched fine-step production run, so it is used as robustness evidence.",
+        note="The n=60 matched fine-step production run is used as timestep robustness evidence; the primary exponent remains the matched n=10,20,30,40 fit.",
     )
 
     parameter_max_abs_z = max(

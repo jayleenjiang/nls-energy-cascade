@@ -29,13 +29,13 @@ Key gate numbers:
 | Compiled PDF artifact audit | PASS, `2/2` local PDFs verified with page counts, sizes, and SHA-256 checksums |
 | Availability/path audit | PASS, `38/38` paths present, `0` untracked required files |
 | Numerical claim audit | PASS, `22/22` claims verified |
-| Reference integrity audit | PASS, `8` cited BibTeX entries, `0` dangling citations |
+| Reference integrity audit | PASS, `11` cited BibTeX entries, `0` dangling citations |
 | Author/submission-field audit | `AUTHOR_CONFIRMATION_PENDING`, `9` pending author/external items |
 | Raw-data archive manifest | PASS locally, `40` unique referenced files, `138,875,181` bytes |
 | Raw-data archive build | PASS locally, upload-ready `.tar.gz` prepared under `tmp/`, DOI/upload still external |
-| Submission bundle manifest | `PASS_WITH_LOCAL_RAW_DATA_LIMITATION`, `121` release files, `0` missing, `0` untracked release files |
+| Submission bundle manifest | `PASS_WITH_LOCAL_RAW_DATA_LIMITATION`, `122` release files, `0` missing, `0` untracked release files |
 | Submission metadata consistency audit | PASS, `21` handoff metadata checks over `9` documents |
-| Source-only bundle dry run | PASS, `317` included files |
+| Source-only bundle dry run | PASS, `318` included files |
 | SIADS cover-letter template build | PASS locally; template PDF contains placeholders and is not final |
 | Journal upload package build | PASS locally, SIADS repository-route package written under `tmp/journal_upload_package/runs/` |
 
@@ -63,11 +63,11 @@ over-promoted to an asymptotic law.
 ### Current-scaling vulnerability
 
 The remaining current-scaling vulnerability is not a local inconsistency: it is
-the usual finite-size limitation.  The manuscript now says this directly.  A
-reviewer could still ask for production-size fine-step data at `n=60`; that
-would strengthen the paper but is not needed to defend the present finite-size
-claim as written, and the `n=50` fine-step request has now been addressed.
-The added fit-window sensitivity table shows
+the usual finite-size limitation.  The manuscript now says this directly.  The
+production-size fine-step checks at both `n=50` and `n=60` have been addressed;
+the remaining possible reviewer request would be a still-larger systematic
+finite-size convergence study, not a local timestep inconsistency.  The added
+fit-window sensitivity table shows
 that the existing `n=10`--`60` windows do not drift toward the Fourier exponent
 over the simulated range.  The production-size `n=60` extension gives a
 diagnostic six-length exponent near `-1.93`, so it is promoted to manuscript

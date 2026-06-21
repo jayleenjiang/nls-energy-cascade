@@ -55,6 +55,21 @@ REFERENCE_VERIFICATION_SOURCES = {
         "source_type": "DOI resolver for Elsevier Physics Reports article",
         "checked_on": "2026-06-19",
     },
+    "Dhar2008": {
+        "source_url": "https://arxiv.org/abs/0808.3256",
+        "source_type": "arXiv abstract page with Advances in Physics journal reference and related DOI",
+        "checked_on": "2026-06-21",
+    },
+    "Spohn2014": {
+        "source_url": "https://arxiv.org/abs/1305.6412",
+        "source_type": "arXiv abstract page with Journal of Statistical Physics reference and related DOI",
+        "checked_on": "2026-06-21",
+    },
+    "LebowitzSpohn1999": {
+        "source_url": "https://arxiv.org/abs/cond-mat/9811220",
+        "source_type": "arXiv abstract page with related Journal of Statistical Physics DOI",
+        "checked_on": "2026-06-21",
+    },
     "Nazarenko": {
         "source_url": "https://link.springer.com/book/10.1007/978-3-642-15942-8",
         "source_type": "Springer Nature book page",

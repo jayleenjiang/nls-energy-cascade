@@ -51,7 +51,10 @@ robustness pass added a fit-window sensitivity table around the `n=50` and
 production-resolution `T1=8,Tn=4` current-scaling check over
 `n=10,20,30,40`.  A 2026-06-21 thermostat-coupling robustness pass added
 production-resolution `gamma=0.05` and `gamma=0.2` checks over the same four
-primary lengths.  The latest one-command gate reports
+primary lengths.  A later 2026-06-21 pass added a matched production-resolution
+`n=60` fine-timestep check and a journal-facing positioning subsection with
+three additional verified transport references.  The latest one-command gate
+reports
 `PASS_WITH_AUTHOR_CONFIRMATION_PENDING_AND_LOCAL_RAW_DATA_LIMITATION` with
 38/38 availability path records present and git-tracked, 22/22 registered
 numerical claims verified, 9 author/external submission items pending, and zero
@@ -81,10 +84,13 @@ Subsequent `n=60` pilots were recorded under
 the medium 256-trajectory pilot gives `E[J(60)] = 0.01361149053` with SE
 `0.00081058642`.  A production-size 1024-trajectory run gives
 `E[J(60)] = 0.01244829643` with SE `0.00041661977` and stationarity statistic
-`-0.524` paired SE.  Including the production-size `n=60` run in a diagnostic
-six-length fit gives exponent `-1.92956` with bootstrap 95% CI
-`[-1.95424,-1.90603]`.  This is now suitable as manuscript robustness
-evidence, while the primary exponent remains the four-length production fit.
+`-0.524` paired SE.  A matched `dt=2.5e-4`, 1024-trajectory run gives
+`E[J(60)] = 0.01288458131` with SE `0.00036914544`, a `3.50%` shift relative
+to the `dt=5e-4` run, or `0.78` pooled standard errors.  Including the
+production-size `n=60` run in a diagnostic six-length fit gives exponent
+`-1.92956` with bootstrap 95% CI `[-1.95424,-1.90603]`.  This is now suitable
+as manuscript robustness evidence, while the primary exponent remains the
+four-length production fit.
 
 ## 2026-06-20 bath-parameter robustness update
 

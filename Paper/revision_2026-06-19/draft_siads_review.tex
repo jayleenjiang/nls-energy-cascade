@@ -238,6 +238,37 @@ transport coefficients, local statistics, the relaxation spectrum---are
 inaccessible to the existence theory. Both gaps are naturally addressed
 numerically.
 
+\subsection{Positioning within nonequilibrium transport}
+\label{sec:positioning}
+
+The present problem sits at the intersection of two related but distinct
+literatures. In wave turbulence, one studies nonequilibrium cascades generated
+by resonant wave interactions and their kinetic stationary spectra
+\cite{Nazarenko}. The cascade chain used here is instead a finite resonant
+subsystem of cubic NLS, inherited from the CKSTT construction \cite{CKSTT} and
+from the three-mode NESS theory of \cite{HLNS}; the chain index is a generation
+label in frequency space rather than a physical lattice coordinate. In
+low-dimensional nonequilibrium statistical mechanics, anomalous transport is
+often studied through oscillator chains with local conservation laws and
+boundary reservoirs \cite{LepriLiviPoliti,Dhar2008,Spohn2014}. Our transport
+observable is the conserved action current of the resonant model, not the
+physical heat current of an anharmonic chain. For this reason the exponent
+reported below is treated as a controlled finite-size numerical law for this
+model, not as a universal conductivity exponent.
+
+This distinction also guides the scope of the local-equilibrium and fluctuation
+claims. Local equilibrium is a standard organizing principle in hydrodynamic
+descriptions of one-dimensional transport \cite{Spohn2014}, but the Hamiltonian
+\eqref{eq:hamiltonian} contains a nonlocal mass term, so even equilibrium
+two-site marginals are not strict Gibbs marginals of an isolated bond. We
+therefore test a weaker, source-traced pair-marginal rescaling rather than claim
+local Gibbs convergence. Similarly, fluctuation relations for deterministic and
+stochastic nonequilibrium steady states
+\cite{GallavottiCohen,LebowitzSpohn1999} motivate future entropy-production
+measurements, but the present data record finite-time action-current averages
+only. A Gallavotti--Cohen-type test would require a separate boundary-energy
+accumulator and is deliberately left outside the claims of this manuscript.
+
 \subsection{Contributions and organization}\label{sec:contributions}
 
 This paper is a numerical study of the NESS of the energy cascade model
@@ -881,7 +912,10 @@ $1024$ trajectories, burn-in $11520$, measurement window $200$, and
 $\Delta t=5\times10^{-4}$. This run gives
 $\E[J(60)]=0.01245$ with standard error $0.00042$, and the
 first-half/second-half stationarity statistic is $-0.52$ paired standard
-errors. Adding both larger lengths to the four primary production lengths gives
+errors. A matched fine-step check at $\Delta t=2.5\times10^{-4}$ gives
+$\E[J(60)]=0.01288$ with standard error $0.00037$ and split-window statistic
+$-0.87$ paired standard errors; relative to the coarse-step $n=60$ run this is
+a $3.5\%$ upward shift, or $0.78$ pooled standard errors. Adding both larger lengths to the four primary production lengths gives
 a diagnostic six-size fit
 \[
   \E[J(n)] \;=\; 35.94\,n^{-1.930},
@@ -1332,8 +1366,8 @@ stationary density.
 Several limitations remain. The long-chain ergodicity theory is open, so the
 stationarity of the long simulations is assessed numerically rather than
 proved. The primary transport exponent is fitted over $n=10,20,30,40$; the
-$n=50$ and $n=60$ robustness runs, together with the $n=50$ production
-fine-step check,
+$n=50$ and $n=60$ robustness runs, together with matched production
+fine-step checks at both larger lengths,
 support the same faster-than-Fourier trend but do not replace a systematic
 larger-length and fine-timestep convergence study. The current statistics reported here concern finite-time averages of
 the action current only; bath-energy entropy production and a genuine
@@ -1397,7 +1431,9 @@ $2.5\times10^{-4}$ differs by $3.9\%$, or $0.60$ pooled standard errors. At
 $n=50$, a production-resolution $1024$-trajectory comparison gives
 $\E[J(50)]=0.01918\pm0.00040$ at $\Delta t=2.5\times10^{-4}$ versus
 $0.01852\pm0.00044$ at $\Delta t=5\times10^{-4}$, a $3.6\%$ shift equal to
-$1.12$ pooled standard errors. The production step
+$1.12$ pooled standard errors. At $n=60$, the same comparison gives
+$\E[J(60)]=0.01288\pm0.00037$ versus $0.01245\pm0.00042$, a $3.5\%$ shift
+equal to $0.78$ pooled standard errors. The production step
 $\Delta t=5\times10^{-4}$ is therefore retained for the matched main
 finite-size law, while the coarser step is excluded.
 
@@ -1418,8 +1454,10 @@ those runs form the matched primary design. Two larger-chain computations are
 used as robustness evidence. At $n=50$, the same accumulator with burn-in
 $8000$ gives $\E[J(50)]=0.01852\pm0.00044$ at
 $\Delta t=5\times10^{-4}$, and the matched production fine-step check gives
-$0.01918\pm0.00040$ at $\Delta t=2.5\times10^{-4}$; at $n=60$, burn-in $11520$ gives
-$\E[J(60)]=0.01245\pm0.00042$. Adding these points steepens, rather than
+$0.01918\pm0.00040$ at $\Delta t=2.5\times10^{-4}$. At $n=60$, burn-in
+$11520$ gives $\E[J(60)]=0.01245\pm0.00042$ at
+$\Delta t=5\times10^{-4}$, with matched fine-step value
+$0.01288\pm0.00037$. Adding these points steepens, rather than
 weakens, the finite-size fit: the five-size diagnostic exponent is $-1.894$,
 and the six-size diagnostic exponent is $-1.930$. Fitting only the tail
 $n=20,30,40,50,60$ gives exponent $-2.059$. The available larger-chain data
@@ -1544,8 +1582,8 @@ Action-current scaling &
 canonical simulator, production manifest, larger-chain robustness run,
 fit-window sensitivity analysis, validation report, current-window statistics &
 frozen source/binary hashes; equal-temperature and hot/cold reversal gates;
-trajectory-bootstrap exponent CI; split-window stationarity, timestep pilot
-and $n=50$ production fine-step check,
+trajectory-bootstrap exponent CI; split-window stationarity, timestep pilot,
+and $n=50,n=60$ production fine-step checks,
 bath-temperature and thermostat-coupling robustness checks, and fit-window sensitivity &
 finite-size action-current law over $n=10,20,30,40$, with $n=50$
 and $n=60$ robustness checks \\

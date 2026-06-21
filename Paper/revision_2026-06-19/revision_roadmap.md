@@ -80,9 +80,11 @@ measurement window `200`, `dt=5e-4`).  The result supports the insulating
 transport conclusion and steepens the diagnostic five-size fit to exponent
 `-1.89449`.  A later `dt=2.5e-4` production-resolution check at the same length
 gives a compatible mean current (`3.60%`, or `1.12` pooled standard errors,
-above the `dt=5e-4` run).  The result is retained as a robustness check rather
-than replacing the primary `n=10,20,30,40` exponent because `n=50` is still
-only one larger-size extension.  This addresses the immediate
-larger-length/timestep sanity check; a full larger-length convergence study
-would still require preferably another length and possibly a matched
-fine-timestep point at `n=60`.
+above the `dt=5e-4` run).  A matched production-resolution `n=60`,
+`dt=2.5e-4` check was then completed, giving a compatible `3.50%` upward shift
+relative to the `dt=5e-4` `n=60` run (`0.78` pooled standard errors).  The
+larger-length results are retained as robustness checks rather than replacing
+the primary `n=10,20,30,40` exponent.  The immediate larger-length/timestep
+sanity checks are now addressed; a full asymptotic convergence study would
+still require still larger lengths and/or a dedicated finite-timestep
+convergence campaign.

@@ -27,9 +27,9 @@ Key numbers:
 | Compiled PDF artifact audit | 2/2 PDFs verified |
 | Availability paths | 38/38 |
 | Registered numerical claims | 22/22 |
-| Cited BibTeX entries | 8 |
-| Release-bundle files | 121 |
-| Source-bundle included files | 317 |
+| Cited BibTeX entries | 11 |
+| Release-bundle files | 122 |
+| Source-bundle included files | 318 |
 | Minimal raw-data files | 40 |
 | Missing raw-data files | 0 |
 | Author/submission-field audit | 9 pending author/external items |
@@ -38,8 +38,8 @@ Key numbers:
 
 | Use | Local file | Pages | Size | SHA-256 | Status |
 |---|---|---:|---:|---|---|
-| Generic revised manuscript PDF | `tmp/paper_build/revision/draft.pdf` | 26 | 1,568,638 bytes | `89b3b0fa030620b78312b966fdf2d6af30c919807e4a5c5a355b1e9cc6474a25` | Suitable for author/advisor reading; recompile after final declarations. |
-| SIADS review-preparation PDF | `tmp/paper_build/siads_review/draft_siads_review.pdf` | 26 | 1,583,095 bytes | `6001924de0a819e079157e4d80f2a24d7ee7eefa7d4b0e7556fbcfaec61629f3` | Current SIADS-facing review PDF; use only after authors confirm SIADS and final metadata. |
+| Generic revised manuscript PDF | `tmp/paper_build/revision/draft.pdf` | 26 | 1,571,352 bytes | `1c68ed0553b6b1d1fcb40adaff17f0fb437c028056094c76ad00b56d142b0a43` | Suitable for author/advisor reading; recompile after final declarations. |
+| SIADS review-preparation PDF | `tmp/paper_build/siads_review/draft_siads_review.pdf` | 26 | 1,586,097 bytes | `363578a952530171162b4abbc90b980f1d6d5f735f037b18d88d6ea26d082774` | Current SIADS-facing review PDF; use only after authors confirm SIADS and final metadata. |
 
 The PDFs are local build artifacts under `tmp/` and are intentionally not
 committed to Git.  Regenerate them after final author/journal edits.  The

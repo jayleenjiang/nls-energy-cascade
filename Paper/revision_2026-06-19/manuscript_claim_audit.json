@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-21T04:28:59.818515+00:00",
+  "generated_at_utc": "2026-06-21T06:48:09.960052+00:00",
   "script": "Paper/revision_2026-06-19/scripts/audit_manuscript_claims.py",
   "draft": "Paper/revision_2026-06-19/draft.tex",
   "total_claims": 22,
@@ -38,67 +38,67 @@
         {
           "text": "\\label{tab:claim-evidence-map}",
           "present": true,
-          "line": 294
+          "line": 325
         },
         {
           "text": "Claim--evidence map for the manuscript",
           "present": true,
-          "line": 291
+          "line": 322
         },
         {
           "text": "Does the simulated SDE have the intended equilibrium structure?",
           "present": true,
-          "line": 256
+          "line": 287
         },
         {
           "text": "Equivalence with the original HLNS thermostat.",
           "present": true,
-          "line": 261
+          "line": 292
         },
         {
           "text": "Production Monte Carlo for $n=10,20,30,40$, with $n=50,60$",
           "present": true,
-          "line": 264
+          "line": 295
         },
         {
           "text": "Finite-size faster-than-Fourier decay of the mean action current.",
           "present": true,
-          "line": 266
+          "line": 297
         },
         {
           "text": "An asymptotic exponent or universal parameter law.",
           "present": true,
-          "line": 267
+          "line": 298
         },
         {
           "text": "Action profiles, pair-marginal comparisons, LTE table entries, and residual",
           "present": true,
-          "line": 270
+          "line": 301
         },
         {
           "text": "Strict local Gibbs convergence or vanishing residuals.",
           "present": true,
-          "line": 274
+          "line": 305
         },
         {
           "text": "Finite-window current histograms, survival fits, and",
           "present": true,
-          "line": 277
+          "line": 308
         },
         {
           "text": "Large-deviation asymptotics or Gallavotti--Cohen symmetry.",
           "present": true,
-          "line": 281
+          "line": 312
         },
         {
           "text": "Saved-model Gibbs validation, short-chain density diagnostics,",
           "present": true,
-          "line": 284
+          "line": 315
         },
         {
           "text": "Proof of the long-chain exponent or a resolved spectral gap.",
           "present": true,
-          "line": 288
+          "line": 319
         }
       ],
       "note": "This introductory map is a scope-control device: it does not add new numerical values, but it binds each manuscript claim family to its evidence stream and explicit non-claim."
@@ -140,7 +140,7 @@
         {
           "text": "R^2=0.9980",
           "present": true,
-          "line": 819
+          "line": 850
         }
       ],
       "note": ""
@@ -167,12 +167,12 @@
         {
           "text": "\\sim 3.59\\,n^{-0.850}",
           "present": true,
-          "line": 826
+          "line": 857
         },
         {
           "text": "R_n^{\\mathrm{act}}\\sim n^{1.850}",
           "present": true,
-          "line": 1009
+          "line": 1043
         },
         {
           "text": "not a derivation of the exponent",
@@ -213,27 +213,27 @@
         {
           "text": "$\\Delta t=5\\times10^{-4}$",
           "present": true,
-          "line": 514
+          "line": 545
         },
         {
           "text": "$1024$ independent trajectories",
           "present": true,
-          "line": 802
+          "line": 833
         },
         {
           "text": "($1000,1280,2880,5120$ for $n=10,20,30,40$)",
           "present": true,
-          "line": 804
+          "line": 835
         },
         {
           "text": "0.39252 & 0.11917 & 0.05457 & 0.02975",
           "present": true,
-          "line": 810
+          "line": 841
         },
         {
           "text": "0.00189 & 0.00092 & 0.00062 & 0.00048",
           "present": true,
-          "line": 812
+          "line": 843
         }
       ],
       "note": ""
@@ -254,17 +254,17 @@
         {
           "text": "only $0.90$",
           "present": true,
-          "line": 835
+          "line": 866
         },
         {
           "text": "relative difference about $3.9\\%$",
           "present": true,
-          "line": 839
+          "line": 870
         },
         {
           "text": "$0.60$ pooled standard errors",
           "present": true,
-          "line": 516
+          "line": 547
         }
       ],
       "note": ""
@@ -303,57 +303,57 @@
         {
           "text": "$\\E[J(50)]=0.01852$",
           "present": true,
-          "line": 846
+          "line": 877
         },
         {
           "text": "standard error $0.00044$",
           "present": true,
-          "line": 846
+          "line": 877
         },
         {
           "text": "$-1.49$ paired standard",
           "present": true,
-          "line": 847
+          "line": 878
         },
         {
           "text": "\\E[J(n)] \\;=\\; 32.50\\,n^{-1.894}",
           "present": true,
-          "line": 851
+          "line": 882
         },
         {
           "text": "$[-1.916,-1.873]$",
           "present": true,
-          "line": 854
+          "line": 885
         },
         {
           "text": "$\\E[J(50)]=0.01918$",
           "present": true,
-          "line": 856
+          "line": 887
         },
         {
           "text": "standard error $0.00040$",
           "present": true,
-          "line": 856
+          "line": 887
         },
         {
           "text": "$-1.56$ paired standard errors",
           "present": true,
-          "line": 857
+          "line": 888
         },
         {
           "text": "$3.6\\%$ upward shift, or $1.12$",
           "present": true,
-          "line": 858
+          "line": 889
         },
         {
           "text": "$\\E[J(50)]=0.01931\\pm0.00086$",
           "present": true,
-          "line": 861
+          "line": 892
         },
         {
           "text": "$n=50$ and $n=60$ computations as evidence against",
           "present": true,
-          "line": 875
+          "line": 909
         }
       ],
       "note": "The manuscript keeps the n=10,20,30,40 fit as the primary quoted exponent while using larger lengths as robustness extensions."
@@ -361,17 +361,24 @@
     {
       "id": "n60_current_robustness",
       "section": "thermal conductivity",
-      "claim": "The production-size n=60 extension supports the larger-chain robustness check without redefining the primary exponent.",
+      "claim": "The production-size n=60 extension and matched fine-step check support the larger-chain robustness check without redefining the primary exponent.",
       "verdict": "VERIFIED",
       "evidence": [
         "Paper/revision_2026-06-19/experiments/flux_validation/larger_n60_pilot_2026-06-20/n10_60_b64_scaling_scaling.json",
         "Paper/revision_2026-06-19/experiments/flux_validation/larger_n60_pilot_2026-06-20/n60_b64_summary.csv",
+        "Paper/revision_2026-06-19/experiments/flux_validation/larger_n60_pilot_2026-06-20/n60_b64_dt2p5e-4_summary.csv",
         "Paper/revision_2026-06-19/experiments/flux_validation/larger_n60_pilot_2026-06-20/README.md"
       ],
       "computed": {
         "n60_mean": 0.012448296425054128,
         "n60_se": 0.00041661977222720294,
         "n60_stationarity_z": -0.5243758591524996,
+        "n60_fine_mean": 0.012884581309559261,
+        "n60_fine_se": 0.00036914544312860714,
+        "n60_fine_stationarity_z": -0.8660330463849221,
+        "n60_fine_minus_coarse": 0.00043628488450513266,
+        "n60_fine_relative_shift": 0.03504775831229739,
+        "n60_fine_difference_over_pooled_se": 0.7837925829822063,
         "six_length_exponent": -1.9295558713522096,
         "six_length_ci": [
           -1.9542388618030062,
@@ -383,40 +390,60 @@
         {
           "text": "$1024$ trajectories, burn-in $11520$",
           "present": true,
-          "line": 864
+          "line": 895
         },
         {
           "text": "$\\E[J(60)]=0.01245$",
           "present": true,
-          "line": 866
+          "line": 897
         },
         {
           "text": "standard error $0.00042$",
           "present": true,
-          "line": 866
+          "line": 897
         },
         {
           "text": "$-0.52$ paired standard",
           "present": true,
-          "line": 867
+          "line": 898
+        },
+        {
+          "text": "$\\E[J(60)]=0.01288$",
+          "present": true,
+          "line": 900
+        },
+        {
+          "text": "standard error $0.00037$",
+          "present": true,
+          "line": 900
+        },
+        {
+          "text": "$-0.87$ paired standard errors",
+          "present": true,
+          "line": 901
+        },
+        {
+          "text": "$3.5\\%$ upward shift, or $0.78$ pooled",
+          "present": true,
+          "line": 902
         },
         {
           "text": "\\E[J(n)] \\;=\\; 35.94\\,n^{-1.930}",
           "present": true,
-          "line": 871
+          "line": 905
         },
         {
           "text": "$[-1.954,-1.906]$",
           "present": true,
-          "line": 874
+          "line": 908
         },
         {
-          "text": "larger lengths are robustness extensions",
+          "text": "$n=50$ and $n=60$ computations as evidence against",
           "present": true,
-          "line": 877
+          "line": 909
         }
       ],
-      "note": "The n=60 run has production-size trajectory count but no matched fine-step production run, so it is used as robustness evidence."
+      "note": "The n=60 matched fine-step production run is used as timestep robustness evidence; the primary exponent remains the matched n=10,20,30,40 fit."
     },
     {
       "id": "bath_parameter_current_robustness",
@@ -459,37 +486,37 @@
         {
           "text": "$T_1=8,T_n=4$",
           "present": true,
-          "line": 882
+          "line": 916
         },
         {
           "text": "$1024$ trajectories per length",
           "present": true,
-          "line": 882
+          "line": 916
         },
         {
           "text": "\\E[J(n)] \\;=\\; 12.95\\,n^{-1.751}",
           "present": true,
-          "line": 886
+          "line": 920
         },
         {
           "text": "R^2=0.9984",
           "present": true,
-          "line": 887
+          "line": 921
         },
         {
           "text": "$[-1.780,-1.723]$",
           "present": true,
-          "line": 890
+          "line": 924
         },
         {
           "text": "maximum first-half/second-half stationarity statistic",
           "present": true,
-          "line": 890
+          "line": 924
         },
         {
           "text": "$1.74$ paired standard errors",
           "present": true,
-          "line": 891
+          "line": 925
         },
         {
           "text": "not a systematic parameter sweep",
@@ -549,52 +576,52 @@
         {
           "text": "$\\gamma=0.05$",
           "present": true,
-          "line": 899
+          "line": 933
         },
         {
           "text": "$-1.650$",
           "present": true,
-          "line": 900
+          "line": 934
         },
         {
           "text": "$[-1.668,-1.633]$",
           "present": true,
-          "line": 900
+          "line": 934
         },
         {
           "text": "$\\gamma=0.2$",
           "present": true,
-          "line": 901
+          "line": 935
         },
         {
           "text": "$-1.991$",
           "present": true,
-          "line": 901
+          "line": 935
         },
         {
           "text": "$[-2.017,-1.967]$",
           "present": true,
-          "line": 902
+          "line": 936
         },
         {
           "text": "statistics are $1.14$ and $1.74$ paired standard errors",
           "present": true,
-          "line": 903
+          "line": 937
         },
         {
           "text": "single thermostat coupling $\\gamma=0.1$",
           "present": true,
-          "line": 905
+          "line": 939
         },
         {
           "text": "systematic two-parameter bath study",
           "present": true,
-          "line": 906
+          "line": 940
         },
         {
           "text": "\\label{tab:parameter-robustness}",
           "present": true,
-          "line": 923
+          "line": 957
         }
       ],
       "note": "The gamma-specific sources are generated from the frozen canonical source; the primary source file remains unchanged."
@@ -747,7 +774,7 @@
         {
           "text": "\\label{tab:flux-fit-sensitivity}",
           "present": true,
-          "line": 951
+          "line": 985
         },
         {
           "text": "range from $-1.720$ on $10$--$20$ to $-2.178$ on",
@@ -757,27 +784,27 @@
         {
           "text": "primary $n=10,20,30,40$ & $-1.850$ & $[-1.870,-1.831]$ & $0.9980$",
           "present": true,
-          "line": 941
+          "line": 975
         },
         {
           "text": "$n=10,20,30,40,50$ & $-1.894$ & $[-1.917,-1.873]$ & $0.9976$",
           "present": true,
-          "line": 942
+          "line": 976
         },
         {
           "text": "$n=10,20,30,40,50,60$ & $-1.930$ & $[-1.954,-1.906]$ & $0.9974$",
           "present": true,
-          "line": 943
+          "line": 977
         },
         {
           "text": "tail $n=20,30,40,50,60$ & $-2.059$ & $[-2.107,-2.012]$ & $0.9993$",
           "present": true,
-          "line": 944
+          "line": 978
         },
         {
           "text": "the spread across rows is the finite-size sensitivity",
           "present": true,
-          "line": 949
+          "line": 983
         }
       ],
       "note": "The table is a finite-size fit-window diagnostic; it does not change the primary quoted n=10,20,30,40 exponent."
@@ -811,7 +838,7 @@
         {
           "text": "$\\Pr(\\overline J_\\tau<0)$ decreases from $0.233$ at $\\tau=50$ to $0.026$ at",
           "present": true,
-          "line": 1028
+          "line": 1062
         },
         {
           "text": "($0.010$, $0.024$, $0.075$ for the three windows)",
@@ -821,12 +848,12 @@
         {
           "text": "($0.095$, $0.067$, $0.048$)",
           "present": true,
-          "line": 1032
+          "line": 1066
         },
         {
           "text": "not infer an asymptotic large-deviation",
           "present": true,
-          "line": 1026
+          "line": 1060
         }
       ],
       "note": ""
@@ -872,32 +899,32 @@
         {
           "text": "$\\langle I_1\\rangle=0.738$",
           "present": true,
-          "line": 559
+          "line": 590
         },
         {
           "text": "$\\langle I_{13}\\rangle=0.573$",
           "present": true,
-          "line": 559
+          "line": 590
         },
         {
           "text": "$\\langle I_{25}\\rangle=0.165$",
           "present": true,
-          "line": 560
+          "line": 591
         },
         {
           "text": "$(0.514,0.106)$ at $n=50$",
           "present": true,
-          "line": 561
+          "line": 592
         },
         {
           "text": "$(0.362,0.073)$ at $n=100$",
           "present": true,
-          "line": 562
+          "line": 593
         },
         {
           "text": "$5.07\\times10^8$, $1.01\\times10^9$, and $4.06\\times10^9$",
           "present": true,
-          "line": 571
+          "line": 602
         }
       ],
       "note": ""
@@ -970,177 +997,177 @@
         {
           "text": "0.8203",
           "present": true,
-          "line": 661
+          "line": 692
         },
         {
           "text": "0.8269",
           "present": true,
-          "line": 662
+          "line": 693
         },
         {
           "text": "0.8429",
           "present": true,
-          "line": 663
+          "line": 694
         },
         {
           "text": "0.9304",
           "present": true,
-          "line": 667
+          "line": 698
         },
         {
           "text": "0.9308",
           "present": true,
-          "line": 666
+          "line": 697
         },
         {
           "text": "0.9360",
           "present": true,
-          "line": 665
+          "line": 696
         },
         {
           "text": "0.9862",
           "present": true,
-          "line": 669
+          "line": 700
         },
         {
           "text": "0.9919",
           "present": true,
-          "line": 670
+          "line": 701
         },
         {
           "text": "0.9943",
           "present": true,
-          "line": 665
+          "line": 696
         },
         {
           "text": "0.9967",
           "present": true,
-          "line": 663
+          "line": 694
         },
         {
           "text": "0.9970",
           "present": true,
-          "line": 661
+          "line": 692
         },
         {
           "text": "0.9980",
           "present": true,
-          "line": 671
+          "line": 702
         },
         {
           "text": "0.9984",
           "present": true,
-          "line": 662
+          "line": 693
         },
         {
           "text": "0.9988",
           "present": true,
-          "line": 666
+          "line": 697
         },
         {
           "text": "0.9989",
           "present": true,
-          "line": 667
+          "line": 698
         },
         {
           "text": "1.0412",
           "present": true,
-          "line": 671
+          "line": 702
         },
         {
           "text": "1.0610",
           "present": true,
-          "line": 670
+          "line": 701
         },
         {
           "text": "1.0933",
           "present": true,
-          "line": 669
+          "line": 700
         },
         {
           "text": "5.49",
           "present": true,
-          "line": 669
+          "line": 700
         },
         {
           "text": "5.65",
           "present": true,
-          "line": 670
+          "line": 701
         },
         {
           "text": "5.76",
           "present": true,
-          "line": 671
+          "line": 702
         },
         {
           "text": "5.80",
           "present": true,
-          "line": 669
+          "line": 700
         },
         {
           "text": "6.02",
           "present": true,
-          "line": 671
+          "line": 702
         },
         {
           "text": "6.04",
           "present": true,
-          "line": 670
+          "line": 701
         },
         {
           "text": "6.41",
           "present": true,
-          "line": 665
+          "line": 696
         },
         {
           "text": "6.45",
           "present": true,
-          "line": 666
+          "line": 697
         },
         {
           "text": "6.85",
           "present": true,
-          "line": 647
+          "line": 678
         },
         {
           "text": "7.01",
           "present": true,
-          "line": 667
+          "line": 698
         },
         {
           "text": "7.03",
           "present": true,
-          "line": 666
+          "line": 697
         },
         {
           "text": "7.12",
           "present": true,
-          "line": 631
+          "line": 662
         },
         {
           "text": "7.26",
           "present": true,
-          "line": 662
+          "line": 693
         },
         {
           "text": "7.31",
           "present": true,
-          "line": 661
+          "line": 692
         },
         {
           "text": "7.68",
           "present": true,
-          "line": 661
+          "line": 692
         },
         {
           "text": "7.79",
           "present": true,
-          "line": 662
+          "line": 693
         },
         {
           "text": "7.82",
           "present": true,
-          "line": 663
+          "line": 694
         }
       ],
       "note": "Text check is intentionally value-based; repeated rounded values need appear at least once in the table."
@@ -1232,212 +1259,212 @@
         {
           "text": "$r=\\log q-(c+x\\log p_6)$",
           "present": true,
-          "line": 713
+          "line": 744
         },
         {
           "text": "0.015",
           "present": true,
-          "line": 737
+          "line": 768
         },
         {
           "text": "0.016",
           "present": true,
-          "line": 741
+          "line": 772
         },
         {
           "text": "0.022",
           "present": true,
-          "line": 745
+          "line": 776
         },
         {
           "text": "0.028",
           "present": true,
-          "line": 736
+          "line": 767
         },
         {
           "text": "0.031",
           "present": true,
-          "line": 740
+          "line": 771
         },
         {
           "text": "0.040",
           "present": true,
-          "line": 740
+          "line": 771
         },
         {
           "text": "0.044",
           "present": true,
-          "line": 735
+          "line": 766
         },
         {
           "text": "0.046",
           "present": true,
-          "line": 736
+          "line": 767
         },
         {
           "text": "0.049",
           "present": true,
-          "line": 735
+          "line": 766
         },
         {
           "text": "0.051",
           "present": true,
-          "line": 740
+          "line": 771
         },
         {
           "text": "0.052",
           "present": true,
-          "line": 741
+          "line": 772
         },
         {
           "text": "0.053",
           "present": true,
-          "line": 736
+          "line": 767
         },
         {
           "text": "0.054",
           "present": true,
-          "line": 741
+          "line": 772
         },
         {
           "text": "0.058",
           "present": true,
-          "line": 739
+          "line": 770
         },
         {
           "text": "0.066",
           "present": true,
-          "line": 735
+          "line": 766
         },
         {
           "text": "0.071",
           "present": true,
-          "line": 743
+          "line": 774
         },
         {
           "text": "0.073",
           "present": true,
-          "line": 562
+          "line": 593
         },
         {
           "text": "0.076",
           "present": true,
-          "line": 745
+          "line": 776
         },
         {
           "text": "0.082",
           "present": true,
-          "line": 739
+          "line": 770
         },
         {
           "text": "0.089",
           "present": true,
-          "line": 737
+          "line": 768
         },
         {
           "text": "0.091",
           "present": true,
-          "line": 737
+          "line": 768
         },
         {
           "text": "0.100",
           "present": true,
-          "line": 739
+          "line": 770
         },
         {
           "text": "0.138",
           "present": true,
-          "line": 744
+          "line": 775
         },
         {
           "text": "0.144",
           "present": true,
-          "line": 744
+          "line": 775
         },
         {
           "text": "0.152",
           "present": true,
-          "line": 743
+          "line": 774
         },
         {
           "text": "0.168",
           "present": true,
-          "line": 743
+          "line": 774
         },
         {
           "text": "0.17",
           "present": true,
-          "line": 737
+          "line": 768
         },
         {
           "text": "0.28",
           "present": true,
-          "line": 250
+          "line": 281
         },
         {
           "text": "0.29",
           "present": true,
-          "line": 745
+          "line": 776
         },
         {
           "text": "0.30",
           "present": true,
-          "line": 741
+          "line": 772
         },
         {
           "text": "0.43",
           "present": true,
-          "line": 743
+          "line": 774
         },
         {
           "text": "0.52",
           "present": true,
-          "line": 736
+          "line": 767
         },
         {
           "text": "0.58",
           "present": true,
-          "line": 739
+          "line": 770
         },
         {
           "text": "0.62",
           "present": true,
-          "line": 588
+          "line": 619
         },
         {
           "text": "0.74",
           "present": true,
-          "line": 735
+          "line": 766
         },
         {
           "text": "\\label{tab:lte-resid-decomp}",
           "present": true,
-          "line": 754
+          "line": 785
         },
         {
           "text": "direct finite nonequilibrium correction",
           "present": true,
-          "line": 752
+          "line": 783
         },
         {
           "text": "odd part is a",
           "present": true,
-          "line": 751
+          "line": 782
         },
         {
           "text": "r_{\\rm even}(\\theta)=\\tfrac12\\{r(\\theta)+r(-\\theta)\\}",
           "present": true,
-          "line": 715
+          "line": 746
         },
         {
           "text": "r_{\\rm odd}(\\theta)=\\tfrac12\\{r(\\theta)-r(-\\theta)\\}",
           "present": true,
-          "line": 716
+          "line": 747
         },
         {
           "text": "requiring at least $50$ counts",
           "present": true,
-          "line": 719
+          "line": 750
         }
       ],
       "note": "The residual decomposition is descriptive and uses a stricter symmetric count mask than the slope fit."
@@ -1540,37 +1567,37 @@
         {
           "text": "$x=0.926$",
           "present": true,
-          "line": 631
+          "line": 662
         },
         {
           "text": "$6/7.12=0.843$",
           "present": true,
-          "line": 632
+          "line": 663
         },
         {
           "text": "$p_{7.12}$ vs.\\ $p_6$",
           "present": true,
-          "line": 674
+          "line": 705
         },
         {
           "text": "$0.9261$",
           "present": true,
-          "line": 674
+          "line": 705
         },
         {
           "text": "$0.9997$",
           "present": true,
-          "line": 674
+          "line": 705
         },
         {
           "text": "$1.0093$",
           "present": true,
-          "line": 675
+          "line": 706
         },
         {
           "text": "$0.9944$",
           "present": true,
-          "line": 675
+          "line": 706
         }
       ],
       "note": ""
@@ -1590,22 +1617,22 @@
         {
           "text": "$p_T(I_a,I_{a+1},\\theta_a)$",
           "present": true,
-          "line": 602
+          "line": 633
         },
         {
           "text": "First, neither $q$ nor $p_T$",
           "present": true,
-          "line": 610
+          "line": 641
         },
         {
           "text": "$\\exp[-H/(2T)]$",
           "present": true,
-          "line": 604
+          "line": 635
         },
         {
           "text": "$p_T=p_6^{\\,6/T}$",
           "present": true,
-          "line": 632
+          "line": 663
         }
       ],
       "note": "This guards against mixing inverse-temperature beta with the manuscript's temperature T."
@@ -1637,22 +1664,22 @@
         {
           "text": "$1.5\\%$",
           "present": true,
-          "line": 1110
+          "line": 1144
         },
         {
           "text": "$2.6\\%$",
           "present": true,
-          "line": 1110
+          "line": 1144
         },
         {
           "text": "$6.4\\%$",
           "present": true,
-          "line": 1111
+          "line": 1145
         },
         {
           "text": "$I=0.5,1,2$",
           "present": true,
-          "line": 1111
+          "line": 1145
         }
       ],
       "note": ""
@@ -1679,17 +1706,17 @@
         {
           "text": "qualitative evidence",
           "present": true,
-          "line": 1214
+          "line": 1248
         },
         {
           "text": "rather than as a standalone quantitative estimator",
           "present": true,
-          "line": 1215
+          "line": 1249
         },
         {
           "text": "$\\pm0.15$",
           "present": true,
-          "line": 1212
+          "line": 1246
         }
       ],
       "note": ""
@@ -1748,27 +1775,27 @@
         {
           "text": "retain $2895$ of $4096$",
           "present": true,
-          "line": 1232
+          "line": 1266
         },
         {
           "text": "\\lambda_{\\mathrm{diag}} \\;\\approx\\; -0.934",
           "present": true,
-          "line": 1235
+          "line": 1269
         },
         {
           "text": "from $-1.60$ on $t\\in[0,2]$ to $-0.68$ on $t\\in[0.5,5]$",
           "present": true,
-          "line": 1239
+          "line": 1273
         },
         {
           "text": "root-mean-square error is $0.38$",
           "present": true,
-          "line": 1249
+          "line": 1283
         },
         {
           "text": "relative error $0.71$",
           "present": true,
-          "line": 1249
+          "line": 1283
         },
         {
           "text": "median normalized PDE residual",
@@ -1778,7 +1805,7 @@
         {
           "text": "$0.35$",
           "present": true,
-          "line": 1250
+          "line": 1284
         },
         {
           "text": "not as a resolved statement about the full generator spectrum",
@@ -1953,72 +1980,72 @@
         {
           "text": "\\label{app:short-chain-diagnostics}",
           "present": true,
-          "line": 1446
+          "line": 1484
         },
         {
           "text": "\\label{tab:short-chain-diagnostics}",
           "present": true,
-          "line": 1504
+          "line": 1542
         },
         {
           "text": "$1.47\\%,2.62\\%,6.40\\%$",
           "present": true,
-          "line": 1464
+          "line": 1502
         },
         {
           "text": "$3.95\\%,7.18\\%,18.84\\%$",
           "present": true,
-          "line": 1466
+          "line": 1504
         },
         {
           "text": "$\\rho+\\rho^{\\mathsf T}\\ge 20\\%\\,\\max(\\rho+\\rho^{\\mathsf T})$",
           "present": true,
-          "line": 1472
+          "line": 1510
         },
         {
           "text": "$17.5\\%$ and $56.2\\%$",
           "present": true,
-          "line": 1473
+          "line": 1511
         },
         {
           "text": "$\\theta_0=2.191$ radians ($125.5^\\circ$)",
           "present": true,
-          "line": 1479
+          "line": 1517
         },
         {
           "text": "$138^\\circ$--$168^\\circ$",
           "present": true,
-          "line": 1480
+          "line": 1518
         },
         {
           "text": "$\\E[I_2I_1\\sin\\theta_1]=0.128$",
           "present": true,
-          "line": 1485
+          "line": 1523
         },
         {
           "text": "$\\E[I_2I_3\\sin\\theta_3]=-0.140$",
           "present": true,
-          "line": 1486
+          "line": 1524
         },
         {
           "text": "$8.9\\%$ of the first term",
           "present": true,
-          "line": 1487
+          "line": 1525
         },
         {
           "text": "$2895/4096$ full-window fits",
           "present": true,
-          "line": 1492
+          "line": 1530
         },
         {
           "text": "$-1.60$ on $[0,2]$ to $-0.676$ on",
           "present": true,
-          "line": 1493
+          "line": 1531
         },
         {
           "text": "RMSE $0.38$ (relative $0.71$)",
           "present": true,
-          "line": 1494
+          "line": 1532
         },
         {
           "text": "median normalized PDE residual $0.35$",
@@ -2063,82 +2090,82 @@
         {
           "text": "\\section*{Numerical reproducibility summary}",
           "present": true,
-          "line": 1507
+          "line": 1545
         },
         {
           "text": "\\label{tab:repro-summary}",
           "present": true,
-          "line": 1565
+          "line": 1603
         },
         {
           "text": "Action-current scaling",
           "present": true,
-          "line": 1527
+          "line": 1565
         },
         {
           "text": "fit-window sensitivity analysis",
           "present": true,
-          "line": 1529
+          "line": 1567
         },
         {
           "text": "and fit-window sensitivity",
           "present": true,
-          "line": 1533
+          "line": 1571
         },
         {
           "text": "bath-temperature and thermostat-coupling robustness checks",
           "present": true,
-          "line": 1533
+          "line": 1571
         },
         {
           "text": "Long-chain profiles and local equilibrium",
           "present": true,
-          "line": 1537
+          "line": 1575
         },
         {
           "text": "Short-chain Fokker--Planck density",
           "present": true,
-          "line": 1543
+          "line": 1581
         },
         {
           "text": "Eigenfunction diagnostic",
           "present": true,
-          "line": 1549
+          "line": 1587
         },
         {
           "text": "Manuscript-level claim audit",
           "present": true,
-          "line": 1555
+          "line": 1593
         },
         {
           "text": "finite-size action-current law over $n=10,20,30,40$",
           "present": true,
-          "line": 1534
+          "line": 1572
         },
         {
           "text": "with $n=50$",
           "present": true,
-          "line": 1534
+          "line": 1572
         },
         {
           "text": "and $n=60$ robustness checks",
           "present": true,
-          "line": 1535
+          "line": 1573
         },
         {
           "text": "saved-model inference reproducibility, not full neural-network retraining",
           "present": true,
-          "line": 1547
+          "line": 1585
         },
         {
           "text": "observable-dependent slow-mode diagnostic, not resolved spectral gap",
           "present": true,
-          "line": 1553
+          "line": 1591
         },
         {
           "text": "local audit to rerun after final author and journal-format edits",
           "present": true,
-          "line": 1559
+          "line": 1597
         }
       ],
       "note": ""
@@ -2163,67 +2190,67 @@
         {
           "text": "\\path{Paper/revision_2026-06-19/scripts/export_source_trace_metrics.py}",
           "present": true,
-          "line": 1599
+          "line": 1637
         },
         {
           "text": "\\path{Paper/revision_2026-06-19/source_trace_metrics.json}",
           "present": true,
-          "line": 1600
+          "line": 1638
         },
         {
           "text": "\\path{Paper/revision_2026-06-19/scripts/recompute_short_chain_nn_metrics.py}",
           "present": true,
-          "line": 1602
+          "line": 1640
         },
         {
           "text": "\\path{Paper/revision_2026-06-19/short_chain_nn_rerun_metrics.json}",
           "present": true,
-          "line": 1603
+          "line": 1641
         },
         {
           "text": "\\path{Paper/revision_2026-06-19/scripts/analyze_eigen_fit_windows.py}",
           "present": true,
-          "line": 1605
+          "line": 1643
         },
         {
           "text": "\\path{Paper/revision_2026-06-19/eigen_fit_sensitivity.json}",
           "present": true,
-          "line": 1606
+          "line": 1644
         },
         {
           "text": "\\path{Paper/revision_2026-06-19/scripts/analyze_flux_scaling_sensitivity.py}",
           "present": true,
-          "line": 1583
+          "line": 1621
         },
         {
           "text": "\\path{Paper/revision_2026-06-19/experiments/flux_validation/larger_n60_pilot_2026-06-20/flux_scaling_sensitivity_n10_60.json}",
           "present": true,
-          "line": 1587
+          "line": 1625
         },
         {
           "text": "\\path{Paper/revision_2026-06-19/experiments/flux_validation/parameter_robustness_2026-06-20/moderate_contrast_T8_T4_prod/b64_scaling_scaling.json}",
           "present": true,
-          "line": 1589
+          "line": 1627
         },
         {
           "text": "\\path{Paper/revision_2026-06-19/experiments/flux_validation/gamma_robustness_2026-06-21/gamma_robustness_scaling.json}",
           "present": true,
-          "line": 1591
+          "line": 1629
         },
         {
           "text": "\\path{Paper/revision_2026-06-19/scripts/audit_availability_paths.py}",
           "present": true,
-          "line": 1613
+          "line": 1651
         },
         {
           "text": "\\path{Paper/revision_2026-06-19/availability_path_audit.json}",
           "present": true,
-          "line": 1614
+          "line": 1652
         },
         {
           "text": "\\path{Paper/revision_2026-06-19/availability_path_audit.md}",
           "present": true,
-          "line": 1615
+          "line": 1653
         }
       ],
       "note": ""

@@ -4,13 +4,18 @@
       112,
       123,
       129,
-      577
+      232,
+      608
+    ],
+    "Dhar2008": [
+      237
     ],
     "DobsonLiZhai": [
-      449
+      480
     ],
     "GallavottiCohen": [
-      373
+      251,
+      404
     ],
     "HLNS": [
       92,
@@ -23,30 +28,40 @@
       203,
       215,
       218,
-      298,
-      413,
-      522,
-      1073,
-      1150,
-      1156,
-      1306
+      233,
+      329,
+      444,
+      553,
+      1107,
+      1184,
+      1190,
+      1340
+    ],
+    "LebowitzSpohn1999": [
+      251
     ],
     "LepriLiviPoliti": [
-      830
+      237,
+      861
     ],
     "Li2019": [
-      449
+      480
     ],
     "Nazarenko": [
-      85
+      85,
+      231
+    ],
+    "Spohn2014": [
+      237,
+      245
     ],
     "ZhaiDobsonLi": [
-      307,
-      448,
-      460
+      338,
+      479,
+      491
     ]
   },
-  "generated_at_utc": "2026-06-21T04:28:59.846091+00:00",
+  "generated_at_utc": "2026-06-21T06:48:09.989410+00:00",
   "issues": {
     "dangling_citations": [],
     "duplicate_bib_keys": [],
@@ -57,12 +72,13 @@
   },
   "references": [
     {
-      "citation_count": 4,
+      "citation_count": 5,
       "citation_lines": [
         112,
         123,
         129,
-        577
+        232,
+        608
       ],
       "doi": "10.1007/s00222-010-0242-2",
       "entry_type": "article",
@@ -80,7 +96,7 @@
       "year": "2010"
     },
     {
-      "citation_count": 17,
+      "citation_count": 18,
       "citation_lines": [
         92,
         94,
@@ -92,13 +108,14 @@
         203,
         215,
         218,
-        298,
-        413,
-        522,
-        1073,
-        1150,
-        1156,
-        1306
+        233,
+        329,
+        444,
+        553,
+        1107,
+        1184,
+        1190,
+        1340
       ],
       "doi": "10.48550/arXiv.2505.16018",
       "entry_type": "misc",
@@ -118,9 +135,9 @@
     {
       "citation_count": 3,
       "citation_lines": [
-        307,
-        448,
-        460
+        338,
+        479,
+        491
       ],
       "doi": "",
       "entry_type": "inproceedings",
@@ -140,7 +157,7 @@
     {
       "citation_count": 1,
       "citation_lines": [
-        449
+        480
       ],
       "doi": "10.4310/CMS.2019.v17.n4.a9",
       "entry_type": "article",
@@ -160,7 +177,7 @@
     {
       "citation_count": 1,
       "citation_lines": [
-        449
+        480
       ],
       "doi": "10.4310/CMS.2022.v20.n3.a8",
       "entry_type": "article",
@@ -178,9 +195,10 @@
       "year": "2022"
     },
     {
-      "citation_count": 1,
+      "citation_count": 2,
       "citation_lines": [
-        373
+        251,
+        404
       ],
       "doi": "10.1103/PhysRevLett.74.2694",
       "entry_type": "article",
@@ -198,9 +216,10 @@
       "year": "1995"
     },
     {
-      "citation_count": 1,
+      "citation_count": 2,
       "citation_lines": [
-        830
+        237,
+        861
       ],
       "doi": "10.1016/S0370-1573(02)00558-6",
       "entry_type": "article",
@@ -220,7 +239,69 @@
     {
       "citation_count": 1,
       "citation_lines": [
-        85
+        237
+      ],
+      "doi": "10.1080/00018730802538522",
+      "entry_type": "article",
+      "has_identifier": true,
+      "key": "Dhar2008",
+      "missing_required_fields": [],
+      "passes": true,
+      "title": "Heat transport in low-dimensional systems",
+      "url": "",
+      "verification_source": {
+        "checked_on": "2026-06-21",
+        "source_type": "arXiv abstract page with Advances in Physics journal reference and related DOI",
+        "source_url": "https://arxiv.org/abs/0808.3256"
+      },
+      "year": "2008"
+    },
+    {
+      "citation_count": 2,
+      "citation_lines": [
+        237,
+        245
+      ],
+      "doi": "10.1007/s10955-014-0933-y",
+      "entry_type": "article",
+      "has_identifier": true,
+      "key": "Spohn2014",
+      "missing_required_fields": [],
+      "passes": true,
+      "title": "Nonlinear fluctuating hydrodynamics for anharmonic chains",
+      "url": "",
+      "verification_source": {
+        "checked_on": "2026-06-21",
+        "source_type": "arXiv abstract page with Journal of Statistical Physics reference and related DOI",
+        "source_url": "https://arxiv.org/abs/1305.6412"
+      },
+      "year": "2014"
+    },
+    {
+      "citation_count": 1,
+      "citation_lines": [
+        251
+      ],
+      "doi": "10.1023/A:1004589714161",
+      "entry_type": "article",
+      "has_identifier": true,
+      "key": "LebowitzSpohn1999",
+      "missing_required_fields": [],
+      "passes": true,
+      "title": "A {Gallavotti--Cohen}-type symmetry in the large deviation functional for stochastic dynamics",
+      "url": "",
+      "verification_source": {
+        "checked_on": "2026-06-21",
+        "source_type": "arXiv abstract page with related Journal of Statistical Physics DOI",
+        "source_url": "https://arxiv.org/abs/cond-mat/9811220"
+      },
+      "year": "1999"
+    },
+    {
+      "citation_count": 2,
+      "citation_lines": [
+        85,
+        231
       ],
       "doi": "10.1007/978-3-642-15942-8",
       "entry_type": "book",
@@ -241,14 +322,14 @@
   "script": "Paper/revision_2026-06-19/scripts/audit_references.py",
   "status": "PASS",
   "summary": {
-    "bib_entries": 8,
-    "citation_commands": 28,
-    "citation_uses": 29,
+    "bib_entries": 11,
+    "citation_commands": 34,
+    "citation_uses": 38,
     "dangling_citation_count": 0,
     "missing_identifier_count": 0,
     "missing_required_field_count": 0,
     "missing_verification_source_count": 0,
     "orphan_reference_count": 0,
-    "unique_cited_keys": 8
+    "unique_cited_keys": 11
   }
 }
