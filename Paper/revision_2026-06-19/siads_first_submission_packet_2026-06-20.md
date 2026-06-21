@@ -25,7 +25,7 @@ Official SIADS pages checked on 2026-06-20:
 - SIADS review-preparation PDF build:
   `tmp/paper_build/siads_review/draft_siads_review.pdf`.
 - SIADS review-preparation PDF SHA-256:
-  `363578a952530171162b4abbc90b980f1d6d5f735f037b18d88d6ea26d082774`.
+  `a32a4958be9b2f36cf0117f5c8b20d8293bcb68ad8dfe3bc66364978d9205df0`.
 - Current local gate:
   `PASS_WITH_AUTHOR_CONFIRMATION_PENDING_AND_LOCAL_RAW_DATA_LIMITATION`.
 - Current manuscript figures are embedded inline.

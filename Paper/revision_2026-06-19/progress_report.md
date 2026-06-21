@@ -176,7 +176,7 @@
     submission `.tar.gz` under `tmp/` from the release manifest, records an
     archive SHA-256 checksum, and deliberately excludes self-referential
     generated summaries and the large local raw-data roots. The current
-    packaging run includes 318 regular files, has zero missing files, and
+    packaging run includes 319 regular files, has zero missing files, and
     records 44 local raw-data dependency records as
     excluded pending any DOI-backed raw-data archive decision.
 31. Performed a submission-level strengthening pass on 2026-06-20:
@@ -206,7 +206,7 @@
     `tmp/paper_build/siads_review/draft_siads_review.pdf`. After the later
     robustness and interpretation edits, the current compiled review PDF is
     26 pages with SHA-256
-    `363578a952530171162b4abbc90b980f1d6d5f735f037b18d88d6ea26d082774`.
+    `a32a4958be9b2f36cf0117f5c8b20d8293bcb68ad8dfe3bc66364978d9205df0`.
 34. Strengthened the manuscript narrative so the long-chain and short-chain
     results have a clearer division of labor: the long-chain simulations now
     explicitly provide macroscopic finite-size transport and LTE evidence,
@@ -328,6 +328,13 @@
     the result is a finite-size action-current law for a resonant NLS cascade
     chain, not a universal heat-conduction exponent or a claimed
     Gallavotti--Cohen large-deviation result.
+50. Added `pre_submission_reviewer_audit_2026-06-21.md`, an independent
+    reviewer-style readiness audit covering journal fit, methodology,
+    domain positioning, numerical-PDE scope, and devil's-advocate risks.  The
+    audit recommended one local presentation fix, now applied: visible
+    `Thermal conductivity` headings were renamed to `Action-current
+    conductivity` / Fourier analogy wording while preserving the existing
+    LaTeX label for cross-reference stability.
 
 ## Key validated numerical result
 

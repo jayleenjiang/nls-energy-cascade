@@ -196,6 +196,7 @@ def collect_handoff_docs(root: Path, revision_dir: Path, release: dict[str, set[
         "compiled_pdf_artifact_audit.json",
         "compiled_pdf_artifact_audit.md",
         "pdf_layout_qa_2026-06-19.md",
+        "pre_submission_reviewer_audit_2026-06-21.md",
         "author_submission_action_packet_2026-06-19.md",
         "final_author_submission_fields_request_2026-06-20.md",
         "target_journal_shortlist_2026-06-19.md",

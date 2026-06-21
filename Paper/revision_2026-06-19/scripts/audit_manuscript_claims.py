@@ -274,7 +274,7 @@ def build_registry() -> list[dict[str, Any]]:
     add_claim(
         registry,
         claim_id="flux_scaling_main",
-        section="abstract / thermal conductivity",
+        section="abstract / action-current conductivity",
         claim="Mean action current follows a finite-size power law over n=10,20,30,40.",
         evidence=[flux_path, validation_path],
         expected_text=[
@@ -294,7 +294,7 @@ def build_registry() -> list[dict[str, Any]]:
     add_claim(
         registry,
         claim_id="conductivity_scaling",
-        section="abstract / thermal conductivity",
+        section="abstract / action-current conductivity",
         claim="Finite-chain action conductivity decays as an insulating power law.",
         evidence=[flux_path],
         expected_text=[
@@ -321,7 +321,7 @@ def build_registry() -> list[dict[str, Any]]:
     add_claim(
         registry,
         claim_id="flux_table_values",
-        section="thermal conductivity",
+        section="action-current conductivity",
         claim="Current table reports the four production means and standard errors.",
         evidence=[validation_path, flux_path],
         expected_text=[
@@ -337,7 +337,7 @@ def build_registry() -> list[dict[str, Any]]:
     add_claim(
         registry,
         claim_id="flux_diagnostics",
-        section="thermal conductivity",
+        section="action-current conductivity",
         claim="Stationarity and timestep diagnostics are reported with limited scope.",
         evidence=[validation_path],
         expected_text=[
@@ -354,7 +354,7 @@ def build_registry() -> list[dict[str, Any]]:
     add_claim(
         registry,
         claim_id="larger_n_current_robustness",
-        section="thermal conductivity",
+        section="action-current conductivity",
         claim="The n=50 larger-chain current run and production fine-step check are reported as robustness evidence rather than replacing the primary exponent.",
         evidence=[
             larger_n_scaling_path,
@@ -422,7 +422,7 @@ def build_registry() -> list[dict[str, Any]]:
     add_claim(
         registry,
         claim_id="n60_current_robustness",
-        section="thermal conductivity",
+        section="action-current conductivity",
         claim="The production-size n=60 extension and matched fine-step check support the larger-chain robustness check without redefining the primary exponent.",
         evidence=[
             n60_scaling_path,
@@ -492,7 +492,7 @@ def build_registry() -> list[dict[str, Any]]:
     add_claim(
         registry,
         claim_id="bath_parameter_current_robustness",
-        section="thermal conductivity",
+        section="action-current conductivity",
         claim="A second bath-temperature production run supports the current-scaling trend without becoming a systematic parameter sweep.",
         evidence=[
             parameter_scaling_path,
@@ -537,7 +537,7 @@ def build_registry() -> list[dict[str, Any]]:
     add_claim(
         registry,
         claim_id="gamma_thermostat_current_robustness",
-        section="thermal conductivity / finite-size and parameter robustness",
+        section="action-current conductivity / finite-size and parameter robustness",
         claim="Thermostat-coupling production runs support the current-scaling trend without becoming a systematic two-parameter bath sweep.",
         evidence=[
             gamma_scaling_path,
@@ -583,7 +583,7 @@ def build_registry() -> list[dict[str, Any]]:
     add_claim(
         registry,
         claim_id="flux_scaling_fit_sensitivity",
-        section="thermal conductivity",
+        section="action-current conductivity",
         claim="Fit-window sensitivity around the n=50 and n=60 robustness points is reported without promoting it to the primary exponent.",
         evidence=[
             flux_sensitivity_path,

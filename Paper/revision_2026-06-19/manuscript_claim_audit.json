@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-06-21T06:48:09.960052+00:00",
+  "generated_at_utc": "2026-06-21T06:53:49.780018+00:00",
   "script": "Paper/revision_2026-06-19/scripts/audit_manuscript_claims.py",
   "draft": "Paper/revision_2026-06-19/draft.tex",
   "total_claims": 22,
@@ -105,7 +105,7 @@
     },
     {
       "id": "flux_scaling_main",
-      "section": "abstract / thermal conductivity",
+      "section": "abstract / action-current conductivity",
       "claim": "Mean action current follows a finite-size power law over n=10,20,30,40.",
       "verdict": "VERIFIED",
       "evidence": [
@@ -147,7 +147,7 @@
     },
     {
       "id": "conductivity_scaling",
-      "section": "abstract / thermal conductivity",
+      "section": "abstract / action-current conductivity",
       "claim": "Finite-chain action conductivity decays as an insulating power law.",
       "verdict": "VERIFIED",
       "evidence": [
@@ -184,7 +184,7 @@
     },
     {
       "id": "flux_table_values",
-      "section": "thermal conductivity",
+      "section": "action-current conductivity",
       "claim": "Current table reports the four production means and standard errors.",
       "verdict": "VERIFIED",
       "evidence": [
@@ -240,7 +240,7 @@
     },
     {
       "id": "flux_diagnostics",
-      "section": "thermal conductivity",
+      "section": "action-current conductivity",
       "claim": "Stationarity and timestep diagnostics are reported with limited scope.",
       "verdict": "VERIFIED",
       "evidence": [
@@ -271,7 +271,7 @@
     },
     {
       "id": "larger_n_current_robustness",
-      "section": "thermal conductivity",
+      "section": "action-current conductivity",
       "claim": "The n=50 larger-chain current run and production fine-step check are reported as robustness evidence rather than replacing the primary exponent.",
       "verdict": "VERIFIED",
       "evidence": [
@@ -360,7 +360,7 @@
     },
     {
       "id": "n60_current_robustness",
-      "section": "thermal conductivity",
+      "section": "action-current conductivity",
       "claim": "The production-size n=60 extension and matched fine-step check support the larger-chain robustness check without redefining the primary exponent.",
       "verdict": "VERIFIED",
       "evidence": [
@@ -447,7 +447,7 @@
     },
     {
       "id": "bath_parameter_current_robustness",
-      "section": "thermal conductivity",
+      "section": "action-current conductivity",
       "claim": "A second bath-temperature production run supports the current-scaling trend without becoming a systematic parameter sweep.",
       "verdict": "VERIFIED",
       "evidence": [
@@ -528,7 +528,7 @@
     },
     {
       "id": "gamma_thermostat_current_robustness",
-      "section": "thermal conductivity / finite-size and parameter robustness",
+      "section": "action-current conductivity / finite-size and parameter robustness",
       "claim": "Thermostat-coupling production runs support the current-scaling trend without becoming a systematic two-parameter bath sweep.",
       "verdict": "VERIFIED",
       "evidence": [
@@ -628,7 +628,7 @@
     },
     {
       "id": "flux_scaling_fit_sensitivity",
-      "section": "thermal conductivity",
+      "section": "action-current conductivity",
       "claim": "Fit-window sensitivity around the n=50 and n=60 robustness points is reported without promoting it to the primary exponent.",
       "verdict": "VERIFIED",
       "evidence": [

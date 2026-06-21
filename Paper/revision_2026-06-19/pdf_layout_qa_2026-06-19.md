@@ -27,8 +27,8 @@ Current compiled PDFs after the LTE residual-decomposition update:
 
 | PDF | Local build path | Pages | Size bytes | SHA-256 |
 |---|---|---:|---:|---|
-| Generic revised manuscript | `tmp/paper_build/revision/draft.pdf` | 26 | 1,571,352 | `1c68ed0553b6b1d1fcb40adaff17f0fb437c028056094c76ad00b56d142b0a43` |
-| SIADS review-preparation source | `tmp/paper_build/siads_review/draft_siads_review.pdf` | 26 | 1,586,097 | `363578a952530171162b4abbc90b980f1d6d5f735f037b18d88d6ea26d082774` |
+| Generic revised manuscript | `tmp/paper_build/revision/draft.pdf` | 26 | 1,571,360 | `614d186f39725c5a97d97c28a1ce68e82f9729dcbb327a1979aba7462b2611e1` |
+| SIADS review-preparation source | `tmp/paper_build/siads_review/draft_siads_review.pdf` | 26 | 1,586,117 | `a32a4958be9b2f36cf0117f5c8b20d8293bcb68ad8dfe3bc66364978d9205df0` |
 
 Both PDFs use A4 media boxes and were produced by pdfTeX.
 
@@ -82,7 +82,7 @@ Result:
 - no obvious overlapping text;
 - the residual-decomposition table is readable in both the generic and SIADS
   review-preparation formats;
-- the generic PDF page transition into `Thermal conductivity` is clean, and
+- the generic PDF page transition into `Action-current conductivity` is clean, and
   the SIADS page remains legible with line numbers.
 
 The earlier 2026-06-19 full-page visual pass remains the baseline for the
