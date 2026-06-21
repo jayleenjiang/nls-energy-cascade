@@ -181,6 +181,19 @@ def build_registry() -> list[dict[str, Any]]:
     ]
     parameter_readme_path = parameter_dir / "README.md"
     parameter_production_summary_path = parameter_dir / "production_summary.csv"
+    gamma_dir = REVISION / "experiments/flux_validation/gamma_robustness_2026-06-21"
+    gamma_scaling_path = gamma_dir / "gamma_robustness_scaling.json"
+    gamma_summary_csv_path = gamma_dir / "gamma_robustness_summary.csv"
+    gamma_report_path = gamma_dir / "gamma_robustness_report.md"
+    gamma_generated_sources = [
+        gamma_dir / "generated_sources/gamma0p05/NLS_flux_canonical_gamma.cpp",
+        gamma_dir / "generated_sources/gamma0p2/NLS_flux_canonical_gamma.cpp",
+    ]
+    gamma_summary_paths = [
+        gamma_dir / label / f"n{n}_summary.csv"
+        for label in ("gamma0p05", "gamma0p2")
+        for n in (10, 20, 30, 40)
+    ]
     figure_metrics_path = REVISION / "manuscript_figure_metrics.json"
     source_trace_path = REVISION / "source_trace_metrics.json"
     rerun_path = REVISION / "short_chain_nn_rerun_metrics.json"
@@ -203,6 +216,7 @@ def build_registry() -> list[dict[str, Any]]:
     flux_sensitivity = load_json(flux_sensitivity_path)
     parameter_scaling = load_json(parameter_scaling_path)
     parameter_summaries = [read_summary(path) for path in parameter_summary_paths]
+    gamma_scaling = load_json(gamma_scaling_path)
 
     prefactor = flux["prefactor"]
     exponent = flux["exponent"]
@@ -428,6 +442,54 @@ def build_registry() -> list[dict[str, Any]]:
             "r_squared": parameter_scaling["r_squared_log_fit"],
         },
         note="The manuscript uses this as a robustness check at a second bath-temperature pair, not as a full parameter sweep.",
+    )
+
+    gamma_by_label = {
+        record["label"]: record for record in gamma_scaling["scaling_records"]
+    }
+    gamma_005 = gamma_by_label["gamma0p05"]
+    gamma_02 = gamma_by_label["gamma0p2"]
+    add_claim(
+        registry,
+        claim_id="gamma_thermostat_current_robustness",
+        section="thermal conductivity / finite-size and parameter robustness",
+        claim="Thermostat-coupling production runs support the current-scaling trend without becoming a systematic two-parameter bath sweep.",
+        evidence=[
+            gamma_scaling_path,
+            gamma_summary_csv_path,
+            gamma_report_path,
+            *gamma_generated_sources,
+            *gamma_summary_paths,
+        ],
+        expected_text=[
+            r"thermostat-coupling robustness",
+            r"$\gamma=0.05$",
+            r"$-1.650$",
+            r"$[-1.668,-1.633]$",
+            r"$\gamma=0.2$",
+            r"$-1.991$",
+            r"$[-2.017,-1.967]$",
+            r"statistics are $1.14$ and $1.74$ paired standard errors",
+            r"single thermostat coupling $\gamma=0.1$",
+            r"systematic two-parameter bath study",
+            r"\label{tab:parameter-robustness}",
+        ],
+        computed={
+            "gamma_0p05": {
+                "exponent": gamma_005["exponent"],
+                "exponent_ci": gamma_005["exponent_95_ci"],
+                "r_squared": gamma_005["r_squared_log_fit"],
+                "max_abs_stationarity_z": gamma_005["max_abs_stationarity_z"],
+            },
+            "gamma_0p2": {
+                "exponent": gamma_02["exponent"],
+                "exponent_ci": gamma_02["exponent_95_ci"],
+                "r_squared": gamma_02["r_squared_log_fit"],
+                "max_abs_stationarity_z": gamma_02["max_abs_stationarity_z"],
+            },
+            "status": gamma_scaling["status"],
+        },
+        note="The gamma-specific sources are generated from the frozen canonical source; the primary source file remains unchanged.",
     )
 
     sensitivity_by_label = {
@@ -677,6 +739,7 @@ def build_registry() -> list[dict[str, Any]]:
             flux_path,
             flux_sensitivity_path,
             parameter_scaling_path,
+            gamma_scaling_path,
             validation_path,
             figure_metrics_path,
             source_trace_path,
@@ -689,7 +752,7 @@ def build_registry() -> list[dict[str, Any]]:
             r"Action-current scaling",
             r"fit-window sensitivity analysis",
             r"and fit-window sensitivity",
-            r"bath-temperature robustness check",
+            r"bath-temperature and thermostat-coupling robustness checks",
             r"Long-chain profiles and local equilibrium",
             r"Short-chain Fokker--Planck density",
             r"Eigenfunction diagnostic",
@@ -729,6 +792,7 @@ def build_registry() -> list[dict[str, Any]]:
             r"\path{Paper/revision_2026-06-19/scripts/analyze_flux_scaling_sensitivity.py}",
             r"\path{Paper/revision_2026-06-19/experiments/flux_validation/larger_n60_pilot_2026-06-20/flux_scaling_sensitivity_n10_60.json}",
             r"\path{Paper/revision_2026-06-19/experiments/flux_validation/parameter_robustness_2026-06-20/moderate_contrast_T8_T4_prod/b64_scaling_scaling.json}",
+            r"\path{Paper/revision_2026-06-19/experiments/flux_validation/gamma_robustness_2026-06-21/gamma_robustness_scaling.json}",
             r"\path{Paper/revision_2026-06-19/scripts/audit_availability_paths.py}",
             r"\path{Paper/revision_2026-06-19/availability_path_audit.json}",
             r"\path{Paper/revision_2026-06-19/availability_path_audit.md}",

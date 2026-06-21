@@ -257,6 +257,11 @@ def collect_handoff_docs(root: Path, revision_dir: Path, release: dict[str, set[
     )
     add_role(
         release,
+        str((revision_dir / "scripts/run_gamma_robustness_production.py").relative_to(root)),
+        "gamma-robustness-production-runner",
+    )
+    add_role(
+        release,
         str((revision_dir / "scripts/audit_submission_metadata_consistency.py").relative_to(root)),
         "submission-metadata-audit",
     )

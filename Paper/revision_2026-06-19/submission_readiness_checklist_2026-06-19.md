@@ -49,9 +49,11 @@ as an extrapolation of the transport exponent.  A further current-scaling
 robustness pass added a fit-window sensitivity table around the `n=50` and
 `n=60` larger-chain runs.  A subsequent bath-parameter robustness pass added a
 production-resolution `T1=8,Tn=4` current-scaling check over
-`n=10,20,30,40`.  The latest one-command gate reports
+`n=10,20,30,40`.  A 2026-06-21 thermostat-coupling robustness pass added
+production-resolution `gamma=0.05` and `gamma=0.2` checks over the same four
+primary lengths.  The latest one-command gate reports
 `PASS_WITH_AUTHOR_CONFIRMATION_PENDING_AND_LOCAL_RAW_DATA_LIMITATION` with
-37/37 availability path records present and git-tracked, 19/19 registered
+38/38 availability path records present and git-tracked, 20/20 registered
 numerical claims verified, 9 author/external submission items pending, and zero
 missing release-bundle files.
 
@@ -95,6 +97,19 @@ burn-in schedule as the primary production runs.  The fitted exponent is
 paired standard errors.  The manuscript uses this as a robustness check that
 the faster-than-Fourier finite-size decay is not tied only to the single
 temperature pair `T1=10,Tn=2`, not as a systematic parameter sweep.
+
+## 2026-06-21 thermostat-coupling robustness update
+
+A production-resolution thermostat-coupling robustness check was added under
+`experiments/flux_validation/gamma_robustness_2026-06-21/`.  The generated
+gamma-specific sources are traced to the frozen canonical current simulator,
+while the frozen primary source remains unchanged.  At `T1=10,Tn=2`, the
+`gamma=0.05` run gives exponent `-1.65035` with bootstrap 95% CI
+`[-1.66794,-1.63333]`; the `gamma=0.2` run gives exponent `-1.99149` with
+bootstrap 95% CI `[-2.01710,-1.96682]`.  The maximum split-window
+stationarity statistics are `1.14405` and `1.74247` paired standard errors.
+The manuscript uses these as finite-size parameter-robustness checks only, not
+as a systematic two-parameter bath sweep.
 
 ## Author confirmations still required
 

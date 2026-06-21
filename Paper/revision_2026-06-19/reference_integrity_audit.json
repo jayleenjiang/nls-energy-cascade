@@ -1,52 +1,52 @@
 {
   "citation_lines_by_key": {
     "CKSTT": [
-      111,
-      122,
-      128,
-      519
+      112,
+      123,
+      129,
+      520
     ],
     "DobsonLiZhai": [
-      391
+      392
     ],
     "GallavottiCohen": [
-      315
+      316
     ],
     "HLNS": [
-      91,
-      93,
-      98,
-      150,
-      156,
-      187,
-      196,
-      202,
-      214,
-      217,
-      240,
-      355,
-      464,
-      983,
-      1060,
-      1066,
-      1216
+      92,
+      94,
+      99,
+      151,
+      157,
+      188,
+      197,
+      203,
+      215,
+      218,
+      241,
+      356,
+      465,
+      1014,
+      1091,
+      1097,
+      1247
     ],
     "LepriLiviPoliti": [
-      772
+      773
     ],
     "Li2019": [
-      391
+      392
     ],
     "Nazarenko": [
-      84
+      85
     ],
     "ZhaiDobsonLi": [
-      249,
-      390,
-      402
+      250,
+      391,
+      403
     ]
   },
-  "generated_at_utc": "2026-06-21T01:35:57.653371+00:00",
+  "generated_at_utc": "2026-06-21T02:46:36.795935+00:00",
   "issues": {
     "dangling_citations": [],
     "duplicate_bib_keys": [],
@@ -59,10 +59,10 @@
     {
       "citation_count": 4,
       "citation_lines": [
-        111,
-        122,
-        128,
-        519
+        112,
+        123,
+        129,
+        520
       ],
       "doi": "10.1007/s00222-010-0242-2",
       "entry_type": "article",
@@ -82,23 +82,23 @@
     {
       "citation_count": 17,
       "citation_lines": [
-        91,
-        93,
-        98,
-        150,
-        156,
-        187,
-        196,
-        202,
-        214,
-        217,
-        240,
-        355,
-        464,
-        983,
-        1060,
-        1066,
-        1216
+        92,
+        94,
+        99,
+        151,
+        157,
+        188,
+        197,
+        203,
+        215,
+        218,
+        241,
+        356,
+        465,
+        1014,
+        1091,
+        1097,
+        1247
       ],
       "doi": "10.48550/arXiv.2505.16018",
       "entry_type": "misc",
@@ -118,9 +118,9 @@
     {
       "citation_count": 3,
       "citation_lines": [
-        249,
-        390,
-        402
+        250,
+        391,
+        403
       ],
       "doi": "",
       "entry_type": "inproceedings",
@@ -140,7 +140,7 @@
     {
       "citation_count": 1,
       "citation_lines": [
-        391
+        392
       ],
       "doi": "10.4310/CMS.2019.v17.n4.a9",
       "entry_type": "article",
@@ -160,7 +160,7 @@
     {
       "citation_count": 1,
       "citation_lines": [
-        391
+        392
       ],
       "doi": "10.4310/CMS.2022.v20.n3.a8",
       "entry_type": "article",
@@ -180,7 +180,7 @@
     {
       "citation_count": 1,
       "citation_lines": [
-        315
+        316
       ],
       "doi": "10.1103/PhysRevLett.74.2694",
       "entry_type": "article",
@@ -200,7 +200,7 @@
     {
       "citation_count": 1,
       "citation_lines": [
-        772
+        773
       ],
       "doi": "10.1016/S0370-1573(02)00558-6",
       "entry_type": "article",
@@ -220,7 +220,7 @@
     {
       "citation_count": 1,
       "citation_lines": [
-        84
+        85
       ],
       "doi": "10.1007/978-3-642-15942-8",
       "entry_type": "book",

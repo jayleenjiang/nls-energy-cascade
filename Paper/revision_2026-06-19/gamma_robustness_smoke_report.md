@@ -6,7 +6,7 @@ Status: **PASS**
 
 ## Scope
 
-This is a code-path smoke test for future thermostat-coupling robustness runs.
+This is a code-path smoke test for thermostat-coupling robustness runs.
 It is not manuscript evidence and is not used in the current action-current scaling claim.
 
 The frozen production source is not edited.  The script verifies its SHA-256,
@@ -27,12 +27,10 @@ runs tiny `n=6` simulations only to check the build/run/output path.
 | 0.05 | 0 | 0 | 0.05 | 0.5326551657790191 | 0.2892532714180685 | smoke ok |
 | 0.2 | 0 | 0 | 0.2 | 0.611765378601208 | 0.5580905327281221 | smoke ok |
 
-## Next production step
+## Production-resolution use
 
-If the authors want to include gamma robustness as manuscript evidence,
-run production-resolution chains for one or two gamma values, for example
-`gamma=0.05` and `gamma=0.2`, using the same primary lengths
-`n=10,20,30,40`, the validated timestep, the existing burn-in schedule,
-and trajectory-level bootstrap analysis.  Do not fold pilot results into
-the primary exponent unless the full production protocol passes the same
-stationarity and metadata gates as the existing current-scaling data.
+This smoke report remains a build/run readiness check only.  Manuscript
+evidence for gamma robustness must come from production-resolution chains using
+the same primary lengths `n=10,20,30,40`, the validated timestep, the existing
+burn-in schedule, and trajectory-level bootstrap analysis.  Do not fold smoke
+results into the primary exponent.

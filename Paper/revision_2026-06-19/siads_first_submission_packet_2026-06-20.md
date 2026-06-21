@@ -25,12 +25,12 @@ Official SIADS pages checked on 2026-06-20:
 - SIADS review-preparation PDF build:
   `tmp/paper_build/siads_review/draft_siads_review.pdf`.
 - SIADS review-preparation PDF SHA-256:
-  `74af09e32d5af70bcc59d18b2c333242f88b1192c277b37ed30d2a35994b783d`.
+  `b37f974efc1389d8e63dbd5cb17c743ebafc150d954c7f362921f20ec6653b10`.
 - Current local gate:
   `PASS_WITH_AUTHOR_CONFIRMATION_PENDING_AND_LOCAL_RAW_DATA_LIMITATION`.
 - Current manuscript figures are embedded inline.
-- Current code-verifiable numerical claim audit: 19/19 claims verified.
-- Current availability-path audit: 37/37 paths present and required files
+- Current code-verifiable numerical claim audit: 20/20 claims verified.
+- Current availability-path audit: 38/38 paths present and required files
   git-tracked.
 - Remaining non-local blockers: target confirmation, author metadata,
   funding/competing-interest declarations, professional similarity check, and
@@ -140,7 +140,7 @@ The main contributions are:
 2. high-throughput Monte Carlo evidence that the finite-chain action current
    satisfies E[J(n)] ≈ 28.75 n^{-1.850} over n = 10, 20, 30, 40 under the
    reported parameters, with n = 50 and production-size n = 60 robustness
-   checks and a second bath-temperature robustness run;
+   checks plus bath-temperature and thermostat-coupling robustness runs;
 3. local-equilibrium diagnostics showing that long-chain pair marginals are
    close to rescaled equilibrium marginals at the local kinetic temperature,
    while strict local Gibbs structure fails;

@@ -75,9 +75,10 @@ three-mode chain we validate a neural-network Fokker--Planck solver against the
 explicit Gibbs density, then use it to visualize symmetry breaking,
 phase-locking stabilization, and qualitative slow relaxation modes. The
 transport and local-equilibrium conclusions are supported by reproducible
-simulation code, finite-time diagnostics, a bath-temperature robustness check,
-and larger-chain checks through $n=60$; bath-energy entropy production and
-asymptotic current large deviations are left for future work.
+simulation code, finite-time diagnostics, bath-temperature and
+thermostat-coupling robustness checks, and larger-chain checks through $n=60$;
+bath-energy entropy production and asymptotic current large deviations are
+left for future work.
 \end{abstract}
 
 \noindent\textbf{Keywords.}
@@ -849,6 +850,36 @@ that the faster-than-Fourier finite-size decay is not tied only to the single
 temperature pair $T_1=10,T_n=2$, although it is still not a systematic
 parameter sweep.
 
+We also repeated the same four-length production experiment at the primary
+temperature pair while varying the thermostat coupling.  The generated
+gamma-specific sources are traced to the same frozen canonical source, but the
+primary source file itself is not edited.  At $\gamma=0.05$ the fitted exponent
+is $-1.650$ with bootstrap confidence interval $[-1.668,-1.633]$; at
+$\gamma=0.2$ it is $-1.991$ with confidence interval
+$[-2.017,-1.967]$.  The corresponding maximum first-half/second-half
+stationarity statistics are $1.14$ and $1.74$ paired standard errors.  These
+checks show that the finite-size faster-than-Fourier decay is not an artifact
+of the single thermostat coupling $\gamma=0.1$, while still leaving a
+systematic two-parameter bath study outside the scope of this paper.
+
+\begin{table}[ht]\centering
+\small
+\begin{tabular}{lccc}
+\toprule
+robustness run & exponent & bootstrap $95\%$ CI & log-fit $R^2$ \\
+\midrule
+primary $(T_1,T_n,\gamma)=(10,2,0.1)$ & $-1.850$ & $[-1.870,-1.831]$ & $0.9980$ \\
+same baths, $\gamma=0.05$ & $-1.650$ & $[-1.668,-1.633]$ & $0.9938$ \\
+same baths, $\gamma=0.2$ & $-1.991$ & $[-2.017,-1.967]$ & $0.9996$ \\
+moderate contrast $(T_1,T_n,\gamma)=(8,4,0.1)$ & $-1.751$ & $[-1.780,-1.723]$ & $0.9984$ \\
+\bottomrule
+\end{tabular}
+\caption{Parameter robustness of the four-length current-scaling fit over
+$n=10,20,30,40$.  All rows use the same timestep, measurement window,
+trajectory count, and burn-in schedule as the primary production design.}
+\label{tab:parameter-robustness}
+\end{table}
+
 \Cref{tab:flux-fit-sensitivity} records the finite-size sensitivity of the
 power-law fit. Adding $n=50$ and $n=60$, fitting only the tail
 $n=20,30,40,50,60$, or leaving out any one of the six available lengths all
@@ -1336,9 +1367,17 @@ schedule for the four primary lengths. The fitted exponent is $-1.751$ with boot
 $95\%$ confidence interval $[-1.780,-1.723]$, and the maximum split-window
 stationarity statistic is $1.74$ paired standard errors. This supports the
 claim that the faster decay than Fourier scaling is not tied only to the
-single bath pair $(10,2)$. It is still not a systematic parameter sweep:
-varying the thermostat coupling $\gamma$ and extending the bath grid are
-natural future checks.
+single bath pair $(10,2)$.
+
+The thermostat-coupling robustness runs use the same temperatures
+$(T_1,T_n)=(10,2)$ and repeat the four primary lengths at $\gamma=0.05$ and
+$\gamma=0.2$. The resulting exponents are $-1.650$ and $-1.991$, with
+bootstrap $95\%$ confidence intervals $[-1.668,-1.633]$ and
+$[-2.017,-1.967]$ respectively. The maximum split-window stationarity
+statistics are $1.14$ and $1.74$ paired standard errors. Thus the available
+parameter checks support the faster-than-Fourier finite-size trend across
+both bath contrast and thermostat coupling, but they are still not a
+systematic parameter sweep.
 
 \subsection{Finite-time current distributions}
 \label{app:current-distributions}
@@ -1378,7 +1417,7 @@ canonical simulator, production manifest, larger-chain robustness run,
 fit-window sensitivity analysis, validation report, current-window statistics &
 frozen source/binary hashes; equal-temperature and hot/cold reversal gates;
 trajectory-bootstrap exponent CI; split-window stationarity, timestep pilot,
-bath-temperature robustness check, and fit-window sensitivity &
+bath-temperature and thermostat-coupling robustness checks, and fit-window sensitivity &
 finite-size action-current law over $n=10,20,30,40$, with $n=50$
 and $n=60$ robustness checks \\
 \midrule
@@ -1434,7 +1473,9 @@ repository root. The key reproducibility artifacts are:
   \item current-scaling fit-window sensitivity output:
   \path{Paper/revision_2026-06-19/experiments/flux_validation/larger_n60_pilot_2026-06-20/flux_scaling_sensitivity_n10_60.json};
   \item bath-parameter current-robustness output:
-  \path{Paper/revision_2026-06-19/experiments/flux_validation/parameter_robustness_2026-06-20/moderate_contrast_T8_T4_prod/b64_scaling_scaling.json};
+  \path{Paper/revision_2026-06-19/experiments/flux_validation/parameter_robustness_2026-06-20/moderate_contrast_T8_T4_prod/b64_scaling_scaling.json}
+  and
+  \path{Paper/revision_2026-06-19/experiments/flux_validation/gamma_robustness_2026-06-21/gamma_robustness_scaling.json};
   \item figure-generation script for
   \cref{fig:profile,fig:embedding,fig:lte-resid}:
   \path{Paper/revision_2026-06-19/scripts/generate_manuscript_figures.py};

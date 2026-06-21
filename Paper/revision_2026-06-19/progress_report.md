@@ -58,7 +58,7 @@
     PDF then had 17 pages and the LaTeX log had no unresolved
     citations/references and no overfull or underfull box warnings. Later
     reproducibility-summary and submission-level additions increased the
-    current build artifact to 23 pages.
+    current build artifact to 24 pages.
 13. Resolved two remaining rigor issues in the short-chain section:
     - removed the unsupported quantitative “about 15%” symmetry-breaking claim
       and made the figure caption explicitly qualitative;
@@ -90,9 +90,9 @@
     manuscript continues not to use that result as a claim.
 17. Added `scripts/audit_manuscript_claims.py`, which builds
     `manuscript_claim_audit.json` and `manuscript_claim_audit.md` from the
-    source-traced numerical artifacts. The current audit verifies 19/19 core
-    numerical/data claims after the larger-chain and bath-temperature
-    robustness updates and caught a notation issue in the LTE section:
+    source-traced numerical artifacts. The current audit verifies 20/20 core
+    numerical/data claims after the larger-chain, bath-temperature, and
+    thermostat-coupling robustness updates and caught a notation issue in the LTE section:
     the equilibrium marginal is now written consistently with the manuscript's
     Gibbs convention as `exp[-H/(2T)]`.
 18. Added a compact `Numerical reproducibility summary` table to the manuscript,
@@ -115,7 +115,7 @@
     `scripts/audit_availability_paths.py`, `availability_path_audit.json`, and
     `availability_path_audit.md`. The audit checks every `\path{...}` entry and
     every manuscript figure include; after the 2026-06-20 robustness and
-    submission-readiness passes the current local result is 37/37 paths present
+    submission-readiness passes the current local result is 38/38 paths present
     and tracked. The LaTeX build
     remains clean with no unresolved
     citations/references and no overfull or underfull box warnings after the
@@ -176,7 +176,7 @@
     submission `.tar.gz` under `tmp/` from the release manifest, records an
     archive SHA-256 checksum, and deliberately excludes self-referential
     generated summaries and the large local raw-data roots. The current
-    packaging run includes 276 regular files, has zero missing files, and
+    packaging run includes 316 regular files, has zero missing files, and
     records 44 local raw-data dependency records as
     excluded pending any DOI-backed raw-data archive decision.
 31. Performed a submission-level strengthening pass on 2026-06-20:
@@ -190,7 +190,7 @@
       windows and $\tau\,\mathrm{Var}(\overline J_\tau)$;
     - reran the one-command submission gate, which now reports
       `PASS_WITH_AUTHOR_CONFIRMATION_PENDING_AND_LOCAL_RAW_DATA_LIMITATION`
-      with 37/37 path records available, 19/19 registered numerical claims
+      with 38/38 path records available, 20/20 registered numerical claims
       verified, and 9 author/external submission items pending.
 32. Added `siads_first_submission_packet_2026-06-20.md`, a target-specific
     preparation packet for the recommended first journal target.  It contains a
@@ -206,7 +206,7 @@
     `tmp/paper_build/siads_review/draft_siads_review.pdf`. After the later
     robustness and interpretation edits, the current compiled review PDF is
     24 pages with SHA-256
-    `74af09e32d5af70bcc59d18b2c333242f88b1192c277b37ed30d2a35994b783d`.
+    `b37f974efc1389d8e63dbd5cb17c743ebafc150d954c7f362921f20ec6653b10`.
 34. Strengthened the manuscript narrative so the long-chain and short-chain
     results have a clearer division of labor: the long-chain simulations now
     explicitly provide macroscopic finite-size transport and LTE evidence,
@@ -278,6 +278,18 @@
     smoke tests at `gamma=0.05` and `gamma=0.2`.  This is a production-path
     readiness check only; it is not used as manuscript evidence for the
     current-scaling exponent.
+44. Added `scripts/run_gamma_robustness_production.py` and ran the
+    production-resolution thermostat-coupling robustness check at
+    `gamma=0.05` and `gamma=0.2` for `n=10,20,30,40`, using the same
+    `dt=5e-4`, measurement window, burn-in schedule, and 1024 trajectories per
+    length as the primary production design.  The generated report under
+    `experiments/flux_validation/gamma_robustness_2026-06-21/` passes with
+    exponents `-1.65035` and `-1.99149`, bootstrap 95% CIs
+    `[-1.66794,-1.63333]` and `[-2.01710,-1.96682]`, and maximum
+    split-window stationarity statistics `1.14405` and `1.74247` paired
+    standard errors.  The manuscript now treats these as finite-size
+    parameter-robustness checks, not as an asymptotic theorem or systematic
+    two-parameter sweep.
 
 ## Key validated numerical result
 
@@ -314,8 +326,8 @@ Power-law fit:
   sampled scope, but it is not a corpus-scale similarity report.
 - Rerun the final citation/data/claim/path audit after author declarations and
   any last journal-format edits are settled. The current local core numerical
-  audit passes 19/19 checks, and the current availability-path audit passes
-  37/37 checks. The preferred one-command local gate is now
+  audit passes 20/20 checks, and the current availability-path audit passes
+  38/38 checks. The preferred one-command local gate is now
   `python3 Paper/revision_2026-06-19/scripts/run_submission_checks.py --compile-latex`.
   The reviewer/editor-facing navigation file is
   `submission_reproducibility_readme_2026-06-19.md`; the compiled-PDF layout
@@ -331,7 +343,6 @@ Power-law fit:
   retraining environment if the target journal expects re-training
   reproducibility beyond saved-model inference.
 - Optional numerical strengthening: if time permits before submission, upgrade
-  the smoke-tested thermostat-coupling path to production resolution at
-  `gamma=0.05` or `gamma=0.2`, or upgrade one more bath-parameter pilot to
-  production resolution.  The existing `n=50` and `n=60` larger-chain checks
-  are already included as robustness evidence.
+  one more bath-parameter pilot or one larger-chain fine-timestep point to
+  production resolution.  The existing `n=50`, `n=60`, bath-temperature, and
+  thermostat-coupling checks are already included as robustness evidence.

@@ -26,9 +26,11 @@ requested `n=15` case, a timestep sensitivity table, and finite-window current
 diagnostics.  A later 2026-06-20 current-scaling robustness pass added an
 `n=50` canonical current run, an `n=60` production-size robustness extension,
 a fit-window sensitivity table, a smaller `n=50` fine-timestep pilot, and a
-production-resolution bath-temperature robustness check at `T1=8,Tn=4`.  The
-latest path audit checks 37/37 manuscript paths and figures, and the numerical
-claim audit checks 19/19 registered claims.
+production-resolution bath-temperature robustness check at `T1=8,Tn=4`.  A
+2026-06-21 pass added production-resolution thermostat-coupling robustness
+checks at `gamma=0.05` and `gamma=0.2`.  The latest path audit checks 38/38
+manuscript paths and figures, and the numerical claim audit checks 20/20
+registered claims.
 
 ## 1. Decisions needed from the authors
 
@@ -211,7 +213,8 @@ The main contributions are:
 1. formulation and validation of a Gibbs-preserving two-bath numerical model;
 2. high-throughput finite-chain simulations showing an action-current scaling
    E[J(n)] ≈ 28.75 n^{-1.850} over n = 10, 20, 30, 40 under the reported
-   parameters, with larger-chain and bath-temperature robustness checks;
+   parameters, with larger-chain, bath-temperature, and thermostat-coupling
+   robustness checks;
 3. local-equilibrium diagnostics for long-chain pair marginals, including
    explicit limitations where strict local Gibbs structure fails;
 4. source-traced short-chain neural Fokker--Planck diagnostics, including
@@ -249,8 +252,8 @@ python3 Paper/revision_2026-06-19/scripts/run_submission_checks.py --compile-lat
 
 currently returns
 PASS_WITH_AUTHOR_CONFIRMATION_PENDING_AND_LOCAL_RAW_DATA_LIMITATION: the
-manuscript compiles, the local numerical claim audit passes 19/19 checks, the
-path audit passes 37/37 checks, and the release bundle has no missing or
+manuscript compiles, the local numerical claim audit passes 20/20 checks, the
+path audit passes 38/38 checks, and the release bundle has no missing or
 untracked required files. The author/submission-field audit records 9 pending
 author or external-service items. A local upload-ready raw-data `.tar.gz` can
 now be built from the 40-file manifest, but a DOI-backed raw-data archive has

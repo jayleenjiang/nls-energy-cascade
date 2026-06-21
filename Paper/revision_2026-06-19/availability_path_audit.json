@@ -1,6 +1,6 @@
 {
   "draft": "Paper/revision_2026-06-19/draft.tex",
-  "generated_at_utc": "2026-06-21T01:35:57.582245+00:00",
+  "generated_at_utc": "2026-06-21T02:46:36.719332+00:00",
   "missing_paths": 0,
   "records": [
     {
@@ -106,6 +106,17 @@
       "exists": true,
       "git_tracked": true,
       "kind": "availability",
+      "manuscript_path": "Paper/revision_2026-06-19/experiments/flux_validation/gamma_robustness_2026-06-21/gamma_robustness_scaling.json",
+      "path_type": "file",
+      "resolution_rule": "repo-root-relative",
+      "resolved_path": "Paper/revision_2026-06-19/experiments/flux_validation/gamma_robustness_2026-06-21/gamma_robustness_scaling.json",
+      "sha256": "9cb11ab853252729896c62f86efa989ab8f73e0a985153ebfe4e4e5d3ef682d5",
+      "size_bytes": 36092
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "kind": "availability",
       "manuscript_path": "Paper/revision_2026-06-19/scripts/generate_manuscript_figures.py",
       "path_type": "file",
       "resolution_rule": "repo-root-relative",
@@ -198,8 +209,8 @@
       "path_type": "file",
       "resolution_rule": "repo-root-relative",
       "resolved_path": "Paper/revision_2026-06-19/scripts/audit_manuscript_claims.py",
-      "sha256": "16639a9221f5c666c447832e60c42859d49f6fac205346c9cfef257708ba7297",
-      "size_bytes": 31517
+      "sha256": "664179e9637aa41ef8360a3539271d8f2647a4113576206ef014bccbd8c0e3bc",
+      "size_bytes": 34405
     },
     {
       "exists": true,
@@ -209,8 +220,8 @@
       "path_type": "file",
       "resolution_rule": "repo-root-relative",
       "resolved_path": "Paper/revision_2026-06-19/manuscript_claim_audit.json",
-      "sha256": "def33f52e18c1ab41fd3d110dc3f7b7986329e70abead1bc12b7bb7fe5c70961",
-      "size_bytes": 52699
+      "sha256": "601498b135515db218407f6933ddabeb5fef17d4343f93ec28a8dc34bd4d768a",
+      "size_bytes": 57078
     },
     {
       "exists": true,
@@ -220,8 +231,8 @@
       "path_type": "file",
       "resolution_rule": "repo-root-relative",
       "resolved_path": "Paper/revision_2026-06-19/manuscript_claim_audit.md",
-      "sha256": "9b925321c5a3575f8dd14493ee6ecb92446c2c2d84ada14d5377b521db45a113",
-      "size_bytes": 6312
+      "sha256": "63eb0b5120ddfce82e22a6433683da06d4877e80a961e97dff1100dbf05948ce",
+      "size_bytes": 8077
     },
     {
       "exists": true,
@@ -243,7 +254,7 @@
       "resolution_rule": "repo-root-relative",
       "resolved_path": "Paper/revision_2026-06-19/availability_path_audit.json",
       "sha256": null,
-      "size_bytes": 16332
+      "size_bytes": 16886
     },
     {
       "exists": true,
@@ -254,7 +265,7 @@
       "resolution_rule": "repo-root-relative",
       "resolved_path": "Paper/revision_2026-06-19/availability_path_audit.md",
       "sha256": null,
-      "size_bytes": 7584
+      "size_bytes": 7889
     },
     {
       "exists": true,
@@ -275,8 +286,8 @@
       "path_type": "file",
       "resolution_rule": "repo-root-relative",
       "resolved_path": "Paper/revision_2026-06-19/integrity_audit_2026-06-19.md",
-      "sha256": "30401bca5bc53675eaa5717008c8e46a43531b95b2982de3882c6efd02007488",
-      "size_bytes": 17495
+      "sha256": "2bdd39820c572d4019bc5d434a4364420637d192b4d9d0ff9eb4ff0b3e34eb69",
+      "size_bytes": 17544
     },
     {
       "exists": true,
@@ -412,6 +423,6 @@
     }
   ],
   "script": "Paper/revision_2026-06-19/scripts/audit_availability_paths.py",
-  "total_paths": 37,
+  "total_paths": 38,
   "untracked_files": 0
 }

@@ -2,8 +2,8 @@
 
 Scope: `Paper/revision_2026-06-19/draft.tex` and the synchronized
 `draft_siads_review.tex` after the larger-chain `n=50`, production-size
-`n=60`, and bath-temperature robustness extensions, fit-window sensitivity,
-and fine-timestep checks.
+`n=60`, bath-temperature and thermostat-coupling robustness extensions,
+fit-window sensitivity, and fine-timestep checks.
 
 This audit separates items that are locally complete from items that still
 require author, journal, or external-service action.  It is intentionally
@@ -27,15 +27,15 @@ Key gate numbers:
 |---|---|
 | LaTeX/log scans | PASS for `draft.tex` and `draft_siads_review.tex`, `issues=0` in both logs |
 | Compiled PDF artifact audit | PASS, `2/2` local PDFs verified with page counts, sizes, and SHA-256 checksums |
-| Availability/path audit | PASS, `37/37` paths present, `0` untracked required files |
-| Numerical claim audit | PASS, `19/19` claims verified |
+| Availability/path audit | PASS, `38/38` paths present, `0` untracked required files |
+| Numerical claim audit | PASS, `20/20` claims verified |
 | Reference integrity audit | PASS, `8` cited BibTeX entries, `0` dangling citations |
 | Author/submission-field audit | `AUTHOR_CONFIRMATION_PENDING`, `9` pending author/external items |
 | Raw-data archive manifest | PASS locally, `40` unique referenced files, `138,875,181` bytes |
 | Raw-data archive build | PASS locally, upload-ready `.tar.gz` prepared under `tmp/`, DOI/upload still external |
-| Submission bundle manifest | `PASS_WITH_LOCAL_RAW_DATA_LIMITATION`, `107` release files, `0` missing, `0` untracked release files |
+| Submission bundle manifest | `PASS_WITH_LOCAL_RAW_DATA_LIMITATION`, `121` release files, `0` missing, `0` untracked release files |
 | Submission metadata consistency audit | PASS, `21` handoff metadata checks over `9` documents |
-| Source-only bundle dry run | PASS, `276` included files |
+| Source-only bundle dry run | PASS, `316` included files |
 | SIADS cover-letter template build | PASS locally; template PDF contains placeholders and is not final |
 | Journal upload package build | PASS locally, SIADS repository-route package written under `tmp/journal_upload_package/runs/` |
 
@@ -53,11 +53,12 @@ one-command local gate:
 The core numerical thesis is now appropriately scoped.  The main transport
 claim remains the production fit over `n=10,20,30,40`; the new `n=50` and
 `n=60` experiments are explicitly described as larger-chain robustness checks,
-and the `T1=8,Tn=4` production-resolution run is described as a
-bath-temperature robustness check.  Together with the fit-window sensitivity
-analysis and a smaller `n=50` fine-step pilot at `dt=2.5e-4`, this avoids the
-most likely reviewer objections that larger lengths or alternate bath
-parameters have been over-promoted to an asymptotic law.
+and the `T1=8,Tn=4` production-resolution run plus the `gamma=0.05` and
+`gamma=0.2` production-resolution runs are described as finite-size parameter
+robustness checks.  Together with the fit-window sensitivity analysis and a
+smaller `n=50` fine-step pilot at `dt=2.5e-4`, this avoids the most likely
+reviewer objections that larger lengths or alternate bath parameters have been
+over-promoted to an asymptotic law.
 
 ### Current-scaling vulnerability
 
@@ -79,6 +80,17 @@ under `experiments/flux_validation/parameter_robustness_2026-06-20/`.  The
 standard errors.  It supports the faster-than-Fourier finite-size trend under a
 second bath-temperature pair, while the manuscript explicitly stops short of a
 systematic parameter sweep.
+
+A production-resolution thermostat-coupling robustness check has also been
+recorded under
+`experiments/flux_validation/gamma_robustness_2026-06-21/`.  At
+`T1=10,Tn=2`, the `gamma=0.05` run gives exponent `-1.65035` with bootstrap
+95% CI `[-1.66794,-1.63333]`, while the `gamma=0.2` run gives exponent
+`-1.99149` with bootstrap 95% CI `[-2.01710,-1.96682]`.  The maximum
+split-window stationarity statistics are `1.14405` and `1.74247` paired
+standard errors.  These checks support the manuscript's narrower statement
+that the faster-than-Fourier finite-size trend is not tied only to
+`gamma=0.1`, while still stopping short of a systematic two-parameter sweep.
 
 ### Short-chain mechanism vulnerability
 

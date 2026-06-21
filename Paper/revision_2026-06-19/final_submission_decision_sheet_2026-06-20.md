@@ -30,14 +30,14 @@ Key numbers from the current gate:
 | Item | Current value |
 |---|---:|
 | LaTeX/log checks | `draft.tex` PASS; `draft_siads_review.tex` PASS |
-| Availability paths checked | 37/37 |
-| Registered numerical claims verified | 19/19 |
+| Availability paths checked | 38/38 |
+| Registered numerical claims verified | 20/20 |
 | Cited BibTeX entries | 8 |
 | Dangling citations | 0 |
 | Compiled PDF artifact audit | 2/2 PDFs verified |
-| Release-bundle files | 107 |
+| Release-bundle files | 121 |
 | Missing release files | 0 |
-| Source-only bundle included files | 276 |
+| Source-only bundle included files | 316 |
 | Minimal raw-data subset | 40 files, 138,875,181 bytes |
 | Author/submission-field audit | 9 pending author/external items |
 
@@ -46,7 +46,7 @@ The SIADS review-preparation source compiles locally:
 - source: `Paper/revision_2026-06-19/draft_siads_review.tex`
 - PDF: `tmp/paper_build/siads_review/draft_siads_review.pdf`
 - PDF SHA-256:
-  `74af09e32d5af70bcc59d18b2c333242f88b1192c277b37ed30d2a35994b783d`
+  `b37f974efc1389d8e63dbd5cb17c743ebafc150d954c7f362921f20ec6653b10`
 - PDF pages: 24
 
 The current upload-facing local file index is
@@ -67,11 +67,12 @@ The current manuscript now has:
 3. larger-chain robustness at `n=50` and production-size `n=60`;
 4. timestep and burn-in/stationarity diagnostics;
 5. a second bath-temperature robustness run at `T1=8,Tn=4`;
-6. LTE pair-marginal diagnostics with the residual mesh figure;
-7. carefully scoped finite-window current statistics;
-8. short-chain Fokker--Planck/neural/eigenfunction diagnostics framed as a
+6. thermostat-coupling robustness runs at `gamma=0.05` and `gamma=0.2`;
+7. LTE pair-marginal diagnostics with the residual mesh figure;
+8. carefully scoped finite-window current statistics;
+9. short-chain Fokker--Planck/neural/eigenfunction diagnostics framed as a
    mechanism study rather than proof of the long-chain exponent;
-9. reproducibility, path, claim, reference, bundle, and raw-data manifests.
+10. reproducibility, path, claim, reference, bundle, and raw-data manifests.
 
 Formal submission status: **not yet**.  The remaining blockers are not local
 numerical failures; they are author/journal/external-verification items.
@@ -175,7 +176,9 @@ These are not blockers for the current finite-size manuscript as written, but
 they would strengthen a more ambitious version:
 
 1. production or medium-production larger-chain current runs at `n=70,80,100`;
-2. a small systematic bath-parameter sweep beyond `T1=10,Tn=2` and `T1=8,Tn=4`;
+2. a broader systematic two-parameter bath sweep beyond the checked
+   `T1=10,Tn=2`, `T1=8,Tn=4`, `gamma=0.05`, `gamma=0.1`, and `gamma=0.2`
+   finite-size runs;
 3. an LTE residual-norm table complementing the residual mesh figure;
 4. a separate bath-energy accumulator for entropy production and
    Gallavotti--Cohen diagnostics.
