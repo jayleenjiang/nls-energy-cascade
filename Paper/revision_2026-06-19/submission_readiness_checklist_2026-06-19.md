@@ -59,9 +59,18 @@ primary lengths.  A later 2026-06-21 pass added a matched production-resolution
 three additional verified transport references.  The latest one-command gate
 reports
 `PASS_WITH_AUTHOR_CONFIRMATION_PENDING_AND_LOCAL_RAW_DATA_LIMITATION` with
-40/40 availability path records present and git-tracked, 23/23 registered
+43/43 availability path records present and git-tracked, 23/23 registered
 numerical claims verified, 9 author/external submission items pending, and zero
 missing release-bundle files.
+
+## 2026-06-22 submission-content strengthening update
+
+The manuscript now includes a formal equilibrium-consistency proposition for
+the Gibbs-preserving bath, a table of source-traced LTE residual-mesh RMS
+diagnostics, a production-resolution `n=50,60` fine-step comparison table, and
+a canonical finite-time current-distribution table/figure.  The new canonical
+distribution PDF and tail-summary CSV are tracked release artifacts and are
+listed in the data/code availability statement.
 
 ## 2026-06-20 larger-chain robustness update
 
@@ -178,7 +187,7 @@ as the preliminary venue-decision aid.
      replace the GitHub-only availability statement with DOI-backed language.
    - Decide whether large local raw-data roots (`Energy Cascade/`, `KDE/`, and
      `lte/`) should be archived outside GitHub. The current bundle manifest
-     records 44 local source-trace raw-data dependency records that exist
+     records 50 local source-trace raw-data dependency records that exist
      locally but are not git-tracked; the raw-data archive manifest
      deduplicates these to 42 unique files totaling 151,605,557 bytes.
 

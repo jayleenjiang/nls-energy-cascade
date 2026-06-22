@@ -162,6 +162,8 @@ def build_registry() -> list[dict[str, Any]]:
     flux_path = REVISION / "experiments/flux_validation/production_dt5e-4/flux_primary_scaling.json"
     validation_path = REVISION / "experiments/flux_validation/validation_report.md"
     window_path = REVISION / "experiments/flux_validation/production_dt5e-4/current_windows_window_statistics.csv"
+    canonical_current_distribution_path = REVISION / "report_assets/canonical_flux_distribution.pdf"
+    canonical_current_tail_path = REVISION / "report_assets/canonical_flux_distribution_tail_summary.csv"
     larger_n_dir = REVISION / "experiments/flux_validation/larger_n_pilot_2026-06-20"
     larger_n_scaling_path = larger_n_dir / "n10_50_b64_scaling_scaling.json"
     larger_n_summary_path = larger_n_dir / "n50_b64_summary.csv"
@@ -213,6 +215,21 @@ def build_registry() -> list[dict[str, Any]]:
     rerun = load_json(rerun_path)
     eigen = load_json(eigen_path)
     window = read_window_stats(window_path)
+    with canonical_current_tail_path.open() as f:
+        canonical_tail_rows = list(csv.DictReader(f))
+    canonical_tail = {
+        int(row["n"]): {
+            "samples": int(row["N"]),
+            "mean": float(row["mean"]),
+            "std": float(row["std"]),
+            "skew": float(row["skew"]),
+            "lambda": float(row["lambda"]),
+            "r2": float(row["r2"]),
+            "fit_x_min": float(row["fit_x_min"]),
+            "fit_x_max": float(row["fit_x_max"]),
+        }
+        for row in canonical_tail_rows
+    }
     larger_n_scaling = load_json(larger_n_scaling_path)
     larger_n_summary = read_summary(larger_n_summary_path)
     larger_n_fine = read_summary(larger_n_fine_path)
@@ -378,6 +395,7 @@ def build_registry() -> list[dict[str, Any]]:
             r"standard error $0.00040$",
             r"$-1.56$ paired standard errors",
             r"$3.6\%$ upward shift, or $1.12$",
+            r"\label{tab:production-fine-step}",
             r"$\E[J(50)]=0.01931\pm0.00086$",
             r"$n=50$ and $n=60$ computations as evidence against",
         ],
@@ -444,6 +462,7 @@ def build_registry() -> list[dict[str, Any]]:
             r"standard error $0.00037$",
             r"$-0.87$ paired standard errors",
             r"$3.5\%$ upward shift, or $0.78$ pooled",
+            r"\label{tab:production-fine-step}",
             r"\E[J(n)] \;=\; 35.94\,n^{-1.930}",
             r"$[-1.954,-1.906]$",
             r"$n=50$ and $n=60$ computations as evidence against",
@@ -621,12 +640,24 @@ def build_registry() -> list[dict[str, Any]]:
         claim_id="finite_window_current_statistics",
         section="finite-time current fluctuations",
         claim="Finite-window current statistics at n=40 are descriptive, not a large-deviation claim.",
-        evidence=[window_path],
+        evidence=[
+            window_path,
+            canonical_current_distribution_path,
+            canonical_current_tail_path,
+        ],
         expected_text=[
             r"$\Pr(\overline J_\tau<0)$ decreases from $0.233$ at $\tau=50$ to $0.026$ at",
             r"($0.010$, $0.024$, $0.075$ for the three windows)",
             r"($0.095$, $0.067$, $0.048$)",
             r"not infer an asymptotic large-deviation",
+            r"\label{tab:canonical-current-tail}",
+            r"\label{fig:canonical-current-distribution}",
+            r"all four fits have $R^2\ge 0.986$",
+            r"10 & 1024 & 0.3925 & 0.0605 & 30.5",
+            r"20 & 1024 & 0.1192 & 0.0294 & 63.5",
+            r"30 & 1024 & 0.0546 & 0.0198 & 90.5",
+            r"40 & 1024 & 0.0297 & 0.0154 & 121.0",
+            r"not extrapolated to an asymptotic current large-deviation",
         ],
         computed={
             str(tau): {
@@ -635,7 +666,8 @@ def build_registry() -> list[dict[str, Any]]:
                 "window_times_variance": w40[tau]["window_times_variance"],
             }
             for tau in (50, 100, 200)
-        },
+        }
+        | {"canonical_tail": canonical_tail},
     )
 
     profiles = figures["action_profiles"]["metrics"]
@@ -762,6 +794,13 @@ def build_registry() -> list[dict[str, Any]]:
             r"and $0.116$",
             r"descriptive checks on the figure",
             r"not substitutes for the fixed LTE estimator",
+            r"\label{tab:lte-mesh-rms}",
+            r"15 & $(4,5)$",
+            r"4809 & 0.254 & 0.248",
+            r"25 & $(6,7)$",
+            r"4040 & 0.199 & 0.194",
+            r"50 & $(12,13)$",
+            r"2891 & 0.138 & 0.116",
         ],
         computed={
             "matlab_convention": mesh_metrics["matlab_convention"],
@@ -963,6 +1002,8 @@ def build_registry() -> list[dict[str, Any]]:
             r"\path{Paper/revision_2026-06-19/eigen_fit_sensitivity.json}",
             r"\path{Paper/revision_2026-06-19/scripts/analyze_flux_scaling_sensitivity.py}",
             r"\path{Paper/revision_2026-06-19/experiments/flux_validation/larger_n60_pilot_2026-06-20/flux_scaling_sensitivity_n10_60.json}",
+            r"\path{Paper/revision_2026-06-19/report_assets/canonical_flux_distribution.pdf}",
+            r"\path{Paper/revision_2026-06-19/report_assets/canonical_flux_distribution_tail_summary.csv}",
             r"\path{Paper/revision_2026-06-19/experiments/flux_validation/parameter_robustness_2026-06-20/moderate_contrast_T8_T4_prod/b64_scaling_scaling.json}",
             r"\path{Paper/revision_2026-06-19/experiments/flux_validation/gamma_robustness_2026-06-21/gamma_robustness_scaling.json}",
             r"\path{Paper/revision_2026-06-19/scripts/audit_availability_paths.py}",

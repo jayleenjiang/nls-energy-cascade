@@ -25,18 +25,18 @@ in `target_journal_policy_refresh_2026-06-22.md`.
 
 - Recommended first target: SIADS.
 - Current manuscript format: generic `article`; the current
-  SIADS review-preparation PDF is 27 pages.
+  SIADS review-preparation PDF is 28 pages.
 - SIADS review-preparation source:
   `Paper/revision_2026-06-19/draft_siads_review.tex`.
 - SIADS review-preparation PDF build:
   `tmp/paper_build/siads_review/draft_siads_review.pdf`.
 - SIADS review-preparation PDF SHA-256:
-  `9dc6635c46dcddd4f8d45a584629d9c3878aba016ca4675c409654b601327f91`.
+  `f85aa910afdadfb2112589191405a3d75f5cac978cd3ac6add87284149be4bfc`.
 - Current local gate:
   `PASS_WITH_AUTHOR_CONFIRMATION_PENDING_AND_LOCAL_RAW_DATA_LIMITATION`.
 - Current manuscript figures are embedded inline.
 - Current code-verifiable numerical claim audit: 23/23 claims verified.
-- Current availability-path audit: 40/40 paths present and required files
+- Current availability-path audit: 43/43 paths present and required files
   git-tracked.
 - Remaining non-local blockers: target confirmation, author metadata,
   funding/competing-interest declarations, professional similarity check, and

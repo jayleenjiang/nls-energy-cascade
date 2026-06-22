@@ -200,6 +200,31 @@ $T_1=T_n=T$ the system admits the explicit Gibbs invariant density
   \rho_{\mathrm{eq}}(\bI,\bphi) \;\propto\; \exp\!\big(-H(\bI,\bphi)/2T\big).
 \end{equation}
 
+\begin{proposition}[Equilibrium consistency of the bath]\label{prop:gibbs-bath}
+Assume $T_1=T_n=T$ and impose the natural no-flux boundary condition at
+$I_j=0$. For every smooth observable $f$ that is periodic in the angles and
+compactly supported in the action variables,
+\[
+  \int \Lgen f(\bI,\bphi)\,\rho_{\mathrm{eq}}(\bI,\bphi)\,\dd\bI\,\dd\bphi=0,
+\]
+where $\Lgen$ is the generator of \eqref{eq:sde-bulk}--\eqref{eq:bath}. Hence
+\eqref{eq:gibbs} is a stationary density for the equal-temperature process,
+provided the process is nonexplosive.
+\end{proposition}
+
+\begin{proof}
+Split $\Lgen$ into the Hamiltonian transport and the two endpoint bath
+operators. The Hamiltonian vector field is divergence-free in
+$(\bI,\bphi)$ and conserves $H$, so its adjoint annihilates every density that
+is a function of $H$. At each endpoint, the drift and diffusion coefficients in
+\eqref{eq:bath} are in fluctuation--dissipation balance with inverse
+temperature $1/(2T)$; a direct integration-by-parts calculation, with the
+no-flux condition at $I_j=0$, shows that the endpoint adjoint also annihilates
+$\exp(-H/2T)$. When $T_1=T_n=T$, the two endpoint calculations use the same
+temperature and summing the adjoint contributions gives
+$\Ladj\rho_{\mathrm{eq}}=0$ in the weak sense above.
+\end{proof}
+
 \begin{remark}[Choice of thermostat]\label{rem:bath}
 The analysis of \cite{HLNS} uses a different thermostat---dissipation of the form
 $\gamma(T_j-I_j^3)$ with a tailored multiplicative angle noise---chosen to make
@@ -830,6 +855,27 @@ respectively; on the core subregion $I_a,I_b<2.5$ they are $0.248$, $0.194$,
 and $0.116$. These mesh-slice norms are descriptive checks on the figure, not
 substitutes for the fixed LTE estimator in \cref{tab:lte,tab:lte-resid-decomp}.
 
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{rrrrrr}
+\toprule
+$n$ & pair $(j,j+1)$ & fitted $x$ & displayed bins & slice RMS & core RMS \\
+\midrule
+15 & $(4,5)$   & 0.796 & 4809 & 0.254 & 0.248 \\
+25 & $(6,7)$   & 0.780 & 4040 & 0.199 & 0.194 \\
+50 & $(12,13)$ & 0.841 & 2891 & 0.138 & 0.116 \\
+\bottomrule
+\end{tabular}
+\caption{Source-traced diagnostics for the MATLAB-style residual-mesh slices in
+\cref{fig:lte-resid-mesh}. The fitted slope $x$ is the least-squares
+rescaling used for the displayed mesh. The slice RMS uses all displayed bins
+under the \texttt{compare\_residual.m} mask; the core RMS restricts further to
+$I_a,I_b<2.5$. These diagnostics quantify the plotted residual surfaces and
+are not used in place of the weighted-core LTE estimator in \cref{tab:lte}.}
+\label{tab:lte-mesh-rms}
+\end{table}
+
 \begin{figure}[ht]
   \centering
   \includegraphics[width=\textwidth]{report_assets/compare_residual_mesh.pdf}
@@ -1441,6 +1487,26 @@ equal to $0.78$ pooled standard errors. The production step
 $\Delta t=5\times10^{-4}$ is therefore retained for the matched main
 finite-size law, while the coarser step is excluded.
 
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{rrrrrr}
+\toprule
+$n$ & $J_{5\times10^{-4}}$ & $J_{2.5\times10^{-4}}$
+& relative shift & pooled-SE shift & fine split $z$ \\
+\midrule
+50 & $0.01852\pm0.00044$ & $0.01918\pm0.00040$ & $+3.6\%$ & 1.12 & $-1.56$ \\
+60 & $0.01245\pm0.00042$ & $0.01288\pm0.00037$ & $+3.5\%$ & 0.78 & $-0.87$ \\
+\bottomrule
+\end{tabular}
+\caption{Production-resolution fine-step checks for the larger-chain current
+extensions. The relative shift compares $\Delta t=2.5\times10^{-4}$ to the
+production step $\Delta t=5\times10^{-4}$; the pooled-SE shift divides this
+difference by the pooled standard error. The final column is the
+first-half/second-half stationarity statistic for the fine-step run.}
+\label{tab:production-fine-step}
+\end{table}
+
 The burn-in schedule is scaled with the observed relaxation time. For the
 primary production lengths, splitting every trajectory into first-half and
 second-half measurement windows gives a maximum discrepancy of $0.90$ paired
@@ -1499,6 +1565,46 @@ $\tau=200$, while $\tau\,\mathrm{Var}(\overline J_\tau)$ decreases rather than
 plateaus over the available windows. For this reason the manuscript reports
 the distributions descriptively and leaves asymptotic current tails and
 bath-energy entropy production to future work.
+
+As a separate finite-window check, the canonical current simulator also stores
+one $\tau=200$ current sample per trajectory for $n=10,20,30,40$. The histogram
+and survival plot in \cref{fig:canonical-current-distribution} show a
+well-resolved upper middle tail over the production sample. Fitting
+$\log\Pr[J>x]$ by a line over the reported survival-window range gives the
+descriptive rates in \cref{tab:canonical-current-tail}. The fits are useful
+for comparing finite-time shapes across $n$, but they are not extrapolated to
+an asymptotic current large-deviation principle.
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{rrrrrrc}
+\toprule
+$n$ & samples & mean $J$ & std & $\lambda$ & $R^2$ & fit window in $x$ \\
+\midrule
+10 & 1024 & 0.3925 & 0.0605 & 30.5  & 0.9911 & $[0.443,\,0.550]$ \\
+20 & 1024 & 0.1192 & 0.0294 & 63.5  & 0.9865 & $[0.145,\,0.194]$ \\
+30 & 1024 & 0.0546 & 0.0198 & 90.5  & 0.9968 & $[0.071,\,0.110]$ \\
+40 & 1024 & 0.0297 & 0.0154 & 121.0 & 0.9877 & $[0.043,\,0.069]$ \\
+\bottomrule
+\end{tabular}
+\caption{Canonical finite-time current-distribution summary for one
+$\tau=200$ sample per trajectory. The tail rate $\lambda$ is the slope
+magnitude from a linear fit of $\log\Pr[J>x]$ over the displayed upper
+middle-tail window; all four fits have $R^2\ge 0.986$.}
+\label{tab:canonical-current-tail}
+\end{table}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\textwidth]{report_assets/canonical_flux_distribution.pdf}
+  \caption{Canonical finite-time action-current distributions for
+  $n=10,20,30,40$. Left: empirical probability densities of the trajectory
+  averaged current. Right: survival plots with the same descriptive
+  upper-middle-tail exponential fits reported in
+  \cref{tab:canonical-current-tail}.}
+  \label{fig:canonical-current-distribution}
+\end{figure}
 
 \subsection{Short-chain solver diagnostics}
 \label{app:short-chain-diagnostics}
@@ -1643,6 +1749,11 @@ repository root. The key reproducibility artifacts are:
   \path{Paper/revision_2026-06-19/experiments/flux_validation/};
   \item current-scaling fit-window sensitivity output:
   \path{Paper/revision_2026-06-19/experiments/flux_validation/larger_n60_pilot_2026-06-20/flux_scaling_sensitivity_n10_60.json};
+  \item canonical finite-time current-distribution figure and tail-summary
+  table:
+  \path{Paper/revision_2026-06-19/report_assets/canonical_flux_distribution.pdf}
+  and
+  \path{Paper/revision_2026-06-19/report_assets/canonical_flux_distribution_tail_summary.csv};
   \item bath-parameter current-robustness output:
   \path{Paper/revision_2026-06-19/experiments/flux_validation/parameter_robustness_2026-06-20/moderate_contrast_T8_T4_prod/b64_scaling_scaling.json}
   and

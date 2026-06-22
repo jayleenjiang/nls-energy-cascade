@@ -58,7 +58,7 @@
     PDF then had 17 pages and the LaTeX log had no unresolved
     citations/references and no overfull or underfull box warnings. Later
     reproducibility-summary and submission-level additions increased the
-    current build artifact to 27 pages.
+    current build artifact to 28 pages.
 13. Resolved two remaining rigor issues in the short-chain section:
     - removed the unsupported quantitative “about 15%” symmetry-breaking claim
       and made the figure caption explicitly qualitative;
@@ -115,7 +115,7 @@
     `scripts/audit_availability_paths.py`, `availability_path_audit.json`, and
     `availability_path_audit.md`. The audit checks every `\path{...}` entry and
     every manuscript figure include; after the 2026-06-20 robustness and
-    submission-readiness passes the current local result is 40/40 paths present
+    submission-readiness passes the current local result is 43/43 paths present
     and tracked. The LaTeX build
     remains clean with no unresolved
     citations/references and no overfull or underfull box warnings after the
@@ -159,7 +159,7 @@
     purpose of each audit/manifest artifact, the raw-data archive convention,
     and the remaining author/journal-only items.
 28. Added `pdf_layout_qa_2026-06-19.md`, a compiled-PDF layout QA record. The
-    generic `article` PDF builds to 18 A4 pages with no scanned LaTeX warnings,
+    generic `article` PDF builds to 28 A4 pages with no scanned LaTeX warnings,
     overfull/underfull boxes, unresolved-reference markers, placeholder tokens,
     blank pages, obvious clipping, or visible figure/table rendering failures in
     the rendered-page inspection.
@@ -176,8 +176,8 @@
     submission `.tar.gz` under `tmp/` from the release manifest, records an
     archive SHA-256 checksum, and deliberately excludes self-referential
     generated summaries and the large local raw-data roots. The current
-    packaging run includes 324 regular files, has zero missing files, and
-    records 44 local raw-data dependency records as
+    packaging run includes 326 regular files, has zero missing files, and
+    records 50 local raw-data dependency records as
     excluded pending any DOI-backed raw-data archive decision.
 31. Performed a submission-level strengthening pass on 2026-06-20:
     - added a Monte Carlo validation and uncertainty-protocol subsection to
@@ -190,7 +190,7 @@
       windows and $\tau\,\mathrm{Var}(\overline J_\tau)$;
     - reran the one-command submission gate, which now reports
       `PASS_WITH_AUTHOR_CONFIRMATION_PENDING_AND_LOCAL_RAW_DATA_LIMITATION`
-      with 40/40 path records available, 23/23 registered numerical claims
+      with 43/43 path records available, 23/23 registered numerical claims
       verified, and 9 author/external submission items pending.
 32. Added `siads_first_submission_packet_2026-06-20.md`, a target-specific
     preparation packet for the recommended first journal target.  It contains a
@@ -205,8 +205,8 @@
     `lineno`, keywords, and MSC candidates.  It compiles cleanly to
     `tmp/paper_build/siads_review/draft_siads_review.pdf`. After the later
     robustness and interpretation edits, the current compiled review PDF is
-    27 pages with SHA-256
-    `9dc6635c46dcddd4f8d45a584629d9c3878aba016ca4675c409654b601327f91`.
+    28 pages with SHA-256
+    `f85aa910afdadfb2112589191405a3d75f5cac978cd3ac6add87284149be4bfc`.
 34. Strengthened the manuscript narrative so the long-chain and short-chain
     results have a clearer division of labor: the long-chain simulations now
     explicitly provide macroscopic finite-size transport and LTE evidence,
@@ -352,6 +352,15 @@
     flags SIAM's May 2026 AI disclosure policy, and keeps professional
     similarity screening, author declarations, and the raw-data release route
     as non-local blockers.
+53. Added a final submission-content strengthening pass to both `draft.tex` and
+    `draft_siads_review.tex`: a formal equilibrium-consistency proposition for
+    the Gibbs-preserving bath, a source-traced LTE residual-mesh RMS table, a
+    production-resolution `n=50,60` fine-step table, and a canonical
+    finite-time current-distribution table/figure with the supporting
+    `canonical_flux_distribution.pdf` and tail-summary CSV staged as tracked
+    release artifacts.  The claim audit still verifies 23/23 registered
+    numerical/data claims, the availability-path audit now checks 43/43 paths,
+    and the current source-bundle prediction is 326 regular files.
 
 ## Key validated numerical result
 
@@ -389,7 +398,7 @@ Power-law fit:
 - Rerun the final citation/data/claim/path audit after author declarations and
   any last journal-format edits are settled. The current local core numerical
   audit passes 23/23 checks, and the current availability-path audit passes
-  40/40 checks. The preferred one-command local gate is now
+  43/43 checks. The preferred one-command local gate is now
   `python3 Paper/revision_2026-06-19/scripts/run_submission_checks.py --compile-latex`.
   The reviewer/editor-facing navigation file is
   `submission_reproducibility_readme_2026-06-19.md`; the compiled-PDF layout
@@ -398,7 +407,7 @@ Power-law fit:
   packaging report is `submission_source_bundle_report.md`.
 - Decide whether the final release should include only the audited derived
   artifacts in GitHub or also a DOI-backed raw-data archive. The bundle
-  manifest currently flags 44 local raw-data dependency records that are not
+  manifest currently flags 50 local raw-data dependency records that are not
   git-tracked; the raw-data archive manifest deduplicates them to 42 unique
   files totaling 151,605,557 bytes.
 - Optional but recommended before final release: package a full TensorFlow

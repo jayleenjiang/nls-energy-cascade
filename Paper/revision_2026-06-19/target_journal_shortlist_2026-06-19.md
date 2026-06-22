@@ -17,7 +17,7 @@ Current manuscript profile:
   Fokker--Planck/neural diagnostics, reproducibility audits;
 - current local gate status:
   `PASS_WITH_AUTHOR_CONFIRMATION_PENDING_AND_LOCAL_RAW_DATA_LIMITATION`;
-- current 27-page generic article build remains within the practical
+- current 28-page generic article build remains within the practical
   first-review length range for the listed targets;
 - remaining non-local decisions: author declarations, professional
   similarity/self-plagiarism check, journal template, and possible DOI-backed
@@ -220,7 +220,7 @@ author pages for the leading candidates:
   cover letter PDFs at submission, requires inline figures, encourages SIAM
   macros, and generally expects manuscripts not to exceed 40 pages or 10 MB
   without cover-letter justification.  SIADS also requires an index if
-  supplementary materials are submitted.  The current 27-page generic article
+  supplementary materials are submitted.  The current 28-page generic article
   draft is therefore comfortably within the length/file-size envelope; the main
   remaining SIADS-specific work is template/line-number conversion and a
   supplementary-material index if the authors choose to submit raw data or code
@@ -260,7 +260,7 @@ Practical consequences:
 - the current line-numbered `draft_siads_review.tex` is a valid
   review-preparation fallback when SIAM multimedia macros are not used, but it
   is not a final SIAM macro conversion;
-- the current 27-page audited PDF remains safely within SIADS' general
+- the current 28-page audited PDF remains safely within SIADS' general
   40-page / 10 MB expectation;
 - the SIADS supplement route requires a clear index if code/data are submitted
   directly with the journal;

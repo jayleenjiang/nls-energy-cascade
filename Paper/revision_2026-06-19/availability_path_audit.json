@@ -1,6 +1,6 @@
 {
   "draft": "Paper/revision_2026-06-19/draft.tex",
-  "generated_at_utc": "2026-06-22T04:47:24.075549+00:00",
+  "generated_at_utc": "2026-06-22T05:24:49.844070+00:00",
   "missing_paths": 0,
   "records": [
     {
@@ -90,6 +90,28 @@
       "resolved_path": "Paper/revision_2026-06-19/experiments/flux_validation/larger_n60_pilot_2026-06-20/flux_scaling_sensitivity_n10_60.json",
       "sha256": "19315bf86b68abcb1f2a49c9bdc730ce87d1ab3a1f6e2e5f5d7efaa21a78292c",
       "size_bytes": 7107
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "kind": "availability",
+      "manuscript_path": "Paper/revision_2026-06-19/report_assets/canonical_flux_distribution.pdf",
+      "path_type": "file",
+      "resolution_rule": "repo-root-relative",
+      "resolved_path": "Paper/revision_2026-06-19/report_assets/canonical_flux_distribution.pdf",
+      "sha256": "5e62ab69ca55f2f67e82746d4f101a5fa99c0e08f0c52131c52a9cd709dcb7ce",
+      "size_bytes": 40511
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "kind": "availability",
+      "manuscript_path": "Paper/revision_2026-06-19/report_assets/canonical_flux_distribution_tail_summary.csv",
+      "path_type": "file",
+      "resolution_rule": "repo-root-relative",
+      "resolved_path": "Paper/revision_2026-06-19/report_assets/canonical_flux_distribution_tail_summary.csv",
+      "sha256": "4937cb25c1c879f7a813f8ba6ff63c895877ae25aac680ae49c45c114c61a95f",
+      "size_bytes": 631
     },
     {
       "exists": true,
@@ -231,8 +253,8 @@
       "path_type": "file",
       "resolution_rule": "repo-root-relative",
       "resolved_path": "Paper/revision_2026-06-19/scripts/audit_manuscript_claims.py",
-      "sha256": "e3e4039efde6ca5ac764c46b1c97ae648141b47bfa00b63c42bedea030bdf105",
-      "size_bytes": 42460
+      "sha256": "2791f81956781743d0b62a76c72788a4e3c459d057f9828f1a9b5c8b30c28ec8",
+      "size_bytes": 44349
     },
     {
       "exists": true,
@@ -242,8 +264,8 @@
       "path_type": "file",
       "resolution_rule": "repo-root-relative",
       "resolved_path": "Paper/revision_2026-06-19/manuscript_claim_audit.json",
-      "sha256": "bc725d3d3edb109bcd19982a41580752f15dcbcd6c9faa5537732460363a03b7",
-      "size_bytes": 74769
+      "sha256": "c9d7dca2ea5c2694388b10f86adc542f6c6fcae507bd8b442667c3093a6b91ba",
+      "size_bytes": 78825
     },
     {
       "exists": true,
@@ -253,8 +275,8 @@
       "path_type": "file",
       "resolution_rule": "repo-root-relative",
       "resolved_path": "Paper/revision_2026-06-19/manuscript_claim_audit.md",
-      "sha256": "1e242a3f501c78fa861a65aabf6407c1a93e885e892c522ffc764cf17a75dd34",
-      "size_bytes": 10015
+      "sha256": "faeed1a06597b2afafd0e54f5c7f8f4d0b99baa55098ea3bac481c6e7a0342c3",
+      "size_bytes": 10182
     },
     {
       "exists": true,
@@ -276,7 +298,7 @@
       "resolution_rule": "repo-root-relative",
       "resolved_path": "Paper/revision_2026-06-19/availability_path_audit.json",
       "sha256": null,
-      "size_bytes": 17844
+      "size_bytes": 19261
     },
     {
       "exists": true,
@@ -287,7 +309,7 @@
       "resolution_rule": "repo-root-relative",
       "resolved_path": "Paper/revision_2026-06-19/availability_path_audit.md",
       "sha256": null,
-      "size_bytes": 8349
+      "size_bytes": 9021
     },
     {
       "exists": true,
@@ -308,8 +330,8 @@
       "path_type": "file",
       "resolution_rule": "repo-root-relative",
       "resolved_path": "Paper/revision_2026-06-19/integrity_audit_2026-06-19.md",
-      "sha256": "6ee20377a9d658aef4fc0316d543d3fc04ce1378d9eac7ce66b3733ecfc7c866",
-      "size_bytes": 17944
+      "sha256": "2179f8666bb5470cc484015eae29985caf92587a1d9e4b6146ab54fcbaaa7d51",
+      "size_bytes": 17976
     },
     {
       "exists": true,
@@ -442,9 +464,20 @@
       "resolved_path": "Paper/revision_2026-06-19/Q1_slices.png",
       "sha256": "daa934ee72a192913d66d5663ebcf160739dcd529bc2a0d87cd790be51431a89",
       "size_bytes": 78729
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "kind": "figure",
+      "manuscript_path": "report_assets/canonical_flux_distribution.pdf",
+      "path_type": "file",
+      "resolution_rule": "latex-source-relative",
+      "resolved_path": "Paper/revision_2026-06-19/report_assets/canonical_flux_distribution.pdf",
+      "sha256": "5e62ab69ca55f2f67e82746d4f101a5fa99c0e08f0c52131c52a9cd709dcb7ce",
+      "size_bytes": 40511
     }
   ],
   "script": "Paper/revision_2026-06-19/scripts/audit_availability_paths.py",
-  "total_paths": 40,
+  "total_paths": 43,
   "untracked_files": 0
 }
