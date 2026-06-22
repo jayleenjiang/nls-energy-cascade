@@ -1,10 +1,12 @@
-# Target-journal shortlist — updated 2026-06-20
+# Target-journal shortlist — updated 2026-06-22
 
 Scope: preliminary target-journal shortlist for
 `Paper/revision_2026-06-19/draft.tex`, based on official journal or publisher
-pages checked on 2026-06-19 and spot-verified again for the top candidates on
-2026-06-20.  This is not a submission decision; it is a decision aid for the
-authors.
+pages checked on 2026-06-19, spot-verified again for the top candidates on
+2026-06-20, and SIADS-refreshed against official SIAM/SIADS policy pages on
+2026-06-22.  This is not a submission decision; it is a decision aid for the
+authors.  The SIADS-specific policy refresh is recorded in
+`target_journal_policy_refresh_2026-06-22.md`.
 
 Current manuscript profile:
 
@@ -245,6 +247,27 @@ author pages for the leading candidates:
 preference, prepare the next version for SIADS first.  Do not convert the class
 file until the authors confirm this target; the current generic article PDF is
 better for internal review and coauthor comments.
+
+## 2026-06-22 SIADS policy refresh
+
+The SIADS-first recommendation remains unchanged after a fresh check of the
+official SIADS journal page, SIADS editorial policy, SIADS instructions for
+authors, SIAM journal-author page, and SIAM AI policy.  The detailed refresh is
+recorded in `target_journal_policy_refresh_2026-06-22.md`.
+
+Practical consequences:
+
+- the current line-numbered `draft_siads_review.tex` is a valid
+  review-preparation fallback when SIAM multimedia macros are not used, but it
+  is not a final SIAM macro conversion;
+- the current 27-page audited PDF remains safely within SIADS' general
+  40-page / 10 MB expectation;
+- the SIADS supplement route requires a clear index if code/data are submitted
+  directly with the journal;
+- the AI-use statement should be revised to match SIAM's May 2026 policy before
+  upload;
+- professional similarity/self-plagiarism screening and author declarations
+  remain non-local blockers.
 
 ## Template/conversion checklist after target selection
 

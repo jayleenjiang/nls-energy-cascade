@@ -35,9 +35,9 @@ Key numbers from the current gate:
 | Cited BibTeX entries | 11 |
 | Dangling citations | 0 |
 | Compiled PDF artifact audit | 2/2 PDFs verified |
-| Release-bundle files | 127 |
+| Release-bundle files | 128 |
 | Missing release files | 0 |
-| Source-only bundle included files | 323 |
+| Source-only bundle included files | 324 |
 | Minimal raw-data subset | 42 files, 151,605,557 bytes |
 | Author/submission-field audit | 9 pending author/external items |
 
@@ -86,13 +86,14 @@ Recommended first practical target from the current packet: SIADS.
 Files to use:
 
 - `target_journal_shortlist_2026-06-19.md`
+- `target_journal_policy_refresh_2026-06-22.md`
 - `siads_first_submission_packet_2026-06-20.md`
 
 Decision needed:
 
 - submit first to SIADS, or choose another target;
 - if SIADS is chosen, decide whether to keep the current line-numbered review
-  source or convert to official SIAM macros before upload.
+  source or convert to official SIAM multimedia macros before upload.
 
 ### 2. Author metadata
 

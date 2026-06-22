@@ -33,9 +33,9 @@ Key gate numbers:
 | Author/submission-field audit | `AUTHOR_CONFIRMATION_PENDING`, `9` pending author/external items |
 | Raw-data archive manifest | PASS locally, `42` unique referenced files, `151,605,557` bytes |
 | Raw-data archive build | PASS locally, upload-ready `.tar.gz` prepared under `tmp/`, DOI/upload still external |
-| Submission bundle manifest | `PASS_WITH_LOCAL_RAW_DATA_LIMITATION`, `127` release files, `0` missing, `0` untracked release files |
+| Submission bundle manifest | `PASS_WITH_LOCAL_RAW_DATA_LIMITATION`, `128` release files, `0` missing, `0` untracked release files |
 | Submission metadata consistency audit | PASS, `21` handoff metadata checks over `9` documents |
-| Source-only bundle dry run | PASS, `323` included files |
+| Source-only bundle dry run | PASS, `324` included files |
 | SIADS cover-letter template build | PASS locally; template PDF contains placeholders and is not final |
 | Journal upload package build | PASS locally, SIADS repository-route package written under `tmp/journal_upload_package/runs/` |
 

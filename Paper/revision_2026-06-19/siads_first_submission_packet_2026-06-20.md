@@ -8,12 +8,18 @@ This packet does **not** mean the manuscript has been converted or submitted.
 It translates the current generic, locally checked manuscript into the concrete
 SIADS-facing tasks that remain after author confirmation.
 
-Official SIADS pages checked on 2026-06-20:
+Official SIADS pages checked on 2026-06-20 and refreshed against current
+SIAM/SIADS policy pages on 2026-06-22.  The detailed policy refresh is recorded
+in `target_journal_policy_refresh_2026-06-22.md`.
 
 - Journal page:
   <https://www.siam.org/publications/siam-journals/siam-journal-on-applied-dynamical-systems/>
 - Instructions for authors:
   <https://epubs.siam.org/journal/siads/instructions-for-authors>
+- Editorial policy:
+  <https://epubs.siam.org/journal/siads/editorial-policy>
+- SIAM AI policy:
+  <https://epubs.siam.org/artificial-intelligence>
 
 ## Current readiness snapshot
 
@@ -69,7 +75,8 @@ Complete these only after the authors confirm SIADS as the target.
    - Confirm funding statement.
    - Confirm competing-interest statement.
    - Confirm author-contribution statement.
-   - Confirm AI-assisted-preparation wording against SIAM's current AI policy.
+   - Confirm AI-assisted-preparation wording against SIAM's May 2026 AI policy,
+     including the authors' responsibility for all content.
 
 5. **Supplementary material**
    - Decide whether to submit supplementary files to SIADS or instead cite a

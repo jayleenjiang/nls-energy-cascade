@@ -1,14 +1,14 @@
 {
   "checks": [
     {
-      "expected": "| Release-bundle files | 127 |",
+      "expected": "| Release-bundle files | 128 |",
       "issue": "",
       "label": "final decision release count",
       "path": "Paper/revision_2026-06-19/final_submission_decision_sheet_2026-06-20.md",
       "status": "PASS"
     },
     {
-      "expected": "| Source-only bundle included files | 323 |",
+      "expected": "| Source-only bundle included files | 324 |",
       "issue": "",
       "label": "final decision source count",
       "path": "Paper/revision_2026-06-19/final_submission_decision_sheet_2026-06-20.md",
@@ -22,14 +22,14 @@
       "status": "PASS"
     },
     {
-      "expected": "| Release-bundle files | 127 |",
+      "expected": "| Release-bundle files | 128 |",
       "issue": "",
       "label": "upload index release count",
       "path": "Paper/revision_2026-06-19/journal_upload_file_index_2026-06-20.md",
       "status": "PASS"
     },
     {
-      "expected": "| Source-bundle included files | 323 |",
+      "expected": "| Source-bundle included files | 324 |",
       "issue": "",
       "label": "upload index source count",
       "path": "Paper/revision_2026-06-19/journal_upload_file_index_2026-06-20.md",
@@ -64,7 +64,7 @@
       "status": "PASS"
     },
     {
-      "expected": "packaging run includes 323 regular files",
+      "expected": "packaging run includes 324 regular files",
       "issue": "",
       "label": "progress report source count",
       "path": "Paper/revision_2026-06-19/progress_report.md",
@@ -92,14 +92,14 @@
       "status": "PASS"
     },
     {
-      "expected": "`PASS_WITH_LOCAL_RAW_DATA_LIMITATION`, `127` release files, `0` missing, `0` untracked release files",
+      "expected": "`PASS_WITH_LOCAL_RAW_DATA_LIMITATION`, `128` release files, `0` missing, `0` untracked release files",
       "issue": "",
       "label": "final audit release count",
       "path": "Paper/revision_2026-06-19/final_pre_submission_audit_2026-06-20.md",
       "status": "PASS"
     },
     {
-      "expected": "PASS, `323` included files",
+      "expected": "PASS, `324` included files",
       "issue": "",
       "label": "final audit source count",
       "path": "Paper/revision_2026-06-19/final_pre_submission_audit_2026-06-20.md",
@@ -148,14 +148,14 @@
       "status": "PASS"
     }
   ],
-  "generated_at_utc": "2026-06-21T14:06:45.769549+00:00",
+  "generated_at_utc": "2026-06-22T04:47:26.150740+00:00",
   "script": "Paper/revision_2026-06-19/scripts/audit_submission_metadata_consistency.py",
   "status": "PASS",
   "summary": {
     "checked_documents": 9,
     "failed_checks": 0,
-    "predicted_source_bundle_included_count": 323,
-    "release_file_count": 127,
+    "predicted_source_bundle_included_count": 324,
+    "release_file_count": 128,
     "total_checks": 21
   },
   "values": {
@@ -176,8 +176,8 @@
       "source_exists": true,
       "status": "PASS"
     },
-    "predicted_source_bundle_included_count": 323,
-    "release_file_count": 127,
+    "predicted_source_bundle_included_count": 324,
+    "release_file_count": 128,
     "siads_pdf": {
       "bytes_from_log": 1587312,
       "bytes_match_log": true,

@@ -176,7 +176,7 @@
     submission `.tar.gz` under `tmp/` from the release manifest, records an
     archive SHA-256 checksum, and deliberately excludes self-referential
     generated summaries and the large local raw-data roots. The current
-    packaging run includes 323 regular files, has zero missing files, and
+    packaging run includes 324 regular files, has zero missing files, and
     records 44 local raw-data dependency records as
     excluded pending any DOI-backed raw-data archive decision.
 31. Performed a submission-level strengthening pass on 2026-06-20:
@@ -345,6 +345,13 @@
     RMS values are `0.248`, `0.194`, and `0.116`.  The manuscript now reports
     these as descriptive checks on the figure while keeping the fixed
     weighted-core LTE estimator as the quantitative table estimator.
+52. Added `target_journal_policy_refresh_2026-06-22.md`, a fresh official-page
+    SIADS/SIAM policy check for the recommended first target.  The refresh
+    confirms that SIADS remains the practical first venue, records the
+    line-numbered review-source fallback versus SIAM multimedia macro option,
+    flags SIAM's May 2026 AI disclosure policy, and keeps professional
+    similarity screening, author declarations, and the raw-data release route
+    as non-local blockers.
 
 ## Key validated numerical result
 
@@ -392,7 +399,7 @@ Power-law fit:
 - Decide whether the final release should include only the audited derived
   artifacts in GitHub or also a DOI-backed raw-data archive. The bundle
   manifest currently flags 44 local raw-data dependency records that are not
-  git-tracked; the raw-data archive manifest deduplicates them to 40 unique
+  git-tracked; the raw-data archive manifest deduplicates them to 42 unique
   files totaling 151,605,557 bytes.
 - Optional but recommended before final release: package a full TensorFlow
   retraining environment if the target journal expects re-training

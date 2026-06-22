@@ -34,6 +34,7 @@ paper can be called journal-ready.
 | Final author/journal information request | Prepared as a concise fillable form mapped to `author_submission_fields_template.json` | `final_author_submission_fields_request_2026-06-20.md` |
 | Author-field application workflow | Prepared; dry-run-first and backup-on-apply | `author_submission_fields_template.json`; `scripts/apply_author_submission_fields.py` |
 | Target-journal shortlist | Prepared from official pages; requires author choice | `target_journal_shortlist_2026-06-19.md` |
+| Target-journal policy refresh | SIADS-first recommendation rechecked against current official SIAM/SIADS policy pages | `target_journal_policy_refresh_2026-06-22.md`; `target_journal_shortlist_2026-06-19.md`; `siads_first_submission_packet_2026-06-20.md` |
 | SIADS-first submission packet | Prepared for the recommended first target; requires author confirmation before use | `siads_first_submission_packet_2026-06-20.md` |
 | Originality pre-screen | Clean within sampled web-query scope | `originality_spotcheck_2026-06-19.md` |
 
@@ -119,6 +120,16 @@ bootstrap 95% CI `[-2.01710,-1.96682]`.  The maximum split-window
 stationarity statistics are `1.14405` and `1.74247` paired standard errors.
 The manuscript uses these as finite-size parameter-robustness checks only, not
 as a systematic two-parameter bath sweep.
+
+## 2026-06-22 SIADS policy refresh
+
+The SIADS-first submission plan was rechecked against the official SIADS journal
+page, editorial policy, instructions for authors, SIAM journal-author page, and
+SIAM AI policy.  The recommendation remains SIADS first, with the following
+practical requirements still outside local code/data control: author-confirmed
+declarations, SIAM-compatible AI-use wording, professional similarity screening,
+target confirmation, and the GitHub-only versus DOI-backed raw-data route.
+Details are recorded in `target_journal_policy_refresh_2026-06-22.md`.
 
 ## Author confirmations still required
 
