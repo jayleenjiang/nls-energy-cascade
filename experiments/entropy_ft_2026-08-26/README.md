@@ -154,6 +154,12 @@ From the repository root, the post-run commands are:
   --minimum-raw-count 5 \
   --tail-probability-max 0.01
 
+/opt/homebrew/bin/python3 flux/audit_entropy_ft_analysis.py \
+  experiments/entropy_ft_2026-08-26/production \
+  --analysis-dir experiments/entropy_ft_2026-08-26/production/analysis \
+  --supplement-dir experiments/entropy_ft_2026-08-26/production/supplement \
+  --output-prefix experiments/entropy_ft_2026-08-26/production/analysis_audit
+
 /opt/homebrew/bin/python3 flux/build_entropy_ft_report.py \
   --run-dir experiments/entropy_ft_2026-08-26/production \
   --analysis-dir experiments/entropy_ft_2026-08-26/production/analysis \
