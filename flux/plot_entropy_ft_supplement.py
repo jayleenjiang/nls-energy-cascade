@@ -331,10 +331,87 @@ def plot_symmetry_slopes(
         axis.set_title(title)
         axis.set_xlabel(r"$1/t$")
         axis.set_ylabel("raw symmetry slope")
+        axis.set_xlim(0.0, 0.055)
         axis.grid(alpha=0.2)
     fig.tight_layout()
     fig.savefig(output_dir / f"all_symmetry_slopes_n{n}.png", dpi=220)
     fig.savefig(output_dir / f"all_symmetry_slopes_n{n}.pdf")
+    plt.close(fig)
+
+
+def plot_time_dependence_summary(
+    output_dir: Path,
+    n: int,
+    entropy_rows: list[dict[str, str]],
+    heat_rows: list[dict[str, str]],
+    action_rows: list[dict[str, str]],
+    negative_rows: list[dict[str, object]],
+) -> None:
+    fig, axes = plt.subplots(2, 2, figsize=(10.8, 8.0))
+    for axis, rows, target, title in [
+        (axes[0, 0], entropy_rows, 1.0, "medium-entropy symmetry"),
+        (axes[0, 1], heat_rows, 0.4, "bath-heat symmetry"),
+        (axes[1, 0], action_rows, None, "action-current symmetry"),
+    ]:
+        selected = sorted(
+            (
+                row
+                for row in rows
+                if int(row["n"]) == n and math.isfinite(float(row["ft_slope"]))
+            ),
+            key=lambda row: float(row["tau"]),
+        )
+        if selected:
+            tau = np.asarray([float(row["tau"]) for row in selected])
+            slope = np.asarray([float(row["ft_slope"]) for row in selected])
+            low = np.asarray([float(row["ft_slope_ci_low"]) for row in selected])
+            high = np.asarray([float(row["ft_slope_ci_high"]) for row in selected])
+            error = np.vstack([slope - low, high - slope])
+            error[~np.isfinite(error)] = 0.0
+            axis.errorbar(1.0 / tau, slope, yerr=error, fmt="o-", capsize=3)
+        if target is not None:
+            axis.axhline(target, color="k", linestyle="--", label=f"reference {target:g}")
+            axis.legend(fontsize=8)
+        axis.set_title(title)
+        axis.set_xlabel(r"$1/t$")
+        axis.set_ylabel("raw symmetry slope")
+        axis.set_xlim(0.0, 0.055)
+        axis.grid(alpha=0.2)
+
+    probability_axis = axes[1, 1]
+    for observable, label in [
+        ("entropy_rate", r"$\Sigma_t^{\rm m}/t$"),
+        ("heat_current", r"$J_E(t)$"),
+        ("action_current", r"$J_M(t)$"),
+    ]:
+        selected = sorted(
+            (
+                row
+                for row in negative_rows
+                if int(row["n"]) == n and row["observable"] == observable
+            ),
+            key=lambda row: float(row["tau"]),
+        )
+        if selected:
+            probability = np.asarray(
+                [float(row["negative_probability"]) for row in selected]
+            )
+            probability[probability <= 0.0] = np.nan
+            probability_axis.semilogy(
+                [float(row["tau"]) for row in selected],
+                probability,
+                "o-",
+                label=label,
+            )
+    probability_axis.set_title("negative-event resolution")
+    probability_axis.set_xlabel(r"averaging time $t$")
+    probability_axis.set_ylabel(r"raw $P(X_t<0)$")
+    probability_axis.grid(alpha=0.2)
+    probability_axis.legend(fontsize=8)
+    fig.suptitle(rf"time dependence for $n={n}$")
+    fig.tight_layout()
+    fig.savefig(output_dir / f"time_dependence_summary_n{n}.png", dpi=220)
+    fig.savefig(output_dir / f"time_dependence_summary_n{n}.pdf")
     plt.close(fig)
 
 
@@ -417,6 +494,14 @@ def main() -> None:
             for n in chain_lengths:
                 plot_symmetry_slopes(
                     args.output_dir, n, entropy_rows, heat_rows, action_rows
+                )
+                plot_time_dependence_summary(
+                    args.output_dir,
+                    n,
+                    entropy_rows,
+                    heat_rows,
+                    action_rows,
+                    negative_rows,
                 )
     for n in chain_lengths:
         plot_negative_probability(args.output_dir, n, negative_rows)

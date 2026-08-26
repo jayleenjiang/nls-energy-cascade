@@ -91,6 +91,22 @@ will be reported only where raw positive and negative bin counts pass the
 predeclared effective-count threshold; plus-four probabilities are for plots,
 never for the inferential fit.
 
+The pilot also predeclares the expected resolution limit of the production
+sample.  Using 50 effective negative events as the minimum for a two-sided
+fit, the largest likely resolvable averaging windows are:
+
+| observable | n=10 | n=20 | n=30 | n=40 |
+|---|---:|---:|---:|---:|
+| medium entropy rate | 40 | 80 | 120 | 200 |
+| action-current rate | 40 | 120 | 200 | 200 |
+
+All requested windows through `t=200` are still generated.  A window beyond
+this forecast is reported as unresolved if the production run contains too few
+raw negative events; plus-four smoothing is not used to convert that censoring
+into a fitted result.  Extending those short-chain, long-time tails by direct
+sampling would require exponentially more trajectories and is a separate
+rare-event calculation rather than a reason to alter the predeclared fit rule.
+
 ## Analysis outputs
 
 Source: `../../flux/analyze_entropy_ft.py`.

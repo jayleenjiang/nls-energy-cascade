@@ -328,6 +328,13 @@ def main() -> None:
         )
         lines.append(
             figure_block(
+                args.supplement_dir / f"time_dependence_summary_n{n}.pdf",
+                args.output_dir,
+                f"Symmetry slopes and raw negative-event resolution versus averaging time for $n={n}$.  Missing points have insufficient two-sided raw support.",
+            )
+        )
+        lines.append(
+            figure_block(
                 args.analysis_dir / f"heat_action_coupling_n{n}.pdf",
                 args.output_dir,
                 f"Joint bath-heat/action-current sample for $n={n}$.",
