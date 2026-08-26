@@ -13,6 +13,7 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
+from scipy.optimize import least_squares
 from scipy.stats import norm
 
 from analyze_entropy_ft import aggregate_blocks, load_run
@@ -28,6 +29,12 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--threshold-step", type=float, default=0.01)
     parser.add_argument("--minimum-raw-count", type=int, default=5)
+    parser.add_argument(
+        "--tail-probability-max",
+        type=float,
+        default=0.01,
+        help="largest raw one-sided probability admitted to the descriptive tail fit",
+    )
     return parser.parse_args()
 
 
@@ -80,7 +87,9 @@ def survival_rows(
 
 
 def tail_fit_metrics(
-    rows: list[dict[str, object]], minimum_raw_count: int
+    rows: list[dict[str, object]],
+    minimum_raw_count: int,
+    tail_probability_max: float,
 ) -> dict[str, float]:
     usable_plus = [
         row
@@ -105,7 +114,7 @@ def tail_fit_metrics(
         ]
         return float(math.sqrt(np.mean(np.square(differences)))) if differences else float("nan")
 
-    return {
+    result = {
         "plus_log_survival_rmse_vs_normal": rmse(
             usable_plus, "p_plus_raw", "p_plus_normal"
         ),
@@ -115,6 +124,92 @@ def tail_fit_metrics(
         "plus_thresholds_used": len(usable_plus),
         "minus_thresholds_used": len(usable_minus),
     }
+
+    # Fit one Gaussian jointly to the two empirical tails.  Using a shared
+    # (mu, sigma) is deliberate: fitting each side independently could make an
+    # asymmetric distribution look Gaussian.  This is a descriptive fit only;
+    # threshold exceedance estimates are nested and therefore correlated.
+    fit_plus = [
+        row
+        for row in usable_plus
+        if 0.0 < float(row["p_plus_raw"]) <= tail_probability_max
+    ]
+    fit_minus = [
+        row
+        for row in usable_minus
+        if 0.0 < float(row["p_minus_raw"]) <= tail_probability_max
+    ]
+    mean = float(rows[0]["mean"]) if rows else float("nan")
+    std = float(rows[0]["std"]) if rows else float("nan")
+    result.update(
+        {
+            "sample_count": int(rows[0]["n_samples"]) if rows else 0,
+            "sample_mu": mean,
+            "sample_sigma": std,
+            "tail_probability_max": tail_probability_max,
+            "joint_tail_fit_mu": float("nan"),
+            "joint_tail_fit_sigma": float("nan"),
+            "joint_tail_fit_success": 0,
+            "joint_tail_fit_plus_points": len(fit_plus),
+            "joint_tail_fit_minus_points": len(fit_minus),
+            "joint_tail_fit_plus_log_rmse": float("nan"),
+            "joint_tail_fit_minus_log_rmse": float("nan"),
+        }
+    )
+    if len(fit_plus) < 2 or len(fit_minus) < 2 or len(fit_plus) + len(fit_minus) < 6:
+        return result
+    if not math.isfinite(std) or std <= 0.0:
+        return result
+
+    def residual(parameters: np.ndarray) -> np.ndarray:
+        mu = float(parameters[0])
+        sigma = float(math.exp(parameters[1]))
+        values = [
+            norm.logsf(float(row["A"]), loc=mu, scale=sigma)
+            - math.log(float(row["p_plus_raw"]))
+            for row in fit_plus
+        ]
+        values.extend(
+            norm.logcdf(-float(row["A"]), loc=mu, scale=sigma)
+            - math.log(float(row["p_minus_raw"]))
+            for row in fit_minus
+        )
+        return np.asarray(values, dtype=float)
+
+    fitted = least_squares(
+        residual,
+        np.asarray([mean, math.log(std)]),
+        bounds=(np.asarray([-np.inf, -20.0]), np.asarray([np.inf, 20.0])),
+        method="trf",
+    )
+    fitted_mu = float(fitted.x[0])
+    fitted_sigma = float(math.exp(fitted.x[1]))
+
+    def fitted_rmse(items: list[dict[str, object]], side: str) -> float:
+        if side == "plus":
+            differences = [
+                norm.logsf(float(row["A"]), loc=fitted_mu, scale=fitted_sigma)
+                - math.log(float(row["p_plus_raw"]))
+                for row in items
+            ]
+        else:
+            differences = [
+                norm.logcdf(-float(row["A"]), loc=fitted_mu, scale=fitted_sigma)
+                - math.log(float(row["p_minus_raw"]))
+                for row in items
+            ]
+        return float(math.sqrt(np.mean(np.square(differences))))
+
+    result.update(
+        {
+            "joint_tail_fit_mu": fitted_mu,
+            "joint_tail_fit_sigma": fitted_sigma,
+            "joint_tail_fit_success": int(fitted.success),
+            "joint_tail_fit_plus_log_rmse": fitted_rmse(fit_plus, "plus"),
+            "joint_tail_fit_minus_log_rmse": fitted_rmse(fit_minus, "minus"),
+        }
+    )
+    return result
 
 
 def plot_two_tail_survival(
@@ -278,7 +373,11 @@ def main() -> None:
                     "source": str(path),
                     "n": n,
                     "tau": tau,
-                    **tail_fit_metrics(rows, args.minimum_raw_count),
+                    **tail_fit_metrics(
+                        rows,
+                        args.minimum_raw_count,
+                        args.tail_probability_max,
+                    ),
                 }
             )
             for observable in ["entropy_rate", "heat_current", "action_current"]:

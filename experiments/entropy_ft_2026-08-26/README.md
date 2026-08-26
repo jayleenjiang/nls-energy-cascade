@@ -100,7 +100,8 @@ The `analysis_v2/` directory contains:
 - symmetric-bin diagnostics for medium entropy, bath heat, and action current;
 - both-tail survival probabilities on an `A=0.01,0.02,...` grid;
 - raw and plus-four probabilities;
-- fitted-normal survival benchmarks for both action-current tails;
+- full-sample normal survival benchmarks and a shared-parameter descriptive
+  Gaussian fit to both raw action-current tails;
 - stream-bootstrap confidence intervals;
 - action/heat correlation and residual-variance diagnostics;
 - stationarity and sample-size tables.
@@ -150,7 +151,8 @@ From the repository root, the post-run commands are:
   --output-dir experiments/entropy_ft_2026-08-26/production/supplement \
   --taus 20,40,60,80,100,120,140,160,180,200 \
   --threshold-step 0.01 \
-  --minimum-raw-count 5
+  --minimum-raw-count 5 \
+  --tail-probability-max 0.01
 
 /opt/homebrew/bin/python3 flux/build_entropy_ft_report.py \
   --run-dir experiments/entropy_ft_2026-08-26/production \

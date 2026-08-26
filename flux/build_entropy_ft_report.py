@@ -236,6 +236,43 @@ def main() -> None:
             r"}",
             r"\caption{Raw-count-qualified action-current symmetry fits.}",
             r"\end{table}",
+            r"\subsection*{Descriptive Gaussian tail fit}",
+            r"In addition to the Gaussian benchmark fixed by the full-sample mean and "
+            r"variance, one Gaussian is fitted jointly to both raw tails with one-sided "
+            r"probabilities at most $0.01$.  The shared parameters prevent independent "
+            r"fits from hiding positive/negative-tail asymmetry.  Because exceedance "
+            r"probabilities at adjacent thresholds are nested and correlated, the fit is "
+            r"a descriptive shape diagnostic rather than a formal goodness-of-fit test.",
+            r"\begin{table}[H]",
+            r"\centering\small",
+            r"\resizebox{\textwidth}{!}{%",
+            r"\begin{tabular}{rrrrrrrrr}",
+            r"\toprule",
+            r"$n$ & $N$ & sample $\mu$ & sample $\sigma$ & tail $\mu$ & tail $\sigma$ & "
+            r"RMSE$_+$ & RMSE$_-$ & points $(+/-)$ \\ ",
+            r"\midrule",
+        ]
+    )
+
+    for row in tails:
+        if float(row["tau"]) != 20.0:
+            continue
+        lines.append(
+            f"{row['n']} & {int(row['sample_count']):,} & {fmt(row['sample_mu'])} & "
+            f"{fmt(row['sample_sigma'])} & {fmt(row['joint_tail_fit_mu'])} & "
+            f"{fmt(row['joint_tail_fit_sigma'])} & "
+            f"{fmt(row['joint_tail_fit_plus_log_rmse'])} & "
+            f"{fmt(row['joint_tail_fit_minus_log_rmse'])} & "
+            f"{row['joint_tail_fit_plus_points']}/{row['joint_tail_fit_minus_points']} \\\\"
+        )
+    lines.extend(
+        [
+            r"\bottomrule",
+            r"\end{tabular}",
+            r"}",
+            r"\caption{Joint two-tail Gaussian fit for the base $t=20$ blocks.  RMSE is "
+            r"computed on the log-probability scale over the fitted tail window.}",
+            r"\end{table}",
             r"\section*{Heat--action coupling}",
             r"Tight coupling would require more than a large Pearson correlation: the "
             r"heat-on-action regression must be stable with $t$, and the residual variance "
