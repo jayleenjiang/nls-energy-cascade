@@ -109,3 +109,56 @@ The pilot source hashes and exact parameters are recorded in
 `pilot/pilot_manifest.txt`.  Raw production blocks remain local because their
 expected size is several hundred megabytes; source, manifests, summaries, and
 curated figures are the GitHub-facing reproducibility artifacts.
+
+## Production acceptance protocol
+
+The production directory is not considered a scientific result merely because
+the sampler processes exit successfully.  Acceptance requires all of the
+following gates, in this order:
+
+1. `production_manifest.txt` contains `completed_utc` and no `failed_utc`.
+2. Each of `n10`, `n20`, `n30`, and `n40` contains exactly 1,000,064 finite
+   blocks with the declared stream/block ordering.
+3. The recorded entropy and energy-balance columns recompute from
+   `Q_left`, `Q_right`, and `delta_energy` to numerical tolerance; all midpoint
+   solves succeed; the balance RMS rate remains below the declared audit
+   threshold.
+4. The source hashes in the launch manifest still match the sampler and core
+   analyzer used for the run.
+5. Symmetry fits use raw nonzero counts on both sides.  Plus-four estimates are
+   display-only, and missing rare tails remain missing rather than being
+   extrapolated into evidence.
+6. The final interpretation checks the trend with averaging time, the number of
+   negative events, normal-tail residuals, and heat--action residual variance.
+   A failed unit-slope check for medium entropy is reported as “not verified in
+   the sampled window,” because the NESS system-entropy endpoint term has not
+   been reconstructed.
+
+From the repository root, the post-run commands are:
+
+```bash
+/opt/homebrew/bin/python3 flux/audit_entropy_ft_run.py \
+  experiments/entropy_ft_2026-08-26/production \
+  --expected-blocks 1000064 \
+  --require-completed \
+  --require-hash-match \
+  --output-prefix experiments/entropy_ft_2026-08-26/production/audit
+
+/opt/homebrew/bin/python3 flux/plot_entropy_ft_supplement.py \
+  experiments/entropy_ft_2026-08-26/production/n*_blocks.csv \
+  --analysis-dir experiments/entropy_ft_2026-08-26/production/analysis \
+  --output-dir experiments/entropy_ft_2026-08-26/production/supplement \
+  --taus 20,40,60,80,100,120,140,160,180,200 \
+  --threshold-step 0.01 \
+  --minimum-raw-count 5
+
+/opt/homebrew/bin/python3 flux/build_entropy_ft_report.py \
+  --run-dir experiments/entropy_ft_2026-08-26/production \
+  --analysis-dir experiments/entropy_ft_2026-08-26/production/analysis \
+  --supplement-dir experiments/entropy_ft_2026-08-26/production/supplement \
+  --output-dir experiments/entropy_ft_2026-08-26/production/report \
+  --status-label production
+```
+
+The generated report must then be compiled and visually inspected before any
+number or conclusion is migrated into the paper.
