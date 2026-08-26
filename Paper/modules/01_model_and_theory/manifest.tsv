@@ -1,0 +1,13 @@
+role	path	status	note
+code	Energy Cascade/Rect Plots/main.cpp	PRIMARY	Generates CKSTT resonant-family coordinates
+code	Energy Cascade/Rect Plots/verify_rectangles.py	PRIMARY	Checks rectangle/resonance constraints
+code	Energy Cascade/Rect Plots/plot_rectangles.py	PRIMARY	Plots geometry CSVs
+raw_data	Energy Cascade/Rect Plots/rectangles_N5_R100_f1_to_f2.csv	PRIMARY	Generation 1 to 2
+raw_data	Energy Cascade/Rect Plots/rectangles_N5_R100_f2_to_f3.csv	PRIMARY	Generation 2 to 3
+raw_data	Energy Cascade/Rect Plots/rectangles_N5_R100_f3_to_f4.csv	PRIMARY	Generation 3 to 4
+raw_data	Energy Cascade/Rect Plots/rectangles_N5_R100_f4_to_f5.csv	PRIMARY	Generation 4 to 5
+figure	Paper/revision/cascade_embedding.pdf	MANUSCRIPT_READY	Source-traced manuscript figure
+report	Paper/revision/manuscript_figure_metrics.json	LOCAL_ENHANCED	Geometry ranges and source paths
+reference	Paper/CKSTT.pdf	PRIMARY_REFERENCE	Deterministic cascade construction
+reference	Paper/Summary_NLS.pdf	PRIMARY_REFERENCE	Gibbs-preserving bath derivation and conventions
+reference	Paper/Non-equilibrium steady state for a three-mode energy cascade model.pdf	PRIMARY_REFERENCE	Rigorous three-mode NESS context

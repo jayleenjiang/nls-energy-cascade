@@ -50,6 +50,11 @@ Thumbs.db
 # ---- local generated QA/build bundles ----
 tmp/
 
+# ---- local navigation links for the paper-module index ----
+# These symlinks point to large or ignored local data and can be regenerated
+# with Paper/modules/build_module_view.sh.
+Paper/modules/**/local/
+
 # ---- keep these despite rules above ----
 !README.md
 !requirements.txt
