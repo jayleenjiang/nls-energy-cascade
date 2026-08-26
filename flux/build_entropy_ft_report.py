@@ -8,12 +8,19 @@ import csv
 import math
 from pathlib import Path
 
+import numpy as np
+
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--run-dir", required=True, type=Path)
     parser.add_argument("--analysis-dir", required=True, type=Path)
     parser.add_argument("--supplement-dir", required=True, type=Path)
+    parser.add_argument(
+        "--validation-dir",
+        type=Path,
+        help="control-run directory (defaults to the run directory's sibling validation/)",
+    )
     parser.add_argument("--output-dir", required=True, type=Path)
     parser.add_argument("--status-label", default="production")
     return parser.parse_args()
@@ -79,6 +86,46 @@ def figure_block(path: Path, output_dir: Path, caption: str) -> str:
 """
 
 
+def validation_statistics(summary_path: Path) -> dict[str, object]:
+    summary_rows = read_rows(summary_path)
+    if len(summary_rows) != 1:
+        raise ValueError(f"{summary_path}: expected one summary row")
+    summary = summary_rows[0]
+    blocks_path = summary_path.with_name(
+        summary_path.name.replace("_summary.csv", "_blocks.csv")
+    )
+    with blocks_path.open() as stream:
+        header = stream.readline().strip().split(",")
+    columns = {name: index for index, name in enumerate(header)}
+    raw = np.loadtxt(blocks_path, delimiter=",", skiprows=1)
+    streams = int(summary["n_streams"])
+    blocks_per_stream = int(summary["blocks_per_stream"])
+    raw = raw.reshape(streams, blocks_per_stream, raw.shape[-1])
+    block_time = float(summary["block_time"])
+    action = np.mean(raw[:, :, columns["action_current"]], axis=1)
+    heat = np.mean(
+        (
+            raw[:, :, columns["q_left"]]
+            - raw[:, :, columns["q_right"]]
+        )
+        / (2.0 * block_time),
+        axis=1,
+    )
+    entropy = np.mean(raw[:, :, columns["entropy_rate"]], axis=1)
+
+    def mean_se(values: np.ndarray) -> tuple[float, float]:
+        return float(np.mean(values)), float(
+            np.std(values, ddof=1) / math.sqrt(values.size)
+        )
+
+    return {
+        "summary": summary,
+        "action": mean_se(action),
+        "heat": mean_se(heat),
+        "entropy": mean_se(entropy),
+    }
+
+
 def main() -> None:
     args = parse_args()
     args.output_dir.mkdir(parents=True, exist_ok=True)
@@ -99,6 +146,23 @@ def main() -> None:
     coupling = read_rows(args.analysis_dir / "coupling_summary.csv")
     tails = read_rows(args.supplement_dir / "action_normal_tail_fit_metrics.csv")
     negative = read_rows(args.supplement_dir / "negative_probability_vs_time.csv")
+
+    validation_dir = args.validation_dir or (args.run_dir.parent / "validation")
+    validation_specs = [
+        ("driven $dt=5\\times10^{-4}$", "driven_dt0005_n20_summary.csv"),
+        ("driven $dt=2.5\\times10^{-4}$", "driven_dt00025_n20_summary.csv"),
+        ("$n=40$, $dt=5\\times10^{-4}$", "n40_dt0005_matched_summary.csv"),
+        ("$n=40$, $dt=2.5\\times10^{-4}$", "n40_dt00025_matched_summary.csv"),
+        ("equal temperature", "equilibrium_n20_summary.csv"),
+        ("baths swapped", "swapped_n20_summary.csv"),
+    ]
+    validation = []
+    for label, filename in validation_specs:
+        path = validation_dir / filename
+        if path.exists():
+            validation.append((label, validation_statistics(path)))
+    canonical_path = validation_dir / "canonical_n20_summary.csv"
+    canonical = read_rows(canonical_path)[0] if canonical_path.exists() else None
 
     entropy_usable, entropy_covering = reference_count(entropy, 1.0)
     heat_usable, heat_covering = reference_count(heat, 0.4)
@@ -171,6 +235,75 @@ def main() -> None:
             r"\end{tabular}",
             r"\caption{Production means and discrete first-law residual.}",
             r"\end{table}",
+        ]
+    )
+
+    if validation:
+        lines.extend(
+            [
+                r"\section*{Control runs and cross-checks}",
+                r"Uncertainties in this table are standard errors of independent "
+                r"stream means, so temporal blocks within a stream are not treated as "
+                r"independent replicates.  The timestep pairs test discretization; the "
+                r"equal-temperature run tests zero-current symmetry; and swapping the "
+                r"baths must reverse the currents while leaving mean entropy production "
+                r"nonnegative.",
+                r"\begin{table}[H]",
+                r"\centering\small",
+                r"\resizebox{\textwidth}{!}{%",
+                r"\begin{tabular}{lrrrrrrr}",
+                r"\toprule",
+                r"control & $n$ & $(T_L,T_R)$ & $dt$ & $J_M\pm\mathrm{SE}$ & "
+                r"$J_E\pm\mathrm{SE}$ & $\Sigma^{\rm m}/t\pm\mathrm{SE}$ & balance RMS \\ ",
+                r"\midrule",
+            ]
+        )
+        for label, record in validation:
+            row = record["summary"]
+            action_mean, action_se = record["action"]
+            heat_mean, heat_se = record["heat"]
+            entropy_mean, entropy_se = record["entropy"]
+            lines.append(
+                f"{label} & {row['n']} & ({fmt(row['T1'], 0)},{fmt(row['Tn'], 0)}) & "
+                f"{fmt(row['dt'], 2)} & {fmt(action_mean)}$\\pm${fmt(action_se)} & "
+                f"{fmt(heat_mean)}$\\pm${fmt(heat_se)} & "
+                f"{fmt(entropy_mean)}$\\pm${fmt(entropy_se)} & "
+                f"{fmt(row['rms_energy_balance_error_rate'], 2)} \\\\"
+            )
+        lines.extend(
+            [
+                r"\bottomrule",
+                r"\end{tabular}",
+                r"}",
+                r"\caption{Projection-free Cartesian validation runs.  All midpoint "
+                r"failure counts are zero; halving $dt$ reduces the first-law residual.}",
+                r"\end{table}",
+            ]
+        )
+        if canonical is not None:
+            driven = next(
+                record
+                for label, record in validation
+                if label == "driven $dt=5\\times10^{-4}$"
+            )
+            cartesian_mean, cartesian_se = driven["action"]
+            canonical_mean = float(canonical["mean_action_current"])
+            canonical_se = float(canonical["standard_error"])
+            difference_z = abs(cartesian_mean - canonical_mean) / math.sqrt(
+                cartesian_se * cartesian_se + canonical_se * canonical_se
+            )
+            lines.append(
+                "The independent canonical action-current implementation gives "
+                f"$J_M={fmt(canonical_mean)}\\pm {fmt(canonical_se)}$ for $n=20$, "
+                "compared with the Cartesian value "
+                f"${fmt(cartesian_mean)}\\pm {fmt(cartesian_se)}$.  The difference is "
+                f"${fmt(difference_z, 2)}$ combined standard errors.  The canonical "
+                "implementation is used only as an action-current cross-check, not for "
+                "the bath-heat or entropy-production analysis."
+            )
+
+    lines.extend(
+        [
             r"\section*{Medium-entropy and heat-current symmetry}",
             r"For the entropy-production rate $a=\Sigma_t^{\rm m}/t$, the plotted "
             r"symmetry function is",

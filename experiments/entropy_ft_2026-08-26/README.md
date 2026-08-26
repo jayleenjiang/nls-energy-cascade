@@ -180,6 +180,7 @@ From the repository root, the post-run commands are:
   --run-dir experiments/entropy_ft_2026-08-26/production \
   --analysis-dir experiments/entropy_ft_2026-08-26/production/analysis \
   --supplement-dir experiments/entropy_ft_2026-08-26/production/supplement \
+  --validation-dir experiments/entropy_ft_2026-08-26/validation \
   --output-dir experiments/entropy_ft_2026-08-26/production/report \
   --status-label production
 ```
