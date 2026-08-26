@@ -1,0 +1,226 @@
+\documentclass[11pt]{article}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{booktabs}
+
+\begin{document}
+
+\section*{setup}
+\begin{itemize}
+\item Chain $n=25$, Case~0, $\gamma=0.1$, $dt=0.001$. NESS: $T_1=10$, $T_{25}=2$;
+equilibrium: $T_1=T_{25}=6$. SIMD runs, $1.01\times 10^9$ samples per site pair,
+site pairs $(I_j, I_{j+1}, \theta_j)$ at $j=6,12,18$.
+\item Histograms: $80^3$ bins on $[0,4]^2\times[-\pi,\pi)$. All .hist
+files now use the dense format (with all $512{,}000$ bins , zeros
+included).
+\item Notation: $p_\beta$ = equilibrium marginal at temperature
+$\beta$. $q$ = NESS marginal. 
+
+\end{itemize}
+
+\noindent \textbf{1. Compare marginal PDF of $(I_a, I_{a+1}, \theta_a)$ and the 2-mode Gibbs by comparing $-\log(PDF)$ and $\frac{1}{2} (I_1 + I_2)^2 - \frac{1}{4} (I_1^2 + I_2^2) + I_1I_2\cos \theta_1$. 
+}
+
+\begin{itemize}
+    \item $-\log p$ v.s. $H_{\text{2-mode}} = \tfrac12 (I_a+I_b)^2 - \tfrac14 (I_a^2+I_b^2)
++ I_a I_b\cos\theta$
+at fixed $\theta$ slices ($\theta = 0, \pi/2, \pi$, $\cos\theta = -1, 0, 1$) 
+
+\end{itemize}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{compare_eq.png}
+\end{figure}
+
+
+\begin{itemize}
+    \item $-\log q$ v.s. $H_{\text{2-mode}} = \tfrac12 (I_a+I_b)^2 - \tfrac14 (I_a^2+I_b^2)
++ I_a I_b\cos\theta$
+at fixed $\theta$ slices ($\theta = 0, \pi/2, \pi$, $\cos\theta = -1, 0, 1$) 
+
+
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width= 1\linewidth]{6_5/compare_neq.png}
+\end{figure}
+
+
+
+\noindent \textbf{2. Compare marginal PDF of $(I_a, I_{a+1}, \theta_a)$ of NESS and the same marginal PDF of equilibrium by comparing the $-\log (PDF)$ of both. }
+
+\begin{itemize}
+    \item \textbf{Equilibrium: $p_\beta(I_a, I_{a+1}, \theta_a) : = \int_A \exp(-H/\beta) \mathrm{d}x$, where $A$ is the collection of variables other than $(I_a, I_{a+1}, \theta_a)$.}
+    \item \textbf{Nonequilibrium: Does the marginal PDF of $(I_a, I_{a+1}, \theta_a)$, denoted by $q(I_a, I_{a+1}, \theta_a)$ approach to $p_{\beta_0}(I_a, I_{a+1}, \theta_a)$ of some $\beta_0$ as the length of the chain ($n$) increases? How does $\beta_0$ depend on $(T_L, T_R, a/n)$? }
+    \item \textbf{Test: fix $a/n$. Let $n$ increase. Let $p_\beta$ be the equilibrium with boundary temperature $\beta$. Find the minimum of $\min_x\|\exp(x\log p) - q\|$. So the effective boundary temperature is $\beta_0:= \beta/x$. Compare $p_{\beta_0}$ and $q$.}
+\end{itemize}
+
+
+
+
+
+
+\paragraph{(i) Find $\min_x \|\exp(x\log p_6) - q\|$ and the effective temperature
+$\beta_0 = 6/x$.}
+
+
+
+We fit $\log q = x\,\log p_6 + c$ over the common support (count $>50$ in
+both histograms). Results at fixed $a/n$:
+\begin{center}
+\begin{tabular}{lcccccc}
+\toprule
+ & \multicolumn{3}{c}{$n=25$ ($a=6,12,18$)} & \multicolumn{3}{c}{$n=50$ ($a=12,24,36$)} \\
+ & $x$ & $R^2$ & $T_0$ & $x$ & $R^2$ & $T_0$ \\
+\midrule
+$a/n=0.24$ & $0.7800$ & $0.9914$ & $7.69$ & $0.8408$ & $0.9929$ & $7.14$ \\
+$a/n=0.48$ & $0.8432$ & $0.9763$ & $7.12$ & $0.8634$ & $0.9908$ & $6.95$ \\
+$a/n=0.72$ & $0.9021$ & $0.9314$ & $6.65$ & $0.8667$ & $0.9453$ & $6.92$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+(next page)
+
+\newpage
+\paragraph{(ii) Compare $p_{\beta_0}$ and $q$.}
+
+
+For each $(n, a)$, compare the rescaled equilibrium $p_6^{\,x}$ with $q$ at fixed $\theta$ slices.
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{n25_a12.png}
+    \includegraphics[width=1\linewidth]{n25_a18.png}
+    \includegraphics[width=0.8\linewidth]{n50_a24.png}
+\end{figure}
+
+\textbf{Control: }equilibrium simulated at $\beta = 7.12$
+($= T_0(n{=}25, a{=}12)$).
+Fitting $\log p_{7.12} = x \log p_6 + c$ gives $x = 0.9220$ at all three
+sites (spread $0.03\%$), $R^2 = 0.9975$. This differs from
+$6/7.12 = 0.843$. Fitting $q(a{=}12)$ against $p_{7.12}$ gives $x = 0.905$, not $1$. Guess: close to
+$\sqrt{6/7.12} = 0.918$, might come from the mean field
+$\langle \sum_j I_j \rangle \propto \sqrt{nT}$ changing with temperature in the full equilibrium? 
+
+
+\paragraph{(iii) What $\beta_0$ is: dependence on $(T_L, T_R, a/n)$.}
+
+\begin{itemize}
+    \item \textbf{Dependence on $a/n$}
+
+We estimate the local temperature of site $a$
+from the $\langle I_j \rangle$ profiles:
+\[
+T_{\mathrm{kin}}(a) = 6 \cdot
+\frac{\langle I_a\rangle_{\mathrm{NESS}}}{\langle I_a\rangle_{\mathrm{Eq}}},
+\]
+averaged over the pair $(a, a{+}1)$.
+Comparing it with $T_0^{\mathrm{box}}$ from the fit: 
+
+
+$T_0^{\mathrm{box}}$: same fit, count-weighted, restricted to $I_a, I_b < 2.5$ (weighting the core of the distribution rather than the tail).
+
+\begin{center}
+\begin{tabular}{lcccccc}
+\toprule
+$a/n$ & \multicolumn{2}{c}{$n=25$} & \multicolumn{2}{c}{$n=50$} & \multicolumn{2}{c}{$n=100$} \\
+ & $T_{0}^{\mathrm{box}}$ & $T_{\mathrm{kin}}$ & $T_{0}^{\mathrm{box}}$ & $T_{\mathrm{kin}}$ & $T_{0}^{\mathrm{box}}$ & $T_{\mathrm{kin}}$ \\
+\midrule
+$0.24$ & $7.32$ & $7.68$ & $7.26$ & $7.79$ & $7.12$ & $7.81$ \\
+$0.48$ & $6.41$ & $6.85$ & $6.45$ & $7.04$ & $6.45$ & $6.99$ \\
+$0.72$ & $5.49$ & $5.80$ & $5.66$ & $6.05$ & $5.76$ & $6.02$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+  
+\end{itemize}
+
+
+$T_0$ follows the local kinetic temperature at both chain lengths
+(it is below $T_{\mathrm{kin}}$ by $5$--$7\%$ at every site). So, to leading
+order, the dependence of $\beta_0$ on $(T_L, T_R, a/n)$ is simply the shape
+of the temperature profile.
+
+
+\begin{itemize}
+    \item \textbf{Dependence on $(T_L, T_R)$}
+
+Runs at $(8,4)$, $(9,3)$, $(10,2)$
+(same mean temperature $6$, same $p_6$ baseline), $n=25$:
+\begin{center}
+\begin{tabular}{llccc}
+\toprule
+$(T_L,T_R)$ & $a$ & $x$ & $R^2$ & $T_0$ \\
+\midrule
+$(8,4)$  & $6$  & $0.8785$ & $0.9950$ & $6.83$ \\
+         & $12$ & $0.9366$ & $0.9906$ & $6.41$ \\
+         & $18$ & $1.0008$ & $0.9777$ & $6.00$ \\
+$(9,3)$  & $6$  & $0.8230$ & $0.9928$ & $7.29$ \\
+         & $12$ & $0.8872$ & $0.9819$ & $6.76$ \\
+         & $18$ & $0.9498$ & $0.9512$ & $6.32$ \\
+$(10,2)$ & $6$  & $0.7800$ & $0.9914$ & $7.69$ \\
+         & $12$ & $0.8432$ & $0.9763$ & $7.12$ \\
+         & $18$ & $0.9021$ & $0.9314$ & $6.65$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+    
+\end{itemize}
+
+
+
+
+
+\paragraph{(iv) Does $q \to p_{\beta_0}$ as $n$ increases (fixed $a/n$)?}
+
+From $n=25$ to $n=50$, the fit improves at every site:
+\begin{center}
+\begin{tabular}{lcc}
+\toprule
+$a/n$ & $R^2$ ($n=25$) & $R^2$ ($n=50$) \\
+\midrule
+$0.24$ & $0.9914$ & $0.9929$ \\
+$0.48$ & $0.9763$ & $0.9908$ \\
+$0.72$ & $0.9314$ & $0.9453$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+$R^2$ increases at every $a/n$. For reference, the comparison of the two equilibria ($p_{7.12}$ vs.\ $p_6$, $R^2 = 0.9975$)
+sets the ceiling for this fit. at $a/n = 0.24$ the NESS fit at $n=50$ is
+already close to this level. At $n=100$ the core (box) fit is consistent with this trend (see (iii)); the full-support $R^2$ is tail-limited at $dt=0.001$ (see Note).
+
+\paragraph{Note ($n=100$)}
+The three sites at $n=100$ give nearly the same $x$ ($T_0 \approx 6.4$) while the profiles show a clear gradient. 
+
+1. rerun $n=100$ with a
+corrected initialization (chains start at the stationary action scale,
+verified by monitoring $\sum_j I_j$ during burn-in) and the fits are still the same. 2. Change the time
+step ($dt: 0.001 \to 0.0005$) roughly halves the histogram overflow rate
+($0.13\% \to 0.06\%$), and the same tail show up in the equilibrium
+run, so it might be the Euler-integration
+artifact at $dt = 0.001$, not physics.
+
+The artifact is buried in the wide thermal tails at $n=25$
+and $n=50$, so those results are unaffected. 
+
+\paragraph{Code}
+\begin{itemize}
+\item \texttt{lte\_histogram\_simd.cpp}: SIMD simulation; produces all
+histogram files (\texttt{*.hist}) and the $\langle I_j\rangle$ profile files.
+\item \texttt{compare.m}: Q1 figures ($-\log$ PDF vs.\ $H_{\text{2-mode}}$
+at fixed $\theta$ slices).
+\item \texttt{fit.m}: all Q2 fits and figures, tables in
+(i), (iii), (iv) ($x$, $R^2$, $T_0$, $T_0^{\mathrm{box}}$), the control fits
+in (ii), and the heatmap figures. $T_{\mathrm{kin}}$ in (iii) is computed
+directly from the profile files.
+\end{itemize}
+
+
+
+\end{document}

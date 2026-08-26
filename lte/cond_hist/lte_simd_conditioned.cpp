@@ -1,10 +1,13 @@
-// lte_histogram_simd.cpp
+
+// Build:
+//   g++ -O3 -march=native -ffast-math -fopenmp lte_histogram_simd.cpp -o lte_histogram_simd
+// Build (mac, Apple Silicon, clang):
 //   clang++ -O3 -mcpu=native -ffast-math -std=c++17 \
 //       -Xpreprocessor -fopenmp -I/opt/homebrew/opt/libomp/include \
 //       -L/opt/homebrew/opt/libomp/lib -lomp \
 //       lte_histogram_simd.cpp -o lte_histogram_simd
 //
-// Usage (same as before, sites at the end):
+// Usage:
 //   ./lte_histogram_simd <T1> <Tn> <n> <out_prefix> [site1 site2 ...]
 //   ./lte_histogram_simd 10 2 25 histo_N25 6 12 18
 
@@ -16,24 +19,20 @@
 #include <sstream>
 #include <chrono>
 #include <string>
-#include <algorithm>
 #include <omp.h>
 
 // ===================== simulation parameters =====================
 static const double gamma_val = 0.1;
-static double T_final    = 200000.0;   
-static double T_burnin   = 2000.0;     
-static const double T_measure  = 198000.0;  
-static const double dt         = 0.001;  // fixed step
-static const double I_min      = 1e-5;   // lower action clamp
-static const double eta_I      = 0.02;   // max relative deterministic I step
-static const double eta_phi    = 0.05;   // max deterministic phase step (rad)
-static const double record_dt  = 0.1;    // fixed-time sampling interval 
-static const int    dump_every_steps = 100; 
-static const int    N_GROUPS   = 32;          
+static const double T_final    = 200000.0;   // long run
+static const double T_burnin   = 2000.0;
+static const double dt         = 0.001;
+static const int    dump_every_steps = 100;  
+static const int    N_GROUPS   = 32;          // groups of W chains  (32*16=512 chains)
 static const int    N_thread   = 8;
 
 // ===================== SIMD width ================================
+// W=16 floats -> AVX-512 single op (or 2x AVX2). This is the "16 entries
+// in 1 cycle" the question asks about; the inner lane loop vectorizes.
 static const int    W = 16;
 
 // ===================== 3D histogram params =======================
@@ -46,6 +45,12 @@ static const float  TH_HI =  3.14159265358979323846f;
 // ===================== 1D marginal params ========================
 // finer 1D bins (the 3D is memory-limited to NB^3; marginals can afford more)
 static const int    NB1   = 400;
+
+// ===================== fixed-S conditioning =======================
+// Only accumulate samples when |sum_j I_j - S_TARGET| < S_DELTA.
+// For n=25: S_TARGET = 0.5n = 12.5, S_DELTA = 0.01n = 0.25.
+static const float  S_TARGET = 12.5f;
+static const float  S_DELTA  = 0.25f;
 
 static const float  PI_f  = 3.14159265358979323846f;
 static const double PI    = 3.14159265358979323846;
@@ -65,9 +70,6 @@ static inline float fast_sin(float x) {            // Bhaskara-style, x in [-pi,
 }
 static inline float fast_cos(float x) {
     return fast_sin(wrap_pi(x + 1.5707963268f));
-}
-static inline float clip_step(float proposed, float limit) {
-    return proposed / std::max(1.0f, std::fabs(proposed) / limit);
 }
 // fast natural log (fastapprox-style), x>0; ~1e-3 accuracy is plenty for noise
 static inline float fast_log(float x) {
@@ -162,7 +164,6 @@ struct Marg1D {
     }
 };
 
-
 // ============================================================
 // One GROUP = W independent chains evolved in lockstep (SoA + omp simd).
 // Accumulates into thread-local hists/margs/energy.
@@ -175,27 +176,19 @@ static void run_group(int n, double T1d, double Tnd,
     const float  g    = (float)gamma_val;
     const float  T1   = (float)T1d, Tn = (float)Tnd;
     const float  dtf  = (float)dt, sdt = std::sqrt((float)dt);
-    const float  I_floor = (float)I_min;
     const int    NS   = (int)sites.size();
 
     // state: I[j*W+l], phi[j*W+l]   (allocated ONCE, not per step)
     std::vector<float> I((size_t)n * W), phi((size_t)n * W);
     std::vector<float> dI((size_t)n * W), dph((size_t)n * W);
-    // init at the stationary action scale: <I_j> ~ sqrt(Tbar/n), so that
-    // M_init = sum_j I_j ~ sqrt(Tbar*n) lands on the stationary mean field.
-    // (the old I=0.1 start left a slow total-action transient that leaked
-    //  past the burn-in and contaminated the histogram tails at large n)
-    const float I0init = std::sqrt(0.5f * float(T1 + Tn) / float(n));
     for (int j = 0; j < n; ++j)
-        for (int l = 0; l < W; ++l) { I[j*W+l] = I0init; phi[j*W+l] = 0.0f; }
+        for (int l = 0; l < W; ++l) { I[j*W+l] = (j==0 ? 1.0f : 0.1f); phi[j*W+l] = 0.0f; }
 
     float M[W];
     float nI0[W], nIn[W], nph0[W], nphn[W];
     Xoshiro rng; rng.seed(seed_val);
 
     long step = 0; double t = 0.0; bool measuring = false;
-    double next_record_time = T_burnin;        // first sample at start of measuring
-    double next_mon_time    = T_burnin / 10.0;  // burn-in monitor cadence
     while (t < T_final) {
         // --- per-lane total mass M = sum_j I[j] ---
         #pragma omp simd
@@ -261,12 +254,9 @@ static void run_group(int n, double T1d, double Tnd,
             const int jj = j*W;
             #pragma omp simd
             for (int l = 0; l < W; ++l) {
-                float Ij = std::max(I[jj+l], I_floor);
-                float dI_step  = clip_step(dI[jj+l] * dtf, (float)eta_I * Ij);
-                float dph_step = clip_step(dph[jj+l] * dtf, (float)eta_phi);
-                float Inew = I[jj+l] + dI_step;
-                phi[jj+l]  = wrap_pi(phi[jj+l] + dph_step);
-                I[jj+l]    = std::max(Inew, I_floor);
+                float Inew = I[jj+l] + dI[jj+l] * dtf;
+                phi[jj+l]  = wrap_pi(phi[jj+l] + dph[jj+l] * dtf);
+                I[jj+l]    = Inew < 1e-10f ? 1e-10f : Inew;
             }
         }
         // add boundary noise (sigma uses start-of-step I -> exact Euler-Maruyama)
@@ -274,46 +264,45 @@ static void run_group(int n, double T1d, double Tnd,
             const int j0 = 0, jn = (n-1)*W;
             #pragma omp simd
             for (int l = 0; l < W; ++l) {
-                float I0 = std::max(I0s[l], I_floor);
-                float In = std::max(Ins[l], I_floor);
+                float I0 = I0s[l] > 1e-10f ? I0s[l] : 1e-10f;
+                float In = Ins[l] > 1e-10f ? Ins[l] : 1e-10f;
                 float a0 = 2.0f * std::sqrt(2.0f * g * T1 * I0) * sdt * nI0[l];
                 float an = 2.0f * std::sqrt(2.0f * g * Tn * In) * sdt * nIn[l];
                 float p0 =        std::sqrt(2.0f * g * T1 / I0) * sdt * nph0[l];
                 float pn =        std::sqrt(2.0f * g * Tn / In) * sdt * nphn[l];
-                float v0 = I[j0+l] + a0; I[j0+l] = std::max(v0, I_floor);
-                float vn = I[jn+l] + an; I[jn+l] = std::max(vn, I_floor);
+                float v0 = I[j0+l] + a0; I[j0+l] = v0 < 1e-10f ? 1e-10f : v0;
+                float vn = I[jn+l] + an; I[jn+l] = vn < 1e-10f ? 1e-10f : vn;
                 phi[j0+l] = wrap_pi(phi[j0+l] + p0);
                 phi[jn+l] = wrap_pi(phi[jn+l] + pn);
             }
         }
 
-        t += dtf; ++step;
-        if (!measuring && t >= T_burnin) { measuring = true; next_record_time = t; }
+        t += dt; ++step;
+        if (!measuring && t >= T_burnin) measuring = true;
 
-        // burn-in convergence monitor (time-based now that dt varies)
-        if (!measuring && t >= next_mon_time) {
-            double Mtot = 0.0;
-            for (int j = 0; j < n; ++j)
-                for (int l = 0; l < W; ++l) Mtot += I[j*W+l];
-            #pragma omp critical
-            std::cerr << "[burnin] t=" << t << "  M/W=" << Mtot / W << "  dt=" << dtf << "\n";
-            next_mon_time += T_burnin / 10.0;
-        }
-
-        // record at fixed TIME checkpoints (dt < record_dt => <=1 per step),
-        // so samples stay uniform-in-time and the count-based histograms/profile
-        // and the count>50 fit are unchanged.
-        if (measuring && t >= next_record_time) {
-            next_record_time += record_dt;
+        if (measuring) {
+            // Thermal profile: keep unconditional (so <I_j> reflects the
+            // ordinary invariant measure, not the conditional one).
             for (int j = 0; j < n; ++j) {
                 double s = 0.0;
                 for (int l = 0; l < W; ++l) s += I[j*W+l];
                 energy_accum[j] += s;
             }
             sample_count += W;
+
+            // ---- fixed-S conditioning ----
+            // Compute total mass S[l] = sum_j I[j*W+l] for each lane.
+            // Only accumulate into hists/margs for lanes within +/- S_DELTA of S_TARGET. 
+            float Stot[W];
+            for (int l = 0; l < W; ++l) Stot[l] = 0.0f;
+            for (int j = 0; j < n; ++j)
+                for (int l = 0; l < W; ++l)
+                    Stot[l] += I[j*W+l];
+
             for (int sIdx = 0; sIdx < NS; ++sIdx) {
                 int j = sites[sIdx];
                 for (int l = 0; l < W; ++l) {
+                    if (std::fabs(Stot[l] - S_TARGET) >= S_DELTA) continue;
                     float Ia = I[j*W+l], Ib = I[(j+1)*W+l];
                     float th = wrap_pi(2.0f * (phi[(j+1)*W+l] - phi[j*W+l]));
                     hists[sIdx].add(Ia, Ib, th);
@@ -322,9 +311,6 @@ static void run_group(int n, double T1d, double Tnd,
             }
         }
     }
-    #pragma omp critical
-    std::cerr << "[clip] group done: steps=" << step
-              << "  dt=" << dtf << "\n";
 }
 
 // ============================================================
@@ -336,12 +322,12 @@ static void write_hist(const std::string& fn, int j, const Hist3D& h,
     f << "NB " << NB << "\nI_LO " << I_LO << "\nI_HI " << I_HI
       << "\nTH_LO " << TH_LO << "\nTH_HI " << TH_HI << "\n";
     f << "TOTAL " << h.total << "\nOVERFLOW " << h.overflow << "\n";
-    f << "# format: ia ib it count (dense: all NB^3 bins, zeros included)\n";
+    f << "# format: ia ib it count (nonzero only)\n";
     for (int ia = 0; ia < NB; ++ia)
       for (int ib = 0; ib < NB; ++ib)
         for (int it = 0; it < NB; ++it) {
             uint64_t c = h.bins[((size_t)ia*NB+ib)*NB+it];
-            f << ia << " " << ib << " " << it << " " << c << "\n";
+            if (c) f << ia << " " << ib << " " << it << " " << c << "\n";
         }
 }
 
@@ -375,20 +361,17 @@ int main(int argc, char* argv[]) {
     for (int j : sites) if (j < 0 || j + 1 >= n) {
         std::cerr << "Bad site " << j << " (need 0<=j, j+1<n)\n"; return 1; }
 
-    // burn-in scaled for relaxation; measuring window fixed across n
-    T_burnin = 2000.0 * (n / 25.0) * (n / 25.0);
-    T_final  = T_burnin + T_measure;
-    std::cout << "T_burnin=" << T_burnin << "  T_final=" << T_final << "\n";
-
-    long spt = long((T_final - T_burnin) / (dump_every_steps * dt));   // per chain
+    long spt = long((T_final - T_burnin) / dt);   // per chain, every step
     double total_expected = (double)N_GROUPS * W * spt;
-    std::cout << "LTE SIMD histogram (Case 0 closed chain)\n"
+    std::cout << "LTE SIMD histogram (Case 0 closed chain) [fixed-S, every-step]\n"
               << "T1=" << T1 << " Tn=" << Tn << " n=" << n
               << "  W=" << W << " lanes  N_GROUPS=" << N_GROUPS
               << " -> " << N_GROUPS * W << " chains\n"
-              << "samples/chain=" << spt
-              << "  total expected=" << total_expected
-              << " (~" << total_expected / 1e9 << "e9)\nsites:";
+              << "S_TARGET=" << S_TARGET << " S_DELTA=" << S_DELTA
+              << " (every step: accumulate if |sum_j I_j - S_TARGET| < S_DELTA)\n"
+              << "steps/chain=" << spt
+              << "  pre-cond total=" << total_expected
+              << " (~" << total_expected / 1e9 << "e9, accepted will be smaller)\nsites:";
     for (int j : sites) std::cout << " (" << j << "," << j+1 << ")";
     std::cout << "\n";
 
@@ -441,7 +424,15 @@ int main(int argc, char* argv[]) {
 
     auto t1 = std::chrono::high_resolution_clock::now();
     auto sec = std::chrono::duration_cast<std::chrono::seconds>(t1 - t0).count();
-    std::cout << "Total samples: " << g_N << " (~" << (double)g_N/1e9 << "e9)\n"
-              << "Done in " << sec << "s.\n";
+    std::cout << "Pre-conditioning total samples: " << g_N
+              << " (~" << (double)g_N/1e9 << "e9)\n";
+    if (!sites.empty()) {
+        uint64_t accepted = g_h[0].total;
+        double rate = (double)accepted / (double)g_N;
+        std::cout << "Accepted samples (per site, |S-S_TARGET|<S_DELTA): "
+                  << accepted << "  (acceptance rate "
+                  << 100.0 * rate << "%)\n";
+    }
+    std::cout << "Done in " << sec << "s.\n";
     return 0;
 }

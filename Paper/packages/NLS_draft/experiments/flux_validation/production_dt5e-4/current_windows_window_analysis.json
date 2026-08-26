@@ -1,0 +1,32 @@
+{
+  "runs": [
+    {
+      "n": 10,
+      "dt": 0.0005,
+      "summary_path": "Paper/revision_2026-06-19/experiments/flux_validation/production_dt5e-4/n10_summary.csv",
+      "samples_path": "Paper/revision_2026-06-19/experiments/flux_validation/production_dt5e-4/n10_samples.csv"
+    },
+    {
+      "n": 20,
+      "dt": 0.0005,
+      "summary_path": "Paper/revision_2026-06-19/experiments/flux_validation/production_dt5e-4/n20_summary.csv",
+      "samples_path": "Paper/revision_2026-06-19/experiments/flux_validation/production_dt5e-4/n20_samples.csv"
+    },
+    {
+      "n": 30,
+      "dt": 0.0005,
+      "summary_path": "Paper/revision_2026-06-19/experiments/flux_validation/production_dt5e-4/n30_summary.csv",
+      "samples_path": "Paper/revision_2026-06-19/experiments/flux_validation/production_dt5e-4/n30_samples.csv"
+    },
+    {
+      "n": 40,
+      "dt": 0.0005,
+      "summary_path": "Paper/revision_2026-06-19/experiments/flux_validation/production_dt5e-4/n40_summary.csv",
+      "samples_path": "Paper/revision_2026-06-19/experiments/flux_validation/production_dt5e-4/n40_samples.csv"
+    }
+  ],
+  "bootstrap_replicates": 2000,
+  "bootstrap_seed": 20260619,
+  "bootstrap_unit": "trajectory cluster",
+  "claim_scope": "Finite-time descriptive statistics at three disjoint averaging scales. No asymptotic exponential-tail or fluctuation-theorem claim is inferred from these data alone."
+}

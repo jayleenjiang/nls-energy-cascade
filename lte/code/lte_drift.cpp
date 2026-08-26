@@ -1,4 +1,7 @@
 // lte_histogram_simd.cpp
+// Build (Linux):
+//   g++ -O3 -march=native -ffast-math -fopenmp lte_histogram_simd.cpp -o lte_histogram_simd
+// Build (mac, Apple Silicon, clang):
 //   clang++ -O3 -mcpu=native -ffast-math -std=c++17 \
 //       -Xpreprocessor -fopenmp -I/opt/homebrew/opt/libomp/include \
 //       -L/opt/homebrew/opt/libomp/lib -lomp \
@@ -16,24 +19,23 @@
 #include <sstream>
 #include <chrono>
 #include <string>
-#include <algorithm>
 #include <omp.h>
 
 // ===================== simulation parameters =====================
 static const double gamma_val = 0.1;
-static double T_final    = 200000.0;   
-static double T_burnin   = 2000.0;     
-static const double T_measure  = 198000.0;  
-static const double dt         = 0.001;  // fixed step
-static const double I_min      = 1e-5;   // lower action clamp
-static const double eta_I      = 0.02;   // max relative deterministic I step
-static const double eta_phi    = 0.05;   // max deterministic phase step (rad)
-static const double record_dt  = 0.1;    // fixed-time sampling interval 
-static const int    dump_every_steps = 100; 
-static const int    N_GROUPS   = 32;          
+// T_burnin scales with relaxation time ~ n^2 (set in main); the measuring
+// window T_final - T_burnin is held fixed so all n have equal sample counts.
+static double T_final    = 200000.0;   // set in main
+static double T_burnin   = 2000.0;     // set in main: 2000 * (n/25)^2
+static const double T_measure  = 198000.0;  // fixed measuring window
+static const double dt         = 0.001;
+static const int    dump_every_steps = 100;  // keep samples ~decorrelated
+static const int    N_GROUPS   = 32;          // groups of W chains  (32*16=512 chains)
 static const int    N_thread   = 8;
 
 // ===================== SIMD width ================================
+// W=16 floats -> AVX-512 single op (or 2x AVX2). This is the "16 entries
+// in 1 cycle" the question asks about; the inner lane loop vectorizes.
 static const int    W = 16;
 
 // ===================== 3D histogram params =======================
@@ -65,9 +67,6 @@ static inline float fast_sin(float x) {            // Bhaskara-style, x in [-pi,
 }
 static inline float fast_cos(float x) {
     return fast_sin(wrap_pi(x + 1.5707963268f));
-}
-static inline float clip_step(float proposed, float limit) {
-    return proposed / std::max(1.0f, std::fabs(proposed) / limit);
 }
 // fast natural log (fastapprox-style), x>0; ~1e-3 accuracy is plenty for noise
 static inline float fast_log(float x) {
@@ -175,7 +174,6 @@ static void run_group(int n, double T1d, double Tnd,
     const float  g    = (float)gamma_val;
     const float  T1   = (float)T1d, Tn = (float)Tnd;
     const float  dtf  = (float)dt, sdt = std::sqrt((float)dt);
-    const float  I_floor = (float)I_min;
     const int    NS   = (int)sites.size();
 
     // state: I[j*W+l], phi[j*W+l]   (allocated ONCE, not per step)
@@ -194,8 +192,9 @@ static void run_group(int n, double T1d, double Tnd,
     Xoshiro rng; rng.seed(seed_val);
 
     long step = 0; double t = 0.0; bool measuring = false;
-    double next_record_time = T_burnin;        // first sample at start of measuring
-    double next_mon_time    = T_burnin / 10.0;  // burn-in monitor cadence
+    // --- DIAGNOSTIC: largest drift over the run (dt-stability probe) ---
+    float maxDriftI = 0.0f, maxDriftI_I = 0.0f, maxRelStep = 0.0f, maxDriftPhi = 0.0f;
+    int   maxDriftI_mode = -1, maxRelStep_mode = -1;
     while (t < T_final) {
         // --- per-lane total mass M = sum_j I[j] ---
         #pragma omp simd
@@ -247,6 +246,25 @@ static void run_group(int n, double T1d, double Tnd,
             }
         }
 
+        // --- DIAGNOSTIC: scan fully-assembled drift for running max ---
+        for (int j = 0; j < n; ++j) {
+            for (int l = 0; l < W; ++l) {
+                float adI = std::fabs(dI[j*W+l]);
+                if (adI > maxDriftI) { maxDriftI = adI; maxDriftI_mode = j; maxDriftI_I = I[j*W+l]; }
+                float rel = adI * dtf / std::max(I[j*W+l], 1e-6f);  // |dI*dt|/I, the per-step relative change
+                if (rel > maxRelStep) { maxRelStep = rel; maxRelStep_mode = j; }
+                float adp = std::fabs(dph[j*W+l]);
+                if (adp > maxDriftPhi) maxDriftPhi = adp;
+            }
+        }
+
+        if (step % 2000000 == 0) {
+            #pragma omp critical
+            std::cerr << "[drift t=" << t << "] max|dI|=" << maxDriftI
+                      << " (mode " << maxDriftI_mode << ", I=" << maxDriftI_I << ")"
+                      << "  max|dI*dt|/I=" << maxRelStep << "\n";
+        }
+
         // --- boundary noise (sqrt(2) factor; sigma from CURRENT I) ---
         fill_gauss(nI0, rng); fill_gauss(nIn, rng);
         fill_gauss(nph0, rng); fill_gauss(nphn, rng);
@@ -261,12 +279,9 @@ static void run_group(int n, double T1d, double Tnd,
             const int jj = j*W;
             #pragma omp simd
             for (int l = 0; l < W; ++l) {
-                float Ij = std::max(I[jj+l], I_floor);
-                float dI_step  = clip_step(dI[jj+l] * dtf, (float)eta_I * Ij);
-                float dph_step = clip_step(dph[jj+l] * dtf, (float)eta_phi);
-                float Inew = I[jj+l] + dI_step;
-                phi[jj+l]  = wrap_pi(phi[jj+l] + dph_step);
-                I[jj+l]    = std::max(Inew, I_floor);
+                float Inew = I[jj+l] + dI[jj+l] * dtf;
+                phi[jj+l]  = wrap_pi(phi[jj+l] + dph[jj+l] * dtf);
+                I[jj+l]    = Inew < 1e-10f ? 1e-10f : Inew;
             }
         }
         // add boundary noise (sigma uses start-of-step I -> exact Euler-Maruyama)
@@ -274,37 +289,36 @@ static void run_group(int n, double T1d, double Tnd,
             const int j0 = 0, jn = (n-1)*W;
             #pragma omp simd
             for (int l = 0; l < W; ++l) {
-                float I0 = std::max(I0s[l], I_floor);
-                float In = std::max(Ins[l], I_floor);
+                float I0 = I0s[l] > 1e-10f ? I0s[l] : 1e-10f;
+                float In = Ins[l] > 1e-10f ? Ins[l] : 1e-10f;
                 float a0 = 2.0f * std::sqrt(2.0f * g * T1 * I0) * sdt * nI0[l];
                 float an = 2.0f * std::sqrt(2.0f * g * Tn * In) * sdt * nIn[l];
                 float p0 =        std::sqrt(2.0f * g * T1 / I0) * sdt * nph0[l];
                 float pn =        std::sqrt(2.0f * g * Tn / In) * sdt * nphn[l];
-                float v0 = I[j0+l] + a0; I[j0+l] = std::max(v0, I_floor);
-                float vn = I[jn+l] + an; I[jn+l] = std::max(vn, I_floor);
+                float v0 = I[j0+l] + a0; I[j0+l] = v0 < 1e-10f ? 1e-10f : v0;
+                float vn = I[jn+l] + an; I[jn+l] = vn < 1e-10f ? 1e-10f : vn;
                 phi[j0+l] = wrap_pi(phi[j0+l] + p0);
                 phi[jn+l] = wrap_pi(phi[jn+l] + pn);
             }
         }
 
-        t += dtf; ++step;
-        if (!measuring && t >= T_burnin) { measuring = true; next_record_time = t; }
+        t += dt; ++step;
+        if (!measuring && t >= T_burnin) measuring = true;
 
-        // burn-in convergence monitor (time-based now that dt varies)
-        if (!measuring && t >= next_mon_time) {
+        // burn-in convergence monitor: lane-averaged total action M(t),
+        // printed ~10 times during burn-in. NESS should climb to its
+        // stationary plateau and flatten before measuring starts.
+        static const long mon_every =
+            std::max(1L, (long)(T_burnin / 10.0 / dt));
+        if (!measuring && step % mon_every == 0) {
             double Mtot = 0.0;
             for (int j = 0; j < n; ++j)
                 for (int l = 0; l < W; ++l) Mtot += I[j*W+l];
             #pragma omp critical
-            std::cerr << "[burnin] t=" << t << "  M/W=" << Mtot / W << "  dt=" << dtf << "\n";
-            next_mon_time += T_burnin / 10.0;
+            std::cerr << "[burnin] t=" << t << "  M/W=" << Mtot / W << "\n";
         }
 
-        // record at fixed TIME checkpoints (dt < record_dt => <=1 per step),
-        // so samples stay uniform-in-time and the count-based histograms/profile
-        // and the count>50 fit are unchanged.
-        if (measuring && t >= next_record_time) {
-            next_record_time += record_dt;
+        if (measuring && (step % dump_every_steps == 0)) {
             for (int j = 0; j < n; ++j) {
                 double s = 0.0;
                 for (int l = 0; l < W; ++l) s += I[j*W+l];
@@ -323,8 +337,10 @@ static void run_group(int n, double T1d, double Tnd,
         }
     }
     #pragma omp critical
-    std::cerr << "[clip] group done: steps=" << step
-              << "  dt=" << dtf << "\n";
+    std::cerr << "[drift] max|dI|=" << maxDriftI
+              << "  at mode " << maxDriftI_mode << " (I=" << maxDriftI_I << ")"
+              << "   max|dI*dt|/I=" << maxRelStep << " at mode " << maxRelStep_mode
+              << "   max|dphi|=" << maxDriftPhi << "\n";
 }
 
 // ============================================================

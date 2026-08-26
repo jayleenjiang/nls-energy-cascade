@@ -1,0 +1,182 @@
+{
+  "figure": {
+    "bytes": 319877,
+    "exists": true,
+    "path": "Paper/revision_2026-06-19/report_assets/compare_residual_mesh.pdf",
+    "sha256": "e2c7bff1ce9c529e335d263aa65b0eb3f668f59c8460cf6facf8a64673f47b87"
+  },
+  "generated_at_utc": "2026-06-21T07:05:01.565639+00:00",
+  "matlab_convention": {
+    "NB": 80,
+    "display_mask": "resid(Q < 50 | P == 0) = NaN",
+    "fit": "polyfit(log(pn(mask)), log(qn(mask)), 1)",
+    "fit_mask": "(Q > 50) & (P > 50)",
+    "source": "/Users/jayleenjiang/Documents/MATLAB/lte/compare_residual.m",
+    "theta_matlab_index": 20
+  },
+  "rows": [
+    {
+      "a_over_n": 0.26666666666666666,
+      "fit": {
+        "fit_mask": "Q>50 and P>50 over the full 80^3 histogram",
+        "fit_mask_bins": 330645,
+        "fit_method": "unweighted polyfit(log(pn), log(qn), 1), matching compare_residual.m",
+        "intercept": -2.450793437322714,
+        "slope_x": 0.795614194126503
+      },
+      "label": "n15",
+      "manuscript_rounding": {
+        "core_rms_3dp": "0.248",
+        "display_mean_abs_3dp": "0.226",
+        "display_rms_3dp": "0.254",
+        "slope_3dp": "0.796"
+      },
+      "n": 15,
+      "p_hist": {
+        "bytes": 6291388,
+        "exists": true,
+        "path": "lte/n15 data/n15_eq_j4.hist",
+        "sha256": "d79564ef17da4e1da404fb802d5123b737ff8d103866978a977e801058ac04b7"
+      },
+      "pair_index_j": 4,
+      "q_hist": {
+        "bytes": 6438988,
+        "exists": true,
+        "path": "lte/n15 data/n15_j4.hist",
+        "sha256": "3cb72d2e849e5c65c59a0dc7a66027667095439e6f0d406986bc4cf1d4618314"
+      },
+      "slice": {
+        "core_IaIb_lt_2p5": {
+          "bins": 2500,
+          "max": 0.3507174070548196,
+          "mean_abs": 0.2226725487421937,
+          "median": -0.22672859822239477,
+          "min": -0.5928633701869135,
+          "q95_abs": 0.40126947039627214,
+          "rms": 0.2480659827395666
+        },
+        "display": {
+          "bins": 4809,
+          "max": 0.5951170891797268,
+          "mean_abs": 0.2260761129797904,
+          "median": -0.2239637626334403,
+          "min": -0.8220483834970942,
+          "q95_abs": 0.41743124481789695,
+          "rms": 0.253803365429203
+        },
+        "display_mask": "Q>=50 and P>0 on the theta slice, matching residual(Q<50 | P==0)=NaN",
+        "theta_center": -1.610064875,
+        "theta_matlab_index": 20
+      }
+    },
+    {
+      "a_over_n": 0.24,
+      "fit": {
+        "fit_mask": "Q>50 and P>50 over the full 80^3 histogram",
+        "fit_mask_bins": 252225,
+        "fit_method": "unweighted polyfit(log(pn), log(qn), 1), matching compare_residual.m",
+        "intercept": -2.518787664950097,
+        "slope_x": 0.7800283433362605
+      },
+      "label": "n25",
+      "manuscript_rounding": {
+        "core_rms_3dp": "0.194",
+        "display_mean_abs_3dp": "0.170",
+        "display_rms_3dp": "0.199",
+        "slope_3dp": "0.780"
+      },
+      "n": 25,
+      "p_hist": {
+        "bytes": 6105980,
+        "exists": true,
+        "path": "lte/n25 data/n25_eq_j6.hist",
+        "sha256": "d510635e024990d1a5548159078587a7a861fd6d2fd0e25088343bd4f4483687"
+      },
+      "pair_index_j": 6,
+      "q_hist": {
+        "bytes": 6300540,
+        "exists": true,
+        "path": "lte/n25 data/n25_j6.hist",
+        "sha256": "d0506d5ac31839aeccfcebbaaaf7a76218ae03c2ffe1abe6444958193ed6800e"
+      },
+      "slice": {
+        "core_IaIb_lt_2p5": {
+          "bins": 2431,
+          "max": 0.6218407108881259,
+          "mean_abs": 0.16839261887881377,
+          "median": -0.15901117155238076,
+          "min": -0.6935982710692628,
+          "q95_abs": 0.3371600121319389,
+          "rms": 0.19385341608115644
+        },
+        "display": {
+          "bins": 4040,
+          "max": 0.9443190106641914,
+          "mean_abs": 0.16980599083651157,
+          "median": -0.15322786276577727,
+          "min": -0.7295356610646024,
+          "q95_abs": 0.3566975952398878,
+          "rms": 0.19940862971369924
+        },
+        "display_mask": "Q>=50 and P>0 on the theta slice, matching residual(Q<50 | P==0)=NaN",
+        "theta_center": -1.610064875,
+        "theta_matlab_index": 20
+      }
+    },
+    {
+      "a_over_n": 0.24,
+      "fit": {
+        "fit_mask": "Q>50 and P>50 over the full 80^3 histogram",
+        "fit_mask_bins": 190457,
+        "fit_method": "unweighted polyfit(log(pn), log(qn), 1), matching compare_residual.m",
+        "intercept": -1.652640899977138,
+        "slope_x": 0.8407962791719817
+      },
+      "label": "n50",
+      "manuscript_rounding": {
+        "core_rms_3dp": "0.116",
+        "display_mean_abs_3dp": "0.089",
+        "display_rms_3dp": "0.138",
+        "slope_3dp": "0.841"
+      },
+      "n": 50,
+      "p_hist": {
+        "bytes": 5951241,
+        "exists": true,
+        "path": "lte/n50 data/simd_n50_eq_j12.hist",
+        "sha256": "366941a0c3deafc30b0f6e2d6f04d18d254d12b8977867299e5a5d7e92947469"
+      },
+      "pair_index_j": 12,
+      "q_hist": {
+        "bytes": 6111368,
+        "exists": true,
+        "path": "lte/n50 data/simd_n50_j12.hist",
+        "sha256": "4a2a538dacf036fd55237b0d5ecf80379acd268ccdd9c03180c6def4cdded27e"
+      },
+      "slice": {
+        "core_IaIb_lt_2p5": {
+          "bins": 2049,
+          "max": 1.2922062754017496,
+          "mean_abs": 0.07179412726768833,
+          "median": -0.016790411594985954,
+          "min": -0.4332022943031397,
+          "q95_abs": 0.24086321938935873,
+          "rms": 0.11603731248373868
+        },
+        "display": {
+          "bins": 2891,
+          "max": 1.2922062754017496,
+          "mean_abs": 0.08940639121073542,
+          "median": -0.015439833132820269,
+          "min": -0.5605155268344095,
+          "q95_abs": 0.28797833358124336,
+          "rms": 0.13796040176839167
+        },
+        "display_mask": "Q>=50 and P>0 on the theta slice, matching residual(Q<50 | P==0)=NaN",
+        "theta_center": -1.610064875,
+        "theta_matlab_index": 20
+      }
+    }
+  ],
+  "script": "Paper/revision_2026-06-19/scripts/export_compare_residual_mesh_metrics.py"
+}

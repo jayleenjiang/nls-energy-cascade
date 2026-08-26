@@ -1,0 +1,1400 @@
+% SIADS review-preparation copy.
+% The local TeX installation used for this pass does not include SIAM's
+% article class, so this file follows SIADS' fallback instruction for
+% non-SIAM macros: use a legible article format with line numbering.
+% The active journal-neutral manuscript remains draft.tex.
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{geometry}
+\geometry{margin=1in}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[hidelinks]{hyperref}
+\usepackage{cleveref}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage[mathlines]{lineno}
+\usepackage[numbers]{natbib}   % [numbers] added: plain style -> numeric citations
+\bibliographystyle{plainnat}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\tr}{\mathrm{tr}}
+\newcommand{\dd}{\,\mathrm{d}}
+\newcommand{\avg}[1]{\langle #1 \rangle}
+% --- added: macros used in the body but absent from the provided preamble ---
+\numberwithin{equation}{section}   % added: per-section equation numbers (matches theorem[section])
+\newcommand{\bI}{\mathbf{I}}
+\newcommand{\bphi}{\boldsymbol{\varphi}}
+\newcommand{\Lgen}{\mathcal{L}}
+\newcommand{\Ladj}{\mathcal{L}^{*}}
+
+\title{Numerical study of an energy cascade model derived from a dispersive equation}
+\author{Jayleen Jiang \and Yao Li\thanks{Department of Mathematics and Statistics, University of Massachusetts Amherst, Amherst, MA 01003, USA. \texttt{liyao@umass.edu}}}
+\date{}
+
+\begin{document}
+\maketitle
+\linenumbers
+
+\begin{abstract}
+We study a stochastic energy-cascade chain obtained from the resonant toy model
+for the cubic nonlinear Schr\"odinger equation. The deterministic chain
+transports action between generations of resonant Fourier modes; coupling the
+two endpoints to heat baths produces a nonequilibrium steady state (NESS) whose
+long-chain behavior is analytically open. We use a Gibbs-preserving
+fluctuation--dissipation bath, validate the resulting equilibrium law against
+an independent Gibbs sampler, and compute the NESS by high-throughput Monte
+Carlo and mesh-free Fokker--Planck solvers. For closed chains with
+$T_1=10$, $T_n=2$, and $\gamma=0.1$, the mean conserved action current obeys
+$\E[J(n)]=28.75\,n^{-1.850}$ over $n=10,20,30,40$, with bootstrap exponent
+confidence interval $[-1.870,-1.830]$. Thus the finite-chain action
+conductivity scales as $\kappa_n\sim n^{-0.850}$, indicating an insulating
+action-transport regime rather than Fourier transport. Long-chain pair
+marginals are well described by rescaled equilibrium marginals at the local
+kinetic temperature, but strict local Gibbs structure fails even at
+equilibrium because of the nonlocal mass term in the Hamiltonian. For the
+three-mode chain we validate a neural-network Fokker--Planck solver against the
+explicit Gibbs density, then use it to visualize symmetry breaking,
+phase-locking stabilization, and qualitative slow relaxation modes. The
+transport and local-equilibrium conclusions are supported by reproducible
+simulation code, finite-time diagnostics, a bath-temperature robustness check,
+and larger-chain checks through $n=60$; bath-energy entropy production and
+asymptotic current large deviations are left for future work.
+\end{abstract}
+
+\noindent\textbf{Keywords.}
+resonant nonlinear Schr\"odinger equation; energy cascade; nonequilibrium
+steady state; stochastic Hamiltonian system; anomalous transport; local
+equilibrium; Fokker--Planck equation.
+
+\medskip
+\noindent\textbf{MSC codes.}
+35Q55; 37M05; 60H10; 82C31; 82C70.
+
+
+\section{Introduction}
+
+The transfer of energy between the modes of a nonlinear Hamiltonian system is a
+basic question across the sciences, from fluids and oceanography to climate.
+When external forcing and dissipation act on a few modes while the bulk---the
+\emph{inertial range}---evolves intrinsically, the natural framework is
+out-of-equilibrium statistical physics; for wave systems it is \emph{wave} (or
+\emph{weak}) \emph{turbulence theory} \cite{Nazarenko}, in which energy is
+transported between Fourier modes, that is, across spatial scales. The classical
+description proceeds through the wave kinetic equation, whose power-law
+stationary solutions are the Kolmogorov--Zakharov cascade spectra
+$n(k)=|k|^{-d}$ and $n(k)=|k|^{-d+2/3}$ (the direct and inverse cascades). These
+spectra are themselves nonequilibrium steady states (NESS), in which energy
+flows at constant flux through the inertial range; their rigorous justification
+remains largely open \cite{HLNS}.
+
+Following \cite{HLNS}, we adopt a complementary viewpoint: rather than the
+kinetic equation, we study the invariant measure---the NESS itself---of a
+forced and dissipated reduction of the nonlinear Schr\"odinger (NLS) equation.
+The present paper is the numerical companion to that program. We compute and
+analyze the NESS of the energy cascade chain: for the three-mode system treated
+analytically in \cite{HLNS}, and, for the first time, for long chains, where the
+analysis is open.
+
+\subsection{Derivation of the model}\label{sec:derivation}
+
+Consider the cubic NLS on a torus,
+\begin{equation}\label{eq:nls}
+  -i\partial_t v + \Delta v = \pm |v|^2 v .
+\end{equation}
+In Fourier variables $a_K$ the cubic nonlinearity couples wavevectors with
+$K_1-K_2+K_3=K$. Retaining only the \emph{resonant} interactions, those with
+$|K_1|^2-|K_2|^2+|K_3|^2=|K|^2$, gives the resonant NLS system, which
+approximates \eqref{eq:nls} for sufficiently small data. Colliander, Keel,
+Staffilani, Takaoka and Tao \cite{CKSTT} restrict this system to a finite set of
+frequencies
+\[
+  \Lambda=\Lambda_1\cup\Lambda_2\cup\cdots\cup\Lambda_n\subset\mathbb{Z}^2,
+\]
+on which the amplitude is constant within each generation $\Lambda_j$. The
+generations are produced by an explicit combinatorial ``nuclear family''
+construction that embeds successive $\Lambda_j$ in $\mathbb{Z}^2$ through exact
+rational (Pythagorean) rotations, with $\Lambda_1$ supported at low and
+$\Lambda_n$ at high frequency. Writing $c_j(t)$ for the common amplitude on
+$\Lambda_j$, the resonant system collapses to the \emph{toy model} of
+\cite{CKSTT},
+\begin{equation}\label{eq:toy}
+  -i\dot c_j = 2\Big(\sum_k |c_k|^2\Big)c_j - |c_j|^2 c_j
+  + 2\big(c_{j-1}^2 + c_{j+1}^2\big)\bar c_j,
+  \qquad j=1,\dots,n,\quad c_0=c_{n+1}=0 .
+\end{equation}
+In \cite{CKSTT} this model is shown to admit an energy-cascade solution whose
+mass, concentrated on $\Lambda_1$ at $t=0$, migrates to $\Lambda_n$ at a later
+time---a deterministic route to the growth of Sobolev norms of \eqref{eq:nls}.
+
+System \eqref{eq:toy} is Hamiltonian. In action--angle coordinates
+$c_j=\sqrt{I_j}\,e^{i\varphi_j}$, with the \emph{bond angles}
+$\theta_k:=2(\varphi_k-\varphi_{k-1})$, it is generated by the Hamiltonian
+\begin{equation}\label{eq:hamiltonian}
+  H(\bI,\bphi) \;=\; \Big(\sum_{k=1}^{n} I_k\Big)^{2}
+  \;-\;\tfrac12\sum_{k=1}^{n} I_k^{2}
+  \;+\; 2\sum_{k=2}^{n} I_{k-1} I_k \cos\theta_k ,
+\end{equation}
+with the Hamiltonian equations of motion
+\begin{equation}\label{eq:ham-flow}
+  -\partial_{\varphi_j}H = 4 I_j\big(I_{j-1}\sin\theta_j - I_{j+1}\sin\theta_{j+1}\big),
+  \qquad
+  \partial_{I_j}H = 2M - I_j + 2 I_{j-1}\cos\theta_j + 2 I_{j+1}\cos\theta_{j+1},
+\end{equation}
+where $M=\sum_k I_k$ and $I_0=I_{n+1}=0$.
+
+\begin{remark}[Normalization convention]\label{rem:convention}
+The Hamiltonian \eqref{eq:hamiltonian} is twice the action--angle Hamiltonian of
+\cite{HLNS}; equivalently the drift \eqref{eq:ham-flow} is twice theirs, and the
+equilibrium measure below carries the factor $1/2T$ rather than $1/T$. This
+amounts to a rescaling of time and is fixed throughout so that every formula
+matches the simulation code that produces our numerical data. For $n=3$ with the
+middle mode as reference one writes $\theta_1=2(\varphi_1-\varphi_2)$,
+$\theta_3=2(\varphi_3-\varphi_2)$, recovering the reduced coordinates of
+\cite{HLNS}.
+\end{remark}
+
+To realize an energy cascade as a statistical steady state one injects energy at
+the low-frequency end and extracts it at the high-frequency end: the two end
+modes $j=1$ and $j=n$ are coupled to stochastic heat baths at temperatures $T_1$
+and $T_n$. This produces the It\^o system
+\begin{align}\label{eq:sde-bulk}
+  \dd I_j   &= -\,\partial_{\varphi_j} H \dd t
+             \;+\; b^{I}_j \dd t \;+\; \sigma^{I}_j \dd W^{I}_j, \\
+  \dd \varphi_j &= \phantom{-}\partial_{I_j} H \dd t
+             \;+\; b^{\varphi}_j \dd t \;+\; \sigma^{\varphi}_j \dd W^{\varphi}_j,
+             \qquad j = 1,\dots,n, \nonumber
+\end{align}
+in which the bath drift and diffusion $(b,\sigma)$ are supported only on
+$j\in\{1,n\}$. We take the fluctuation--dissipation (Langevin) form: at the hot
+end $j=1$,
+\begin{equation}\label{eq:bath}
+  b^{I}_1 = 2\gamma\big(2T_1 - I_1\,\partial_{I_1}H\big),\quad
+  \sigma^{I}_1 = 2\sqrt{2\gamma T_1 I_1},\quad
+  b^{\varphi}_1 = 2\gamma I_2 \sin\theta_2,\quad
+  \sigma^{\varphi}_1 = \sqrt{2\gamma T_1/I_1},
+\end{equation}
+and symmetrically at the cold end $j=n$ with $T_1\to T_n$; here $\gamma>0$ is the
+coupling strength. The bath \eqref{eq:bath} is constructed so that at equilibrium
+$T_1=T_n=T$ the system admits the explicit Gibbs invariant density
+\begin{equation}\label{eq:gibbs}
+  \rho_{\mathrm{eq}}(\bI,\bphi) \;\propto\; \exp\!\big(-H(\bI,\bphi)/2T\big).
+\end{equation}
+
+\begin{remark}[Choice of thermostat]\label{rem:bath}
+The analysis of \cite{HLNS} uses a different thermostat---dissipation of the form
+$\gamma(T_j-I_j^3)$ with a tailored multiplicative angle noise---chosen to make
+the Lyapunov construction tractable; under that choice the Gibbs measure
+\eqref{eq:gibbs} is \emph{not} invariant, even at equal temperatures. For our
+numerical study we instead use the fluctuation--dissipation bath
+\eqref{eq:bath}, whose equilibrium measure is the explicit Gibbs density
+\eqref{eq:gibbs}; this provides a stringent check on the Fokker--Planck solver
+(\cref{sec:fp-numerics}). The reduced-system analysis of the stabilization
+mechanism in \cref{sec:stabilization} retains the original $\gamma(T-I^3)$ bath
+of \cite{HLNS} for direct comparison with the proof.
+\end{remark}
+
+\subsection{Known results and open problems}\label{sec:known}
+
+For the three-mode chain ($n=3$), in which only the middle mode $I_2$ is
+unforced, Hani, Li, Nahmod and Staffilani \cite{HLNS} establish the existence,
+uniqueness and ergodicity of the NESS: when the two bath temperatures are
+sufficiently different, the system possesses a unique invariant probability
+measure $\pi$, and the law of the process converges to $\pi$ in total variation
+at a power-law rate in time. The proof rests on a novel construction of a
+Lyapunov function through an elliptic Feynman--Kac equation. The central
+difficulty is that, unlike microscopic heat conduction where energy simply flows
+from hot to cold, here the transfer of energy to and from the unforced middle
+mode depends sensitively on the phase variables being ``correct'': the system
+must be prevented both from \emph{overheating} (energy trapped in $I_2$) and from
+\emph{freezing} (energy blocked at $I_2$), and which of these threatens depends on
+whether $I_2$ is large or small. This phase-dependent stabilization mechanism is
+the analytical heart of \cite{HLNS} and the object of our \cref{sec:stabilization}.
+
+Two limitations of the analytical theory motivate the present work. First, the
+results of \cite{HLNS} are confined to $n=3$; the authors explicitly leave longer
+chains open, noting that already the three-mode case is demanding. Second, the
+NESS is not given in closed form, so quantitative properties---energy profiles,
+transport coefficients, local statistics, the relaxation spectrum---are
+inaccessible to the existence theory. Both gaps are naturally addressed
+numerically.
+
+\subsection{Contributions and organization}\label{sec:contributions}
+
+This paper is a numerical study of the NESS of the energy cascade model
+\eqref{eq:sde-bulk}. After collecting the thermodynamic and spectral framework in
+\cref{sec:thermo,sec:fp,sec:methods}, we present two groups of results.
+The division is deliberate: the long-chain experiments provide macroscopic
+statistical evidence for transport and local-equilibrium structure in a regime
+where no invariant-measure theory is currently available, while the short-chain
+computations provide a low-dimensional microscope for the stabilization and
+phase-locking mechanisms that make the three-mode NESS mathematically
+tractable. We therefore keep the two uses of numerics separate: the long-chain
+data support finite-size transport and LTE claims, whereas the short-chain
+Fokker--Planck calculations support mechanistic and qualitative spectral
+diagnostics.
+
+\Cref{sec:long-chain} treats the \emph{long chain}, the regime left open by
+\cite{HLNS}. We characterize the nonequilibrium steady state---the action
+profile and an approximate local equilibrium, in which adjacent-mode pair
+marginals match a rescaled equilibrium marginal at the local kinetic temperature
+(without strict local-Gibbs structure)---and we study the transport of the
+conserved action current. The numerics indicate an anomalously fast decay of
+the mean current with chain length, i.e. an insulating action-transport regime.
+
+\Cref{sec:short-chain} returns to the \emph{three-mode chain} for a detailed
+study. We solve the stationary Fokker--Planck equation by a mesh-free,
+data-driven neural-network method \cite{ZhaiDobsonLi}, validating it against the
+exact Gibbs measure \eqref{eq:gibbs} in equilibrium; we then examine the
+nonequilibrium steady state, the phase-locking stabilization mechanism, and
+trajectory-based estimates of the slow relaxation mode. The numerical tools---a
+SIMD Monte Carlo workflow for histogram and reference-density generation, an
+independent canonical current accumulator for transport measurements, kernel
+density postprocessing, and trajectory-based backward solvers for slow-mode
+diagnostics---are described as they arise.
+
+
+\section{Preliminary}
+
+This section collects the thermodynamic observables we measure for the long
+chain (\cref{sec:thermo}), the spectral (Fokker--Planck) framework for the
+short chain (\cref{sec:fp}), the numerical methods used to solve the stationary
+Fokker--Planck equation and to extract eigenfunctions of the generator
+(\cref{sec:methods}), and the validation protocol for the Monte Carlo
+transport computations (\cref{sec:mc-validation}).
+
+\subsection{Nonequilibrium thermodynamics of the chain}\label{sec:thermo}
+
+The Hamiltonian flow \eqref{eq:ham-flow} conserves the total mass
+$M=\sum_k I_k$, and the evolution of each action obeys a discrete continuity
+equation
+\begin{equation}\label{eq:continuity}
+  \dot I_j \;=\; J_j - J_{j+1},
+  \qquad
+  J_j \;:=\; 4\, I_{j-1} I_j \sin\theta_j ,
+\end{equation}
+so that $J_j$ is the \emph{action current} flowing from mode $j-1$ into mode
+$j$ (with $J_1=J_{n+1}=0$ for the closed chain). In the nonequilibrium steady
+state (NESS) the expected actions are stationary, $\E[\dot I_j]=0$, hence the
+mean current is uniform along the chain, $\E[J_j]\equiv \E[J(n)]$ for all interior
+$j$.
+
+\begin{definition}[Thermal conductivity and Fourier's law]\label{de:fourier}
+Assume $T_1>T_n$, so the positive action-current direction points from the hot
+left bath toward the cold right bath. Let
+\[
+  \nabla T(n):=\frac{T_n-T_1}{n}<0
+\]
+denote the effective temperature gradient in that positive spatial direction.
+We say, by analogy with Fourier's law, that the chain has finite action
+conductivity $\kappa$ if
+\begin{equation}\label{eq:fourier}
+  \lim_{n \rightarrow \infty}\frac{\E[J(n)]}{\nabla T(n)} \;=\; -
+  \kappa \in (0,\infty).
+\end{equation}
+
+Let $\kappa_n = -\E[J(n)]/\nabla T(n)$ be the finite-chain action
+conductivity. Anomalous transport corresponds to $\kappa_n\sim n^{\alpha}$ with
+$\alpha\neq0$:
+$\alpha>0$ is superdiffusive and $\alpha<0$ (so $\kappa_n\to0$) signals an
+insulator.
+\end{definition}
+
+When one measures the actual Hamiltonian energy exchanged with the baths, two
+further observables characterize the NESS. The \emph{entropy production rate}
+associated with the two heat baths is
+\begin{equation}\label{eq:entropy-prod}
+  \dot S \;=\; -\frac{\E[\dot Q_1]}{T_1} - \frac{\E[\dot Q_n]}{T_n} \;\ge\; 0,
+\end{equation}
+where $\dot Q_1,\dot Q_n$ are the mean heat fluxes delivered by the baths; in
+the NESS the energy balance forces $\E[\dot Q_1]=-\E[\dot Q_n]=:\E[\dot Q]$ and
+$\dot S = \E[\dot Q]\,(1/T_n - 1/T_1)$. The second law $\dot S\ge 0$ is refined
+by the steady-state \emph{fluctuation theorem} of Gallavotti--Cohen
+\cite{GallavottiCohen}: under its usual chaoticity and large-deviation
+hypotheses, writing $\Sigma_\tau$ for the entropy produced over a window of
+length $\tau$, the corresponding densities satisfy formally
+\begin{equation}\label{eq:ft}
+  \lim_{\tau\to\infty}\frac{1}{\tau}\,
+  \ln\frac{p_\tau(a)}{p_\tau(-a)} \;=\; a .
+\end{equation}
+In this paper the transport measurements below concern the conserved
+\emph{action} current. A full bath-energy and entropy-production measurement is
+left as a separate numerical diagnostic and is not used as evidence for the
+main claims.
+
+\subsection{Fokker--Planck equation and spectral decomposition}\label{sec:fp}
+
+Write $x=(\bI,\bphi)$ and let the system \eqref{eq:sde-bulk} have drift $f(x)$
+and diffusion matrix $\Sigma(x)=\sigma(x)\sigma(x)^{\!\top}$. The probability
+density $u(x,t)$ evolves by the (forward) Fokker--Planck, or Kolmogorov forward,
+equation $\partial_t u = \Ladj u$, where
+\begin{equation}\label{eq:fp-operator}
+  \Ladj u = -\sum_i \partial_{x_i}\!\big(f_i\,u\big)
+            + \tfrac12\sum_{i} \partial^{2}_{x_i}\!\big(\Sigma_{ii}\,u\big).
+\end{equation}
+For our model the diffusion is diagonal and degenerate: only the bath modes
+carry noise, with
+\begin{equation}\label{eq:diffusion}
+  \tfrac12\Sigma_{I_j I_j} = 4\gamma T_j I_j, \qquad
+  \tfrac12\Sigma_{\varphi_j\varphi_j} = \gamma T_j/I_j,
+  \qquad j\in\{1,n\},
+\end{equation}
+and zero otherwise in the full $(\bI,\bphi)$ coordinates. In reduced
+coordinates built from doubled bond angles, for instance
+$\theta_2=2(\varphi_2-\varphi_1)$ at the left boundary, the angular diffusion
+coefficient is multiplied by $2^2$, giving
+$\tfrac12\Sigma_{\theta_2\theta_2}=4\gamma T_1/I_1$ (and similarly at the right
+boundary).
+
+\begin{remark}[Degeneracy / hypoellipticity]\label{rem:hypo}
+Because noise enters only at $j\in\{1,n\}$, $\Sigma$ has rank $4$ in the
+$2n$-dimensional state space; the interior modes are forced only through the
+Hamiltonian coupling. Existence, uniqueness and ergodicity of the invariant
+measure for the $n=3$ system are established in \cite{HLNS} via a
+Feynman--Kac--Lyapunov argument together with H\"ormander's condition; the long
+chain $n>3$ is left there as an open problem and is the subject of
+\cref{sec:long-chain}.
+\end{remark}
+
+The stationary density solves $\Ladj u = 0$ with $\int u\dd x = 1$. The
+long-time relaxation toward it is governed by the (backward) generator $\Lgen$,
+the formal adjoint of $\Ladj$,
+\begin{equation}\label{eq:generator}
+  \Lgen g = \sum_i f_i\,\partial_{x_i} g
+          + \tfrac12\sum_i \Sigma_{ii}\,\partial^2_{x_i} g,
+  \qquad
+  (\E_x[g(X_t)]) = (e^{t\Lgen} g)(x).
+\end{equation}
+Under ergodicity the spectrum of $\Lgen$ lies in $\{\mathrm{Re}\,\lambda\le 0\}$
+with a simple eigenvalue $\lambda_0=0$ (constant eigenfunction). Ordering the
+remaining eigenvalues by real part, the \emph{spectral gap}
+$\lambda_R := \max\{\mathrm{Re}\,\lambda : \lambda\neq 0\}<0$ sets the slowest
+relaxation rate, and for an observable $g$ orthogonal to constants
+\begin{equation}\label{eq:decay}
+  \E_x[g(X_t)] - \E_{\mathrm{eq}}[g]
+  \;\sim\; Q(x)\,e^{\lambda_R t}\quad (t\to\infty),
+\end{equation}
+where $Q$ is the corresponding (sub)dominant eigenfunction, $\Lgen Q =
+\lambda_R Q$. A purely real $\lambda_R$ indicates an overdamped relaxation; a
+nonzero imaginary part $\lambda_I$ indicates damped oscillation with frequency
+$\lambda_I$.
+
+\subsection{Numerical methods}\label{sec:methods}
+
+\subsubsection{A data-driven neural-network Fokker--Planck solver}
+Classical grid-based PDE solvers are impractical for \eqref{eq:fp-operator} in
+dimension $2n$: the domain is unbounded with no natural boundary condition, and
+the cost grows exponentially with dimension. We follow the mesh-free,
+data-driven solver of Zhai--Dobson--Li \cite{ZhaiDobsonLi} (building on
+\cite{Li2019,DobsonLiZhai}), which represents the stationary density by a neural
+network $\tilde u(x;\vartheta)$ trained against the unconstrained loss
+\begin{equation}\label{eq:nn-loss}
+  \mathcal{J}(\vartheta)
+  = \underbrace{\frac{1}{N_X}\sum_{i}\big(\Ladj \tilde u(x_i;\vartheta)\big)^2}_{\text{PDE residual } L_1}
+  + \underbrace{\frac{1}{N_Y}\sum_{j}\big(\tilde u(y_j;\vartheta)-v(y_j)\big)^2}_{\text{MC reference } L_2},
+\end{equation}
+where $\Ladj\tilde u$ is evaluated by automatic differentiation and $v$ is a
+low-accuracy Monte Carlo (MC) estimate of the density at reference points
+$\{y_j\}$. The operator term $L_1$ regularizes the network toward solutions of
+$\Ladj u=0$ and sharply reduces the amount and accuracy of MC data required;
+the method tolerates spatially uncorrelated noise in $v$ \cite{ZhaiDobsonLi}.
+
+We adapt the solver to \eqref{eq:sde-bulk} in two ways. First, the angles are
+periodic, so the network input is the \emph{periodic encoding}
+$(\bI,\cos\theta_1,\sin\theta_1,\dots)$ rather than the raw angles. Second, the
+diffusion \eqref{eq:diffusion} is degenerate (\cref{rem:hypo}); we therefore
+include collocation points in the zero-density region and constrain them by the
+operator $L_1$ alone (no fabricated reference data there). The reference density
+$v$ is obtained by a high-throughput MC simulation of \eqref{eq:sde-bulk}
+together with a kernel density estimate; see \cref{sec:fp-numerics}.
+
+\subsubsection{Eigenfunctions of the generator}
+To probe \eqref{eq:decay} we estimate the relaxation rate and slow-mode
+amplitude visible to a chosen observable directly from trajectories. For a
+localized observable $g$ (we use $g=\cos\theta_1$) we evolve a large ensemble
+of trajectories from each of many initial points $x$ and record the conditional
+expectation $\E_x[g(X_t)]$ as a function of $t$. Fitting a late-time
+exponential window gives an
+observable-dependent estimate of the dominant decay rate visible to $g$; if a
+damped oscillatory fit is also stable, it gives an estimate of an imaginary
+part. The fitted amplitude gives a pointwise sample $Q(x)$ of the associated
+slow mode. A second network is then trained to represent $Q$ on the whole
+domain, using a data loss against the sampled $Q(x)$ together with a PDE loss
+enforcing the eigenvalue equation $\Lgen Q=\lambda_R Q$. These fits are
+diagnostic rather than a proof that the full generator spectrum is real. Results
+are reported in
+\cref{sec:eigenfunction}.
+
+\subsection{Monte Carlo validation and uncertainty protocol}\label{sec:mc-validation}
+
+The long-chain transport claims use a separate canonical current accumulator
+for the Gibbs-preserving SDE \eqref{eq:sde-bulk}. The accumulator is written in
+double precision, uses deterministic per-trajectory random-number streams, and
+records one independent time-averaged current per trajectory together with four
+equal subwindows. We report standard errors across independent trajectory
+averages and use trajectory-cluster bootstrap resampling for scaling-exponent
+confidence intervals; the subwindows are used only as finite-time diagnostics,
+not as independent trajectories.
+
+Before production runs the code is subjected to four validation gates. First,
+the optimized build is warning-clean and a sanitizer smoke run completes.
+Second, repeating the same seeded run with one and two OpenMP threads gives
+byte-identical samples, profiles, and burn-in traces. Third, an
+equal-temperature run gives zero mean action current within confidence
+intervals, while swapping the hot and cold baths reverses the current with the
+same magnitude. Fourth, an equal-temperature SDE action profile agrees with an
+independent Metropolis sampler of the Gibbs law \eqref{eq:gibbs}, with maximum
+discrepancy $1.10$ combined standard errors in the validation run. These gates
+check the sign convention, the fluctuation--dissipation normalization, and the
+statistical independence assumptions used in the current estimates.
+
+The timestep study is used only to choose a stable production step, not to hide
+a continuum extrapolation. The coarse step $\Delta t=10^{-3}$ is acceptable at
+$n=10$ but increasingly biased at larger $n$; at $n=40$ it underestimates the
+current by $17.6\%$ relative to $\Delta t=5\times10^{-4}$. In contrast, the
+$n=40$ comparison between $\Delta t=5\times10^{-4}$ and
+$2.5\times10^{-4}$ differs by $3.9\%$, or $0.60$ pooled standard errors. The
+reported scaling exponent is therefore a finite-size numerical law conditional
+on the validated timestep and measurement window, not an asymptotic theorem.
+
+\section{Statistical physics properties of the long cascade chain}\label{sec:long-chain}
+
+The rigorous analysis of \cite{HLNS} treats the three-mode chain and lists the
+longer chains $n>3$ as open. This section studies those long chains
+numerically under the Gibbs-preserving two-bath dynamics \eqref{eq:bath}: the
+structure of the nonequilibrium steady state (\cref{sec:ness-long}), the
+transport of the conserved action current and the associated finite-chain
+conductivity (\cref{sec:thermal-conductivity}), and finite-time current
+fluctuations. We keep the terminology ``action current'' throughout, because
+\eqref{eq:continuity} is a continuity equation for the conserved action
+$M=\sum_j I_j$; Hamiltonian energy exchange with the baths is a distinct
+observable.
+
+\paragraph{Simulation.}
+All long-chain data are produced by a single Euler--Maruyama integrator of
+\eqref{eq:sde-bulk} that processes $W=16$ independent trajectories in lockstep
+(one SIMD register per arithmetic operation), with the phases wrapped to
+$[-\pi,\pi)$ at every step. Unless otherwise stated we use $\gamma=0.1$ and the
+closed two-bath chain \eqref{eq:bath}. The local-equilibrium histograms use
+long on-the-fly accumulation runs, while the current-scaling runs use an
+independent canonical current accumulator with double precision, deterministic
+trajectory seeds, four equal current blocks per trajectory, and explicit
+timestep and burn-in diagnostics as described in \cref{sec:mc-validation}.
+
+\subsection{Nonequilibrium steady state}\label{sec:ness-long}
+
+\paragraph{Stabilization.}
+We regard a run as stabilized when the sampled expectations (in particular the
+action profile $\langle I_j\rangle$ and the bond-angle statistics) cease to
+change with increasing sample size. Because the cascade transports energy
+slowly, the relaxation time is long and the burn-in must be chosen with care:
+a short run can report a spuriously uniform profile that has not yet developed
+the steady gradient. We return to this point below.
+
+\paragraph{Energy profile.}
+\Cref{fig:profile} shows the mean action profiles $\langle I_j\rangle$ for
+closed chains with $T_1=10$, $T_n=2$ at $n=25,50,100$. The profiles are
+monotone after a short boundary layer at the hot contact and show the sharpest
+drop at the cold bath. For $n=25$, the profile decreases from
+$\langle I_1\rangle=0.738$ at the hot end to $\langle I_{13}\rangle=0.573$ near
+mid-chain and $\langle I_{25}\rangle=0.165$ at the cold contact. The
+corresponding endpoint values are $(0.514,0.106)$ at $n=50$ and
+$(0.362,0.073)$ at $n=100$. These profile estimates are the data used below to
+define the local kinetic temperature in the LTE comparison.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.82\textwidth]{action_profiles.pdf}
+  \caption{Steady-state action profiles of the long closed chain. The
+  horizontal coordinate is normalized as $j/(n-1)$ to compare
+  $n=25,50,100$ on the same axis. The sample counts are
+  $5.07\times10^8$, $1.01\times10^9$, and $4.06\times10^9$, respectively.}
+  \label{fig:profile}
+\end{figure}
+
+\paragraph{Cascade geometry.}
+The interpretation of the chain as an energy cascade rests on the frequency
+embedding of \cite{CKSTT}: each generation of the resonant ``nuclear family''
+construction places a group of modes on $\mathbb{Z}^2$ by exact rational
+(Pythagorean) rotations, so that the abstract chain position $j$ corresponds to
+a concrete set of frequencies $\Lambda_j$. \Cref{fig:embedding} plots the
+locations of the first five generations used in the CKSTT construction. The
+open-chain terminal-energy scaling is not used as evidence in the present
+paper; establishing it would require a separate convergence study under the
+same corrected thermostat used for the closed-chain transport measurements.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.62\textwidth]{cascade_embedding.pdf}
+  \caption{Cascade geometry: the first five generations in the CKSTT resonant
+  frequency embedding. Points are Fourier modes $K\in\mathbb{Z}^2$ (or exact
+  rational intermediate coordinates in the displayed construction), and
+  segments indicate resonant family transitions between adjacent generations.}
+  \label{fig:embedding}
+\end{figure}
+
+
+\paragraph{Local thermodynamic equilibrium.}\label{par:lte}
+A central question is whether, despite the global nonequilibrium drive,
+adjacent modes in the bulk are described \emph{locally} by an equilibrium
+measure. Let $q(I_a,I_{a+1},\theta_a)$ denote the joint pair density in the
+NESS, with $(I_a,I_b)=(I_j,I_{j+1})$, and let
+$p_T(I_a,I_{a+1},\theta_a)$ be the corresponding marginal of the equilibrium
+measure at temperature $T$, whose full density is proportional to
+$\exp[-H/(2T)]$ under the convention of \cref{rem:convention} (integrating out
+all other modes). We accumulate $q$ and $p_T$ on
+$80^3$ histograms over $[0,4]^2\times[-\pi,\pi)$ from $\sim10^9$ samples per
+site, at interior pairs of the closed chain ($T_1=10,T_n=2$) for
+$n=25,50,100$.
+
+First, neither $q$ nor $p_T$ equals the two-mode Gibbs density
+$\exp\!\big[-(\tfrac12(I_a{+}I_b)^2-\tfrac14(I_a^2{+}I_b^2)+I_aI_b\cos\theta)\big]$:
+comparing $-\log(\text{PDF})$ to this form, the NESS and the equilibrium
+marginal deviate in the \emph{same} way (both rise along the axes where the
+two-mode form is flat, and their $\theta$-modulation is weaker). Since the
+equilibrium marginal already deviates identically, the discrepancy comes from
+marginalizing the nonlocal term $\tfrac12(\sum_j I_j)^2$, not from the
+nonequilibrium drive: there is no strict local Gibbs structure, even at
+equilibrium.
+
+Second, the NESS marginal is nonetheless well approximated by a
+\emph{rescaled} equilibrium marginal. We fit $\log q = x\log p_6 + c$ by
+weighted least squares, weighting each bin by its count (the inverse variance
+of the log-density for multinomial counts); statistical errors on $x$ are
+below $3\times10^{-4}$ and are negligible against the systematic spread
+discussed below. Restricted to the core ($I_a,I_b<2.5$) the fit is excellent,
+with weighted $R^2$ from $0.986$ to $0.999$ (\cref{tab:lte}), and the rescaled
+$p_6^{\,x}$ matches $q$ closely (\cref{fig:lte-resid}).
+
+We caution against reading the slope as a temperature through the naive
+relation $6/x$. A control fit between two simulated equilibria,
+$\log p_{7.12}=x\log p_6+c$, returns $x=0.926$ rather than the naive
+$6/7.12=0.843$: the marginals do not scale as $p_T=p_6^{\,6/T}$,
+because the mean field $\langle\sum_j I_j\rangle\propto\sqrt{nT}$ shifts with
+temperature. Hence $6/x$ systematically underestimates the effective
+temperature.
+
+Third, the effective temperature is the local kinetic temperature. Define
+\[
+  T_{\mathrm{kin}}(a)=
+  6\,\frac{\langle I_a\rangle_{\mathrm{NESS}}}
+          {\langle I_a\rangle_{\mathrm{eq}}}
+\]
+directly from the action profiles, independent of the marginal fit. Matching
+$q$ to an actual simulated equilibrium confirms
+this scale: at $a/n=0.48$ the NESS marginal fitted against the true $p_{7.12}$
+gives $x=1.01$, i.e.\ $q\approx p_{7.12}$, within a few percent of
+$T_{\mathrm{kin}}=6.85$ at that site (and consistent to $0.2\%$ with the
+$q$--$p_6$ and $p_{7.12}$--$p_6$ fits combined). The kinetic temperature, the
+equilibrium-matching temperature, and the naive $6/x$ agree to within
+$5$--$10\%$, the spread reflecting the residual departure of $q$ from a true
+equilibrium marginal. To leading order, then, the dependence of the effective
+temperature on $(T_L,T_R,a/n)$ is simply the shape of the temperature profile;
+across boundary pairs of equal mean ($(8,4),(9,3),(10,2)$) it varies
+monotonically with the imposed gradient.
+
+\begin{table}[ht]\centering
+\begin{tabular}{ccccc}
+\hline
+$a/n$ & $n$ & $x$ & $R^2_{\mathrm w}$ & $6/x$ \quad $T_{\mathrm{kin}}$ \\
+\hline
+       & $25$  & $0.8203$ & $0.9970$ & $7.31\quad 7.68$ \\
+$0.24$ & $50$  & $0.8269$ & $0.9984$ & $7.26\quad 7.79$ \\
+       & $100$ & $0.8429$ & $0.9967$ & $7.12\quad 7.82$ \\
+\hline
+       & $25$  & $0.9360$ & $0.9943$ & $6.41\quad 6.85$ \\
+$0.48$ & $50$  & $0.9308$ & $0.9988$ & $6.45\quad 7.03$ \\
+       & $100$ & $0.9304$ & $0.9989$ & $6.45\quad 7.01$ \\
+\hline
+       & $25$  & $1.0933$ & $0.9862$ & $5.49\quad 5.80$ \\
+$0.72$ & $50$  & $1.0610$ & $0.9919$ & $5.65\quad 6.04$ \\
+       & $100$ & $1.0412$ & $0.9980$ & $5.76\quad 6.02$ \\
+\hline
+\multicolumn{5}{l}{\emph{Controls} ($n=25$):}\\
+\multicolumn{2}{l}{$p_{7.12}$ vs.\ $p_6$ \ (ceiling)}      & $0.9261$ & $0.9997$ & --- \\
+\multicolumn{2}{l}{NESS vs.\ $p_{7.12}$ \ ($a/n{=}0.48$)}  & $1.0093$ & $0.9944$ & --- \\
+\hline
+\end{tabular}
+\caption{Weighted least-squares fit $\log q=x\log p_6+c$ over the core
+($I_a,I_b<2.5$): slope $x$, weighted $R^2$, the naive temperature $6/x$, and
+the independently measured kinetic temperature $T_{\mathrm{kin}}$, at fixed
+$a/n$ for $n=25,50,100$. Statistical errors on $x$ are below $3\times10^{-4}$,
+negligible against the $5$--$10\%$ spread among temperature estimators. The
+two control fits (two equilibria, giving the ceiling; and NESS against the
+matched equilibrium $p_{7.12}$, $x\approx1$) are listed below. The naive
+$6/x$ lies systematically below $T_{\mathrm{kin}}$ because the marginals do not
+follow the naive Gibbs scaling.}
+\label{tab:lte}
+\end{table}
+
+Fourth, the approximation improves as the chain lengthens. The control fit
+between two equilibria ($p_{7.12}$ vs.\ $p_6$) gives a weighted $R^2=0.9997$,
+the ceiling attainable within the equilibrium family. At fixed $a/n$ the core
+$R^2$ rises toward this ceiling with $n$---most clearly at the cold,
+large-gradient sites ($a/n=0.72$: $0.986\to0.992\to0.998$ for $n=25,50,100$)
+and at mid-chain ($a/n=0.48$: $0.994\to0.999\to0.999$), while the hot site
+($a/n=0.24$) is already near the ceiling at $n=25$. A small gap persists at
+all $n$ (about $0.001$--$0.002$ at $n=100$); in this sense $q\to p_{\beta_0}$
+in the long-chain interior without becoming exactly equal to it.
+
+That residual gap is the genuine deviation from local equilibrium. It has two
+parts: a curvature---core and tail carry slightly different effective
+temperatures, so a single $x$ cannot fit both---and a genuine nonequilibrium
+component, an odd-in-$\theta$ part of $q$ that no equilibrium density (which
+depends on $\theta$ only through $\cos\theta$) can reproduce, tied to the
+action flux of \cref{sec:thermal-conductivity}. Neither is removed by
+rescaling to a single temperature, so strict local Gibbs structure is not
+restored. In summary, in the long-chain interior the NESS pair marginal is
+well described by an equilibrium marginal at the local kinetic temperature,
+increasingly so as $n$ grows, but strict local Gibbs structure does not hold
+exactly in either ensemble.
+
+To quantify the two contributions, let
+$r=\log q-(c+x\log p_6)$ be the residual after the weighted fit and decompose
+\[
+  r_{\rm even}(\theta)=\tfrac12\{r(\theta)+r(-\theta)\},\qquad
+  r_{\rm odd}(\theta)=\tfrac12\{r(\theta)-r(-\theta)\}.
+\]
+\Cref{tab:lte-resid-decomp} reports weighted root-mean-square residuals on the
+symmetric core mask $I_a,I_b<2.5$, requiring at least $50$ counts in both the
+$\theta$ and $-\theta$ bins for both histograms. The even component records the
+remaining curvature/marginalization mismatch after a single-temperature
+rescaling, while the odd component is the part incompatible with any
+equilibrium marginal. The odd residual is visible at the shorter and
+mid-length chains, but is substantially smaller in the $n=100$ interior
+diagnostics, consistent with improving local equilibrium while retaining a
+finite nonequilibrium correction.
+
+\begin{table}[ht]\centering
+\small
+\begin{tabular}{cccccc}
+\toprule
+$a/n$ & $n$ & $\|r\|_w$ & $\|r_{\rm even}\|_w$ &
+$\|r_{\rm odd}\|_w$ & $\|r_{\rm odd}\|_w/\|r\|_w$ \\
+\midrule
+0.24 & 25  & 0.066 & 0.044 & 0.049 & 0.74 \\
+0.24 & 50  & 0.053 & 0.046 & 0.028 & 0.52 \\
+0.24 & 100 & 0.091 & 0.089 & 0.015 & 0.17 \\
+\midrule
+0.48 & 25  & 0.100 & 0.082 & 0.058 & 0.58 \\
+0.48 & 50  & 0.051 & 0.040 & 0.031 & 0.62 \\
+0.48 & 100 & 0.054 & 0.052 & 0.016 & 0.30 \\
+\midrule
+0.72 & 25  & 0.168 & 0.152 & 0.071 & 0.43 \\
+0.72 & 50  & 0.144 & 0.138 & 0.040 & 0.28 \\
+0.72 & 100 & 0.076 & 0.073 & 0.022 & 0.29 \\
+\bottomrule
+\end{tabular}
+\caption{Even/odd decomposition of the local-equilibrium residual
+$r=\log q-(c+x\log p_6)$ after the rescaled-equilibrium fit. Norms are
+weighted by the symmetrized NESS counts on the paired core mask described in
+the text. Since equilibrium marginals are even in $\theta$, the odd part is a
+direct finite nonequilibrium correction rather than a temperature-rescaling
+error.}
+\label{tab:lte-resid-decomp}
+\end{table}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.82\textwidth]{lte_residual_midchain.pdf}
+  \caption{Residual of the rescaled-equilibrium fit,
+  $\log q-(x\log p_6+c)$, for the mid-chain pair $a/n=0.48$ at fixed
+  $\theta\approx0$. Low-count bins (fewer than $200$ samples in either the NESS
+  or equilibrium histogram on the displayed slice) are masked. The fitted slopes
+  and weighted $R^2$ values agree with the core values in \cref{tab:lte}; the
+  remaining structured residual is the finite, non-Gibbs component discussed in
+  the text.}
+  \label{fig:lte-resid}
+\end{figure}
+
+For a more geometric view of the same approximation error,
+\cref{fig:lte-resid-mesh} shows the residual surface on the displayed
+$\theta$-slice using the MATLAB \texttt{compare\_residual.m} masking convention.
+This diagnostic includes the short $n=15$ chain and two longer chains at a
+comparable interior location. The surfaces show a coherent, mostly
+low-curvature core together with a sharper boundary/tail ridge: the dominant
+effect is therefore a smooth mismatch between the NESS marginal and a single
+rescaled equilibrium marginal, rather than unstructured Monte Carlo noise. The
+figure is used as a structural residual diagnostic; the numerical slopes in
+\cref{tab:lte} are computed by the fixed weighted-core estimator described
+above.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\textwidth]{report_assets/compare_residual_mesh.pdf}
+  \caption{Three-dimensional residual surfaces
+  $\log q-(x\log p+c)$ for the pair-marginal local-equilibrium comparison,
+  reproduced from the MATLAB \texttt{compare\_residual.m} convention. The
+  displayed slice uses $80^3$ histograms, the mask $(Q>50)$ and $(P>50)$ for
+  the fit, and an interior hot-side pair for $n=15,25,50$. The short-chain
+  $n=15$ residual has the same qualitative shape as the longer chains,
+  supporting the interpretation that the residual is a structured finite
+  nonequilibrium correction rather than a plotting artifact.}
+  \label{fig:lte-resid-mesh}
+\end{figure}
+
+\subsection{Thermal conductivity}\label{sec:thermal-conductivity}
+
+In the closed-chain NESS the mean action current $\E[J]$ of
+\eqref{eq:continuity} is uniform along the chain. We measure how it scales with
+the chain length $n$ using the Gibbs-preserving bath \eqref{eq:bath}. The
+production runs use $T_1=10$, $T_n=2$, $\gamma=0.1$, timestep
+$\Delta t=5\times10^{-4}$, and $1024$ independent trajectories for each chain
+length; the burn-in is scaled with the observed relaxation time
+($1000,1280,2880,5120$ for $n=10,20,30,40$). Each trajectory is averaged over a
+window of length $200$ after burn-in. The measured currents are
+\[
+\begin{array}{c|cccc}
+n & 10 & 20 & 30 & 40\\ \hline
+\E[J(n)] &
+0.39252 & 0.11917 & 0.05457 & 0.02975\\
+\mathrm{SE} &
+0.00189 & 0.00092 & 0.00062 & 0.00048
+\end{array}
+\]
+where the standard errors are computed across independent trajectory averages.
+A log--log fit gives
+\begin{equation}\label{eq:flux-scaling}
+  \E[J(n)] \;=\; 28.75\,n^{-1.850},
+  \qquad R^2=0.9980,
+\end{equation}
+with a trajectory-bootstrap $95\%$ confidence interval
+$[-1.870,-1.830]$ for the exponent. Thus $\E[J(n)]\,n\to0$: the current decays
+faster than the Fourier scaling $1/n$. By \cref{de:fourier},
+\[
+  \kappa_n=\frac{n\,\E[J(n)]}{T_1-T_n}
+  \sim 3.59\,n^{-0.850},
+\]
+so the long chain behaves as an action-current insulator. This is the opposite
+of the divergent conductivity familiar from FPU-type lattices
+\cite{LepriLiviPoliti}, although the transported conserved quantity here is the
+action rather than the Hamiltonian energy.
+
+Two numerical checks accompany \eqref{eq:flux-scaling}. First, every production
+trajectory is split into two equal measurement windows; the largest
+first-half/second-half discrepancy among the four lengths is only $0.90$
+paired standard errors. Second, a timestep pilot shows that the coarse
+$\Delta t=10^{-3}$ run underestimates the $n=40$ current, whereas
+$5\times10^{-4}$ and $2.5\times10^{-4}$ agree within the Monte Carlo error
+(relative difference about $3.9\%$, $0.60$ pooled standard errors, in the
+64-trajectory pilot). The production exponent is therefore based on
+$\Delta t=5\times10^{-4}$.
+
+As a larger-chain robustness check, we also ran the same canonical accumulator
+at $n=50$ with $1024$ trajectories, burn-in $8000$, measurement window $200$,
+and $\Delta t=5\times10^{-4}$. This run gives
+$\E[J(50)]=0.01852$ with standard error $0.00044$, and the
+first-half/second-half stationarity statistic is $-1.49$ paired standard
+errors. Adding this point to the four production lengths gives a diagnostic
+five-size fit
+\[
+  \E[J(n)] \;=\; 32.50\,n^{-1.894},
+  \qquad R^2=0.9976,
+\]
+with bootstrap exponent confidence interval $[-1.916,-1.873]$. A smaller
+fine-step pilot at $\Delta t=2.5\times10^{-4}$ gives
+$\E[J(50)]=0.01880$ with standard error $0.00081$; relative to the
+$\Delta t=5\times10^{-4}$ run, this is a $1.5\%$ shift, or $0.30$ pooled
+standard errors. An independent burn-in-$10000$ check gives
+$\E[J(50)]=0.01931\pm0.00086$.
+
+We then extended the same production-resolution protocol to $n=60$, with
+$1024$ trajectories, burn-in $11520$, measurement window $200$, and
+$\Delta t=5\times10^{-4}$. This run gives
+$\E[J(60)]=0.01245$ with standard error $0.00042$, and the
+first-half/second-half stationarity statistic is $-0.52$ paired standard
+errors. Adding both larger lengths to the four primary production lengths gives
+a diagnostic six-size fit
+\[
+  \E[J(n)] \;=\; 35.94\,n^{-1.930},
+  \qquad R^2=0.9974,
+\]
+with bootstrap exponent confidence interval $[-1.954,-1.906]$. We therefore
+use the $n=50$ and $n=60$ computations as evidence against a near-term
+crossover to Fourier scaling, but retain \eqref{eq:flux-scaling} as the
+primary quoted exponent because the larger lengths are robustness extensions
+rather than a complete larger-$n$ and fine-timestep convergence study.
+
+Finally, we repeated the production-resolution four-length experiment at a
+second bath-temperature pair with the same total bath scale but smaller
+contrast, $T_1=8,T_n=4$.  With $1024$ trajectories per length and the same
+burn-ins, timestep, and measurement window as the primary production run, this
+parameter set gives
+\[
+  \E[J(n)] \;=\; 12.95\,n^{-1.751},
+  \qquad R^2=0.9984,
+\]
+over $n=10,20,30,40$, with bootstrap exponent confidence interval
+$[-1.780,-1.723]$.  The maximum first-half/second-half stationarity statistic
+over the four lengths is $1.74$ paired standard errors.  This check indicates
+that the faster-than-Fourier finite-size decay is not tied only to the single
+temperature pair $T_1=10,T_n=2$, although it is still not a systematic
+parameter sweep.
+
+\Cref{tab:flux-fit-sensitivity} records the finite-size sensitivity of the
+power-law fit. Adding $n=50$ and $n=60$, fitting only the tail
+$n=20,30,40,50,60$, or leaving out any one of the six available lengths all
+gives an exponent below $-1$. The adjacent local slopes range from $-1.720$ on
+$10$--$20$ to $-2.178$ on $50$--$60$.  Thus the existing larger-chain data do
+not suggest a drift toward Fourier scaling over the simulated window, although
+they also do not remove the need for a still-larger systematic convergence
+study.
+
+\begin{table}[ht]\centering
+\small
+\begin{tabular}{lccc}
+\toprule
+fit window & exponent & bootstrap $95\%$ CI & log-fit $R^2$ \\
+\midrule
+primary $n=10,20,30,40$ & $-1.850$ & $[-1.870,-1.831]$ & $0.9980$ \\
+$n=10,20,30,40,50$ & $-1.894$ & $[-1.917,-1.873]$ & $0.9976$ \\
+$n=10,20,30,40,50,60$ & $-1.930$ & $[-1.954,-1.906]$ & $0.9974$ \\
+tail $n=20,30,40,50,60$ & $-2.059$ & $[-2.107,-2.012]$ & $0.9993$ \\
+\bottomrule
+\end{tabular}
+\caption{Fit-window sensitivity of the corrected action-current scaling.  The
+bootstrap intervals quantify trajectory-level Monte Carlo uncertainty within
+each selected fit window; the spread across rows is the finite-size sensitivity
+and is not folded into the primary exponent in \eqref{eq:flux-scaling}.}
+\label{tab:flux-fit-sensitivity}
+\end{table}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.72\textwidth]{experiments/flux_validation/production_dt5e-4/flux_primary_scaling.pdf}
+  \caption{Anomalous scaling of the action current. Mean finite-time averaged
+  current $\E[J(n)]$ vs.\ chain length $n$ (log--log) for the corrected
+  Gibbs-preserving SDE. Error bars are normal $95\%$ confidence intervals for
+  the trajectory mean; the fitted exponent is $-1.850$ with bootstrap
+  confidence interval $[-1.870,-1.830]$.}
+  \label{fig:flux-scaling}
+\end{figure}
+
+\begin{table}[ht]\centering
+\small
+\begin{tabular}{cccccc}
+\toprule
+$n$ & $\Delta t_{\rm fine}$ & $\Delta t_{\rm coarse}$ &
+fine mean & coarse mean & coarse--fine / fine \\
+\midrule
+10 & $5.0{\times}10^{-4}$ & $10^{-3}$ &
+0.39252 & 0.39059 & $-0.5\%$ \\
+20 & $2.5{\times}10^{-4}$ & $5.0{\times}10^{-4}$ &
+0.11815 & 0.11917 & $+0.9\%$ \\
+20 & $5.0{\times}10^{-4}$ & $10^{-3}$ &
+0.11917 & 0.11529 & $-3.3\%$ \\
+30 & $5.0{\times}10^{-4}$ & $10^{-3}$ &
+0.05457 & 0.04943 & $-9.4\%$ \\
+40 & $2.5{\times}10^{-4}$ & $5.0{\times}10^{-4}$ &
+0.02863 & 0.02975 & $+3.9\%$ \\
+40 & $5.0{\times}10^{-4}$ & $10^{-3}$ &
+0.02975 & 0.02450 & $-17.6\%$ \\
+\bottomrule
+\end{tabular}
+\caption{Timestep sensitivity for the current estimator. The production step
+$\Delta t=5\times10^{-4}$ is retained because the coarser
+$10^{-3}$ step visibly biases the longer chains, whereas the available
+finer-step pilots at $n=20$ and $n=40$ agree with the production step within
+Monte Carlo error. The table reports pilot means, so it is a convergence
+diagnostic rather than an additional scaling fit.}
+\label{tab:dt-sensitivity}
+\end{table}
+
+\paragraph{Interpretation of the insulating scaling.}
+The exponent in \eqref{eq:flux-scaling} should be read together with the
+local-equilibrium diagnostics rather than as a stand-alone curve fit.  In a
+Fourier picture, approximate local equilibrium would be accompanied by an
+$O(1)$ action conductivity, so that the resistance between the two baths grows
+linearly with $n$.  Here the even part of the pair marginal is already close to
+an equilibrium marginal at the local kinetic temperature
+(\cref{par:lte,tab:lte}), but the action flux is carried by the much smaller
+nonequilibrium, odd-in-angle component that remains after the best
+equilibrium rescaling.  The measured law is therefore more naturally phrased
+as a superlinear growth of the effective action resistance,
+\[
+  R_n^{\mathrm{act}}=\frac{T_1-T_n}{\E[J(n)]},
+  \qquad
+  R_n^{\mathrm{act}}\sim n^{1.850}
+\]
+over the primary simulated window.  The larger-chain, timestep, and
+bath-contrast checks above show that this superlinear-resistance picture is
+stable over the accessible finite sizes, while the structured LTE residuals
+show that the small nonequilibrium component is not just histogram noise.
+This is a heuristic interpretation of the finite-size data, not a derivation
+of the exponent: proving an asymptotic law would require a hydrodynamic or
+Green--Kubo theory for the long nonequilibrium chain, which is presently open.
+
+Beyond the mean, we examine the distribution of finite-time averaged currents
+\[
+  \overline J_\tau=\frac1{\tau}\int_{t_0}^{t_0+\tau}J(t)\,\dd t .
+\]
+The production runs store four disjoint current blocks per trajectory, giving
+non-overlapping windows $\tau=50,100,200$ from the same data. We report these
+finite-window distributions descriptively (variance scaling, skewness,
+kurtosis, and sign probability) and do not infer an asymptotic large-deviation
+tail from a single window. At $n=40$, for example, the sign probability
+$\Pr(\overline J_\tau<0)$ decreases from $0.233$ at $\tau=50$ to $0.026$ at
+$\tau=200$, while the standardized skewness stays small ($0.010$, $0.024$,
+$0.075$ for the three windows). The product
+$\tau\,\mathrm{Var}(\overline J_\tau)$ decreases over these finite windows
+($0.095$, $0.067$, $0.048$), indicating that $\tau=200$ is not yet an
+asymptotic regime in which a single large-deviation rate can be read off
+reliably.
+
+\begin{figure}[ht]
+  \centering
+  \begin{subfigure}{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{experiments/flux_validation/production_dt5e-4/current_windows_n40_windows.pdf}
+    \caption{$n=40$ standardized current windows.}
+  \end{subfigure}\hfill
+  \begin{subfigure}{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{experiments/flux_validation/production_dt5e-4/current_windows_variance_scaling.pdf}
+    \caption{Finite-window variance scaling.}
+  \end{subfigure}
+  \caption{Finite-time current diagnostics. Left: standardized
+  $\overline J_\tau$ at $n=40$ for $\tau=50,100,200$ compared with a standard
+  normal reference. Right: $\tau\,\mathrm{Var}(\overline J_\tau)$ over the
+  available windows. The finite-window variance has not plateaued, so the data
+  are interpreted descriptively and are not used to infer an asymptotic
+  current large-deviation rate.}
+  \label{fig:current-windows}
+\end{figure}
+
+\subsection{Bath-energy entropy production: scope of the present numerics}
+\label{sec:entropy}
+
+The two-bath SDE also permits a bath-energy entropy-production diagnostic based
+on \eqref{eq:entropy-prod}. That quantity requires accumulating the stochastic
+Hamiltonian-energy exchange with each boundary bath, not merely the conserved
+action current \eqref{eq:continuity}. We therefore treat the Gallavotti--Cohen
+symmetry \eqref{eq:ft} as a future numerical check rather than a result of this
+paper. The current data below establish the action-transport scaling and the
+finite-time statistics of $\overline J_\tau$ only.
+
+
+\section{Detailed property of the short chain}\label{sec:short-chain}
+
+We now turn to the smallest nontrivial cascade, the three-mode system $n=3$,
+for which existence, uniqueness and ergodicity of the NESS are rigorously known
+\cite{HLNS}. The Hamiltonian and bath of \cref{sec:long-chain} depend on the
+phases only through $\theta_1=2(\varphi_1-\varphi_2)$ and
+$\theta_3=2(\varphi_3-\varphi_2)$, so the dynamics reduces from the six
+variables $(\bI,\bphi)$ to the five-dimensional state
+$x=(I_1,I_2,I_3,\theta_1,\theta_3)$, in which the middle mode $I_2$ carries no
+bath. This low dimension lets us solve the stationary Fokker--Planck equation
+directly and interrogate the invariant measure (\cref{sec:fp-numerics}), the
+mechanism that stabilizes the NESS (\cref{sec:stabilization}), and the spectrum
+of the generator (\cref{sec:eigenfunction}). The goal of this section is not to
+extrapolate the three-mode calculations to the transport exponent of
+\cref{sec:thermal-conductivity}; rather, it is to isolate the phase-dependent
+stabilization geometry that is difficult to see in the high-dimensional
+long-chain simulations.
+
+\subsection{Numerical solution of the nonequilibrium steady state}\label{sec:fp-numerics}
+
+In the reduced coordinates the stationary density solves $\Ladj u=0$, with
+$\Ladj$ as in \eqref{eq:fp-operator}: the drift is the $n=3$ specialization of
+\eqref{eq:sde-bulk}, and the (degenerate) diffusion \eqref{eq:diffusion} acts
+only on $(I_1,\theta_1)$ and $(I_3,\theta_3)$ with coefficients
+$4\gamma T_1 I_1,\ 4\gamma T_1/I_1$ and $4\gamma T_3 I_3,\ 4\gamma T_3/I_3$. We
+solve it with the neural-network method of \cref{sec:methods}. The reference
+density $v$ is produced by a long SIMD Monte Carlo integration of
+\eqref{eq:sde-bulk} followed by a kernel density estimate on a grid of boxes in
+$x$; boxes in which the Monte Carlo records no sample are retained as
+zero-density collocation points and are constrained by the operator term $L_1$
+alone. The network outputs the log-density, $u(x)$ with $\rho=\exp(\sigma_0
+u+\mu_0)$ for fixed normalization constants $(\mu_0,\sigma_0)$, takes the
+periodic encoding $(I_1,I_2,I_3,\cos\theta_1,\sin\theta_1,\cos\theta_3,
+\sin\theta_3)$ as input, and is trained in two phases: a data-only pre-training
+against $\{v(y_j)\}$, followed by joint training in which the weight of the PDE
+residual $L_1$ is ramped on gradually.
+
+\paragraph{Validation against the equilibrium Gibbs measure.}
+When $T_1=T_3=T$ the exact invariant density is the Gibbs measure
+\eqref{eq:gibbs}, which provides a stringent test. Training at $T=5$ and
+comparing the network density to \eqref{eq:gibbs} on the slices $I_1=I_2=I_3=I$
+(\cref{fig:eq-validation}), the mean relative error is $1.5\%$, $2.6\%$ and
+$6.4\%$ at $I=0.5,1,2$ respectively, with the pointwise $\log$-ratio
+$\log(\rho_{\mathrm{NN}}/\rho_{\mathrm{Gibbs}})$ confined to a narrow band. The
+solver thus recovers the known equilibrium measure across the range of actions
+that carry appreciable probability.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.95\textwidth]{eq_validation.png}
+  \caption{Equilibrium validation of the neural-network Fokker--Planck solver.
+  At $T_1=T_3=5$ and $I_1=I_2=I_3=0.5$, the network density
+  $\rho(\theta_1,\theta_3)$ (left) is compared with the analytic Gibbs measure
+  (centre-left); the relative error (centre-right) and $\log$-ratio (right)
+  stay within a few percent across the cell.}
+  \label{fig:eq-validation}
+\end{figure}
+
+\paragraph{Nonequilibrium steady state.}
+With distinct bath temperatures $T_1=2$, $T_3=8$ the invariant measure is no
+longer of Gibbs form. \Cref{fig:neq-density} shows the network density on the
+angular plane $(\theta_1,\theta_3)$ at several values of the common action: the
+distribution concentrates around a phase-locked configuration and is visibly
+distorted relative to the equilibrium measure. The departure from equilibrium
+is quantified in \cref{sec:stabilization}.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.95\textwidth]{neq_density.png}
+  \caption{Nonequilibrium steady-state angular density of the three-mode chain.
+  Top row: network density $\rho(\theta_1,\theta_3)$ under the gradient
+  $T_1=2,\,T_3=8$ at $I=0.3,0.5,1.0$; bottom row: the equilibrium
+  ($T_1=T_3=5$) density at the same $I$. The nonequilibrium density is tilted
+  and shifted off-centre, breaking the $\theta_1\leftrightarrow\theta_3$
+  symmetry of the equilibrium case.}
+  \label{fig:neq-density}
+\end{figure}
+
+\subsection{Mechanism of stabilization}\label{sec:stabilization}
+
+The NESS is stabilized by a phase-locking mechanism that operates differently in
+the high- and low-energy regimes \cite{HLNS}. At high energy the bond angles are
+driven to a stable equilibrium near $2\pi/3$, escaping the unstable
+configuration at $4\pi/3$; at low energy the angle $\theta_3$ remains near
+$4\pi/3$, which prevents the middle action $I_2$ from collapsing to zero and
+keeps the cascade alive. The reduced four-dimensional subsystem
+$(I_1,I_3,\theta_1,\theta_3)$, obtained in the low-energy limit and equipped
+with the $\gamma(T-I^3)$ thermostat of \cite{HLNS}, isolates this mechanism; we
+solve its stationary Fokker--Planck equation by the same network method and
+recover the predicted concentration of $\theta_3$.
+
+We retain two source-traced diagnostics of the nonequilibrium drive at
+$T_1=2,T_3=8$: symmetry breaking in the angular density and the phase-locking
+branch predicted by the reduced equation.
+
+\emph{(i) Symmetry breaking.} At equilibrium the density is symmetric under
+$\theta_1\leftrightarrow\theta_3$. Out of equilibrium this symmetry is broken:
+the relative asymmetry
+$|\rho(\theta_1,\theta_3)-\rho(\theta_3,\theta_1)|/
+(\rho(\theta_1,\theta_3)+\rho(\theta_3,\theta_1))$ is visibly nonzero on the
+high-density part of the angular plane (\cref{fig:symmetry}). We report the
+qualitative effect here and reserve the precise max/mean asymmetry for the
+source-traced grid recomputation, since it depends sensitively on the density
+mask and normalization.
+
+\emph{(ii) Phase-locking angle.} The most probable bond angle is shifted from
+its equilibrium value to
+\begin{equation}\label{eq:phase-lock}
+  \theta_0 \;=\; \pi-\arcsin\!\frac{\sqrt{4\gamma^2+3}-\gamma}{2(\gamma^2+1)},
+\end{equation}
+the stable branch that tends to $2\pi/3$ as $\gamma\to0$. We use the density
+plots qualitatively to display concentration near the stable sector; no
+quantitative peak-location table is used as an independent result here.
+
+\begin{remark}\label{rem:eq47}
+Equivalently, writing $s=\sin\theta_0$, the reduced angular fixed-point
+condition gives the quadratic
+\[
+  4(1+\gamma^2)s^2+4\gamma s-3=0 .
+\]
+The positive root is
+\[
+  s=\frac{\sqrt{4\gamma^2+3}-\gamma}{2(1+\gamma^2)} .
+\]
+The inverse sine has two branches. The branch in \eqref{eq:phase-lock} lies in
+$(\pi/2,\pi)$ and tends to $2\pi/3$ as $\gamma\to0$, matching the stable
+high-energy phase-locking equilibrium; the complementary branch tends to
+$\pi/3$ and is not the observed stable lock.
+\end{remark}
+
+Finally, current conservation through the unforced middle mode gives the
+balance condition
+$\E[\,I_2 I_1\sin\theta_1\,]+\E[\,I_2 I_3\sin\theta_3\,]\approx0$ in a
+stationary state. We use this identity as a rerun diagnostic for the solver,
+but do not report it as a separate quantitative result here.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.95\textwidth]{symmetry_breaking.png}
+  \caption{$\theta_1\leftrightarrow\theta_3$ symmetry breaking in the
+  nonequilibrium steady state. At $I_1=I_2=I_3=2$ and $T_1=2,\,T_3=8$, the
+  network density $\rho(\theta_1,\theta_3)$ (left) and its transpose (centre)
+  differ; the relative asymmetry $(\rho-\rho^{\mathsf T})/(\rho+\rho^{\mathsf
+  T})$ (right) is shown with the colour scale clipped at $\pm0.15$ for
+  readability. Since unmasked max/mean asymmetry is sensitive to low-density
+  regions and network normalization, this panel is used as qualitative evidence
+  of symmetry breaking rather than as a standalone quantitative estimator.}
+  \label{fig:symmetry}
+\end{figure}
+
+\subsection{Eigenfunction of the generator}\label{sec:eigenfunction}
+
+To probe the relaxation spectrum we apply the trajectory method of
+\cref{sec:methods} with the localized observable $g=\cos\theta_1$. From each of
+$4096$ initial points we evolve an ensemble and record
+$\E_x[\cos\theta_1(X_t)]$; fitting the decay \eqref{eq:decay} returns, at each
+initial point, an estimate of the observable-dependent relaxation rate and
+amplitude.
+
+At $\gamma=0.1$, pure-exponential fits
+\[
+  \E_x[\cos\theta_1(X_t)] \approx A(x)e^{\lambda t}+c(x)
+\]
+over the full recorded window $t\in[0,5]$ retain $2895$ of $4096$ curves under
+the filter $-5<\lambda<0$, with median
+\begin{equation}\label{eq:lambda_diag}
+  \lambda_{\mathrm{diag}} \;\approx\; -0.934 .
+\end{equation}
+This number is reproducible from the saved backward-Monte-Carlo curves, but it
+is not a window-independent spectral gap estimate: the retained median shifts
+from $-1.60$ on $t\in[0,2]$ to $-0.68$ on $t\in[0.5,5]$
+(\cref{fig:eigenvalues}). We therefore use $\lambda_{\mathrm{diag}}$ as a
+diagnostic relaxation rate for the observable $\cos\theta_1$, not as a resolved
+statement about the full generator spectrum.
+
+The fitted amplitudes provide pointwise samples $Q(x)$ of the corresponding
+slow-mode surrogate. A second network is trained to represent $Q$ subject to
+the eigenvalue equation $\Lgen Q=\lambda_{\mathrm{diag}} Q$, using the generator
+$\Lgen$ of \eqref{eq:generator} (without the divergence terms that distinguish
+$\Ladj$). The reconstruction is only moderately accurate: the data
+root-mean-square error is $0.38$ (relative error $0.71$) and the median
+normalized PDE residual $|\Lgen Q-\lambda_{\mathrm{diag}} Q|/|Q|$ is $0.35$. We
+report these candidly: the fitted amplitude data contain both signs and are
+reconstructed from intrinsically noisy backward Monte Carlo data, making this
+the hardest object computed in this work; the agreement is nonetheless
+sufficient to exhibit the qualitative structure of $Q$ on representative
+slices (\cref{fig:eigenfunction}).
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.95\textwidth]{eigenvalue_scatter.png}
+  \caption{Backward-Monte-Carlo relaxation-rate diagnostic at $\gamma=0.1$,
+  using the observable $\cos\theta_1=\cos 2(\varphi_1-\varphi_2)$. Left:
+  retained pure-exponential rates from $4096$ initial conditions over
+  $t\in[0,5]$; $2895$ fits satisfy $-5<\lambda<0$, with median
+  $\lambda_{\mathrm{diag}}\approx-0.934$. Right: median and interquartile range
+  across several fitting windows, showing the window sensitivity that motivates
+  treating this quantity as a diagnostic rate rather than as a high-accuracy
+  spectral gap.}
+  \label{fig:eigenvalues}
+\end{figure}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.95\textwidth]{Q1_slices.png}
+  \caption{Generator slow-mode surrogate. Network
+  reconstruction of $Q(\theta_1,\theta_3)$ at $I_1=I_2=I_3=1,2,4$ (fitted
+  $\lambda_{\mathrm{diag}}\approx-0.934$). The fitted amplitude data contain
+  both signs; the displayed slices show the positive lobe concentrated near
+  $\theta_1=\theta_3=0$. As noted in the text, the surrogate is reconstructed
+  from noisy backward Monte Carlo data and is shown to exhibit the qualitative
+  structure of $Q$ rather than as a high-accuracy spectral computation.}
+  \label{fig:eigenfunction}
+\end{figure}
+
+\section{Conclusion and limitations}\label{sec:conclusion}
+
+The numerical evidence supports three conclusions. First, the
+Gibbs-preserving bath \eqref{eq:bath} gives a well-controlled statistical model
+for the resonant NLS cascade chain: at equal bath temperatures the invariant
+law agrees with the Gibbs density \eqref{eq:gibbs}, and at unequal temperatures
+the same code produces a stationary action current with reproducible
+time-reversal, timestep, and stationarity checks. Second, the long closed chain
+does not exhibit Fourier action transport over the accessible lengths. The
+corrected production runs give $\E[J(n)]\sim n^{-1.850}$, so the finite-chain
+conductivity decays as $\kappa_n\sim n^{-0.850}$. The result should be read as
+a finite-size numerical law for the conserved action current, not as a theorem
+for Hamiltonian heat conduction. Third, the long-chain NESS has an approximate
+local-equilibrium structure: adjacent-mode marginals are close to rescaled
+equilibrium marginals at the local kinetic temperature, while the residual
+odd-in-angle component and the equilibrium marginalization effect rule out
+strict local Gibbs structure.
+
+The short-chain computations complement this transport picture by resolving the
+five-dimensional stationary density directly. The neural Fokker--Planck solver
+recovers the known Gibbs equilibrium and, out of equilibrium, visualizes the
+symmetry breaking and phase locking that underlie the stabilization mechanism
+proved for the three-mode model in \cite{HLNS}. The generator-eigenfunction
+calculation is less mature: it gives a consistent qualitative slow mode for the
+observable $\cos\theta_1$, but the fitted eigenfunction has substantial
+backward-Monte-Carlo noise and should be used as a diagnostic rather than as a
+high-accuracy spectral computation. Taken together, the long-chain and
+short-chain studies therefore play complementary roles: one measures the
+macroscopic finite-size transport law, while the other explains the local
+phase geometry that can sustain a nonequilibrium cascade without a closed-form
+stationary density.
+
+Several limitations remain. The long-chain ergodicity theory is open, so the
+stationarity of the long simulations is assessed numerically rather than
+proved. The primary transport exponent is fitted over $n=10,20,30,40$; the
+$n=50$ and $n=60$ robustness runs, together with the $n=50$ fine-step pilot,
+support the same faster-than-Fourier trend but do not replace a systematic
+larger-length and fine-timestep convergence study. The current statistics reported here concern finite-time averages of
+the action current only; bath-energy entropy production and a genuine
+Gallavotti--Cohen large-deviation test require a separate boundary-energy
+accumulator. Finally, the open-chain terminal-energy scaling suggested by the
+cascade geometry is not claimed here, because it has not yet been recomputed
+with the corrected Gibbs-preserving workflow.
+
+\section*{Numerical reproducibility summary}
+
+\Cref{tab:repro-summary} summarizes the numerical audit trail used in this
+revision. The table is intentionally limited to quantities that are either
+regenerated from source files or checked against frozen validation artifacts.
+It is not a substitute for the limitations above: the transport exponent is a
+finite-size numerical fit, the short-chain neural networks are rerun from saved
+models rather than retrained, and author declarations still require author
+confirmation before submission.
+
+\begin{table}[ht]\centering
+\small
+\setlength{\tabcolsep}{2pt}
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.18\textwidth}
+                >{\raggedright\arraybackslash}p{0.24\textwidth}
+                >{\raggedright\arraybackslash}p{0.31\textwidth}
+                >{\raggedright\arraybackslash}p{0.17\textwidth}}
+\toprule
+Result family & Evidence bundle & Automated or source-traced check & Scope retained in manuscript \\
+\midrule
+Action-current scaling &
+canonical simulator, production manifest, larger-chain robustness run,
+fit-window sensitivity analysis, validation report, current-window statistics &
+frozen source/binary hashes; equal-temperature and hot/cold reversal gates;
+trajectory-bootstrap exponent CI; split-window stationarity, timestep pilot,
+bath-temperature robustness check, and fit-window sensitivity &
+finite-size action-current law over $n=10,20,30,40$, with $n=50$
+and $n=60$ robustness checks \\
+\midrule
+Long-chain profiles and local equilibrium &
+figure metrics, histogram/profile hashes, LTE source-trace export &
+profile sample counts; figure-source hashes; all entries of \cref{tab:lte}
+recomputed from archived histograms and profiles &
+local pair-marginal diagnostic, not strict local Gibbs convergence theorem \\
+\midrule
+Short-chain Fokker--Planck density &
+archived notebook outputs, saved Keras models, TensorFlow rerun metrics &
+equilibrium Gibbs-slice errors; qualitative symmetry breaking; phase-locking
+branch; current-balance rerun diagnostic &
+saved-model inference reproducibility, not full neural-network retraining \\
+\midrule
+Eigenfunction diagnostic &
+backward-Monte-Carlo data, fit-window sensitivity JSON, saved-model rerun &
+$0$--$5$ and alternate-window decay fits; eigen-surrogate data-fit RMSE;
+reported PDE residual &
+observable-dependent slow-mode diagnostic, not resolved spectral gap \\
+\midrule
+Manuscript-level claim audit &
+claim-audit script plus JSON/Markdown registry &
+registered core numerical/data claims checked against the artifacts above
+before compilation &
+local audit to rerun after final author and journal-format edits \\
+\bottomrule
+\end{tabular}
+\caption{Compact reproducibility map for the numerical claims in the revised
+manuscript. Exact file paths, hashes, and machine-readable values are recorded
+in the artifacts listed in the data and code availability statement.}
+\label{tab:repro-summary}
+\end{table}
+
+\section*{Data and code availability}
+
+The code and numerical artifacts used for this revision are kept with the
+project repository. Unless stated otherwise, paths below are relative to the
+repository root. The key reproducibility artifacts are:
+\begingroup
+\small
+\raggedright
+\begin{itemize}[leftmargin=*]
+  \item canonical current simulator: \path{flux/NLS_flux_canonical.cpp};
+  \item current-analysis scripts:
+  \path{flux/analyze_canonical_flux.py},
+  \path{flux/analyze_current_windows.py},
+  \path{flux/gibbs_mcmc_reference.py},
+  \path{flux/compare_gibbs_sde.py}, and
+  \path{Paper/revision_2026-06-19/scripts/analyze_flux_scaling_sensitivity.py};
+  \item production current data and validation reports:
+  \path{Paper/revision_2026-06-19/experiments/flux_validation/};
+  \item current-scaling fit-window sensitivity output:
+  \path{Paper/revision_2026-06-19/experiments/flux_validation/larger_n60_pilot_2026-06-20/flux_scaling_sensitivity_n10_60.json};
+  \item bath-parameter current-robustness output:
+  \path{Paper/revision_2026-06-19/experiments/flux_validation/parameter_robustness_2026-06-20/moderate_contrast_T8_T4_prod/b64_scaling_scaling.json};
+  \item figure-generation script for
+  \cref{fig:profile,fig:embedding,fig:lte-resid}:
+  \path{Paper/revision_2026-06-19/scripts/generate_manuscript_figures.py};
+  \item source metrics for those figures:
+  \path{Paper/revision_2026-06-19/manuscript_figure_metrics.json};
+  \item source-trace export for the LTE table, LTE residual decomposition, and
+  short-chain diagnostics:
+  \path{Paper/revision_2026-06-19/scripts/export_source_trace_metrics.py} and
+  \path{Paper/revision_2026-06-19/source_trace_metrics.json};
+  \item short-chain TensorFlow saved-model rerun:
+  \path{Paper/revision_2026-06-19/scripts/recompute_short_chain_nn_metrics.py}
+  and \path{Paper/revision_2026-06-19/short_chain_nn_rerun_metrics.json};
+  \item eigen-relaxation diagnostic script and output:
+  \path{Paper/revision_2026-06-19/scripts/analyze_eigen_fit_windows.py} and
+  \path{Paper/revision_2026-06-19/eigen_fit_sensitivity.json};
+  \item core numerical claim-audit script:
+  \path{Paper/revision_2026-06-19/scripts/audit_manuscript_claims.py};
+  \item core numerical claim-audit outputs:
+  \path{Paper/revision_2026-06-19/manuscript_claim_audit.json} and
+  \path{Paper/revision_2026-06-19/manuscript_claim_audit.md};
+  \item data/figure availability path audit:
+  \path{Paper/revision_2026-06-19/scripts/audit_availability_paths.py},
+  \path{Paper/revision_2026-06-19/availability_path_audit.json}, and
+  \path{Paper/revision_2026-06-19/availability_path_audit.md};
+  \item BibTeX reference database and integrity-audit snapshot:
+  \path{Paper/revision_2026-06-19/references.bib} and
+  \path{Paper/revision_2026-06-19/integrity_audit_2026-06-19.md}.
+\end{itemize}
+\endgroup
+A public repository snapshot is maintained at
+\href{https://github.com/jayleenjiang/nls-energy-cascade}{the project
+repository on GitHub}.
+
+\section*{Declarations}
+
+\paragraph{Ethics approval.}
+This study is a numerical and theoretical investigation of stochastic
+dynamical systems and does not involve human participants, animal subjects, or
+personal data.
+
+\paragraph{Author contributions.}
+Jayleen Jiang performed the numerical experiments, assembled the computational
+artifacts, and drafted the manuscript. Yao Li supervised the project and
+contributed to the model formulation, theoretical framing, and interpretation.
+Both authors should review and approve the final submitted version.
+
+\paragraph{Competing interests.}
+No competing interests are declared in the materials supplied for this draft.
+
+\paragraph{Funding.}
+Funding information was not supplied in the current manuscript materials and
+should be completed by the authors before submission if required by the target
+journal.
+
+\paragraph{AI-assisted preparation.}
+AI assistance was used during revision for code audit, consistency checking,
+LaTeX editing, and reproducibility organization under author direction. The
+authors remain responsible for verifying the scientific claims, numerical
+results, and final wording before submission.
+
+
+\bibliography{references}
+
+
+\end{document}
