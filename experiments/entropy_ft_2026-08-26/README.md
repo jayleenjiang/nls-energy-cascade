@@ -154,6 +154,16 @@ following gates, in this order:
 From the repository root, the post-run commands are:
 
 ```bash
+flux/finalize_entropy_ft_run.sh
+```
+
+This fail-fast wrapper creates `production/final_v1/`, refuses to overwrite an
+existing finalization, enforces the production source hashes, runs both audits,
+builds the supplementary analysis and report, compiles the PDF, and writes
+separate SHA-256 lists for the four raw block files and the curated artifacts.
+The expanded commands executed by the wrapper are shown below for transparency:
+
+```bash
 /opt/homebrew/bin/python3 flux/audit_entropy_ft_run.py \
   experiments/entropy_ft_2026-08-26/production \
   --expected-blocks 1000064 \
