@@ -456,7 +456,7 @@ def main() -> None:
             figure_block(
                 args.supplement_dir / f"action_two_tail_logprob_n{n}.pdf",
                 args.output_dir,
-                f"Raw two-tail log probabilities versus threshold and averaging time for $n={n}$.",
+                f"Raw two-tail log probabilities and scaled survival-rate proxies $-t^{{-1}}\\log P$ versus threshold and averaging time for $n={n}$.  Collapse of the scaled curves is a large-deviation diagnostic, not by itself an FT test.",
             )
         )
         lines.append(

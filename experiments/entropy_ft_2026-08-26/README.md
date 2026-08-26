@@ -115,6 +115,8 @@ The `analysis_v2/` directory contains:
 
 - symmetric-bin diagnostics for medium entropy, bath heat, and action current;
 - both-tail survival probabilities on an `A=0.01,0.02,...` grid;
+- raw `log P` curves and scaled survival-rate proxies `-log(P)/t` for testing
+  finite-time large-deviation collapse;
 - raw and plus-four probabilities;
 - full-sample normal survival benchmarks and a shared-parameter descriptive
   Gaussian fit to both raw action-current tails;

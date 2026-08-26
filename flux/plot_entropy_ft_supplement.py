@@ -219,28 +219,40 @@ def plot_two_tail_survival(
     taus: list[float],
     minimum_raw_count: int,
 ) -> None:
-    fig, axes = plt.subplots(1, 2, figsize=(10.8, 4.2))
+    fig, axes = plt.subplots(2, 2, figsize=(10.8, 8.0), sharex="col")
     for tau in taus:
         selected = [row for row in rows if row["n"] == n and row["tau"] == tau]
         plus = [row for row in selected if int(row["plus_count"]) >= minimum_raw_count]
         minus = [row for row in selected if int(row["minus_count"]) >= minimum_raw_count]
         if plus:
-            axes[0].plot(
+            axes[0, 0].plot(
                 [row["A"] for row in plus],
                 [math.log(float(row["p_plus_raw"])) for row in plus],
                 label=rf"$t={tau:g}$",
             )
+            axes[1, 0].plot(
+                [row["A"] for row in plus],
+                [-math.log(float(row["p_plus_raw"])) / tau for row in plus],
+                label=rf"$t={tau:g}$",
+            )
         if minus:
-            axes[1].plot(
+            axes[0, 1].plot(
                 [row["A"] for row in minus],
                 [math.log(float(row["p_minus_raw"])) for row in minus],
                 label=rf"$t={tau:g}$",
             )
-    axes[0].set_xlabel(r"$A$")
-    axes[0].set_ylabel(r"$\log P(J_t\geq A)$")
-    axes[1].set_xlabel(r"$A$")
-    axes[1].set_ylabel(r"$\log P(J_t\leq-A)$")
-    for axis in axes:
+            axes[1, 1].plot(
+                [row["A"] for row in minus],
+                [-math.log(float(row["p_minus_raw"])) / tau for row in minus],
+                label=rf"$t={tau:g}$",
+            )
+    axes[0, 0].set_ylabel(r"$\log P(J_t\geq A)$")
+    axes[0, 1].set_ylabel(r"$\log P(J_t\leq-A)$")
+    axes[1, 0].set_xlabel(r"$A$")
+    axes[1, 0].set_ylabel(r"$-t^{-1}\log P(J_t\geq A)$")
+    axes[1, 1].set_xlabel(r"$A$")
+    axes[1, 1].set_ylabel(r"$-t^{-1}\log P(J_t\leq-A)$")
+    for axis in axes.ravel():
         axis.grid(alpha=0.2)
         handles, _ = axis.get_legend_handles_labels()
         if handles:
