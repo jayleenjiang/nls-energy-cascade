@@ -58,6 +58,12 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--seed", type=int, default=20260826)
     parser.add_argument("--max-acf-lag", type=int, default=400)
     parser.add_argument("--target-tail-count", type=int, default=200)
+    parser.add_argument(
+        "--threshold-step",
+        type=float,
+        default=0.01,
+        help="spacing of A in empirical/normal two-tail survival tables",
+    )
     return parser.parse_args()
 
 
@@ -127,25 +133,87 @@ def aggregate_blocks(data: np.ndarray, factor: int, base_tau: float) -> dict[str
 
 
 def integrated_autocorrelation_time(values: np.ndarray, max_lag: int) -> float:
-    """Positive-sequence IAT pooled over equal-length independent streams."""
+    """Geyer-style initial-positive-sequence IAT over independent streams.
+
+    Each stream is centered separately so that finite between-stream variation
+    is not mistaken for temporal correlation.  Consecutive autocorrelations
+    are summed in pairs, and the estimate is truncated at the first nonpositive
+    pair sum.
+    """
     if values.ndim != 2:
         raise ValueError("values must have shape (streams, blocks)")
     if values.shape[1] < 3:
         return 1.0
-    centered = values - np.mean(values)
+    centered = values - np.mean(values, axis=1, keepdims=True)
     denominator = float(np.sum(centered * centered))
     if not np.isfinite(denominator) or denominator <= 0.0:
         return 1.0
     upper = min(max_lag, values.shape[1] - 1)
-    positive_sum = 0.0
+    correlations: list[float] = []
     for lag in range(1, upper + 1):
         covariance = float(np.sum(centered[:, :-lag] * centered[:, lag:]))
         scale = values.shape[1] / (values.shape[1] - lag)
         rho = scale * covariance / denominator
-        if not np.isfinite(rho) or rho <= 0.0:
+        if not np.isfinite(rho):
             break
-        positive_sum += rho
+        correlations.append(rho)
+    positive_sum = 0.0
+    for index in range(0, len(correlations) - 1, 2):
+        pair_sum = correlations[index] + correlations[index + 1]
+        if pair_sum <= 0.0:
+            break
+        positive_sum += pair_sum
     return max(1.0, 1.0 + 2.0 * positive_sum)
+
+
+def normal_tail_analysis(
+    values: np.ndarray,
+    tau: float,
+    threshold_step: float,
+) -> tuple[list[dict[str, float]], dict[str, float]]:
+    """Compare both empirical tails with a fitted Gaussian benchmark.
+
+    The Gaussian parameters are the full-sample maximum-likelihood estimates.
+    The empirical probabilities are reported both raw and with the mentor's
+    plus-four smoothing, (k+2)/(N+4).  Smoothing is for visualization only.
+    """
+    flattened = values.ravel()
+    sample_count = flattened.size
+    mu = float(np.mean(flattened))
+    sigma = float(np.std(flattened, ddof=0))
+    maximum = float(np.max(np.abs(flattened)))
+    if not np.isfinite(maximum) or maximum < threshold_step or sigma <= 0.0:
+        return [], {"normal_mu": mu, "normal_sigma": sigma}
+    thresholds = np.arange(threshold_step, maximum + 0.5 * threshold_step, threshold_step)
+    rows: list[dict[str, float]] = []
+    for threshold in thresholds:
+        plus_count = int(np.count_nonzero(flattened >= threshold))
+        minus_count = int(np.count_nonzero(flattened <= -threshold))
+        plus_raw = plus_count / sample_count
+        minus_raw = minus_count / sample_count
+        plus_four = (plus_count + 2.0) / (sample_count + 4.0)
+        minus_four = (minus_count + 2.0) / (sample_count + 4.0)
+        plus_normal = float(norm.sf(threshold, loc=mu, scale=sigma))
+        minus_normal = float(norm.cdf(-threshold, loc=mu, scale=sigma))
+        rows.append(
+            {
+                "tau": tau,
+                "A": float(threshold),
+                "plus_count": plus_count,
+                "minus_count": minus_count,
+                "p_x_ge_A_raw": plus_raw,
+                "p_x_le_minus_A_raw": minus_raw,
+                "p_x_ge_A_plus_four": plus_four,
+                "p_x_le_minus_A_plus_four": minus_four,
+                "p_x_ge_A_normal": plus_normal,
+                "p_x_le_minus_A_normal": minus_normal,
+                "log_tail_ratio_raw": float(math.log(plus_raw / minus_raw))
+                if plus_count > 0 and minus_count > 0
+                else float("nan"),
+                "log_tail_ratio_plus_four": float(math.log(plus_four / minus_four)),
+            }
+        )
+    return rows, {"normal_mu": mu, "normal_sigma": sigma}
 
 
 def weighted_line_fit(x: np.ndarray, y: np.ndarray, variance: np.ndarray) -> tuple[float, float, float]:
@@ -398,7 +466,9 @@ def plot_run(
     axes[1].plot([0.0, upper], [0.0, upper], "k--", linewidth=1.2, label=r"$R_t(a)=a$")
     axes[1].set_xlabel(r"$a$")
     axes[1].set_ylabel(r"$R_t(a)=t^{-1}\log[p_t(a)/p_t(-a)]$")
-    axes[1].legend(fontsize=8)
+    handles, labels = axes[1].get_legend_handles_labels()
+    if handles:
+        axes[1].legend(fontsize=8)
     axes[1].grid(alpha=0.2)
     fig.tight_layout()
     fig.savefig(output_dir / f"entropy_pdf_symmetry_n{n}.png", dpi=220)
@@ -448,6 +518,122 @@ def plot_run(
     plt.close(fig)
 
 
+def plot_observable_symmetry(
+    output_dir: Path,
+    n: int,
+    observable: str,
+    label: str,
+    aggregated_by_tau: dict[float, dict[str, np.ndarray]],
+    bin_rows: list[dict[str, object]],
+    target_slope: float | None,
+) -> None:
+    selected_taus = [tau for tau in [20, 40, 80, 120, 160, 200] if tau in aggregated_by_tau]
+    if not selected_taus:
+        return
+    fig, axes = plt.subplots(1, 2, figsize=(11.0, 4.2))
+    for tau in selected_taus:
+        values = aggregated_by_tau[tau][observable].ravel()
+        q01, q99 = np.quantile(values, [0.01, 0.99])
+        axes[0].hist(
+            values,
+            bins=80,
+            range=(q01, q99),
+            density=True,
+            histtype="step",
+            linewidth=1.2,
+            label=rf"$t={tau:g}$",
+        )
+        rows = [row for row in bin_rows if row["n"] == n and row["tau"] == tau]
+        if rows:
+            x = np.asarray([row["a_center"] for row in rows])
+            y = np.asarray([row["symmetry_plus_four"] for row in rows])
+            used = np.asarray([row["fit_used"] for row in rows], dtype=bool)
+            axes[1].plot(x, y, color="0.8", linewidth=0.8)
+            if np.any(used):
+                axes[1].plot(x[used], y[used], marker="o", markersize=3, label=rf"$t={tau:g}$")
+    axes[0].set_xlabel(label)
+    axes[0].set_ylabel("PDF")
+    axes[0].legend(fontsize=8)
+    axes[0].grid(alpha=0.2)
+    if target_slope is not None:
+        limits = axes[1].get_xlim()
+        upper = max(0.0, limits[1])
+        axes[1].plot(
+            [0.0, upper],
+            [0.0, target_slope * upper],
+            "k--",
+            linewidth=1.2,
+            label=rf"target slope ${target_slope:g}$",
+        )
+    axes[1].set_xlabel(r"$A$")
+    axes[1].set_ylabel(r"$t^{-1}\log[p_t(A)/p_t(-A)]$")
+    handles, labels = axes[1].get_legend_handles_labels()
+    if handles:
+        axes[1].legend(fontsize=8)
+    axes[1].grid(alpha=0.2)
+    fig.tight_layout()
+    stem = observable.replace("_current", "")
+    fig.savefig(output_dir / f"{stem}_pdf_symmetry_n{n}.png", dpi=220)
+    fig.savefig(output_dir / f"{stem}_pdf_symmetry_n{n}.pdf")
+    plt.close(fig)
+
+
+def plot_action_tail_fit(
+    output_dir: Path,
+    n: int,
+    tau: float,
+    values: np.ndarray,
+    tail_rows: list[dict[str, object]],
+    normal_mu: float,
+    normal_sigma: float,
+) -> None:
+    flattened = values.ravel()
+    q01, q99 = np.quantile(flattened, [0.01, 0.99])
+    rows = [row for row in tail_rows if row["n"] == n and row["tau"] == tau]
+    if not rows:
+        return
+    thresholds = np.asarray([row["A"] for row in rows], dtype=float)
+    plus_empirical = np.asarray([row["p_x_ge_A_plus_four"] for row in rows], dtype=float)
+    minus_empirical = np.asarray([row["p_x_le_minus_A_plus_four"] for row in rows], dtype=float)
+    plus_normal = np.asarray([row["p_x_ge_A_normal"] for row in rows], dtype=float)
+    minus_normal = np.asarray([row["p_x_le_minus_A_normal"] for row in rows], dtype=float)
+
+    fig, axes = plt.subplots(1, 3, figsize=(13.8, 4.0))
+    axes[0].hist(
+        flattened,
+        bins=100,
+        range=(q01, q99),
+        density=True,
+        histtype="step",
+        linewidth=1.4,
+        label="empirical central 1--99%",
+    )
+    grid = np.linspace(q01, q99, 500)
+    axes[0].plot(grid, norm.pdf(grid, loc=normal_mu, scale=normal_sigma), "k--", label="fitted normal")
+    axes[0].set_xlabel(r"action-current rate $J_t$")
+    axes[0].set_ylabel("PDF")
+    axes[0].legend(fontsize=8)
+    axes[0].grid(alpha=0.2)
+
+    axes[1].semilogy(thresholds, plus_empirical, label=r"empirical $P(J_t\geq A)$")
+    axes[1].semilogy(thresholds, plus_normal, "k--", label="normal benchmark")
+    axes[1].set_xlabel(r"$A$")
+    axes[1].set_ylabel("upper-tail probability")
+    axes[1].legend(fontsize=8)
+    axes[1].grid(alpha=0.2)
+
+    axes[2].semilogy(thresholds, minus_empirical, label=r"empirical $P(J_t\leq-A)$")
+    axes[2].semilogy(thresholds, minus_normal, "k--", label="normal benchmark")
+    axes[2].set_xlabel(r"$A$")
+    axes[2].set_ylabel("lower-tail probability")
+    axes[2].legend(fontsize=8)
+    axes[2].grid(alpha=0.2)
+    fig.tight_layout()
+    fig.savefig(output_dir / f"action_tail_normal_fit_n{n}_t{tau:g}.png", dpi=220)
+    fig.savefig(output_dir / f"action_tail_normal_fit_n{n}_t{tau:g}.pdf")
+    plt.close(fig)
+
+
 def main() -> None:
     args = parse_args()
     args.output_dir.mkdir(parents=True, exist_ok=True)
@@ -459,6 +645,11 @@ def main() -> None:
     coupling_rows: list[dict[str, object]] = []
     stationarity_rows: list[dict[str, object]] = []
     recommendation_rows: list[dict[str, object]] = []
+    action_symmetry_rows: list[dict[str, object]] = []
+    action_bin_rows: list[dict[str, object]] = []
+    heat_symmetry_rows: list[dict[str, object]] = []
+    heat_bin_rows: list[dict[str, object]] = []
+    action_tail_rows: list[dict[str, object]] = []
 
     for path in args.blocks:
         metadata, raw = load_run(path)
@@ -467,6 +658,10 @@ def main() -> None:
         aggregated_by_tau: dict[float, dict[str, np.ndarray]] = {}
         run_ft_rows: list[dict[str, object]] = []
         run_ft_summary: list[dict[str, object]] = []
+        run_action_bin_rows: list[dict[str, object]] = []
+        run_heat_bin_rows: list[dict[str, object]] = []
+        run_action_tail_rows: list[dict[str, object]] = []
+        action_normal_by_tau: dict[float, dict[str, float]] = {}
 
         for tau in requested_taus:
             factor_float = tau / base_tau
@@ -537,6 +732,85 @@ def main() -> None:
                 }
             )
 
+            for observable, summary_rows, all_bin_rows, run_bin_rows, target_slope in [
+                (
+                    "action_current",
+                    action_symmetry_rows,
+                    action_bin_rows,
+                    run_action_bin_rows,
+                    float("nan"),
+                ),
+                (
+                    "heat_current",
+                    heat_symmetry_rows,
+                    heat_bin_rows,
+                    run_heat_bin_rows,
+                    1.0 / float(metadata["Tn"]) - 1.0 / float(metadata["T1"]),
+                ),
+            ]:
+                observable_values = aggregated[observable]
+                observable_flat = observable_values.ravel()
+                observable_iat = integrated_autocorrelation_time(
+                    observable_values, args.max_acf_lag
+                )
+                observable_bins, observable_fit = symmetry_analysis(
+                    observable_values,
+                    tau,
+                    args.symmetric_bins,
+                    args.min_effective_count,
+                    observable_iat,
+                    args.bootstrap,
+                    rng,
+                )
+                for row in observable_bins:
+                    full = {
+                        "source": str(path),
+                        "n": n,
+                        "tau": tau,
+                        "observable": observable,
+                        **row,
+                    }
+                    all_bin_rows.append(full)
+                    run_bin_rows.append(full)
+                observable_negative_count = int(
+                    np.count_nonzero(observable_flat < 0.0)
+                )
+                summary_rows.append(
+                    {
+                        "source": str(path),
+                        "n": n,
+                        "tau": tau,
+                        "observable": observable,
+                        "n_samples": observable_flat.size,
+                        "autocorrelation_time": observable_iat,
+                        "effective_sample_size": observable_flat.size
+                        / observable_iat,
+                        "mean": float(np.mean(observable_flat)),
+                        "std": float(np.std(observable_flat, ddof=1)),
+                        "negative_count": observable_negative_count,
+                        "negative_probability": observable_negative_count
+                        / observable_flat.size,
+                        "target_symmetry_slope": target_slope,
+                        **observable_fit,
+                    }
+                )
+
+            tails, normal_parameters = normal_tail_analysis(
+                aggregated["action_current"], tau, args.threshold_step
+            )
+            action_normal_by_tau[tau] = normal_parameters
+            for row in tails:
+                full = {
+                    "source": str(path),
+                    "n": n,
+                    "observable": "action_current",
+                    "normal_mu": normal_parameters["normal_mu"],
+                    "normal_sigma": normal_parameters["normal_sigma"],
+                    **row,
+                }
+                action_tail_rows.append(full)
+                run_action_tail_rows.append(full)
+
             for observable in ["entropy_rate", "action_current", "heat_current"]:
                 stationarity_rows.append(
                     {
@@ -560,10 +834,35 @@ def main() -> None:
                     "source": str(path),
                     "n": n,
                     "tau": tau,
+                    "observable": "entropy_rate",
                     "negative_probability": negative_probability,
                     "autocorrelation_time": iat,
                     "target_effective_negative_count": args.target_tail_count,
                     "recommended_raw_sample_count": required,
+                }
+            )
+
+            action_flat = aggregated["action_current"].ravel()
+            action_negative_probability = float(np.mean(action_flat < 0.0))
+            action_iat = integrated_autocorrelation_time(
+                aggregated["action_current"], args.max_acf_lag
+            )
+            recommendation_rows.append(
+                {
+                    "source": str(path),
+                    "n": n,
+                    "tau": tau,
+                    "observable": "action_current",
+                    "negative_probability": action_negative_probability,
+                    "autocorrelation_time": action_iat,
+                    "target_effective_negative_count": args.target_tail_count,
+                    "recommended_raw_sample_count": math.ceil(
+                        args.target_tail_count
+                        * action_iat
+                        / action_negative_probability
+                    )
+                    if action_negative_probability > 0.0
+                    else float("inf"),
                 }
             )
 
@@ -575,11 +874,46 @@ def main() -> None:
             run_ft_summary,
             rng,
         )
+        affinity = 1.0 / float(metadata["Tn"]) - 1.0 / float(metadata["T1"])
+        plot_observable_symmetry(
+            args.output_dir,
+            n,
+            "action_current",
+            r"action-current rate $J_t$",
+            aggregated_by_tau,
+            run_action_bin_rows,
+            None,
+        )
+        plot_observable_symmetry(
+            args.output_dir,
+            n,
+            "heat_current",
+            r"bath heat-current rate $J^E_t$",
+            aggregated_by_tau,
+            run_heat_bin_rows,
+            affinity,
+        )
+        if base_tau in aggregated_by_tau and base_tau in action_normal_by_tau:
+            parameters = action_normal_by_tau[base_tau]
+            plot_action_tail_fit(
+                args.output_dir,
+                n,
+                base_tau,
+                aggregated_by_tau[base_tau]["action_current"],
+                run_action_tail_rows,
+                parameters["normal_mu"],
+                parameters["normal_sigma"],
+            )
 
     write_rows(args.output_dir / "ft_summary.csv", ft_summary_rows)
     write_rows(args.output_dir / "ft_symmetric_bins.csv", ft_bin_rows)
     write_rows(args.output_dir / "coupling_summary.csv", coupling_rows)
     write_rows(args.output_dir / "stationarity_summary.csv", stationarity_rows)
+    write_rows(args.output_dir / "action_symmetry_summary.csv", action_symmetry_rows)
+    write_rows(args.output_dir / "action_symmetric_bins.csv", action_bin_rows)
+    write_rows(args.output_dir / "heat_symmetry_summary.csv", heat_symmetry_rows)
+    write_rows(args.output_dir / "heat_symmetric_bins.csv", heat_bin_rows)
+    write_rows(args.output_dir / "action_tail_normal_fit.csv", action_tail_rows)
     write_rows(
         args.output_dir / "sample_size_recommendations.csv", recommendation_rows
     )
