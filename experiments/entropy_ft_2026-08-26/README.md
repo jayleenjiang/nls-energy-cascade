@@ -135,6 +135,15 @@ sensitivity; the estimate closer to the theoretical reference is never
 selected post hoc.  The independent analysis auditor recomputes both results
 from the raw blocks.
 
+`../../flux/analyze_action_tail_time_scaling.py` quantifies the mentor's
+question about dependence on both threshold and averaging time.  For each
+raw-count-qualified rare-tail threshold it fits
+`log P_t = intercept - t I(A)` across at least four averaging times.  The
+resulting `I_+(A)` and `I_-(A)` are finite-time rate-function proxies.  Because
+different averaging windows are formed from the same base streams, the fit is
+descriptive and its `R^2` is not treated as an independent-sample hypothesis
+test.
+
 The pilot source hashes and exact parameters are recorded in
 `pilot/pilot_manifest.txt`.  Raw production blocks remain local because their
 expected size is several hundred megabytes; source, manifests, summaries, and
@@ -203,11 +212,19 @@ The expanded commands executed by the wrapper are shown below for transparency:
   --range-quantile 0.99 \
   --bootstrap 1000
 
+/opt/homebrew/bin/python3 flux/analyze_action_tail_time_scaling.py \
+  experiments/entropy_ft_2026-08-26/production/final_v1/supplement/action_two_tail_survival.csv \
+  --output-dir experiments/entropy_ft_2026-08-26/production/final_v1/time_scaling \
+  --minimum-raw-count 20 \
+  --maximum-probability 0.2 \
+  --minimum-time-points 4
+
 /opt/homebrew/bin/python3 flux/audit_entropy_ft_analysis.py \
   experiments/entropy_ft_2026-08-26/production \
   --analysis-dir experiments/entropy_ft_2026-08-26/production/analysis \
   --supplement-dir experiments/entropy_ft_2026-08-26/production/final_v1/supplement \
   --adaptive-dir experiments/entropy_ft_2026-08-26/production/final_v1/adaptive \
+  --time-scaling-dir experiments/entropy_ft_2026-08-26/production/final_v1/time_scaling \
   --output-prefix experiments/entropy_ft_2026-08-26/production/final_v1/analysis_audit
 
 /opt/homebrew/bin/python3 flux/build_entropy_ft_report.py \
@@ -215,6 +232,7 @@ The expanded commands executed by the wrapper are shown below for transparency:
   --analysis-dir experiments/entropy_ft_2026-08-26/production/analysis \
   --supplement-dir experiments/entropy_ft_2026-08-26/production/final_v1/supplement \
   --adaptive-dir experiments/entropy_ft_2026-08-26/production/final_v1/adaptive \
+  --time-scaling-dir experiments/entropy_ft_2026-08-26/production/final_v1/time_scaling \
   --validation-dir experiments/entropy_ft_2026-08-26/validation \
   --output-dir experiments/entropy_ft_2026-08-26/production/final_v1/report \
   --status-label production

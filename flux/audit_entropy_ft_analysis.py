@@ -39,6 +39,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--analysis-dir", required=True, type=Path)
     parser.add_argument("--supplement-dir", required=True, type=Path)
     parser.add_argument("--adaptive-dir", type=Path)
+    parser.add_argument("--time-scaling-dir", type=Path)
     parser.add_argument("--expected-n", default="10,20,30,40")
     parser.add_argument("--output-prefix", required=True, type=Path)
     return parser.parse_args()
@@ -318,6 +319,85 @@ def stationarity(values: np.ndarray) -> dict[str, float]:
     }
 
 
+def audit_tail_time_scaling(
+    audit: Audit,
+    survival_rows: list[dict[str, str]],
+    fit_rows: list[dict[str, str]],
+) -> None:
+    survival_by_threshold: dict[tuple[int, float], list[dict[str, str]]] = defaultdict(list)
+    for row in survival_rows:
+        survival_by_threshold[(int(row["n"]), float(row["A"]))].append(row)
+
+    observed: set[tuple[int, float, str]] = set()
+    for row in fit_rows:
+        key = (int(row["n"]), float(row["A"]), row["tail"])
+        audit.require(key not in observed, f"tail-time duplicate {key}")
+        observed.add(key)
+        tail = row["tail"]
+        audit.require(tail in {"plus", "minus"}, f"tail-time {key}: tail label")
+        count_column = "plus_count" if tail == "plus" else "minus_count"
+        probability_column = "p_plus_raw" if tail == "plus" else "p_minus_raw"
+        minimum_count = int(row["minimum_raw_count"])
+        maximum_probability = float(row["maximum_probability"])
+        qualified = sorted(
+            (
+                item
+                for item in survival_by_threshold[key[:2]]
+                if int(item[count_column]) >= minimum_count
+                and 0.0 < float(item[probability_column]) <= maximum_probability
+            ),
+            key=lambda item: float(item["tau"]),
+        )
+        audit.require(
+            len(qualified) == int(row["time_points"]),
+            f"tail-time {key}: qualified time count",
+        )
+        audit.require(len(qualified) >= 3, f"tail-time {key}: minimum fit support")
+        time = np.asarray([float(item["tau"]) for item in qualified])
+        probability = np.asarray(
+            [float(item[probability_column]) for item in qualified]
+        )
+        slope, intercept = np.polyfit(time, np.log(probability), 1)
+        fitted = slope * time + intercept
+        residual = float(np.sum((np.log(probability) - fitted) ** 2))
+        total = float(np.sum((np.log(probability) - np.mean(np.log(probability))) ** 2))
+        r_squared = 1.0 - residual / total if total > 0.0 else float("nan")
+        audit.number(float(row["rate_proxy"]), -float(slope), f"tail-time {key}: rate")
+        audit.number(float(row["intercept"]), float(intercept), f"tail-time {key}: intercept")
+        audit.number(float(row["r_squared"]), r_squared, f"tail-time {key}: R2")
+        audit.number(float(row["t_min"]), float(np.min(time)), f"tail-time {key}: t_min")
+        audit.number(float(row["t_max"]), float(np.max(time)), f"tail-time {key}: t_max")
+        audit.require(
+            int(row["minimum_observed_count"])
+            == min(int(item[count_column]) for item in qualified),
+            f"tail-time {key}: minimum observed count",
+        )
+        audit.number(
+            float(row["maximum_included_probability"]),
+            float(np.max(probability)),
+            f"tail-time {key}: maximum included probability",
+        )
+
+    if fit_rows:
+        minimum_count = int(fit_rows[0]["minimum_raw_count"])
+        maximum_probability = float(fit_rows[0]["maximum_probability"])
+        minimum_points = min(int(row["time_points"]) for row in fit_rows)
+        expected: set[tuple[int, float, str]] = set()
+        for key, items in survival_by_threshold.items():
+            for tail, count_column, probability_column in [
+                ("plus", "plus_count", "p_plus_raw"),
+                ("minus", "minus_count", "p_minus_raw"),
+            ]:
+                count = sum(
+                    int(item[count_column]) >= minimum_count
+                    and 0.0 < float(item[probability_column]) <= maximum_probability
+                    for item in items
+                )
+                if count >= minimum_points:
+                    expected.add((key[0], key[1], tail))
+        audit.require(observed == expected, "tail-time fit key set")
+
+
 def main() -> None:
     args = parse_args()
     expected_n = [int(item) for item in args.expected_n.split(",") if item]
@@ -335,7 +415,8 @@ def main() -> None:
         (int(row["n"]), float(row["tau"]), row["observable"]): row
         for row in read_rows(args.analysis_dir / "stationarity_summary.csv")
     }
-    supplement_tails = grouped(read_rows(args.supplement_dir / "action_two_tail_survival.csv"))
+    supplement_tail_rows = read_rows(args.supplement_dir / "action_two_tail_survival.csv")
+    supplement_tails = grouped(supplement_tail_rows)
     supplement_metrics = indexed(read_rows(args.supplement_dir / "action_normal_tail_fit_metrics.csv"))
     adaptive_summary: dict[tuple[int, float, str], dict[str, str]] = {}
     adaptive_bins: dict[tuple[int, float, str], list[dict[str, str]]] = {}
@@ -345,6 +426,11 @@ def main() -> None:
         )
         adaptive_bins = grouped_observable(
             read_rows(args.adaptive_dir / "adaptive_symmetry_bins.csv")
+        )
+    time_scaling_rows: list[dict[str, str]] = []
+    if args.time_scaling_dir is not None:
+        time_scaling_rows = read_rows(
+            args.time_scaling_dir / "action_tail_time_scaling.csv"
         )
 
     expected_keys = set(entropy_summary)
@@ -489,6 +575,9 @@ def main() -> None:
                 audit.require(float(metric["joint_tail_fit_sigma"]) > 0.0, f"n={n}, t={tau}: fitted sigma positive")
                 audit.require(int(metric["joint_tail_fit_plus_points"]) >= 2 and int(metric["joint_tail_fit_minus_points"]) >= 2, f"n={n}, t={tau}: fitted tail points")
 
+    if args.time_scaling_dir is not None:
+        audit_tail_time_scaling(audit, supplement_tail_rows, time_scaling_rows)
+
     result = {
         "status": "PASS" if not audit.errors else "FAIL",
         "checks": audit.checks,
@@ -499,6 +588,9 @@ def main() -> None:
         "analysis_dir": str(args.analysis_dir),
         "supplement_dir": str(args.supplement_dir),
         "adaptive_dir": str(args.adaptive_dir) if args.adaptive_dir else None,
+        "time_scaling_dir": str(args.time_scaling_dir)
+        if args.time_scaling_dir
+        else None,
     }
     args.output_prefix.parent.mkdir(parents=True, exist_ok=True)
     args.output_prefix.with_suffix(".json").write_text(json.dumps(result, indent=2) + "\n")
@@ -516,7 +608,8 @@ def main() -> None:
     else:
         markdown.append(
             "All reported aggregates, tail counts, probabilities, symmetry-bin counts, "
-            "weighted fits, adaptive-range robustness fits, stationarity statistics, "
+            "weighted fits, adaptive-range robustness fits, action-tail time-scaling "
+            "fits, stationarity statistics, "
             "and heat--action coupling metrics "
             "match an independent recomputation from the raw block files."
         )

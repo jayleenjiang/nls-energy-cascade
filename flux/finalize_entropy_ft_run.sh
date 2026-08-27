@@ -8,6 +8,7 @@ FINAL_DIR="${3:-$RUN_DIR/final_v1}"
 STATUS_LABEL="${4:-production}"
 ANALYSIS_DIR="${ANALYSIS_DIR:-$RUN_DIR/analysis}"
 ADAPTIVE_DIR="$FINAL_DIR/adaptive"
+TIME_SCALING_DIR="$FINAL_DIR/time_scaling"
 VALIDATION_DIR="${VALIDATION_DIR:-$(dirname "$RUN_DIR")/validation}"
 PYTHON="${PYTHON:-/opt/homebrew/bin/python3}"
 LATEXMK="${LATEXMK:-}"
@@ -31,7 +32,7 @@ if grep -q '^failed_utc=' "$manifest"; then
   exit 5
 fi
 
-mkdir -p "$FINAL_DIR/supplement" "$ADAPTIVE_DIR" "$FINAL_DIR/report"
+mkdir -p "$FINAL_DIR/supplement" "$ADAPTIVE_DIR" "$TIME_SCALING_DIR" "$FINAL_DIR/report"
 {
   date -u '+started_utc=%Y-%m-%dT%H:%M:%SZ'
   printf 'run_dir=%s\n' "$RUN_DIR"
@@ -44,6 +45,7 @@ mkdir -p "$FINAL_DIR/supplement" "$ADAPTIVE_DIR" "$FINAL_DIR/report"
     "$ROOT/flux/audit_entropy_ft_run.py" \
     "$ROOT/flux/plot_entropy_ft_supplement.py" \
     "$ROOT/flux/analyze_ft_adaptive_bins.py" \
+    "$ROOT/flux/analyze_action_tail_time_scaling.py" \
     "$ROOT/flux/audit_entropy_ft_analysis.py" \
     "$ROOT/flux/build_entropy_ft_report.py"
 } > "$FINAL_DIR/finalization_manifest.txt"
@@ -78,11 +80,19 @@ fi
   --range-quantile 0.99 \
   --bootstrap 1000
 
+"$PYTHON" "$ROOT/flux/analyze_action_tail_time_scaling.py" \
+  "$FINAL_DIR/supplement/action_two_tail_survival.csv" \
+  --output-dir "$TIME_SCALING_DIR" \
+  --minimum-raw-count 20 \
+  --maximum-probability 0.2 \
+  --minimum-time-points 4
+
 "$PYTHON" "$ROOT/flux/audit_entropy_ft_analysis.py" \
   "$RUN_DIR" \
   --analysis-dir "$ANALYSIS_DIR" \
   --supplement-dir "$FINAL_DIR/supplement" \
   --adaptive-dir "$ADAPTIVE_DIR" \
+  --time-scaling-dir "$TIME_SCALING_DIR" \
   --output-prefix "$FINAL_DIR/analysis_audit"
 
 "$PYTHON" "$ROOT/flux/build_entropy_ft_report.py" \
@@ -90,6 +100,7 @@ fi
   --analysis-dir "$ANALYSIS_DIR" \
   --supplement-dir "$FINAL_DIR/supplement" \
   --adaptive-dir "$ADAPTIVE_DIR" \
+  --time-scaling-dir "$TIME_SCALING_DIR" \
   --validation-dir "$VALIDATION_DIR" \
   --output-dir "$FINAL_DIR/report" \
   --status-label "$STATUS_LABEL"

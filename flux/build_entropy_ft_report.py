@@ -17,6 +17,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--analysis-dir", required=True, type=Path)
     parser.add_argument("--supplement-dir", required=True, type=Path)
     parser.add_argument("--adaptive-dir", type=Path)
+    parser.add_argument("--time-scaling-dir", type=Path)
     parser.add_argument(
         "--validation-dir",
         type=Path,
@@ -150,6 +151,11 @@ def main() -> None:
     adaptive = (
         read_rows(args.adaptive_dir / "adaptive_symmetry_summary.csv")
         if args.adaptive_dir is not None
+        else []
+    )
+    time_scaling = (
+        read_rows(args.time_scaling_dir / "action_tail_time_scaling.csv")
+        if args.time_scaling_dir is not None
         else []
     )
 
@@ -480,6 +486,65 @@ def main() -> None:
             r"\caption{Joint two-tail Gaussian fit for the base $t=20$ blocks.  RMSE is "
             r"computed on the log-probability scale over the fitted tail window.}",
             r"\end{table}",
+        ]
+    )
+
+    if time_scaling:
+        lines.extend(
+            [
+                r"\subsection*{Dependence on averaging time and threshold}",
+                r"For each threshold with at least 20 raw tail events, probability at most "
+                r"$0.2$, and at least four resolved averaging times, we fit the descriptive "
+                r"large-deviation form",
+                r"\[\log P[J_t\geq A]=c_+(A)-tI_+(A),\qquad "
+                r"\log P[J_t\leq-A]=c_-(A)-tI_-(A).\]",
+                r"The samples at different $t$ are aggregations of the same base streams, so "
+                r"the fitted $R^2$ values diagnose linearity rather than supply an "
+                r"independent-sample significance test.  Missing rows indicate direct-sampling "
+                r"resolution limits, not zero probability.",
+                r"\begin{table}[H]",
+                r"\centering\small",
+                r"\begin{tabular}{rrlrrr}",
+                r"\toprule",
+                r"$n$ & tail & resolved $A$ range & fits & $R^2\geq0.98$ & rate range \\ ",
+                r"\midrule",
+            ]
+        )
+        for n in [10, 20, 30, 40]:
+            for tail, tail_label in [("plus", r"$+$"), ("minus", r"$-$")]:
+                selected = [
+                    row
+                    for row in time_scaling
+                    if int(row["n"]) == n and row["tail"] == tail
+                ]
+                good = [row for row in selected if float(row["r_squared"]) >= 0.98]
+                if selected:
+                    a_range = (
+                        f"[{fmt(min(float(row['A']) for row in selected), 2)}, "
+                        f"{fmt(max(float(row['A']) for row in selected), 2)}]"
+                    )
+                    rate_range = (
+                        f"[{fmt(min(float(row['rate_proxy']) for row in selected), 3)}, "
+                        f"{fmt(max(float(row['rate_proxy']) for row in selected), 3)}]"
+                    )
+                else:
+                    a_range = "--"
+                    rate_range = "--"
+                lines.append(
+                    f"{n} & {tail_label} & {a_range} & {len(selected)} & "
+                    f"{len(good)} & {rate_range} \\\\"
+                )
+        lines.extend(
+            [
+                r"\bottomrule",
+                r"\end{tabular}",
+                r"\caption{Resolved descriptive fits of $\log P$ versus averaging time.}",
+                r"\end{table}",
+            ]
+        )
+
+    lines.extend(
+        [
             r"\section*{Heat--action coupling}",
             r"Tight coupling would require more than a large Pearson correlation: the "
             r"heat-on-action regression must be stable with $t$, and the residual variance "
@@ -519,6 +584,16 @@ def main() -> None:
                 f"Medium-entropy PDF and raw/plus-four symmetry diagnostic for $n={n}$.",
             )
         )
+        if args.time_scaling_dir is not None:
+            lines.append(
+                figure_block(
+                    args.time_scaling_dir / f"action_tail_time_scaling_n{n}.pdf",
+                    args.output_dir,
+                    rf"Descriptive action-tail rate proxies and $\log P$-versus-$t$ "
+                    f"linearity for $n={n}$.  Only raw-count-qualified rare-tail windows "
+                    "are shown.",
+                )
+            )
         if args.adaptive_dir is not None:
             lines.append(
                 figure_block(
