@@ -16,6 +16,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--run-dir", required=True, type=Path)
     parser.add_argument("--analysis-dir", required=True, type=Path)
     parser.add_argument("--supplement-dir", required=True, type=Path)
+    parser.add_argument("--adaptive-dir", type=Path)
     parser.add_argument(
         "--validation-dir",
         type=Path,
@@ -146,6 +147,11 @@ def main() -> None:
     coupling = read_rows(args.analysis_dir / "coupling_summary.csv")
     tails = read_rows(args.supplement_dir / "action_normal_tail_fit_metrics.csv")
     negative = read_rows(args.supplement_dir / "negative_probability_vs_time.csv")
+    adaptive = (
+        read_rows(args.adaptive_dir / "adaptive_symmetry_summary.csv")
+        if args.adaptive_dir is not None
+        else []
+    )
 
     validation_dir = args.validation_dir or (args.run_dir.parent / "validation")
     validation_specs = [
@@ -338,6 +344,68 @@ def main() -> None:
             r"\caption{Raw-count-qualified medium-entropy symmetry fits. Missing rows have "
             r"insufficient two-sided counts.}",
             r"\end{table}",
+        ]
+    )
+
+    if adaptive:
+        fixed_lookup = {}
+        for observable, rows in [
+            ("entropy_rate", entropy),
+            ("heat_current", heat),
+            ("action_current", action),
+        ]:
+            for row in rows:
+                fixed_lookup[(int(row["n"]), float(row["tau"]), observable)] = row
+        labels = {
+            "entropy_rate": r"$\Sigma^{\rm m}/t$",
+            "heat_current": r"$J_E$",
+            "action_current": r"$J_M$",
+        }
+        lines.extend(
+            [
+                r"\subsection*{Fit-range robustness}",
+                r"The predeclared fixed-bin result remains the primary diagnostic.  As a "
+                r"robustness check, a second estimator uses symmetric equal-width bins whose "
+                r"range is set by the 99th percentile of the positive and negative-magnitude "
+                r"samples separately, with the number of bins limited by rare-side effective "
+                r"support.  Differences between the two estimates diagnose curvature or "
+                r"fit-window sensitivity; the estimator closer to a reference slope is not "
+                r"selected post hoc.",
+                r"\begin{table}[H]",
+                r"\centering\small",
+                r"\resizebox{\textwidth}{!}{%",
+                r"\begin{tabular}{rrlrrrr}",
+                r"\toprule",
+                r"$n$ & $t$ & observable & fixed slope & robust slope & robust 95\% CI & bins \\ ",
+                r"\midrule",
+            ]
+        )
+        for row in adaptive:
+            tau = float(row["tau"])
+            if tau not in selected_taus or not finite(row["adaptive_slope"]):
+                continue
+            key = (int(row["n"]), tau, row["observable"])
+            fixed = fixed_lookup.get(key, {})
+            lines.append(
+                f"{row['n']} & {fmt(tau, 0)} & {labels[row['observable']]} & "
+                f"{fmt(fixed.get('ft_slope', float('nan')))} & "
+                f"{fmt(row['adaptive_slope'])} & "
+                f"[{fmt(row['adaptive_slope_ci_low'])}, "
+                f"{fmt(row['adaptive_slope_ci_high'])}] & "
+                f"{row['adaptive_bins_used']} \\\\"
+            )
+        lines.extend(
+            [
+                r"\bottomrule",
+                r"\end{tabular}",
+                r"}",
+                r"\caption{Primary fixed-range and adaptive-range robustness estimates.}",
+                r"\end{table}",
+            ]
+        )
+
+    lines.extend(
+        [
             r"\section*{Action-current tails and symmetry}",
             r"The central 1--99\% histogram is compared with a fitted normal density.  Each "
             r"empirical upper and lower survival tail is also compared with the corresponding "
@@ -445,6 +513,15 @@ def main() -> None:
                 f"Medium-entropy PDF and raw/plus-four symmetry diagnostic for $n={n}$.",
             )
         )
+        if args.adaptive_dir is not None:
+            lines.append(
+                figure_block(
+                    args.adaptive_dir / f"adaptive_symmetry_slopes_n{n}.pdf",
+                    args.output_dir,
+                    f"Adaptive-range symmetry-slope robustness check for $n={n}$.  "
+                    "The horizontal references apply only to medium entropy and bath heat.",
+                )
+            )
         lines.append(
             figure_block(
                 args.analysis_dir / f"action_tail_normal_fit_n{n}_t20.pdf",

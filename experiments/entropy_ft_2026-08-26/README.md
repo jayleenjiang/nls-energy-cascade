@@ -124,6 +124,17 @@ The `analysis_v2/` directory contains:
 - action/heat correlation and residual-variance diagnostics;
 - stationarity and sample-size tables.
 
+The predeclared fixed-width result is retained as the primary symmetry
+diagnostic.  `../../flux/analyze_ft_adaptive_bins.py` supplies a separate
+fit-range robustness check: it uses symmetric equal-width bins, fixes the
+range from the 99th percentile of each sign separately, and limits the bin
+count by rare-side effective support.  This avoids the discontinuity that
+occurs when the overall first percentile crosses zero.  Differences between
+the primary and robustness slopes are reported as curvature/fit-window
+sensitivity; the estimate closer to the theoretical reference is never
+selected post hoc.  The independent analysis auditor recomputes both results
+from the raw blocks.
+
 The pilot source hashes and exact parameters are recorded in
 `pilot/pilot_manifest.txt`.  Raw production blocks remain local because their
 expected size is several hundred megabytes; source, manifests, summaries, and
@@ -146,7 +157,8 @@ following gates, in this order:
    analyzer used for the run.
 5. Symmetry fits use raw nonzero counts on both sides.  Plus-four estimates are
    display-only, and missing rare tails remain missing rather than being
-   extrapolated into evidence.
+   extrapolated into evidence.  The primary fixed-range result and the
+   adaptive-range robustness result are both retained.
 6. The final interpretation checks the trend with averaging time, the number of
    negative events, normal-tail residuals, and heat--action residual variance.
    A failed unit-slope check for medium entropy is reported as “not verified in
@@ -176,24 +188,35 @@ The expanded commands executed by the wrapper are shown below for transparency:
 /opt/homebrew/bin/python3 flux/plot_entropy_ft_supplement.py \
   experiments/entropy_ft_2026-08-26/production/n*_blocks.csv \
   --analysis-dir experiments/entropy_ft_2026-08-26/production/analysis \
-  --output-dir experiments/entropy_ft_2026-08-26/production/supplement \
+  --output-dir experiments/entropy_ft_2026-08-26/production/final_v1/supplement \
   --taus 20,40,60,80,100,120,140,160,180,200 \
   --threshold-step 0.01 \
   --minimum-raw-count 5 \
   --tail-probability-max 0.01
 
+/opt/homebrew/bin/python3 flux/analyze_ft_adaptive_bins.py \
+  experiments/entropy_ft_2026-08-26/production/n*_blocks.csv \
+  --output-dir experiments/entropy_ft_2026-08-26/production/final_v1/adaptive \
+  --taus 20,40,60,80,100,120,140,160,180,200 \
+  --max-bins 60 \
+  --min-effective-count 50 \
+  --range-quantile 0.99 \
+  --bootstrap 1000
+
 /opt/homebrew/bin/python3 flux/audit_entropy_ft_analysis.py \
   experiments/entropy_ft_2026-08-26/production \
   --analysis-dir experiments/entropy_ft_2026-08-26/production/analysis \
-  --supplement-dir experiments/entropy_ft_2026-08-26/production/supplement \
-  --output-prefix experiments/entropy_ft_2026-08-26/production/analysis_audit
+  --supplement-dir experiments/entropy_ft_2026-08-26/production/final_v1/supplement \
+  --adaptive-dir experiments/entropy_ft_2026-08-26/production/final_v1/adaptive \
+  --output-prefix experiments/entropy_ft_2026-08-26/production/final_v1/analysis_audit
 
 /opt/homebrew/bin/python3 flux/build_entropy_ft_report.py \
   --run-dir experiments/entropy_ft_2026-08-26/production \
   --analysis-dir experiments/entropy_ft_2026-08-26/production/analysis \
-  --supplement-dir experiments/entropy_ft_2026-08-26/production/supplement \
+  --supplement-dir experiments/entropy_ft_2026-08-26/production/final_v1/supplement \
+  --adaptive-dir experiments/entropy_ft_2026-08-26/production/final_v1/adaptive \
   --validation-dir experiments/entropy_ft_2026-08-26/validation \
-  --output-dir experiments/entropy_ft_2026-08-26/production/report \
+  --output-dir experiments/entropy_ft_2026-08-26/production/final_v1/report \
   --status-label production
 ```
 

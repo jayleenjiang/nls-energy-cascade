@@ -7,6 +7,7 @@ EXPECTED_BLOCKS="${2:-1000064}"
 FINAL_DIR="${3:-$RUN_DIR/final_v1}"
 STATUS_LABEL="${4:-production}"
 ANALYSIS_DIR="${ANALYSIS_DIR:-$RUN_DIR/analysis}"
+ADAPTIVE_DIR="$FINAL_DIR/adaptive"
 VALIDATION_DIR="${VALIDATION_DIR:-$(dirname "$RUN_DIR")/validation}"
 PYTHON="${PYTHON:-/opt/homebrew/bin/python3}"
 LATEXMK="${LATEXMK:-}"
@@ -30,7 +31,7 @@ if grep -q '^failed_utc=' "$manifest"; then
   exit 5
 fi
 
-mkdir -p "$FINAL_DIR/supplement" "$FINAL_DIR/report"
+mkdir -p "$FINAL_DIR/supplement" "$ADAPTIVE_DIR" "$FINAL_DIR/report"
 {
   date -u '+started_utc=%Y-%m-%dT%H:%M:%SZ'
   printf 'run_dir=%s\n' "$RUN_DIR"
@@ -42,6 +43,7 @@ mkdir -p "$FINAL_DIR/supplement" "$FINAL_DIR/report"
   shasum -a 256 \
     "$ROOT/flux/audit_entropy_ft_run.py" \
     "$ROOT/flux/plot_entropy_ft_supplement.py" \
+    "$ROOT/flux/analyze_ft_adaptive_bins.py" \
     "$ROOT/flux/audit_entropy_ft_analysis.py" \
     "$ROOT/flux/build_entropy_ft_report.py"
 } > "$FINAL_DIR/finalization_manifest.txt"
@@ -67,16 +69,27 @@ fi
   --minimum-raw-count 5 \
   --tail-probability-max 0.01
 
+"$PYTHON" "$ROOT/flux/analyze_ft_adaptive_bins.py" \
+  "$RUN_DIR"/n*_blocks.csv \
+  --output-dir "$ADAPTIVE_DIR" \
+  --taus 20,40,60,80,100,120,140,160,180,200 \
+  --max-bins 60 \
+  --min-effective-count 50 \
+  --range-quantile 0.99 \
+  --bootstrap 1000
+
 "$PYTHON" "$ROOT/flux/audit_entropy_ft_analysis.py" \
   "$RUN_DIR" \
   --analysis-dir "$ANALYSIS_DIR" \
   --supplement-dir "$FINAL_DIR/supplement" \
+  --adaptive-dir "$ADAPTIVE_DIR" \
   --output-prefix "$FINAL_DIR/analysis_audit"
 
 "$PYTHON" "$ROOT/flux/build_entropy_ft_report.py" \
   --run-dir "$RUN_DIR" \
   --analysis-dir "$ANALYSIS_DIR" \
   --supplement-dir "$FINAL_DIR/supplement" \
+  --adaptive-dir "$ADAPTIVE_DIR" \
   --validation-dir "$VALIDATION_DIR" \
   --output-dir "$FINAL_DIR/report" \
   --status-label "$STATUS_LABEL"

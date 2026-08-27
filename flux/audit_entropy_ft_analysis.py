@@ -38,6 +38,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("run_dir", type=Path)
     parser.add_argument("--analysis-dir", required=True, type=Path)
     parser.add_argument("--supplement-dir", required=True, type=Path)
+    parser.add_argument("--adaptive-dir", type=Path)
     parser.add_argument("--expected-n", default="10,20,30,40")
     parser.add_argument("--output-prefix", required=True, type=Path)
     return parser.parse_args()
@@ -71,6 +72,29 @@ def indexed(rows: list[dict[str, str]]) -> dict[tuple[int, float], dict[str, str
         if key in result:
             raise ValueError(f"duplicate row for n={key[0]}, tau={key[1]}")
         result[key] = row
+    return result
+
+
+def indexed_observable(
+    rows: list[dict[str, str]],
+) -> dict[tuple[int, float, str], dict[str, str]]:
+    result: dict[tuple[int, float, str], dict[str, str]] = {}
+    for row in rows:
+        key = (int(row["n"]), float(row["tau"]), row["observable"])
+        if key in result:
+            raise ValueError(
+                f"duplicate row for n={key[0]}, tau={key[1]}, observable={key[2]}"
+            )
+        result[key] = row
+    return result
+
+
+def grouped_observable(
+    rows: list[dict[str, str]],
+) -> dict[tuple[int, float, str], list[dict[str, str]]]:
+    result: dict[tuple[int, float, str], list[dict[str, str]]] = defaultdict(list)
+    for row in rows:
+        result[(int(row["n"]), float(row["tau"]), row["observable"])].append(row)
     return result
 
 
@@ -191,6 +215,94 @@ def audit_tail_rows(
             audit.number(float(row[columns["minus_normal"]]), float(norm.cdf(-threshold, loc=mu, scale=sigma)), f"{label}: minus normal at A={threshold}")
 
 
+def audit_adaptive_symmetry(
+    audit: Audit,
+    label: str,
+    values: np.ndarray,
+    tau: float,
+    rows: list[dict[str, str]],
+    summary: dict[str, str],
+) -> None:
+    flattened = values.ravel()
+    positive = flattened[flattened > 0.0]
+    negative = -flattened[flattened < 0.0]
+    used_reported = int(summary["adaptive_bins_used"])
+    if positive.size == 0 or negative.size == 0:
+        audit.require(not rows and used_reported == 0, f"{label}: one-sided sample")
+        return
+
+    quantile = float(summary["range_quantile"])
+    audit.require(0.0 < quantile < 1.0, f"{label}: range quantile")
+    overlap = min(float(np.max(positive)), float(np.max(negative)))
+    a_max = min(
+        float(np.quantile(positive, quantile)),
+        float(np.quantile(negative, quantile)),
+        overlap,
+    )
+    iat = float(summary["autocorrelation_time"])
+    minimum = float(summary["min_effective_count"])
+    raw_target = max(1, int(math.ceil(minimum * iat)))
+    minority = min(
+        int(np.count_nonzero(positive <= a_max)),
+        int(np.count_nonzero(negative <= a_max)),
+    )
+    bin_count = min(int(summary["max_bins"]), minority // raw_target)
+    if bin_count < 3:
+        audit.require(
+            not rows
+            and used_reported == 0
+            and math.isnan(float(summary["adaptive_a_max"])),
+            f"{label}: insufficient support",
+        )
+        return
+
+    audit.number(float(summary["adaptive_a_max"]), a_max, f"{label}: a_max")
+    audit.require(len(rows) == bin_count, f"{label}: adaptive bin count")
+    rows = sorted(rows, key=lambda row: float(row["a_low"]))
+    expected_edges = np.linspace(0.0, a_max, bin_count + 1)
+    reported_edges = np.asarray(
+        [float(rows[0]["a_low"])] + [float(row["a_high"]) for row in rows]
+    )
+    audit.require(
+        np.allclose(reported_edges, expected_edges, atol=5.0e-11, rtol=5.0e-9),
+        f"{label}: equal-width range edges",
+    )
+    plus, _ = np.histogram(flattened, bins=expected_edges)
+    minus, _ = np.histogram(-flattened, bins=expected_edges)
+    centers = 0.5 * (expected_edges[:-1] + expected_edges[1:])
+    raw = np.full(bin_count, np.nan)
+    variance = np.full(bin_count, np.nan)
+    nonzero = (plus > 0) & (minus > 0)
+    raw[nonzero] = np.log(plus[nonzero] / minus[nonzero]) / tau
+    variance[nonzero] = iat * (
+        1.0 / plus[nonzero] + 1.0 / minus[nonzero]
+    ) / (tau * tau)
+    expected_used = nonzero & (plus / iat >= minimum) & (minus / iat >= minimum)
+    for index, row in enumerate(rows):
+        audit.require(int(row["plus_count"]) == int(plus[index]), f"{label}: plus bin {index}")
+        audit.require(int(row["minus_count"]) == int(minus[index]), f"{label}: minus bin {index}")
+        audit.number(float(row["a_center"]), float(centers[index]), f"{label}: center {index}")
+        if nonzero[index]:
+            audit.number(float(row["symmetry_raw"]), float(raw[index]), f"{label}: raw bin {index}")
+        else:
+            audit.require(math.isnan(float(row["symmetry_raw"])), f"{label}: zero-count raw bin {index}")
+        audit.require(
+            (int(row["fit_used"]) == 1) == bool(expected_used[index]),
+            f"{label}: fit mask {index}",
+        )
+    audit.require(
+        int(np.count_nonzero(expected_used)) == used_reported,
+        f"{label}: fit-used count",
+    )
+    if np.count_nonzero(expected_used) >= 3:
+        slope, intercept, r_squared = weighted_line_fit(
+            centers[expected_used], raw[expected_used], variance[expected_used]
+        )
+        audit.number(float(summary["adaptive_slope"]), slope, f"{label}: slope")
+        audit.number(float(summary["adaptive_intercept"]), intercept, f"{label}: intercept")
+        audit.number(float(summary["adaptive_r_squared"]), r_squared, f"{label}: R2")
+
+
 def stationarity(values: np.ndarray) -> dict[str, float]:
     quarter = max(1, values.shape[1] // 4)
     first = np.mean(values[:, :quarter], axis=1)
@@ -225,6 +337,15 @@ def main() -> None:
     }
     supplement_tails = grouped(read_rows(args.supplement_dir / "action_two_tail_survival.csv"))
     supplement_metrics = indexed(read_rows(args.supplement_dir / "action_normal_tail_fit_metrics.csv"))
+    adaptive_summary: dict[tuple[int, float, str], dict[str, str]] = {}
+    adaptive_bins: dict[tuple[int, float, str], list[dict[str, str]]] = {}
+    if args.adaptive_dir is not None:
+        adaptive_summary = indexed_observable(
+            read_rows(args.adaptive_dir / "adaptive_symmetry_summary.csv")
+        )
+        adaptive_bins = grouped_observable(
+            read_rows(args.adaptive_dir / "adaptive_symmetry_bins.csv")
+        )
 
     expected_keys = set(entropy_summary)
     audit.require(expected_keys == set(action_summary) == set(heat_summary) == set(coupling_summary), "summary key sets differ")
@@ -291,6 +412,22 @@ def main() -> None:
             audit_symmetry(audit, f"n={n}, t={tau} entropy", entropy, tau, entropy_bins.get(key, []), entropy_row)
             audit_symmetry(audit, f"n={n}, t={tau} action", action, tau, action_bins.get(key, []), action_row)
             audit_symmetry(audit, f"n={n}, t={tau} heat", heat, tau, heat_bins.get(key, []), heat_row)
+            if args.adaptive_dir is not None:
+                for observable, values in values_by_observable.items():
+                    adaptive_key = (n, tau, observable)
+                    audit.require(
+                        adaptive_key in adaptive_summary,
+                        f"n={n}, t={tau}, {observable}: adaptive summary present",
+                    )
+                    if adaptive_key in adaptive_summary:
+                        audit_adaptive_symmetry(
+                            audit,
+                            f"n={n}, t={tau} adaptive {observable}",
+                            values,
+                            tau,
+                            adaptive_bins.get(adaptive_key, []),
+                            adaptive_summary[adaptive_key],
+                        )
 
             coupling = coupling_summary[key]
             x = action.ravel()
@@ -361,6 +498,7 @@ def main() -> None:
         "run_dir": str(args.run_dir),
         "analysis_dir": str(args.analysis_dir),
         "supplement_dir": str(args.supplement_dir),
+        "adaptive_dir": str(args.adaptive_dir) if args.adaptive_dir else None,
     }
     args.output_prefix.parent.mkdir(parents=True, exist_ok=True)
     args.output_prefix.with_suffix(".json").write_text(json.dumps(result, indent=2) + "\n")
@@ -378,7 +516,8 @@ def main() -> None:
     else:
         markdown.append(
             "All reported aggregates, tail counts, probabilities, symmetry-bin counts, "
-            "weighted fits, stationarity statistics, and heat--action coupling metrics "
+            "weighted fits, adaptive-range robustness fits, stationarity statistics, "
+            "and heat--action coupling metrics "
             "match an independent recomputation from the raw block files."
         )
     args.output_prefix.with_suffix(".md").write_text("\n".join(markdown) + "\n")
