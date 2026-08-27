@@ -186,7 +186,7 @@ def main() -> None:
     lines = [
         r"\documentclass[11pt]{article}",
         r"\usepackage[margin=1in]{geometry}",
-        r"\usepackage{amsmath,amssymb,booktabs,graphicx,float}",
+        r"\usepackage{amsmath,amssymb,booktabs,graphicx,float,longtable}",
         r"\usepackage[hidelinks]{hyperref}",
         r"\setlength{\parindent}{0pt}",
         r"\setlength{\parskip}{0.55em}",
@@ -371,13 +371,22 @@ def main() -> None:
                 r"support.  Differences between the two estimates diagnose curvature or "
                 r"fit-window sensitivity; the estimator closer to a reference slope is not "
                 r"selected post hoc.",
-                r"\begin{table}[H]",
-                r"\centering\small",
-                r"\resizebox{\textwidth}{!}{%",
-                r"\begin{tabular}{rrlrrrr}",
+                r"\small",
+                r"\begin{longtable}{rrlrrrr}",
+                r"\caption{Primary fixed-range and adaptive-range robustness estimates.}\\",
                 r"\toprule",
                 r"$n$ & $t$ & observable & fixed slope & robust slope & robust 95\% CI & bins \\ ",
                 r"\midrule",
+                r"\endfirsthead",
+                r"\toprule",
+                r"$n$ & $t$ & observable & fixed slope & robust slope & robust 95\% CI & bins \\ ",
+                r"\midrule",
+                r"\endhead",
+                r"\midrule",
+                r"\multicolumn{7}{r}{Continued on next page}\\",
+                r"\endfoot",
+                r"\bottomrule",
+                r"\endlastfoot",
             ]
         )
         for row in adaptive:
@@ -396,11 +405,8 @@ def main() -> None:
             )
         lines.extend(
             [
-                r"\bottomrule",
-                r"\end{tabular}",
-                r"}",
-                r"\caption{Primary fixed-range and adaptive-range robustness estimates.}",
-                r"\end{table}",
+                r"\end{longtable}",
+                r"\normalsize",
             ]
         )
 
