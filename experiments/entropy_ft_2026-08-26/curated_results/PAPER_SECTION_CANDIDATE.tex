@@ -1,0 +1,94 @@
+% Candidate subsection generated from the audited 2026-08-27 long run.
+% The data pass production audits; the fluctuation-theorem conclusion remains
+% provisional and is explicitly reported as not verified in the sampled window.
+% Keep separate from the mentor-synchronized draft until the scientific scope
+% and placement are approved.
+
+\subsection{Finite-time current fluctuations and thermodynamic diagnostics}
+\label{sec:finite-time-fluctuations}
+
+We next examine the finite-time fluctuations of the bulk action current and
+their relation to thermodynamic transport.  The simulation is performed in
+projection-free Cartesian variables, $c_j=x_j+\mathrm{i}y_j$, using the same
+boundary temperatures $T_L=10$ and $T_R=2$ as in the transport study.  After a
+burn-in time $B=500$, we record $1{,}000{,}064$ non-overlapping blocks of length
+$t=20$ for each $n=10,20,30,40$.  The blocks are generated from 128 independent
+streams and are aggregated to averaging windows $t=20,40,\ldots,200$.  In
+addition to the bulk action-current average $J_M(t)$, each block stores the
+heat $Q_L$ and $Q_R$ delivered by the two bath substeps and the system-energy
+change $\Delta E$.  With heat positive into the chain, the medium entropy is
+\begin{equation}
+  \Sigma_t^{\mathrm m}=-\frac{Q_L}{T_L}-\frac{Q_R}{T_R}.
+\end{equation}
+The discrete first-law residual $Q_L+Q_R-\Delta E$ is below $10^{-5}$ in RMS
+rate for every chain length, all midpoint solves converge, and matched
+timestep-halving, equal-temperature, and bath-swapped controls pass.
+
+The production means of the action current are $0.39809$, $0.11979$,
+$0.05426$, and $0.03052$ for $n=10,20,30,40$, respectively.  A log--log fit
+gives
+\begin{equation}
+  \langle J_M(n)\rangle = 28.889\,n^{-1.8485},
+  \qquad R^2=0.9987,
+\end{equation}
+in independent agreement with the canonical current calculation.
+
+For a threshold $A$, both empirical action-current tails show an approximately
+linear dependence of log probability on the averaging time wherever raw
+two-tail resolution is available:
+\begin{equation}
+  \log \Pr[J_M(t)\ge A]=c_+(A)-t I_+(A),\qquad
+  \log \Pr[J_M(t)\le-A]=c_-(A)-t I_-(A).
+  \label{eq:finite-time-rate-proxy}
+\end{equation}
+We require at least 20 observed tail events, probability at most $0.2$, and at
+least four resolved averaging times.  All qualified fits have $R^2\ge0.98$,
+and the fitted rate proxies $I_\pm(A)$ increase with threshold magnitude.  The
+resolved positive-tail intervals are $A\in[0.46,0.81]$, $[0.15,0.33]$,
+$[0.08,0.20]$, and $[0.05,0.15]$ for $n=10,20,30,40$, respectively.  The
+negative tail is resolved over $A\in[0.01,0.06]$ for $n=20$ and
+$A\in[0.01,0.08]$ for $n=30,40$; for $n=10$ it becomes too rare to support a
+four-time-point direct-sampling fit.  These results support a finite-time
+large-deviation description but do not by themselves imply a fluctuation
+theorem.
+
+The central $1$--$99\%$ action-current distribution becomes narrower with
+increasing $t$ and is qualitatively Gaussian-like.  Its far tails, however,
+are not captured by the Gaussian fixed by the full-sample mean and variance.
+At $t=20$, a joint fit of one Gaussian to both empirical tails requires a width
+approximately $13\%$, $20\%$, $26\%$, and $28\%$ larger than the corresponding
+full-sample width for $n=10,20,30,40$.  Gaussianity is therefore used only as a
+shape benchmark.
+
+To test thermodynamic symmetry, define
+\begin{equation}
+  R_t(a)=\frac{1}{t}\log\frac{p_t(a)}{p_t(-a)},
+  \qquad a=\frac{\Sigma_t^{\mathrm m}}{t}.
+\end{equation}
+The simple asymptotic reference is $R_t(a)=a$.  The directly fitted
+medium-entropy slopes remain below unity in all raw-count-qualified windows.
+They generally increase with $t$ while both tails remain resolved---for
+example, the $n=30$ values are $0.247$, $0.316$, and $0.393$ for
+$t=20,40,60$---but do not reach unity before negative events become
+resolution-limited.  The bath-heat symmetry slopes likewise remain below the
+reference affinity $\Delta\beta=T_R^{-1}-T_L^{-1}=0.4$.  A second symmetric,
+equal-width fit with an independently defined quantile range gives the same
+qualitative conclusion; the action-current slopes themselves show appreciable
+fit-window dependence and are not assigned a thermodynamic target.
+
+This finite-time result must be interpreted with care.  An exact detailed
+fluctuation theorem concerns the total trajectory entropy
+\begin{equation}
+  \Delta s_{\rm tot}=\Sigma_t^{\mathrm m}+\Delta s_{\rm sys},
+\end{equation}
+where the NESS system-entropy endpoint term is not reconstructed in the
+present calculation.  We therefore conclude that the standard thermodynamic
+fluctuation symmetry is not verified in the directly sampled window, rather
+than interpreting the finite-time slope deficit as a violation.
+
+Finally, heat and action currents become more correlated with increasing
+averaging time, but they are not tightly coupled.  At $t=200$, the Pearson
+correlation decreases from $0.934$ for $n=10$ to $0.683$ for $n=40$, while the
+heat variance unexplained by a linear action-current regression increases from
+$0.128$ to $0.533$.  Consequently, the action current cannot be substituted
+for thermodynamic entropy production, particularly in the longer chains.
