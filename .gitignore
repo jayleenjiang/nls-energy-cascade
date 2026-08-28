@@ -80,4 +80,16 @@ experiments/**/h5_files*/
 experiments/**/entropy_cloning
 experiments/**/entropy_cloning_v2
 experiments/entropy_ft_scgf_2026-08-27/total_entropy_n2/*_blocks.csv
+experiments/entropy_ft_scgf_2026-08-27/total_entropy_n2_short/**/*_blocks.csv
+experiments/discrete_path_ft_2026-08-28/**/*_forward.csv
+experiments/discrete_path_ft_2026-08-28/**/*_reverse.csv
+experiments/discrete_path_ft_2026-08-28/pilot/
+experiments/discrete_path_ft_2026-08-28/pilot_v2/
+experiments/discrete_path_ft_2026-08-28/diagnostic/
+experiments/discrete_path_ft_2026-08-28/diagnostic_v2/
 experiments/**/report/build/
+
+# ---- local experiment binaries ----
+flux/discrete_path_ft
+flux/entropy_cloning
+flux/entropy_ft
