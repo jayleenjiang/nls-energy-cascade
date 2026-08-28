@@ -1,0 +1,25 @@
+{
+  "observable": "medium entropy production",
+  "definition": "psi_t(k)=log(E[exp(-k Sigma_medium)])/t",
+  "symmetry_test": "psi_t(k)=psi_t(1-k)",
+  "inputs": [
+    "experiments/entropy_ft_2026-08-26/production/n10_blocks.csv",
+    "experiments/entropy_ft_2026-08-26/production/n20_blocks.csv",
+    "experiments/entropy_ft_2026-08-26/production/n30_blocks.csv",
+    "experiments/entropy_ft_2026-08-26/production/n40_blocks.csv"
+  ],
+  "base_time": 20.0,
+  "max_multiple": 10,
+  "k_min": 0.0,
+  "k_max": 1.0,
+  "k_step": 0.025,
+  "bootstraps": 500,
+  "bootstrap_unit": "independent stream",
+  "seed": 20260827,
+  "reliability_gate": {
+    "sample_weight_ess_min": 1000.0,
+    "stream_weight_ess_min": 32.0,
+    "max_sample_weight_fraction": 0.01,
+    "max_stream_weight_fraction": 0.1
+  }
+}

@@ -77,3 +77,7 @@ experiments/**/*.pdf
 experiments/**/*_train.txt
 experiments/**/traj_*.csv
 experiments/**/h5_files*/
+experiments/**/entropy_cloning
+experiments/**/entropy_cloning_v2
+experiments/entropy_ft_scgf_2026-08-27/total_entropy_n2/*_blocks.csv
+experiments/**/report/build/
