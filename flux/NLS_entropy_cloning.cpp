@@ -33,6 +33,20 @@
 //   ./flux/entropy_cloning guided T1 Tn n clones burnin observation_time \
 //       selection_time dt k seed threads out_prefix [bond]
 //
+// Exact controlled-importance NLS run.  The entropy-current gauge is
+//   A_c = (-1/T1+c) Q_left + (-1/Tn+c) Q_right,
+// which differs from medium entropy only by c Delta E.  Each controlled bath
+// step is corrected by its exact finite-step Gaussian likelihood ratio:
+//   ./flux/entropy_cloning controlled T1 Tn n clones burnin observation_time \
+//       selection_time dt k gauge_shift control_scale seed threads \
+//       out_prefix [bond]
+//
+// Adaptive-SMC version.  Resampling is triggered only when the cumulative
+// particle-weight ESS falls below resample_threshold * clones:
+//   ./flux/entropy_cloning controlled-adaptive T1 Tn n clones burnin \
+//       observation_time selection_time dt k gauge_shift control_scale \
+//       resample_threshold seed threads out_prefix [bond]
+//
 // Small-chain endpoint-density pilot (currently n=2 only):
 //   ./flux/entropy_cloning endpoints T1 Tn n streams burnin block_time \
 //       blocks_per_stream dt seed threads out_prefix
@@ -62,7 +76,7 @@ constexpr double PI = 3.141592653589793238462643383279502884;
 constexpr double TWO_PI = 2.0 * PI;
 constexpr int MAX_MIDPOINT_ITERATIONS = 20;
 constexpr double MIDPOINT_TOLERANCE = 2.0e-13;
-constexpr const char* MODEL_VERSION = "gibbs-cartesian-entropy-cloning-v1";
+constexpr const char* MODEL_VERSION = "gibbs-cartesian-entropy-cloning-v2";
 
 struct Xoshiro256pp {
     std::array<std::uint64_t, 4> s{};
@@ -356,10 +370,13 @@ double bath_step(State& state,
 
 struct SegmentResult {
     double entropy = 0.0;
+    double observable = 0.0;
     double q_left = 0.0;
     double q_right = 0.0;
     double action_integral = 0.0;
     double feynman_kac_integral = 0.0;
+    double log_likelihood_ratio = 0.0;
+    double log_weight = 0.0;
     double hamiltonian_error = 0.0;
     std::uint64_t midpoint_failures = 0;
     std::uint64_t midpoint_iterations = 0;
@@ -447,6 +464,121 @@ SegmentResult advance_segment(Clone& clone,
             break;
         }
     }
+    result.observable = result.entropy;
+    return result;
+}
+
+struct ControlledBathResult {
+    double heat = 0.0;
+    double log_original_over_proposal = 0.0;
+};
+
+ControlledBathResult controlled_bath_step(State& state,
+                                           int site,
+                                           double temperature,
+                                           double normal_x,
+                                           double normal_y,
+                                           double dt,
+                                           double sqrt_dt,
+                                           double proposal_drift_coefficient) {
+    const double force_x = state.force_real[site];
+    const double force_y = state.force_imag[site];
+    const double energy_before = physical_energy(state);
+    const double noise_scale = std::sqrt(2.0 * GAMMA * temperature);
+    const double noise_x = noise_scale * sqrt_dt * normal_x;
+    const double noise_y = noise_scale * sqrt_dt * normal_y;
+    const double delta_x = proposal_drift_coefficient * force_x * dt + noise_x;
+    const double delta_y = proposal_drift_coefficient * force_y * dt + noise_y;
+    state.x[site] += delta_x;
+    state.y[site] += delta_y;
+    compute_force(state);
+
+    const double proposal_residual_square = noise_x * noise_x + noise_y * noise_y;
+    const double original_residual_x = delta_x + GAMMA * force_x * dt;
+    const double original_residual_y = delta_y + GAMMA * force_y * dt;
+    const double original_residual_square =
+        original_residual_x * original_residual_x +
+        original_residual_y * original_residual_y;
+    const double log_ratio =
+        (proposal_residual_square - original_residual_square) /
+        (4.0 * GAMMA * temperature * dt);
+    return {physical_energy(state) - energy_before, log_ratio};
+}
+
+SegmentResult advance_segment_controlled(Clone& clone,
+                                         double T1,
+                                         double Tn,
+                                         double dt,
+                                         std::int64_t steps,
+                                         std::int64_t global_step_start,
+                                         int bond,
+                                         double tilt_k,
+                                         double gauge_shift,
+                                         double control_scale) {
+    SegmentResult result;
+    const double sqrt_dt = std::sqrt(dt);
+    const double coefficient_left = -1.0 / T1 + gauge_shift;
+    const double coefficient_right = -1.0 / Tn + gauge_shift;
+    const double proposal_left =
+        -GAMMA - control_scale * 2.0 * GAMMA * T1 * tilt_k * coefficient_left;
+    const double proposal_right =
+        -GAMMA - control_scale * 2.0 * GAMMA * Tn * tilt_k * coefficient_right;
+
+    for (std::int64_t local = 0; local < steps; ++local) {
+        compute_force(clone.state);
+        result.action_integral += action_current(clone.state, bond) * dt;
+        const auto normal_a = clone.rng.gaussian_pair();
+        const auto normal_b = clone.rng.gaussian_pair();
+        const auto midpoint = hamiltonian_midpoint_step(
+            clone.state, clone.workspace, dt);
+        result.midpoint_iterations +=
+            static_cast<std::uint64_t>(midpoint.iterations);
+        result.hamiltonian_error += midpoint.energy_error;
+        if (!midpoint.converged) {
+            ++result.midpoint_failures;
+        }
+
+        ControlledBathResult left;
+        ControlledBathResult right;
+        const auto global_step = global_step_start + local;
+        if (global_step % 2 == 0) {
+            left = controlled_bath_step(
+                clone.state, 0, T1, normal_a.first, normal_b.first,
+                dt, sqrt_dt, proposal_left);
+            right = controlled_bath_step(
+                clone.state, clone.state.n - 1, Tn,
+                normal_a.second, normal_b.second, dt, sqrt_dt,
+                proposal_right);
+        } else {
+            right = controlled_bath_step(
+                clone.state, clone.state.n - 1, Tn,
+                normal_a.second, normal_b.second, dt, sqrt_dt,
+                proposal_right);
+            left = controlled_bath_step(
+                clone.state, 0, T1, normal_a.first, normal_b.first,
+                dt, sqrt_dt, proposal_left);
+        }
+
+        result.q_left += left.heat;
+        result.q_right += right.heat;
+        const double entropy_increment = -left.heat / T1 - right.heat / Tn;
+        const double observable_increment =
+            coefficient_left * left.heat + coefficient_right * right.heat;
+        const double likelihood_increment =
+            left.log_original_over_proposal +
+            right.log_original_over_proposal;
+        result.entropy += entropy_increment;
+        result.observable += observable_increment;
+        result.log_likelihood_ratio += likelihood_increment;
+        result.log_weight +=
+            -tilt_k * observable_increment + likelihood_increment;
+        if (!std::isfinite(result.log_weight) ||
+            !std::isfinite(result.entropy) ||
+            !std::isfinite(physical_energy(clone.state))) {
+            result.finite = false;
+            break;
+        }
+    }
     return result;
 }
 
@@ -460,6 +592,9 @@ struct Parameters {
     double selection_time = 0.0;
     double dt = 0.0;
     double k = 0.0;
+    double gauge_shift = 0.0;
+    double control_scale = 1.0;
+    double resample_threshold = 1.0;
     std::uint64_t seed = 0;
     int threads = 1;
     std::string prefix;
@@ -468,6 +603,32 @@ struct Parameters {
     std::int64_t selection_steps = 0;
     int selection_events = 0;
 };
+
+void finalize_clone_parameters(Parameters& p) {
+    if (!(p.T1 > 0.0) || !(p.Tn > 0.0) || p.n < 2 ||
+        p.clone_count < 2 || p.burnin < 0.0 ||
+        !(p.observation_time > 0.0) || !(p.selection_time > 0.0) ||
+        !(p.dt > 0.0) || !std::isfinite(p.k) ||
+        !std::isfinite(p.gauge_shift) ||
+        !std::isfinite(p.control_scale) || p.control_scale < 0.0 ||
+        !std::isfinite(p.resample_threshold) ||
+        !(p.resample_threshold > 0.0) || p.resample_threshold > 1.0 ||
+        p.threads < 1 || p.bond < 1 || p.bond >= p.n) {
+        throw std::invalid_argument("invalid cloning parameters");
+    }
+    p.burn_steps = checked_step_count(p.burnin, p.dt, "burnin", true);
+    p.selection_steps =
+        checked_step_count(p.selection_time, p.dt, "selection_time");
+    const double raw_events = p.observation_time / p.selection_time;
+    p.selection_events = static_cast<int>(std::llround(raw_events));
+    if (p.selection_events <= 0 ||
+        std::abs(p.selection_events * p.selection_time - p.observation_time) >
+            64.0 * std::numeric_limits<double>::epsilon() *
+                std::max(1.0, p.observation_time)) {
+        throw std::invalid_argument(
+            "observation_time must be divisible by selection_time");
+    }
+}
 
 Parameters parse_clone(int argc, char* argv[]) {
     if (argc < 14 || argc > 15) {
@@ -492,25 +653,67 @@ Parameters parse_clone(int argc, char* argv[]) {
     p.prefix = argv[13];
     p.bond = argc == 14 ? p.n / 2 : std::stoi(argv[14]);
 
-    if (!(p.T1 > 0.0) || !(p.Tn > 0.0) || p.n < 2 ||
-        p.clone_count < 2 || p.burnin < 0.0 ||
-        !(p.observation_time > 0.0) || !(p.selection_time > 0.0) ||
-        !(p.dt > 0.0) || !std::isfinite(p.k) || p.threads < 1 ||
-        p.bond < 1 || p.bond >= p.n) {
-        throw std::invalid_argument("invalid cloning parameters");
+    finalize_clone_parameters(p);
+    return p;
+}
+
+Parameters parse_controlled(int argc, char* argv[]) {
+    if (argc < 16 || argc > 17) {
+        std::ostringstream message;
+        message << "Usage: " << argv[0]
+                << " controlled T1 Tn n clones burnin observation_time"
+                << " selection_time dt k gauge_shift control_scale seed"
+                << " threads out_prefix [bond]";
+        throw std::invalid_argument(message.str());
     }
-    p.burn_steps = checked_step_count(p.burnin, p.dt, "burnin", true);
-    p.selection_steps =
-        checked_step_count(p.selection_time, p.dt, "selection_time");
-    const double raw_events = p.observation_time / p.selection_time;
-    p.selection_events = static_cast<int>(std::llround(raw_events));
-    if (p.selection_events <= 0 ||
-        std::abs(p.selection_events * p.selection_time - p.observation_time) >
-            64.0 * std::numeric_limits<double>::epsilon() *
-                std::max(1.0, p.observation_time)) {
-        throw std::invalid_argument(
-            "observation_time must be divisible by selection_time");
+    Parameters p;
+    p.T1 = std::stod(argv[2]);
+    p.Tn = std::stod(argv[3]);
+    p.n = std::stoi(argv[4]);
+    p.clone_count = std::stoi(argv[5]);
+    p.burnin = std::stod(argv[6]);
+    p.observation_time = std::stod(argv[7]);
+    p.selection_time = std::stod(argv[8]);
+    p.dt = std::stod(argv[9]);
+    p.k = std::stod(argv[10]);
+    p.gauge_shift = std::stod(argv[11]);
+    p.control_scale = std::stod(argv[12]);
+    p.seed = static_cast<std::uint64_t>(std::stoull(argv[13]));
+    p.threads = std::stoi(argv[14]);
+    p.prefix = argv[15];
+    p.bond = argc == 16 ? p.n / 2 : std::stoi(argv[16]);
+    finalize_clone_parameters(p);
+    return p;
+}
+
+Parameters parse_controlled_adaptive(int argc, char* argv[]) {
+    if (argc < 17 || argc > 18) {
+        std::ostringstream message;
+        message << "Usage: " << argv[0]
+                << " controlled-adaptive T1 Tn n clones burnin"
+                << " observation_time selection_time dt k gauge_shift"
+                << " control_scale resample_threshold seed threads"
+                << " out_prefix [bond]";
+        throw std::invalid_argument(message.str());
     }
+    Parameters p;
+    p.T1 = std::stod(argv[2]);
+    p.Tn = std::stod(argv[3]);
+    p.n = std::stoi(argv[4]);
+    p.clone_count = std::stoi(argv[5]);
+    p.burnin = std::stod(argv[6]);
+    p.observation_time = std::stod(argv[7]);
+    p.selection_time = std::stod(argv[8]);
+    p.dt = std::stod(argv[9]);
+    p.k = std::stod(argv[10]);
+    p.gauge_shift = std::stod(argv[11]);
+    p.control_scale = std::stod(argv[12]);
+    p.resample_threshold = std::stod(argv[13]);
+    p.seed = static_cast<std::uint64_t>(std::stoull(argv[14]));
+    p.threads = std::stoi(argv[15]);
+    p.prefix = argv[16];
+    p.bond = argc == 17 ? p.n / 2 : std::stoi(argv[17]);
+    finalize_clone_parameters(p);
     return p;
 }
 
@@ -550,7 +753,31 @@ struct RunTotals {
     bool finite = true;
 };
 
-void run_clone(const Parameters& p, bool guided) {
+enum class CloneMode {
+    naive,
+    guided,
+    controlled,
+};
+
+const char* clone_mode_name(CloneMode mode) {
+    switch (mode) {
+        case CloneMode::naive:
+            return "naive";
+        case CloneMode::guided:
+            return "guided";
+        case CloneMode::controlled:
+            return "controlled_exact";
+    }
+    throw std::runtime_error("unknown clone mode");
+}
+
+void run_clone(const Parameters& p, CloneMode mode) {
+    const bool guided = mode == CloneMode::guided;
+    const bool controlled = mode == CloneMode::controlled;
+    const std::string mode_name =
+        controlled && p.resample_threshold < 1.0
+            ? "controlled_exact_adaptive"
+            : clone_mode_name(mode);
     ensure_parent_directory(p.prefix);
     omp_set_num_threads(p.threads);
     std::vector<Clone> clones;
@@ -565,12 +792,14 @@ void run_clone(const Parameters& p, bool guided) {
         clones.back().root_id = static_cast<std::uint64_t>(i);
     }
 
-    std::cout << "Entropy cloning sampler"
-              << (guided ? " (tilted-generator guided)\n" : " (naive)\n")
+    std::cout << "Entropy cloning sampler (" << mode_name << ")\n"
               << "  n=" << p.n << " clones=" << p.clone_count
               << " k=" << p.k << " burnin=" << p.burnin
               << " observation=" << p.observation_time
               << " selection=" << p.selection_time << " dt=" << p.dt
+              << " gauge_shift=" << p.gauge_shift
+              << " control_scale=" << p.control_scale
+              << " resample_threshold=" << p.resample_threshold
               << " seed=" << p.seed << "\n";
 
     RunTotals totals;
@@ -599,20 +828,29 @@ void run_clone(const Parameters& p, bool guided) {
     timeseries
         << "event,time,log_mean_weight,cumulative_log_normalizer,scgf,"
         << "population_mean_entropy_rate,tilted_mean_entropy_rate,"
+        << "population_mean_observable_rate,tilted_mean_observable_rate,"
         << "population_mean_action_current,population_mean_potential_rate,"
-        << "weight_ess,max_weight_fraction,"
-        << "unique_parents,parent_count_ess,unique_roots,root_count_ess\n";
+        << "population_mean_log_likelihood_ratio_rate,"
+        << "weight_ess,max_weight_fraction,resampled,"
+        << "unique_parents,parent_count_ess,unique_roots,root_count_ess,"
+        << "root_weight_ess\n";
 
     double cumulative_log_normalizer = 0.0;
     double total_observation_entropy = 0.0;
+    double total_observation_observable = 0.0;
+    double total_log_likelihood_ratio = 0.0;
     double total_observation_action = 0.0;
     double minimum_weight_ess = p.clone_count;
     double minimum_parent_ess = p.clone_count;
     double minimum_root_ess = p.clone_count;
+    double minimum_root_weight_ess = p.clone_count;
     int minimum_unique_parents = p.clone_count;
     int minimum_unique_roots = p.clone_count;
+    int resampling_events = 0;
 
     std::vector<double> log_weights(p.clone_count);
+    std::vector<double> particle_log_weights(
+        p.clone_count, -std::log(static_cast<double>(p.clone_count)));
     std::vector<double> probabilities(p.clone_count);
     for (int event = 0; event < p.selection_events; ++event) {
         const std::int64_t global_start =
@@ -620,14 +858,23 @@ void run_clone(const Parameters& p, bool guided) {
             static_cast<std::int64_t>(event) * p.selection_steps;
 #pragma omp parallel for schedule(static)
         for (int i = 0; i < p.clone_count; ++i) {
-            segment_results[i] = advance_segment(
-                clones[i], p.T1, p.Tn, p.dt, p.selection_steps,
-                global_start, p.bond, guided, p.k);
+            if (controlled) {
+                segment_results[i] = advance_segment_controlled(
+                    clones[i], p.T1, p.Tn, p.dt, p.selection_steps,
+                    global_start, p.bond, p.k, p.gauge_shift,
+                    p.control_scale);
+            } else {
+                segment_results[i] = advance_segment(
+                    clones[i], p.T1, p.Tn, p.dt, p.selection_steps,
+                    global_start, p.bond, guided, p.k);
+            }
         }
 
         double population_entropy = 0.0;
+        double population_observable = 0.0;
         double population_action = 0.0;
         double population_potential = 0.0;
+        double population_log_likelihood_ratio = 0.0;
         for (int i = 0; i < p.clone_count; ++i) {
             const auto& result = segment_results[i];
             totals.midpoint_failures += result.midpoint_failures;
@@ -635,10 +882,16 @@ void run_clone(const Parameters& p, bool guided) {
             totals.hamiltonian_error += result.hamiltonian_error;
             totals.finite = totals.finite && result.finite;
             population_entropy += result.entropy;
+            population_observable += result.observable;
             population_action += result.action_integral;
             population_potential += result.feynman_kac_integral;
+            population_log_likelihood_ratio += result.log_likelihood_ratio;
+            const double incremental_log_weight = controlled
+                ? result.log_weight
+                : (guided ? result.feynman_kac_integral
+                          : -p.k * result.entropy);
             log_weights[i] =
-                guided ? result.feynman_kac_integral : -p.k * result.entropy;
+                particle_log_weights[i] + incremental_log_weight;
         }
         if (!totals.finite || totals.midpoint_failures != 0) {
             throw std::runtime_error("measurement failed numerical gates");
@@ -654,8 +907,7 @@ void run_clone(const Parameters& p, bool guided) {
             shifted_square_sum += probabilities[i] * probabilities[i];
         }
         const double log_mean_weight =
-            maximum_log_weight + std::log(shifted_sum) -
-            std::log(static_cast<double>(p.clone_count));
+            maximum_log_weight + std::log(shifted_sum);
         cumulative_log_normalizer += log_mean_weight;
         for (double& probability : probabilities) {
             probability /= shifted_sum;
@@ -665,23 +917,52 @@ void run_clone(const Parameters& p, bool guided) {
         const double max_weight_fraction =
             *std::max_element(probabilities.begin(), probabilities.end());
         double tilted_entropy = 0.0;
+        double tilted_observable = 0.0;
         for (int i = 0; i < p.clone_count; ++i) {
             tilted_entropy += probabilities[i] * segment_results[i].entropy;
+            tilted_observable +=
+                probabilities[i] * segment_results[i].observable;
         }
 
-        const auto parents =
-            systematic_resample(probabilities, resampling_rng);
         std::vector<int> parent_counts(p.clone_count, 0);
         std::vector<int> root_counts(p.clone_count, 0);
-        std::vector<std::uint64_t> next_roots(p.clone_count, 0);
-        for (int child = 0; child < p.clone_count; ++child) {
-            const int parent = parents[child];
-            ++parent_counts[parent];
-            copy_state(clones[parent].state, next_states[child]);
-            next_roots[child] = clones[parent].root_id;
+        std::vector<double> root_weights(p.clone_count, 0.0);
+        const bool resampled =
+            p.resample_threshold >= 1.0 ||
+            weight_ess < p.resample_threshold * p.clone_count;
+        if (resampled) {
+            ++resampling_events;
+            const auto parents =
+                systematic_resample(probabilities, resampling_rng);
+            std::vector<std::uint64_t> next_roots(p.clone_count, 0);
+            for (int child = 0; child < p.clone_count; ++child) {
+                const int parent = parents[child];
+                ++parent_counts[parent];
+                copy_state(clones[parent].state, next_states[child]);
+                next_roots[child] = clones[parent].root_id;
+            }
+            for (int child = 0; child < p.clone_count; ++child) {
+                std::swap(clones[child].state, next_states[child]);
+                clones[child].root_id = next_roots[child];
+                clones[child].rng.seed(mixed_seed(
+                    p.seed, static_cast<std::uint64_t>(event + 1),
+                    static_cast<std::uint64_t>(child)));
+            }
+            std::fill(
+                particle_log_weights.begin(), particle_log_weights.end(),
+                -std::log(static_cast<double>(p.clone_count)));
+        } else {
+            std::fill(parent_counts.begin(), parent_counts.end(), 1);
+            for (int i = 0; i < p.clone_count; ++i) {
+                particle_log_weights[i] =
+                    log_weights[i] - log_mean_weight;
+            }
         }
-        for (const auto root : next_roots) {
-            ++root_counts.at(static_cast<std::size_t>(root));
+        for (int child = 0; child < p.clone_count; ++child) {
+            const auto root =
+                static_cast<std::size_t>(clones[child].root_id);
+            ++root_counts.at(root);
+            root_weights.at(root) += std::exp(particle_log_weights[child]);
         }
         const int unique_parents = static_cast<int>(std::count_if(
             parent_counts.begin(), parent_counts.end(),
@@ -691,14 +972,11 @@ void run_clone(const Parameters& p, bool guided) {
             [](int value) { return value > 0; }));
         const double parent_ess = count_ess(parent_counts);
         const double root_ess = count_ess(root_counts);
-
-        for (int child = 0; child < p.clone_count; ++child) {
-            std::swap(clones[child].state, next_states[child]);
-            clones[child].root_id = next_roots[child];
-            clones[child].rng.seed(mixed_seed(
-                p.seed, static_cast<std::uint64_t>(event + 1),
-                static_cast<std::uint64_t>(child)));
+        double root_weight_square_sum = 0.0;
+        for (const double value : root_weights) {
+            root_weight_square_sum += value * value;
         }
+        const double root_weight_ess = 1.0 / root_weight_square_sum;
 
         const double time = (event + 1) * p.selection_time;
         const double scgf = cumulative_log_normalizer / time;
@@ -706,33 +984,51 @@ void run_clone(const Parameters& p, bool guided) {
             population_entropy /
             (static_cast<double>(p.clone_count) * p.selection_time);
         const double tilted_entropy_rate = tilted_entropy / p.selection_time;
+        const double population_observable_rate =
+            population_observable /
+            (static_cast<double>(p.clone_count) * p.selection_time);
+        const double tilted_observable_rate =
+            tilted_observable / p.selection_time;
         const double population_action_current =
             population_action /
             (static_cast<double>(p.clone_count) * p.selection_time);
         const double population_potential_rate =
             population_potential /
             (static_cast<double>(p.clone_count) * p.selection_time);
+        const double population_log_likelihood_ratio_rate =
+            population_log_likelihood_ratio /
+            (static_cast<double>(p.clone_count) * p.selection_time);
         total_observation_entropy += population_entropy;
+        total_observation_observable += population_observable;
+        total_log_likelihood_ratio += population_log_likelihood_ratio;
         total_observation_action += population_action;
         minimum_weight_ess = std::min(minimum_weight_ess, weight_ess);
         minimum_parent_ess = std::min(minimum_parent_ess, parent_ess);
         minimum_root_ess = std::min(minimum_root_ess, root_ess);
+        minimum_root_weight_ess =
+            std::min(minimum_root_weight_ess, root_weight_ess);
         minimum_unique_parents = std::min(minimum_unique_parents, unique_parents);
         minimum_unique_roots = std::min(minimum_unique_roots, unique_roots);
 
         timeseries << event + 1 << ',' << time << ',' << log_mean_weight << ','
                    << cumulative_log_normalizer << ',' << scgf << ','
                    << population_entropy_rate << ',' << tilted_entropy_rate
-                   << ',' << population_action_current << ','
-                   << population_potential_rate << ',' << weight_ess
-                   << ',' << max_weight_fraction << ',' << unique_parents
+                   << ',' << population_observable_rate << ','
+                   << tilted_observable_rate << ','
+                   << population_action_current << ','
+                   << population_potential_rate << ','
+                   << population_log_likelihood_ratio_rate << ','
+                   << weight_ess << ',' << max_weight_fraction << ','
+                   << (resampled ? 1 : 0) << ',' << unique_parents
                    << ',' << parent_ess << ',' << unique_roots << ','
-                   << root_ess << '\n';
+                   << root_ess << ',' << root_weight_ess << '\n';
         if ((event + 1) % std::max(1, p.selection_events / 10) == 0 ||
             event + 1 == p.selection_events) {
             std::cout << "  time=" << time << " psi=" << scgf
                       << " weight ESS=" << weight_ess
-                      << " roots=" << unique_roots << '\n';
+                      << " roots=" << unique_roots
+                      << " root-weight ESS=" << root_weight_ess
+                      << " resampled=" << (resampled ? 1 : 0) << '\n';
         }
     }
 
@@ -749,6 +1045,12 @@ void run_clone(const Parameters& p, bool guided) {
     const double mean_population_entropy_rate =
         total_observation_entropy /
         (static_cast<double>(p.clone_count) * p.observation_time);
+    const double mean_population_observable_rate =
+        total_observation_observable /
+        (static_cast<double>(p.clone_count) * p.observation_time);
+    const double mean_log_likelihood_ratio_rate =
+        total_log_likelihood_ratio /
+        (static_cast<double>(p.clone_count) * p.observation_time);
     const double mean_population_action_current =
         total_observation_action /
         (static_cast<double>(p.clone_count) * p.observation_time);
@@ -756,21 +1058,36 @@ void run_clone(const Parameters& p, bool guided) {
     auto summary = open_output(p.prefix + "_summary.csv");
     summary
         << "model_version,mode,T1,Tn,gamma,n,clone_count,burnin,observation_time,"
-        << "selection_time,dt,k,seed,threads,bond,selection_events,scgf,"
+        << "selection_time,dt,k,gauge_shift,control_scale,resample_threshold,"
+        << "observable_left_heat_coefficient,observable_right_heat_coefficient,"
+        << "seed,threads,bond,selection_events,scgf,"
         << "mean_population_entropy_rate,mean_population_action_current,"
+        << "mean_population_observable_rate,mean_log_likelihood_ratio_rate,"
         << "minimum_weight_ess,minimum_parent_count_ess,minimum_root_count_ess,"
+        << "minimum_root_weight_ess,resampling_events,"
         << "minimum_unique_parents,minimum_unique_roots,midpoint_failures,"
         << "mean_midpoint_iterations,mean_hamiltonian_energy_error_rate\n";
-    summary << MODEL_VERSION << ',' << (guided ? "guided" : "naive")
+    const double observable_left_heat_coefficient =
+        controlled ? -1.0 / p.T1 + p.gauge_shift : -1.0 / p.T1;
+    const double observable_right_heat_coefficient =
+        controlled ? -1.0 / p.Tn + p.gauge_shift : -1.0 / p.Tn;
+    summary << MODEL_VERSION << ',' << mode_name
             << ',' << p.T1 << ',' << p.Tn << ',' << GAMMA
             << ',' << p.n << ',' << p.clone_count << ',' << p.burnin << ','
             << p.observation_time << ',' << p.selection_time << ',' << p.dt
-            << ',' << p.k << ',' << p.seed << ',' << p.threads << ','
+            << ',' << p.k << ',' << p.gauge_shift << ',' << p.control_scale
+            << ',' << p.resample_threshold
+            << ',' << observable_left_heat_coefficient << ','
+            << observable_right_heat_coefficient
+            << ',' << p.seed << ',' << p.threads << ','
             << p.bond << ',' << p.selection_events << ','
             << cumulative_log_normalizer / p.observation_time << ','
             << mean_population_entropy_rate << ','
-            << mean_population_action_current << ',' << minimum_weight_ess
+            << mean_population_action_current << ','
+            << mean_population_observable_rate << ','
+            << mean_log_likelihood_ratio_rate << ',' << minimum_weight_ess
             << ',' << minimum_parent_ess << ',' << minimum_root_ess << ','
+            << minimum_root_weight_ess << ',' << resampling_events << ','
             << minimum_unique_parents << ',' << minimum_unique_roots << ','
             << totals.midpoint_failures << ',' << mean_midpoint_iterations
             << ',' << hamiltonian_error_rate << '\n';
@@ -1005,7 +1322,71 @@ double gaussian_cloning_trial(int population,
     return log_normalizer / (events * interval);
 }
 
+void controlled_kernel_selftest() {
+    constexpr double T1 = 10.0;
+    constexpr double Tn = 2.0;
+    constexpr double dt = 5.0e-4;
+    constexpr double k = 0.37;
+    Clone physical(2);
+    Clone controlled(2);
+    initialize_state(physical.state, T1, Tn);
+    copy_state(physical.state, controlled.state);
+    physical.rng.seed(913771ULL);
+    controlled.rng.seed(913771ULL);
+
+    const auto physical_result = advance_segment(
+        physical, T1, Tn, dt, 9, 0, 1, false, 0.0);
+    const auto controlled_result = advance_segment_controlled(
+        controlled, T1, Tn, dt, 9, 0, 1, k, 0.0, 0.0);
+    double maximum_state_error = 0.0;
+    for (int site = 0; site < physical.state.n; ++site) {
+        maximum_state_error = std::max(
+            maximum_state_error,
+            std::abs(physical.state.x[site] - controlled.state.x[site]));
+        maximum_state_error = std::max(
+            maximum_state_error,
+            std::abs(physical.state.y[site] - controlled.state.y[site]));
+    }
+    const double expected_weight = -k * physical_result.entropy;
+    if (maximum_state_error > 1.0e-14 ||
+        std::abs(physical_result.entropy - controlled_result.entropy) > 1.0e-14 ||
+        std::abs(controlled_result.observable - physical_result.entropy) > 1.0e-14 ||
+        std::abs(controlled_result.log_likelihood_ratio) > 1.0e-14 ||
+        std::abs(controlled_result.log_weight - expected_weight) > 1.0e-14) {
+        throw std::runtime_error(
+            "controlled-kernel zero-control identity self-test failed");
+    }
+
+    State proposal_state(2);
+    initialize_state(proposal_state, T1, Tn);
+    compute_force(proposal_state);
+    const double old_x = proposal_state.x[1];
+    const double old_y = proposal_state.y[1];
+    const double force_x = proposal_state.force_real[1];
+    const double force_y = proposal_state.force_imag[1];
+    const double proposal_drift = 0.031;
+    const auto bath = controlled_bath_step(
+        proposal_state, 1, Tn, 0.43, -1.17, dt, std::sqrt(dt),
+        proposal_drift);
+    const double delta_x = proposal_state.x[1] - old_x;
+    const double delta_y = proposal_state.y[1] - old_y;
+    const double proposal_rx = delta_x - proposal_drift * force_x * dt;
+    const double proposal_ry = delta_y - proposal_drift * force_y * dt;
+    const double original_rx = delta_x + GAMMA * force_x * dt;
+    const double original_ry = delta_y + GAMMA * force_y * dt;
+    const double direct_log_ratio =
+        (proposal_rx * proposal_rx + proposal_ry * proposal_ry -
+         original_rx * original_rx - original_ry * original_ry) /
+        (4.0 * GAMMA * Tn * dt);
+    if (std::abs(bath.log_original_over_proposal - direct_log_ratio) >
+        2.0e-14) {
+        throw std::runtime_error(
+            "controlled-kernel Gaussian likelihood self-test failed");
+    }
+}
+
 void selftest() {
+    controlled_kernel_selftest();
     // The Gaussian entropy model Sigma_Delta ~ N(m Delta, 2m Delta) obeys
     // psi(k)=m(k^2-k)=psi(1-k).  Multiple deterministic trials reduce the
     // stochastic self-test variance without weakening the tolerance.
@@ -1030,6 +1411,7 @@ void selftest() {
             throw std::runtime_error(message.str());
         }
     }
+    std::cout << "Controlled Gaussian-kernel self-test: PASS\n";
     std::cout << "Gaussian cloning self-test: PASS\n";
 }
 
@@ -1039,15 +1421,21 @@ int main(int argc, char* argv[]) {
     try {
         if (argc < 2) {
             throw std::invalid_argument(
-                "mode required: selftest, clone, guided, or endpoints");
+                "mode required: selftest, clone, guided, controlled, "
+                "controlled-adaptive, or endpoints");
         }
         const std::string mode = argv[1];
         if (mode == "selftest") {
             selftest();
         } else if (mode == "clone") {
-            run_clone(parse_clone(argc, argv), false);
+            run_clone(parse_clone(argc, argv), CloneMode::naive);
         } else if (mode == "guided") {
-            run_clone(parse_clone(argc, argv), true);
+            run_clone(parse_clone(argc, argv), CloneMode::guided);
+        } else if (mode == "controlled") {
+            run_clone(parse_controlled(argc, argv), CloneMode::controlled);
+        } else if (mode == "controlled-adaptive") {
+            run_clone(
+                parse_controlled_adaptive(argc, argv), CloneMode::controlled);
         } else if (mode == "endpoints") {
             run_endpoints(parse_endpoints(argc, argv));
         } else {

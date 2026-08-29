@@ -74,6 +74,7 @@ experiments/**/*.keras
 experiments/**/*.h5
 experiments/**/*.hdf5
 experiments/**/*.pdf
+!experiments/long_chain_ft_2026-08-28/report/long_chain_ft_report.pdf
 experiments/**/*_train.txt
 experiments/**/traj_*.csv
 experiments/**/h5_files*/
@@ -87,9 +88,21 @@ experiments/discrete_path_ft_2026-08-28/pilot/
 experiments/discrete_path_ft_2026-08-28/pilot_v2/
 experiments/discrete_path_ft_2026-08-28/diagnostic/
 experiments/discrete_path_ft_2026-08-28/diagnostic_v2/
-experiments/**/report/build/
+experiments/**/report/build*/
+experiments/**/report/rendered/
 
 # ---- local experiment binaries ----
 flux/discrete_path_ft
 flux/entropy_cloning
+flux/entropy_cloning_v2
 flux/entropy_ft
+
+# ---- long-chain FT pilot/smoke artifacts ----
+experiments/long_chain_ft_2026-08-28/smoke/
+experiments/long_chain_ft_2026-08-28/pilot/
+experiments/long_chain_ft_2026-08-28/analysis_n10_N1024_live/
+
+# Large transient path-ratio trajectory tables stay local; summaries and
+# audits in the same directories remain versioned.
+experiments/long_chain_ft_2026-08-28/path_ratio_control/**/*_forward.csv
+experiments/long_chain_ft_2026-08-28/path_ratio_control/**/*_reverse.csv
