@@ -17,11 +17,15 @@ the projected action--angle Euler scheme.
 
 - `finite_n_ft_proof.tex`: theorem/lemma/proof note with an explicit proof
   ledger.
+- `n2_ft_theorem.tex`: two-site theorem closing the NESS and interior-tilt
+  SCGF assumptions by uniform ellipticity and exponential Lyapunov estimates.
 - `PROOF_STATUS.md`: concise statement of what is proved and what remains an
   analytic assumption.
 - `verify_algebra.py`: independent symbolic checks of the energy gradient,
   time-reversal invariance, boundary Laplacian, and tilted-generator
   coefficient identity for a representative chain.
+- `verify_n2_theorem.py`: independent symbolic checks of the two-site
+  homogeneity and tilted Lyapunov factorization.
 
 ## Current status
 
@@ -35,10 +39,16 @@ The following are proved for every fixed finite `n>=2`:
 5. inheritance of the symmetry by any existing finite-chain SCGF;
 6. inheritance by any existing thermodynamic-limit SCGF.
 
-The remaining hard steps are existence/uniqueness of the unequal-temperature
-NESS, the required Feynman--Kac spectral theorem on an unbounded state space,
-and existence/nontriviality of the `n -> infinity` SCGF limit.  The note does
-not label those steps as proved.
+For `n=2`, both sites are thermostatted, so uniform ellipticity and the quartic
+energy close the unequal-temperature NESS and Feynman--Kac spectral steps for
+all interior tilts `0<k<1`.  The result is currently an internally checked
+working theorem and has not yet been reviewed by the advisor or an external
+probability analyst.
+
+For `n>=3`, the remaining hard steps are existence/uniqueness of the
+unequal-temperature NESS, the required degenerate Feynman--Kac spectral
+theorem, and existence/nontriviality of the `n -> infinity` SCGF limit.  The
+general finite-chain note does not label those steps as proved.
 
 ## Model-consistency finding
 

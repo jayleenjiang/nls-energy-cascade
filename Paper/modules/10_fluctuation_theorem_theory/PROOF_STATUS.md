@@ -30,13 +30,33 @@ Date: 2026-08-30
   to `psi_infinity(k)` on a symmetric tilt interval, then the limiting SCGF
   inherits the same symmetry.
 
+## Two-site theorem closed in the working note
+
+For `n=2`, both sites are directly thermostatted and the diffusion is uniformly
+elliptic.  The companion proof `n2_ft_theorem.tex` establishes:
+
+- a unique unequal-temperature NESS with a smooth strictly positive density;
+- exponential NESS energy moments for every `a < 1/max(T1,T2)`;
+- the finite-time forward--reverse Crooks relation and integral FT for total
+  entropy;
+- existence of a simple principal medium-entropy SCGF for every interior tilt
+  `0 < k < 1`;
+- the unconditional interior symmetry `psi_2(k)=psi_2(1-k)`.
+
+The proof uses an exponential Foster--Lyapunov estimate, uniform ellipticity,
+the Lyapunov--minorization theorem for Feynman--Kac kernels, and a common
+compact-resolvent realization in `L^2(dz)`.  The model-specific algebra has an
+independent symbolic check.  This is an internally closed theorem draft, not
+yet an advisor- or referee-reviewed theorem.
+
 ## Not yet proved
 
-1. Existence and uniqueness of the unequal-temperature NESS for every `n`.
+1. Existence and uniqueness of the unequal-temperature NESS for every
+   `n>=3`.
 2. A model-specific Lyapunov/minorization or hypocoercive argument strong
    enough to prove that NESS result.
 3. Compactness/quasi-compactness and a principal eigenvalue theorem for the
-   tilted Feynman--Kac semigroup on the required unbounded state space.
+   degenerate tilted Feynman--Kac semigroup at `n>=3`.
 4. A common, nonempty tilt domain with the endpoint exponential moments needed
    for the right-bath gauge.
 5. Existence, uniformity, and nontrivial normalization of the
@@ -44,11 +64,20 @@ Date: 2026-08-30
 
 ## Allowed theorem-level wording now
 
+For `n=2`, subject to external mathematical review of the working proof:
+
+> The two-site continuous Cartesian NLS diffusion has a unique nonequilibrium
+> steady state.  For every `0<k<1`, its medium-entropy SCGF exists and obeys
+> `psi_2(k)=psi_2(1-k)`; total entropy also obeys the finite-time
+> forward--reverse fluctuation relation.
+
+For arbitrary fixed finite chain length:
+
 > For every fixed finite chain length, the continuous Cartesian NLS diffusion
 > is nonexplosive and its entropy-production tilted generator has the exact
 > Gallavotti--Cohen formal-adjoint symmetry.  Consequently, any principal SCGF
 > admitted by the corresponding Feynman--Kac semigroup obeys
 > `psi_n(k)=psi_n(1-k)`.
 
-This is stronger than a numerical fit but remains conditional at the SCGF
-existence step.  It is not yet an unconditional `n -> infinity` theorem.
+The arbitrary-chain statement remains conditional at the SCGF existence step.
+Neither result is an unconditional `n -> infinity` theorem.

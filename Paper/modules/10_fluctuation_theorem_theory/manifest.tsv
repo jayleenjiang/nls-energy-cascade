@@ -1,9 +1,13 @@
 role	path	status	note
 proof_source	Paper/modules/10_fluctuation_theorem_theory/finite_n_ft_proof.tex	LOCAL_ENHANCED	Finite-chain theorem and thermodynamic-limit proof ledger
 proof_pdf	Paper/modules/10_fluctuation_theorem_theory/finite_n_ft_proof.pdf	LOCAL_ENHANCED	Compiled seven-page proof note
+n2_proof_source	Paper/modules/10_fluctuation_theorem_theory/n2_ft_theorem.tex	LOCAL_ENHANCED	Two-site NESS and interior-SCGF fluctuation theorem
+n2_proof_pdf	Paper/modules/10_fluctuation_theorem_theory/n2_ft_theorem.pdf	LOCAL_ENHANCED	Compiled two-site theorem note
+n2_proof_review	Paper/modules/10_fluctuation_theorem_theory/N2_PROOF_REVIEW.md	VALIDATION_ONLY	Adversarial dependency and claim-boundary audit
 status	Paper/modules/10_fluctuation_theorem_theory/PROOF_STATUS.md	LOCAL_ENHANCED	Allowed claims and unresolved assumptions
 adversarial_review	Paper/modules/10_fluctuation_theorem_theory/DEVILS_ADVOCATE_REVIEW.md	LOCAL_ENHANCED	Failure-mode and overclaim audit
 symbolic_check	Paper/modules/10_fluctuation_theorem_theory/verify_algebra.py	VALIDATION_ONLY	Independent symbolic check of model and tilt identities
+n2_symbolic_check	Paper/modules/10_fluctuation_theorem_theory/verify_n2_theorem.py	VALIDATION_ONLY	Independent check of n=2 homogeneity and tilted Lyapunov factorization
 continuous_simulator	flux/NLS_entropy_ft.cpp	ADVISOR_REQUESTED	Projection-free Cartesian direct-sampling implementation
 cloning_simulator	flux/NLS_entropy_cloning.cpp	LOCAL_ENHANCED	Tilted-ensemble SCGF implementation
 advisor_model	Paper/revision/advisor_safe_migration_2026-08-26/draft_advisor_safe.tex	ADVISOR_SYNCED	Advisor-facing model statement with correct endpoint signs
