@@ -1,6 +1,6 @@
 # NLS paper research modules
 
-Updated: 2026-08-25
+Updated: 2026-08-30
 
 This directory is the authoritative navigation layer for the paper.  It does
 not replace or move the historical working directories.  Every module records:
@@ -29,6 +29,7 @@ automatically the Hamiltonian heat current.
 | 07 | Backward-generator relaxation and eigenfunction surrogate | Local enhanced diagnostic; not a resolved spectral gap |
 | 08 | Numerical validation and robustness appendix | Validation-only extensions; do not silently migrate into advisor draft |
 | 09 | Reproducibility, audits, packaging, and submission materials | Local workflow and author-confirmation layer |
+| 10 | Fluctuation-theorem theory and proof ledger | Exact finite-chain generator symmetry; SCGF and thermodynamic-limit gaps explicit |
 
 ## Status vocabulary
 
