@@ -37,3 +37,6 @@ reused rather than simulated again.
 The complete protocol and stopping rules are in `PROTOCOL.md`.  Raw simulator
 outputs are written under `raw/`; generated audits and figures are written
 under `analysis/`.  A failed run is reported and is not automatically retried.
+
+The experiment is complete.  Start with `FINAL_VERDICT.md`, then consult
+`VALIDATION_REPORT.md`, `FINAL_SUMMARY.csv`, and `report/ft_validation_report.pdf`.
