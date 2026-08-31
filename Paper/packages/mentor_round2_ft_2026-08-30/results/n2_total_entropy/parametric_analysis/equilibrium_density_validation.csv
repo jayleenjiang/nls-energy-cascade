@@ -1,0 +1,2 @@
+samples_total,samples_supported,support_fraction,density_log_ratio_rmse,density_log_ratio_mae,density_log_ratio_slope,density_log_ratio_correlation
+524288,524176,0.999786376953125,0.008255819791180107,0.005681180555902352,0.9994095402606823,0.9999376276662663
