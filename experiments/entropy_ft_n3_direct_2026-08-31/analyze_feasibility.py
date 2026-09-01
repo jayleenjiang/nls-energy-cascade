@@ -57,6 +57,48 @@ def symmetric_counts(values: np.ndarray):
     return width, positive, negative
 
 
+def weighted_line_fit(x: np.ndarray,
+                      y: np.ndarray,
+                      positive: np.ndarray,
+                      negative: np.ndarray):
+    weights = 1.0 / (1.0 / positive + 1.0 / negative)
+    design = np.column_stack([np.ones_like(x), x])
+    root_weight = np.sqrt(weights)
+    coefficients, *_ = np.linalg.lstsq(
+        design * root_weight[:, None], y * root_weight, rcond=None)
+    fitted = design @ coefficients
+    mean = np.average(y, weights=weights)
+    ss_residual = np.sum(weights * (y - fitted) ** 2)
+    ss_total = np.sum(weights * (y - mean) ** 2)
+    r_squared = 1.0 - ss_residual / ss_total if ss_total > 0.0 else np.nan
+    return float(coefficients[0]), float(coefficients[1]), float(r_squared)
+
+
+def per_stream_symmetric_counts(values: np.ndarray,
+                                width: float,
+                                size: int):
+    positive = np.zeros((values.shape[0], size), dtype=np.int64)
+    negative = np.zeros((values.shape[0], size), dtype=np.int64)
+    for stream in range(values.shape[0]):
+        indices = np.floor(np.abs(values[stream]) / width).astype(np.int64)
+        positive[stream] = np.bincount(
+            indices[values[stream] >= 0.0], minlength=size)[:size]
+        negative[stream] = np.bincount(
+            indices[values[stream] < 0.0], minlength=size)[:size]
+    return positive, negative
+
+
+def log_mean_exponential_minus(values: np.ndarray):
+    exponent = -values
+    maximum = float(np.max(exponent))
+    scaled = np.exp(exponent - maximum)
+    total = float(np.sum(scaled))
+    log_mean = maximum + math.log(total / values.size)
+    ess = total * total / float(np.sum(scaled * scaled))
+    maximum_share = float(np.max(scaled) / total)
+    return log_mean, ess, maximum_share, maximum, scaled
+
+
 def write_csv(path: Path, rows: list[dict], fields: list[str]):
     with path.open("w", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=fields)
@@ -110,6 +152,9 @@ def main() -> int:
     count_rows: list[dict] = []
     first_law_rows: list[dict] = []
     bin_rows: list[dict] = []
+    symmetry_rows: list[dict] = []
+    fit_bin_rows: list[dict] = []
+    ift_rows: list[dict] = []
 
     for multiplier in range(1, 11):
         groups = EXPECTED_BLOCKS_PER_STREAM // multiplier
@@ -158,6 +203,87 @@ def main() -> int:
                 "qualifies_ge_20_each": int(pos >= 20 and neg >= 20),
             })
 
+        fit_indices = np.flatnonzero(qualifying)
+        if fit_indices.size >= 2:
+            centers = (fit_indices.astype(float) + 0.5) * width
+            fit_positive = positive_counts[fit_indices].astype(float)
+            fit_negative = negative_counts[fit_indices].astype(float)
+            log_ratio = np.log(fit_positive / fit_negative)
+            intercept, slope, r_squared = weighted_line_fit(
+                centers, log_ratio, fit_positive, fit_negative)
+
+            stream_positive, stream_negative = per_stream_symmetric_counts(
+                entropy, width, len(positive_counts))
+            draws = rng.integers(
+                0, EXPECTED_STREAMS,
+                size=(BOOTSTRAP_REPLICATES, EXPECTED_STREAMS))
+            bootstrap_intercept = []
+            bootstrap_slope = []
+            for draw in draws:
+                pos = stream_positive[draw].sum(axis=0)[fit_indices]
+                neg = stream_negative[draw].sum(axis=0)[fit_indices]
+                if np.any(pos == 0) or np.any(neg == 0):
+                    continue
+                boot_intercept, boot_slope, _ = weighted_line_fit(
+                    centers, np.log(pos / neg), pos.astype(float),
+                    neg.astype(float))
+                bootstrap_intercept.append(boot_intercept)
+                bootstrap_slope.append(boot_slope)
+            if len(bootstrap_slope) < int(0.95 * BOOTSTRAP_REPLICATES):
+                raise RuntimeError("too many invalid symmetry bootstrap draws")
+            slope_ci = np.quantile(bootstrap_slope, [0.025, 0.975])
+            intercept_ci = np.quantile(
+                bootstrap_intercept, [0.025, 0.975])
+            symmetry_rows.append({
+                "time": 20 * multiplier,
+                "n_blocks": entropy.size,
+                "n_fit_bins": fit_indices.size,
+                "intercept": intercept,
+                "intercept_ci_low": intercept_ci[0],
+                "intercept_ci_high": intercept_ci[1],
+                "slope": slope,
+                "slope_ci_low": slope_ci[0],
+                "slope_ci_high": slope_ci[1],
+                "weighted_r_squared": r_squared,
+                "bootstrap_valid_replicates": len(bootstrap_slope),
+            })
+            for index, center, pos, neg, ratio in zip(
+                    fit_indices, centers, fit_positive, fit_negative,
+                    log_ratio):
+                fit_bin_rows.append({
+                    "time": 20 * multiplier,
+                    "bin_index": int(index),
+                    "a_center": center,
+                    "positive_count": int(pos),
+                    "negative_count": int(neg),
+                    "log_count_ratio": ratio,
+                    "log_count_ratio_se_poisson": math.sqrt(1.0 / pos +
+                                                              1.0 / neg),
+                })
+
+        log_ift, weight_ess, maximum_weight_share, maximum, scaled = (
+            log_mean_exponential_minus(entropy))
+        per_stream_scaled_sum = scaled.sum(axis=1)
+        draws = rng.integers(
+            0, EXPECTED_STREAMS,
+            size=(BOOTSTRAP_REPLICATES, EXPECTED_STREAMS))
+        bootstrap_scaled_sum = per_stream_scaled_sum[draws].sum(axis=1)
+        bootstrap_log_ift = maximum + np.log(
+            bootstrap_scaled_sum /
+            (EXPECTED_STREAMS * entropy.shape[1]))
+        ift_ci = np.quantile(bootstrap_log_ift, [0.025, 0.975])
+        ift_rows.append({
+            "time": 20 * multiplier,
+            "n_blocks": entropy.size,
+            "log_mean_exp_minus_entropy_medium": log_ift,
+            "ci_low": ift_ci[0],
+            "ci_high": ift_ci[1],
+            "exponential_weight_ess": weight_ess,
+            "exponential_weight_ess_fraction": weight_ess / entropy.size,
+            "maximum_single_weight_share": maximum_weight_share,
+            "bootstrap_replicates": BOOTSTRAP_REPLICATES,
+        })
+
         flat_residual = residual.ravel()
         first_law_rows.append({
             "time": 20 * multiplier,
@@ -180,6 +306,13 @@ def main() -> int:
               list(bin_rows[0]))
     write_csv(args.output / "first_law_residuals.csv", first_law_rows,
               list(first_law_rows[0]))
+    if symmetry_rows:
+        write_csv(args.output / "medium_entropy_symmetry.csv", symmetry_rows,
+                  list(symmetry_rows[0]))
+        write_csv(args.output / "medium_entropy_fit_bins.csv", fit_bin_rows,
+                  list(fit_bin_rows[0]))
+    write_csv(args.output / "medium_entropy_ift.csv", ift_rows,
+              list(ift_rows[0]))
 
     with args.summary.open(newline="") as handle:
         summary_rows = list(csv.DictReader(handle))

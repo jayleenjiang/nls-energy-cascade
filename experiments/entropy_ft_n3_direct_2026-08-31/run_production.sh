@@ -38,5 +38,6 @@ python3 "$EXP/analyze_feasibility.py" \
   shasum -a 256 "$PREFIX"_blocks.csv "$PREFIX"_summary.csv \
     "$EXP/analysis/negative_tail_counts.csv" \
     "$EXP/analysis/first_law_residuals.csv" \
+    "$EXP/analysis/medium_entropy_ift.csv" \
     "$EXP/analysis/analysis_audit.json"
 } >> "$EXP/provenance/production_manifest.txt"

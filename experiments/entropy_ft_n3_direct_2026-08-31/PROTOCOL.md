@@ -54,6 +54,31 @@ and may lose support.
 Negative-tail probability intervals use `2000` independent-stream bootstrap
 replicates with analysis seed `2026083193`.
 
+## Frozen medium-entropy analysis
+
+At every horizon with at least two qualifying symmetric bins, the descriptive
+medium-entropy relation is fitted to
+
+```
+log[N(+a)/N(-a)] = intercept + slope * a.
+```
+
+The representative `a` is the center of the symmetric FD bin pair.  The
+primary fit is weighted least squares with free intercept and inverse
+log-count-ratio variance weight
+`1/(1/N_plus+1/N_minus)`.  Every full-sample bin pair with at least `20`
+counts on both sides enters; this set is fixed for the stream bootstrap and no
+contiguous subwindow is selected.  Report slope, intercept, weighted `R^2`,
+all raw paired counts, and `2000` stream-bootstrap percentile intervals.
+
+For the medium-only integral diagnostic, report
+`log mean exp(-Sigma_m)`, its stream-bootstrap interval, exponential-weight
+effective sample size, and the largest single-sample share of the exponential
+sum.  These tail diagnostics determine whether the numerical IFT average is
+actually resolved.  The reference values `slope=1` and `log IFT=0` belong to
+total entropy; medium-only discrepancies are reported, not called FT
+violations.
+
 ## First-law and integrity gates
 
 - Exactly `1,000,064` finite, ordered base-block rows.
