@@ -1,0 +1,8 @@
+__pycache__/
+bin/
+launcher.log
+launcher.pid
+launcher_detached.log
+raw/n3_blocks.csv
+report/build/
+analysis_failed_v1/

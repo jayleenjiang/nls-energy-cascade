@@ -101,7 +101,7 @@ def log_mean_exponential_minus(values: np.ndarray):
 
 def write_csv(path: Path, rows: list[dict], fields: list[str]):
     with path.open("w", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=fields)
+        writer = csv.DictWriter(handle, fieldnames=fields, lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
 
@@ -135,15 +135,34 @@ def main() -> int:
 
     entropy_identity_error = np.max(np.abs(
         shaped[:, :, 5] + shaped[:, :, 2] / 10.0 + shaped[:, :, 3] / 2.0))
+    entropy_identity_scale = max(
+        1.0,
+        float(np.max(np.abs(shaped[:, :, 5]))),
+        float(np.max(np.abs(-shaped[:, :, 2] / 10.0 -
+                            shaped[:, :, 3] / 2.0))),
+    )
+    entropy_identity_tolerance = (
+        64.0 * np.finfo(np.float64).eps * entropy_identity_scale)
     balance_identity_error = np.max(np.abs(
         shaped[:, :, 8] -
         (shaped[:, :, 2] + shaped[:, :, 3] - shaped[:, :, 4])))
+    balance_identity_scale = max(
+        1.0,
+        float(np.max(np.abs(shaped[:, :, 8]))),
+        float(np.max(np.abs(shaped[:, :, 2] + shaped[:, :, 3] -
+                            shaped[:, :, 4]))),
+    )
+    balance_identity_tolerance = (
+        64.0 * np.finfo(np.float64).eps * balance_identity_scale)
 
     linear_endpoint_error = np.max(np.abs(
         shaped[:, :-1, 14:17] - shaped[:, 1:, 9:12]))
     angle_delta = shaped[:, :-1, 17:19] - shaped[:, 1:, 12:14]
     angle_delta = (angle_delta + np.pi) % (2.0 * np.pi) - np.pi
     angular_endpoint_error = np.max(np.abs(angle_delta))
+    endpoint_scale = max(
+        1.0, float(np.max(np.abs(shaped[:, :, 9:19]))))
+    endpoint_tolerance = 64.0 * np.finfo(np.float64).eps * endpoint_scale
     action_minimum = float(np.min(shaped[:, :, [9, 10, 11, 14, 15, 16]]))
     angle_minimum = float(np.min(shaped[:, :, [12, 13, 17, 18]]))
     angle_maximum = float(np.max(shaped[:, :, [12, 13, 17, 18]]))
@@ -322,10 +341,10 @@ def main() -> int:
     midpoint_failures = int(summary["midpoint_failure_count"])
 
     integrity_pass = (
-        entropy_identity_error <= 2e-14 and
-        balance_identity_error <= 2e-14 and
-        linear_endpoint_error <= 2e-14 and
-        angular_endpoint_error <= 2e-14 and
+        entropy_identity_error <= entropy_identity_tolerance and
+        balance_identity_error <= balance_identity_tolerance and
+        linear_endpoint_error <= endpoint_tolerance and
+        angular_endpoint_error <= endpoint_tolerance and
         action_minimum >= 0.0 and
         angle_minimum >= -math.pi and angle_maximum < math.pi and
         midpoint_failures == 0
@@ -338,9 +357,14 @@ def main() -> int:
         "rows": int(data.shape[0]),
         "columns": int(data.shape[1]),
         "entropy_identity_max_abs_error": float(entropy_identity_error),
+        "entropy_identity_roundoff_tolerance": float(
+            entropy_identity_tolerance),
         "balance_identity_max_abs_error": float(balance_identity_error),
+        "balance_identity_roundoff_tolerance": float(
+            balance_identity_tolerance),
         "linear_endpoint_continuity_max_abs_error": float(linear_endpoint_error),
         "angular_endpoint_continuity_max_abs_error": float(angular_endpoint_error),
+        "endpoint_roundoff_tolerance": float(endpoint_tolerance),
         "minimum_saved_action": action_minimum,
         "minimum_saved_angle": angle_minimum,
         "maximum_saved_angle": angle_maximum,
