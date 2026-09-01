@@ -83,6 +83,8 @@ constexpr int N_BURNIN_MONITORS = 10;
 constexpr int MAX_MIDPOINT_ITERATIONS = 20;
 constexpr double MIDPOINT_TOLERANCE = 2.0e-13;
 constexpr const char* MODEL_VERSION = "gibbs-cartesian-entropy-ft-v1";
+constexpr const char* N3_ENDPOINT_MODEL_VERSION =
+    "gibbs-cartesian-entropy-ft-n3-endpoints-v1";
 
 using A16d = Eigen::Array<double, LANES, 1>;
 using AlignedVec = std::vector<A16d, Eigen::aligned_allocator<A16d>>;
@@ -390,6 +392,7 @@ struct Parameters {
     int bond = 0;
     std::int64_t burn_steps = 0;
     std::int64_t block_steps = 0;
+    bool save_n3_endpoints = false;
 };
 
 void validate_parameters(const Parameters& p) {
@@ -412,7 +415,9 @@ void validate_parameters(const Parameters& p) {
     }
 }
 
-Parameters parse_sample(int argc, char* argv[]) {
+Parameters parse_sample(int argc,
+                        char* argv[],
+                        bool save_n3_endpoints = false) {
     if (argc < 13 || argc > 14) {
         std::ostringstream message;
         message << "Usage: " << argv[0]
@@ -433,7 +438,11 @@ Parameters parse_sample(int argc, char* argv[]) {
     p.threads = std::stoi(argv[11]);
     p.prefix = argv[12];
     p.bond = argc == 13 ? p.n / 2 : std::stoi(argv[13]);
+    p.save_n3_endpoints = save_n3_endpoints;
     validate_parameters(p);
+    if (p.save_n3_endpoints && p.n != 3) {
+        throw std::invalid_argument("sample_n3 requires n=3");
+    }
     p.burn_steps = checked_step_count(p.burnin, p.dt, "burnin", true);
     p.block_steps = checked_step_count(p.block_time, p.dt, "block_time");
     return p;
@@ -445,7 +454,43 @@ struct BlockRecord {
     double delta_energy = 0.0;
     double entropy_medium = 0.0;
     double action_current = 0.0;
+    std::array<double, 5> reduced_start{};
+    std::array<double, 5> reduced_end{};
 };
+
+struct ReducedState3 {
+    A16d i1 = A16d::Zero();
+    A16d i2 = A16d::Zero();
+    A16d i3 = A16d::Zero();
+    A16d theta1 = A16d::Zero();
+    A16d theta3 = A16d::Zero();
+};
+
+double wrap_angle(double value) {
+    value = std::fmod(value + PI, TWO_PI);
+    if (value < 0.0) {
+        value += TWO_PI;
+    }
+    return value - PI;
+}
+
+ReducedState3 reduced_state3(const State& state) {
+    if (state.n != 3) {
+        throw std::invalid_argument("reduced_state3 requires n=3");
+    }
+    ReducedState3 reduced;
+    reduced.i1 = state.action[0];
+    reduced.i2 = state.action[1];
+    reduced.i3 = state.action[2];
+    for (int lane = 0; lane < LANES; ++lane) {
+        const double phi1 = std::atan2(state.y[0](lane), state.x[0](lane));
+        const double phi2 = std::atan2(state.y[1](lane), state.x[1](lane));
+        const double phi3 = std::atan2(state.y[2](lane), state.x[2](lane));
+        reduced.theta1(lane) = wrap_angle(2.0 * (phi1 - phi2));
+        reduced.theta3(lane) = wrap_angle(2.0 * (phi3 - phi2));
+    }
+    return reduced;
+}
 
 struct BatchResult {
     std::vector<BlockRecord> blocks;
@@ -503,6 +548,7 @@ BatchResult run_batch(const Parameters& p, int batch_index) {
     A16d q_right = A16d::Zero();
     A16d action_integral = A16d::Zero();
     A16d block_start_energy = A16d::Zero();
+    ReducedState3 block_start_reduced;
     std::size_t checkpoint_index = 0;
     int block_index = 0;
 
@@ -513,6 +559,9 @@ BatchResult run_batch(const Parameters& p, int batch_index) {
 
         if (step == p.burn_steps) {
             block_start_energy = energy_before;
+            if (p.save_n3_endpoints) {
+                block_start_reduced = reduced_state3(state);
+            }
         }
 
         A16d normal_left_x, normal_right_x;
@@ -572,6 +621,10 @@ BatchResult run_batch(const Parameters& p, int batch_index) {
             if (measurement_step % p.block_steps == 0) {
                 compute_force(state);
                 const A16d block_end_energy = physical_energy(state);
+                ReducedState3 block_end_reduced;
+                if (p.save_n3_endpoints) {
+                    block_end_reduced = reduced_state3(state);
+                }
                 for (int lane = 0; lane < LANES; ++lane) {
                     auto& record = result.blocks[
                         static_cast<std::size_t>(block_index) * LANES + lane];
@@ -583,11 +636,28 @@ BatchResult run_batch(const Parameters& p, int batch_index) {
                         -q_left(lane) / p.T1 - q_right(lane) / p.Tn;
                     record.action_current =
                         action_integral(lane) / p.block_time;
+                    if (p.save_n3_endpoints) {
+                        record.reduced_start = {
+                            block_start_reduced.i1(lane),
+                            block_start_reduced.i2(lane),
+                            block_start_reduced.i3(lane),
+                            block_start_reduced.theta1(lane),
+                            block_start_reduced.theta3(lane)};
+                        record.reduced_end = {
+                            block_end_reduced.i1(lane),
+                            block_end_reduced.i2(lane),
+                            block_end_reduced.i3(lane),
+                            block_end_reduced.theta1(lane),
+                            block_end_reduced.theta3(lane)};
+                    }
                 }
                 q_left.setZero();
                 q_right.setZero();
                 action_integral.setZero();
                 block_start_energy = block_end_energy;
+                if (p.save_n3_endpoints) {
+                    block_start_reduced = block_end_reduced;
+                }
                 ++block_index;
             }
         }
@@ -615,7 +685,9 @@ void run_sample(const Parameters& p) {
     const std::size_t total_blocks =
         static_cast<std::size_t>(stream_count) * p.blocks_per_stream;
     std::cout << "Joint entropy/action sampler\n"
-              << "model=" << MODEL_VERSION
+              << "model="
+              << (p.save_n3_endpoints ? N3_ENDPOINT_MODEL_VERSION
+                                      : MODEL_VERSION)
               << " n=" << p.n
               << " T1=" << p.T1
               << " Tn=" << p.Tn
@@ -730,7 +802,12 @@ void run_sample(const Parameters& p) {
         auto output = open_output(p.prefix + "_blocks.csv");
         output << "stream_id,block_id,q_left,q_right,delta_energy,"
                << "entropy_medium,entropy_rate,action_current,"
-               << "energy_balance_error\n";
+               << "energy_balance_error";
+        if (p.save_n3_endpoints) {
+            output << ",start_I1,start_I2,start_I3,start_theta1,start_theta3,"
+                   << "end_I1,end_I2,end_I3,end_theta1,end_theta3";
+        }
+        output << '\n';
         for (int stream = 0; stream < stream_count; ++stream) {
             for (int block = 0; block < p.blocks_per_stream; ++block) {
                 const auto& record = all_blocks[
@@ -743,8 +820,16 @@ void run_sample(const Parameters& p) {
                        << record.entropy_medium / p.block_time << ','
                        << record.action_current << ','
                        << record.q_left + record.q_right -
-                              record.delta_energy
-                       << '\n';
+                              record.delta_energy;
+                if (p.save_n3_endpoints) {
+                    for (const double value : record.reduced_start) {
+                        output << ',' << value;
+                    }
+                    for (const double value : record.reduced_end) {
+                        output << ',' << value;
+                    }
+                }
+                output << '\n';
             }
         }
     }
@@ -788,7 +873,10 @@ void run_sample(const Parameters& p) {
             << "midpoint_failure_count,midpoint_failure_rate,"
             << "mean_midpoint_iterations,mean_hamiltonian_energy_error_rate,"
             << "elapsed_seconds\n";
-        output << MODEL_VERSION << ",cartesian,E=H/2,"
+        output << (p.save_n3_endpoints ? N3_ENDPOINT_MODEL_VERSION
+                                      : MODEL_VERSION)
+               << (p.save_n3_endpoints ? ",cartesian+reduced-endpoints,E=H/2,"
+                                       : ",cartesian,E=H/2,")
                << p.n << ',' << p.T1 << ',' << p.Tn << ',' << GAMMA << ','
                << p.dt << ',' << p.burnin << ',' << p.block_time << ','
                << p.blocks_per_stream << ',' << p.batches << ',' << LANES
@@ -980,11 +1068,18 @@ int main(int argc, char* argv[]) {
             run_sample(parse_sample(argc, argv));
             return 0;
         }
+        if (argc >= 2 && std::string(argv[1]) == "sample_n3") {
+            run_sample(parse_sample(argc, argv, true));
+            return 0;
+        }
         std::cerr
             << "Usage:\n"
             << "  " << argv[0] << " selftest\n"
             << "  " << argv[0]
             << " sample T1 Tn n batches burnin block_time blocks_per_stream"
+            << " dt seed threads out_prefix [bond]\n"
+            << "  " << argv[0]
+            << " sample_n3 T1 Tn 3 batches burnin block_time blocks_per_stream"
             << " dt seed threads out_prefix [bond]\n";
         return 2;
     } catch (const std::exception& error) {
