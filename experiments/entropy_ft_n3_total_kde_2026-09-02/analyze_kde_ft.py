@@ -62,8 +62,15 @@ def write_csv(path: Path, rows: list[dict]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     if not rows:
         return
+    fieldnames = list(rows[0])
+    known = set(fieldnames)
+    for row in rows[1:]:
+        for name in row:
+            if name not in known:
+                fieldnames.append(name)
+                known.add(name)
     with path.open("w", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=list(rows[0]),
+        writer = csv.DictWriter(handle, fieldnames=fieldnames,
                                 lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
