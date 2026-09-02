@@ -27,7 +27,6 @@ command=(
   --equilibrium-t6 "$T6"
   --equilibrium-t10 "$T10"
   --output "$OUTPUT"
-  --write-derived
 )
 {
   printf 'started_utc=%s\n' "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
@@ -37,4 +36,3 @@ command=(
 } | tee "$LOG"
 "${command[@]}" 2>&1 | tee -a "$LOG"
 printf 'completed_utc=%s\n' "$(date -u +%Y-%m-%dT%H:%M:%SZ)" | tee -a "$LOG"
-

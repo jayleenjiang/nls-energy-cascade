@@ -195,6 +195,11 @@ estimate close to the reference is not sufficient.
 - Consecutive endpoint continuity and the previously frozen heat/entropy and
   first-law identities must pass their roundoff gates.
 - Every raw archive passes `zstd -t`; decompressed SHA-256 values are recorded.
+- Because the host had less than 200 MiB free before production restoration,
+  the per-block derived total-entropy table is not duplicated on disk.  It is
+  deterministically reconstructed from the immutable raw archives and the
+  committed analysis code; all raw symmetric-bin counts, fit inputs, KDE
+  errors, bandwidths, and gate statistics are retained as small text tables.
 - Report the source commit, source/binary/input hashes, seeds, exact production
   or restoration command, analysis command, KDE grid, bandwidths, and all
   failed as well as passed gates.
