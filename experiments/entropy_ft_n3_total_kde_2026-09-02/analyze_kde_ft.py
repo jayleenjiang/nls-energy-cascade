@@ -414,6 +414,7 @@ def driven_kde_stability(dataset: Dataset) -> tuple[list[dict], dict, list[dict]
     audit_mask = dataset.stream % 3 == 2
     positions = np.flatnonzero(audit_mask)
     estimates = []
+    support_masks = []
     metadata = []
     for training_group in (0, 1):
         train = dataset.stream % 3 == training_group
@@ -425,20 +426,26 @@ def driven_kde_stability(dataset: Dataset) -> tuple[list[dict], dict, list[dict]
         density_end, support_end = interpolate_density(
             grid, end_z[audit_mask], lower, upper)
         valid = support_start & support_end
-        if not np.all(valid):
-            raise RuntimeError("unsupported point in driven KDE stability audit")
-        ls = np.log(density_start) - np.sum(start_z[audit_mask, :3], axis=1)
-        le = np.log(density_end) - np.sum(end_z[audit_mask, :3], axis=1)
+        ls = np.full(audit_mask.sum(), np.nan, dtype=np.float64)
+        le = np.full(audit_mask.sum(), np.nan, dtype=np.float64)
+        ls[valid] = (np.log(density_start[valid])
+                     - np.sum(start_z[audit_mask][valid, :3], axis=1))
+        le[valid] = (np.log(density_end[valid])
+                     - np.sum(end_z[audit_mask][valid, :3], axis=1))
         estimates.append((ls, le))
+        support_masks.append(valid)
         row.update({"audit_blocks": int(audit_mask.sum()),
                     "unsupported_audit_pairs": int((~valid).sum())})
         metadata.append(row)
         del grid
 
-    endpoint_difference = estimates[0][1] - estimates[1][1]
+    common = support_masks[0] & support_masks[1]
+    if not np.any(common):
+        raise RuntimeError("no common support in driven KDE stability audit")
+    endpoint_difference = estimates[0][1][common] - estimates[1][1][common]
     endpoint_difference -= np.mean(endpoint_difference)
-    delta_a = -estimates[0][1] + estimates[0][0]
-    delta_b = -estimates[1][1] + estimates[1][0]
+    delta_a = -estimates[0][1][common] + estimates[0][0][common]
+    delta_b = -estimates[1][1][common] + estimates[1][0][common]
     increment_difference = delta_a - delta_b
 
     def metrics(values: np.ndarray) -> dict:
@@ -464,8 +471,8 @@ def driven_kde_stability(dataset: Dataset) -> tuple[list[dict], dict, list[dict]
         row.update(metrics(values))
         rows.append(row)
 
-    average_log_start = 0.5 * (estimates[0][0] + estimates[1][0])
-    average_log_end = 0.5 * (estimates[0][1] + estimates[1][1])
+    average_log_start = 0.5 * (estimates[0][0][common] + estimates[1][0][common])
+    average_log_end = 0.5 * (estimates[0][1][common] + estimates[1][1][common])
     lower_endpoint_density = np.minimum(average_log_start, average_log_end)
     cutoff = float(np.quantile(lower_endpoint_density, 0.01))
     tail = lower_endpoint_density <= cutoff
@@ -476,7 +483,8 @@ def driven_kde_stability(dataset: Dataset) -> tuple[list[dict], dict, list[dict]
     tail_row.update(tail_metrics)
     rows.append(tail_row)
     passed = bool(
-        endpoint_metrics["rmse"] <= KDE_ENDPOINT_RMSE_MAX
+        np.all(common)
+        and endpoint_metrics["rmse"] <= KDE_ENDPOINT_RMSE_MAX
         and increment_metrics["rmse"] <= KDE_INCREMENT_RMSE_MAX
         and tail_metrics["rmse"] <= KDE_TAIL_INCREMENT_RMSE_MAX
         and increment_metrics["q99_abs"] <= KDE_INCREMENT_Q99_MAX
@@ -484,6 +492,8 @@ def driven_kde_stability(dataset: Dataset) -> tuple[list[dict], dict, list[dict]
     audit = {
         "audit_stream_group": "stream_id mod 3 == 2",
         "audit_blocks": int(positions.size),
+        "common_supported_blocks": int(common.sum()),
+        "unsupported_by_either_estimator": int((~common).sum()),
         "endpoint_disagreement_rmse": endpoint_metrics["rmse"],
         "increment_disagreement_rmse": increment_metrics["rmse"],
         "tail_increment_disagreement_rmse": tail_metrics["rmse"],
@@ -496,14 +506,14 @@ def driven_kde_stability(dataset: Dataset) -> tuple[list[dict], dict, list[dict]
 def summarize_errors(label: str, temperature: float, dataset: Dataset,
                      log_start: np.ndarray, log_end: np.ndarray) -> tuple[list[dict], list[dict], dict]:
     supported = np.isfinite(log_start) & np.isfinite(log_end)
-    if not np.all(supported):
-        raise RuntimeError(f"unsupported equilibrium endpoints for {label}")
+    if not np.any(supported):
+        raise RuntimeError(f"no supported equilibrium endpoints for {label}")
     start_energy = energy(dataset.start)
     end_energy = energy(dataset.end)
-    endpoint_error = np.empty(EXPECTED_ROWS, dtype=np.float64)
+    endpoint_error = np.full(EXPECTED_ROWS, np.nan, dtype=np.float64)
     fold_offsets = {}
     for parity in (0, 1):
-        mask = dataset.stream % 2 == parity
+        mask = (dataset.stream % 2 == parity) & supported
         raw = log_end[mask] + end_energy[mask] / temperature
         offset = float(np.mean(raw))
         endpoint_error[mask] = raw - offset
@@ -529,15 +539,21 @@ def summarize_errors(label: str, temperature: float, dataset: Dataset,
     overall_rows = []
     for quantity, values in (("centered_endpoint_log_density", endpoint_error),
                              ("system_entropy_increment", increment_error)):
+        finite = np.isfinite(values)
         row = {"dataset": label, "temperature": temperature,
-               "quantity": quantity, "region": "all"}
-        row.update(metrics(values))
+               "quantity": quantity, "region": "all",
+               "total_n": int(values.size),
+               "unsupported_n": int((~finite).sum())}
+        row.update(metrics(values[finite]))
         overall_rows.append(row)
         for parity in (0, 1):
-            mask = dataset.stream % 2 == parity
+            mask = (dataset.stream % 2 == parity) & finite
             fold_row = {"dataset": label, "temperature": temperature,
                         "quantity": quantity,
-                        "region": f"evaluation_parity_{parity}"}
+                        "region": f"evaluation_parity_{parity}",
+                        "total_n": int(np.count_nonzero(dataset.stream % 2 == parity)),
+                        "unsupported_n": int(np.count_nonzero(
+                            (dataset.stream % 2 == parity) & ~finite))}
             fold_row.update(metrics(values[mask]))
             overall_rows.append(fold_row)
 
@@ -550,18 +566,22 @@ def summarize_errors(label: str, temperature: float, dataset: Dataset,
             mask = (maximum_energy >= cut[index]) & (maximum_energy <= cut[index + 1])
         else:
             mask = (maximum_energy > cut[index]) & (maximum_energy <= cut[index + 1])
+        supported_mask = mask & supported
         row = {"dataset": label, "temperature": temperature,
                "quantity": "system_entropy_increment", "region": region,
+               "total_n": int(mask.sum()),
+               "unsupported_n": int((mask & ~supported).sum()),
                "energy_low": float(cut[index]),
                "energy_high": float(cut[index + 1])}
-        row.update(metrics(increment_error[mask]))
+        row.update(metrics(increment_error[supported_mask]))
         tail_rows.append(row)
 
-    endpoint_rmse = metrics(endpoint_error)["rmse"]
-    increment_metrics = metrics(increment_error)
+    endpoint_rmse = metrics(endpoint_error[supported])["rmse"]
+    increment_metrics = metrics(increment_error[supported])
     tail_rmse = tail_rows[-1]["rmse"]
     passed = (
-        endpoint_rmse <= KDE_ENDPOINT_RMSE_MAX
+        np.all(supported)
+        and endpoint_rmse <= KDE_ENDPOINT_RMSE_MAX
         and increment_metrics["rmse"] <= KDE_INCREMENT_RMSE_MAX
         and tail_rmse <= KDE_TAIL_INCREMENT_RMSE_MAX
         and increment_metrics["q99_abs"] <= KDE_INCREMENT_Q99_MAX
@@ -569,6 +589,9 @@ def summarize_errors(label: str, temperature: float, dataset: Dataset,
     audit = {
         "dataset": label, "temperature": temperature,
         "fold_additive_offsets": fold_offsets,
+        "supported_pairs": int(supported.sum()),
+        "unsupported_pairs": int((~supported).sum()),
+        "support_gate_pass": bool(np.all(supported)),
         "endpoint_rmse": endpoint_rmse,
         "increment_rmse": increment_metrics["rmse"],
         "tail_99_100_increment_rmse": tail_rmse,
@@ -821,10 +844,6 @@ def main() -> int:
         "supported_fraction": float(supported.mean()),
     }
     write_csv(args.output / "driven_kde_support.csv", [support_row])
-    if not np.all(supported):
-        raise RuntimeError(
-            "frozen no-extrapolation rule: at least one driven endpoint pair unsupported")
-
     delta_sys = -log_end + log_start
     delta_total = driven.entropy_medium + delta_sys
     system_rows = []
@@ -833,9 +852,15 @@ def main() -> int:
         ("evaluation_parity_0", driven.stream % 2 == 0),
         ("evaluation_parity_1", driven.stream % 2 == 1),
     ):
-        values = delta_sys[mask]
+        total_count = int(mask.sum())
+        valid = mask & supported
+        values = delta_sys[valid]
+        if values.size == 0:
+            continue
         system_rows.append({
             "region": region, "n": int(values.size),
+            "total_n": total_count,
+            "unsupported_n": total_count - int(values.size),
             "mean": float(np.mean(values)),
             "std": float(np.std(values, ddof=1)),
             "minimum": float(np.min(values)),
@@ -856,14 +881,61 @@ def main() -> int:
     fit_rows = []
     bin_rows = []
     ift_rows = []
-    for label, values in (("medium_entropy", driven.entropy_medium),
-                          ("total_entropy_kde", delta_total)):
+    count, fit, bins, ift = observable_diagnostics(
+        "medium_entropy", driven.entropy_medium, driven.stream, rng)
+    count["analysis_status"] = "computed"
+    count["kde_unsupported_pairs"] = 0
+    fit["analysis_status"] = "computed"
+    ift["analysis_status"] = "computed"
+    count_rows.append(count)
+    fit_rows.append(fit)
+    bin_rows.extend(bins)
+    ift_rows.append(ift)
+
+    if np.all(supported):
         count, fit, bins, ift = observable_diagnostics(
-            label, values, driven.stream, rng)
+            "total_entropy_kde", delta_total, driven.stream, rng)
+        count["analysis_status"] = "computed"
+        count["kde_unsupported_pairs"] = 0
+        fit["analysis_status"] = "computed"
+        ift["analysis_status"] = "computed"
         count_rows.append(count)
         fit_rows.append(fit)
         bin_rows.extend(bins)
         ift_rows.append(ift)
+    else:
+        count_rows.append({
+            "observable": "total_entropy_kde", "n_blocks": EXPECTED_ROWS,
+            "negative_count": float("nan"), "positive_count": float("nan"),
+            "zero_count": float("nan"), "negative_probability": float("nan"),
+            "negative_probability_ci_low": float("nan"),
+            "negative_probability_ci_high": float("nan"),
+            "analysis_status": "not_computed_no_kde_extrapolation",
+            "kde_unsupported_pairs": int((~supported).sum()),
+        })
+        fit_rows.append({
+            "observable": "total_entropy_kde", "fd_width": float("nan"),
+            "qualifying_pairs": 0, "support_gate_negative_min": MIN_NEGATIVE,
+            "support_gate_pairs_min": MIN_PAIRS, "support_gate_pass": 0,
+            "fit_available": 0, "intercept": float("nan"),
+            "intercept_ci_low": float("nan"),
+            "intercept_ci_high": float("nan"), "slope": float("nan"),
+            "slope_ci_low": float("nan"), "slope_ci_high": float("nan"),
+            "weighted_r_squared": float("nan"), "bootstrap_valid": 0,
+            "analysis_status": "not_computed_no_kde_extrapolation",
+        })
+        ift_rows.append({
+            "observable": "total_entropy_kde",
+            "log_mean_exp_minus": float("nan"),
+            "bootstrap_ci_low": float("nan"),
+            "bootstrap_ci_high": float("nan"),
+            "exponential_weight_ess": float("nan"),
+            "ess_fraction": float("nan"),
+            "maximum_single_weight_share": float("nan"),
+            "maximum_leave_one_stream_change": float("nan"),
+            "resolution_pass": 0,
+            "analysis_status": "not_computed_no_kde_extrapolation",
+        })
     write_csv(args.output / "negative_tail_counts.csv", count_rows)
     write_csv(args.output / "detailed_ft_fits.csv", fit_rows)
     write_csv(args.output / "symmetric_bin_counts.csv", bin_rows)

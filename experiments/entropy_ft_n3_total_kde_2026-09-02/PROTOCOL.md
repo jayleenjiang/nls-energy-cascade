@@ -61,6 +61,15 @@ conditions; the two angle axes wrap periodically.  Linear interpolation is
 used only inside the action grid, with periodic interpolation on angle axes.
 There is no density floor and no extrapolation.
 
+If the frozen binned convolution returns zero density at any held-out endpoint,
+that endpoint is recorded as unsupported.  Accuracy metrics may be reported on
+the supported subset only with the omitted count shown explicitly, and the KDE
+accuracy gate automatically fails.  For the driven sample, any unsupported
+pair prevents calculation of total-entropy sign counts, DFT slope, and IFT;
+those entries are reported as not computed rather than filling or dropping the
+tail points.  Medium-entropy diagnostics remain valid because they do not use
+the KDE.
+
 For a training set with effective sample size `N_eff`, Scott's
 five-dimensional factor is
 
