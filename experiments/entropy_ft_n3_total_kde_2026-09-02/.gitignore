@@ -1,0 +1,6 @@
+bin/
+raw/
+__pycache__/
+analysis/derived_blocks.csv.zst
+report/build/
+report/figures/*.png
