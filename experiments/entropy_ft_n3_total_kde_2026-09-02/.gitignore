@@ -3,6 +3,8 @@ raw/
 __pycache__/
 pipeline.log
 analysis.log
+analysis_failed_v*/
+analysis_failed_v*.log
 analysis/derived_blocks.csv.zst
 report/build/
 report/figures/*.png
