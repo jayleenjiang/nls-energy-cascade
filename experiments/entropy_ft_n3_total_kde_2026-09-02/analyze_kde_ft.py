@@ -182,8 +182,54 @@ def circular_scale(values: np.ndarray) -> float:
                math.pi / math.sqrt(3.0))
 
 
-def bandwidth(points: np.ndarray) -> np.ndarray:
-    factor = points.shape[0] ** (-1.0 / 9.0)
+def statistical_inefficiencies(points: np.ndarray,
+                               stream_ids: np.ndarray) -> tuple[float, dict]:
+    unique = np.unique(stream_ids)
+    if unique.size < 2:
+        raise RuntimeError("at least two streams required for autocorrelation")
+    counts = np.array([np.count_nonzero(stream_ids == value) for value in unique])
+    if not np.all(counts == counts[0]):
+        raise RuntimeError("unequal stream lengths in bandwidth estimator")
+    length = int(counts[0])
+    transformed = [
+        ("logI1", points[:, 0]), ("logI2", points[:, 1]),
+        ("logI3", points[:, 2]), ("cos_theta1", np.cos(points[:, 3])),
+        ("sin_theta1", np.sin(points[:, 3])),
+        ("cos_theta3", np.cos(points[:, 4])),
+        ("sin_theta3", np.sin(points[:, 4])),
+    ]
+    nfft = 1 << (2 * length - 1).bit_length()
+    factors = {}
+    for name, flat in transformed:
+        series = np.stack([flat[stream_ids == value] for value in unique])
+        series = series - series.mean(axis=1, keepdims=True)
+        spectrum = np.fft.rfft(series, n=nfft, axis=1)
+        autocov = np.fft.irfft(spectrum * np.conjugate(spectrum),
+                               n=nfft, axis=1)[:, :length].real
+        autocov /= np.arange(length, 0, -1, dtype=np.float64)[None, :]
+        pooled = autocov.mean(axis=0)
+        if not (pooled[0] > 0.0):
+            raise RuntimeError(f"zero variance in autocorrelation series {name}")
+        rho = pooled / pooled[0]
+        cutoff = 1
+        pair = 0
+        while 2 * pair + 2 < length:
+            left = 2 * pair + 1
+            right = 2 * pair + 2
+            if rho[left] + rho[right] <= 0.0:
+                break
+            cutoff = right + 1
+            pair += 1
+        g = max(1.0, 1.0 + 2.0 * float(np.sum(rho[1:cutoff])))
+        factors[name] = g
+    return max(factors.values()), factors
+
+
+def bandwidth(points: np.ndarray,
+              stream_ids: np.ndarray) -> tuple[np.ndarray, dict]:
+    maximum_g, factors = statistical_inefficiencies(points, stream_ids)
+    effective_n = points.shape[0] / maximum_g
+    factor = effective_n ** (-1.0 / 9.0)
     scales = np.empty(5, dtype=np.float64)
     scales[:3] = np.std(points[:, :3], axis=0, ddof=1)
     scales[3] = circular_scale(points[:, 3])
@@ -191,11 +237,19 @@ def bandwidth(points: np.ndarray) -> np.ndarray:
     values = factor * scales
     if not np.all(np.isfinite(values)) or np.any(values <= 0.0):
         raise RuntimeError(f"invalid Scott bandwidth {values}")
-    return values
+    audit = {
+        "raw_training_points": int(points.shape[0]),
+        "maximum_statistical_inefficiency": float(maximum_g),
+        "effective_sample_size": float(effective_n),
+        "scott_factor": float(factor),
+        **{f"g_{name}": float(value) for name, value in factors.items()},
+    }
+    return values, audit
 
 
-def global_grid_bounds(end_z: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
-    global_bw = bandwidth(end_z)
+def global_grid_bounds(end_z: np.ndarray,
+                       stream_ids: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
+    global_bw, _ = bandwidth(end_z, stream_ids)
     lower = np.empty(5, dtype=np.float64)
     upper = np.empty(5, dtype=np.float64)
     lower[:3] = np.min(end_z[:, :3], axis=0) - 4.0 * global_bw[:3]
@@ -217,9 +271,10 @@ def grid_indices(points: np.ndarray, lower: np.ndarray,
     return indices, valid
 
 
-def fit_grid(training: np.ndarray, lower: np.ndarray, upper: np.ndarray,
+def fit_grid(training: np.ndarray, training_streams: np.ndarray,
+             lower: np.ndarray, upper: np.ndarray,
              label: str) -> tuple[np.ndarray, dict]:
-    bw = bandwidth(training)
+    bw, correlation_audit = bandwidth(training, training_streams)
     spacing = (upper - lower) / np.asarray(GRID_SHAPE, dtype=np.float64)
     ratio = bw / spacing
     corrected_variance = ratio * ratio - 1.0 / 12.0
@@ -247,7 +302,6 @@ def fit_grid(training: np.ndarray, lower: np.ndarray, upper: np.ndarray,
     metadata = {
         "label": label,
         "training_points": int(training.shape[0]),
-        "scott_factor": training.shape[0] ** (-1.0 / 9.0),
         "bandwidth_logI1": float(bw[0]),
         "bandwidth_logI2": float(bw[1]),
         "bandwidth_logI3": float(bw[2]),
@@ -261,6 +315,7 @@ def fit_grid(training: np.ndarray, lower: np.ndarray, upper: np.ndarray,
         "bw_over_spacing_min": float(np.min(ratio)),
         "raw_smoothed_mass": mass_before_normalization,
         "cell_volume": cell_volume,
+        **correlation_audit,
     }
     return grid, metadata
 
@@ -313,7 +368,7 @@ def interpolate_density(grid: np.ndarray, points: np.ndarray,
 def crossfit_density(dataset: Dataset, label: str) -> tuple[np.ndarray, np.ndarray, list[dict], dict]:
     start_z = transform(dataset.start)
     end_z = transform(dataset.end)
-    lower, upper = global_grid_bounds(end_z)
+    lower, upper = global_grid_bounds(end_z, dataset.stream)
     log_start = np.full(EXPECTED_ROWS, np.nan, dtype=np.float64)
     log_end = np.full(EXPECTED_ROWS, np.nan, dtype=np.float64)
     metadata: list[dict] = []
@@ -321,7 +376,7 @@ def crossfit_density(dataset: Dataset, label: str) -> tuple[np.ndarray, np.ndarr
         evaluate = dataset.stream % 2 == evaluation_parity
         train = ~evaluate
         grid, row = fit_grid(
-            end_z[train], lower, upper,
+            end_z[train], dataset.stream[train], lower, upper,
             f"{label}_train_parity_{1-evaluation_parity}")
         density_start, support_start = interpolate_density(
             grid, start_z[evaluate], lower, upper)
@@ -350,6 +405,92 @@ def crossfit_density(dataset: Dataset, label: str) -> tuple[np.ndarray, np.ndarr
         "unsupported_pairs": int((~support).sum()),
     }
     return log_start, log_end, metadata, bounds
+
+
+def driven_kde_stability(dataset: Dataset) -> tuple[list[dict], dict, list[dict]]:
+    start_z = transform(dataset.start)
+    end_z = transform(dataset.end)
+    lower, upper = global_grid_bounds(end_z, dataset.stream)
+    audit_mask = dataset.stream % 3 == 2
+    positions = np.flatnonzero(audit_mask)
+    estimates = []
+    metadata = []
+    for training_group in (0, 1):
+        train = dataset.stream % 3 == training_group
+        grid, row = fit_grid(
+            end_z[train], dataset.stream[train], lower, upper,
+            f"driven_stability_train_mod3_{training_group}")
+        density_start, support_start = interpolate_density(
+            grid, start_z[audit_mask], lower, upper)
+        density_end, support_end = interpolate_density(
+            grid, end_z[audit_mask], lower, upper)
+        valid = support_start & support_end
+        if not np.all(valid):
+            raise RuntimeError("unsupported point in driven KDE stability audit")
+        ls = np.log(density_start) - np.sum(start_z[audit_mask, :3], axis=1)
+        le = np.log(density_end) - np.sum(end_z[audit_mask, :3], axis=1)
+        estimates.append((ls, le))
+        row.update({"audit_blocks": int(audit_mask.sum()),
+                    "unsupported_audit_pairs": int((~valid).sum())})
+        metadata.append(row)
+        del grid
+
+    endpoint_difference = estimates[0][1] - estimates[1][1]
+    endpoint_difference -= np.mean(endpoint_difference)
+    delta_a = -estimates[0][1] + estimates[0][0]
+    delta_b = -estimates[1][1] + estimates[1][0]
+    increment_difference = delta_a - delta_b
+
+    def metrics(values: np.ndarray) -> dict:
+        absolute = np.abs(values)
+        return {
+            "n": int(values.size), "mean": float(np.mean(values)),
+            "rmse": float(np.sqrt(np.mean(values * values))),
+            "mae": float(np.mean(absolute)),
+            "q90_abs": float(np.quantile(absolute, 0.90)),
+            "q95_abs": float(np.quantile(absolute, 0.95)),
+            "q99_abs": float(np.quantile(absolute, 0.99)),
+            "max_abs": float(np.max(absolute)),
+        }
+
+    rows = []
+    endpoint_metrics = metrics(endpoint_difference)
+    increment_metrics = metrics(increment_difference)
+    for quantity, values in (
+        ("centered_endpoint_log_density_disagreement", endpoint_difference),
+        ("system_entropy_increment_disagreement", increment_difference),
+    ):
+        row = {"quantity": quantity, "region": "all"}
+        row.update(metrics(values))
+        rows.append(row)
+
+    average_log_start = 0.5 * (estimates[0][0] + estimates[1][0])
+    average_log_end = 0.5 * (estimates[0][1] + estimates[1][1])
+    lower_endpoint_density = np.minimum(average_log_start, average_log_end)
+    cutoff = float(np.quantile(lower_endpoint_density, 0.01))
+    tail = lower_endpoint_density <= cutoff
+    tail_metrics = metrics(increment_difference[tail])
+    tail_row = {"quantity": "system_entropy_increment_disagreement",
+                "region": "lowest_density_1_percent",
+                "log_density_cutoff": cutoff}
+    tail_row.update(tail_metrics)
+    rows.append(tail_row)
+    passed = bool(
+        endpoint_metrics["rmse"] <= KDE_ENDPOINT_RMSE_MAX
+        and increment_metrics["rmse"] <= KDE_INCREMENT_RMSE_MAX
+        and tail_metrics["rmse"] <= KDE_TAIL_INCREMENT_RMSE_MAX
+        and increment_metrics["q99_abs"] <= KDE_INCREMENT_Q99_MAX
+    )
+    audit = {
+        "audit_stream_group": "stream_id mod 3 == 2",
+        "audit_blocks": int(positions.size),
+        "endpoint_disagreement_rmse": endpoint_metrics["rmse"],
+        "increment_disagreement_rmse": increment_metrics["rmse"],
+        "tail_increment_disagreement_rmse": tail_metrics["rmse"],
+        "increment_disagreement_q99_abs": increment_metrics["q99_abs"],
+        "pass": passed,
+    }
+    return rows, audit, metadata
 
 
 def summarize_errors(label: str, temperature: float, dataset: Dataset,
@@ -664,6 +805,12 @@ def main() -> int:
         handle.write("\n")
 
     driven = read_archive(args.driven)
+    stability_rows, stability_audit, stability_metadata = driven_kde_stability(driven)
+    kde_rows.extend(stability_metadata)
+    write_csv(args.output / "driven_kde_stability.csv", stability_rows)
+    with (args.output / "driven_kde_stability_gate.json").open("w") as handle:
+        json.dump(stability_audit, handle, indent=2)
+        handle.write("\n")
     log_start, log_end, metadata, driven_bounds = crossfit_density(driven, "driven")
     kde_rows.extend(metadata)
     write_csv(args.output / "kde_bandwidths.csv", kde_rows)
@@ -735,6 +882,7 @@ def main() -> int:
     )
     final_validated = bool(
         kde_gate_pass
+        and stability_audit["pass"]
         and total_fit["support_gate_pass"]
         and total_fit.get("fit_available", 0)
         and detailed_reference_pass
@@ -749,6 +897,7 @@ def main() -> int:
         "bootstrap_replicates": BOOTSTRAPS,
         "bootstrap_seed": BOOTSTRAP_SEED,
         "equilibrium_kde_gate_pass": kde_gate_pass,
+        "driven_kde_stability_gate_pass": bool(stability_audit["pass"]),
         "driven_bounds": driven_bounds,
         "driven_support": support_row,
         "total_two_sided_support_pass": bool(total_fit["support_gate_pass"]),

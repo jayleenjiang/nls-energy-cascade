@@ -61,9 +61,18 @@ conditions; the two angle axes wrap periodically.  Linear interpolation is
 used only inside the action grid, with periodic interpolation on angle axes.
 There is no density floor and no extrapolation.
 
-For a training set of `N` endpoint samples, Scott's five-dimensional factor is
+For a training set with effective sample size `N_eff`, Scott's
+five-dimensional factor is
 
-`s = N^(-1/9)`.
+`s = N_eff^(-1/9)`.
+
+`N_eff=N/g`, where `g` is the largest streamwise statistical inefficiency
+estimated by Geyer's initial-positive-sequence rule over
+`log(I1),log(I2),log(I3),cos(theta1),sin(theta1),cos(theta3),sin(theta3)`.
+Autocovariances are computed within streams and then pooled; streams are never
+concatenated.  Using the largest `g` gives one conservative bandwidth factor
+for all five coordinates.  The raw endpoint count and every estimated `g` are
+reported.
 
 Action bandwidths are `s` times the sample standard deviations of `log(Ij)`.
 Angular bandwidths are `s` times the circular standard deviations
@@ -86,6 +95,16 @@ streams.  Fold B trains on even streams and evaluates odd streams.  Only block
 endpoints train the density, as requested.  The pooled result contains one
 held-out density pair for every block.  Fold-specific results are retained to
 show estimator variation.
+
+As a driven-data variance control, streams are also divided by `stream_id mod
+3`.  Two independent KDEs are trained on groups 0 and 1 and both are evaluated
+on group 2.  Their additive-constant-centered endpoint log densities and their
+system-entropy increments are compared on exactly the same held-out blocks.
+This control passes only if the centered endpoint disagreement RMSE is at most
+`0.15`, the increment disagreement RMSE is at most `0.10`, the lowest-density
+one-percent increment-disagreement RMSE is at most `0.25`, and its 99th
+absolute-error percentile is at most `0.50`.  It measures finite-sample KDE
+variation on the driven distribution; it cannot prove absence of common bias.
 
 For every block,
 
@@ -161,7 +180,8 @@ change in the log mean at most `0.10`).  No plus-four points,
 tail extrapolation, KDE extrapolation, or artificial counts are allowed.
 
 The final finite-time FT diagnostic passes only if all of the following hold:
-the equilibrium KDE gate passes; the raw two-sided-support gate passes; the
+the equilibrium KDE gate passes; the density-variance control on the driven
+data passes; the raw two-sided-support gate passes; the
 detailed-fit 95% interval contains the reference slope `1`; the integral-fit
 95% interval contains `0`; and the integral diagnostic passes its ESS,
 single-weight, and leave-one-stream stability gates.  A numerical point
