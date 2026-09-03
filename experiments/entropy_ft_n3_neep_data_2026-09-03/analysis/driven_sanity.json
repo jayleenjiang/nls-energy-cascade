@@ -1,0 +1,86 @@
+{
+  "correlation": {
+    "I2": {
+      "delta_t_over_one_over_e_time": 0.46694811315915,
+      "ips_cutoff_lag": 103,
+      "ips_found_nonpositive_pair": true,
+      "lag1_correlation": 0.684385058141005,
+      "one_over_e_lag": 2.1415655654639507,
+      "one_over_e_time": 0.2141565565463951,
+      "statistical_inefficiency_g": 10.899096327931002,
+      "stream_one_over_e_time_median": 0.21337220800795081,
+      "stream_one_over_e_time_q05": 0.1975599906451979,
+      "stream_one_over_e_time_q95": 0.2543845772124127,
+      "stream_tau_integrated_median": 0.5433953522980643,
+      "stream_tau_integrated_q05": 0.48144112642546033,
+      "stream_tau_integrated_q95": 0.6406314700491189,
+      "tau_integrated": 0.5449548163965501
+    },
+    "theta1_periodic": {
+      "delta_t_over_one_over_e_time": 0.8788304624706312,
+      "ips_cutoff_lag": 49,
+      "ips_found_nonpositive_pair": true,
+      "lag1_correlation": 0.40677045436085646,
+      "one_over_e_lag": 1.1378758960957365,
+      "one_over_e_time": 0.11378758960957365,
+      "statistical_inefficiency_g": 2.8951539276335634,
+      "stream_one_over_e_time_median": 0.11383389573114877,
+      "stream_one_over_e_time_q05": 0.11150393568995494,
+      "stream_one_over_e_time_q95": 0.11580717026875571,
+      "stream_tau_integrated_median": 0.14333992766190984,
+      "stream_tau_integrated_q05": 0.13323584105450137,
+      "stream_tau_integrated_q95": 0.15988417551097572,
+      "tau_integrated": 0.14475769638167818
+    }
+  },
+  "delta_t": 0.1,
+  "first_law_residual": {
+    "max": 0.003267215860638828,
+    "max_abs": 0.003267215860638828,
+    "mean": -7.599713628082493e-08,
+    "median": -1.0585334692114756e-10,
+    "min": -0.003081791746112117,
+    "q001": -0.0002969980566785573,
+    "q01": -9.725139270125637e-05,
+    "q99": 9.626793430889809e-05,
+    "q999": 0.0002972446090220004,
+    "rms": 3.452846833580953e-05,
+    "rms_rate": 0.00034528468335809527,
+    "std": 3.452838815367935e-05
+  },
+  "integration_steps_per_transition": 200,
+  "integrity": {
+    "all_values_finite": true,
+    "angles_in_minus_pi_pi": true,
+    "angular_endpoint_continuity_max_abs": 0.0,
+    "entropy_identity_max_abs": 1.7763568394002505e-15,
+    "linear_endpoint_continuity_max_abs": 0.0,
+    "positive_actions": true,
+    "stored_vs_recomputed_balance_max_abs": 0.0,
+    "trigonometric_encoding_max_abs_error": 0.0,
+    "unit_circle_identity_max_abs_error": 2.220446049250313e-16
+  },
+  "label": "driven",
+  "neep_archive": {
+    "compressed_bytes": 796525579,
+    "compressed_sha256": "95b7c201eb3da3d1cb3dd0e3a988c9ee043b680fe59510c652a2ecc09eeeda48",
+    "decompressed_sha256": "c9a3edaf93d65c9aa5b4563b876ab3b5f6803bf199da2c638ae2cc613c7af6a4",
+    "line_count_including_header": 5000065,
+    "path": "/Users/jayleenjiang/NLS_eq_runtime/experiments/entropy_ft_n3_neep_data_2026-09-03/raw/driven_neep_transitions.csv.zst"
+  },
+  "raw_archive": {
+    "compressed_bytes": 581333669,
+    "compressed_sha256": "555ea347d1aa0043d4e10d8aeaa6f22179bdd3e603555b102e8184f2ad46a3c3",
+    "decompressed_sha256": "c8ad530f0475958a22ac062a3059a41b8416b54b8dda2a95a3a53abdb5118fd2",
+    "line_count_including_header": 5000065,
+    "path": "/Users/jayleenjiang/NLS_eq_runtime/experiments/entropy_ft_n3_neep_data_2026-09-03/raw/driven_blocks.csv.zst"
+  },
+  "state_snapshots": 5000192,
+  "streams": 128,
+  "temperatures": [
+    10.0,
+    2.0
+  ],
+  "transition_rows": 5000064,
+  "transitions_per_stream": 39063
+}

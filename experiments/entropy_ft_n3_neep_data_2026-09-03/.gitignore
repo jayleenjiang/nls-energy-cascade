@@ -1,6 +1,4 @@
 raw/
-analysis/*.json
-analysis/*.csv
 __pycache__/
 *.log
 *.pid
