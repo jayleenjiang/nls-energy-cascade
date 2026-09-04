@@ -1,0 +1,11 @@
+bin/
+raw/*_blocks.csv
+inputs/*_blocks.csv
+*.log
+*.pid
+*.exitcode
+production_pids.tsv
+.run.lock/
+!figures/*.png
+!figures/*.pdf
+!report/affinity_sweep_report.pdf
