@@ -430,7 +430,10 @@ def main() -> None:
                     ratio_lo = a_inf_lo / case.delta_beta
                     ratio_hi = a_inf_hi / case.delta_beta
 
-        if len(resolved_times) >= 2:
+        if case.delta_beta == 0.0:
+            plateau_change = math.nan
+            plateau = "NOT_APPLICABLE"
+        elif len(resolved_times) >= 2:
             previous_t, last_t = resolved_times[-2], resolved_times[-1]
             if last_t == 2 * previous_t:
                 previous_a = per_time[previous_t]["row"]["a_fit"]
@@ -446,6 +449,11 @@ def main() -> None:
 
         if len(resolved_times) < 3 or valid_intercepts.size < MIN_BOOTSTRAP_RESOLVED:
             ft_status = "UNRESOLVED"
+        elif case.delta_beta == 0.0:
+            if a_inf_lo <= 0.0 <= a_inf_hi:
+                ft_status = "CONSISTENT_WITH_EQUILIBRIUM"
+            else:
+                ft_status = "FAIL"
         elif ratio_lo <= 1.0 <= ratio_hi:
             ft_status = "CONSISTENT_WITH_FT"
         else:
@@ -475,7 +483,10 @@ def main() -> None:
         if resolved_times:
             largest_resolved_t = resolved_times[-1]
             selected_a_gauss = per_time[largest_resolved_t]["row"]["a_Gauss"]
-            a_gauss_ratio = selected_a_gauss / case.delta_beta
+            if case.delta_beta != 0.0:
+                a_gauss_ratio = selected_a_gauss / case.delta_beta
+            else:
+                a_gauss_ratio = math.nan
         else:
             largest_resolved_t = ""
             selected_a_gauss = a_gauss_ratio = math.nan
@@ -507,27 +518,28 @@ def main() -> None:
             "crossover": crossover_rows[-1],
         }
 
-    crossover_rows.append(
-        {
-            "case": "dbeta_0p000000",
-            "delta_beta": 0.0,
-            "availability": "UNAVAILABLE_N10_PRODUCTION_NOT_FOUND",
-            "FT_status": "UNAVAILABLE",
-            "a_inf": math.nan,
-            "a_inf_ci_low": math.nan,
-            "a_inf_ci_high": math.nan,
-            "a_inf_over_delta_beta": math.nan,
-            "ratio_ci_low": math.nan,
-            "ratio_ci_high": math.nan,
-            "largest_resolved_t": "",
-            "a_Gauss_at_largest_resolved_t": math.nan,
-            "a_Gauss_over_delta_beta": math.nan,
-            "gaussFT_t640": math.nan,
-            "skew_t160": math.nan,
-            "excess_kurtosis_t160": math.nan,
-            "n_negative_t160": "",
-        }
-    )
+    if not any(case.delta_beta == 0.0 for case in args.case):
+        crossover_rows.append(
+            {
+                "case": "dbeta_0p000000",
+                "delta_beta": 0.0,
+                "availability": "UNAVAILABLE_N10_PRODUCTION_NOT_FOUND",
+                "FT_status": "UNAVAILABLE",
+                "a_inf": math.nan,
+                "a_inf_ci_low": math.nan,
+                "a_inf_ci_high": math.nan,
+                "a_inf_over_delta_beta": math.nan,
+                "ratio_ci_low": math.nan,
+                "ratio_ci_high": math.nan,
+                "largest_resolved_t": "",
+                "a_Gauss_at_largest_resolved_t": math.nan,
+                "a_Gauss_over_delta_beta": math.nan,
+                "gaussFT_t640": math.nan,
+                "skew_t160": math.nan,
+                "excess_kurtosis_t160": math.nan,
+                "n_negative_t160": "",
+            }
+        )
     crossover_rows.sort(key=lambda row: float(row["delta_beta"]))
 
     summary_fields = [
@@ -587,6 +599,9 @@ def main() -> None:
     ordered_rows = [available_cross[i] for i in order]
 
     fig, ax = plt.subplots(figsize=(6.6, 4.6))
+    direct_label_used = False
+    unresolved_label_used = False
+    gaussian_label_used = False
     for row in ordered_rows:
         x_value = float(row["delta_beta"])
         if math.isfinite(float(row["a_inf"])):
@@ -598,19 +613,29 @@ def main() -> None:
                     x_value, y_value,
                     yerr=[[y_value - lo], [hi - y_value]],
                     fmt="o", color="#1f77b4", capsize=3,
-                    label="direct-tail $a_\\infty$" if x_value == beta[0] else None,
+                    label="direct-tail $a_\\infty$ with accepted CI"
+                    if not direct_label_used else None,
                 )
+                direct_label_used = True
+            else:
+                ax.plot(
+                    x_value, y_value, "o", markerfacecolor="none",
+                    markeredgecolor="#1f77b4",
+                    label="full-sample $a_\\infty$; CI gate unresolved"
+                    if not unresolved_label_used else None,
+                )
+                unresolved_label_used = True
         a_gauss = float(row["a_Gauss_at_largest_resolved_t"])
         if math.isfinite(a_gauss):
             ax.plot(
                 x_value, a_gauss, "s", color="#d95f02",
                 label="$a_{\\mathrm{Gauss}}$ at largest resolved $t$"
-                if x_value == beta[0] else None,
+                if not gaussian_label_used else None,
             )
+            gaussian_label_used = True
     upper = max(0.42, float(np.max(beta)) * 1.05)
     ax.plot([0.0, upper], [0.0, upper], "k--", linewidth=1.2, label="$y=\\Delta\\beta$")
     ax.set_xlim(0.0, upper)
-    ax.set_ylim(bottom=0.0)
     ax.set_xlabel(r"affinity $\Delta\beta$")
     ax.set_ylabel("slope")
     ax.grid(alpha=0.25)

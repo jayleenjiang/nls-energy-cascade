@@ -60,20 +60,31 @@ def main() -> None:
             key, value = line.split("=", 1)
             manifest[key] = value
 
+    equilibrium_manifest = {}
+    equilibrium_manifest_path = root / "EQUILIBRIUM_PRODUCTION_MANIFEST.txt"
+    if equilibrium_manifest_path.is_file():
+        for line in equilibrium_manifest_path.read_text().splitlines():
+            if "=" in line:
+                key, value = line.split("=", 1)
+                equilibrium_manifest[key] = value
+
     commands = (root / "COMMANDS.tsv").read_text().splitlines()[1:]
+    equilibrium_commands_path = root / "EQUILIBRIUM_COMMAND.tsv"
+    if equilibrium_commands_path.is_file():
+        commands.extend(equilibrium_commands_path.read_text().splitlines()[1:])
     args.output.parent.mkdir(parents=True, exist_ok=True)
 
     parts: list[str] = []
     parts.append(r"""\documentclass[10pt]{article}
 \usepackage[margin=0.72in]{geometry}
-\usepackage{booktabs,longtable,graphicx,amsmath,xcolor,hyperref}
+\usepackage{booktabs,longtable,graphicx,amsmath,xcolor,hyperref,fvextra}
 \hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue}
 \newcommand{\NA}{\textemdash}
 \begin{document}
 \begin{center}
 {\Large Heat-flux affinity sweep and Gaussian crossover}\par
 \vspace{0.3em}
-{\small Frozen $n=10$ Cartesian experiment, 2026-09-03}
+{\small Frozen $n=10$ Cartesian experiment with equilibrium amendment, 2026-09-04}
 \end{center}
 
 \section*{Scope and frozen estimator}
@@ -101,44 +112,82 @@ sampled negative tail.
 
     parts.append(r"\section*{Provenance}")
     parts.append(
-        "Experiment repository commit: \texttt{%s}.\\\n"
-        "Production source commit: \texttt{%s}.\\\n"
-        "Frozen source SHA-256: \texttt{%s}.\\\n"
-        "Binary SHA-256: \texttt{%s}.\\\n"
+        "Experiment repository commit: \\nolinkurl{%s}.\\\\\n"
+        "Production source commit: \\nolinkurl{%s}.\\\\\n"
+        "Frozen source SHA-256: \\nolinkurl{%s}.\\\\\n"
+        "Driven binary SHA-256: \\nolinkurl{%s}.\\\\\n"
+        "Equilibrium binary SHA-256: \\nolinkurl{%s}.\\\\\n"
         % (
             latex_escape(manifest.get("experiment_repository_commit", "missing")),
             latex_escape(manifest.get("production_source_commit", "missing")),
             latex_escape(manifest.get("production_source_sha256", "missing")),
             latex_escape(manifest.get("binary_sha256", "missing")),
+            latex_escape(equilibrium_manifest.get("binary_sha256", "missing")),
         )
     )
     parts.append(
-        r"All four new runs use $n=10$, $\gamma=0.1$, $dt=5\times10^{-4}$, "
+        r"The four driven runs and the equilibrium amendment use $n=10$, "
+        r"$\gamma=0.1$, $dt=5\times10^{-4}$, "
         r"burn-in 500, base block duration 20, 8 SIMD batches, 16 lanes, "
         r"7,813 blocks per stream, and 1,000,064 blocks per case."
     )
 
     parts.append(r"\paragraph{Exact production commands.}")
-    parts.append(r"\begin{verbatim}")
+    parts.append(
+        r"\begin{Verbatim}[fontsize=\scriptsize,breaklines=true,"
+        r"breakanywhere=true]"
+    )
     for command in commands:
         parts.append(command.replace("\t", "  "))
-    parts.append(r"\end{verbatim}")
+    parts.append(r"\end{Verbatim}")
 
     parts.append(r"\paragraph{Input hashes.}")
-    parts.append(r"\begin{longtable}{llll}")
-    parts.append(r"\toprule Case & rows & SHA-256 & path \\")
+    parts.append(r"\begin{longtable}{lrp{0.62\textwidth}}")
+    parts.append(r"\toprule Case & rows & SHA-256 \\")
     parts.append(r"\midrule\endhead")
     for row in hashes:
         parts.append(
-            r"\texttt{%s} & %s & \texttt{%s} & \scriptsize\texttt{%s} \\"
+            r"\texttt{%s} & %s & \scriptsize\nolinkurl{%s} \\"
             % (
                 latex_escape(row["case"]),
                 row["rows"],
                 latex_escape(row["sha256"]),
-                latex_escape(row["path"]),
             )
         )
     parts.append(r"\bottomrule\end{longtable}")
+    parts.append(
+        r"\noindent Full absolute input paths are retained in "
+        r"\texttt{analysis/input\_hashes.csv}."
+    )
+
+    parts.append(r"\section*{Outcome under the frozen gates}")
+    parts.append(
+        r"The full-sample $1/t$ intercepts give "
+        r"$a_\infty/\Delta\beta=1.0175,\ 1.0153,\ 1.0220$ at "
+        r"$\Delta\beta=0.027972,\ 0.057143,\ 0.125$, respectively.  "
+        r"These point estimates lie close to the FT reference, but none of "
+        r"the cases reaches the predeclared threshold of 800 valid joint "
+        r"stream-bootstrap intercepts.  Consequently every nonzero-affinity "
+        r"FT verdict is \texttt{UNRESOLVED}; the point estimates alone are "
+        r"not promoted to a pass."
+    )
+    parts.append(
+        r"For the equilibrium control, the full-sample intercept is "
+        r"$7.80\times10^{-5}$.  Its $t=20$ direct slope is "
+        r"$1.63\times10^{-4}$ with stream-bootstrap 95\% interval "
+        r"$[-8.98\times10^{-5},\,4.18\times10^{-4}]$, which contains zero.  "
+        r"The joint long-time interval again fails the 800-replicate gate, "
+        r"so the formal equilibrium extrapolation remains "
+        r"\texttt{UNRESOLVED}."
+    )
+    parts.append(
+        r"The Gaussian bulk approaches the FT value only at weak drive: "
+        r"$a_{\rm Gauss}/\Delta\beta=0.960,\ 0.931,\ 0.745,\ 0.515,\ 0.301$ "
+        r"as the affinity increases.  At $t=160$, the negative counts fall "
+        r"from 20,136 and 2,997 in the two weakest driven cases to 2, 0, and "
+        r"0 in the three stronger cases.  This directly records the loss of "
+        r"two-tail support rather than replacing it by a Gaussian estimate."
+    )
 
     parts.append(r"\section*{Raw window statistics and two-tail fits}")
     by_case: dict[str, list[dict[str, str]]] = {}
@@ -244,10 +293,12 @@ sampled negative tail.
 \end{figure}
 
 \section*{Equilibrium row and claim boundary}
-The requested $(6,6)$ production at $n=10$ was not found.  Existing
-equal-temperature data have either $n=20$ with only 1,280 blocks or $n=3$;
-neither is substituted.  Under the instruction not to rerun equilibrium, the
-$\Delta\beta=0$ row is therefore marked unavailable.
+The added $(6,6)$ production uses the same $n=10$ dynamics, integration step,
+burn-in, stream count, and block count as the driven cases.  At
+$\Delta\beta=0$, ratios that divide by $\Delta\beta$ and $G_{\rm FT}$ are
+undefined and are reported as dashes.  The direct asymmetry-slope reference is
+zero; its extrapolated confidence interval is tested against zero rather than
+against a ratio of one.
 
 The complete raw positive/negative counts used by every fit are in
 \texttt{analysis/symmetric\_bin\_raw\_counts.csv}; all per-window statistics
@@ -255,7 +306,9 @@ are in \texttt{analysis/window\_summary.csv}.  A case labelled
 \texttt{CONSISTENT\_WITH\_FT} means only that the predeclared extrapolated
 confidence interval includes the reference.  It is not a proof.  A case whose
 interval excludes the reference is labelled \texttt{FAIL}; insufficient raw
-two-tail support remains \texttt{UNRESOLVED}.
+two-tail support remains \texttt{UNRESOLVED}.  The label
+\texttt{CONSISTENT\_WITH\_EQUILIBRIUM} has the corresponding limited meaning
+for the zero-affinity control.
 \end{document}
 """)
 
