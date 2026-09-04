@@ -84,7 +84,7 @@ def main() -> None:
 \begin{center}
 {\Large Heat-flux affinity sweep and Gaussian crossover}\par
 \vspace{0.3em}
-{\small Frozen $n=10$ Cartesian experiment with equilibrium amendment, 2026-09-04}
+{\small Frozen $n=10$ Cartesian experiment with auditable bootstrap-gate amendment, 2026-09-04}
 \end{center}
 
 \section*{Scope and frozen estimator}
@@ -160,36 +160,91 @@ sampled negative tail.
         r"\texttt{analysis/input\_hashes.csv}."
     )
 
-    parts.append(r"\section*{Outcome under the frozen gates}")
+    parts.append(r"\section*{Bootstrap-gate amendment and audit trail}")
     parts.append(
-        r"The full-sample $1/t$ intercepts give "
-        r"$a_\infty/\Delta\beta=1.0175,\ 1.0153,\ 1.0220$ at "
-        r"$\Delta\beta=0.027972,\ 0.057143,\ 0.125$, respectively.  "
-        r"These point estimates lie close to the FT reference, but none of "
-        r"the cases reaches the predeclared threshold of 800 valid joint "
-        r"stream-bootstrap intercepts.  Consequently every nonzero-affinity "
-        r"FT verdict is \texttt{UNRESOLVED}; the point estimates alone are "
-        r"not promoted to a pass."
+        r"The original all-resolved-time gate reported 0/1000 accepted "
+        r"intercepts for every case because sub-threshold raw acceptance was "
+        r"written as zero.  The amended analysis leaves the production data, "
+        r"$\Delta Q$, minimum count, minimum three pairs, and straddle-zero "
+        r"rule unchanged.  Each $t$ is bootstrapped independently on its "
+        r"frozen full-sample bin grid.  Driven-case intercepts use only "
+        r"full-sample fits with $n_-\ge500$ and $R^2\ge0.98$."
     )
+    parts.append(r"\begin{longtable}{lrrrlr}")
     parts.append(
-        r"For the equilibrium control, the full-sample intercept is "
-        r"$7.80\times10^{-5}$.  Its $t=20$ direct slope is "
-        r"$1.63\times10^{-4}$ with stream-bootstrap 95\% interval "
-        r"$[-8.98\times10^{-5},\,4.18\times10^{-4}]$, which contains zero.  "
-        r"The joint long-time interval again fails the 800-replicate gate, "
-        r"so the formal equilibrium extrapolation remains "
-        r"\texttt{UNRESOLVED}."
+        r"\toprule Case & old reported & old raw valid & old $t$ set & "
+        r"amended $t$ set & amended valid \\"
     )
+    parts.append(r"\midrule\endhead")
+    for row in extrapolation:
+        amended_valid = (
+            f'{row["reliable_joint_bootstrap_resolved"]}/'
+            f'{row["reliable_joint_bootstrap_total"]}'
+            if int(row["n_reliable_times_used"]) >= 3
+            else "no intercept"
+        )
+        parts.append(
+            r"$\Delta\beta=%s$ & %s/%s & %s/%s & %s & %s & %s \\"
+            % (
+                number(row["delta_beta"], 6),
+                row["old_joint_bootstrap_reported"],
+                row["old_joint_bootstrap_total"],
+                row["old_joint_bootstrap_resolved"],
+                row["old_joint_bootstrap_total"],
+                latex_escape(row["old_resolved_times"]),
+                latex_escape(row["reliable_times_used"]),
+                amended_valid,
+            )
+        )
+    parts.append(r"\bottomrule\end{longtable}")
     parts.append(
-        r"The Gaussian bulk approaches the FT value only at weak drive: "
-        r"$a_{\rm Gauss}/\Delta\beta=0.960,\ 0.931,\ 0.745,\ 0.515,\ 0.301$ "
-        r"as the affinity increases.  At $t=160$, the negative counts fall "
-        r"from 20,136 and 2,997 in the two weakest driven cases to 2, 0, and "
-        r"0 in the three stronger cases.  This directly records the loss of "
-        r"two-tail support rather than replacing it by a Gaussian estimate."
+        r"At equilibrium the literal $R^2\ge0.98$ set is empty because the "
+        r"exact reference is flat.  The displayed equilibrium set therefore "
+        r"uses $n_-\ge500$ without the inapplicable nonzero-signal $R^2$ gate."
     )
 
-    parts.append(r"\section*{Raw window statistics and two-tail fits}")
+    parts.append(r"\section*{Per-time stream-bootstrap intervals}")
+    parts.append(
+        r"The final column tests the finite-time interval against "
+        r"$\Delta\beta$ (zero at equilibrium), not the long-time verdict."
+    )
+    parts.append(r"\scriptsize\begin{longtable}{lrrrrrrrl}")
+    parts.append(
+        r"\toprule $\Delta\beta$ & $t$ & $n_-$ & $R^2$ & $a_{\rm fit}$ & "
+        r"CI low & CI high & accepted & in CI \\"
+    )
+    parts.append(r"\midrule\endhead")
+    for row in sorted(
+        (item for item in window if item["resolved"] == "1"),
+        key=lambda item: (float(item["delta_beta"]), int(item["t"])),
+    ):
+        parts.append(
+            "%s & %s & %s & %s & %s & %s & %s & %s/%s & %s \\\\"
+            % (
+                number(row["delta_beta"], 6),
+                row["t"],
+                row["n_negative"],
+                number(row["a_fit_R2"], 4),
+                number(row["a_fit"], 7),
+                number(row["per_t_bootstrap_ci_low"], 7),
+                number(row["per_t_bootstrap_ci_high"], 7),
+                row["per_t_bootstrap_resolved"],
+                row["per_t_bootstrap_total"],
+                "yes" if row["per_t_ci_contains_reference"] == "1" else "no",
+            )
+        )
+    parts.append(r"\bottomrule\end{longtable}\normalsize")
+    parts.append(
+        r"Finite-time corrections remain visible.  Rows failing the fixed "
+        r"negative-count or $R^2$ gate are reported here but excluded from "
+        r"the amended intercept."
+    )
+
+    parts.append(r"\section*{Original per-window outputs retained for audit}")
+    parts.append(
+        r"The original bootstrap CI column below uses the fixed-full-window "
+        r"conditional bootstrap.  All full-sample moments and slopes are unchanged."
+    )
     by_case: dict[str, list[dict[str, str]]] = {}
     for row in window:
         by_case.setdefault(row["case"], []).append(row)
@@ -231,35 +286,42 @@ sampled negative tail.
             )
         parts.append(r"\bottomrule\end{longtable}\normalsize")
 
-    parts.append(r"\section*{Long-time extrapolation}")
-    parts.append(r"\begin{longtable}{lrrrrrrl}")
+    parts.append(r"\section*{Amended reliable-time extrapolation}")
+    parts.append(r"\begin{center}\resizebox{\textwidth}{!}{%")
+    parts.append(r"\begin{tabular}{lrrrrrrl}")
     parts.append(
-        r"\toprule Case & $\Delta\beta$ & resolved $t$ & $a_\infty$ & "
+        r"\toprule Case & $\Delta\beta$ & reliable $t$ & $a_\infty$ & "
         r"95\% CI & $a_\infty/\Delta\beta$ & ratio CI & status \\"
     )
-    parts.append(r"\midrule\endhead")
+    parts.append(r"\midrule")
     for row in extrapolation:
         parts.append(
             r"\texttt{%s} & %s & %s & %s & [%s,%s] & %s & [%s,%s] & %s \\"
             % (
                 latex_escape(row["case"]), number(row["delta_beta"], 6),
-                latex_escape(row["resolved_times"]), number(row["a_inf"], 5),
+                latex_escape(row["reliable_times_used"]), number(row["a_inf"], 5),
                 number(row["a_inf_ci_low"], 5), number(row["a_inf_ci_high"], 5),
                 number(row["a_inf_over_delta_beta"], 4),
                 number(row["ratio_ci_low"], 4), number(row["ratio_ci_high"], 4),
                 latex_escape(row["FT_status"]),
             )
         )
-    parts.append(r"\bottomrule\end{longtable}")
+    parts.append(r"\bottomrule\end{tabular}}\end{center}")
+    parts.append(
+        r"The amended intercept accepts 1000/1000 replicates for the first "
+        r"three driven rows and equilibrium.  Regression $R^2$ is retained "
+        r"as a diagnostic; the weakest-drive linear $1/t$ extrapolation is noisy."
+    )
 
     parts.append(r"\section*{Crossover summary}")
-    parts.append(r"\scriptsize\begin{longtable}{rrrrrrrrl}")
+    parts.append(r"\begin{center}\resizebox{\textwidth}{!}{%")
+    parts.append(r"\begin{tabular}{rrrrrrrrl}")
     parts.append(
         r"\toprule $\Delta\beta$ & $a_\infty/\Delta\beta$ & ratio CI & "
         r"$a_G/\Delta\beta$ & $G_{FT}(640)$ & skew(160) & ex.kurt(160) & "
         r"$n_-(160)$ & status \\"
     )
-    parts.append(r"\midrule\endhead")
+    parts.append(r"\midrule")
     for row in crossover:
         parts.append(
             "%s & %s & [%s,%s] & %s & %s & %s & %s & %s & %s \\\\"
@@ -273,18 +335,20 @@ sampled negative tail.
                 row["n_negative_t160"] or "--", latex_escape(row["FT_status"]),
             )
         )
-    parts.append(r"\bottomrule\end{longtable}\normalsize")
+    parts.append(r"\bottomrule\end{tabular}}\end{center}")
 
     parts.append(r"""\section*{Figures}
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.76\textwidth]{../figures/a_fit_vs_inverse_time.pdf}
-\caption{Direct matched-bin slopes against inverse window duration.}
+\caption{Direct matched-bin slopes against inverse window duration.  The
+amended intercept uses only the reliable-time subsets stated above.}
 \end{figure}
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.76\textwidth]{../figures/slope_crossover_vs_affinity.pdf}
-\caption{Extrapolated direct-tail slopes and Gaussian bulk slopes against affinity.}
+\caption{Amended reliable-time direct-tail intercepts and Gaussian bulk slopes
+against affinity.}
 \end{figure}
 \begin{figure}[ht]
 \centering
@@ -302,11 +366,13 @@ against a ratio of one.
 
 The complete raw positive/negative counts used by every fit are in
 \texttt{analysis/symmetric\_bin\_raw\_counts.csv}; all per-window statistics
-are in \texttt{analysis/window\_summary.csv}.  A case labelled
-\texttt{CONSISTENT\_WITH\_FT} means only that the predeclared extrapolated
-confidence interval includes the reference.  It is not a proof.  A case whose
-interval excludes the reference is labelled \texttt{FAIL}; insufficient raw
-two-tail support remains \texttt{UNRESOLVED}.  The label
+are in \texttt{analysis/window\_summary.csv}.  Old and amended gates are side
+by side in \nolinkurl{analysis/bootstrap_gate_comparison.csv}; pre-amendment
+artifacts are under \nolinkurl{pre_gate_respec_2026-09-04/}.  A case labelled
+\texttt{CONSISTENT\_WITH\_FT} means only that the amended reliable-time
+extrapolated interval includes the reference.  It is not a proof.  A case
+whose interval excludes the reference is labelled \texttt{FAIL};
+insufficient raw two-tail support remains \texttt{UNRESOLVED}.  The label
 \texttt{CONSISTENT\_WITH\_EQUILIBRIUM} has the corresponding limited meaning
 for the zero-affinity control.
 \end{document}

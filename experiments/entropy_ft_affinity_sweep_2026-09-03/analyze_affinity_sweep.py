@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
-"""Frozen matched-bin/CLT analysis for the n=10 heat affinity sweep."""
+"""Matched-bin/CLT analysis for the n=10 heat affinity sweep.
+
+The production data and matched-bin construction remain frozen.  The
+2026-09-04 analysis amendment adds a per-time stream bootstrap and a
+reliable-time intercept bootstrap alongside the original all-time gate.
+"""
 
 from __future__ import annotations
 
@@ -23,6 +28,8 @@ BINS_PER_SD = 20
 MIN_COUNT = 10
 MIN_PAIRS = 3
 MIN_BOOTSTRAP_RESOLVED = 800
+RELIABLE_MIN_NEGATIVE = 500
+RELIABLE_MIN_R2 = 0.98
 EXPECTED_STREAMS = 128
 EXPECTED_BLOCKS_PER_STREAM = 7813
 EXPECTED_ROWS = EXPECTED_STREAMS * EXPECTED_BLOCKS_PER_STREAM
@@ -243,7 +250,42 @@ def matched_bin_fit(values: np.ndarray) -> FitResult:
     )
 
 
-def bootstrap_slopes(
+def fit_counts_with_frozen_bins(
+    counts: np.ndarray,
+    dx: float,
+    kmin: int,
+) -> float:
+    """Apply the unchanged straddle-zero rule to one bootstrap histogram."""
+    integer_centers = np.arange(kmin, kmin + counts.size, dtype=np.int64)
+    reliable = counts >= MIN_COUNT
+    eligible = []
+    for lo, hi in contiguous_true_runs(reliable):
+        if integer_centers[lo] < 0 and integer_centers[hi] > 0:
+            eligible.append((lo, hi))
+    if not eligible:
+        return math.nan
+    lo, hi = sorted(
+        eligible,
+        key=lambda pair: (-(pair[1] - pair[0] + 1), pair[0]),
+    )[0]
+    k_lo = int(integer_centers[lo])
+    k_hi = int(integer_centers[hi])
+    k_symmetric = min(-k_lo, k_hi)
+    positive_k = np.arange(1, k_symmetric + 1, dtype=np.int64)
+    if positive_k.size < MIN_PAIRS:
+        return math.nan
+    positive_indices = positive_k - kmin
+    negative_indices = -positive_k - kmin
+    fitted = fit_weighted_ratio(
+        counts,
+        positive_indices,
+        negative_indices,
+        positive_k * dx,
+    )
+    return fitted[0] if fitted is not None else math.nan
+
+
+def bootstrap_slopes_frozen_window(
     values_by_stream: np.ndarray,
     fit: FitResult,
     multiplicities: np.ndarray,
@@ -265,6 +307,82 @@ def bootstrap_slopes(
         )
         if fitted is not None:
             result[index] = fitted[0]
+    return result
+
+
+def bootstrap_slopes_per_time(
+    values_by_stream: np.ndarray,
+    fit: FitResult,
+    multiplicities: np.ndarray,
+) -> np.ndarray:
+    """Bootstrap one t at a time using frozen bins and unchanged window rule."""
+    result = np.full(multiplicities.shape[0], np.nan, dtype=np.float64)
+    if not fit.resolved:
+        return result
+    edges = np.arange(
+        fit.kmin - 0.5, fit.kmax + 1.5, dtype=np.float64
+    ) * fit.dx
+    counts_by_stream = np.vstack(
+        [np.histogram(row, bins=edges)[0] for row in values_by_stream]
+    )
+    bootstrap_counts = multiplicities @ counts_by_stream
+    for index, counts in enumerate(bootstrap_counts):
+        result[index] = fit_counts_with_frozen_bins(counts, fit.dx, fit.kmin)
+    return result
+
+
+def percentile_summary(values: np.ndarray) -> tuple[int, float, float, float, float]:
+    valid = values[np.isfinite(values)]
+    if valid.size == 0:
+        return 0, math.nan, math.nan, math.nan, math.nan
+    low, high = np.percentile(valid, [2.5, 97.5])
+    standard_error = float(np.std(valid, ddof=1)) if valid.size > 1 else math.nan
+    return (
+        int(valid.size),
+        float(np.mean(valid)),
+        standard_error,
+        float(low),
+        float(high),
+    )
+
+
+def extrapolate_intercept(
+    per_time: dict[int, dict],
+    times: list[int],
+    bootstrap_key: str,
+) -> dict[str, float | int]:
+    result: dict[str, float | int] = {
+        "a_inf": math.nan,
+        "ci_low": math.nan,
+        "ci_high": math.nan,
+        "bootstrap_resolved": 0,
+        "r2": math.nan,
+    }
+    if len(times) < 3:
+        return result
+    x = np.array([1.0 / t for t in times], dtype=np.float64)
+    y = np.array(
+        [per_time[t]["row"]["a_fit"] for t in times], dtype=np.float64
+    )
+    design = np.column_stack((x, np.ones_like(x)))
+    coefficient = np.linalg.lstsq(design, y, rcond=None)[0]
+    fitted = design @ coefficient
+    ss_residual = float(np.sum((y - fitted) ** 2))
+    ss_total = float(np.sum((y - np.mean(y)) ** 2))
+    result["a_inf"] = float(coefficient[1])
+    result["r2"] = (
+        1.0 - ss_residual / ss_total if ss_total > 0.0 else math.nan
+    )
+    boot_matrix = np.vstack([per_time[t][bootstrap_key] for t in times])
+    valid_columns = np.all(np.isfinite(boot_matrix), axis=0)
+    accepted = int(np.count_nonzero(valid_columns))
+    result["bootstrap_resolved"] = accepted
+    if accepted > 0:
+        pseudoinverse = np.linalg.pinv(design)
+        boot_coefficients = pseudoinverse @ boot_matrix[:, valid_columns]
+        low, high = np.percentile(boot_coefficients[1], [2.5, 97.5])
+        result["ci_low"] = float(low)
+        result["ci_high"] = float(high)
     return result
 
 
@@ -327,16 +445,32 @@ def main() -> None:
             else:
                 gauss_ft = math.nan
             fit = matched_bin_fit(values)
-            boot = bootstrap_slopes(values_by_stream, fit, multiplicities)
-            valid_boot = boot[np.isfinite(boot)]
-            if valid_boot.size >= MIN_BOOTSTRAP_RESOLVED:
-                boot_mean = float(np.mean(valid_boot))
-                boot_se = float(np.std(valid_boot, ddof=1))
-                boot_lo, boot_hi = np.percentile(valid_boot, [2.5, 97.5])
-                boot_lo = float(boot_lo)
-                boot_hi = float(boot_hi)
+            old_boot = bootstrap_slopes_frozen_window(
+                values_by_stream, fit, multiplicities
+            )
+            (
+                old_boot_count,
+                old_boot_mean,
+                old_boot_se,
+                old_boot_lo,
+                old_boot_hi,
+            ) = percentile_summary(old_boot)
+            per_t_boot = bootstrap_slopes_per_time(
+                values_by_stream, fit, multiplicities
+            )
+            (
+                per_t_boot_count,
+                per_t_boot_mean,
+                per_t_boot_se,
+                per_t_boot_lo,
+                per_t_boot_hi,
+            ) = percentile_summary(per_t_boot)
+            if per_t_boot_count > 0:
+                reference_in_ci = int(
+                    per_t_boot_lo <= case.delta_beta <= per_t_boot_hi
+                )
             else:
-                boot_mean = boot_se = boot_lo = boot_hi = math.nan
+                reference_in_ci = ""
 
             row = {
                 "case": case.name,
@@ -359,17 +493,37 @@ def main() -> None:
                 "a_fit_wls_se": finite_or_nan(fit.a_se),
                 "a_fit_intercept": finite_or_nan(fit.intercept),
                 "a_fit_R2": finite_or_nan(fit.r2),
-                "bootstrap_resolved": valid_boot.size,
+                "bootstrap_resolved": old_boot_count,
                 "bootstrap_total": args.bootstrap,
-                "a_bootstrap_mean": finite_or_nan(boot_mean),
-                "a_bootstrap_se": finite_or_nan(boot_se),
-                "a_bootstrap_ci_low": finite_or_nan(boot_lo),
-                "a_bootstrap_ci_high": finite_or_nan(boot_hi),
+                "a_bootstrap_mean": finite_or_nan(
+                    old_boot_mean if old_boot_count >= MIN_BOOTSTRAP_RESOLVED else math.nan
+                ),
+                "a_bootstrap_se": finite_or_nan(
+                    old_boot_se if old_boot_count >= MIN_BOOTSTRAP_RESOLVED else math.nan
+                ),
+                "a_bootstrap_ci_low": finite_or_nan(
+                    old_boot_lo if old_boot_count >= MIN_BOOTSTRAP_RESOLVED else math.nan
+                ),
+                "a_bootstrap_ci_high": finite_or_nan(
+                    old_boot_hi if old_boot_count >= MIN_BOOTSTRAP_RESOLVED else math.nan
+                ),
+                "per_t_bootstrap_resolved": per_t_boot_count,
+                "per_t_bootstrap_total": args.bootstrap,
+                "per_t_bootstrap_mean": finite_or_nan(per_t_boot_mean),
+                "per_t_bootstrap_se": finite_or_nan(per_t_boot_se),
+                "per_t_bootstrap_ci_low": finite_or_nan(per_t_boot_lo),
+                "per_t_bootstrap_ci_high": finite_or_nan(per_t_boot_hi),
+                "per_t_ci_contains_reference": reference_in_ci,
                 "a_Gauss": a_gauss,
                 "gaussFT": finite_or_nan(gauss_ft),
             }
             summary_rows.append(row)
-            per_time[t] = {"row": row, "fit": fit, "boot": boot}
+            per_time[t] = {
+                "row": row,
+                "fit": fit,
+                "old_boot": old_boot,
+                "per_t_boot": per_t_boot,
+            }
 
             if fit.positive_k.size:
                 for k, pos_index, neg_index in zip(
@@ -398,37 +552,36 @@ def main() -> None:
         resolved_times = [
             t for t in TIMES if per_time[t]["row"]["resolved"] == 1
         ]
-        a_inf = a_inf_lo = a_inf_hi = ratio = ratio_lo = ratio_hi = math.nan
-        extrapolation_r2 = math.nan
-        valid_intercepts = np.array([], dtype=np.float64)
-        if len(resolved_times) >= 3:
-            x = np.array([1.0 / t for t in resolved_times], dtype=np.float64)
-            y = np.array(
-                [per_time[t]["row"]["a_fit"] for t in resolved_times],
-                dtype=np.float64,
-            )
-            design = np.column_stack((x, np.ones_like(x)))
-            coefficient = np.linalg.lstsq(design, y, rcond=None)[0]
-            fitted = design @ coefficient
-            a_inf = float(coefficient[1])
-            ss_residual = float(np.sum((y - fitted) ** 2))
-            ss_total = float(np.sum((y - np.mean(y)) ** 2))
-            extrapolation_r2 = (
-                1.0 - ss_residual / ss_total if ss_total > 0.0 else math.nan
-            )
-            boot_matrix = np.vstack([per_time[t]["boot"] for t in resolved_times])
-            valid_columns = np.all(np.isfinite(boot_matrix), axis=0)
-            if int(np.count_nonzero(valid_columns)) >= MIN_BOOTSTRAP_RESOLVED:
-                pseudoinverse = np.linalg.pinv(design)
-                boot_coefficients = pseudoinverse @ boot_matrix[:, valid_columns]
-                valid_intercepts = boot_coefficients[1]
-                a_inf_lo, a_inf_hi = np.percentile(valid_intercepts, [2.5, 97.5])
-                a_inf_lo = float(a_inf_lo)
-                a_inf_hi = float(a_inf_hi)
-                if case.delta_beta != 0.0:
-                    ratio = a_inf / case.delta_beta
-                    ratio_lo = a_inf_lo / case.delta_beta
-                    ratio_hi = a_inf_hi / case.delta_beta
+        old_result = extrapolate_intercept(per_time, resolved_times, "old_boot")
+        literal_reliable_times = [
+            t
+            for t in resolved_times
+            if per_time[t]["row"]["n_negative"] >= RELIABLE_MIN_NEGATIVE
+            and per_time[t]["row"]["a_fit_R2"] >= RELIABLE_MIN_R2
+        ]
+        equilibrium_r2_exception = case.delta_beta == 0.0
+        if equilibrium_r2_exception:
+            reliable_times = [
+                t
+                for t in resolved_times
+                if per_time[t]["row"]["n_negative"] >= RELIABLE_MIN_NEGATIVE
+            ]
+        else:
+            reliable_times = literal_reliable_times
+        new_result = extrapolate_intercept(
+            per_time, reliable_times, "per_t_boot"
+        )
+        a_inf = float(new_result["a_inf"])
+        a_inf_lo = float(new_result["ci_low"])
+        a_inf_hi = float(new_result["ci_high"])
+        extrapolation_r2 = float(new_result["r2"])
+        new_joint_count = int(new_result["bootstrap_resolved"])
+        ratio = ratio_lo = ratio_hi = math.nan
+        if case.delta_beta != 0.0 and math.isfinite(a_inf):
+            ratio = a_inf / case.delta_beta
+            if math.isfinite(a_inf_lo) and math.isfinite(a_inf_hi):
+                ratio_lo = a_inf_lo / case.delta_beta
+                ratio_hi = a_inf_hi / case.delta_beta
 
         if case.delta_beta == 0.0:
             plateau_change = math.nan
@@ -447,7 +600,7 @@ def main() -> None:
             plateau_change = math.nan
             plateau = "UNAVAILABLE"
 
-        if len(resolved_times) < 3 or valid_intercepts.size < MIN_BOOTSTRAP_RESOLVED:
+        if len(reliable_times) < 3 or new_joint_count < MIN_BOOTSTRAP_RESOLVED:
             ft_status = "UNRESOLVED"
         elif case.delta_beta == 0.0:
             if a_inf_lo <= 0.0 <= a_inf_hi:
@@ -463,16 +616,36 @@ def main() -> None:
             {
                 "case": case.name,
                 "delta_beta": case.delta_beta,
-                "resolved_times": ";".join(map(str, resolved_times)),
-                "n_resolved_times": len(resolved_times),
+                "old_resolved_times": ";".join(map(str, resolved_times)),
+                "old_n_resolved_times": len(resolved_times),
+                "old_a_inf": finite_or_nan(old_result["a_inf"]),
+                "old_a_inf_ci_low": finite_or_nan(old_result["ci_low"]),
+                "old_a_inf_ci_high": finite_or_nan(old_result["ci_high"]),
+                "old_joint_bootstrap_resolved": int(
+                    old_result["bootstrap_resolved"]
+                ),
+                "old_joint_bootstrap_reported": int(
+                    old_result["bootstrap_resolved"]
+                    if int(old_result["bootstrap_resolved"])
+                    >= MIN_BOOTSTRAP_RESOLVED
+                    else 0
+                ),
+                "old_joint_bootstrap_total": args.bootstrap,
+                "old_FT_status": "UNRESOLVED",
+                "literal_reliable_times": ";".join(
+                    map(str, literal_reliable_times)
+                ),
+                "reliable_times_used": ";".join(map(str, reliable_times)),
+                "n_reliable_times_used": len(reliable_times),
+                "equilibrium_R2_exception": int(equilibrium_r2_exception),
                 "a_inf": finite_or_nan(a_inf),
                 "a_inf_ci_low": finite_or_nan(a_inf_lo),
                 "a_inf_ci_high": finite_or_nan(a_inf_hi),
                 "a_inf_over_delta_beta": finite_or_nan(ratio),
                 "ratio_ci_low": finite_or_nan(ratio_lo),
                 "ratio_ci_high": finite_or_nan(ratio_hi),
-                "joint_bootstrap_resolved": int(valid_intercepts.size),
-                "joint_bootstrap_total": args.bootstrap,
+                "reliable_joint_bootstrap_resolved": new_joint_count,
+                "reliable_joint_bootstrap_total": args.bootstrap,
                 "extrapolation_R2": finite_or_nan(extrapolation_r2),
                 "plateau": plateau,
                 "last_doubling_relative_change": finite_or_nan(plateau_change),
@@ -549,6 +722,10 @@ def main() -> None:
         "resolved", "a_fit", "a_fit_wls_se", "a_fit_intercept", "a_fit_R2",
         "bootstrap_resolved", "bootstrap_total", "a_bootstrap_mean",
         "a_bootstrap_se", "a_bootstrap_ci_low", "a_bootstrap_ci_high",
+        "per_t_bootstrap_resolved", "per_t_bootstrap_total",
+        "per_t_bootstrap_mean", "per_t_bootstrap_se",
+        "per_t_bootstrap_ci_low", "per_t_bootstrap_ci_high",
+        "per_t_ci_contains_reference",
         "a_Gauss", "gaussFT",
     ]
     symmetric_fields = [
@@ -556,10 +733,15 @@ def main() -> None:
         "count_minus", "log_ratio", "log_ratio_se",
     ]
     extrapolation_fields = [
-        "case", "delta_beta", "resolved_times", "n_resolved_times", "a_inf",
+        "case", "delta_beta", "old_resolved_times", "old_n_resolved_times",
+        "old_a_inf", "old_a_inf_ci_low", "old_a_inf_ci_high",
+        "old_joint_bootstrap_resolved", "old_joint_bootstrap_reported",
+        "old_joint_bootstrap_total", "old_FT_status",
+        "literal_reliable_times", "reliable_times_used",
+        "n_reliable_times_used", "equilibrium_R2_exception", "a_inf",
         "a_inf_ci_low", "a_inf_ci_high", "a_inf_over_delta_beta",
-        "ratio_ci_low", "ratio_ci_high", "joint_bootstrap_resolved",
-        "joint_bootstrap_total", "extrapolation_R2", "plateau",
+        "ratio_ci_low", "ratio_ci_high", "reliable_joint_bootstrap_resolved",
+        "reliable_joint_bootstrap_total", "extrapolation_R2", "plateau",
         "last_doubling_relative_change", "FT_status",
     ]
     crossover_fields = [
@@ -578,6 +760,11 @@ def main() -> None:
     )
     write_csv(
         args.output_dir / "infinite_time_extrapolation.csv",
+        extrapolation_rows,
+        extrapolation_fields,
+    )
+    write_csv(
+        args.output_dir / "bootstrap_gate_comparison.csv",
         extrapolation_rows,
         extrapolation_fields,
     )

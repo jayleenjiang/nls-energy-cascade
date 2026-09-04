@@ -7,7 +7,7 @@
 \begin{center}
 {\Large Heat-flux affinity sweep and Gaussian crossover}\par
 \vspace{0.3em}
-{\small Frozen $n=10$ Cartesian experiment with auditable bootstrap-gate amendment, 2026-09-04}
+{\small Frozen $n=10$ Cartesian experiment with equilibrium amendment, 2026-09-04}
 \end{center}
 
 \section*{Scope and frozen estimator}
@@ -60,51 +60,11 @@ dbeta_0p000000  /Users/jayleenjiang/NLS_affinity_runtime/experiments/entropy_ft_
 \texttt{dbeta\_0p000000} & 1000064 & \scriptsize\nolinkurl{7fd6827f12b42844de1142613af124702ca5535ba63f3c54ab71006b256aef4d} \\
 \bottomrule\end{longtable}
 \noindent Full absolute input paths are retained in \texttt{analysis/input\_hashes.csv}.
-\section*{Bootstrap-gate amendment and audit trail}
-The original all-resolved-time gate reported 0/1000 accepted intercepts for every case because sub-threshold raw acceptance was written as zero.  The amended analysis leaves the production data, $\Delta Q$, minimum count, minimum three pairs, and straddle-zero rule unchanged.  Each $t$ is bootstrapped independently on its frozen full-sample bin grid.  Driven-case intercepts use only full-sample fits with $n_-\ge500$ and $R^2\ge0.98$.
-\begin{longtable}{lrrrlr}
-\toprule Case & old reported & old raw valid & old $t$ set & amended $t$ set & amended valid \\
-\midrule\endhead
-$\Delta\beta=0.027972$ & 0/1000 & 19/1000 & 20;40;80;160;320;640 & 20;40;80;160;320 & 1000/1000 \\
-$\Delta\beta=0.057143$ & 0/1000 & 103/1000 & 20;40;80;160;320 & 20;40;80;160 & 1000/1000 \\
-$\Delta\beta=0.125000$ & 0/1000 & 38/1000 & 20;40;80 & 20;40;80 & 1000/1000 \\
-$\Delta\beta=0.222222$ & 0/1000 & 0/1000 & 20;40 & 20;40 & no intercept \\
-$\Delta\beta=0.400000$ & 0/1000 & 0/1000 & 20 & 20 & no intercept \\
-$\Delta\beta=0$ & 0/1000 & 29/1000 & 20;40;80;160;320;640 & 20;40;80;160;320;640 & 1000/1000 \\
-\bottomrule\end{longtable}
-At equilibrium the literal $R^2\ge0.98$ set is empty because the exact reference is flat.  The displayed equilibrium set therefore uses $n_-\ge500$ without the inapplicable nonzero-signal $R^2$ gate.
-\section*{Per-time stream-bootstrap intervals}
-The final column tests the finite-time interval against $\Delta\beta$ (zero at equilibrium), not the long-time verdict.
-\scriptsize\begin{longtable}{lrrrrrrrl}
-\toprule $\Delta\beta$ & $t$ & $n_-$ & $R^2$ & $a_{\rm fit}$ & CI low & CI high & accepted & in CI \\
-\midrule\endhead
-0 & 20 & 499786 & 0.0214 & 1.6301242e-04 & -9.3704041e-05 & 4.1582966e-04 & 1000/1000 & yes \\
-0 & 40 & 249282 & 1.0247e-04 & -1.1067792e-05 & -2.8364219e-04 & 2.4888232e-04 & 1000/1000 & yes \\
-0 & 80 & 124666 & 0.0010 & 3.8954372e-05 & -2.1867434e-04 & 2.7890693e-04 & 1000/1000 & yes \\
-0 & 160 & 62425 & 0.0551 & 2.2666363e-04 & -3.9092428e-05 & 4.9219777e-04 & 1000/1000 & yes \\
-0 & 320 & 31032 & 6.7076e-06 & -2.8240726e-06 & -2.6766063e-04 & 2.3607364e-04 & 1000/1000 & yes \\
-0 & 640 & 15544 & 0.0124 & 1.2068950e-04 & -1.2930627e-04 & 3.9963393e-04 & 1000/1000 & yes \\
-0.027972 & 20 & 366513 & 0.9978 & 0.0272050 & 0.0268544 & 0.0275232 & 1000/1000 & no \\
-0.027972 & 40 & 155995 & 0.9979 & 0.0275799 & 0.0271995 & 0.0279071 & 1000/1000 & no \\
-0.027972 & 80 & 60756 & 0.9979 & 0.0278058 & 0.0273532 & 0.0281759 & 1000/1000 & yes \\
-0.027972 & 160 & 20136 & 0.9951 & 0.0270617 & 0.0264710 & 0.0275384 & 1000/1000 & no \\
-0.027972 & 320 & 5109 & 0.9944 & 0.0277764 & 0.0267290 & 0.0285637 & 1000/1000 & yes \\
-0.027972 & 640 & 764 & 0.9704 & 0.0303564 & 0.0267504 & 0.0341906 & 1000/1000 & yes \\
-0.057143 & 20 & 248420 & 0.9993 & 0.0548656 & 0.0544527 & 0.0552266 & 1000/1000 & no \\
-0.057143 & 40 & 82050 & 0.9991 & 0.0560181 & 0.0554428 & 0.0564510 & 1000/1000 & no \\
-0.057143 & 80 & 20447 & 0.9986 & 0.0565142 & 0.0555230 & 0.0573674 & 1000/1000 & yes \\
-0.057143 & 160 & 2997 & 0.9928 & 0.0561435 & 0.0538457 & 0.0578973 & 1000/1000 & yes \\
-0.057143 & 320 & 150 & 0.6020 & 0.0597810 & -0.0326910 & 0.0923526 & 976/1000 & yes \\
-0.125000 & 20 & 88761 & 0.9995 & 0.1133690 & 0.1125397 & 0.1140623 & 1000/1000 & no \\
-0.125000 & 40 & 12744 & 0.9975 & 0.1196611 & 0.1175731 & 0.1213151 & 1000/1000 & no \\
-0.125000 & 80 & 661 & 0.9866 & 0.1246028 & 0.1116154 & 0.1342217 & 1000/1000 & yes \\
-0.222222 & 20 & 24798 & 0.9994 & 0.1761832 & 0.1740515 & 0.1778209 & 1000/1000 & no \\
-0.222222 & 40 & 985 & 0.9901 & 0.1914773 & 0.1772358 & 0.2077366 & 1000/1000 & no \\
-0.400000 & 20 & 7941 & 0.9985 & 0.2157315 & 0.2113351 & 0.2191951 & 1000/1000 & no \\
-\bottomrule\end{longtable}\normalsize
-Finite-time corrections remain visible.  Rows failing the fixed negative-count or $R^2$ gate are reported here but excluded from the amended intercept.
-\section*{Original per-window outputs retained for audit}
-The original bootstrap CI column below uses the fixed-full-window conditional bootstrap.  All full-sample moments and slopes are unchanged.
+\section*{Outcome under the frozen gates}
+The full-sample $1/t$ intercepts give $a_\infty/\Delta\beta=1.0175,\ 1.0153,\ 1.0220$ at $\Delta\beta=0.027972,\ 0.057143,\ 0.125$, respectively.  These point estimates lie close to the FT reference, but none of the cases reaches the predeclared threshold of 800 valid joint stream-bootstrap intercepts.  Consequently every nonzero-affinity FT verdict is \texttt{UNRESOLVED}; the point estimates alone are not promoted to a pass.
+For the equilibrium control, the full-sample intercept is $7.80\times10^{-5}$.  Its $t=20$ direct slope is $1.63\times10^{-4}$ with stream-bootstrap 95\% interval $[-8.98\times10^{-5},\,4.18\times10^{-4}]$, which contains zero.  The joint long-time interval again fails the 800-replicate gate, so the formal equilibrium extrapolation remains \texttt{UNRESOLVED}.
+The Gaussian bulk approaches the FT value only at weak drive: $a_{\rm Gauss}/\Delta\beta=0.960,\ 0.931,\ 0.745,\ 0.515,\ 0.301$ as the affinity increases.  At $t=160$, the negative counts fall from 20,136 and 2,997 in the two weakest driven cases to 2, 0, and 0 in the three stronger cases.  This directly records the loss of two-tail support rather than replacing it by a Gaussian estimate.
+\section*{Raw window statistics and two-tail fits}
 \subsection*{dbeta\_0p027972: $(T_L,T_R)=(6.5,5.5)$, $\Delta\beta=0.027972$}
 \scriptsize\begin{longtable}{rrrrrrrrrrr}
 \toprule $t$ & $N$ & mean & std & skew & ex.kurt & $n_-$ & $a_{fit}$ & boot.95\% CI & $R^2$ & $a_G$ / $G_{FT}$ \\
@@ -171,43 +131,38 @@ The original bootstrap CI column below uses the fixed-full-window conditional bo
 320 & 62464 & 0.4757 & 101.3193 & -0.0103 & 0.0283 & 31032 & -2.82407e-06 & [--,--] & 6.7076e-06 & 9.26856e-05 / -- \\
 640 & 31232 & 0.9515 & 143.2340 & 0.0089 & -0.0130 & 15544 & 1.20689e-04 & [--,--] & 0.0124 & 9.27544e-05 / -- \\
 \bottomrule\end{longtable}\normalsize
-\section*{Amended reliable-time extrapolation}
-\begin{center}\resizebox{\textwidth}{!}{%
-\begin{tabular}{lrrrrrrl}
-\toprule Case & $\Delta\beta$ & reliable $t$ & $a_\infty$ & 95\% CI & $a_\infty/\Delta\beta$ & ratio CI & status \\
-\midrule
-\texttt{dbeta\_0p027972} & 0.027972 & 20;40;80;160;320 & 0.02761 & [0.02700,0.02805] & 0.9871 & [0.9652,1.0027] & CONSISTENT\_WITH\_FT \\
-\texttt{dbeta\_0p057143} & 0.057143 & 20;40;80;160 & 0.05668 & [0.05503,0.05787] & 0.9919 & [0.9631,1.0127] & CONSISTENT\_WITH\_FT \\
-\texttt{dbeta\_0p125000} & 0.125000 & 20;40;80 & 0.12775 & [0.11451,0.13764] & 1.0220 & [0.9161,1.1011] & CONSISTENT\_WITH\_FT \\
+\section*{Long-time extrapolation}
+\begin{longtable}{lrrrrrrl}
+\toprule Case & $\Delta\beta$ & resolved $t$ & $a_\infty$ & 95\% CI & $a_\infty/\Delta\beta$ & ratio CI & status \\
+\midrule\endhead
+\texttt{dbeta\_0p027972} & 0.027972 & 20;40;80;160;320;640 & 0.02846 & [--,--] & -- & [--,--] & UNRESOLVED \\
+\texttt{dbeta\_0p057143} & 0.057143 & 20;40;80;160;320 & 0.05802 & [--,--] & -- & [--,--] & UNRESOLVED \\
+\texttt{dbeta\_0p125000} & 0.125000 & 20;40;80 & 0.12775 & [--,--] & -- & [--,--] & UNRESOLVED \\
 \texttt{dbeta\_0p222222} & 0.222222 & 20;40 & -- & [--,--] & -- & [--,--] & UNRESOLVED \\
 \texttt{dbeta\_0p400000} & 0.400000 & 20 & -- & [--,--] & -- & [--,--] & UNRESOLVED \\
-\texttt{dbeta\_0p000000} & 0 & 20;40;80;160;320;640 & 7.80343e-05 & [-1.17836e-04,2.58983e-04] & -- & [--,--] & CONSISTENT\_WITH\_EQUILIBRIUM \\
-\bottomrule\end{tabular}}\end{center}
-The amended intercept accepts 1000/1000 replicates for the first three driven rows and equilibrium.  Regression $R^2$ is retained as a diagnostic; the weakest-drive linear $1/t$ extrapolation is noisy.
+\texttt{dbeta\_0p000000} & 0 & 20;40;80;160;320;640 & 7.80343e-05 & [--,--] & -- & [--,--] & UNRESOLVED \\
+\bottomrule\end{longtable}
 \section*{Crossover summary}
-\begin{center}\resizebox{\textwidth}{!}{%
-\begin{tabular}{rrrrrrrrl}
+\scriptsize\begin{longtable}{rrrrrrrrl}
 \toprule $\Delta\beta$ & $a_\infty/\Delta\beta$ & ratio CI & $a_G/\Delta\beta$ & $G_{FT}(640)$ & skew(160) & ex.kurt(160) & $n_-(160)$ & status \\
-\midrule
-0 & -- & [--,--] & -- & -- & -3.2658e-04 & 0.0612 & 62425 & CONSISTENT\_WITH\_EQUILIBRIUM \\
-0.027972 & 0.9871 & [0.9652,1.0027] & 0.9599 & 1.0418 & 0.0512 & 0.0388 & 20136 & CONSISTENT\_WITH\_FT \\
-0.057143 & 0.9919 & [0.9631,1.0127] & 0.9310 & 1.0659 & 0.0951 & 0.0409 & 2997 & CONSISTENT\_WITH\_FT \\
-0.125000 & 1.0220 & [0.9161,1.1011] & 0.7450 & 1.3175 & 0.1806 & 0.0808 & 2 & CONSISTENT\_WITH\_FT \\
+\midrule\endhead
+0 & -- & [--,--] & -- & -- & -3.2658e-04 & 0.0612 & 62425 & UNRESOLVED \\
+0.027972 & -- & [--,--] & 0.9599 & 1.0418 & 0.0512 & 0.0388 & 20136 & UNRESOLVED \\
+0.057143 & -- & [--,--] & 0.9310 & 1.0659 & 0.0951 & 0.0409 & 2997 & UNRESOLVED \\
+0.125000 & -- & [--,--] & 0.7450 & 1.3175 & 0.1806 & 0.0808 & 2 & UNRESOLVED \\
 0.222222 & -- & [--,--] & 0.5147 & 1.9406 & 0.2323 & 0.0889 & 0 & UNRESOLVED \\
 0.400000 & -- & [--,--] & 0.3007 & 3.2298 & 0.2361 & 0.0836 & 0 & UNRESOLVED \\
-\bottomrule\end{tabular}}\end{center}
+\bottomrule\end{longtable}\normalsize
 \section*{Figures}
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.76\textwidth]{../figures/a_fit_vs_inverse_time.pdf}
-\caption{Direct matched-bin slopes against inverse window duration.  The
-amended intercept uses only the reliable-time subsets stated above.}
+\caption{Direct matched-bin slopes against inverse window duration.}
 \end{figure}
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.76\textwidth]{../figures/slope_crossover_vs_affinity.pdf}
-\caption{Amended reliable-time direct-tail intercepts and Gaussian bulk slopes
-against affinity.}
+\caption{Extrapolated direct-tail slopes and Gaussian bulk slopes against affinity.}
 \end{figure}
 \begin{figure}[ht]
 \centering
@@ -225,13 +180,11 @@ against a ratio of one.
 
 The complete raw positive/negative counts used by every fit are in
 \texttt{analysis/symmetric\_bin\_raw\_counts.csv}; all per-window statistics
-are in \texttt{analysis/window\_summary.csv}.  Old and amended gates are side
-by side in \nolinkurl{analysis/bootstrap_gate_comparison.csv}; pre-amendment
-artifacts are under \nolinkurl{pre_gate_respec_2026-09-04/}.  A case labelled
-\texttt{CONSISTENT\_WITH\_FT} means only that the amended reliable-time
-extrapolated interval includes the reference.  It is not a proof.  A case
-whose interval excludes the reference is labelled \texttt{FAIL};
-insufficient raw two-tail support remains \texttt{UNRESOLVED}.  The label
+are in \texttt{analysis/window\_summary.csv}.  A case labelled
+\texttt{CONSISTENT\_WITH\_FT} means only that the predeclared extrapolated
+confidence interval includes the reference.  It is not a proof.  A case whose
+interval excludes the reference is labelled \texttt{FAIL}; insufficient raw
+two-tail support remains \texttt{UNRESOLVED}.  The label
 \texttt{CONSISTENT\_WITH\_EQUILIBRIUM} has the corresponding limited meaning
 for the zero-affinity control.
 \end{document}

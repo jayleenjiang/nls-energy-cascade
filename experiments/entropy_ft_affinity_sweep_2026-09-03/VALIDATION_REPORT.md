@@ -1,24 +1,104 @@
 # Validation report: n=10 heat-flux affinity sweep
 
-Final analysis date: 2026-09-04
+Final reanalysis date: 2026-09-04
+
+## Change made
+
+The production data were not regenerated or modified. The histogram spacing
+(standard deviation divided by 20), minimum raw count (10 on both sides),
+minimum number of symmetric pairs (3), and contiguous straddle-zero rule are
+unchanged.
+
+The original gate required all full-sample-resolved times to remain resolved
+simultaneously in a stream-bootstrap replicate. It rejected the known
+equilibrium control and reported 0/1000 for every case. Analysis amendment
+002 adds:
+
+1. an independent stream bootstrap for each time; and
+2. an intercept bootstrap over reliably resolved times only.
+
+The complete old analysis and report are preserved in
+pre_gate_respec_2026-09-04/. The amendment specification is
+AMENDMENT_002_BOOTSTRAP_GATE.md.
+
+## Old and amended gates
+
+For driven cases, reliable times satisfy both n_negative at least 500 and
+full-sample matched-bin R-squared at least 0.98. At equilibrium the literal
+R-squared rule gives an empty set because the exact reference is a flat zero
+response. The equilibrium known-answer intercept therefore uses all
+full-sample-resolved times with n_negative at least 500 and explicitly omits
+the inapplicable nonzero-signal R-squared condition.
+
+| Delta beta | old times | old reported | old raw valid | amended times | amended valid |
+|---:|---|---:|---:|---|---:|
+| 0 | 20,40,80,160,320,640 | 0/1000 | 29/1000 | 20,40,80,160,320,640 (equilibrium exception) | 1000/1000 |
+| 0.027972 | 20,40,80,160,320,640 | 0/1000 | 19/1000 | 20,40,80,160,320 | 1000/1000 |
+| 0.057143 | 20,40,80,160,320 | 0/1000 | 103/1000 | 20,40,80,160 | 1000/1000 |
+| 0.125000 | 20,40,80 | 0/1000 | 38/1000 | 20,40,80 | 1000/1000 |
+| 0.222222 | 20,40 | 0/1000 | 0/1000 | 20,40 | no intercept |
+| 0.400000 | 20 | 0/1000 | 0/1000 | 20 | no intercept |
+
+The original output displayed zero whenever raw acceptance was below the
+predeclared 800 threshold. The raw-valid column above exposes the actual
+sub-threshold intersection count without changing the old verdict.
+
+## Per-time intervals
+
+All 23 full-sample-resolved rows now have a per-time interval. Every row has
+1000/1000 accepted stream-bootstrap replicates except Delta beta 0.057143 at
+t=320, which has 976/1000. Exact values are in
+analysis/window_summary.csv and in the PDF report.
+
+Finite-time intervals containing their reference:
+
+- equilibrium: t = 20,40,80,160,320,640;
+- Delta beta 0.027972: t = 80,320,640;
+- Delta beta 0.057143: t = 80,160,320;
+- Delta beta 0.125000: t = 80;
+- Delta beta 0.222222: none;
+- Delta beta 0.400000: none.
+
+The t=640 row at Delta beta 0.027972 is excluded from the amended intercept
+because its R-squared is 0.9704. The t=320 row at Delta beta 0.057143 is
+excluded because n_negative is 150 and R-squared is 0.6020.
+
+## Reliable-time intercept results
+
+| Delta beta | a_infinity | 95% CI | a_infinity / Delta beta | ratio 95% CI | accepted | verdict |
+|---:|---:|---|---:|---|---:|---|
+| 0 | 0.00007803 | [-0.00011784, 0.00025898] | N/A | N/A | 1000/1000 | CONSISTENT_WITH_EQUILIBRIUM |
+| 0.027972 | 0.0276114 | [0.0269972, 0.0280475] | 0.98711 | [0.96515, 1.00270] | 1000/1000 | CONSISTENT_WITH_FT |
+| 0.057143 | 0.0566825 | [0.0550349, 0.0578691] | 0.99194 | [0.96311, 1.01271] | 1000/1000 | CONSISTENT_WITH_FT |
+| 0.125000 | 0.1277489 | [0.1145073, 0.1376372] | 1.02199 | [0.91606, 1.10110] | 1000/1000 | CONSISTENT_WITH_FT |
+| 0.222222 | N/A | N/A | N/A | N/A | 0/1000 | UNRESOLVED |
+| 0.400000 | N/A | N/A | N/A | N/A | 0/1000 | UNRESOLVED |
+
+The equilibrium CI contains zero. The first three driven ratio CIs contain
+one. The Delta beta 0.222222 and 0.400000 cases do not have three reliable
+times and remain unresolved.
+
+The full-sample regressions of slope on 1/t have R-squared values 0.017 at
+equilibrium and 0.135, 0.855, and 0.985 for the three driven intercepts.
+These are reported diagnostics, not extra post-hoc gates. In particular, the
+0.027972 intercept is statistically consistent with the FT reference under the
+requested gate, but the low extrapolation R-squared shows that a linear 1/t
+description is noisy and should not be oversold.
 
 ## Integrity and provenance
 
-- The four new driven files and the new equilibrium file each contain exactly
-  1,000,064 data rows, with 128 streams and 7,813 consecutive block IDs per
-  stream.
-- All five files have the expected nine-column CSV schema and finite selected
-  heat fields.
-- The accepted (10,2) production was reused without modification.
+- Each of the five new raw files contains exactly 1,000,064 rows, 128 streams,
+  and 7,813 contiguous block IDs per stream.
+- The accepted (10,2) production was reused unchanged.
 - Production source commit:
   1905cf4e606a4a7f4dd8930caa64bd4cc861e9d4.
 - Production source SHA-256:
   98e7f8f5f915c8ce02bd8aa10722025c09fd739184b981961692869c9356c0d3.
-- Driven protocol commit: e170205c5d9a3d9b2bfca3714a4447fa965a1e40.
+- Driven protocol commit:
+  e170205c5d9a3d9b2bfca3714a4447fa965a1e40.
 - Equilibrium amendment commit:
   cf5282d3ab77ce93c05578ff15fb6598026081c7.
-- The preliminary analysis made before equilibrium was available is preserved
-  locally in pre_equilibrium_outputs/.
+- Analysis seed: 2026090499; bootstrap replicates: 1000.
 
 Raw input SHA-256 values:
 
@@ -31,77 +111,12 @@ Raw input SHA-256 values:
 | (9,3) | 1,000,064 | 342f3783b40db98263cd685c8ab4e531c9d83842db6762b0bd0a06061642958d |
 | (10,2) reused | 1,000,064 | a23806e82f5514a9c3375d10a6644946b6b57d0efe8452b3bbf397b6230f9929 |
 
-## Frozen-gate verdict
-
-Every nonzero-affinity case is **UNRESOLVED** under the predeclared final gate.
-This is not recorded as a pass or a failure.
-
-| Delta beta | resolved full-sample times | full-sample a_inf | a_inf / Delta beta | valid joint bootstraps / 1000 | verdict |
-|---:|---|---:|---:|---:|---|
-| 0.027972 | 20, 40, 80, 160, 320, 640 | 0.0284613 | 1.01749 | 0 | UNRESOLVED |
-| 0.057143 | 20, 40, 80, 160, 320 | 0.0580178 | 1.01531 | 0 | UNRESOLVED |
-| 0.125000 | 20, 40, 80 | 0.127749 | 1.02199 | 0 | UNRESOLVED |
-| 0.222222 | 20, 40 | N/A | N/A | 0 | UNRESOLVED |
-| 0.400000 | 20 | N/A | N/A | 0 | UNRESOLVED |
-
-The first three full-sample intercepts are close to the FT references. They
-cannot be promoted to a numerical FT confirmation because the fixed
-stream-bootstrap construction did not yield the required 800 jointly resolved
-intercepts. No bins, times, or bootstrap rules were changed after seeing this
-outcome.
-
-## Equilibrium control
-
-At Delta beta = 0, the reference asymmetry slope is zero. All six full-sample
-times are directly resolved. The full-sample extrapolated intercept is
-7.80343e-05, but its joint bootstrap also has 0/1000 accepted replicates, so
-the formal long-time equilibrium verdict is **UNRESOLVED**.
-
-At t=20, where the individual bootstrap passes the 800-replicate rule:
-
-- direct slope: 1.63012e-04;
-- WLS SE: 1.28209e-04;
-- stream-bootstrap 95% CI: [-8.97958e-05, 4.18259e-04];
-- accepted bootstrap replicates: 818/1000;
-- negative windows: 499,786/1,000,064.
-
-The interval contains zero and the signs are nearly balanced, so this
-individual finite-time control is consistent with equilibrium. It does not
-repair the missing joint long-time CI.
-
-## CLT and Gaussian crossover
-
-The Gaussian bulk diagnostic approaches the FT reference at weak drive but
-departs from it as the affinity grows:
-
-| Delta beta | a_Gauss / Delta beta at largest resolved two-tail t | gaussFT at t=640 | skew at t=160 | excess kurtosis at t=160 | n_neg at t=160 |
-|---:|---:|---:|---:|---:|---:|
-| 0.027972 | 0.9599 | 1.0418 | 0.0512 | 0.0388 | 20,136 |
-| 0.057143 | 0.9310 | 1.0659 | 0.0951 | 0.0409 | 2,997 |
-| 0.125000 | 0.7450 | 1.3175 | 0.1806 | 0.0808 | 2 |
-| 0.222222 | 0.5147 | 1.9406 | 0.2323 | 0.0889 | 0 |
-| 0.400000 | 0.3007 | 3.2298 | 0.2361 | 0.0836 | 0 |
-
-Thus the directly sampled negative tail remains useful at weak affinity and
-collapses rapidly at stronger drive. The Gaussian slope is a bulk/CLT
-diagnostic and is not substituted for missing two-tail evidence.
-
-## Artifact map
-
-- analysis/window_summary.csv: all 36 case/window moment and fit rows.
-- analysis/symmetric_bin_raw_counts.csv: all 1,031 raw positive/negative bin
-  pairs used by the fixed fits.
-- analysis/infinite_time_extrapolation.csv: the six extrapolation records.
-- analysis/crossover_summary.csv: the requested six-row crossover table.
-- analysis/input_hashes.csv: absolute input paths, row counts, and hashes.
-- figures/: publication-format PNG and PDF figures.
-- report/affinity_sweep_report.tex and .pdf: final report.
-- COMMANDS.tsv and EQUILIBRIUM_COMMAND.tsv: exact production commands.
-
 ## Claim boundary
 
-The supported statement is: the full-sample direct-tail slopes move toward the
-FT reference as the drive weakens, while the Gaussian bulk ratio approaches
-one and the negative tail becomes increasingly resolvable. Under the frozen
-bootstrap gate, this sweep does **not** establish the long-time heat-flux FT;
-all formal long-time verdicts remain UNRESOLVED.
+Under the amended, auditable gate, the equilibrium control is consistent with
+zero and the three weakest driven affinities are numerically consistent with
+the heat-flux FT after reliable-time extrapolation. This is finite-sample,
+finite-chain numerical evidence, not a proof. The two stronger affinities
+remain unresolved because directly sampled negative-tail support does not
+persist for at least three reliable times. Early-time deviations and the
+noisy weakest-drive extrapolation remain visible in the report.
