@@ -6,6 +6,13 @@ inputs/*_blocks.csv
 *.exitcode
 production_pids.tsv
 .run.lock/
+attempts/
+pre_equilibrium_outputs/
+equilibrium_queue.pid
+equilibrium.pid
+equilibrium_pipeline.exitcode
+.equilibrium.queue.lock/
+.equilibrium.run.lock/
 !figures/*.png
 !figures/*.pdf
 !report/affinity_sweep_report.pdf
