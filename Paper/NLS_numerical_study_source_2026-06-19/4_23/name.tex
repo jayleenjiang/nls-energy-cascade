@@ -1,0 +1,143 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+
+\title{4/23: Eigenfunction Results (Updated)}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Setup}
+
+We compute the first nontrivial eigenfunction $Q_1(x)$ of the generator $L$ for the 3-mode stochastic NLS energy cascade:
+\[
+L Q_1 = \lambda_1 Q_1.
+\]
+Transition kernel:
+\[
+P(y, t \mid x, 0) \sim \sum_i e^{-\lambda_i t}\, Q_i(x)\, P_i(y),
+\]
+so for any observable $f$,
+\[
+\mathbb{E}_x[f(X_t)] = \sum_i \langle f, P_i \rangle\, Q_i(x)\, e^{-\lambda_i t}.
+\]
+At large $t$, the dominant nontrivial mode gives
+\[
+\mathbb{E}_x[f(X_t)] - \langle f \rangle_{\mathrm{ss}} \approx Q_1(x)\, e^{\lambda_1 t},
+\]
+where $\lambda_1 = \lambda_R + i\lambda_I$ with $\lambda_R < 0$.
+
+\section{Observables}
+
+Two observables tested:
+\[
+f_A(x) = \max(0,\, 3 - I_1) + \max(0,\, 3 - I_2) + \max(0,\, 3 - I_3)
+\]
+\[
+f_B(x) = \cos\theta_1 = \cos\bigl(2(\phi_1 - \phi_2)\bigr)
+\]
+
+\subsection{Single trajectory diagnostics}
+
+Single trajectories (500 time units, $I_1\!=\!I_2\!=\!I_3\!=\!2$, $\phi_1\!=\!1$, $\phi_2\!=\!0$, $\phi_3\!=\!-0.5$) show that $\cos\theta_1$ exhibits rapid oscillations driven by Hamiltonian dynamics, while the bump function tracks slow action fluctuations. Both observables were used in the backward solver to compare eigenvalue estimates.
+
+\section{MC Parameters}
+
+\begin{center}
+\begin{tabular}{lc}
+\toprule
+Parameter & Value \\
+\midrule
+$\gamma$ & 0.1 \\
+$T_1 = T_3$ & 5.0 (equilibrium) \\
+$I_{\max}$ & 10.0 \\
+$\mathrm{d}t$ & 0.001 \\
+Recording gap & 100 steps (= 0.1 time units) \\
+$T_{\mathrm{steps}}$ & 50 (total time = 5.0) \\
+$N_{\mathrm{init}}$ & 4,096 (5D LHS) \\
+$N_{\mathrm{sample}}$ & 10,000 (for $\cos\theta_1$); 1,000 (for bump) \\
+EM steps per trajectory & 5,000 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Results}
+
+\subsection{Eigenvalue estimates}
+
+\begin{center}
+\begin{tabular}{lcc}
+\toprule
+ & Observable A (bump) & Observable B ($\cos\theta_1$) \\
+\midrule
+$\lambda_R$ & $-1.35 \pm 0.67$ & $-1.57 \pm 0.89$ \\
+$\lambda_I$ & $\approx 0$ & $\approx 0$ \\
+$\tau = 1/|\lambda_R|$ & 0.74 & 0.64 \\
+Good fits & 3,743 / 4,096 (91\%) & 1,026 / 4,096 (25\%) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Both observables give consistent $\lambda_R \approx -1.4$ and $\lambda_I \approx 0$. The first nontrivial eigenvalue is real: \textbf{convergence to steady state is overdamped (no oscillation) at $\gamma = 0.1$.}
+
+\subsection{Verification: autocorrelation and power spectrum}
+
+To rigorously confirm the absence of oscillation, we computed the autocorrelation and power spectrum of single long trajectories (1,000,000 steps) for $I_1$, $I_2$, and $\cos\theta_1$:
+
+\begin{itemize}
+\item All three autocorrelation functions decay monotonically to zero with no oscillatory recurrence.
+\item All three power spectra show no peaks above the noise floor (flat spectrum beyond $f=0$).
+\end{itemize}
+
+This confirms that at $\gamma = 0.1$, the first eigenvalue is real.
+
+\subsection{Effect of $\gamma$: overdamped to underdamped transition}
+
+We repeated the autocorrelation analysis at smaller $\gamma$ values to test whether oscillatory eigenmodes emerge closer to the Hamiltonian limit:
+
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+$\gamma$ & Autocorrelation & Oscillation & Regime \\
+\midrule
+0.1 & monotone decay & none & overdamped \\
+0.01 & slow decay, weak bumps & marginal & near-critical \\
+0.001 & $I_1$ crosses zero, $I_2$ has long correlation & yes & underdamped \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+At $\gamma = 0.001$:
+\begin{itemize}
+\item $I_1$ autocorrelation crosses zero at lag $\approx 5$ and rebounds --- clear oscillatory behavior.
+\item $I_2$ power spectrum shows a peak near frequency $\approx 0.05$ (period $\approx 20$ time units).
+\item $I_2$ autocorrelation remains above 0.2 at lag = 50, indicating very slow mixing.
+\end{itemize}
+
+\section{Physical Interpretation}
+
+\begin{itemize}
+\item \textbf{Overdamped at $\gamma = 0.1$}: The dissipation timescale $1/\gamma = 10$ is long, but $\gamma$ is large enough to suppress coherent Hamiltonian oscillations. The system converges to steady state via pure exponential decay with $\tau \approx 0.7$ time units.
+
+\item \textbf{Hamiltonian oscillations exist but are incoherent}: Single trajectories show rapid angle oscillations, but noise randomizes the phase across different trajectories. MC averaging destroys the oscillatory signal --- the oscillations are present microscopically but absent from the eigenfunction spectrum at $\gamma = 0.1$.
+
+\item \textbf{Overdamped--underdamped crossover at $\gamma \sim 0.01$}: The transition from real to complex eigenvalues occurs near $\gamma \approx 0.01$. This quantitatively answers ``how small is $\gamma \ll 1$'': the perturbative regime where Hamiltonian structure is visible in the spectral gap requires $\gamma \lesssim 0.01$.
+
+\item \textbf{Fast convergence}: $\tau \approx 0.7 \ll 1/\gamma = 10$ at $\gamma = 0.1$. Hamiltonian dynamics accelerate convergence by efficiently redistributing energy among modes, even though they do not produce coherent oscillations at this $\gamma$.
+
+\item \textbf{Tradeoff}: Smaller $\gamma$ reveals richer spectral structure (complex eigenvalues) but makes MC sampling much harder (slower mixing, longer burn-in). $\gamma = 0.1$ is the practical compromise used in the theoretical analysis.
+\end{itemize}
+
+\section{Questions}
+
+\begin{enumerate}
+\item At $\gamma = 0.1$ the eigenvalue is real ($\lambda_R \approx -1.4$). Should we proceed with NN fitting of $Q_1(x)$ using this value?
+\item Is the overdamped--underdamped crossover at $\gamma \sim 0.01$ worth investigating further (e.g., running the full backward solver at $\gamma = 0.01$)?
+\item Should we also run the non-equilibrium case ($T_1 = 2, T_3 = 8$) and compare spectral gaps?
+\end{enumerate}
+
+\end{document}

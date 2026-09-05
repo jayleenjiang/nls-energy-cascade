@@ -1,0 +1,183 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,booktabs,graphicx,microtype}
+\usepackage[hidelinks]{hyperref}
+\graphicspath{{figures/}}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.55em}
+
+\title{Finite-time Fluctuations and Long-chain\\Gallavotti--Cohen Diagnostics in the NLS Chain}
+\author{Numerical validation report}
+\date{30 August 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We report the completed hierarchy of fluctuation tests for the
+boundary-driven nonlinear Schr\"odinger chain at
+$(T_L,T_R,\gamma)=(10,2,0.1)$.  Direct sampling at
+$n=10,20,30,40$ resolves finite-time large-deviation scaling but loses the
+negative entropy tail before the asymptotic symmetry is reached.  At $n=2$,
+two independent finite-time total-entropy constructions pass detailed and
+integral fluctuation-relation audits.  For the long-chain question, controlled
+cloning estimates satisfy every prospectively specified support,
+observation-time, population, timestep, and selection-interval gate.  The
+resolved SCGF pairs are numerically consistent with
+$\psi_n(k)=\psi_n(1-k)$ at all four tested finite lengths.  This is a scoped
+numerical verification, not an all-tilt proof or an infinite-chain result.
+\end{abstract}
+
+\section{Questions and observables}
+
+The mentor's direct-sampling question concerns both tails of a finite-time
+current, their threshold dependence, and their evolution with the averaging
+time.  The thermodynamic fluctuation theorem concerns entropy production.
+These are related but not identical questions.  In particular, the action
+current is not substituted for entropy production: the joint simulations
+show that action and bath heat are not tightly coupled at long chain lengths.
+
+The projection-free Cartesian dynamics use $c_j=x_j+i y_j$.  Bath heat is
+accumulated from the bath increment, with heat positive into the system, and
+the medium entropy is
+\begin{equation}
+ \Sigma^{\rm m}=-\frac{Q_L}{T_L}-\frac{Q_R}{T_R}.
+\end{equation}
+For the stationary long-time test we use the right-bath entropy-current gauge
+$\Sigma_R=-(T_R^{-1}-T_L^{-1})Q_R=-0.4Q_R$.  Its SCGF should obey the
+Gallavotti--Cohen relation
+\begin{equation}
+ \psi_n(k)=\psi_n(1-k).
+ \label{eq:gc}
+\end{equation}
+
+\section{Direct two-tail experiment}
+
+For each $n=10,20,30,40$, the production data contain 1,000,064
+non-overlapping base blocks of length $20$, aggregated without overlap to
+$t=20,40,\ldots,200$.  Every block stores both bath heats, the energy change,
+medium entropy, action current, stream and block identifiers, and the
+first-law residual.  An independent recomputation performed 75,617 checks
+with zero errors.
+
+At fixed threshold, every raw-count-qualified action-current tail fit obeys
+$\log P_t\simeq b-tI(A)$ with $R^2\geq0.98$.  Thus the data give clear
+finite-time large-deviation evidence.  The centre becomes more
+Gaussian-looking with time, but the $t=20$ far tails are heavier than the
+Gaussian fixed by the full-sample variance.  Direct medium-entropy and heat
+symmetry slopes move toward, but do not reach, their asymptotic reference
+before negative-tail counts disappear.  The direct conclusion is therefore
+``not verified at accessible times,'' not a violation.
+
+\begin{figure}[ht]
+ \centering
+ \includegraphics[width=0.96\textwidth]{direct_time_dependence_n30.png}
+ \caption{Representative $n=30$ finite-time diagnostics from the mentor's
+ direct-sampling experiment.  Probability-ratio fits are restricted to
+ bins with resolved counts; smoothed or Gaussian-extrapolated tails are not
+ used to claim a fluctuation theorem.}
+ \label{fig:direct}
+\end{figure}
+
+\section{Finite-time total entropy for the two-site chain}
+
+The finite-time total entropy adds the stationary endpoint contribution,
+$\Delta s_{\rm tot}=\Sigma^{\rm m}+\Delta s_{\rm sys}$.  The accepted
+parametric NESS endpoint analysis uses 1,048,576 blocks per condition.  Its
+detailed-FT slope is $0.994496\pm0.00738$; the driven integral-FT estimate is
+$\log\langle e^{-\Delta s_{\rm tot}}\rangle=0.002175$ with 95\% interval
+$[-0.000744,0.005251]$.  Equilibrium density validation, model sensitivity,
+stationarity, support, and numerical-integrity gates all pass.
+
+An independent discrete path-ratio calculation gives a Crooks slope
+$0.993352\pm0.00243$.  Its forward and reverse integral relations pass, and
+the kernel entropy approaches the physical heat entropy at first order in the
+timestep.  The agreement of the endpoint and path-ratio constructions is a
+strong finite-time small-chain control; it does not establish the long-chain
+limit.
+
+\begin{figure}[ht]
+ \centering
+ \includegraphics[width=0.76\textwidth]{n2_total_entropy_ft.png}
+ \caption{Accepted parametric $n=2$ NESS total-entropy symmetry analysis.}
+ \label{fig:n2}
+\end{figure}
+
+\section{Controlled long-chain SCGF test}
+
+The rare-event study fixes four independent seeds for each tilt member and
+requires support, full-window and late-half symmetry, observation-time
+convergence, and the relevant population, timestep, and selection-interval
+controls.  Phase II supplied the missing long-chain controls without changing
+the frozen tilts or tolerances.  All 56 Phase-II summaries, timeseries, and
+timing logs are complete and finite, with zero midpoint failures.
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{rrrrrrc}
+\toprule
+$n$ & $(k,1-k)$ & $N_c$ & $t$ & $D_n(k)$ & 95\% CI & controls \\
+\midrule
+10 & $(0.3,0.7)$ & 2048 & 60  & $-0.000075$ & $[-0.009953,\;0.009802]$ & pass \\
+20 & $(0.4,0.6)$ & 1024 & 60  & $-0.003389$ & $[-0.012081,\;0.005302]$ & pass \\
+30 & $(0.4,0.6)$ & 4096 & 60  & $-0.002336$ & $[-0.007251,\;0.002578]$ & pass \\
+40 & $(0.4,0.6)$ & 1024 & 120 & $+0.004498$ & $[-0.002343,\;0.011340]$ & pass \\
+\bottomrule
+\end{tabular}
+\caption{Final paired residuals $D_n(k)=\psi_n(k)-\psi_n(1-k)$.  ``Pass''
+means that the complete predeclared support, time, population, timestep, and
+selection suite applicable to that row passes.}
+\label{tab:gc}
+\end{table}
+
+At $n=30$, increasing the population from $N_c=2048$ to $4096$ passes both
+individual-member gates and the paired-residual gate.  At the accepted
+$N_c=4096$ baseline, timestep halving changes the paired residual by
+$-0.001902$, while reducing the selection interval changes it by $-0.003157$;
+both changes pass the absolute and two-standard-error criteria.  All four
+individual control comparisons also pass.
+
+\begin{figure}[ht]
+ \centering
+ \includegraphics[width=0.78\textwidth]{n30_gc_convergence.png}
+ \caption{The $n=30$ paired SCGF residual across the tested observation
+ horizons and numerical configurations.  The final population, timestep, and
+ selection controls all retain support and pass the frozen criteria.}
+ \label{fig:n30}
+\end{figure}
+
+The normalized residual magnitudes are approximately 0.04\%, 4.0\%, 4.9\%,
+and 12.9\% for $n=10,20,30,40$.  The $n=40$ absolute gate passes, but the
+relative uncertainty is larger because the SCGF itself is small.  This is an
+important effect-size caveat rather than evidence of a resolved violation.
+
+\section{Interpretation and allowed claim}
+
+Direct sampling and cloning answer complementary parts of the same problem.
+The former establishes finite-time large-deviation structure but becomes
+rare-tail limited.  The latter resolves a preselected asymptotic SCGF pair and
+passes the required numerical controls.  Together they support the statement:
+
+\begin{quote}
+For the boundary-driven projection-free Cartesian NLS chain at
+$(T_L,T_R,\gamma)=(10,2,0.1)$, controlled rare-event estimates are consistent
+with Gallavotti--Cohen SCGF symmetry at all four tested finite chain lengths
+over the resolved complementary tilt pair.
+\end{quote}
+
+The result does not prove exact equality, cover every $k\in[0,1]$, establish
+uniform accuracy as $n\to\infty$, or identify action current with entropy
+production.  A stronger numerical claim would require a separately frozen
+grid of additional tilts; an infinite-chain claim would additionally require
+a dedicated finite-size study of the symmetry residual.
+
+\section*{Reproducibility}
+
+The prospective protocol, run matrix, raw Phase-II outputs, generated
+analysis tables, analysis-grid erratum, material passport, and final verdict
+are archived beside this report.  The simulator and analysis-engine hashes
+are recorded in the validation report.  The source self-tests passed before
+production, and no failed cell was followed by data-dependent retuning.
+
+\end{document}

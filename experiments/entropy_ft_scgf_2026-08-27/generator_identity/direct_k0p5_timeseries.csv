@@ -1,0 +1,2 @@
+event,time,log_mean_weight,cumulative_log_normalizer,scgf,population_mean_entropy_rate,tilted_mean_entropy_rate,population_mean_action_current,population_mean_potential_rate,weight_ess,max_weight_fraction,unique_parents,parent_count_ess,unique_roots,root_count_ess
+1,0.10000000000000001,-0.10105176328556986,-0.10105176328556986,-1.0105176328556986,5.0718796625565465,-1.5888164107095719,0.79170292160113043,0,20653.043322540987,0.00087924024288103006,25609,18549.889848662842,25609,18549.889848662842

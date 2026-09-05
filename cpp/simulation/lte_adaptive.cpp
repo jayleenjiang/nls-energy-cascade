@@ -1,7 +1,4 @@
 // lte_histogram_simd.cpp
-// Build (Linux):
-//   g++ -O3 -march=native -ffast-math -fopenmp lte_histogram_simd.cpp -o lte_histogram_simd
-// Build (mac, Apple Silicon, clang):
 //   clang++ -O3 -mcpu=native -ffast-math -std=c++17 \
 //       -Xpreprocessor -fopenmp -I/opt/homebrew/opt/libomp/include \
 //       -L/opt/homebrew/opt/libomp/lib -lomp \
@@ -19,27 +16,24 @@
 #include <sstream>
 #include <chrono>
 #include <string>
+#include <algorithm>
 #include <omp.h>
 
 // ===================== simulation parameters =====================
 static const double gamma_val = 0.1;
-// T_burnin scales with relaxation time ~ n^2 (set in main); the measuring
-// window T_final - T_burnin is held fixed so all n have equal sample counts.
-static double T_final    = 200000.0;   // set in main
-static double T_burnin   = 2000.0;     // set in main: 2000 * (n/25)^2
-static const double T_measure  = 198000.0;  // fixed measuring window
-static const double dt         = 0.001;  // dt_max: cap on the adaptive step
-static const double dt_min     = 1e-7;   // adaptive floor (safety)
-static const double eta_I      = 0.02;   // max relative change in I per step
-static const double eta_phi    = 0.05;   // max phase advance per step (rad)
-static const double record_dt  = 0.1;    // fixed-time sampling interval (= old 100*dt_max)
-static const int    dump_every_steps = 100;  // keep samples ~decorrelated
-static const int    N_GROUPS   = 32;          // groups of W chains  (32*16=512 chains)
+static double T_final    = 200000.0;   
+static double T_burnin   = 2000.0;     
+static const double T_measure  = 198000.0;  
+static const double dt         = 0.001;  // fixed step
+static const double I_min      = 1e-5;   // lower action clamp
+static const double eta_I      = 0.02;   // max relative deterministic I step
+static const double eta_phi    = 0.05;   // max deterministic phase step (rad)
+static const double record_dt  = 0.1;    // fixed-time sampling interval 
+static const int    dump_every_steps = 100; 
+static const int    N_GROUPS   = 32;          
 static const int    N_thread   = 8;
 
 // ===================== SIMD width ================================
-// W=16 floats -> AVX-512 single op (or 2x AVX2). This is the "16 entries
-// in 1 cycle" the question asks about; the inner lane loop vectorizes.
 static const int    W = 16;
 
 // ===================== 3D histogram params =======================
@@ -71,6 +65,9 @@ static inline float fast_sin(float x) {            // Bhaskara-style, x in [-pi,
 }
 static inline float fast_cos(float x) {
     return fast_sin(wrap_pi(x + 1.5707963268f));
+}
+static inline float clip_step(float proposed, float limit) {
+    return proposed / std::max(1.0f, std::fabs(proposed) / limit);
 }
 // fast natural log (fastapprox-style), x>0; ~1e-3 accuracy is plenty for noise
 static inline float fast_log(float x) {
@@ -177,8 +174,8 @@ static void run_group(int n, double T1d, double Tnd,
 {
     const float  g    = (float)gamma_val;
     const float  T1   = (float)T1d, Tn = (float)Tnd;
-    const float  dt_cap = (float)dt;
-    float        dtf = dt_cap, sdt = std::sqrt(dt_cap);  // recomputed each step (adaptive)
+    const float  dtf  = (float)dt, sdt = std::sqrt((float)dt);
+    const float  I_floor = (float)I_min;
     const int    NS   = (int)sites.size();
 
     // state: I[j*W+l], phi[j*W+l]   (allocated ONCE, not per step)
@@ -250,26 +247,6 @@ static void run_group(int n, double T1d, double Tnd,
             }
         }
 
-        // --- adaptive shared step: dt = min over all (mode,lane) of accuracy limits ---
-        // (predictive: dt fixed from current state/drift BEFORE noise is drawn, so this
-        //  is a valid adaptive Euler-Maruyama; the explosive part is the deterministic
-        //  interior drift, the noise lives only on the two boundary modes.)
-        {
-            float dtA = dt_cap;
-            for (int j = 0; j < n; ++j) {
-                for (int l = 0; l < W; ++l) {
-                    float Ij  = I[j*W+l];
-                    float Ifl = Ij > 1e-6f ? Ij : 1e-6f;
-                    float adI = std::fabs(dI[j*W+l]);
-                    if (adI > 0.0f) { float lim = (float)eta_I * Ifl / adI; if (lim < dtA) dtA = lim; }
-                    float adp = std::fabs(dph[j*W+l]);
-                    if (adp > 0.0f) { float lim = (float)eta_phi / adp;     if (lim < dtA) dtA = lim; }
-                }
-            }
-            if (dtA < (float)dt_min) dtA = (float)dt_min;
-            dtf = dtA; sdt = std::sqrt(dtA);
-        }
-
         // --- boundary noise (sqrt(2) factor; sigma from CURRENT I) ---
         fill_gauss(nI0, rng); fill_gauss(nIn, rng);
         fill_gauss(nph0, rng); fill_gauss(nphn, rng);
@@ -284,9 +261,12 @@ static void run_group(int n, double T1d, double Tnd,
             const int jj = j*W;
             #pragma omp simd
             for (int l = 0; l < W; ++l) {
-                float Inew = I[jj+l] + dI[jj+l] * dtf;
-                phi[jj+l]  = wrap_pi(phi[jj+l] + dph[jj+l] * dtf);
-                I[jj+l]    = Inew < 1e-10f ? 1e-10f : Inew;
+                float Ij = std::max(I[jj+l], I_floor);
+                float dI_step  = clip_step(dI[jj+l] * dtf, (float)eta_I * Ij);
+                float dph_step = clip_step(dph[jj+l] * dtf, (float)eta_phi);
+                float Inew = I[jj+l] + dI_step;
+                phi[jj+l]  = wrap_pi(phi[jj+l] + dph_step);
+                I[jj+l]    = std::max(Inew, I_floor);
             }
         }
         // add boundary noise (sigma uses start-of-step I -> exact Euler-Maruyama)
@@ -294,14 +274,14 @@ static void run_group(int n, double T1d, double Tnd,
             const int j0 = 0, jn = (n-1)*W;
             #pragma omp simd
             for (int l = 0; l < W; ++l) {
-                float I0 = I0s[l] > 1e-10f ? I0s[l] : 1e-10f;
-                float In = Ins[l] > 1e-10f ? Ins[l] : 1e-10f;
+                float I0 = std::max(I0s[l], I_floor);
+                float In = std::max(Ins[l], I_floor);
                 float a0 = 2.0f * std::sqrt(2.0f * g * T1 * I0) * sdt * nI0[l];
                 float an = 2.0f * std::sqrt(2.0f * g * Tn * In) * sdt * nIn[l];
                 float p0 =        std::sqrt(2.0f * g * T1 / I0) * sdt * nph0[l];
                 float pn =        std::sqrt(2.0f * g * Tn / In) * sdt * nphn[l];
-                float v0 = I[j0+l] + a0; I[j0+l] = v0 < 1e-10f ? 1e-10f : v0;
-                float vn = I[jn+l] + an; I[jn+l] = vn < 1e-10f ? 1e-10f : vn;
+                float v0 = I[j0+l] + a0; I[j0+l] = std::max(v0, I_floor);
+                float vn = I[jn+l] + an; I[jn+l] = std::max(vn, I_floor);
                 phi[j0+l] = wrap_pi(phi[j0+l] + p0);
                 phi[jn+l] = wrap_pi(phi[jn+l] + pn);
             }
@@ -320,7 +300,7 @@ static void run_group(int n, double T1d, double Tnd,
             next_mon_time += T_burnin / 10.0;
         }
 
-        // record at fixed TIME checkpoints (dt_cap < record_dt => <=1 per step),
+        // record at fixed TIME checkpoints (dt < record_dt => <=1 per step),
         // so samples stay uniform-in-time and the count-based histograms/profile
         // and the count>50 fit are unchanged.
         if (measuring && t >= next_record_time) {
@@ -343,9 +323,8 @@ static void run_group(int n, double T1d, double Tnd,
         }
     }
     #pragma omp critical
-    std::cerr << "[adaptive] group done: steps=" << step
-              << "  mean dt=" << (t / std::max(1L, step))
-              << "  (vs cap " << dt_cap << ")\n";
+    std::cerr << "[clip] group done: steps=" << step
+              << "  dt=" << dtf << "\n";
 }
 
 // ============================================================

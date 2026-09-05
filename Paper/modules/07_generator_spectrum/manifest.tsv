@@ -1,0 +1,17 @@
+role	path	status	note
+code	cpp/backward/NLS_backward.cpp	PRIMARY	Backward Monte Carlo for NLS generator
+code	cpp/backward/Kuramoto_SIMD_backward.cpp	VALIDATION	Analogue-method check
+code	NN notebooks/FKE_eigen.ipynb	PRIMARY	Slow-mode neural surrogate
+code	python/data_gen/generate_LHS_backward.py	PRIMARY	Initial-point generation
+code	python/data_gen/get_train.py	PRIMARY	Training-data preparation
+code	Paper/revision/scripts/analyze_eigen_fit_windows.py	PRIMARY	Fit-window sensitivity audit
+raw_data	KDE/backward_NLS_X.txt	PRIMARY	Backward-MC initial states/features
+raw_data	KDE/4:23_eigen/NLS_backward_Y_train.txt	PRIMARY	Time-series curves used for rate fits
+raw_data	KDE/backward_NLS_Q1.txt	PRIMARY	Fitted amplitude samples
+model	KDE/h5_files_eigen/final.keras	PRIMARY	Saved eigenfunction surrogate
+figure	Paper/revision/eigenvalue_scatter.png	LOCAL_ENHANCED	Rate distribution and fit-window sensitivity
+figure	Paper/revision/Q1_slices.png	LOCAL_ENHANCED	Surrogate slices
+figure	KDE/eigen_3_histograms.png	DIAGNOSTIC	Historical rate histograms
+figure	KDE/eigen_4_example_fits.png	DIAGNOSTIC	Example exponential fits
+report	Paper/revision/eigen_fit_sensitivity.json	PRIMARY	Window-dependent rate summary
+report	Paper/revision/short_chain_nn_rerun_metrics.json	LOCAL_ENHANCED	Q reconstruction diagnostics

@@ -1,0 +1,12 @@
+Entropy cloning sampler (tilted-generator guided)
+  n=10 clones=1024 k=0.7 burnin=500 observation=20 selection=0.5 dt=0.0005 seed=2026086302
+  time=2 psi=0.79294 weight ESS=153.545 roots=83
+  time=4 psi=0.417995 weight ESS=134.195 roots=24
+  time=6 psi=0.233998 weight ESS=89.3289 roots=9
+  time=8 psi=0.0585638 weight ESS=73.7415 roots=5
+  time=10 psi=0.0192018 weight ESS=101.454 roots=4
+  time=12 psi=0.00934238 weight ESS=71.8981 roots=4
+  time=14 psi=0.00225603 weight ESS=53.4375 roots=1
+  time=16 psi=0.0161822 weight ESS=102.581 roots=1
+  time=18 psi=-0.00835836 weight ESS=103.862 roots=1
+  time=20 psi=-0.0539601 weight ESS=34.4258 roots=1

@@ -1,0 +1,99 @@
+{
+  "all_pass": false,
+  "cases": [
+    {
+      "dataset": "T6",
+      "temperature": 6.0,
+      "fold_additive_offsets": {
+        "0": -6.563303712171798,
+        "1": -6.563460154139369
+      },
+      "supported_pairs": 1000012,
+      "unsupported_pairs": 52,
+      "support_gate_pass": false,
+      "endpoint_rmse": 0.27345555281678535,
+      "increment_rmse": 0.3870162261379677,
+      "tail_99_100_increment_rmse": 1.7019351899815585,
+      "increment_q99_abs": 1.3845768446039295,
+      "thresholds": {
+        "endpoint_rmse_max": 0.15,
+        "increment_rmse_max": 0.1,
+        "tail_increment_rmse_max": 0.25,
+        "increment_q99_abs_max": 0.5
+      },
+      "pass": false,
+      "bounds": {
+        "lower": [
+          -17.357899296535575,
+          -13.738346521491076,
+          -15.544959883336427,
+          -3.141592653589793,
+          -3.141592653589793
+        ],
+        "upper": [
+          3.832847093725164,
+          3.8287837083890075,
+          3.7814581111987002,
+          3.141592653589793,
+          3.141592653589793
+        ],
+        "grid_shape": [
+          48,
+          48,
+          48,
+          32,
+          32
+        ],
+        "supported_pairs": 1000012,
+        "unsupported_pairs": 52
+      }
+    },
+    {
+      "dataset": "T10",
+      "temperature": 10.0,
+      "fold_additive_offsets": {
+        "0": -7.32917439589043,
+        "1": -7.328014498928806
+      },
+      "supported_pairs": 1000002,
+      "unsupported_pairs": 62,
+      "support_gate_pass": false,
+      "endpoint_rmse": 0.270943951522236,
+      "increment_rmse": 0.38322465525659255,
+      "tail_99_100_increment_rmse": 1.7209400273193745,
+      "increment_q99_abs": 1.382827504090742,
+      "thresholds": {
+        "endpoint_rmse_max": 0.15,
+        "increment_rmse_max": 0.1,
+        "tail_increment_rmse_max": 0.25,
+        "increment_q99_abs_max": 0.5
+      },
+      "pass": false,
+      "bounds": {
+        "lower": [
+          -15.180753841895358,
+          -14.339736455784983,
+          -13.700728209127268,
+          -3.141592653589793,
+          -3.141592653589793
+        ],
+        "upper": [
+          4.057677832415318,
+          4.161834092760693,
+          4.150802150868935,
+          3.141592653589793,
+          3.141592653589793
+        ],
+        "grid_shape": [
+          48,
+          48,
+          48,
+          32,
+          32
+        ],
+        "supported_pairs": 1000002,
+        "unsupported_pairs": 62
+      }
+    }
+  ]
+}

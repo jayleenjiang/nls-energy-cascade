@@ -1,0 +1,83 @@
+\documentclass[11pt]{letter}
+
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage{hyperref}
+
+\signature{\textbf{[Corresponding Author Name]}\\
+\textbf{[Affiliation]}\\
+\textbf{[Email]}}
+
+\address{\textbf{[Corresponding Author Name]}\\
+\textbf{[Affiliation]}\\
+\textbf{[Email]}}
+
+\date{\today}
+
+\begin{document}
+
+\begin{letter}{Editors\\SIAM Journal on Applied Dynamical Systems}
+
+\opening{Dear Editors,}
+
+\noindent\textcolor{red}{\textbf{Template note:} This is a cover-letter
+template for author review.  Replace all bracketed fields and remove this note
+before submission.  This file is not a final author-approved cover letter.}
+
+\medskip
+
+We are pleased to submit our manuscript entitled
+``Numerical study of an energy cascade model derived from a dispersive
+equation'' for consideration in \emph{SIAM Journal on Applied Dynamical
+Systems}.
+
+The manuscript studies a stochastic energy-cascade chain derived from the
+resonant toy model for the cubic nonlinear Schr\"odinger equation.  The
+rigorous three-mode nonequilibrium steady-state theory for this model leaves
+longer chains open; our work provides a reproducible numerical study of those
+long-chain nonequilibrium steady states and returns to the three-mode system
+for detailed Fokker--Planck diagnostics.
+
+The main contributions are:
+
+\begin{enumerate}
+  \item formulation and validation of a Gibbs-preserving two-bath stochastic
+  model;
+  \item high-throughput Monte Carlo evidence that the finite-chain action
+  current satisfies approximately $E[J(n)] = 28.75\,n^{-1.850}$ over
+  $n=10,20,30,40$ under the reported parameters, with $n=50$ and
+  production-size $n=60$ robustness checks and a second bath-temperature
+  robustness run;
+  \item local-equilibrium diagnostics showing that long-chain pair marginals
+  are close to rescaled equilibrium marginals at the local kinetic temperature,
+  while strict local Gibbs structure fails;
+  \item source-traced three-mode neural Fokker--Planck diagnostics, including
+  equilibrium validation, qualitative symmetry breaking, phase locking, and a
+  carefully scoped slow-mode diagnostic;
+  \item a reproducibility package with scripted claim audits, path audits,
+  release-bundle manifests, metadata-consistency checks, and raw-data archive
+  manifests.
+\end{enumerate}
+
+The paper is well suited to SIADS because it combines
+stochastic/deterministic dynamical-systems modeling, numerical
+invariant-measure computation, and reproducible diagnostics for a nonlinear
+energy-cascade model derived from a dispersive equation.
+
+The manuscript is not under consideration elsewhere.  All authors have
+approved the submitted version.  \textbf{[Insert funding statement,
+competing-interest statement, and any SIADS-required AI-use disclosure.]}
+
+\textbf{[If supplementary material is submitted: We also submit supplementary
+material consisting of [brief list].  An index of the supplementary materials
+is included.]}
+
+\closing{Sincerely,}
+
+\end{letter}
+
+\end{document}

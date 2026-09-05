@@ -1,0 +1,1775 @@
+{
+  "generated_at_utc": "2026-07-06T03:51:02.492645+00:00",
+  "git_branch": "codex/paper-journal-revision",
+  "git_head": "c4fda9a4c54bd0d1c835ccbd5a0240c2865b908b",
+  "local_raw_dependencies": [
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "Energy Cascade/Rect Plots/rectangles_N5_R100_f1_to_f2.csv",
+      "size_bytes": 697,
+      "source_artifact": "Paper/revision_2026-06-19/manuscript_figure_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "Energy Cascade/Rect Plots/rectangles_N5_R100_f2_to_f3.csv",
+      "size_bytes": 794,
+      "source_artifact": "Paper/revision_2026-06-19/manuscript_figure_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "Energy Cascade/Rect Plots/rectangles_N5_R100_f3_to_f4.csv",
+      "size_bytes": 983,
+      "source_artifact": "Paper/revision_2026-06-19/manuscript_figure_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "Energy Cascade/Rect Plots/rectangles_N5_R100_f4_to_f5.csv",
+      "size_bytes": 1432,
+      "source_artifact": "Paper/revision_2026-06-19/manuscript_figure_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "lte/n100 data/n100_eq_j48.hist",
+      "size_bytes": 5902964,
+      "source_artifact": "Paper/revision_2026-06-19/manuscript_figure_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "lte/n100 data/n100_j48.hist",
+      "size_bytes": 5978520,
+      "source_artifact": "Paper/revision_2026-06-19/manuscript_figure_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "lte/n50 data/simd_n50_eq_j24.hist",
+      "size_bytes": 5968237,
+      "source_artifact": "Paper/revision_2026-06-19/manuscript_figure_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "lte/n50 data/simd_n50_j24.hist",
+      "size_bytes": 6082222,
+      "source_artifact": "Paper/revision_2026-06-19/manuscript_figure_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "lte/n15 data/n15_eq_j4.hist",
+      "size_bytes": 6291388,
+      "source_artifact": "Paper/revision_2026-06-19/report_assets/compare_residual_mesh_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "lte/n15 data/n15_j4.hist",
+      "size_bytes": 6438988,
+      "source_artifact": "Paper/revision_2026-06-19/report_assets/compare_residual_mesh_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "lte/n25 data/n25_eq_j6.hist",
+      "size_bytes": 6105980,
+      "source_artifact": "Paper/revision_2026-06-19/report_assets/compare_residual_mesh_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "lte/n25 data/n25_j6.hist",
+      "size_bytes": 6300540,
+      "source_artifact": "Paper/revision_2026-06-19/report_assets/compare_residual_mesh_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "lte/n50 data/simd_n50_eq_j12.hist",
+      "size_bytes": 5951241,
+      "source_artifact": "Paper/revision_2026-06-19/report_assets/compare_residual_mesh_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "lte/n50 data/simd_n50_j12.hist",
+      "size_bytes": 6111368,
+      "source_artifact": "Paper/revision_2026-06-19/report_assets/compare_residual_mesh_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "KDE/4:15_NN/FKE_5d_NLS.ipynb",
+      "size_bytes": 1030135,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "KDE/4:15_NN/NLS_FP_boxes.txt",
+      "size_bytes": 1466322,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "KDE/4:15_NN/NLS_FP_density.txt",
+      "size_bytes": 449045,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "KDE/4:15_NN/eq/NLS_FP_boxes.txt",
+      "size_bytes": 1466350,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "KDE/4:15_NN/eq/NLS_FP_density.txt",
+      "size_bytes": 411270,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "KDE/4:15_NN/h5_files/final.keras",
+      "size_bytes": 506148,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "KDE/4:15_NN/h5_files_eq/final.keras",
+      "size_bytes": 506148,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "KDE/FKE_eigen.ipynb",
+      "size_bytes": 308143,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "KDE/backward_NLS_Q1.txt",
+      "size_bytes": 858731,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "KDE/backward_NLS_X.txt",
+      "size_bytes": 4235394,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "KDE/h5_files_eigen/final.keras",
+      "size_bytes": 506192,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "lte/T712:8:9 data/simd_eq_T712_j12.hist",
+      "size_bytes": 6172784,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "lte/T712:8:9 data/simd_eq_T712_j18.hist",
+      "size_bytes": 6170535,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "lte/T712:8:9 data/simd_eq_T712_j6.hist",
+      "size_bytes": 6171101,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "lte/n100 data/n100_eq_j24.hist",
+      "size_bytes": 5875607,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "lte/n100 data/n100_eq_j48.hist",
+      "size_bytes": 5902964,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "lte/n100 data/n100_eq_j72.hist",
+      "size_bytes": 5879991,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "lte/n100 data/n100_eq_profile.txt",
+      "size_bytes": 1232,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "lte/n100 data/n100_j24.hist",
+      "size_bytes": 5989159,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "lte/n100 data/n100_j48.hist",
+      "size_bytes": 5978520,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "lte/n100 data/n100_j72.hist",
+      "size_bytes": 5914284,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "lte/n100 data/n100_profile.txt",
+      "size_bytes": 1230,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "lte/n25 data/n25_eq_j12.hist",
+      "size_bytes": 6108031,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "lte/n25 data/n25_eq_j18.hist",
+      "size_bytes": 6104886,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "lte/n25 data/n25_eq_j6.hist",
+      "size_bytes": 6105980,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "lte/n25 data/n25_j12.hist",
+      "size_bytes": 6230723,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "lte/n25 data/n25_j18.hist",
+      "size_bytes": 6139918,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "lte/n25 data/n25_j6.hist",
+      "size_bytes": 6300540,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "lte/n50 data/simd_n50_eq_j12.hist",
+      "size_bytes": 5951241,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "lte/n50 data/simd_n50_eq_j24.hist",
+      "size_bytes": 5968237,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "lte/n50 data/simd_n50_eq_j36.hist",
+      "size_bytes": 5950827,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "lte/n50 data/simd_n50_eq_profile.txt",
+      "size_bytes": 632,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "lte/n50 data/simd_n50_j12.hist",
+      "size_bytes": 6111368,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "lte/n50 data/simd_n50_j24.hist",
+      "size_bytes": 6082222,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "lte/n50 data/simd_n50_j36.hist",
+      "size_bytes": 6014749,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    },
+    {
+      "exists": true,
+      "git_tracked": false,
+      "path": "lte/n50 data/simd_n50_profile.txt",
+      "size_bytes": 636,
+      "source_artifact": "Paper/revision_2026-06-19/source_trace_metrics.json"
+    }
+  ],
+  "local_raw_roots": [
+    {
+      "exists": true,
+      "file_count": 12032,
+      "git_tracked_file_count": 0,
+      "root": "Energy Cascade",
+      "total_bytes": 629542099
+    },
+    {
+      "exists": true,
+      "file_count": 259,
+      "git_tracked_file_count": 0,
+      "root": "KDE",
+      "total_bytes": 427775884
+    },
+    {
+      "exists": true,
+      "file_count": 158,
+      "git_tracked_file_count": 0,
+      "root": "lte",
+      "total_bytes": 11865804645
+    }
+  ],
+  "release_directories": [
+    {
+      "exists": true,
+      "git_tracked_file_count": 237,
+      "git_tracked_total_bytes": 4277555,
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation",
+      "roles": [
+        "availability-declared-directory"
+      ],
+      "tree_sha256": "d65988fb8a5e189782e6a99fd3e8df71d995f91a7698c6494bf99c9ef047f3b8"
+    }
+  ],
+  "release_files": [
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/Q1_slices.png",
+      "roles": [
+        "availability-declared",
+        "manuscript-figure"
+      ],
+      "sha256": "daa934ee72a192913d66d5663ebcf160739dcd529bc2a0d87cd790be51431a89",
+      "size_bytes": 78729
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/action_profiles.pdf",
+      "roles": [
+        "availability-declared",
+        "manuscript-figure"
+      ],
+      "sha256": "b72d9cafc37cdea4a45f35a27c7c8729e13bffbda83a9f5ca8944c0d3954432c",
+      "size_bytes": 23952
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/audit_report.md",
+      "roles": [
+        "handoff-document"
+      ],
+      "sha256": "d69f2e688c9f48da007c7c74dac5f5eb00cea0a88a1c44001e2492492a8e5e40",
+      "size_bytes": 8469
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/author_submission_action_packet_2026-06-19.md",
+      "roles": [
+        "handoff-document"
+      ],
+      "sha256": "ced2e4f1c832e62fef5e3f92942ac3aa3ca9098e506a16c4bf8c140875c3f30a",
+      "size_bytes": 12093
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/author_submission_fields_audit.json",
+      "roles": [
+        "handoff-document"
+      ],
+      "sha256": "039015edb48a407ca1baaf75dd77879177004d4c1ea853781d8d654b1481908a",
+      "size_bytes": 3554
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/author_submission_fields_audit.md",
+      "roles": [
+        "handoff-document"
+      ],
+      "sha256": "80fb5fc11ba134b8ebc467c26556fdf4594325f765ed91bfb942bc1524e62a51",
+      "size_bytes": 2958
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/author_submission_fields_template.json",
+      "roles": [
+        "handoff-document"
+      ],
+      "sha256": "8ef78f5ce0af6c7bb4c7c5ecea3efec802f39ef9d5ee516a2c8c25a9195fa728",
+      "size_bytes": 1846
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/availability_path_audit.json",
+      "roles": [
+        "availability-audit",
+        "availability-declared",
+        "claim-evidence:data_availability_artifacts"
+      ],
+      "sha256": "3f3a01bc6abf872c99054c444c2622d1f66802bae1551fc7a4027b84ee2d8793",
+      "size_bytes": 19261
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/availability_path_audit.md",
+      "roles": [
+        "availability-audit",
+        "availability-declared",
+        "claim-evidence:data_availability_artifacts"
+      ],
+      "sha256": "38a29de3133785c46aea79f3a38874a81b6a295757034db2c552d22f56074a42",
+      "size_bytes": 9021
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/cascade_embedding.pdf",
+      "roles": [
+        "availability-declared",
+        "manuscript-figure"
+      ],
+      "sha256": "ff8a00f7a6a37c52ae08ca50c965d9f002603da5e9e5f780a246b2a86dc78af6",
+      "size_bytes": 29542
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/compiled_pdf_artifact_audit.json",
+      "roles": [
+        "handoff-document"
+      ],
+      "sha256": "aa076ff47734ebb72475d3a58f8c608014f4cc98707bcec01cc3188ca49b321b",
+      "size_bytes": 1378
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/compiled_pdf_artifact_audit.md",
+      "roles": [
+        "handoff-document"
+      ],
+      "sha256": "a4a907a69567dcdf2712cb31e5d82c281e2e598e5abb979064ea95de0efe9723",
+      "size_bytes": 717
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/draft.tex",
+      "roles": [
+        "claim-evidence:data_availability_artifacts",
+        "claim-evidence:intro_claim_evidence_map",
+        "claim-evidence:lte_equilibrium_convention",
+        "claim-evidence:reproducibility_summary_table",
+        "claim-evidence:short_chain_solver_diagnostics_table",
+        "manuscript-source"
+      ],
+      "sha256": "4207d432f9b89f357fb76add56ddd7b35c01683b6a77586992b049045bb88737",
+      "size_bytes": 94497
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/draft_siads_review.tex",
+      "roles": [
+        "siads-review-source"
+      ],
+      "sha256": "0a84af9e4af7fb90cc4463098b4b95e9a1b0634147f6742d6431e237d8a3f2be",
+      "size_bytes": 95131
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/eigen_fit_sensitivity.json",
+      "roles": [
+        "availability-declared",
+        "claim-evidence:eigen_relaxation_diagnostic",
+        "claim-evidence:intro_claim_evidence_map",
+        "claim-evidence:reproducibility_summary_table",
+        "claim-evidence:short_chain_solver_diagnostics_table"
+      ],
+      "sha256": "cdc0d3ecba772fd7e6b943841e36ade0bb7749d8a9356a3dd7c86b2445ea03ab",
+      "size_bytes": 2375
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/eigenvalue_scatter.png",
+      "roles": [
+        "availability-declared",
+        "manuscript-figure"
+      ],
+      "sha256": "65215292c4d0ad6d7d8a438249d71c33705c55de784d52dd78f4ba1d712c3467",
+      "size_bytes": 108354
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/eq_validation.png",
+      "roles": [
+        "availability-declared",
+        "manuscript-figure"
+      ],
+      "sha256": "3bc9927e20c1c548d8a42184248aef746a954a6320ea3aafbf77d55a5203d654",
+      "size_bytes": 94546
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation/gamma_robustness_2026-06-21/gamma0p05/n10_summary.csv",
+      "roles": [
+        "claim-evidence:gamma_thermostat_current_robustness"
+      ],
+      "sha256": "e00987fc5502af08ab5efd9f54ffb6d31217f973a80cdbd2071ca0635310f192",
+      "size_bytes": 787
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation/gamma_robustness_2026-06-21/gamma0p05/n20_summary.csv",
+      "roles": [
+        "claim-evidence:gamma_thermostat_current_robustness"
+      ],
+      "sha256": "cf2e60518840a84ba0efe5b2621e5c17d6c810ecff32813ff788878ff81a402a",
+      "size_bytes": 787
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation/gamma_robustness_2026-06-21/gamma0p05/n30_summary.csv",
+      "roles": [
+        "claim-evidence:gamma_thermostat_current_robustness"
+      ],
+      "sha256": "524547199f54b6f7ef118ae732418b30480f3492d6f49e1cbfa84eee3cd0ee86",
+      "size_bytes": 794
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation/gamma_robustness_2026-06-21/gamma0p05/n40_summary.csv",
+      "roles": [
+        "claim-evidence:gamma_thermostat_current_robustness"
+      ],
+      "sha256": "f47d3ed40cd60a639d8bfa821bdfa199f234dc28640c2433c3d28503319bee8f",
+      "size_bytes": 796
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation/gamma_robustness_2026-06-21/gamma0p2/n10_summary.csv",
+      "roles": [
+        "claim-evidence:gamma_thermostat_current_robustness"
+      ],
+      "sha256": "49b6ebece045e1c73c1577add33bc4fb50c4837f1c22086239b2f62cbc3bebb2",
+      "size_bytes": 784
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation/gamma_robustness_2026-06-21/gamma0p2/n20_summary.csv",
+      "roles": [
+        "claim-evidence:gamma_thermostat_current_robustness"
+      ],
+      "sha256": "5d28cec145d63c4a5c16a217e719eb37cbee278140dffc12048fff31a75ea48e",
+      "size_bytes": 795
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation/gamma_robustness_2026-06-21/gamma0p2/n30_summary.csv",
+      "roles": [
+        "claim-evidence:gamma_thermostat_current_robustness"
+      ],
+      "sha256": "51444182cc7c8231af291ca9067b25319904991a76cdda72b7a5dda912b9d81e",
+      "size_bytes": 794
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation/gamma_robustness_2026-06-21/gamma0p2/n40_summary.csv",
+      "roles": [
+        "claim-evidence:gamma_thermostat_current_robustness"
+      ],
+      "sha256": "49a6ed740898f3d48d2c8b124465ef62482198068316f727296efc344c6cbacd",
+      "size_bytes": 792
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation/gamma_robustness_2026-06-21/gamma_robustness_report.md",
+      "roles": [
+        "claim-evidence:gamma_thermostat_current_robustness"
+      ],
+      "sha256": "9720467832cdf1d672fd40241e693bf5a580431cc9544b1ec86629b2ecd4d2cb",
+      "size_bytes": 2868
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation/gamma_robustness_2026-06-21/gamma_robustness_scaling.json",
+      "roles": [
+        "availability-declared",
+        "claim-evidence:gamma_thermostat_current_robustness",
+        "claim-evidence:intro_claim_evidence_map",
+        "claim-evidence:reproducibility_summary_table"
+      ],
+      "sha256": "9cb11ab853252729896c62f86efa989ab8f73e0a985153ebfe4e4e5d3ef682d5",
+      "size_bytes": 36092
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation/gamma_robustness_2026-06-21/gamma_robustness_summary.csv",
+      "roles": [
+        "claim-evidence:gamma_thermostat_current_robustness"
+      ],
+      "sha256": "04350c18aba53a821b3581fe9a756462eb5d966d10dfa59cb68e0c8bd515004b",
+      "size_bytes": 5841
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation/gamma_robustness_2026-06-21/generated_sources/gamma0p05/NLS_flux_canonical_gamma.cpp",
+      "roles": [
+        "claim-evidence:gamma_thermostat_current_robustness"
+      ],
+      "sha256": "95fc17bc208eb6f7dcb2f15eb68493deaca8d2107bc066d8323b4f2013baba5c",
+      "size_bytes": 24832
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation/gamma_robustness_2026-06-21/generated_sources/gamma0p2/NLS_flux_canonical_gamma.cpp",
+      "roles": [
+        "claim-evidence:gamma_thermostat_current_robustness"
+      ],
+      "sha256": "8cc0a4820e6dd48d2990afec65d93feb979dbabf259c9a8f00eff2909f711c4e",
+      "size_bytes": 24830
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation/larger_n60_pilot_2026-06-20/README.md",
+      "roles": [
+        "claim-evidence:n60_current_robustness"
+      ],
+      "sha256": "166d07798c6cd0ea5f67a75567f628da54e630909b3d8f8e06343e788da30d3c",
+      "size_bytes": 5238
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation/larger_n60_pilot_2026-06-20/flux_scaling_sensitivity_n10_60.json",
+      "roles": [
+        "availability-declared",
+        "claim-evidence:flux_scaling_fit_sensitivity",
+        "claim-evidence:intro_claim_evidence_map",
+        "claim-evidence:reproducibility_summary_table"
+      ],
+      "sha256": "19315bf86b68abcb1f2a49c9bdc730ce87d1ab3a1f6e2e5f5d7efaa21a78292c",
+      "size_bytes": 7107
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation/larger_n60_pilot_2026-06-20/n10_60_b64_scaling_scaling.json",
+      "roles": [
+        "claim-evidence:n60_current_robustness"
+      ],
+      "sha256": "7775ba12af98fc87d5c540ef70024b0cb19af9f9b657e7ea89335ba6b11787b1",
+      "size_bytes": 754
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation/larger_n60_pilot_2026-06-20/n60_b64_dt2p5e-4_summary.csv",
+      "roles": [
+        "claim-evidence:n60_current_robustness"
+      ],
+      "sha256": "df66a70185daccf2572336c22ac347be942f1f37e556f8a26717db38678af111",
+      "size_bytes": 785
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation/larger_n60_pilot_2026-06-20/n60_b64_summary.csv",
+      "roles": [
+        "claim-evidence:flux_scaling_fit_sensitivity",
+        "claim-evidence:n60_current_robustness"
+      ],
+      "sha256": "0a3b16500f5ab7adb0eb819572918cc03122da823d382e453f03239821e870a2",
+      "size_bytes": 786
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation/larger_n_pilot_2026-06-20/README.md",
+      "roles": [
+        "claim-evidence:larger_n_current_robustness"
+      ],
+      "sha256": "5a39c8633eabe7641c9ae363703082d0da57aca649348f510fec5c54ceeb9766",
+      "size_bytes": 5528
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation/larger_n_pilot_2026-06-20/n10_50_b64_scaling_scaling.json",
+      "roles": [
+        "claim-evidence:larger_n_current_robustness"
+      ],
+      "sha256": "6b99b155280fcceedf7a309313874c41031ee61a2797eb9c3f88ffb8b96383d8",
+      "size_bytes": 748
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation/larger_n_pilot_2026-06-20/n50_b16_burn10000_summary.csv",
+      "roles": [
+        "claim-evidence:larger_n_current_robustness"
+      ],
+      "sha256": "f4c706a5691f270abda3da7364c2382600f834faa7548df5d5c42432a92e4232",
+      "size_bytes": 785
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation/larger_n_pilot_2026-06-20/n50_b64_dt2p5e-4_summary.csv",
+      "roles": [
+        "claim-evidence:larger_n_current_robustness"
+      ],
+      "sha256": "790b025f3c4158a57fe14556f65169121631de11b185297a054e12a833cc8c6d",
+      "size_bytes": 777
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation/larger_n_pilot_2026-06-20/n50_b64_summary.csv",
+      "roles": [
+        "claim-evidence:flux_scaling_fit_sensitivity",
+        "claim-evidence:larger_n_current_robustness"
+      ],
+      "sha256": "3a10a8ef390ae91080b40efa83221422442efd5d09318d86be7b5ea8fec8c267",
+      "size_bytes": 785
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation/parameter_robustness_2026-06-20/README.md",
+      "roles": [
+        "claim-evidence:bath_parameter_current_robustness"
+      ],
+      "sha256": "6ef7521578fda5d3e6e874a93b22ac4ada7fa1df1c5c7b2e0501dad64805e79c",
+      "size_bytes": 6780
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation/parameter_robustness_2026-06-20/moderate_contrast_T8_T4_prod/b64_scaling_scaling.json",
+      "roles": [
+        "availability-declared",
+        "claim-evidence:bath_parameter_current_robustness",
+        "claim-evidence:intro_claim_evidence_map",
+        "claim-evidence:reproducibility_summary_table"
+      ],
+      "sha256": "059c81dc9203543d044bdb9eed6523fe105adaf3b72443b944f439d3a02ceaa8",
+      "size_bytes": 739
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation/parameter_robustness_2026-06-20/moderate_contrast_T8_T4_prod/n10_b64_summary.csv",
+      "roles": [
+        "claim-evidence:bath_parameter_current_robustness"
+      ],
+      "sha256": "14f16bdc8267e0e3dfde109393421d229d499134c7be87ab4b2584654e94c28c",
+      "size_bytes": 769
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation/parameter_robustness_2026-06-20/moderate_contrast_T8_T4_prod/n20_b64_summary.csv",
+      "roles": [
+        "claim-evidence:bath_parameter_current_robustness"
+      ],
+      "sha256": "6789198856d366b3df5513453af1d5148067c4bb565f579d5a9bb925db039e37",
+      "size_bytes": 783
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation/parameter_robustness_2026-06-20/moderate_contrast_T8_T4_prod/n30_b64_summary.csv",
+      "roles": [
+        "claim-evidence:bath_parameter_current_robustness"
+      ],
+      "sha256": "f119e4c3aaf8cc9b399234ce6a3e39329b7fe1cc33a99796675a5eabc7f1af15",
+      "size_bytes": 784
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation/parameter_robustness_2026-06-20/moderate_contrast_T8_T4_prod/n40_b64_summary.csv",
+      "roles": [
+        "claim-evidence:bath_parameter_current_robustness"
+      ],
+      "sha256": "f3466d4d4fafb1155e2d074befd8657b63c39ce6292e1a5abc27f902657c6622",
+      "size_bytes": 780
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation/parameter_robustness_2026-06-20/production_summary.csv",
+      "roles": [
+        "claim-evidence:bath_parameter_current_robustness"
+      ],
+      "sha256": "045133374069e5f1e742bfed7a1e8f98beecce5daeb74fb92f2e0649c5416b8c",
+      "size_bytes": 975
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation/production_dt5e-4/current_windows_n40_windows.pdf",
+      "roles": [
+        "availability-declared",
+        "manuscript-figure"
+      ],
+      "sha256": "c068514bde19d5f69c7fe0380f1872b843f3083ed40079590bd015255ea399a4",
+      "size_bytes": 16459
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation/production_dt5e-4/current_windows_variance_scaling.pdf",
+      "roles": [
+        "availability-declared",
+        "manuscript-figure"
+      ],
+      "sha256": "976198b14d5aff80e26a9524799695c569fe3822b21fecb77383e6b6e89b5c81",
+      "size_bytes": 15488
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation/production_dt5e-4/current_windows_window_statistics.csv",
+      "roles": [
+        "claim-evidence:finite_window_current_statistics",
+        "claim-evidence:intro_claim_evidence_map"
+      ],
+      "sha256": "b2feb717385cd929501c71674e4fe7d2c86dd7907a3beae2b158536c66a15040",
+      "size_bytes": 3634
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation/production_dt5e-4/flux_primary_scaling.json",
+      "roles": [
+        "claim-evidence:conductivity_scaling",
+        "claim-evidence:flux_scaling_fit_sensitivity",
+        "claim-evidence:flux_scaling_main",
+        "claim-evidence:flux_table_values",
+        "claim-evidence:intro_claim_evidence_map",
+        "claim-evidence:reproducibility_summary_table"
+      ],
+      "sha256": "f5eefe4b9510a809cb0fb699dc5dffd949438d428e1ba60ce247d73508580383",
+      "size_bytes": 739
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation/production_dt5e-4/flux_primary_scaling.pdf",
+      "roles": [
+        "availability-declared",
+        "manuscript-figure"
+      ],
+      "sha256": "c7c06317e77a12ed7c2998f93de7a5a6712cacfc7dba7662205c5d3693bdf319",
+      "size_bytes": 19190
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/experiments/flux_validation/validation_report.md",
+      "roles": [
+        "claim-evidence:flux_diagnostics",
+        "claim-evidence:flux_scaling_main",
+        "claim-evidence:flux_table_values",
+        "claim-evidence:intro_claim_evidence_map",
+        "claim-evidence:reproducibility_summary_table"
+      ],
+      "sha256": "a6efb96c47d0c9725585ac4080efc509d0f64c4769b1d3955004f90a298ce344",
+      "size_bytes": 5726
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/final_author_submission_fields_request_2026-06-20.md",
+      "roles": [
+        "handoff-document"
+      ],
+      "sha256": "df9f81f1ce415c80f22e71718511f76556aa01af1e0101000b70315e561f3037",
+      "size_bytes": 6396
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/final_pre_submission_audit_2026-06-20.md",
+      "roles": [
+        "handoff-document"
+      ],
+      "sha256": "ed3397e56ef1dde8426ebcd6e842fc0a1da3343945ccd72d813dd6709513f5b4",
+      "size_bytes": 8618
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/final_submission_decision_sheet_2026-06-20.md",
+      "roles": [
+        "handoff-document"
+      ],
+      "sha256": "cc3ec6452b5053015d7121116ccb6120b3d7afcb8fcd05c84ea36ddcd0330f5d",
+      "size_bytes": 7551
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/gamma_robustness_smoke_report.json",
+      "roles": [
+        "handoff-document"
+      ],
+      "sha256": "607d9b6c5fb711bdbab0f11899dff812a2c90e9cc5c1711595bab29075ce206c",
+      "size_bytes": 5907
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/gamma_robustness_smoke_report.md",
+      "roles": [
+        "handoff-document"
+      ],
+      "sha256": "f3393edad4368a635065e65de5e72c569eab909632511623a8967a68cd60825e",
+      "size_bytes": 1401
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/integrity_audit_2026-06-19.md",
+      "roles": [
+        "availability-declared",
+        "handoff-document"
+      ],
+      "sha256": "2179f8666bb5470cc484015eae29985caf92587a1d9e4b6146ab54fcbaaa7d51",
+      "size_bytes": 17976
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/journal_upload_file_index_2026-06-20.md",
+      "roles": [
+        "handoff-document"
+      ],
+      "sha256": "8ce73f140b4ac32975fd92b0950065f76bfde96196f1c177e123a3d768c92998",
+      "size_bytes": 6503
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/lte_residual_midchain.pdf",
+      "roles": [
+        "availability-declared",
+        "manuscript-figure"
+      ],
+      "sha256": "3785b901fca6969f2e50dbc64780da97cdac52d57b89cafa26974118cc43a4b8",
+      "size_bytes": 35961
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/manuscript_claim_audit.json",
+      "roles": [
+        "availability-declared",
+        "claim-audit"
+      ],
+      "sha256": "ce70266265b2632ec18af068a47ab46ce6de41063d1eab6f9f5186d8ea20780a",
+      "size_bytes": 78825
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/manuscript_claim_audit.md",
+      "roles": [
+        "availability-declared",
+        "claim-audit"
+      ],
+      "sha256": "6fbfc1503cf7c5e9cf60037b0f00227aed4bdaee9b534119414baa78fbedcf02",
+      "size_bytes": 10182
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/manuscript_figure_metrics.json",
+      "roles": [
+        "availability-declared",
+        "claim-evidence:intro_claim_evidence_map",
+        "claim-evidence:long_chain_action_profiles",
+        "claim-evidence:reproducibility_summary_table"
+      ],
+      "sha256": "c0dfd2a21ffd8cd2f989b36347d14f15bb77a89fb9634e20bf9398fe378a3833",
+      "size_bytes": 2650
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/material_inventory.md",
+      "roles": [
+        "handoff-document"
+      ],
+      "sha256": "99889b87780163289c56c9f90371a0547bc842aa80d9cf50353828bb5708c722",
+      "size_bytes": 5879
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/neq_density.png",
+      "roles": [
+        "availability-declared",
+        "manuscript-figure"
+      ],
+      "sha256": "959983b2bbf66b1f889c0837fae536d66d7dab53c4ddac1b4fdac4dcad95a0f1",
+      "size_bytes": 164861
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/originality_spotcheck_2026-06-19.md",
+      "roles": [
+        "handoff-document"
+      ],
+      "sha256": "257397aba6c07fcce28d4cebd0b669fb403238fc5d570de78a9e2e6c993d7a9b",
+      "size_bytes": 5528
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/pdf_layout_qa_2026-06-19.md",
+      "roles": [
+        "handoff-document"
+      ],
+      "sha256": "023a1b744b5598736ab928137e2013bcec614ee3bd90f96adcf57a5da118c08f",
+      "size_bytes": 3766
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/pre_submission_reviewer_audit_2026-06-21.md",
+      "roles": [
+        "handoff-document"
+      ],
+      "sha256": "797c6f2e47680c0a489952f3e4ab102cbc86db337f5395a1b07b6276513fc22a",
+      "size_bytes": 4157
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/progress_report.md",
+      "roles": [
+        "handoff-document"
+      ],
+      "sha256": "9cd12a986f166c28a427ae798cad66aabfd49271ca60dbdf9bbc87d60cdd12ce",
+      "size_bytes": 26414
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/raw_data_archive_build_report.json",
+      "roles": [
+        "handoff-document"
+      ],
+      "sha256": "4f7dbca14bea3004f25986d5e70fbd259199f1fb35c58089efa2a96558da2a4b",
+      "size_bytes": 16487
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/raw_data_archive_build_report.md",
+      "roles": [
+        "handoff-document"
+      ],
+      "sha256": "96d95767ae1a0b36828a36aa2ae6b9c92f5f200878441aa9688f69a5e98af2d6",
+      "size_bytes": 1064
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/raw_data_archive_manifest.json",
+      "roles": [
+        "handoff-document"
+      ],
+      "sha256": "12dc0fb5923050d7fb379d12316e0249cf7ac0daf0a389198240a744e33b766f",
+      "size_bytes": 17298
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/raw_data_archive_manifest.md",
+      "roles": [
+        "handoff-document"
+      ],
+      "sha256": "13ad1eb420d1cd423d802c2ff0c65be436ba37f08df82072f45afb15ad5c9728",
+      "size_bytes": 8886
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/reference_integrity_audit.json",
+      "roles": [
+        "handoff-document"
+      ],
+      "sha256": "73cb357f17080195caf3cb73ad6825daa558b3f160fdf10bf9221dae49e96a2d",
+      "size_bytes": 8590
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/reference_integrity_audit.md",
+      "roles": [
+        "handoff-document"
+      ],
+      "sha256": "0310573cc47f195c3114466578449d18c9b0fe776ce30085765e23d6e610d02d",
+      "size_bytes": 2901
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/references.bib",
+      "roles": [
+        "availability-declared",
+        "handoff-document"
+      ],
+      "sha256": "0fa0283b6479a63744e1e94865dac2cf6a697784a5f542e1af9b2d9846ec014f",
+      "size_bytes": 4381
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/report_assets/canonical_flux_distribution.pdf",
+      "roles": [
+        "availability-declared",
+        "claim-evidence:finite_window_current_statistics",
+        "manuscript-figure"
+      ],
+      "sha256": "5e62ab69ca55f2f67e82746d4f101a5fa99c0e08f0c52131c52a9cd709dcb7ce",
+      "size_bytes": 40511
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/report_assets/canonical_flux_distribution_tail_summary.csv",
+      "roles": [
+        "availability-declared",
+        "claim-evidence:finite_window_current_statistics"
+      ],
+      "sha256": "4937cb25c1c879f7a813f8ba6ff63c895877ae25aac680ae49c45c114c61a95f",
+      "size_bytes": 631
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/report_assets/compare_residual_mesh.pdf",
+      "roles": [
+        "availability-declared",
+        "claim-evidence:lte_residual_mesh_slice_metrics",
+        "manuscript-figure"
+      ],
+      "sha256": "e2c7bff1ce9c529e335d263aa65b0eb3f668f59c8460cf6facf8a64673f47b87",
+      "size_bytes": 319877
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/report_assets/compare_residual_mesh_metrics.json",
+      "roles": [
+        "availability-declared",
+        "claim-evidence:lte_residual_mesh_slice_metrics"
+      ],
+      "sha256": "b3d3dbab1b0f0ae1445a8d3e9bc4b771efeb865a2847cf665f6c57766874032d",
+      "size_bytes": 6045
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/report_assets/compare_residual_mesh_metrics.md",
+      "roles": [
+        "claim-evidence:lte_residual_mesh_slice_metrics"
+      ],
+      "sha256": "98b59d972c2d11b690923cedc72e93380b5f1ccaee88f3625edf3bfa3a2c740a",
+      "size_bytes": 1048
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/report_assets/compare_residual_mesh_metrics.txt",
+      "roles": [
+        "claim-evidence:lte_residual_mesh_slice_metrics"
+      ],
+      "sha256": "dd908deb8932cbcac86ed60edddc59e28f8dd8181f373a360209df8161275462",
+      "size_bytes": 691
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/revision_roadmap.md",
+      "roles": [
+        "handoff-document"
+      ],
+      "sha256": "1cb1e4e1251db61919e8b245544280a958538cc4e797d85b86efb58865348261",
+      "size_bytes": 5494
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/scripts/analyze_eigen_fit_windows.py",
+      "roles": [
+        "availability-declared"
+      ],
+      "sha256": "4b766968311772130e0e164219061694b80b6851416446aaf30335e5e1971291",
+      "size_bytes": 5742
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/scripts/analyze_flux_scaling_sensitivity.py",
+      "roles": [
+        "availability-declared"
+      ],
+      "sha256": "ef479273a910c2bc72cf033ff2a368edfeb5e31f7e75e81d1efb2929feb2b2fb",
+      "size_bytes": 10643
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/scripts/apply_author_submission_fields.py",
+      "roles": [
+        "author-field-applier"
+      ],
+      "sha256": "36ad1046a9598dc289011ffc1e7f70e2b672da4dbc02213f948291ab5d45a91b",
+      "size_bytes": 7228
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/scripts/audit_author_submission_fields.py",
+      "roles": [
+        "author-submission-audit"
+      ],
+      "sha256": "3d05801ec0007ffe0dfb4079b47f385d9a4fef9840746d55e15d4e53679cb012",
+      "size_bytes": 8096
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/scripts/audit_availability_paths.py",
+      "roles": [
+        "availability-declared"
+      ],
+      "sha256": "449c7c91c7d244d1556c5bf4832d499fb368c575d8a10e5599b21389f4377bb7",
+      "size_bytes": 7096
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/scripts/audit_compiled_pdfs.py",
+      "roles": [
+        "compiled-pdf-audit"
+      ],
+      "sha256": "9dbce00e11ac2035fc147aa30ce6f198cb91978f6854a11b4552e7eff7001af8",
+      "size_bytes": 6109
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/scripts/audit_manuscript_claims.py",
+      "roles": [
+        "availability-declared"
+      ],
+      "sha256": "2791f81956781743d0b62a76c72788a4e3c459d057f9828f1a9b5c8b30c28ec8",
+      "size_bytes": 44349
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/scripts/audit_references.py",
+      "roles": [
+        "reference-audit"
+      ],
+      "sha256": "2e9330943bde66e0162bca43933148f1ddbe8f523db96e86d797f5cdfaae6168",
+      "size_bytes": 14547
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/scripts/audit_submission_metadata_consistency.py",
+      "roles": [
+        "submission-metadata-audit"
+      ],
+      "sha256": "947de3cff9c945e4bad989573db8f1f69aab56549579e2e7baa0ba86d672d1c2",
+      "size_bytes": 10338
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/scripts/build_journal_upload_package.py",
+      "roles": [
+        "journal-upload-package-builder"
+      ],
+      "sha256": "2d956b8300cbcb3011286161fc7419e18a417c9f945e1342ebc00850f1353cad",
+      "size_bytes": 11483
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/scripts/build_raw_data_archive.py",
+      "roles": [
+        "raw-data-archive-builder"
+      ],
+      "sha256": "b5edae3b852cb58cb39afefabb8609bea0a606bb9e81907798cdd869eaa60344",
+      "size_bytes": 8464
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/scripts/build_raw_data_archive_manifest.py",
+      "roles": [
+        "manifest-builder"
+      ],
+      "sha256": "6e0c31b8aa3a3635acd70f8e80473049a92ef13953f1665c160b0864414c5bc9",
+      "size_bytes": 7182
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/scripts/build_siads_cover_letter_template.py",
+      "roles": [
+        "cover-letter-template-builder"
+      ],
+      "sha256": "a9a2d9722a2128fe119c054d76dc81122ce99928c5b3e46daba5923c979109a0",
+      "size_bytes": 4823
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/scripts/build_submission_bundle_manifest.py",
+      "roles": [
+        "manifest-builder"
+      ],
+      "sha256": "9864664c3471b173e143849181821b0fec86c19f234113f0dd8882d250e245bf",
+      "size_bytes": 19912
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/scripts/build_submission_source_bundle.py",
+      "roles": [
+        "source-bundle-builder"
+      ],
+      "sha256": "0fa55eb2234725ac64fb04e3b7f766d2047fe646d593770231d23bfe69dd48c7",
+      "size_bytes": 10323
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/scripts/export_compare_residual_mesh_metrics.py",
+      "roles": [
+        "availability-declared",
+        "claim-evidence:lte_residual_mesh_slice_metrics"
+      ],
+      "sha256": "b858f764ba7ffb04cddfdaad0ec46751053f2c24b0b33bed5e0f1fe8691bc316",
+      "size_bytes": 10794
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/scripts/export_source_trace_metrics.py",
+      "roles": [
+        "availability-declared"
+      ],
+      "sha256": "ae824eaa3fca5c525d985562f9b5f45b9c9c6b1d723442f86774aec8536faea1",
+      "size_bytes": 23688
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/scripts/generate_manuscript_figures.py",
+      "roles": [
+        "availability-declared"
+      ],
+      "sha256": "65026eb1d396f340b05c48d0a2b5514e27af636e3f59e7c3c1491118cb6ae186",
+      "size_bytes": 13122
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/scripts/recompute_short_chain_nn_metrics.py",
+      "roles": [
+        "availability-declared"
+      ],
+      "sha256": "f403861b7a537ddf1b345097c266caba82aff7b4b9d69b5105e08359f2050e17",
+      "size_bytes": 14368
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/scripts/run_gamma_robustness_production.py",
+      "roles": [
+        "gamma-robustness-production-runner"
+      ],
+      "sha256": "e9a928c829f3069d70c2f4816f9637ad37fe52860fb1a0c4abbc6193a6b7b167",
+      "size_bytes": 26590
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/scripts/run_gamma_robustness_smoke.py",
+      "roles": [
+        "gamma-robustness-smoke-runner"
+      ],
+      "sha256": "91be354d0339057abf759d35c4bbd29842ce93492a592a82646875b90ef6d13b",
+      "size_bytes": 10248
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/scripts/run_submission_checks.py",
+      "roles": [
+        "submission-check-runner"
+      ],
+      "sha256": "b54ce31498180e9661b8fd6c4f3018f94645c1341bec2fea05d249dfd7bbffdb",
+      "size_bytes": 15508
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/short_chain_nn_rerun_metrics.json",
+      "roles": [
+        "availability-declared",
+        "claim-evidence:eigen_relaxation_diagnostic",
+        "claim-evidence:intro_claim_evidence_map",
+        "claim-evidence:reproducibility_summary_table",
+        "claim-evidence:short_chain_equilibrium_validation",
+        "claim-evidence:short_chain_solver_diagnostics_table",
+        "claim-evidence:short_chain_symmetry_scope"
+      ],
+      "sha256": "5600a1a9f126c9cc79900e9b08c8c6b67cea24d7b16aab4366c256569e9ab7dd",
+      "size_bytes": 7594
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/siads_cover_letter_template.tex",
+      "roles": [
+        "handoff-document"
+      ],
+      "sha256": "b5cb9efc20fb3c062e32bf9093df545a8b5c24d9914f3b3068832b5734b7eb3e",
+      "size_bytes": 3076
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/siads_cover_letter_template_build.json",
+      "roles": [
+        "handoff-document"
+      ],
+      "sha256": "c1b39c1fd60b4c1abf010530455280d71159003a684ca4896577946f362afdeb",
+      "size_bytes": 1056
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/siads_cover_letter_template_build.md",
+      "roles": [
+        "handoff-document"
+      ],
+      "sha256": "02a2f2aa78b715f628327263a9a8ffcce1771af024fd3a41696734d7d69459ef",
+      "size_bytes": 667
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/siads_first_submission_packet_2026-06-20.md",
+      "roles": [
+        "handoff-document"
+      ],
+      "sha256": "196f358c153294e0a2fa22431b44d5132c7864e5430beeaa363b709abc575fad",
+      "size_bytes": 10608
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/source_trace_metrics.json",
+      "roles": [
+        "availability-declared",
+        "claim-evidence:intro_claim_evidence_map",
+        "claim-evidence:lte_control_values",
+        "claim-evidence:lte_residual_even_odd_decomposition",
+        "claim-evidence:lte_table_values",
+        "claim-evidence:reproducibility_summary_table",
+        "claim-evidence:short_chain_equilibrium_validation"
+      ],
+      "sha256": "3727e8adff98f7ca3c43cb9a7e0f5a96057a1becdb250483cd004893d583f299",
+      "size_bytes": 40010
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/submission_bundle_manifest.json",
+      "roles": [
+        "handoff-document"
+      ],
+      "sha256": null,
+      "size_bytes": null
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/submission_bundle_manifest.md",
+      "roles": [
+        "handoff-document"
+      ],
+      "sha256": null,
+      "size_bytes": null
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/submission_checks_summary.json",
+      "roles": [
+        "handoff-document"
+      ],
+      "sha256": null,
+      "size_bytes": null
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/submission_checks_summary.md",
+      "roles": [
+        "handoff-document"
+      ],
+      "sha256": null,
+      "size_bytes": null
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/submission_metadata_consistency_audit.json",
+      "roles": [
+        "handoff-document"
+      ],
+      "sha256": "74a47d42372ee5c4850f8b9df1b36a3b7cb1136e0e2f18a694b629936c6bc8f0",
+      "size_bytes": 7050
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/submission_metadata_consistency_audit.md",
+      "roles": [
+        "handoff-document"
+      ],
+      "sha256": "f0878914466fc22abd6a6017aa02ef83750e6ab663bb80f1080eb441a75d8c02",
+      "size_bytes": 4070
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/submission_readiness_checklist_2026-06-19.md",
+      "roles": [
+        "handoff-document"
+      ],
+      "sha256": "1050e23e3253fc3a5976a63e31e41f60b7a42dcef30d6ffd0d2ec10acfb70156",
+      "size_bytes": 18339
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/submission_reproducibility_readme_2026-06-19.md",
+      "roles": [
+        "handoff-document"
+      ],
+      "sha256": "51a20ac390b62f012c850a0c866779a8e2bffe1b84d0965731d052879379babd",
+      "size_bytes": 9987
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/submission_source_bundle_report.json",
+      "roles": [
+        "handoff-document"
+      ],
+      "sha256": null,
+      "size_bytes": null
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/submission_source_bundle_report.md",
+      "roles": [
+        "handoff-document"
+      ],
+      "sha256": null,
+      "size_bytes": null
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/symmetry_breaking.png",
+      "roles": [
+        "availability-declared",
+        "manuscript-figure"
+      ],
+      "sha256": "883ca0d5b7786ba59f7c06fefabb22a5a859a17fcb76e8302a977f34666f8378",
+      "size_bytes": 75925
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/target_journal_policy_refresh_2026-06-22.md",
+      "roles": [
+        "handoff-document"
+      ],
+      "sha256": "71d87c69d4ecd2a283e5e90d2d1c97a39590fbff1707c7566972682cd73ffc9c",
+      "size_bytes": 6369
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "Paper/revision_2026-06-19/target_journal_shortlist_2026-06-19.md",
+      "roles": [
+        "handoff-document"
+      ],
+      "sha256": "3826803ffb06c911fc82dc0b78495caa2b58478c5290a797dd2feec4a4a49450",
+      "size_bytes": 13988
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "flux/NLS_flux_canonical.cpp",
+      "roles": [
+        "availability-declared"
+      ],
+      "sha256": "76f937608280272397a555931b353ba770b06ee87d2f5b0dce08fe1e6bb3727e",
+      "size_bytes": 24805
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "flux/analyze_canonical_flux.py",
+      "roles": [
+        "availability-declared"
+      ],
+      "sha256": "a1aef076dc27891f7103da9bb5d79c4370f666ddb4a65bd0cae8d91db6917cbc",
+      "size_bytes": 12878
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "flux/analyze_current_windows.py",
+      "roles": [
+        "availability-declared"
+      ],
+      "sha256": "cc1e02ebc9d9c082537852b0fc27121a723764a5f6f6473da622615d9b4d95e1",
+      "size_bytes": 9834
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "flux/compare_gibbs_sde.py",
+      "roles": [
+        "availability-declared"
+      ],
+      "sha256": "afba16a25bd6dd40dc72b4ef2c83c4c61c3a5c0c427942b0ec13103998a857cc",
+      "size_bytes": 4785
+    },
+    {
+      "exists": true,
+      "git_tracked": true,
+      "path": "flux/gibbs_mcmc_reference.py",
+      "roles": [
+        "availability-declared"
+      ],
+      "sha256": "3b443bc83012c988a050870c145a4bd82ac02e83022e2cbde6c22065892d9fe0",
+      "size_bytes": 10333
+    }
+  ],
+  "script": "Paper/revision_2026-06-19/scripts/build_submission_bundle_manifest.py",
+  "summary": {
+    "local_raw_dependency_count": 50,
+    "missing_release_files": 0,
+    "release_directory_count": 1,
+    "release_file_count": 130,
+    "status": "PASS_WITH_LOCAL_RAW_DATA_LIMITATION",
+    "untracked_local_raw_dependencies": 50,
+    "untracked_release_files": 0
+  }
+}

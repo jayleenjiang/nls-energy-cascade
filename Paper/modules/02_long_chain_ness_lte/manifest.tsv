@@ -1,0 +1,26 @@
+role	path	status	note
+code	cpp/simulation/lte_histogram_simd.cpp	PRIMARY	High-sample SIMD LTE histogram accumulator
+code	cpp/simulation/lte_histogram.cpp	REFERENCE	Eigen-based histogram implementation
+code	cpp/simulation/lte_simd_conditioned.cpp	PRIMARY	Conditioned LTE experiment
+code	cpp/simulation/lte_simd_dt25.cpp	PRIMARY	Fine-timestep long-chain profile run
+code	python/analysis/hist_analysis.py	PRIMARY	Histogram fit analysis
+code	python/analysis/lte_full_analysis.py	PRIMARY	Full LTE analysis
+code	Paper/revision/scripts/generate_manuscript_figures.py	PRIMARY	Generates profiles and mid-chain residual figure
+code	Paper/revision/scripts/export_compare_residual_mesh_metrics.py	PRIMARY	Exports residual-mesh metrics
+code	Paper/modules/02_long_chain_ness_lte/code/matlab/compare_residual.m	ADVISOR_REQUESTED	Preserved MATLAB 3D mesh script
+code	Paper/modules/02_long_chain_ness_lte/code/matlab/residual.m	ADVISOR_REQUESTED	Preserved MATLAB residual helper
+code	Paper/modules/02_long_chain_ness_lte/code/matlab/fit_new.m	ADVISOR_REQUESTED	Preserved MATLAB fit helper
+raw_data	lte/n15 data	ADVISOR_REQUESTED	n=15 NESS/equilibrium histograms
+raw_data	lte/n25 data	PRIMARY	n=25 LTE histograms
+raw_data	lte/n50 data	PRIMARY	n=50 LTE histograms and profiles
+raw_data	lte/n100 data	PRIMARY	n=100 LTE histograms and profiles
+raw_data	lte/T712:8:9 data	CONTROL	Equilibrium and bath-contrast controls
+raw_data	lte/cond_hist	DIAGNOSTIC	Conditioned histograms
+processed_data	experiments/lte	PRIMARY	Curated profiles and analysis outputs
+figure	Paper/revision/action_profiles.pdf	MANUSCRIPT_READY	Long-chain action profiles
+figure	Paper/revision/lte_residual_midchain.pdf	LOCAL_ENHANCED	Fixed-theta residual comparison
+figure	Paper/revision/report_assets/compare_residual_mesh.pdf	ADVISOR_REQUESTED	3D residual mesh
+figure	Paper/revision/report_assets/compare_residual_matlab.pdf	ADVISOR_REQUESTED	MATLAB-exported residual comparison
+report	Paper/revision/source_trace_metrics.json	LOCAL_ENHANCED	Recomputed LTE table metrics and hashes
+report	Paper/revision/manuscript_figure_metrics.json	LOCAL_ENHANCED	Figure source metrics
+report	Paper/revision/report_assets/compare_residual_mesh_metrics.json	LOCAL_ENHANCED	n=15/25/50 residual mesh metrics

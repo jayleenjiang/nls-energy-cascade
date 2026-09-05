@@ -1,0 +1,273 @@
+{
+  "model_version": "gibbs-canonical-v1",
+  "summaries": [
+    "Paper/revision_2026-06-19/experiments/flux_validation/production_dt5e-4/n10_summary.csv",
+    "Paper/revision_2026-06-19/experiments/flux_validation/production_dt5e-4/n20_summary.csv",
+    "Paper/revision_2026-06-19/experiments/flux_validation/production_dt5e-4/n30_summary.csv",
+    "Paper/revision_2026-06-19/experiments/flux_validation/production_dt5e-4/n40_summary.csv",
+    "Paper/revision_2026-06-19/experiments/flux_validation/larger_n_pilot_2026-06-20/n50_b64_summary.csv",
+    "Paper/revision_2026-06-19/experiments/flux_validation/larger_n60_pilot_2026-06-20/n60_b64_summary.csv"
+  ],
+  "bootstrap_replicates_requested": 10000,
+  "base_bootstrap_seed": 20260623,
+  "fit_windows": [
+    {
+      "label": "primary n=10--40",
+      "category": "primary",
+      "chain_lengths": [
+        10,
+        20,
+        30,
+        40
+      ],
+      "prefactor": 28.74566399014203,
+      "exponent": -1.8500817897623119,
+      "r_squared_log_fit": 0.9980133250496377,
+      "bootstrap_replicates_requested": 10000,
+      "bootstrap_replicates_valid": 10000,
+      "bootstrap_seed": 20260623,
+      "exponent_normalized_95_ci": [
+        -1.870321912984804,
+        -1.8308131450201495
+      ]
+    },
+    {
+      "label": "with n=50",
+      "category": "larger_n",
+      "chain_lengths": [
+        10,
+        20,
+        30,
+        40,
+        50
+      ],
+      "prefactor": 32.500793559342824,
+      "exponent": -1.8944941856586874,
+      "r_squared_log_fit": 0.9976101259895161,
+      "bootstrap_replicates_requested": 10000,
+      "bootstrap_replicates_valid": 10000,
+      "bootstrap_seed": 20260624,
+      "exponent_normalized_95_ci": [
+        -1.9171651987646787,
+        -1.872950201109722
+      ]
+    },
+    {
+      "label": "with n=50,60",
+      "category": "larger_n",
+      "chain_lengths": [
+        10,
+        20,
+        30,
+        40,
+        50,
+        60
+      ],
+      "prefactor": 35.9449866527187,
+      "exponent": -1.9295558713522096,
+      "r_squared_log_fit": 0.9973879096032344,
+      "bootstrap_replicates_requested": 10000,
+      "bootstrap_replicates_valid": 10000,
+      "bootstrap_seed": 20260625,
+      "exponent_normalized_95_ci": [
+        -1.9542388618030062,
+        -1.9060335602192031
+      ]
+    },
+    {
+      "label": "tail n=20--60",
+      "category": "tail",
+      "chain_lengths": [
+        20,
+        30,
+        40,
+        50,
+        60
+      ],
+      "prefactor": 58.33281183077385,
+      "exponent": -2.059263304233715,
+      "r_squared_log_fit": 0.9993293782953642,
+      "bootstrap_replicates_requested": 10000,
+      "bootstrap_replicates_valid": 10000,
+      "bootstrap_seed": 20260626,
+      "exponent_normalized_95_ci": [
+        -2.106966459474347,
+        -2.012418747676187
+      ]
+    },
+    {
+      "label": "leave out n=10",
+      "category": "leave_one_out",
+      "chain_lengths": [
+        20,
+        30,
+        40,
+        50,
+        60
+      ],
+      "prefactor": 58.33281183077385,
+      "exponent": -2.059263304233715,
+      "r_squared_log_fit": 0.9993293782953642,
+      "bootstrap_replicates_requested": 10000,
+      "bootstrap_replicates_valid": 10000,
+      "bootstrap_seed": 20260627,
+      "exponent_normalized_95_ci": [
+        -2.107980979787561,
+        -2.0127424809262404
+      ]
+    },
+    {
+      "label": "leave out n=20",
+      "category": "leave_one_out",
+      "chain_lengths": [
+        10,
+        30,
+        40,
+        50,
+        60
+      ],
+      "prefactor": 33.373207403847054,
+      "exponent": -1.9123165435379612,
+      "r_squared_log_fit": 0.9979910863320713,
+      "bootstrap_replicates_requested": 10000,
+      "bootstrap_replicates_valid": 10000,
+      "bootstrap_seed": 20260628,
+      "exponent_normalized_95_ci": [
+        -1.936242224997221,
+        -1.8894250174595137
+      ]
+    },
+    {
+      "label": "leave out n=30",
+      "category": "leave_one_out",
+      "chain_lengths": [
+        10,
+        20,
+        40,
+        50,
+        60
+      ],
+      "prefactor": 35.43675203825928,
+      "exponent": -1.9296380252994865,
+      "r_squared_log_fit": 0.9981583200286746,
+      "bootstrap_replicates_requested": 10000,
+      "bootstrap_replicates_valid": 10000,
+      "bootstrap_seed": 20260629,
+      "exponent_normalized_95_ci": [
+        -1.954270632679913,
+        -1.9055344706446289
+      ]
+    },
+    {
+      "label": "leave out n=40",
+      "category": "leave_one_out",
+      "chain_lengths": [
+        10,
+        20,
+        30,
+        50,
+        60
+      ],
+      "prefactor": 36.212381721064084,
+      "exponent": -1.933025212011411,
+      "r_squared_log_fit": 0.9973422320039393,
+      "bootstrap_replicates_requested": 10000,
+      "bootstrap_replicates_valid": 10000,
+      "bootstrap_seed": 20260630,
+      "exponent_normalized_95_ci": [
+        -1.9606178832782946,
+        -1.906574062542982
+      ]
+    },
+    {
+      "label": "leave out n=50",
+      "category": "leave_one_out",
+      "chain_lengths": [
+        10,
+        20,
+        30,
+        40,
+        60
+      ],
+      "prefactor": 35.23612345434663,
+      "exponent": -1.922139619594425,
+      "r_squared_log_fit": 0.9970300071252468,
+      "bootstrap_replicates_requested": 10000,
+      "bootstrap_replicates_valid": 10000,
+      "bootstrap_seed": 20260631,
+      "exponent_normalized_95_ci": [
+        -1.9524873678933006,
+        -1.893166330167109
+      ]
+    },
+    {
+      "label": "leave out n=60",
+      "category": "leave_one_out",
+      "chain_lengths": [
+        10,
+        20,
+        30,
+        40,
+        50
+      ],
+      "prefactor": 32.500793559342824,
+      "exponent": -1.8944941856586874,
+      "r_squared_log_fit": 0.9976101259895161,
+      "bootstrap_replicates_requested": 10000,
+      "bootstrap_replicates_valid": 10000,
+      "bootstrap_seed": 20260632,
+      "exponent_normalized_95_ci": [
+        -1.916851179290162,
+        -1.8732410325791151
+      ]
+    }
+  ],
+  "local_slopes": [
+    {
+      "interval": [
+        10,
+        20
+      ],
+      "exponent": -1.719760113497291,
+      "left_mean": 0.3925219606363953,
+      "right_mean": 0.11916935258814434
+    },
+    {
+      "interval": [
+        20,
+        30
+      ],
+      "exponent": -1.9261935342296725,
+      "left_mean": 0.11916935258814434,
+      "right_mean": 0.054573113941518814
+    },
+    {
+      "interval": [
+        30,
+        40
+      ],
+      "exponent": -2.1092535549821996,
+      "left_mean": 0.054573113941518814,
+      "right_mean": 0.029747553960489122
+    },
+    {
+      "interval": [
+        40,
+        50
+      ],
+      "exponent": -2.1247307130386663,
+      "left_mean": 0.029747553960489122,
+      "right_mean": 0.018515846849854856
+    },
+    {
+      "interval": [
+        50,
+        60
+      ],
+      "exponent": -2.177708322947254,
+      "left_mean": 0.018515846849854856,
+      "right_mean": 0.012448296425054128
+    }
+  ],
+  "interpretation_scope": "Finite-size fit-window sensitivity over existing canonical runs; bootstrap intervals quantify trajectory Monte Carlo uncertainty conditional on each selected fit window."
+}

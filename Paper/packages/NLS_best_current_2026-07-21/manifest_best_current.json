@@ -1,0 +1,132 @@
+{
+  "compiled_pdf_source": "/Users/jayleenjiang/Documents/NLS/Paper/packages/build_best_current_2026-07-21/draft.pdf",
+  "files": [
+    {
+      "kind": "main LaTeX source",
+      "path": "draft.tex",
+      "sha256": "4207d432f9b89f357fb76add56ddd7b35c01683b6a77586992b049045bb88737",
+      "size_bytes": 94497
+    },
+    {
+      "kind": "bibliography source",
+      "path": "references.bib",
+      "sha256": "0fa0283b6479a63744e1e94865dac2cf6a697784a5f542e1af9b2d9846ec014f",
+      "size_bytes": 4381
+    },
+    {
+      "kind": "compiled bibliography for arXiv/portable build",
+      "path": "draft.bbl",
+      "sha256": "51176be3df27f7bdec63460350227d4c017e9df0450f6f9df6f27ecc378b2960",
+      "size_bytes": 3800
+    },
+    {
+      "kind": "compiled PDF",
+      "path": "draft.pdf",
+      "sha256": "3c78d9290f44b58dfe9e7cc519185fbb99e5c9704261fa8ebafecb67daf8cddd",
+      "size_bytes": 1631535
+    },
+    {
+      "kind": "figure used by draft.tex",
+      "path": "action_profiles.pdf",
+      "sha256": "b72d9cafc37cdea4a45f35a27c7c8729e13bffbda83a9f5ca8944c0d3954432c",
+      "size_bytes": 23952
+    },
+    {
+      "kind": "figure used by draft.tex",
+      "path": "cascade_embedding.pdf",
+      "sha256": "ff8a00f7a6a37c52ae08ca50c965d9f002603da5e9e5f780a246b2a86dc78af6",
+      "size_bytes": 29542
+    },
+    {
+      "kind": "figure used by draft.tex",
+      "path": "lte_residual_midchain.pdf",
+      "sha256": "3785b901fca6969f2e50dbc64780da97cdac52d57b89cafa26974118cc43a4b8",
+      "size_bytes": 35961
+    },
+    {
+      "kind": "figure used by draft.tex",
+      "path": "report_assets/compare_residual_mesh.pdf",
+      "sha256": "e2c7bff1ce9c529e335d263aa65b0eb3f668f59c8460cf6facf8a64673f47b87",
+      "size_bytes": 319877
+    },
+    {
+      "kind": "figure used by draft.tex",
+      "path": "experiments/flux_validation/production_dt5e-4/flux_primary_scaling.pdf",
+      "sha256": "c7c06317e77a12ed7c2998f93de7a5a6712cacfc7dba7662205c5d3693bdf319",
+      "size_bytes": 19190
+    },
+    {
+      "kind": "figure used by draft.tex",
+      "path": "experiments/flux_validation/production_dt5e-4/current_windows_n40_windows.pdf",
+      "sha256": "c068514bde19d5f69c7fe0380f1872b843f3083ed40079590bd015255ea399a4",
+      "size_bytes": 16459
+    },
+    {
+      "kind": "figure used by draft.tex",
+      "path": "experiments/flux_validation/production_dt5e-4/current_windows_variance_scaling.pdf",
+      "sha256": "976198b14d5aff80e26a9524799695c569fe3822b21fecb77383e6b6e89b5c81",
+      "size_bytes": 15488
+    },
+    {
+      "kind": "figure used by draft.tex",
+      "path": "eq_validation.png",
+      "sha256": "3bc9927e20c1c548d8a42184248aef746a954a6320ea3aafbf77d55a5203d654",
+      "size_bytes": 94546
+    },
+    {
+      "kind": "figure used by draft.tex",
+      "path": "neq_density.png",
+      "sha256": "959983b2bbf66b1f889c0837fae536d66d7dab53c4ddac1b4fdac4dcad95a0f1",
+      "size_bytes": 164861
+    },
+    {
+      "kind": "figure used by draft.tex",
+      "path": "symmetry_breaking.png",
+      "sha256": "883ca0d5b7786ba59f7c06fefabb22a5a859a17fcb76e8302a977f34666f8378",
+      "size_bytes": 75925
+    },
+    {
+      "kind": "figure used by draft.tex",
+      "path": "eigenvalue_scatter.png",
+      "sha256": "65215292c4d0ad6d7d8a438249d71c33705c55de784d52dd78f4ba1d712c3467",
+      "size_bytes": 108354
+    },
+    {
+      "kind": "figure used by draft.tex",
+      "path": "Q1_slices.png",
+      "sha256": "daa934ee72a192913d66d5663ebcf160739dcd529bc2a0d87cd790be51431a89",
+      "size_bytes": 78729
+    },
+    {
+      "kind": "figure used by draft.tex",
+      "path": "report_assets/canonical_flux_distribution.pdf",
+      "sha256": "5e62ab69ca55f2f67e82746d4f101a5fa99c0e08f0c52131c52a9cd709dcb7ce",
+      "size_bytes": 40511
+    },
+    {
+      "kind": "package note",
+      "path": "README_best_current.md",
+      "sha256": "49a20332d661082973175e7332f869206dbc49a85a5c90eee3c917f6fc16a180",
+      "size_bytes": 871
+    }
+  ],
+  "generated_local": "2026-07-21T17:55:15",
+  "included_graphics_from_tex": [
+    "action_profiles.pdf",
+    "cascade_embedding.pdf",
+    "lte_residual_midchain.pdf",
+    "report_assets/compare_residual_mesh.pdf",
+    "experiments/flux_validation/production_dt5e-4/flux_primary_scaling.pdf",
+    "experiments/flux_validation/production_dt5e-4/current_windows_n40_windows.pdf",
+    "experiments/flux_validation/production_dt5e-4/current_windows_variance_scaling.pdf",
+    "eq_validation.png",
+    "neq_density.png",
+    "symmetry_breaking.png",
+    "eigenvalue_scatter.png",
+    "Q1_slices.png",
+    "report_assets/canonical_flux_distribution.pdf"
+  ],
+  "missing_figures": [],
+  "package": "/Users/jayleenjiang/Documents/NLS/Paper/packages/NLS_best_current_2026-07-21",
+  "source_draft": "/Users/jayleenjiang/Documents/NLS/Paper/revision/draft.tex"
+}

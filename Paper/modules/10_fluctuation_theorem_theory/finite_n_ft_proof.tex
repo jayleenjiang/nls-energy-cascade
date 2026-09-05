@@ -1,0 +1,453 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,bm,booktabs,array}
+\usepackage[hidelinks]{hyperref}
+\usepackage[nameinlink,noabbrev]{cleveref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{assumption}[theorem]{Assumption}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\R}{\mathbb R}
+\newcommand{\E}{\mathbb E}
+\newcommand{\dd}{\,\mathrm d}
+\newcommand{\grad}{\nabla}
+\newcommand{\cL}{\mathcal L}
+\newcommand{\Thetaop}{\mathcal T}
+\newcommand{\SigmaM}{\Sigma^{\mathrm m}}
+
+\title{Finite-chain fluctuation relations for the boundary-driven resonant NLS chain\\
+\large A proof ledger separating exact identities from open spectral assumptions}
+\author{Working note}
+\date{30 August 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We analyze the continuous-time, projection-free Cartesian diffusion used by
+the entropy-production simulations of the boundary-driven resonant nonlinear
+Schr\"odinger chain.  For every fixed finite chain length we prove coercivity
+of the physical energy, global nonexplosion, equal-temperature Gibbs
+invariance, the bath-heat formula, and an exact formal-adjoint symmetry of the
+medium-entropy tilted generator.  The latter is
+\[
+  \cL_{n,k}^{*}=\Thetaop\cL_{n,1-k}\Thetaop
+\]
+on compactly supported smooth functions.  It implies the
+Gallavotti--Cohen symmetry of any principal scaled cumulant generating
+function admitted by the closed Feynman--Kac generator.  We state separately
+the unresolved analytic steps: existence and uniqueness of the
+unequal-temperature steady state, the relevant principal-eigenvalue theorem
+on the unbounded state space, and existence of a nontrivial thermodynamic
+limit.  Thus this note supplies a model-specific algebraic theorem and a
+precise proof program; it does not disguise the remaining spectral assumptions
+as completed results.
+\end{abstract}
+
+\section{Frozen continuous-time model}
+
+Let $n\ge2$, $c_j=x_j+\mathrm i y_j$, $I_j=|c_j|^2$, and
+$M=\sum_{j=1}^n I_j$.  The physical energy used by the Cartesian programs is
+\begin{equation}\label{eq:energy}
+ E(c)=\frac12M^2-\frac14\sum_{j=1}^n I_j^2
+ +\sum_{j=2}^n\operatorname{Re}\!\left(c_j^2\overline{c_{j-1}^2}\right).
+\end{equation}
+It equals one half of the Hamiltonian denoted by $H$ in the manuscript.  Put
+$z=(x_1,y_1,\ldots,x_n,y_n)\in\R^{2n}$ and
+$F_j=(\partial_{x_j}E,\partial_{y_j}E)$.  Let $J$ be the block-diagonal
+symplectic matrix with blocks
+$\left(\begin{smallmatrix}0&-1\\1&0\end{smallmatrix}\right)$, and let $P_r$
+project onto the two real coordinates of site $r$.  The continuous diffusion is
+\begin{equation}\label{eq:sde}
+ \dd z_t=J\grad E(z_t)\dd t
+ -\gamma\sum_{r\in\{1,n\}}P_r\grad E(z_t)\dd t
+ +\sum_{r\in\{1,n\}}\sqrt{2\gamma T_r}\,P_r\dd W_{r,t},
+\end{equation}
+where the two boundary Brownian motions are independent.  Its backward
+generator on smooth test functions is
+\begin{equation}\label{eq:generator}
+ \cL=A+\sum_{r\in\{1,n\}}B_r,
+ \qquad
+ A=(J\grad E)\cdot\grad,
+ \qquad
+ B_r=-\gamma F_r\cdot\grad_r+\gamma T_r\Delta_r.
+\end{equation}
+
+The time-reversal involution is complex conjugation,
+\begin{equation}\label{eq:theta}
+ \Theta z=(x_1,-y_1,\ldots,x_n,-y_n),
+ \qquad (\Thetaop f)(z)=f(\Theta z).
+\end{equation}
+The energy is even, $E\circ\Theta=E$, and
+\begin{equation}\label{eq:time-reversal-operators}
+ \Thetaop A\Thetaop=-A,
+ \qquad \Thetaop B_r\Thetaop=B_r.
+\end{equation}
+These identities fix the parity convention used below.
+
+\begin{remark}[Action--angle sign audit]\label{rem:sign}
+Transforming the Cartesian bath in \eqref{eq:sde} to action--angle variables
+gives
+\[
+ b^{\varphi}_1=-2\gamma I_2\sin\theta_2,
+ \qquad
+ b^{\varphi}_n=+2\gamma I_{n-1}\sin\theta_n.
+\]
+The advisor-synchronized manuscript snapshot has these signs.  The enhanced
+working draft currently displays a plus sign at the left endpoint; that is a
+manuscript typo, not the Cartesian model analyzed here.
+\end{remark}
+
+\section{Energy geometry and global well-posedness}
+
+\begin{lemma}[Coercivity]\label{lem:coercivity}
+For every $z\in\R^{2n}$,
+\begin{equation}\label{eq:coercivity}
+ E(z)\ge\frac14\sum_{j=1}^n I_j^2
+ \ge\frac{M^2}{4n}=\frac{|z|^4}{4n}.
+\end{equation}
+Consequently $E$ has compact sublevel sets and
+$\exp(-E/T)$ is integrable for every $T>0$.
+\end{lemma}
+
+\begin{proof}
+Writing $c_j=\sqrt{I_j}e^{\mathrm i\varphi_j}$ and
+$\theta_j=2(\varphi_j-\varphi_{j-1})$, expand \eqref{eq:energy} as
+\[
+ E=\frac14\sum_j I_j^2
+ +\sum_{\substack{j<\ell\\|j-\ell|>1}}I_jI_\ell
+ +\sum_{j=2}^n I_{j-1}I_j(1+\cos\theta_j).
+\]
+Every term after the first sum is nonnegative.  The second inequality in
+\eqref{eq:coercivity} is Cauchy--Schwarz.
+\end{proof}
+
+\begin{lemma}[Boundary Laplacian and energy drift]\label{lem:laplacian}
+For each boundary site $r\in\{1,n\}$,
+\begin{equation}\label{eq:laplacian}
+ \Delta_rE=4M.
+\end{equation}
+Moreover
+\begin{equation}\label{eq:LE}
+ \cL E=-\gamma\sum_{r\in\{1,n\}}|F_r|^2
+ +4\gamma(T_1+T_n)M.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+The interaction term is harmonic in each boundary pair $(x_r,y_r)$.
+Differentiating the first two terms of \eqref{eq:energy} gives
+$\Delta_rE=4(M+I_r)-4I_r=4M$.  The Hamiltonian vector field annihilates
+$E$, and applying the two bath generators gives \eqref{eq:LE}.
+\end{proof}
+
+\begin{theorem}[Finite-chain nonexplosion]\label{thm:nonexplosion}
+For every fixed $n\ge2$, positive temperatures, and deterministic initial
+condition, \eqref{eq:sde} has a unique global strong solution.  In particular,
+the projection-free Cartesian process is nonexplosive.
+\end{theorem}
+
+\begin{proof}
+The coefficients are polynomial and hence locally Lipschitz, so a unique
+strong solution exists up to its explosion time.  With $V=1+E$, discard the
+nonpositive term in \eqref{eq:LE} and use
+$M\le2\sqrt{nE}$ from \cref{lem:coercivity} to obtain
+\[
+ \cL V\le 8\gamma(T_1+T_n)\sqrt{nE}\le C_nV.
+\]
+Apply It\^o's formula to the process stopped on a sublevel set of $V$ and use
+Gronwall's inequality.  The resulting bound on the stopped expectation is
+uniform in the stopping level.  Since $V$ has compact sublevel sets, the usual
+Khasminskii stopping-time argument sends the explosion probability to zero.
+\end{proof}
+
+\section{Equilibrium consistency}
+
+\begin{proposition}[Equal-temperature Gibbs invariance]\label{prop:gibbs}
+If $T_1=T_n=T$, then
+\begin{equation}\label{eq:gibbs}
+ \mu_T(\dd z)=Z_{n,T}^{-1}e^{-E(z)/T}\dd z
+\end{equation}
+is an invariant probability measure for \eqref{eq:sde}.  This proposition does
+not assert uniqueness or a rate of convergence.
+\end{proposition}
+
+\begin{proof}
+Normalizability follows from \cref{lem:coercivity}.  The Hamiltonian operator
+$A$ is divergence-free and $AE=0$, hence $A^*e^{-E/T}=0$.  Each bath operator
+can be written
+\[
+ B_rf=\gamma T e^{E/T}\grad_r\cdot
+       \left(e^{-E/T}\grad_rf\right),
+\]
+so it is symmetric in $L^2(\mu_T)$ and annihilates constants.  Thus the weak
+adjoint of the full generator annihilates the density in \eqref{eq:gibbs}.
+Global nonexplosion from \cref{thm:nonexplosion} rules out loss of mass.
+\end{proof}
+
+\section{Heat and entropy production}
+
+For bath $r$, heat is positive when delivered to the chain.  Its
+Stratonovich definition and It\^o form are
+\begin{align}
+ \dd Q_r
+ &=F_r\circ\left[-\gamma F_r\dd t
+       +\sqrt{2\gamma T_r}\dd W_{r,t}\right],\label{eq:heat-strat}\\
+ &=\left[-\gamma|F_r|^2+\gamma T_r\Delta_rE\right]\dd t
+   +\sqrt{2\gamma T_r}\,F_r\cdot\dd W_{r,t}.\label{eq:heat-ito}
+\end{align}
+The medium entropy transferred to the reservoirs is
+\begin{equation}\label{eq:medium}
+ \SigmaM_t=-\sum_{r\in\{1,n\}}\beta_rQ_r(t),
+ \qquad \beta_r=T_r^{-1}.
+\end{equation}
+Using \eqref{eq:laplacian}, its differential is
+\begin{equation}\label{eq:medium-ito}
+ \dd\SigmaM_t=\sum_r\left[
+ \gamma\beta_r|F_r|^2-\gamma\Delta_rE\right]\dd t
+ -\sum_r\sqrt{2\gamma\beta_r}\,F_r\cdot\dd W_{r,t}.
+\end{equation}
+Equations \eqref{eq:heat-ito} and \eqref{eq:medium-ito} coincide with the
+continuous observable implemented in the entropy samplers.
+
+\begin{proposition}[Finite-time path relation under local absolute
+continuity]\label{prop:path}
+Let the forward diffusion start from a density $\rho_0$, and let the conjugate
+reverse experiment start from
+$\rho_t^{\rm R}(w)=\rho_t(\Theta w)$, the time-reversed terminal density.
+Assume the
+corresponding path measures are mutually absolutely continuous on $[0,t]$.
+Then the path log-likelihood ratio is
+\begin{equation}\label{eq:path-ratio}
+ \Sigma^{\rm tot}_t=\SigmaM_t+log\rho_0(Z_0)-\log\rho_t(Z_t),
+\end{equation}
+because $\rho_t^{\rm R}(\Theta Z_t)=\rho_t(Z_t)$.  It
+obeys
+\begin{equation}\label{eq:ift}
+ \E_{\rm F}e^{-\Sigma^{\rm tot}_t}=1
+\end{equation}
+and the forward--reverse Crooks relation.
+\end{proposition}
+
+\begin{proof}
+The Hamiltonian flow is volume preserving and reversible under \eqref{eq:theta},
+so it contributes no path action.  For each bath, the Gaussian
+forward/reverse increment ratio converges in the Stratonovich convention to
+$-\beta_r\dd Q_r$; equivalently this is the local-detailed-balance
+Radon--Nikodym calculation for an additive Langevin bath.  Summing the two
+bath contributions and including the
+initial-density ratio gives \eqref{eq:path-ratio}.  Equation \eqref{eq:ift} is
+normalization of the Radon--Nikodym derivative.  Applying the path-reversal
+change of variables gives the forward--reverse detailed relation.
+\end{proof}
+
+\begin{remark}[Forward-only detailed symmetry]
+The exact finite-time statement is generally a forward--reverse relation.
+A same-ensemble formula $P_{\rm F}(s)/P_{\rm F}(-s)=e^s$ needs an additional
+self-conjugacy condition.  It should not be inferred from the integral
+identity alone, especially when the NESS is not invariant under complex
+conjugation.
+\end{remark}
+
+\section{Exact tilted-generator symmetry}
+
+For a test function $f$, define the medium-entropy Feynman--Kac semigroup
+\[
+ P_{t,k}f(z)=\E_z\!\left[e^{-k\SigmaM_t}f(Z_t)\right].
+\]
+The standard It\^o product calculation using \eqref{eq:sde} and
+\eqref{eq:medium-ito} gives the tilted generator
+\begin{equation}\label{eq:tilted}
+ \boxed{
+ \cL_k=A+\sum_r\left[
+ \gamma T_r\Delta_r
+ +\gamma(2k-1)F_r\cdot\grad_r
+ +\gamma\beta_r(k^2-k)|F_r|^2
+ +\gamma k\Delta_rE
+ \right]. }
+\end{equation}
+
+\begin{theorem}[Formal Gallavotti--Cohen identity]\label{thm:formal-gc}
+On $C_c^\infty(\R^{2n})$, with adjoint taken relative to Lebesgue measure,
+\begin{equation}\label{eq:formal-gc}
+ \boxed{\cL_k^*=\Thetaop\cL_{1-k}\Thetaop.}
+\end{equation}
+This identity holds for every fixed finite $n$, every $k\in\R$, and arbitrary
+positive endpoint temperatures.
+\end{theorem}
+
+\begin{proof}
+The Hamiltonian part satisfies $A^*=-A=\Thetaop A\Thetaop$.  For one bath,
+write $\alpha_k=\gamma(2k-1)$.  Since
+\[
+ (F_r\cdot\grad_r)^*=-F_r\cdot\grad_r-\Delta_rE,
+\]
+the adjoint changes the drift coefficient to
+$-\alpha_k=\gamma(2(1-k)-1)$ and changes the coefficient of
+$\Delta_rE$ from $\gamma k$ to
+\[
+ \gamma k-\alpha_k=\gamma(1-k).
+\]
+Finally,
+$k^2-k=(1-k)^2-(1-k)$.  The bath operator is invariant under $\Thetaop$
+because $E\circ\Theta=E$.  These identities give \eqref{eq:formal-gc} after
+summing the two baths.
+\end{proof}
+
+\begin{assumption}[Spectral realization]\label{ass:spectral}
+For $k$ in a symmetric interval $K$ with $k\in K$ iff $1-k\in K$, the closure
+of \eqref{eq:tilted} generates a positive Feynman--Kac semigroup on a common
+weighted function space.  The unequal-temperature process admits an invariant
+probability law $\rho_n$ with the exponential moments required by that space.
+The long-time growth rate exists and is the isolated
+principal spectral value
+\begin{equation}\label{eq:scgf}
+ \psi_n(k)=\lim_{t\to\infty}\frac1t
+ \log\E_{\rho_n}e^{-k\SigmaM_t}.
+\end{equation}
+The domains used for $k$ and $1-k$ are mapped into one another by
+$\Thetaop$ and adjunction.
+\end{assumption}
+
+\begin{corollary}[Finite-chain GC symmetry]\label{cor:finite-gc}
+Under \cref{ass:spectral},
+\begin{equation}\label{eq:gc}
+ \boxed{\psi_n(k)=\psi_n(1-k),\qquad k\in K.}
+\end{equation}
+\end{corollary}
+
+\begin{proof}
+Adjoint and $\Thetaop$-conjugate closed operators have the same principal
+spectral value.  Apply \cref{thm:formal-gc} and the spectral identification in
+\cref{ass:spectral}.
+\end{proof}
+
+\section{The right-bath gauge used numerically}
+
+For any constant $g$, define
+\[
+ A_g=(-\beta_1+g)Q_1+(-\beta_n+g)Q_n
+     =\SigmaM+g(E_t-E_0).
+\]
+The equality is exact for the continuous model.  The production cloning runs
+use $g=\beta_1$, so
+\begin{equation}\label{eq:right-gauge}
+ A_{\beta_1}=-(\beta_n-\beta_1)Q_n.
+\end{equation}
+
+\begin{proposition}[Coboundary similarity]\label{prop:gauge}
+Let $G(z)=gE(z)$.  On any function space for which multiplication by
+$e^{\pm kG}$ preserves the relevant domains, the tilted semigroups and
+generators for $A_g$ and $\SigmaM$ are similar:
+\begin{equation}\label{eq:gauge-similarity}
+ P^{(g)}_{t,k}=e^{kG}P_{t,k}e^{-kG},
+ \qquad
+ \cL^{(g)}_k=e^{kG}\cL_ke^{-kG}.
+\end{equation}
+They therefore have the same principal SCGF.
+\end{proposition}
+
+\begin{proof}
+Insert $A_g=\SigmaM+G(Z_t)-G(Z_0)$ into the definition of the tilted
+semigroup and move the two endpoint factors outside and inside the expectation.
+\end{proof}
+
+\begin{remark}
+Because $E$ is unbounded, the domain condition in \cref{prop:gauge} is a real
+analytic requirement, not a cosmetic technicality.  The numerical decay of
+the endpoint difference is evidence for it but not a proof.
+\end{remark}
+
+\section{Thermodynamic-limit inheritance}
+
+\begin{theorem}[Conditional $n\to\infty$ inheritance]\label{thm:limit}
+Let $K$ be symmetric about $1/2$.  Suppose \eqref{eq:gc} holds for every
+finite $n$ and the pointwise limit
+\begin{equation}\label{eq:limit}
+ \psi_\infty(k)=\lim_{n\to\infty}\psi_n(k)
+\end{equation}
+exists and is finite for every $k\in K$.  Then
+\begin{equation}\label{eq:limit-gc}
+ \psi_\infty(k)=\psi_\infty(1-k),\qquad k\in K.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+For $k\in K$,
+\[
+ \psi_\infty(k)=\lim_n\psi_n(k)
+ =\lim_n\psi_n(1-k)=\psi_\infty(1-k).
+\]
+\end{proof}
+
+\begin{remark}[Possible triviality]
+If the entropy-current scale vanishes with chain length, the unnormalized
+limit may be $\psi_\infty\equiv0$.  Such a limit satisfies
+\eqref{eq:limit-gc} but carries no nontrivial transport information.  A
+normalized SCGF can be studied only after its scaling and common tilt domain
+are fixed independently of the observed finite-size data.
+\end{remark}
+
+\section{Proof ledger and remaining work}
+
+\begin{center}
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.44\linewidth}
+                >{\raggedright\arraybackslash}p{0.18\linewidth}
+                >{\raggedright\arraybackslash}p{0.27\linewidth}}
+\toprule
+Statement & Status & Location or missing ingredient\\
+\midrule
+Energy coercivity and Gibbs normalizability & proved & \cref{lem:coercivity}\\
+Finite-$n$ global nonexplosion & proved & \cref{thm:nonexplosion}\\
+Equal-temperature Gibbs invariance & proved & \cref{prop:gibbs}\\
+Heat/medium-entropy formula & proved & \cref{eq:heat-ito,eq:medium-ito}\\
+Finite-time IFT/Crooks relation & proved under path absolute continuity & \cref{prop:path}\\
+Tilted-generator formal-adjoint GC identity & proved & \cref{thm:formal-gc}\\
+Unequal-temperature NESS existence/uniqueness & open for this thermostat and general $n$ & Lyapunov, irreducibility, hypoellipticity\\
+Principal SCGF and common tilt domain & assumed & weighted Feynman--Kac spectral theory\\
+Finite-$n$ SCGF symmetry & conditional theorem & \cref{cor:finite-gc}\\
+Right-bath/medium gauge equivalence & conditional on domains & \cref{prop:gauge}\\
+Thermodynamic-limit symmetry & conditional theorem & \cref{thm:limit}\\
+Existence and nontriviality of the limit & open & uniform-in-$n$ estimates and scaling\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The next mathematical target is therefore not more algebra.  It is a
+model-specific Lyapunov and Feynman--Kac argument for the
+unequal-temperature Cartesian thermostat.  The present identity should be
+used as the symmetry step after that existence theory is supplied, following
+the architecture used for stochastic Markov dynamics by
+Lebowitz--Spohn and for boundary-driven anharmonic chains by
+Rey-Bellet--Thomas.
+
+\begin{thebibliography}{9}
+
+\bibitem{LebowitzSpohn}
+J.~L. Lebowitz and H.~Spohn,
+\newblock A Gallavotti--Cohen-type symmetry in the large deviation functional
+for stochastic dynamics,
+\newblock \emph{Journal of Statistical Physics} 95 (1999), 333--365,
+\newblock \url{https://arxiv.org/abs/cond-mat/9811220}.
+
+\bibitem{ReyBelletThomas}
+L.~Rey-Bellet and L.~E. Thomas,
+\newblock Fluctuations of the entropy production in anharmonic chains,
+\newblock \emph{Annales Henri Poincar\'e} 3 (2002), 483--502,
+\newblock \url{https://arxiv.org/abs/math-ph/0110025}.
+
+\bibitem{ChetriteGawedzki}
+R.~Chetrite and K.~Gawedzki,
+\newblock Fluctuation relations for diffusion processes,
+\newblock \emph{Communications in Mathematical Physics} 282 (2008), 469--518,
+\newblock \url{https://arxiv.org/abs/0707.2725}.
+
+\end{thebibliography}
+
+\end{document}

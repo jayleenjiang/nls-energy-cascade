@@ -1,0 +1,2 @@
+temperature_left,temperature_right,base_time,max_multiple,bootstraps,seed,k_values
+10.0,2.0,20.0,10,500,20260829,0.05 0.1 0.2 0.3

@@ -1,0 +1,15 @@
+role	path	status	note
+code	flux/NLS_flux_canonical.cpp	PRIMARY	Canonical double-precision current accumulator
+code	flux/analyze_canonical_flux.py	PRIMARY	Means, stationarity, bootstrap scaling
+code	flux/analyze_current_windows.py	PRIMARY	Finite-window diagnostics
+code	flux/flux_data/NLS_flux_SIMD.cpp	COMPARISON	Fixed SIMD comparison source
+raw_data	Paper/revision/experiments/flux_validation/production_dt5e-4	PRIMARY	Canonical n=10,20,30,40 production data
+raw_data	flux_data/non_simd_flux_data	EXPORT	Canonical distribution export
+raw_data	flux/flux_data/fixed_simd_2026-06-19	COMPARISON	Fixed-SIMD comparison outputs
+figure	Paper/revision/experiments/flux_validation/production_dt5e-4/flux_primary_scaling.pdf	MANUSCRIPT_READY	Primary canonical scaling figure
+figure	Paper/revision/report_assets/simd_canonical_scaling_overlay.pdf	COMPARISON	Implementation comparison only
+figure	Paper/revision/report_assets/canonical_flux_distribution.pdf	SUPERSEDED_PENDING_100K	1024-trajectory finite-window distribution
+report	Paper/revision/experiments/flux_validation/production_manifest.md	PRIMARY	Exact build, parameters, commands, and results
+report	Paper/revision/experiments/flux_validation/validation_report.md	VALIDATION	Statistical interpretation and validation gates
+legacy_code	cpp/simulation/flux_V1.cpp	LEGACY_REFERENCE	Not used for current claims
+legacy_code	cpp/simulation/flux_V2.cpp	LEGACY_REFERENCE	Documented historical sign issue; not used
