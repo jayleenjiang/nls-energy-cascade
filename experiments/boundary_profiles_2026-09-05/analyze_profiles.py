@@ -311,10 +311,15 @@ def main():
     manifest = []
     for path in sorted([p for p in ROOT.rglob("*") if p.is_file() and
                         not any(part == ".git" for part in p.parts)]):
+        rel = path.relative_to(ROOT)
+        if "__pycache__" in rel.parts or "logs" in rel.parts:
+            continue
+        if rel.parts[0] == "report" and any(part.startswith("build") for part in rel.parts[1:]):
+            continue
         if path.name == "FILE_HASHES.csv":
             continue
         manifest.append({"sha256": sha256(path), "bytes": path.stat().st_size,
-                         "path": str(path.relative_to(ROOT))})
+                         "path": str(rel)})
     write_csv(OUT / "FILE_HASHES.csv", manifest, ["sha256", "bytes", "path"])
     print(f"complete: {len(groups)} logical runs, {sum(int(r['valid_trajectories']) for r in run_rows)} valid trajectories")
 

@@ -1,0 +1,22 @@
+{
+  "audit_date": "2026-09-06",
+  "run_matrix_rows": 72,
+  "logical_conditions": 36,
+  "trajectories_per_replicate": 256,
+  "valid_trajectory_rows": 18432,
+  "required_files_missing": 0,
+  "parsed_nonfinite_values": 0,
+  "bad_row_counts": 0,
+  "profile_rows": 4200,
+  "burnin_checkpoint_rows": 16800,
+  "measurement_checkpoint_rows": 16800,
+  "trajectory_diagnostic_rows": 18432,
+  "summary_rows": 72,
+  "nonfinite_trajectories": 0,
+  "discarded_trajectories": 0,
+  "bc1_reproduction_gate": "PASS",
+  "equal_temperature_zero_sine_gate": "FAIL_ALL_12",
+  "report_pdf_sha256": "52472156e813e8f2bc238ba9701b2b30355b12349460932f20c0502e181e1922",
+  "source_sha256": "40d13c7547d9c147ca8241ed701e1a1e85540fc0c21db48c4a63a943eccfe3ec",
+  "binary_sha256": "8d3438d3ea893e59216e9784d2104a33ce00d051d4df54c8c19f814fe2c0e6f4"
+}

@@ -1,0 +1,34 @@
+{
+  "n": 50,
+  "seeds": [
+    2026091000,
+    2026091001
+  ],
+  "nonfinite_trajectories": 0,
+  "discarded_trajectories": 0,
+  "endpoint_checks": [
+    {
+      "side": "left",
+      "reference": 0.514213,
+      "new_mean": 0.5169271301450665,
+      "new_se": 0.0007107586371306135,
+      "trajectory_count": 512,
+      "signed_discrepancy": 0.0027141301450664956,
+      "absolute_discrepancy": 0.0027141301450664956,
+      "tolerance": 0.010284260000000002,
+      "pass": true
+    },
+    {
+      "side": "right",
+      "reference": 0.105599,
+      "new_mean": 0.10636637138818558,
+      "new_se": 0.00015630285223895146,
+      "trajectory_count": 512,
+      "signed_discrepancy": 0.0007673713881855837,
+      "absolute_discrepancy": 0.0007673713881855837,
+      "tolerance": 0.00211198,
+      "pass": true
+    }
+  ],
+  "pass": true
+}

@@ -39,6 +39,10 @@ def main():
     nonfinite_total = sum(int(r["nonfinite_trajectories"]) for r in run)
     discarded_total = sum(int(r["discarded_trajectories"]) for r in run)
     profile_paths = list((ROOT / "curated_results" / "profiles").glob("*_profile.csv"))
+    slopes_with_global = [float(r["loglog_slope_mid_I"]) for r in scaling if r["bc_label"] in {"BC1", "BC2"}]
+    slopes_without_global = [float(r["loglog_slope_mid_I"]) for r in scaling if r["bc_label"] in {"BC3", "BC3b"}]
+    max_eq_z_global = max(float(r["sine_max_abs_z"]) for r in eq if r["bc_label"] in {"BC1", "BC2"})
+    max_eq_z_without = max(float(r["sine_max_abs_z"]) for r in eq if r["bc_label"] in {"BC3", "BC3b"})
 
     gate_lines = []
     for gate in gates:
@@ -85,7 +89,7 @@ def main():
 \newcommand{{\code}}[1]{{\texttt{{#1}}}}
 \title{{Stationary profiles under four boundary couplings}}
 \author{{Numerical audit report}}
-\date{{2026-09-05}}
+\date{{2026-09-06}}
 \begin{{document}}
 \maketitle
 
@@ -144,8 +148,8 @@ failures'' counts individual bonds outside a pointwise interval; the simultaneou
 verdict uses a Bonferroni 95\% threshold across all bonds and is not tuned by
 case.
 \begin{{center}}\small
-\begin{{tabular}}{{lrrrrl}}
-\toprule BC & $n$ & mean $I$ & relative range & sine 95\% failures & simultaneous sine\\
+\begin{{tabular}}{{lrrrrrl}}
+\toprule BC & $n$ & mean $I$ & relative range & sine 95\% failures & max $|z|$ & simultaneous sine\\
 \midrule
 {chr(10).join(eq_lines)}
 \bottomrule\end{{tabular}}\end{{center}}
@@ -180,17 +184,39 @@ bonds; all individual values remain available in the CSVs.
 \bottomrule
 \end{{longtable}}
 
+\section*{{Main findings and claim boundary}}
+Across all three temperature pairs, the midpoint-action exponents for BC1 and
+BC2 lie in [{min(slopes_with_global):.3f},{max(slopes_with_global):.3f}], close
+to the proposed $n^{{-1/2}}$ law.  Removing the global term gives exponents in
+[{min(slopes_without_global):.3f},{max(slopes_without_global):.3f}] for BC3 and
+BC3b, consistent with an $n^0$ midpoint at the resolution of three chain
+lengths.  This contrast supports the proposed boundary-fixed-point mechanism.
+No non-finite or discarded trajectory occurred, and the last-quarter endpoint
+changes are below 0.2\%, so the historical finite-time instability was not
+observed under this frozen protocol.
+
+The requested equal-temperature zero-sine control does not pass: all twelve
+simultaneous tests reject zero.  The largest bondwise $|z|$ is
+{max_eq_z_global:.1f} for BC1/BC2 and {max_eq_z_without:.1f} for BC3/BC3b.
+For the noncanonical BC3/BC3b baths, equal bath temperatures do not by
+themselves establish detailed balance; nevertheless, this is a failed requested
+control and is not hidden.  Accordingly, the profile-scaling contrast may be
+reported as numerical evidence for the mechanism, but the manuscript must not
+claim that every equal-temperature profile is flat with zero bond sine.  A
+strong equilibrium-profile claim requires an additional discretization or
+Cartesian validation.
+
 \section*{{Audit and provenance}}
 There are {len(profile_paths)} merged logical-run profile CSVs. Across the run
 matrix the analysis found {nonfinite_total} non-finite trajectories and
 {discarded_total} discarded trajectories.  The immutable base source SHA-256 is
-\code{{3919ab963e9d94bcb25ae5ef1c30c2bb032636525db7f6df4d6a318dd41f0656}}.
+\begin{{center}}\scriptsize\texttt{{3919ab963e9d94bcb25ae5ef1c30c2bb032636525db7f6df4d6a318dd41f0656}}\end{{center}}
 The instrumented source SHA-256 is
-\code{{40d13c7547d9c147ca8241ed701e1a1e85540fc0c21db48c4a63a943eccfe3ec}},
-the binary SHA-256 is
-\code{{8d3438d3ea893e59216e9784d2104a33ce00d051d4df54c8c19f814fe2c0e6f4}},
-and the integrated protocol commit is
-\code{{3e6d8e817ee44c8c686f2d80f7c333f3e9d3a973}}.
+\begin{{center}}\scriptsize\texttt{{40d13c7547d9c147ca8241ed701e1a1e85540fc0c21db48c4a63a943eccfe3ec}}\end{{center}}
+The binary SHA-256 is
+\begin{{center}}\scriptsize\texttt{{8d3438d3ea893e59216e9784d2104a33ce00d051d4df54c8c19f814fe2c0e6f4}}\end{{center}}
+The integrated protocol commit is
+\begin{{center}}\scriptsize\texttt{{3e6d8e817ee44c8c686f2d80f7c333f3e9d3a973}}\end{{center}}
 Exact commands and seeds are in \code{{COMMANDS.csv}}; file-level hashes are in
 \code{{analysis/FILE\_HASHES.csv}}.
 
@@ -198,8 +224,9 @@ Exact commands and seeds are in \code{{COMMANDS.csv}}; file-level hashes are in
 The requested inherited implementation uses single-precision SIMD dynamics,
 an adaptive Euler--Maruyama step with a $10^{{-5}}$ floor, a positive-action
 projection, and a polynomial trigonometric approximation. Projection counts
-are therefore reported rather than hidden. Claims from unstable BC3/BC3b runs
-are limited to the observed instability.
+are therefore reported rather than hidden. The absence of non-finite values in
+this finite run is evidence of numerical stability only over the tested time
+window, not a proof of long-time stability.
 \end{{document}}
 """
     (REPORT / "boundary_profile_report.tex").write_text(tex)
