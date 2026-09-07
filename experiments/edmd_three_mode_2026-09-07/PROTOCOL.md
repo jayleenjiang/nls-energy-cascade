@@ -77,7 +77,11 @@ The constant mode must satisfy `|mu-1| <= 1e-8` in every full-sample fit.
 
 A nontrivial mode is tracked by minimum distance in the complex-rate plane,
 with conjugate pairs represented by the member having nonnegative imaginary
-part.  A candidate is dictionary-stable only if it is present in D1, D2, and
+part.  The fixed reference candidates are the first 12 D3, `tau=0.5` modes
+ordered by decreasing real part, restricted to `-3 <= Re(lambda) <= -0.05`,
+`0 <= Im(lambda) <= 12`, and `0 < |mu| <= 1.05`.  A match is accepted only
+when its complex-rate distance from the reference is at most
+`max(0.50,0.35*|lambda_ref|)`.  A candidate is dictionary-stable only if it is present in D1, D2, and
 D3 at the same lag and the range of real parts is at most
 `max(0.15,0.20*|median(real)|)` and the range of absolute imaginary parts is at
 most `max(0.50,0.20*median(|imag|))`.  It is lag-stable only if the analogous
@@ -118,4 +122,3 @@ diagnostic/unvalidated.
 - If no nontrivial mode passes all convergence gates, the numerical spectrum
   remains unresolved.  Dictionary size, lag, cutoff, and matching tolerances
   will not be changed to rescue the result.
-
