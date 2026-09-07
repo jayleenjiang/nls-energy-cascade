@@ -1,5 +1,12 @@
 bin/
 raw/
+__pycache__/
 analysis/*.npz
 report/build/
+report/*.aux
+report/*.fdb_latexmk
+report/*.fls
+report/*.log
+report/*.out
+report/*.synctex.gz
 *.partial
