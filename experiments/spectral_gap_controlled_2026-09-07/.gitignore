@@ -1,0 +1,5 @@
+bin/
+raw/
+analysis/*.npz
+report/build/
+*.partial
