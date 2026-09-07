@@ -1,0 +1,5819 @@
+{
+  "started_unix": 1788804781.351498,
+  "python": "3.14.5 (main, May 10 2026, 10:21:34) [Clang 17.0.0 (clang-1700.6.4.2)]",
+  "platform": "macOS-15.6.1-arm64-arm-64bit-Mach-O",
+  "numpy": "2.4.6",
+  "scipy": "1.17.1",
+  "input": "/Users/jayleenjiang/Documents/NLS/experiments/spectral_gap_controlled_2026-09-07/raw",
+  "output": "/Users/jayleenjiang/Documents/NLS/experiments/edmd_three_mode_2026-09-07/analysis",
+  "cases": [
+    "driven_dt1e-3",
+    "driven_dt2p5e-4",
+    "equilibrium_dt1e-3",
+    "equilibrium_dt2p5e-4"
+  ],
+  "lags": [
+    0.1,
+    0.25,
+    0.5,
+    1.0
+  ],
+  "origins_per_stream": 2048,
+  "bootstraps": 500,
+  "bootstrap_seed": 2026090701,
+  "cutoff": 1e-10,
+  "cutoff_sensitivity": [
+    1e-08,
+    1e-10,
+    1e-12
+  ],
+  "dictionaries": [
+    {
+      "label": "D1",
+      "d": 2,
+      "M": 1,
+      "K": 90
+    },
+    {
+      "label": "D2",
+      "d": 2,
+      "M": 2,
+      "K": 250
+    },
+    {
+      "label": "D3",
+      "d": 3,
+      "M": 2,
+      "K": 500
+    }
+  ],
+  "feature_labels": [
+    {
+      "index": 0,
+      "action_exp": [
+        0,
+        0,
+        0
+      ],
+      "kind": "const",
+      "m1": 0,
+      "m3": 0
+    },
+    {
+      "index": 1,
+      "action_exp": [
+        0,
+        0,
+        0
+      ],
+      "kind": "cos",
+      "m1": 0,
+      "m3": 1
+    },
+    {
+      "index": 2,
+      "action_exp": [
+        0,
+        0,
+        0
+      ],
+      "kind": "sin",
+      "m1": 0,
+      "m3": 1
+    },
+    {
+      "index": 3,
+      "action_exp": [
+        0,
+        0,
+        0
+      ],
+      "kind": "cos",
+      "m1": 0,
+      "m3": 2
+    },
+    {
+      "index": 4,
+      "action_exp": [
+        0,
+        0,
+        0
+      ],
+      "kind": "sin",
+      "m1": 0,
+      "m3": 2
+    },
+    {
+      "index": 5,
+      "action_exp": [
+        0,
+        0,
+        0
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": -2
+    },
+    {
+      "index": 6,
+      "action_exp": [
+        0,
+        0,
+        0
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": -2
+    },
+    {
+      "index": 7,
+      "action_exp": [
+        0,
+        0,
+        0
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": -1
+    },
+    {
+      "index": 8,
+      "action_exp": [
+        0,
+        0,
+        0
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": -1
+    },
+    {
+      "index": 9,
+      "action_exp": [
+        0,
+        0,
+        0
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": 0
+    },
+    {
+      "index": 10,
+      "action_exp": [
+        0,
+        0,
+        0
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": 0
+    },
+    {
+      "index": 11,
+      "action_exp": [
+        0,
+        0,
+        0
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": 1
+    },
+    {
+      "index": 12,
+      "action_exp": [
+        0,
+        0,
+        0
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": 1
+    },
+    {
+      "index": 13,
+      "action_exp": [
+        0,
+        0,
+        0
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": 2
+    },
+    {
+      "index": 14,
+      "action_exp": [
+        0,
+        0,
+        0
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": 2
+    },
+    {
+      "index": 15,
+      "action_exp": [
+        0,
+        0,
+        0
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": -2
+    },
+    {
+      "index": 16,
+      "action_exp": [
+        0,
+        0,
+        0
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": -2
+    },
+    {
+      "index": 17,
+      "action_exp": [
+        0,
+        0,
+        0
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": -1
+    },
+    {
+      "index": 18,
+      "action_exp": [
+        0,
+        0,
+        0
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": -1
+    },
+    {
+      "index": 19,
+      "action_exp": [
+        0,
+        0,
+        0
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": 0
+    },
+    {
+      "index": 20,
+      "action_exp": [
+        0,
+        0,
+        0
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": 0
+    },
+    {
+      "index": 21,
+      "action_exp": [
+        0,
+        0,
+        0
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": 1
+    },
+    {
+      "index": 22,
+      "action_exp": [
+        0,
+        0,
+        0
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": 1
+    },
+    {
+      "index": 23,
+      "action_exp": [
+        0,
+        0,
+        0
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": 2
+    },
+    {
+      "index": 24,
+      "action_exp": [
+        0,
+        0,
+        0
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": 2
+    },
+    {
+      "index": 25,
+      "action_exp": [
+        0,
+        0,
+        1
+      ],
+      "kind": "const",
+      "m1": 0,
+      "m3": 0
+    },
+    {
+      "index": 26,
+      "action_exp": [
+        0,
+        0,
+        1
+      ],
+      "kind": "cos",
+      "m1": 0,
+      "m3": 1
+    },
+    {
+      "index": 27,
+      "action_exp": [
+        0,
+        0,
+        1
+      ],
+      "kind": "sin",
+      "m1": 0,
+      "m3": 1
+    },
+    {
+      "index": 28,
+      "action_exp": [
+        0,
+        0,
+        1
+      ],
+      "kind": "cos",
+      "m1": 0,
+      "m3": 2
+    },
+    {
+      "index": 29,
+      "action_exp": [
+        0,
+        0,
+        1
+      ],
+      "kind": "sin",
+      "m1": 0,
+      "m3": 2
+    },
+    {
+      "index": 30,
+      "action_exp": [
+        0,
+        0,
+        1
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": -2
+    },
+    {
+      "index": 31,
+      "action_exp": [
+        0,
+        0,
+        1
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": -2
+    },
+    {
+      "index": 32,
+      "action_exp": [
+        0,
+        0,
+        1
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": -1
+    },
+    {
+      "index": 33,
+      "action_exp": [
+        0,
+        0,
+        1
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": -1
+    },
+    {
+      "index": 34,
+      "action_exp": [
+        0,
+        0,
+        1
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": 0
+    },
+    {
+      "index": 35,
+      "action_exp": [
+        0,
+        0,
+        1
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": 0
+    },
+    {
+      "index": 36,
+      "action_exp": [
+        0,
+        0,
+        1
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": 1
+    },
+    {
+      "index": 37,
+      "action_exp": [
+        0,
+        0,
+        1
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": 1
+    },
+    {
+      "index": 38,
+      "action_exp": [
+        0,
+        0,
+        1
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": 2
+    },
+    {
+      "index": 39,
+      "action_exp": [
+        0,
+        0,
+        1
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": 2
+    },
+    {
+      "index": 40,
+      "action_exp": [
+        0,
+        0,
+        1
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": -2
+    },
+    {
+      "index": 41,
+      "action_exp": [
+        0,
+        0,
+        1
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": -2
+    },
+    {
+      "index": 42,
+      "action_exp": [
+        0,
+        0,
+        1
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": -1
+    },
+    {
+      "index": 43,
+      "action_exp": [
+        0,
+        0,
+        1
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": -1
+    },
+    {
+      "index": 44,
+      "action_exp": [
+        0,
+        0,
+        1
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": 0
+    },
+    {
+      "index": 45,
+      "action_exp": [
+        0,
+        0,
+        1
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": 0
+    },
+    {
+      "index": 46,
+      "action_exp": [
+        0,
+        0,
+        1
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": 1
+    },
+    {
+      "index": 47,
+      "action_exp": [
+        0,
+        0,
+        1
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": 1
+    },
+    {
+      "index": 48,
+      "action_exp": [
+        0,
+        0,
+        1
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": 2
+    },
+    {
+      "index": 49,
+      "action_exp": [
+        0,
+        0,
+        1
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": 2
+    },
+    {
+      "index": 50,
+      "action_exp": [
+        0,
+        1,
+        0
+      ],
+      "kind": "const",
+      "m1": 0,
+      "m3": 0
+    },
+    {
+      "index": 51,
+      "action_exp": [
+        0,
+        1,
+        0
+      ],
+      "kind": "cos",
+      "m1": 0,
+      "m3": 1
+    },
+    {
+      "index": 52,
+      "action_exp": [
+        0,
+        1,
+        0
+      ],
+      "kind": "sin",
+      "m1": 0,
+      "m3": 1
+    },
+    {
+      "index": 53,
+      "action_exp": [
+        0,
+        1,
+        0
+      ],
+      "kind": "cos",
+      "m1": 0,
+      "m3": 2
+    },
+    {
+      "index": 54,
+      "action_exp": [
+        0,
+        1,
+        0
+      ],
+      "kind": "sin",
+      "m1": 0,
+      "m3": 2
+    },
+    {
+      "index": 55,
+      "action_exp": [
+        0,
+        1,
+        0
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": -2
+    },
+    {
+      "index": 56,
+      "action_exp": [
+        0,
+        1,
+        0
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": -2
+    },
+    {
+      "index": 57,
+      "action_exp": [
+        0,
+        1,
+        0
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": -1
+    },
+    {
+      "index": 58,
+      "action_exp": [
+        0,
+        1,
+        0
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": -1
+    },
+    {
+      "index": 59,
+      "action_exp": [
+        0,
+        1,
+        0
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": 0
+    },
+    {
+      "index": 60,
+      "action_exp": [
+        0,
+        1,
+        0
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": 0
+    },
+    {
+      "index": 61,
+      "action_exp": [
+        0,
+        1,
+        0
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": 1
+    },
+    {
+      "index": 62,
+      "action_exp": [
+        0,
+        1,
+        0
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": 1
+    },
+    {
+      "index": 63,
+      "action_exp": [
+        0,
+        1,
+        0
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": 2
+    },
+    {
+      "index": 64,
+      "action_exp": [
+        0,
+        1,
+        0
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": 2
+    },
+    {
+      "index": 65,
+      "action_exp": [
+        0,
+        1,
+        0
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": -2
+    },
+    {
+      "index": 66,
+      "action_exp": [
+        0,
+        1,
+        0
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": -2
+    },
+    {
+      "index": 67,
+      "action_exp": [
+        0,
+        1,
+        0
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": -1
+    },
+    {
+      "index": 68,
+      "action_exp": [
+        0,
+        1,
+        0
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": -1
+    },
+    {
+      "index": 69,
+      "action_exp": [
+        0,
+        1,
+        0
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": 0
+    },
+    {
+      "index": 70,
+      "action_exp": [
+        0,
+        1,
+        0
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": 0
+    },
+    {
+      "index": 71,
+      "action_exp": [
+        0,
+        1,
+        0
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": 1
+    },
+    {
+      "index": 72,
+      "action_exp": [
+        0,
+        1,
+        0
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": 1
+    },
+    {
+      "index": 73,
+      "action_exp": [
+        0,
+        1,
+        0
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": 2
+    },
+    {
+      "index": 74,
+      "action_exp": [
+        0,
+        1,
+        0
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": 2
+    },
+    {
+      "index": 75,
+      "action_exp": [
+        1,
+        0,
+        0
+      ],
+      "kind": "const",
+      "m1": 0,
+      "m3": 0
+    },
+    {
+      "index": 76,
+      "action_exp": [
+        1,
+        0,
+        0
+      ],
+      "kind": "cos",
+      "m1": 0,
+      "m3": 1
+    },
+    {
+      "index": 77,
+      "action_exp": [
+        1,
+        0,
+        0
+      ],
+      "kind": "sin",
+      "m1": 0,
+      "m3": 1
+    },
+    {
+      "index": 78,
+      "action_exp": [
+        1,
+        0,
+        0
+      ],
+      "kind": "cos",
+      "m1": 0,
+      "m3": 2
+    },
+    {
+      "index": 79,
+      "action_exp": [
+        1,
+        0,
+        0
+      ],
+      "kind": "sin",
+      "m1": 0,
+      "m3": 2
+    },
+    {
+      "index": 80,
+      "action_exp": [
+        1,
+        0,
+        0
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": -2
+    },
+    {
+      "index": 81,
+      "action_exp": [
+        1,
+        0,
+        0
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": -2
+    },
+    {
+      "index": 82,
+      "action_exp": [
+        1,
+        0,
+        0
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": -1
+    },
+    {
+      "index": 83,
+      "action_exp": [
+        1,
+        0,
+        0
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": -1
+    },
+    {
+      "index": 84,
+      "action_exp": [
+        1,
+        0,
+        0
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": 0
+    },
+    {
+      "index": 85,
+      "action_exp": [
+        1,
+        0,
+        0
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": 0
+    },
+    {
+      "index": 86,
+      "action_exp": [
+        1,
+        0,
+        0
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": 1
+    },
+    {
+      "index": 87,
+      "action_exp": [
+        1,
+        0,
+        0
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": 1
+    },
+    {
+      "index": 88,
+      "action_exp": [
+        1,
+        0,
+        0
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": 2
+    },
+    {
+      "index": 89,
+      "action_exp": [
+        1,
+        0,
+        0
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": 2
+    },
+    {
+      "index": 90,
+      "action_exp": [
+        1,
+        0,
+        0
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": -2
+    },
+    {
+      "index": 91,
+      "action_exp": [
+        1,
+        0,
+        0
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": -2
+    },
+    {
+      "index": 92,
+      "action_exp": [
+        1,
+        0,
+        0
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": -1
+    },
+    {
+      "index": 93,
+      "action_exp": [
+        1,
+        0,
+        0
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": -1
+    },
+    {
+      "index": 94,
+      "action_exp": [
+        1,
+        0,
+        0
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": 0
+    },
+    {
+      "index": 95,
+      "action_exp": [
+        1,
+        0,
+        0
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": 0
+    },
+    {
+      "index": 96,
+      "action_exp": [
+        1,
+        0,
+        0
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": 1
+    },
+    {
+      "index": 97,
+      "action_exp": [
+        1,
+        0,
+        0
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": 1
+    },
+    {
+      "index": 98,
+      "action_exp": [
+        1,
+        0,
+        0
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": 2
+    },
+    {
+      "index": 99,
+      "action_exp": [
+        1,
+        0,
+        0
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": 2
+    },
+    {
+      "index": 100,
+      "action_exp": [
+        0,
+        0,
+        2
+      ],
+      "kind": "const",
+      "m1": 0,
+      "m3": 0
+    },
+    {
+      "index": 101,
+      "action_exp": [
+        0,
+        0,
+        2
+      ],
+      "kind": "cos",
+      "m1": 0,
+      "m3": 1
+    },
+    {
+      "index": 102,
+      "action_exp": [
+        0,
+        0,
+        2
+      ],
+      "kind": "sin",
+      "m1": 0,
+      "m3": 1
+    },
+    {
+      "index": 103,
+      "action_exp": [
+        0,
+        0,
+        2
+      ],
+      "kind": "cos",
+      "m1": 0,
+      "m3": 2
+    },
+    {
+      "index": 104,
+      "action_exp": [
+        0,
+        0,
+        2
+      ],
+      "kind": "sin",
+      "m1": 0,
+      "m3": 2
+    },
+    {
+      "index": 105,
+      "action_exp": [
+        0,
+        0,
+        2
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": -2
+    },
+    {
+      "index": 106,
+      "action_exp": [
+        0,
+        0,
+        2
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": -2
+    },
+    {
+      "index": 107,
+      "action_exp": [
+        0,
+        0,
+        2
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": -1
+    },
+    {
+      "index": 108,
+      "action_exp": [
+        0,
+        0,
+        2
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": -1
+    },
+    {
+      "index": 109,
+      "action_exp": [
+        0,
+        0,
+        2
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": 0
+    },
+    {
+      "index": 110,
+      "action_exp": [
+        0,
+        0,
+        2
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": 0
+    },
+    {
+      "index": 111,
+      "action_exp": [
+        0,
+        0,
+        2
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": 1
+    },
+    {
+      "index": 112,
+      "action_exp": [
+        0,
+        0,
+        2
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": 1
+    },
+    {
+      "index": 113,
+      "action_exp": [
+        0,
+        0,
+        2
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": 2
+    },
+    {
+      "index": 114,
+      "action_exp": [
+        0,
+        0,
+        2
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": 2
+    },
+    {
+      "index": 115,
+      "action_exp": [
+        0,
+        0,
+        2
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": -2
+    },
+    {
+      "index": 116,
+      "action_exp": [
+        0,
+        0,
+        2
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": -2
+    },
+    {
+      "index": 117,
+      "action_exp": [
+        0,
+        0,
+        2
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": -1
+    },
+    {
+      "index": 118,
+      "action_exp": [
+        0,
+        0,
+        2
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": -1
+    },
+    {
+      "index": 119,
+      "action_exp": [
+        0,
+        0,
+        2
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": 0
+    },
+    {
+      "index": 120,
+      "action_exp": [
+        0,
+        0,
+        2
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": 0
+    },
+    {
+      "index": 121,
+      "action_exp": [
+        0,
+        0,
+        2
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": 1
+    },
+    {
+      "index": 122,
+      "action_exp": [
+        0,
+        0,
+        2
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": 1
+    },
+    {
+      "index": 123,
+      "action_exp": [
+        0,
+        0,
+        2
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": 2
+    },
+    {
+      "index": 124,
+      "action_exp": [
+        0,
+        0,
+        2
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": 2
+    },
+    {
+      "index": 125,
+      "action_exp": [
+        0,
+        1,
+        1
+      ],
+      "kind": "const",
+      "m1": 0,
+      "m3": 0
+    },
+    {
+      "index": 126,
+      "action_exp": [
+        0,
+        1,
+        1
+      ],
+      "kind": "cos",
+      "m1": 0,
+      "m3": 1
+    },
+    {
+      "index": 127,
+      "action_exp": [
+        0,
+        1,
+        1
+      ],
+      "kind": "sin",
+      "m1": 0,
+      "m3": 1
+    },
+    {
+      "index": 128,
+      "action_exp": [
+        0,
+        1,
+        1
+      ],
+      "kind": "cos",
+      "m1": 0,
+      "m3": 2
+    },
+    {
+      "index": 129,
+      "action_exp": [
+        0,
+        1,
+        1
+      ],
+      "kind": "sin",
+      "m1": 0,
+      "m3": 2
+    },
+    {
+      "index": 130,
+      "action_exp": [
+        0,
+        1,
+        1
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": -2
+    },
+    {
+      "index": 131,
+      "action_exp": [
+        0,
+        1,
+        1
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": -2
+    },
+    {
+      "index": 132,
+      "action_exp": [
+        0,
+        1,
+        1
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": -1
+    },
+    {
+      "index": 133,
+      "action_exp": [
+        0,
+        1,
+        1
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": -1
+    },
+    {
+      "index": 134,
+      "action_exp": [
+        0,
+        1,
+        1
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": 0
+    },
+    {
+      "index": 135,
+      "action_exp": [
+        0,
+        1,
+        1
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": 0
+    },
+    {
+      "index": 136,
+      "action_exp": [
+        0,
+        1,
+        1
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": 1
+    },
+    {
+      "index": 137,
+      "action_exp": [
+        0,
+        1,
+        1
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": 1
+    },
+    {
+      "index": 138,
+      "action_exp": [
+        0,
+        1,
+        1
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": 2
+    },
+    {
+      "index": 139,
+      "action_exp": [
+        0,
+        1,
+        1
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": 2
+    },
+    {
+      "index": 140,
+      "action_exp": [
+        0,
+        1,
+        1
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": -2
+    },
+    {
+      "index": 141,
+      "action_exp": [
+        0,
+        1,
+        1
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": -2
+    },
+    {
+      "index": 142,
+      "action_exp": [
+        0,
+        1,
+        1
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": -1
+    },
+    {
+      "index": 143,
+      "action_exp": [
+        0,
+        1,
+        1
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": -1
+    },
+    {
+      "index": 144,
+      "action_exp": [
+        0,
+        1,
+        1
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": 0
+    },
+    {
+      "index": 145,
+      "action_exp": [
+        0,
+        1,
+        1
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": 0
+    },
+    {
+      "index": 146,
+      "action_exp": [
+        0,
+        1,
+        1
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": 1
+    },
+    {
+      "index": 147,
+      "action_exp": [
+        0,
+        1,
+        1
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": 1
+    },
+    {
+      "index": 148,
+      "action_exp": [
+        0,
+        1,
+        1
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": 2
+    },
+    {
+      "index": 149,
+      "action_exp": [
+        0,
+        1,
+        1
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": 2
+    },
+    {
+      "index": 150,
+      "action_exp": [
+        0,
+        2,
+        0
+      ],
+      "kind": "const",
+      "m1": 0,
+      "m3": 0
+    },
+    {
+      "index": 151,
+      "action_exp": [
+        0,
+        2,
+        0
+      ],
+      "kind": "cos",
+      "m1": 0,
+      "m3": 1
+    },
+    {
+      "index": 152,
+      "action_exp": [
+        0,
+        2,
+        0
+      ],
+      "kind": "sin",
+      "m1": 0,
+      "m3": 1
+    },
+    {
+      "index": 153,
+      "action_exp": [
+        0,
+        2,
+        0
+      ],
+      "kind": "cos",
+      "m1": 0,
+      "m3": 2
+    },
+    {
+      "index": 154,
+      "action_exp": [
+        0,
+        2,
+        0
+      ],
+      "kind": "sin",
+      "m1": 0,
+      "m3": 2
+    },
+    {
+      "index": 155,
+      "action_exp": [
+        0,
+        2,
+        0
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": -2
+    },
+    {
+      "index": 156,
+      "action_exp": [
+        0,
+        2,
+        0
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": -2
+    },
+    {
+      "index": 157,
+      "action_exp": [
+        0,
+        2,
+        0
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": -1
+    },
+    {
+      "index": 158,
+      "action_exp": [
+        0,
+        2,
+        0
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": -1
+    },
+    {
+      "index": 159,
+      "action_exp": [
+        0,
+        2,
+        0
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": 0
+    },
+    {
+      "index": 160,
+      "action_exp": [
+        0,
+        2,
+        0
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": 0
+    },
+    {
+      "index": 161,
+      "action_exp": [
+        0,
+        2,
+        0
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": 1
+    },
+    {
+      "index": 162,
+      "action_exp": [
+        0,
+        2,
+        0
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": 1
+    },
+    {
+      "index": 163,
+      "action_exp": [
+        0,
+        2,
+        0
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": 2
+    },
+    {
+      "index": 164,
+      "action_exp": [
+        0,
+        2,
+        0
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": 2
+    },
+    {
+      "index": 165,
+      "action_exp": [
+        0,
+        2,
+        0
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": -2
+    },
+    {
+      "index": 166,
+      "action_exp": [
+        0,
+        2,
+        0
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": -2
+    },
+    {
+      "index": 167,
+      "action_exp": [
+        0,
+        2,
+        0
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": -1
+    },
+    {
+      "index": 168,
+      "action_exp": [
+        0,
+        2,
+        0
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": -1
+    },
+    {
+      "index": 169,
+      "action_exp": [
+        0,
+        2,
+        0
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": 0
+    },
+    {
+      "index": 170,
+      "action_exp": [
+        0,
+        2,
+        0
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": 0
+    },
+    {
+      "index": 171,
+      "action_exp": [
+        0,
+        2,
+        0
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": 1
+    },
+    {
+      "index": 172,
+      "action_exp": [
+        0,
+        2,
+        0
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": 1
+    },
+    {
+      "index": 173,
+      "action_exp": [
+        0,
+        2,
+        0
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": 2
+    },
+    {
+      "index": 174,
+      "action_exp": [
+        0,
+        2,
+        0
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": 2
+    },
+    {
+      "index": 175,
+      "action_exp": [
+        1,
+        0,
+        1
+      ],
+      "kind": "const",
+      "m1": 0,
+      "m3": 0
+    },
+    {
+      "index": 176,
+      "action_exp": [
+        1,
+        0,
+        1
+      ],
+      "kind": "cos",
+      "m1": 0,
+      "m3": 1
+    },
+    {
+      "index": 177,
+      "action_exp": [
+        1,
+        0,
+        1
+      ],
+      "kind": "sin",
+      "m1": 0,
+      "m3": 1
+    },
+    {
+      "index": 178,
+      "action_exp": [
+        1,
+        0,
+        1
+      ],
+      "kind": "cos",
+      "m1": 0,
+      "m3": 2
+    },
+    {
+      "index": 179,
+      "action_exp": [
+        1,
+        0,
+        1
+      ],
+      "kind": "sin",
+      "m1": 0,
+      "m3": 2
+    },
+    {
+      "index": 180,
+      "action_exp": [
+        1,
+        0,
+        1
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": -2
+    },
+    {
+      "index": 181,
+      "action_exp": [
+        1,
+        0,
+        1
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": -2
+    },
+    {
+      "index": 182,
+      "action_exp": [
+        1,
+        0,
+        1
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": -1
+    },
+    {
+      "index": 183,
+      "action_exp": [
+        1,
+        0,
+        1
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": -1
+    },
+    {
+      "index": 184,
+      "action_exp": [
+        1,
+        0,
+        1
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": 0
+    },
+    {
+      "index": 185,
+      "action_exp": [
+        1,
+        0,
+        1
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": 0
+    },
+    {
+      "index": 186,
+      "action_exp": [
+        1,
+        0,
+        1
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": 1
+    },
+    {
+      "index": 187,
+      "action_exp": [
+        1,
+        0,
+        1
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": 1
+    },
+    {
+      "index": 188,
+      "action_exp": [
+        1,
+        0,
+        1
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": 2
+    },
+    {
+      "index": 189,
+      "action_exp": [
+        1,
+        0,
+        1
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": 2
+    },
+    {
+      "index": 190,
+      "action_exp": [
+        1,
+        0,
+        1
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": -2
+    },
+    {
+      "index": 191,
+      "action_exp": [
+        1,
+        0,
+        1
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": -2
+    },
+    {
+      "index": 192,
+      "action_exp": [
+        1,
+        0,
+        1
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": -1
+    },
+    {
+      "index": 193,
+      "action_exp": [
+        1,
+        0,
+        1
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": -1
+    },
+    {
+      "index": 194,
+      "action_exp": [
+        1,
+        0,
+        1
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": 0
+    },
+    {
+      "index": 195,
+      "action_exp": [
+        1,
+        0,
+        1
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": 0
+    },
+    {
+      "index": 196,
+      "action_exp": [
+        1,
+        0,
+        1
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": 1
+    },
+    {
+      "index": 197,
+      "action_exp": [
+        1,
+        0,
+        1
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": 1
+    },
+    {
+      "index": 198,
+      "action_exp": [
+        1,
+        0,
+        1
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": 2
+    },
+    {
+      "index": 199,
+      "action_exp": [
+        1,
+        0,
+        1
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": 2
+    },
+    {
+      "index": 200,
+      "action_exp": [
+        1,
+        1,
+        0
+      ],
+      "kind": "const",
+      "m1": 0,
+      "m3": 0
+    },
+    {
+      "index": 201,
+      "action_exp": [
+        1,
+        1,
+        0
+      ],
+      "kind": "cos",
+      "m1": 0,
+      "m3": 1
+    },
+    {
+      "index": 202,
+      "action_exp": [
+        1,
+        1,
+        0
+      ],
+      "kind": "sin",
+      "m1": 0,
+      "m3": 1
+    },
+    {
+      "index": 203,
+      "action_exp": [
+        1,
+        1,
+        0
+      ],
+      "kind": "cos",
+      "m1": 0,
+      "m3": 2
+    },
+    {
+      "index": 204,
+      "action_exp": [
+        1,
+        1,
+        0
+      ],
+      "kind": "sin",
+      "m1": 0,
+      "m3": 2
+    },
+    {
+      "index": 205,
+      "action_exp": [
+        1,
+        1,
+        0
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": -2
+    },
+    {
+      "index": 206,
+      "action_exp": [
+        1,
+        1,
+        0
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": -2
+    },
+    {
+      "index": 207,
+      "action_exp": [
+        1,
+        1,
+        0
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": -1
+    },
+    {
+      "index": 208,
+      "action_exp": [
+        1,
+        1,
+        0
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": -1
+    },
+    {
+      "index": 209,
+      "action_exp": [
+        1,
+        1,
+        0
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": 0
+    },
+    {
+      "index": 210,
+      "action_exp": [
+        1,
+        1,
+        0
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": 0
+    },
+    {
+      "index": 211,
+      "action_exp": [
+        1,
+        1,
+        0
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": 1
+    },
+    {
+      "index": 212,
+      "action_exp": [
+        1,
+        1,
+        0
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": 1
+    },
+    {
+      "index": 213,
+      "action_exp": [
+        1,
+        1,
+        0
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": 2
+    },
+    {
+      "index": 214,
+      "action_exp": [
+        1,
+        1,
+        0
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": 2
+    },
+    {
+      "index": 215,
+      "action_exp": [
+        1,
+        1,
+        0
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": -2
+    },
+    {
+      "index": 216,
+      "action_exp": [
+        1,
+        1,
+        0
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": -2
+    },
+    {
+      "index": 217,
+      "action_exp": [
+        1,
+        1,
+        0
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": -1
+    },
+    {
+      "index": 218,
+      "action_exp": [
+        1,
+        1,
+        0
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": -1
+    },
+    {
+      "index": 219,
+      "action_exp": [
+        1,
+        1,
+        0
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": 0
+    },
+    {
+      "index": 220,
+      "action_exp": [
+        1,
+        1,
+        0
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": 0
+    },
+    {
+      "index": 221,
+      "action_exp": [
+        1,
+        1,
+        0
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": 1
+    },
+    {
+      "index": 222,
+      "action_exp": [
+        1,
+        1,
+        0
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": 1
+    },
+    {
+      "index": 223,
+      "action_exp": [
+        1,
+        1,
+        0
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": 2
+    },
+    {
+      "index": 224,
+      "action_exp": [
+        1,
+        1,
+        0
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": 2
+    },
+    {
+      "index": 225,
+      "action_exp": [
+        2,
+        0,
+        0
+      ],
+      "kind": "const",
+      "m1": 0,
+      "m3": 0
+    },
+    {
+      "index": 226,
+      "action_exp": [
+        2,
+        0,
+        0
+      ],
+      "kind": "cos",
+      "m1": 0,
+      "m3": 1
+    },
+    {
+      "index": 227,
+      "action_exp": [
+        2,
+        0,
+        0
+      ],
+      "kind": "sin",
+      "m1": 0,
+      "m3": 1
+    },
+    {
+      "index": 228,
+      "action_exp": [
+        2,
+        0,
+        0
+      ],
+      "kind": "cos",
+      "m1": 0,
+      "m3": 2
+    },
+    {
+      "index": 229,
+      "action_exp": [
+        2,
+        0,
+        0
+      ],
+      "kind": "sin",
+      "m1": 0,
+      "m3": 2
+    },
+    {
+      "index": 230,
+      "action_exp": [
+        2,
+        0,
+        0
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": -2
+    },
+    {
+      "index": 231,
+      "action_exp": [
+        2,
+        0,
+        0
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": -2
+    },
+    {
+      "index": 232,
+      "action_exp": [
+        2,
+        0,
+        0
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": -1
+    },
+    {
+      "index": 233,
+      "action_exp": [
+        2,
+        0,
+        0
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": -1
+    },
+    {
+      "index": 234,
+      "action_exp": [
+        2,
+        0,
+        0
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": 0
+    },
+    {
+      "index": 235,
+      "action_exp": [
+        2,
+        0,
+        0
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": 0
+    },
+    {
+      "index": 236,
+      "action_exp": [
+        2,
+        0,
+        0
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": 1
+    },
+    {
+      "index": 237,
+      "action_exp": [
+        2,
+        0,
+        0
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": 1
+    },
+    {
+      "index": 238,
+      "action_exp": [
+        2,
+        0,
+        0
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": 2
+    },
+    {
+      "index": 239,
+      "action_exp": [
+        2,
+        0,
+        0
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": 2
+    },
+    {
+      "index": 240,
+      "action_exp": [
+        2,
+        0,
+        0
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": -2
+    },
+    {
+      "index": 241,
+      "action_exp": [
+        2,
+        0,
+        0
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": -2
+    },
+    {
+      "index": 242,
+      "action_exp": [
+        2,
+        0,
+        0
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": -1
+    },
+    {
+      "index": 243,
+      "action_exp": [
+        2,
+        0,
+        0
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": -1
+    },
+    {
+      "index": 244,
+      "action_exp": [
+        2,
+        0,
+        0
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": 0
+    },
+    {
+      "index": 245,
+      "action_exp": [
+        2,
+        0,
+        0
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": 0
+    },
+    {
+      "index": 246,
+      "action_exp": [
+        2,
+        0,
+        0
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": 1
+    },
+    {
+      "index": 247,
+      "action_exp": [
+        2,
+        0,
+        0
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": 1
+    },
+    {
+      "index": 248,
+      "action_exp": [
+        2,
+        0,
+        0
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": 2
+    },
+    {
+      "index": 249,
+      "action_exp": [
+        2,
+        0,
+        0
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": 2
+    },
+    {
+      "index": 250,
+      "action_exp": [
+        0,
+        0,
+        3
+      ],
+      "kind": "const",
+      "m1": 0,
+      "m3": 0
+    },
+    {
+      "index": 251,
+      "action_exp": [
+        0,
+        0,
+        3
+      ],
+      "kind": "cos",
+      "m1": 0,
+      "m3": 1
+    },
+    {
+      "index": 252,
+      "action_exp": [
+        0,
+        0,
+        3
+      ],
+      "kind": "sin",
+      "m1": 0,
+      "m3": 1
+    },
+    {
+      "index": 253,
+      "action_exp": [
+        0,
+        0,
+        3
+      ],
+      "kind": "cos",
+      "m1": 0,
+      "m3": 2
+    },
+    {
+      "index": 254,
+      "action_exp": [
+        0,
+        0,
+        3
+      ],
+      "kind": "sin",
+      "m1": 0,
+      "m3": 2
+    },
+    {
+      "index": 255,
+      "action_exp": [
+        0,
+        0,
+        3
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": -2
+    },
+    {
+      "index": 256,
+      "action_exp": [
+        0,
+        0,
+        3
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": -2
+    },
+    {
+      "index": 257,
+      "action_exp": [
+        0,
+        0,
+        3
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": -1
+    },
+    {
+      "index": 258,
+      "action_exp": [
+        0,
+        0,
+        3
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": -1
+    },
+    {
+      "index": 259,
+      "action_exp": [
+        0,
+        0,
+        3
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": 0
+    },
+    {
+      "index": 260,
+      "action_exp": [
+        0,
+        0,
+        3
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": 0
+    },
+    {
+      "index": 261,
+      "action_exp": [
+        0,
+        0,
+        3
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": 1
+    },
+    {
+      "index": 262,
+      "action_exp": [
+        0,
+        0,
+        3
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": 1
+    },
+    {
+      "index": 263,
+      "action_exp": [
+        0,
+        0,
+        3
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": 2
+    },
+    {
+      "index": 264,
+      "action_exp": [
+        0,
+        0,
+        3
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": 2
+    },
+    {
+      "index": 265,
+      "action_exp": [
+        0,
+        0,
+        3
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": -2
+    },
+    {
+      "index": 266,
+      "action_exp": [
+        0,
+        0,
+        3
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": -2
+    },
+    {
+      "index": 267,
+      "action_exp": [
+        0,
+        0,
+        3
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": -1
+    },
+    {
+      "index": 268,
+      "action_exp": [
+        0,
+        0,
+        3
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": -1
+    },
+    {
+      "index": 269,
+      "action_exp": [
+        0,
+        0,
+        3
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": 0
+    },
+    {
+      "index": 270,
+      "action_exp": [
+        0,
+        0,
+        3
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": 0
+    },
+    {
+      "index": 271,
+      "action_exp": [
+        0,
+        0,
+        3
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": 1
+    },
+    {
+      "index": 272,
+      "action_exp": [
+        0,
+        0,
+        3
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": 1
+    },
+    {
+      "index": 273,
+      "action_exp": [
+        0,
+        0,
+        3
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": 2
+    },
+    {
+      "index": 274,
+      "action_exp": [
+        0,
+        0,
+        3
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": 2
+    },
+    {
+      "index": 275,
+      "action_exp": [
+        0,
+        1,
+        2
+      ],
+      "kind": "const",
+      "m1": 0,
+      "m3": 0
+    },
+    {
+      "index": 276,
+      "action_exp": [
+        0,
+        1,
+        2
+      ],
+      "kind": "cos",
+      "m1": 0,
+      "m3": 1
+    },
+    {
+      "index": 277,
+      "action_exp": [
+        0,
+        1,
+        2
+      ],
+      "kind": "sin",
+      "m1": 0,
+      "m3": 1
+    },
+    {
+      "index": 278,
+      "action_exp": [
+        0,
+        1,
+        2
+      ],
+      "kind": "cos",
+      "m1": 0,
+      "m3": 2
+    },
+    {
+      "index": 279,
+      "action_exp": [
+        0,
+        1,
+        2
+      ],
+      "kind": "sin",
+      "m1": 0,
+      "m3": 2
+    },
+    {
+      "index": 280,
+      "action_exp": [
+        0,
+        1,
+        2
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": -2
+    },
+    {
+      "index": 281,
+      "action_exp": [
+        0,
+        1,
+        2
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": -2
+    },
+    {
+      "index": 282,
+      "action_exp": [
+        0,
+        1,
+        2
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": -1
+    },
+    {
+      "index": 283,
+      "action_exp": [
+        0,
+        1,
+        2
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": -1
+    },
+    {
+      "index": 284,
+      "action_exp": [
+        0,
+        1,
+        2
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": 0
+    },
+    {
+      "index": 285,
+      "action_exp": [
+        0,
+        1,
+        2
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": 0
+    },
+    {
+      "index": 286,
+      "action_exp": [
+        0,
+        1,
+        2
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": 1
+    },
+    {
+      "index": 287,
+      "action_exp": [
+        0,
+        1,
+        2
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": 1
+    },
+    {
+      "index": 288,
+      "action_exp": [
+        0,
+        1,
+        2
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": 2
+    },
+    {
+      "index": 289,
+      "action_exp": [
+        0,
+        1,
+        2
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": 2
+    },
+    {
+      "index": 290,
+      "action_exp": [
+        0,
+        1,
+        2
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": -2
+    },
+    {
+      "index": 291,
+      "action_exp": [
+        0,
+        1,
+        2
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": -2
+    },
+    {
+      "index": 292,
+      "action_exp": [
+        0,
+        1,
+        2
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": -1
+    },
+    {
+      "index": 293,
+      "action_exp": [
+        0,
+        1,
+        2
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": -1
+    },
+    {
+      "index": 294,
+      "action_exp": [
+        0,
+        1,
+        2
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": 0
+    },
+    {
+      "index": 295,
+      "action_exp": [
+        0,
+        1,
+        2
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": 0
+    },
+    {
+      "index": 296,
+      "action_exp": [
+        0,
+        1,
+        2
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": 1
+    },
+    {
+      "index": 297,
+      "action_exp": [
+        0,
+        1,
+        2
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": 1
+    },
+    {
+      "index": 298,
+      "action_exp": [
+        0,
+        1,
+        2
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": 2
+    },
+    {
+      "index": 299,
+      "action_exp": [
+        0,
+        1,
+        2
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": 2
+    },
+    {
+      "index": 300,
+      "action_exp": [
+        0,
+        2,
+        1
+      ],
+      "kind": "const",
+      "m1": 0,
+      "m3": 0
+    },
+    {
+      "index": 301,
+      "action_exp": [
+        0,
+        2,
+        1
+      ],
+      "kind": "cos",
+      "m1": 0,
+      "m3": 1
+    },
+    {
+      "index": 302,
+      "action_exp": [
+        0,
+        2,
+        1
+      ],
+      "kind": "sin",
+      "m1": 0,
+      "m3": 1
+    },
+    {
+      "index": 303,
+      "action_exp": [
+        0,
+        2,
+        1
+      ],
+      "kind": "cos",
+      "m1": 0,
+      "m3": 2
+    },
+    {
+      "index": 304,
+      "action_exp": [
+        0,
+        2,
+        1
+      ],
+      "kind": "sin",
+      "m1": 0,
+      "m3": 2
+    },
+    {
+      "index": 305,
+      "action_exp": [
+        0,
+        2,
+        1
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": -2
+    },
+    {
+      "index": 306,
+      "action_exp": [
+        0,
+        2,
+        1
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": -2
+    },
+    {
+      "index": 307,
+      "action_exp": [
+        0,
+        2,
+        1
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": -1
+    },
+    {
+      "index": 308,
+      "action_exp": [
+        0,
+        2,
+        1
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": -1
+    },
+    {
+      "index": 309,
+      "action_exp": [
+        0,
+        2,
+        1
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": 0
+    },
+    {
+      "index": 310,
+      "action_exp": [
+        0,
+        2,
+        1
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": 0
+    },
+    {
+      "index": 311,
+      "action_exp": [
+        0,
+        2,
+        1
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": 1
+    },
+    {
+      "index": 312,
+      "action_exp": [
+        0,
+        2,
+        1
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": 1
+    },
+    {
+      "index": 313,
+      "action_exp": [
+        0,
+        2,
+        1
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": 2
+    },
+    {
+      "index": 314,
+      "action_exp": [
+        0,
+        2,
+        1
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": 2
+    },
+    {
+      "index": 315,
+      "action_exp": [
+        0,
+        2,
+        1
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": -2
+    },
+    {
+      "index": 316,
+      "action_exp": [
+        0,
+        2,
+        1
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": -2
+    },
+    {
+      "index": 317,
+      "action_exp": [
+        0,
+        2,
+        1
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": -1
+    },
+    {
+      "index": 318,
+      "action_exp": [
+        0,
+        2,
+        1
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": -1
+    },
+    {
+      "index": 319,
+      "action_exp": [
+        0,
+        2,
+        1
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": 0
+    },
+    {
+      "index": 320,
+      "action_exp": [
+        0,
+        2,
+        1
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": 0
+    },
+    {
+      "index": 321,
+      "action_exp": [
+        0,
+        2,
+        1
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": 1
+    },
+    {
+      "index": 322,
+      "action_exp": [
+        0,
+        2,
+        1
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": 1
+    },
+    {
+      "index": 323,
+      "action_exp": [
+        0,
+        2,
+        1
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": 2
+    },
+    {
+      "index": 324,
+      "action_exp": [
+        0,
+        2,
+        1
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": 2
+    },
+    {
+      "index": 325,
+      "action_exp": [
+        0,
+        3,
+        0
+      ],
+      "kind": "const",
+      "m1": 0,
+      "m3": 0
+    },
+    {
+      "index": 326,
+      "action_exp": [
+        0,
+        3,
+        0
+      ],
+      "kind": "cos",
+      "m1": 0,
+      "m3": 1
+    },
+    {
+      "index": 327,
+      "action_exp": [
+        0,
+        3,
+        0
+      ],
+      "kind": "sin",
+      "m1": 0,
+      "m3": 1
+    },
+    {
+      "index": 328,
+      "action_exp": [
+        0,
+        3,
+        0
+      ],
+      "kind": "cos",
+      "m1": 0,
+      "m3": 2
+    },
+    {
+      "index": 329,
+      "action_exp": [
+        0,
+        3,
+        0
+      ],
+      "kind": "sin",
+      "m1": 0,
+      "m3": 2
+    },
+    {
+      "index": 330,
+      "action_exp": [
+        0,
+        3,
+        0
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": -2
+    },
+    {
+      "index": 331,
+      "action_exp": [
+        0,
+        3,
+        0
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": -2
+    },
+    {
+      "index": 332,
+      "action_exp": [
+        0,
+        3,
+        0
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": -1
+    },
+    {
+      "index": 333,
+      "action_exp": [
+        0,
+        3,
+        0
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": -1
+    },
+    {
+      "index": 334,
+      "action_exp": [
+        0,
+        3,
+        0
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": 0
+    },
+    {
+      "index": 335,
+      "action_exp": [
+        0,
+        3,
+        0
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": 0
+    },
+    {
+      "index": 336,
+      "action_exp": [
+        0,
+        3,
+        0
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": 1
+    },
+    {
+      "index": 337,
+      "action_exp": [
+        0,
+        3,
+        0
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": 1
+    },
+    {
+      "index": 338,
+      "action_exp": [
+        0,
+        3,
+        0
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": 2
+    },
+    {
+      "index": 339,
+      "action_exp": [
+        0,
+        3,
+        0
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": 2
+    },
+    {
+      "index": 340,
+      "action_exp": [
+        0,
+        3,
+        0
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": -2
+    },
+    {
+      "index": 341,
+      "action_exp": [
+        0,
+        3,
+        0
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": -2
+    },
+    {
+      "index": 342,
+      "action_exp": [
+        0,
+        3,
+        0
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": -1
+    },
+    {
+      "index": 343,
+      "action_exp": [
+        0,
+        3,
+        0
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": -1
+    },
+    {
+      "index": 344,
+      "action_exp": [
+        0,
+        3,
+        0
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": 0
+    },
+    {
+      "index": 345,
+      "action_exp": [
+        0,
+        3,
+        0
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": 0
+    },
+    {
+      "index": 346,
+      "action_exp": [
+        0,
+        3,
+        0
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": 1
+    },
+    {
+      "index": 347,
+      "action_exp": [
+        0,
+        3,
+        0
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": 1
+    },
+    {
+      "index": 348,
+      "action_exp": [
+        0,
+        3,
+        0
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": 2
+    },
+    {
+      "index": 349,
+      "action_exp": [
+        0,
+        3,
+        0
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": 2
+    },
+    {
+      "index": 350,
+      "action_exp": [
+        1,
+        0,
+        2
+      ],
+      "kind": "const",
+      "m1": 0,
+      "m3": 0
+    },
+    {
+      "index": 351,
+      "action_exp": [
+        1,
+        0,
+        2
+      ],
+      "kind": "cos",
+      "m1": 0,
+      "m3": 1
+    },
+    {
+      "index": 352,
+      "action_exp": [
+        1,
+        0,
+        2
+      ],
+      "kind": "sin",
+      "m1": 0,
+      "m3": 1
+    },
+    {
+      "index": 353,
+      "action_exp": [
+        1,
+        0,
+        2
+      ],
+      "kind": "cos",
+      "m1": 0,
+      "m3": 2
+    },
+    {
+      "index": 354,
+      "action_exp": [
+        1,
+        0,
+        2
+      ],
+      "kind": "sin",
+      "m1": 0,
+      "m3": 2
+    },
+    {
+      "index": 355,
+      "action_exp": [
+        1,
+        0,
+        2
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": -2
+    },
+    {
+      "index": 356,
+      "action_exp": [
+        1,
+        0,
+        2
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": -2
+    },
+    {
+      "index": 357,
+      "action_exp": [
+        1,
+        0,
+        2
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": -1
+    },
+    {
+      "index": 358,
+      "action_exp": [
+        1,
+        0,
+        2
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": -1
+    },
+    {
+      "index": 359,
+      "action_exp": [
+        1,
+        0,
+        2
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": 0
+    },
+    {
+      "index": 360,
+      "action_exp": [
+        1,
+        0,
+        2
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": 0
+    },
+    {
+      "index": 361,
+      "action_exp": [
+        1,
+        0,
+        2
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": 1
+    },
+    {
+      "index": 362,
+      "action_exp": [
+        1,
+        0,
+        2
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": 1
+    },
+    {
+      "index": 363,
+      "action_exp": [
+        1,
+        0,
+        2
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": 2
+    },
+    {
+      "index": 364,
+      "action_exp": [
+        1,
+        0,
+        2
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": 2
+    },
+    {
+      "index": 365,
+      "action_exp": [
+        1,
+        0,
+        2
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": -2
+    },
+    {
+      "index": 366,
+      "action_exp": [
+        1,
+        0,
+        2
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": -2
+    },
+    {
+      "index": 367,
+      "action_exp": [
+        1,
+        0,
+        2
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": -1
+    },
+    {
+      "index": 368,
+      "action_exp": [
+        1,
+        0,
+        2
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": -1
+    },
+    {
+      "index": 369,
+      "action_exp": [
+        1,
+        0,
+        2
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": 0
+    },
+    {
+      "index": 370,
+      "action_exp": [
+        1,
+        0,
+        2
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": 0
+    },
+    {
+      "index": 371,
+      "action_exp": [
+        1,
+        0,
+        2
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": 1
+    },
+    {
+      "index": 372,
+      "action_exp": [
+        1,
+        0,
+        2
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": 1
+    },
+    {
+      "index": 373,
+      "action_exp": [
+        1,
+        0,
+        2
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": 2
+    },
+    {
+      "index": 374,
+      "action_exp": [
+        1,
+        0,
+        2
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": 2
+    },
+    {
+      "index": 375,
+      "action_exp": [
+        1,
+        1,
+        1
+      ],
+      "kind": "const",
+      "m1": 0,
+      "m3": 0
+    },
+    {
+      "index": 376,
+      "action_exp": [
+        1,
+        1,
+        1
+      ],
+      "kind": "cos",
+      "m1": 0,
+      "m3": 1
+    },
+    {
+      "index": 377,
+      "action_exp": [
+        1,
+        1,
+        1
+      ],
+      "kind": "sin",
+      "m1": 0,
+      "m3": 1
+    },
+    {
+      "index": 378,
+      "action_exp": [
+        1,
+        1,
+        1
+      ],
+      "kind": "cos",
+      "m1": 0,
+      "m3": 2
+    },
+    {
+      "index": 379,
+      "action_exp": [
+        1,
+        1,
+        1
+      ],
+      "kind": "sin",
+      "m1": 0,
+      "m3": 2
+    },
+    {
+      "index": 380,
+      "action_exp": [
+        1,
+        1,
+        1
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": -2
+    },
+    {
+      "index": 381,
+      "action_exp": [
+        1,
+        1,
+        1
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": -2
+    },
+    {
+      "index": 382,
+      "action_exp": [
+        1,
+        1,
+        1
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": -1
+    },
+    {
+      "index": 383,
+      "action_exp": [
+        1,
+        1,
+        1
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": -1
+    },
+    {
+      "index": 384,
+      "action_exp": [
+        1,
+        1,
+        1
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": 0
+    },
+    {
+      "index": 385,
+      "action_exp": [
+        1,
+        1,
+        1
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": 0
+    },
+    {
+      "index": 386,
+      "action_exp": [
+        1,
+        1,
+        1
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": 1
+    },
+    {
+      "index": 387,
+      "action_exp": [
+        1,
+        1,
+        1
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": 1
+    },
+    {
+      "index": 388,
+      "action_exp": [
+        1,
+        1,
+        1
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": 2
+    },
+    {
+      "index": 389,
+      "action_exp": [
+        1,
+        1,
+        1
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": 2
+    },
+    {
+      "index": 390,
+      "action_exp": [
+        1,
+        1,
+        1
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": -2
+    },
+    {
+      "index": 391,
+      "action_exp": [
+        1,
+        1,
+        1
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": -2
+    },
+    {
+      "index": 392,
+      "action_exp": [
+        1,
+        1,
+        1
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": -1
+    },
+    {
+      "index": 393,
+      "action_exp": [
+        1,
+        1,
+        1
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": -1
+    },
+    {
+      "index": 394,
+      "action_exp": [
+        1,
+        1,
+        1
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": 0
+    },
+    {
+      "index": 395,
+      "action_exp": [
+        1,
+        1,
+        1
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": 0
+    },
+    {
+      "index": 396,
+      "action_exp": [
+        1,
+        1,
+        1
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": 1
+    },
+    {
+      "index": 397,
+      "action_exp": [
+        1,
+        1,
+        1
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": 1
+    },
+    {
+      "index": 398,
+      "action_exp": [
+        1,
+        1,
+        1
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": 2
+    },
+    {
+      "index": 399,
+      "action_exp": [
+        1,
+        1,
+        1
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": 2
+    },
+    {
+      "index": 400,
+      "action_exp": [
+        1,
+        2,
+        0
+      ],
+      "kind": "const",
+      "m1": 0,
+      "m3": 0
+    },
+    {
+      "index": 401,
+      "action_exp": [
+        1,
+        2,
+        0
+      ],
+      "kind": "cos",
+      "m1": 0,
+      "m3": 1
+    },
+    {
+      "index": 402,
+      "action_exp": [
+        1,
+        2,
+        0
+      ],
+      "kind": "sin",
+      "m1": 0,
+      "m3": 1
+    },
+    {
+      "index": 403,
+      "action_exp": [
+        1,
+        2,
+        0
+      ],
+      "kind": "cos",
+      "m1": 0,
+      "m3": 2
+    },
+    {
+      "index": 404,
+      "action_exp": [
+        1,
+        2,
+        0
+      ],
+      "kind": "sin",
+      "m1": 0,
+      "m3": 2
+    },
+    {
+      "index": 405,
+      "action_exp": [
+        1,
+        2,
+        0
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": -2
+    },
+    {
+      "index": 406,
+      "action_exp": [
+        1,
+        2,
+        0
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": -2
+    },
+    {
+      "index": 407,
+      "action_exp": [
+        1,
+        2,
+        0
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": -1
+    },
+    {
+      "index": 408,
+      "action_exp": [
+        1,
+        2,
+        0
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": -1
+    },
+    {
+      "index": 409,
+      "action_exp": [
+        1,
+        2,
+        0
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": 0
+    },
+    {
+      "index": 410,
+      "action_exp": [
+        1,
+        2,
+        0
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": 0
+    },
+    {
+      "index": 411,
+      "action_exp": [
+        1,
+        2,
+        0
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": 1
+    },
+    {
+      "index": 412,
+      "action_exp": [
+        1,
+        2,
+        0
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": 1
+    },
+    {
+      "index": 413,
+      "action_exp": [
+        1,
+        2,
+        0
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": 2
+    },
+    {
+      "index": 414,
+      "action_exp": [
+        1,
+        2,
+        0
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": 2
+    },
+    {
+      "index": 415,
+      "action_exp": [
+        1,
+        2,
+        0
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": -2
+    },
+    {
+      "index": 416,
+      "action_exp": [
+        1,
+        2,
+        0
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": -2
+    },
+    {
+      "index": 417,
+      "action_exp": [
+        1,
+        2,
+        0
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": -1
+    },
+    {
+      "index": 418,
+      "action_exp": [
+        1,
+        2,
+        0
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": -1
+    },
+    {
+      "index": 419,
+      "action_exp": [
+        1,
+        2,
+        0
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": 0
+    },
+    {
+      "index": 420,
+      "action_exp": [
+        1,
+        2,
+        0
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": 0
+    },
+    {
+      "index": 421,
+      "action_exp": [
+        1,
+        2,
+        0
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": 1
+    },
+    {
+      "index": 422,
+      "action_exp": [
+        1,
+        2,
+        0
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": 1
+    },
+    {
+      "index": 423,
+      "action_exp": [
+        1,
+        2,
+        0
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": 2
+    },
+    {
+      "index": 424,
+      "action_exp": [
+        1,
+        2,
+        0
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": 2
+    },
+    {
+      "index": 425,
+      "action_exp": [
+        2,
+        0,
+        1
+      ],
+      "kind": "const",
+      "m1": 0,
+      "m3": 0
+    },
+    {
+      "index": 426,
+      "action_exp": [
+        2,
+        0,
+        1
+      ],
+      "kind": "cos",
+      "m1": 0,
+      "m3": 1
+    },
+    {
+      "index": 427,
+      "action_exp": [
+        2,
+        0,
+        1
+      ],
+      "kind": "sin",
+      "m1": 0,
+      "m3": 1
+    },
+    {
+      "index": 428,
+      "action_exp": [
+        2,
+        0,
+        1
+      ],
+      "kind": "cos",
+      "m1": 0,
+      "m3": 2
+    },
+    {
+      "index": 429,
+      "action_exp": [
+        2,
+        0,
+        1
+      ],
+      "kind": "sin",
+      "m1": 0,
+      "m3": 2
+    },
+    {
+      "index": 430,
+      "action_exp": [
+        2,
+        0,
+        1
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": -2
+    },
+    {
+      "index": 431,
+      "action_exp": [
+        2,
+        0,
+        1
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": -2
+    },
+    {
+      "index": 432,
+      "action_exp": [
+        2,
+        0,
+        1
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": -1
+    },
+    {
+      "index": 433,
+      "action_exp": [
+        2,
+        0,
+        1
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": -1
+    },
+    {
+      "index": 434,
+      "action_exp": [
+        2,
+        0,
+        1
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": 0
+    },
+    {
+      "index": 435,
+      "action_exp": [
+        2,
+        0,
+        1
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": 0
+    },
+    {
+      "index": 436,
+      "action_exp": [
+        2,
+        0,
+        1
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": 1
+    },
+    {
+      "index": 437,
+      "action_exp": [
+        2,
+        0,
+        1
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": 1
+    },
+    {
+      "index": 438,
+      "action_exp": [
+        2,
+        0,
+        1
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": 2
+    },
+    {
+      "index": 439,
+      "action_exp": [
+        2,
+        0,
+        1
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": 2
+    },
+    {
+      "index": 440,
+      "action_exp": [
+        2,
+        0,
+        1
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": -2
+    },
+    {
+      "index": 441,
+      "action_exp": [
+        2,
+        0,
+        1
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": -2
+    },
+    {
+      "index": 442,
+      "action_exp": [
+        2,
+        0,
+        1
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": -1
+    },
+    {
+      "index": 443,
+      "action_exp": [
+        2,
+        0,
+        1
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": -1
+    },
+    {
+      "index": 444,
+      "action_exp": [
+        2,
+        0,
+        1
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": 0
+    },
+    {
+      "index": 445,
+      "action_exp": [
+        2,
+        0,
+        1
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": 0
+    },
+    {
+      "index": 446,
+      "action_exp": [
+        2,
+        0,
+        1
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": 1
+    },
+    {
+      "index": 447,
+      "action_exp": [
+        2,
+        0,
+        1
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": 1
+    },
+    {
+      "index": 448,
+      "action_exp": [
+        2,
+        0,
+        1
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": 2
+    },
+    {
+      "index": 449,
+      "action_exp": [
+        2,
+        0,
+        1
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": 2
+    },
+    {
+      "index": 450,
+      "action_exp": [
+        2,
+        1,
+        0
+      ],
+      "kind": "const",
+      "m1": 0,
+      "m3": 0
+    },
+    {
+      "index": 451,
+      "action_exp": [
+        2,
+        1,
+        0
+      ],
+      "kind": "cos",
+      "m1": 0,
+      "m3": 1
+    },
+    {
+      "index": 452,
+      "action_exp": [
+        2,
+        1,
+        0
+      ],
+      "kind": "sin",
+      "m1": 0,
+      "m3": 1
+    },
+    {
+      "index": 453,
+      "action_exp": [
+        2,
+        1,
+        0
+      ],
+      "kind": "cos",
+      "m1": 0,
+      "m3": 2
+    },
+    {
+      "index": 454,
+      "action_exp": [
+        2,
+        1,
+        0
+      ],
+      "kind": "sin",
+      "m1": 0,
+      "m3": 2
+    },
+    {
+      "index": 455,
+      "action_exp": [
+        2,
+        1,
+        0
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": -2
+    },
+    {
+      "index": 456,
+      "action_exp": [
+        2,
+        1,
+        0
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": -2
+    },
+    {
+      "index": 457,
+      "action_exp": [
+        2,
+        1,
+        0
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": -1
+    },
+    {
+      "index": 458,
+      "action_exp": [
+        2,
+        1,
+        0
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": -1
+    },
+    {
+      "index": 459,
+      "action_exp": [
+        2,
+        1,
+        0
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": 0
+    },
+    {
+      "index": 460,
+      "action_exp": [
+        2,
+        1,
+        0
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": 0
+    },
+    {
+      "index": 461,
+      "action_exp": [
+        2,
+        1,
+        0
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": 1
+    },
+    {
+      "index": 462,
+      "action_exp": [
+        2,
+        1,
+        0
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": 1
+    },
+    {
+      "index": 463,
+      "action_exp": [
+        2,
+        1,
+        0
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": 2
+    },
+    {
+      "index": 464,
+      "action_exp": [
+        2,
+        1,
+        0
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": 2
+    },
+    {
+      "index": 465,
+      "action_exp": [
+        2,
+        1,
+        0
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": -2
+    },
+    {
+      "index": 466,
+      "action_exp": [
+        2,
+        1,
+        0
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": -2
+    },
+    {
+      "index": 467,
+      "action_exp": [
+        2,
+        1,
+        0
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": -1
+    },
+    {
+      "index": 468,
+      "action_exp": [
+        2,
+        1,
+        0
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": -1
+    },
+    {
+      "index": 469,
+      "action_exp": [
+        2,
+        1,
+        0
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": 0
+    },
+    {
+      "index": 470,
+      "action_exp": [
+        2,
+        1,
+        0
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": 0
+    },
+    {
+      "index": 471,
+      "action_exp": [
+        2,
+        1,
+        0
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": 1
+    },
+    {
+      "index": 472,
+      "action_exp": [
+        2,
+        1,
+        0
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": 1
+    },
+    {
+      "index": 473,
+      "action_exp": [
+        2,
+        1,
+        0
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": 2
+    },
+    {
+      "index": 474,
+      "action_exp": [
+        2,
+        1,
+        0
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": 2
+    },
+    {
+      "index": 475,
+      "action_exp": [
+        3,
+        0,
+        0
+      ],
+      "kind": "const",
+      "m1": 0,
+      "m3": 0
+    },
+    {
+      "index": 476,
+      "action_exp": [
+        3,
+        0,
+        0
+      ],
+      "kind": "cos",
+      "m1": 0,
+      "m3": 1
+    },
+    {
+      "index": 477,
+      "action_exp": [
+        3,
+        0,
+        0
+      ],
+      "kind": "sin",
+      "m1": 0,
+      "m3": 1
+    },
+    {
+      "index": 478,
+      "action_exp": [
+        3,
+        0,
+        0
+      ],
+      "kind": "cos",
+      "m1": 0,
+      "m3": 2
+    },
+    {
+      "index": 479,
+      "action_exp": [
+        3,
+        0,
+        0
+      ],
+      "kind": "sin",
+      "m1": 0,
+      "m3": 2
+    },
+    {
+      "index": 480,
+      "action_exp": [
+        3,
+        0,
+        0
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": -2
+    },
+    {
+      "index": 481,
+      "action_exp": [
+        3,
+        0,
+        0
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": -2
+    },
+    {
+      "index": 482,
+      "action_exp": [
+        3,
+        0,
+        0
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": -1
+    },
+    {
+      "index": 483,
+      "action_exp": [
+        3,
+        0,
+        0
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": -1
+    },
+    {
+      "index": 484,
+      "action_exp": [
+        3,
+        0,
+        0
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": 0
+    },
+    {
+      "index": 485,
+      "action_exp": [
+        3,
+        0,
+        0
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": 0
+    },
+    {
+      "index": 486,
+      "action_exp": [
+        3,
+        0,
+        0
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": 1
+    },
+    {
+      "index": 487,
+      "action_exp": [
+        3,
+        0,
+        0
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": 1
+    },
+    {
+      "index": 488,
+      "action_exp": [
+        3,
+        0,
+        0
+      ],
+      "kind": "cos",
+      "m1": 1,
+      "m3": 2
+    },
+    {
+      "index": 489,
+      "action_exp": [
+        3,
+        0,
+        0
+      ],
+      "kind": "sin",
+      "m1": 1,
+      "m3": 2
+    },
+    {
+      "index": 490,
+      "action_exp": [
+        3,
+        0,
+        0
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": -2
+    },
+    {
+      "index": 491,
+      "action_exp": [
+        3,
+        0,
+        0
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": -2
+    },
+    {
+      "index": 492,
+      "action_exp": [
+        3,
+        0,
+        0
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": -1
+    },
+    {
+      "index": 493,
+      "action_exp": [
+        3,
+        0,
+        0
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": -1
+    },
+    {
+      "index": 494,
+      "action_exp": [
+        3,
+        0,
+        0
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": 0
+    },
+    {
+      "index": 495,
+      "action_exp": [
+        3,
+        0,
+        0
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": 0
+    },
+    {
+      "index": 496,
+      "action_exp": [
+        3,
+        0,
+        0
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": 1
+    },
+    {
+      "index": 497,
+      "action_exp": [
+        3,
+        0,
+        0
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": 1
+    },
+    {
+      "index": 498,
+      "action_exp": [
+        3,
+        0,
+        0
+      ],
+      "kind": "cos",
+      "m1": 2,
+      "m3": 2
+    },
+    {
+      "index": 499,
+      "action_exp": [
+        3,
+        0,
+        0
+      ],
+      "kind": "sin",
+      "m1": 2,
+      "m3": 2
+    }
+  ],
+  "results": [
+    {
+      "case": "driven_dt1e-3",
+      "elapsed_seconds": 44.99516296386719,
+      "log_mean": [
+        -0.3369023239569059,
+        -0.021707758567590642,
+        -0.05009418550634214
+      ],
+      "log_sd": [
+        1.344147838291288,
+        1.28683626997122,
+        1.2638723537068524
+      ],
+      "action_min": [
+        2.384185791015625e-07,
+        3.6155142879579216e-06,
+        1.7881393432617188e-07
+      ],
+      "action_max": [
+        13.211938381195068,
+        16.41683006286621,
+        17.681102752685547
+      ],
+      "snapshot_count": 6400064,
+      "origin_count_per_stream": 2048,
+      "pair_count": 131072,
+      "reference_modes": [
+        {
+          "mode": 0,
+          "lambda_real": -0.9401735849314701,
+          "lambda_imag": 0.0,
+          "mu_real": 0.6249480251487283,
+          "mu_imag": 0.0
+        },
+        {
+          "mode": 1,
+          "lambda_real": -1.7527488199044507,
+          "lambda_imag": 0.0,
+          "mu_real": 0.41628947391638266,
+          "mu_imag": 0.0
+        },
+        {
+          "mode": 2,
+          "lambda_real": -2.2396104765324987,
+          "lambda_imag": 0.0,
+          "mu_real": 0.32634334763017414,
+          "mu_imag": 0.0
+        },
+        {
+          "mode": 3,
+          "lambda_real": -2.3174426658637897,
+          "lambda_imag": 0.0,
+          "mu_real": 0.3138872817209728,
+          "mu_imag": 0.0
+        },
+        {
+          "mode": 4,
+          "lambda_real": -2.6524200481523486,
+          "lambda_imag": 3.060159041643113,
+          "mu_real": 0.010806573229342505,
+          "mu_imag": 0.2652614906468002
+        },
+        {
+          "mode": 5,
+          "lambda_real": -2.7189907205137063,
+          "lambda_imag": 0.0,
+          "mu_real": 0.25679033086839137,
+          "mu_imag": 0.0
+        },
+        {
+          "mode": 6,
+          "lambda_real": -2.9604741803555354,
+          "lambda_imag": 5.370695425996387,
+          "mu_real": -0.2043049195642493,
+          "mu_imag": 0.10026889511082988
+        }
+      ]
+    },
+    {
+      "case": "driven_dt2p5e-4",
+      "elapsed_seconds": 45.350115060806274,
+      "log_mean": [
+        -0.3300774717705117,
+        -0.019929974301549518,
+        -0.052601931472236074
+      ],
+      "log_sd": [
+        1.3398596495943114,
+        1.2769021658354776,
+        1.261282131391367
+      ],
+      "action_min": [
+        1.1548399925231934e-07,
+        1.3933018863099278e-06,
+        1.6391277313232422e-07
+      ],
+      "action_max": [
+        13.841673851013184,
+        17.923723220825195,
+        16.166634559631348
+      ],
+      "snapshot_count": 6400064,
+      "origin_count_per_stream": 2048,
+      "pair_count": 131072,
+      "reference_modes": [
+        {
+          "mode": 0,
+          "lambda_real": -0.9631910243268651,
+          "lambda_imag": 0.0,
+          "mu_real": 0.6177969025650478,
+          "mu_imag": 0.0
+        },
+        {
+          "mode": 1,
+          "lambda_real": -1.8481229631188287,
+          "lambda_imag": 0.0,
+          "mu_real": 0.3969037458144925,
+          "mu_imag": 0.0
+        },
+        {
+          "mode": 2,
+          "lambda_real": -2.0877156713269587,
+          "lambda_imag": 0.0,
+          "mu_real": 0.35209373871688077,
+          "mu_imag": 0.0
+        },
+        {
+          "mode": 3,
+          "lambda_real": -2.6741973789419244,
+          "lambda_imag": 0.0,
+          "mu_real": 0.2626064672985518,
+          "mu_imag": 0.0
+        }
+      ]
+    },
+    {
+      "case": "equilibrium_dt1e-3",
+      "elapsed_seconds": 45.40517997741699,
+      "log_mean": [
+        -0.17976145548910274,
+        -0.03354454564563781,
+        -0.17797971331902646
+      ],
+      "log_sd": [
+        1.2843261220069453,
+        1.2689616488629192,
+        1.287155052392791
+      ],
+      "action_min": [
+        2.384185791015625e-07,
+        4.2065953493874986e-06,
+        5.960464477539063e-08
+      ],
+      "action_max": [
+        14.958357334136963,
+        15.921411514282227,
+        14.765944957733154
+      ],
+      "snapshot_count": 6400064,
+      "origin_count_per_stream": 2048,
+      "pair_count": 131072,
+      "reference_modes": [
+        {
+          "mode": 0,
+          "lambda_real": -0.95514893253253,
+          "lambda_imag": 0.0,
+          "mu_real": 0.6202860934869247,
+          "mu_imag": 0.0
+        },
+        {
+          "mode": 1,
+          "lambda_real": -1.9262415839790412,
+          "lambda_imag": 0.0,
+          "mu_real": 0.3816998195480974,
+          "mu_imag": 0.0
+        },
+        {
+          "mode": 2,
+          "lambda_real": -2.2399767243410045,
+          "lambda_imag": 0.0,
+          "mu_real": 0.3262835918337535,
+          "mu_imag": 0.0
+        },
+        {
+          "mode": 3,
+          "lambda_real": -2.8338177497142727,
+          "lambda_imag": 0.0,
+          "mu_real": 0.2424623411581622,
+          "mu_imag": 0.0
+        },
+        {
+          "mode": 4,
+          "lambda_real": -2.984235371913249,
+          "lambda_imag": 3.6121464590980006,
+          "mu_real": -0.05242599156282132,
+          "mu_imag": 0.21869997178686346
+        }
+      ]
+    },
+    {
+      "case": "equilibrium_dt2p5e-4",
+      "elapsed_seconds": 45.48595476150513,
+      "log_mean": [
+        -0.17298068677193895,
+        -0.027725236003320938,
+        -0.17198599447530938
+      ],
+      "log_sd": [
+        1.2838593879112379,
+        1.2733739423059858,
+        1.2853974388934528
+      ],
+      "action_min": [
+        0.0,
+        3.818330242211232e-06,
+        0.0
+      ],
+      "action_max": [
+        14.015542030334473,
+        14.463141441345215,
+        14.914763927459717
+      ],
+      "snapshot_count": 6400064,
+      "origin_count_per_stream": 2048,
+      "pair_count": 131072,
+      "reference_modes": [
+        {
+          "mode": 0,
+          "lambda_real": -0.9407584041517817,
+          "lambda_imag": 0.0,
+          "mu_real": 0.6247653110553072,
+          "mu_imag": 0.0
+        },
+        {
+          "mode": 1,
+          "lambda_real": -1.7926057547050551,
+          "lambda_imag": 0.0,
+          "mu_real": 0.4080755797074764,
+          "mu_imag": 0.0
+        },
+        {
+          "mode": 2,
+          "lambda_real": -2.1516394334588527,
+          "lambda_imag": 0.0,
+          "mu_real": 0.341018102454975,
+          "mu_imag": 0.0
+        },
+        {
+          "mode": 3,
+          "lambda_real": -2.5437710919280434,
+          "lambda_imag": 0.0,
+          "mu_real": 0.28030259975177474,
+          "mu_imag": 0.0
+        },
+        {
+          "mode": 4,
+          "lambda_real": -2.862537701207786,
+          "lambda_imag": 0.0,
+          "mu_real": 0.2390054675333079,
+          "mu_imag": 0.0
+        }
+      ]
+    }
+  ],
+  "elapsed_seconds": 181.26114201545715,
+  "analysis_source_sha256": "d4c53270ed902cbcf6692dcc64d7c1f423e40189504d03703c6e4f8cd50cc6ef"
+}
