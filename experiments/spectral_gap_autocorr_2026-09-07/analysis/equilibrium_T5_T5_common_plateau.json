@@ -1,0 +1,18 @@
+{
+  "case": "equilibrium_T5_T5",
+  "status": "NO COMMON PLATEAU",
+  "eligible": [
+    "cos_theta1",
+    "cos_theta3",
+    "I2"
+  ],
+  "common_time_start": 1.0,
+  "common_time_end": 1.68,
+  "rate_min": -1.187833087490744,
+  "rate_max": -0.9065189091397072,
+  "rate_spread_ok": false,
+  "ci_intersection_low": -0.9664823187975431,
+  "ci_intersection_high": -1.0159711098621902,
+  "ci_overlap": false,
+  "time_overlap": true
+}

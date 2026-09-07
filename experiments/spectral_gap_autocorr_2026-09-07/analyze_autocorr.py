@@ -125,6 +125,32 @@ def damped_residual(params, t, y, se):
     return (pred - y) / np.maximum(se, 1.0e-12)
 
 
+def exponential_residual(params, t, y, se):
+    lr, a = params
+    pred = a * np.exp(lr * t)
+    return (pred - y) / np.maximum(se, 1.0e-12)
+
+
+def exponential_fit(t, y, se):
+    starts = [(-0.25, y[0]), (-0.5, y[0]), (-1.0, y[0]), (-2.0, y[0]), (-4.0, y[0])]
+    best = None
+    for start in starts:
+        try:
+            fit = least_squares(
+                exponential_residual,
+                start,
+                args=(t, y, se),
+                bounds=([-20.0, -1000.0], [0.0, 1000.0]),
+                max_nfev=3000,
+            )
+        except Exception:
+            continue
+        rss = float(np.sum(fit.fun * fit.fun))
+        if fit.success and (best is None or rss < best[0]):
+            best = (rss, fit.x)
+    return best
+
+
 def damped_fit(t, y, se, initial=None):
     if initial is not None:
         starts = [initial]
@@ -219,6 +245,31 @@ def analyze_case(case_name: str, case_dir: Path, outdir: Path):
         tau, tau_truncated = ips_tau(dense_mean[q])
         n_eff = len(arrays) * MEASURE / (2.0 * tau)
 
+        rate_support = (
+            (times >= T_MIN)
+            & np.isfinite(rates[q])
+            & (rates[q] < 0.0)
+            & (mean_c[q] > 0.0)
+            & (mean_c[q] / np.maximum(se_c[q], np.finfo(float).tiny) >= SNR_MIN)
+        )
+        support_ids = np.where(rate_support)[0]
+        if support_ids.size:
+            terminal = [int(support_ids[-1])]
+            for idx in support_ids[-2::-1]:
+                if idx == terminal[-1] - 1:
+                    terminal.append(int(idx))
+                else:
+                    break
+            terminal = np.asarray(terminal[::-1][-5:], dtype=int)
+            last_supported_time = float(times[support_ids[-1]])
+            last_supported_rate = float(rates[q, support_ids[-1]])
+            late_drift = (
+                float(np.polyfit(times[terminal], rates[q, terminal], 1)[0])
+                if terminal.size >= 3 else np.nan
+            )
+        else:
+            last_supported_time = last_supported_rate = late_drift = np.nan
+
         interval = select_plateau(times, mean_c[q], se_c[q], rates[q])
         if interval is None:
             plateau_records.append(None)
@@ -229,6 +280,9 @@ def analyze_case(case_name: str, case_dir: Path, outdir: Path):
                 "tau_int": tau, "tau_truncated_at_t10": int(tau_truncated),
                 "effective_count": n_eff, "stationarity_rms_over_C0": stationarity_rms,
                 "stationarity_pass": int(stationarity_rms <= 0.05),
+                "last_supported_rate_time": last_supported_time,
+                "last_supported_lambda_eff": last_supported_rate,
+                "late_dlambda_dt_last5": late_drift,
             })
         else:
             i, j = interval
@@ -255,6 +309,9 @@ def analyze_case(case_name: str, case_dir: Path, outdir: Path):
                 "tau_int": tau, "tau_truncated_at_t10": int(tau_truncated),
                 "effective_count": n_eff, "stationarity_rms_over_C0": stationarity_rms,
                 "stationarity_pass": int(stationarity_rms <= 0.05),
+                "last_supported_rate_time": last_supported_time,
+                "last_supported_lambda_eff": last_supported_rate,
+                "late_dlambda_dt_last5": late_drift,
             })
 
         snr_abs = np.abs(mean_c[q]) / np.maximum(se_c[q], np.finfo(float).tiny)
@@ -271,6 +328,17 @@ def analyze_case(case_name: str, case_dir: Path, outdir: Path):
                 if fit is None:
                     damped_rows.append({"case": case_name, "observable": obs, "status": "FIT_FAILED"})
                 else:
+                    full_rss = float(np.sum(damped_residual(fit, times[ids], mean_c[q, ids], se_c[q, ids]) ** 2))
+                    null = exponential_fit(times[ids], mean_c[q, ids], se_c[q, ids])
+                    null_rss = np.nan if null is None else float(null[0])
+                    n_fit = len(ids)
+                    aic_full = n_fit * math.log(max(full_rss / n_fit, 1e-300)) + 2 * 4
+                    aic_null = (
+                        np.nan if not np.isfinite(null_rss)
+                        else n_fit * math.log(max(null_rss / n_fit, 1e-300)) + 2 * 2
+                    )
+                    delta_aic = aic_full - aic_null
+                    rayleigh_half_cycle = math.pi / (times[ids[-1]] - times[ids[0]])
                     drng = np.random.default_rng(DAMPED_BOOT_SEED + q)
                     vals = []
                     for _ in range(DAMPED_BOOTSTRAPS):
@@ -292,7 +360,14 @@ def analyze_case(case_name: str, case_dir: Path, outdir: Path):
                         "lambda_R_ci_high": lrhi, "lambda_I": fit[1],
                         "lambda_I_ci_low": lilo, "lambda_I_ci_high": lihi,
                         "bootstrap_accept": len(vals),
-                        "lambda_I_resolved": int(lilo > 0 and fit[1] > 1e-8 and fit[1] < 20 - 1e-8),
+                        "frequency_half_cycle_threshold": rayleigh_half_cycle,
+                        "delta_AIC_damped_minus_exponential": delta_aic,
+                        "lambda_I_resolved": int(
+                            lilo > 0
+                            and fit[1] >= rayleigh_half_cycle
+                            and delta_aic <= -10.0
+                            and fit[1] < 20 - 1e-8
+                        ),
                     })
 
         dense_se = np.std(corr[:, q], axis=0, ddof=1) / math.sqrt(len(arrays))
