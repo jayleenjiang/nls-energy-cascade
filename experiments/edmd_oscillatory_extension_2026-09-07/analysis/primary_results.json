@@ -1,0 +1,79 @@
+{
+  "verdict": "SPECTRUM_INCOMPLETE_OSCILLATION_GATE_FAILED",
+  "all_four_oscillatory_gates_pass": false,
+  "any_leading_interval_moved": true,
+  "oscillatory": {
+    "driven_dt1e-3": {
+      "reference_real": -5.5195170492573435,
+      "reference_imag": 5.037333497460582,
+      "pass": false,
+      "dictionary_pass": false,
+      "short_lag_pass": true,
+      "timestep_pass": true,
+      "cutoff_pass": true,
+      "bootstrap": {
+        "n": 500,
+        "mean_real": -5.402167478034238,
+        "lo_real": -6.026783810830343,
+        "hi_real": -4.885433807170513,
+        "mean_imag": 5.08363158856779,
+        "lo_imag": 4.467042836516252,
+        "hi_imag": 5.674052243779608
+      }
+    },
+    "driven_dt2p5e-4": {
+      "reference_real": -5.581749738501255,
+      "reference_imag": 5.695778969252528,
+      "pass": true,
+      "dictionary_pass": true,
+      "short_lag_pass": true,
+      "timestep_pass": true,
+      "cutoff_pass": true,
+      "bootstrap": {
+        "n": 500,
+        "mean_real": -5.419707505049196,
+        "lo_real": -6.1319407501689485,
+        "hi_real": -4.827802650804265,
+        "mean_imag": 5.721400635204219,
+        "lo_imag": 5.077304096322944,
+        "hi_imag": 6.301797160219788
+      }
+    },
+    "equilibrium_dt1e-3": {
+      "reference_real": -5.059998360061554,
+      "reference_imag": 5.830968563564211,
+      "pass": true,
+      "dictionary_pass": true,
+      "short_lag_pass": true,
+      "timestep_pass": true,
+      "cutoff_pass": true,
+      "bootstrap": {
+        "n": 500,
+        "mean_real": -5.470815136188505,
+        "lo_real": -5.876631823973677,
+        "hi_real": -4.750260668171818,
+        "mean_imag": 5.5664292132432704,
+        "lo_imag": 5.112113216846921,
+        "hi_imag": 6.338555587498341
+      }
+    },
+    "equilibrium_dt2p5e-4": {
+      "reference_real": -5.963038880424105,
+      "reference_imag": 5.2927441071235695,
+      "pass": true,
+      "dictionary_pass": true,
+      "short_lag_pass": true,
+      "timestep_pass": true,
+      "cutoff_pass": true,
+      "bootstrap": {
+        "n": 500,
+        "mean_real": -5.791918670037345,
+        "lo_real": -6.29740863149266,
+        "hi_real": -5.403307676871982,
+        "mean_imag": 5.23537204606799,
+        "lo_imag": 4.778360675707078,
+        "hi_imag": 5.776191680263269
+      }
+    }
+  }
+}
