@@ -1,0 +1,5 @@
+launcher.log
+launcher.pid
+pipeline.log
+pipeline.exitcode
+report/build/
