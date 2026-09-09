@@ -1,0 +1,48 @@
+{
+  "status": "complete",
+  "elapsed_seconds": 99175.32201194763,
+  "cases": [
+    "driven_dt2p5e-4",
+    "equilibrium_dt2p5e-4"
+  ],
+  "stream_counts": [
+    64,
+    128,
+    256,
+    512,
+    1024,
+    2048
+  ],
+  "separations": [
+    0.05,
+    0.1,
+    0.15,
+    0.2,
+    0.3,
+    0.4,
+    0.6
+  ],
+  "windows": [
+    "fixed",
+    "extended"
+  ],
+  "constraints": [
+    "signed",
+    "nonnegative"
+  ],
+  "replicates_per_cell": 500,
+  "number_cells": 336,
+  "master_seed": 2026091201,
+  "command": "python3 experiments/slow_band_resolution_scaling_2026-09-07/run_scaling.py --output experiments/slow_band_resolution_scaling_2026-09-07/part1_analysis --replicates 500 --workers 8",
+  "analysis_source_sha256": "b2ad9a90fc9ecfd2799c9b778dff3d7194c28faca224da70f20f5db022dce1d4",
+  "previous_pipeline_sha256": "ada94924e17f762519a973b28712a3af57ab6f9d1987183a2459c830587d94cb",
+  "input_npz_sha256": {
+    "driven_dt2p5e-4": "9a878a637bd7475ab0f05ea0b7991276f4de1fd53f152c274530b7f99a984a47",
+    "equilibrium_dt2p5e-4": "f7f97e860d75414b3999d656cf585dea9d402fafe7cc1a99a22321e9963c3d45"
+  },
+  "part2_gate": {
+    "part2_allowed": false,
+    "reason": "delta=0.20 did not pass for both cases at a common tested N<=2048",
+    "candidate_rules": []
+  }
+}
