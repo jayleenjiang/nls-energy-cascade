@@ -1,0 +1,16 @@
+{
+  "all_six_logical_conditions_stationary": false,
+  "stationary_conditions": [
+    "T10_n25",
+    "T10_n50",
+    "T6_n25",
+    "T6_n50",
+    "T6_n100"
+  ],
+  "nonstationary_conditions": [
+    "T10_n100"
+  ],
+  "profile_claim_boundary": "scaling_and_collapse_descriptive_for_nonstationary_conditions",
+  "bond_sine_quantitative_use": false,
+  "penetration_fraction": 0.5
+}

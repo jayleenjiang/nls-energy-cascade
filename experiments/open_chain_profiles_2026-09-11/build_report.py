@@ -253,6 +253,7 @@ $T_L$ & $n$ & $I_1$ & threshold & reached & first site & interpolated site & sit
 \end{{longtable}}
 \normalsize
 
+\clearpage
 \section{{Run-level integrity and provenance}}
 \scriptsize
 \begin{{longtable}}{{r r r r r r r r}}
