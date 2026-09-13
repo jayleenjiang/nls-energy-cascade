@@ -1,0 +1,7 @@
+role	path	status	note
+manuscript	Paper/backups/2026-08-25_repo_organization/draft_advisor_synced_2026-08-25.tex	ADVISOR_SYNCED	Frozen advisor-facing snapshot from Downloads/draft (1).tex
+manuscript	Paper/backups/2026-08-25_repo_organization/main_enhanced_reference_2026-08-25.tex	LOCAL_ENHANCED	Frozen comparison snapshot from Downloads/main (7).tex
+manuscript	Paper/revision/draft.tex	LOCAL_ENHANCED	Active locally enhanced paper
+bibliography	Paper/revision/references.bib	LOCAL_ENHANCED	Active BibTeX database
+build	Paper/packages/NLS_best_current_2026-07-21	LOCAL_ENHANCED	Frozen best-current source and PDF package
+backup	Paper/backups/2026-08-25_repo_organization/README.before_organization.md	PRESERVED	Repository README before this organization pass

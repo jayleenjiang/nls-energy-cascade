@@ -1,0 +1,74 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{float}
+
+\begin{document}
+
+\begin{center}
+{\large Noise compensating KDE} \\[5pt]
+\end{center}
+We set up a $30 \times 30$ grid on $(\theta_1, \theta_3) \in [-\pi, \pi]^2$, with box edge length $H = 2\pi/30$. The system is in equilibrium with $T_1 = T_3 = 5$, $I_{\text{slice}} = 2$, so the theoretical conditional density is
+$$\rho(\theta_1, \theta_3) \propto \exp(-a(\cos\theta_1 + \cos\theta_3)) \quad a = I^2/T = 0.8$$
+
+Instead of just counting $+1$ when a sample lands in a box, we add $\text{normpdf}(x, x_c, \sigma)$ where $x_c$ is the box center and $\sigma = H/3$, both MC and theory are normalized so the integral is 1
+
+\subsection*{Results}
+
+Corner ratio is MC density divided by theory at the four corners $(\theta_1, \theta_3) \approx (\pm\pi, \pm\pi)$, where the density is highest. Center ratio is the same at $(0, 0)$, where the density is lowest. If the ratio is less than 1, MC underestimates, greater than 1 means overestimates.
+
+\begin{center}
+\begin{tabular}{ccccc}
+\toprule
+$\gamma$ & RMSE & corner ratio & center ratio \\
+\midrule
+0.02 & 0.00233 & 1.07 & 0.67 \\
+0.05 & 0.00073 & 1.00 & 0.96 \\
+0.06 & 0.00072 & 0.98 & 1.02 \\
+0.10 & 0.00101 & 0.96 & 1.08 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Corner ratio = MC density / theory at $(\theta_1, \theta_3) \approx (\pm\pi, \pm\pi)$ (the peaks). Center ratio = same at $(0,0)$ (the valley). Best fit is around $\gamma = 0.05$ to $0.06$, RMSE is about 0.0007 and all the ratios are within 2\% of 1.
+
+The diff plot (MC $-$ theory):
+
+mesh(reshape(readtable('nckde\_diff.csv').diff, 30, 30))
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{figures/Screenshot 2026-03-13 at 16.42.35.png}
+    \label{fig:placeholder}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{figures/Screenshot 2026-03-13 at 16.42.42.png}
+    \label{fig:placeholder}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{figures/Screenshot 2026-03-13 at 16.43.08.png}
+    \label{fig:placeholder}
+\end{figure}
+
+
+\subsection*{Code}
+
+\begin{itemize}
+\item NLS5D\_SIMD\_nckde.cpp
+
+run 8 threads, each with 16 SIMD trajectories, each trajectory has $dt = 0.001$ using fast polynomial sin/cos approximation. After burn-in (2M steps), each step checks if the sample is on the slice ($|I_j - I_{\text{slice}}| < 0.5$ for all $j$). If yes, compute $\theta_1 = 2(\varphi_1 - \varphi_2)$ and $\theta_3 = 2(\varphi_3 - \varphi_2)$, find which box it falls in, and add $\text{normpdf}(x, x_c, \sigma)$ to that box instead of just $+1$. At the end, both MC and theory grids are normalized so $\sum \rho_{ij} H^2 = 1$ then compared
+
+
+
+\item Run: ./nls\_nckde 8 0.06 5.0 200000000 2.0 0.5
+\item Output: nckde\_mc.csv, nckde\_theory.csv, nckde\_diff.csv
+\end{itemize}
+
+\end{document}

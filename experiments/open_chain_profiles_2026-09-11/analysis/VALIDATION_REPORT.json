@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "logical_conditions": 6,
+  "replicate_runs": 12,
+  "raw_csv_files": 108,
+  "raw_hash_rows": 108,
+  "analysis_input_hash_rows": 108,
+  "curated_csv_files": 30,
+  "total_valid_trajectories": 3072,
+  "total_nonfinite_trajectories": 0,
+  "total_discarded_trajectories": 0,
+  "total_projection_events": 181474703,
+  "expected_blank_values": "mean_sin_theta and se_mean_sin_theta at j=n, because no bond n exists",
+  "errors": []
+}

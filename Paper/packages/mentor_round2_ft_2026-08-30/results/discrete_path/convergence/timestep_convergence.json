@@ -1,0 +1,14 @@
+{
+  "points": 6,
+  "orders": {
+    "forward": {
+      "absolute_mean_order": 0.9958203757498385,
+      "rms_order": 1.0041493492034639
+    },
+    "reverse": {
+      "absolute_mean_order": 1.0024303588843695,
+      "rms_order": 0.9853747992743461
+    }
+  },
+  "interpretation": "The exact discrete transition-kernel entropy approaches the bath-energy heat entropy with the fitted timestep orders."
+}

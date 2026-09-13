@@ -1,0 +1,42 @@
+{
+  "overall": "BLOCKED",
+  "selected_sigma_bins": 0.75,
+  "checks": [
+    {
+      "check": "equilibrium_numerical_integrity",
+      "status": "PASS",
+      "detail": "rows=32768/32768, nonfinite=0, midpoint failures=0, formula max=4.84e-13, balance RMS rate=1.24e-05"
+    },
+    {
+      "check": "driven_numerical_integrity",
+      "status": "PASS",
+      "detail": "rows=32768/32768, nonfinite=0, midpoint failures=0, formula max=3.08e-12, balance RMS rate=1.51e-05"
+    },
+    {
+      "check": "equal_temperature_density_ratio",
+      "status": "PASS",
+      "detail": "support=0.9868, slope=0.9296, correlation=0.9675, RMSE=0.3603"
+    },
+    {
+      "check": "learned_equilibrium_integral_ft",
+      "status": "BLOCKED",
+      "detail": "log-IFT CI=[0.0700,0.1025], ESS=6661.5, streams=32"
+    },
+    {
+      "check": "exact_gibbs_balance_control",
+      "status": "PASS",
+      "detail": "log mean exp(-Delta s_total)=-3.293e-07"
+    },
+    {
+      "check": "driven_endpoint_support",
+      "status": "BLOCKED",
+      "detail": "support=0.9868, ESS=1.6, streams=64"
+    },
+    {
+      "check": "endpoint_stationarity",
+      "status": "PASS",
+      "detail": "maximum |stream-level z|=2.359 over 10 checks"
+    }
+  ],
+  "interpretation": "This is an n=2 endpoint-density control only; it is not a long-chain detailed-FT result."
+}

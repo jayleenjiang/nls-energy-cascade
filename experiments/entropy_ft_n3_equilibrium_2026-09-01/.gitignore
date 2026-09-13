@@ -1,0 +1,7 @@
+bin/
+raw/*_blocks.csv
+raw/*_blocks.csv.zst
+raw/*.partial.zst
+raw/*.log
+report/build/
+__pycache__/

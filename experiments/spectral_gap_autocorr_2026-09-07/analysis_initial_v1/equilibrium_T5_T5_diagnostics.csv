@@ -1,0 +1,8 @@
+case,observable,mean_g,C0,significant_monotonicity_violations,supported_negative_lag_count,first_supported_negative_time
+equilibrium_T5_T5,cos_theta1,-0.18275900274967,0.48788465809322723,11,0,
+equilibrium_T5_T5,sin_theta1,-0.0013367682337659113,0.4787127019222124,85,78,0.24
+equilibrium_T5_T5,cos_theta3,-0.187389807763328,0.48625558773610594,5,0,
+equilibrium_T5_T5,cos_theta1_minus_theta3,0.042103498025962215,0.4998316186224417,24,0,
+equilibrium_T5_T5,I2,1.6763511163902856,2.4254318104066206,18,0,
+equilibrium_T5_T5,I1_plus_I3,2.957271454888865,3.0387192806759145,18,0,
+equilibrium_T5_T5,I1_minus_I3,-0.00027054711610432136,4.983352474968554,81,53,0.4

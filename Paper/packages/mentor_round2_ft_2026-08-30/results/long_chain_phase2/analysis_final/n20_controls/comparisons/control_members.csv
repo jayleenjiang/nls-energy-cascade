@@ -1,0 +1,5 @@
+control,n,clone_count,horizon,k,baseline_dt,control_dt,baseline_selection,control_selection,scgf_delta_control_minus_baseline,combined_se,both_support_gate,member_convergence_gate
+timestep_halving,20,1024,60.0,0.4,0.0005,0.00025,2.0,2.0,-0.0020117890700980384,0.00325225032333293,1,1
+timestep_halving,20,1024,60.0,0.6,0.0005,0.00025,2.0,2.0,-0.0025237808119926014,0.0023119866074273114,1,1
+selection_interval,20,1024,60.0,0.4,0.0005,0.0005,2.0,1.0,0.0006328109044818342,0.003249365340537537,1,1
+selection_interval,20,1024,60.0,0.6,0.0005,0.0005,2.0,1.0,0.000418919264125725,0.004786320582129927,1,1

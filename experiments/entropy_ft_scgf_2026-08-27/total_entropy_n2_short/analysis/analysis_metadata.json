@@ -1,0 +1,18 @@
+{
+  "equilibrium_blocks": "experiments/entropy_ft_scgf_2026-08-27/total_entropy_n2_short/raw/equilibrium_blocks.csv",
+  "driven_blocks": "experiments/entropy_ft_scgf_2026-08-27/total_entropy_n2_short/raw/driven_blocks.csv",
+  "bins": [
+    24,
+    24,
+    48
+  ],
+  "sigma_grid": [
+    0.75,
+    1.0,
+    1.5,
+    2.0
+  ],
+  "selected_sigma": 0.75,
+  "selection_rule": "minimum equal-temperature density-log-ratio RMSE",
+  "interpretation": "Driven total entropy is exploratory unless equilibrium density validation, support, and exponential-weight ESS are adequate."
+}

@@ -1,0 +1,15 @@
+role	path	status	note
+code	Paper/revision/scripts/run_submission_checks.py	PRIMARY	One-command local submission checks
+code	Paper/revision/scripts/audit_manuscript_claims.py	PRIMARY	Numerical claim registry audit
+code	Paper/revision/scripts/audit_references.py	PRIMARY	Reference integrity audit
+code	Paper/revision/scripts/build_raw_data_archive_manifest.py	PRIMARY	Raw-data provenance manifest
+code	Paper/revision/scripts/build_submission_source_bundle.py	PRIMARY	Source-package builder
+manuscript	Paper/revision/draft.tex	LOCAL_ENHANCED	Active local manuscript
+bibliography	Paper/revision/references.bib	LOCAL_ENHANCED	Active references
+report	Paper/revision/source_trace_metrics.json	PRIMARY	Source hashes and recomputed metrics
+report	Paper/revision/manuscript_claim_audit.md	LOCAL_ENHANCED	Registered claim checks
+report	Paper/revision/raw_data_archive_manifest.md	LOCAL_ENHANCED	Raw-data archive plan
+report	Paper/revision/reference_integrity_audit.md	LOCAL_ENHANCED	Citation/reference checks
+report	Paper/revision/submission_checks_summary.md	LOCAL_ENHANCED	Submission-gate summary
+report	Paper/revision/submission_readiness_checklist_2026-06-19.md	LOCAL_ENHANCED	Readiness checklist
+build	Paper/packages/NLS_best_current_2026-07-21	LOCAL_ENHANCED	Frozen current PDF/source package

@@ -1,0 +1,26 @@
+{
+  "status": "PASS",
+  "checks": {
+    "input_hashes_match": true,
+    "four_fit_rows": true,
+    "384_curve_rows": true,
+    "all_fit_windows_fixed": true,
+    "all_bootstraps_accepted": true,
+    "all_reported_fit_values_finite": true,
+    "two_even_group_rows": true,
+    "no_simulator_reference_in_analysis": true
+  },
+  "input_sha256": {
+    "analysis/driven_T2_T8_autocorrelations.csv": "a7c17121d6d0cc77a89162e31c5caa361e14f12a4d8698163f7e4e8ae1164c5e",
+    "analysis/equilibrium_T5_T5_autocorrelations.csv": "c36dee1b2da89d8a193cce009ca9ca5775a357ef555c5d7fb3cba9854eb60223",
+    "analysis/driven_T2_T8_trajectory_correlations.npz": "9bb7e2c8f9a40a373867ee0bb18d7480178ae884c94d21438a0b43b35c7fff81",
+    "analysis/equilibrium_T5_T5_trajectory_correlations.npz": "367cc1e99a2f22a353aebd49e28f212bbdcdebc534e630713a0cc50c079a31f8"
+  },
+  "output_sha256": {
+    "results/even_candidate_common_plateaus.json": "92572bbf15250a2942b0ce0fe13b6157ee6afad32a3d95ea547e6480f2b2f40d",
+    "results/run_stdout.json": "ee2e89d215b18717e32300d1b3c5d64555585449e0ec4377be0099ab8c683503",
+    "results/sector_summary.json": "dc565ed438499222bbd952f16a71c64eee641c2550b062d7dc7c4d5c028b0455",
+    "results/sign_changing_early_damped_fits.csv": "121cd2108ba64c057b2869f0332c409491cdde0bd1a8034a5bdf9d1e36ff235e",
+    "results/sign_changing_fit_curves.csv": "c7cd0155e5ad397163cb7b268526403b02906c226168c3e641f3fe8d8df501a5"
+  }
+}

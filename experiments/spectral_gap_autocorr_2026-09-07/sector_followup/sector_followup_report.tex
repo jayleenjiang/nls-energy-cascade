@@ -1,0 +1,128 @@
+\documentclass[11pt]{article}
+\usepackage[margin=0.82in]{geometry}
+\usepackage{amsmath,amssymb,booktabs,graphicx,xurl,hyperref}
+\usepackage[T1]{fontenc}
+\newcommand{\NA}{\textemdash}
+\title{Symmetry-sector follow-up of the three-mode autocorrelations}
+\author{}
+\date{7 September 2026}
+\begin{document}
+\maketitle
+
+\section*{Scope and predeclared analysis}
+This is an analysis-only follow-up using the saved correlations from 64
+independent trajectories per bath condition.  No simulation was run.  The
+original plateau gate is unchanged.  Before fitting, the early damped-fit
+window was fixed to $t\in[0.05,1.00]$ for both observables and both bath
+conditions.  The trajectory bootstrap uses 2,000 resamples.
+
+A terminology correction is essential. Under endpoint exchange
+$1\leftrightarrow3$, $\theta_1\leftrightarrow\theta_3$; hence
+$\sin\theta_1$ alone is not exchange odd, and $\cos\theta_1$ and
+$\cos\theta_3$ alone are not invariant. The saved data do not contain
+$\sin\theta_3$, so they do not span exact exchange sectors. We therefore call
+the requested five observables the \emph{even-candidate group} and
+$\{\sin\theta_1,I_1-I_3\}$ the \emph{sign-changing pair}. Only $I_1-I_3$ is
+strictly exchange odd. In the driven case the unequal baths break exchange
+symmetry explicitly.
+
+\section*{Even-candidate plateau test}
+\begin{table}[h]
+\centering\small
+\begin{tabular}{lcccc}
+\toprule
+case & individually resolved & rate range & relative spread & common result\\
+\midrule
+$(2,8)$ & $I_2,\ I_1+I_3$ & $[-1.109,-0.993]$ & 11.1\% & no\\
+$(5,5)$ & $\cos\theta_1,\ \cos\theta_3,\ I_2$ & $[-1.188,-0.907]$ & 24.8\% & no\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+For the driven case, the two accepted rates overlap in time on
+$[1.12,1.58]$ and their confidence intervals overlap, but the frozen common
+gate requires at least three independently resolved observables. The other
+three candidates have no accepted plateau, so no group rate is quoted. At
+equal temperature three candidates pass individually and overlap in time on
+$[1.00,1.68]$, but the spread exceeds 20\% and their 95\% intervals have empty
+intersection: the largest lower endpoint is $-0.9665$, while the smallest
+upper endpoint is $-1.0160$. Thus neither condition resolves a common slow
+rate for the requested five-observable group.
+
+\section*{Early sign-changing fits}
+The fitted model is
+\[
+ C(t)=e^{\lambda_Rt}\{A\cos(\lambda_It)+B\sin(\lambda_It)\}.
+\]
+Frequency resolution requires a 95\% interval excluding zero,
+$\Delta\mathrm{AIC}\le-10$ against a single real exponential, and at least
+half a fitted cycle in the fixed window,
+$\lambda_I\ge\pi/0.95=3.30694$.
+
+\begin{table}[h]
+\centering\scriptsize
+\begin{tabular}{llrrrrr}
+\toprule
+case & $g$ & $\lambda_R$ (95\% CI) & $\lambda_I$ (95\% CI) & period (95\% CI) & $\Delta$AIC & verdict\\
+\midrule
+$(2,8)$ & $\sin\theta_1$ & $-4.220$ $[-4.270,-4.172]$ & $3.306$ $[3.112,3.495]$ & $1.901$ $[1.798,2.019]$ & $-617.8$ & unresolved\\
+$(2,8)$ & $I_1-I_3$ & $-4.911$ $[-5.146,-4.694]$ & $5.356$ $[5.205,5.507]$ & $1.173$ $[1.141,1.207]$ & $-516.5$ & resolved\\
+$(5,5)$ & $\sin\theta_1$ & $-5.006$ $[-5.069,-4.945]$ & $3.896$ $[3.714,4.066]$ & $1.613$ $[1.545,1.692]$ & $-466.4$ & resolved\\
+$(5,5)$ & $I_1-I_3$ & $-4.285$ $[-4.427,-4.147]$ & $5.351$ $[5.200,5.499]$ & $1.174$ $[1.143,1.208]$ & $-986.8$ & resolved\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The driven $\sin\theta_1$ estimate misses the frozen half-cycle threshold by
+$9.1\times10^{-4}$ and its bootstrap interval straddles that threshold. It is
+therefore reported as unresolved, despite its strong AIC improvement. Every
+fit accepted 2,000/2,000 bootstrap resamples.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{sector_followup/early_damped_sector_fits.pdf}
+\caption{Saved mean correlations and the fixed-window damped and
+real-exponential fits. Shading is the trajectory-level 95\% pointwise band;
+vertical dotted lines mark the interpolated zero of the saved mean.}
+\end{figure}
+
+\section*{Zero-crossing consistency}
+\begin{table}[h]
+\centering\small
+\begin{tabular}{llrrr}
+\toprule
+case & $g$ & mean zero & fitted zero (95\% CI) & first $3\,$SE-negative lag\\
+\midrule
+$(2,8)$ & $\sin\theta_1$ & 0.2726 & 0.2752 $[0.2726,0.2775]$ & 0.28\\
+$(2,8)$ & $I_1-I_3$ & 0.4211 & 0.4189 $[0.4129,0.4254]$ & 0.44\\
+$(5,5)$ & $\sin\theta_1$ & 0.2326 & 0.2356 $[0.2339,0.2372]$ & 0.24\\
+$(5,5)$ & $I_1-I_3$ & 0.3891 & 0.3891 $[0.3852,0.3935]$ & 0.40\\
+\bottomrule
+\end{tabular}
+\end{table}
+The fitted phase predicts the observed first zero accurately in all four fits.
+The first significantly negative lag is slightly later, as expected from its
+$3\,$SE support requirement. A period alone cannot predict the first zero,
+because the zero also depends on the fitted phase.
+
+\section*{Sector comparison and claim boundary}
+The two sign-changing observables do not agree on either $\lambda_R$ or
+$\lambda_I$: their 95\% intervals are disjoint in both bath conditions. Their
+real parts, approximately $-4.2$ to $-5.0$, are also far faster than the
+individually resolved even-candidate rates near $-1$. Equal temperature does
+not produce cleaner agreement between this requested pair. This is expected
+once $\sin\theta_1$ is recognized as a mixture rather than an exact odd-sector
+observable.
+
+The defensible conclusion is that $I_1-I_3$ exhibits a well-resolved early
+damped mode, and $\sin\theta_1$ contains a distinct sign-changing component.
+The strong AIC preference over a \emph{single} real exponential and the
+accurate zero crossings are consistent with oscillatory relaxation, but do not
+alone prove a complex generator eigenpair: a signed sum of several real modes
+can also cross zero. Exact sector identification would require saving
+$\sin\theta_3$ and analysing the sums and differences under endpoint exchange.
+
+Machine-readable results are under \path{sector_followup/results/}; the frozen
+analysis specification and input hashes are in
+\path{sector_followup/PROTOCOL.md}.
+\end{document}

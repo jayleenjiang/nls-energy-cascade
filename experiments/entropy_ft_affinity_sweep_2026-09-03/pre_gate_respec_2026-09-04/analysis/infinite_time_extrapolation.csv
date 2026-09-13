@@ -1,0 +1,7 @@
+case,delta_beta,resolved_times,n_resolved_times,a_inf,a_inf_ci_low,a_inf_ci_high,a_inf_over_delta_beta,ratio_ci_low,ratio_ci_high,joint_bootstrap_resolved,joint_bootstrap_total,extrapolation_R2,plateau,last_doubling_relative_change,FT_status
+dbeta_0p027972,0.02797202797202797,20;40;80;160;320;640,6,0.02846128115866456,nan,nan,nan,nan,nan,0,1000,0.2153474459196879,NO,0.0928870653287918,UNRESOLVED
+dbeta_0p057143,0.05714285714285716,20;40;80;160;320,5,0.058017785918328485,nan,nan,nan,nan,nan,0,1000,0.5189890192964772,NO,0.06478871976554894,UNRESOLVED
+dbeta_0p125000,0.125,20;40;80,3,0.12774886808964275,nan,nan,nan,nan,nan,0,1000,0.9854708893771058,YES,0.041297176063524656,UNRESOLVED
+dbeta_0p222222,0.2222222222222222,20;40,2,nan,nan,nan,nan,nan,nan,0,1000,nan,NO,0.0868078322473188,UNRESOLVED
+dbeta_0p400000,0.4,20,1,nan,nan,nan,nan,nan,nan,0,1000,nan,UNAVAILABLE,nan,UNRESOLVED
+dbeta_0p000000,0.0,20;40;80;160;320;640,6,7.803429241384298e-05,nan,nan,nan,nan,nan,0,1000,0.01726843507018494,NOT_APPLICABLE,nan,UNRESOLVED

@@ -1,0 +1,55 @@
+{
+  "grid_shape": [
+    48,
+    48,
+    48,
+    32,
+    32
+  ],
+  "kernel": "product Gaussian",
+  "angle_boundary": "wrapped periodic",
+  "action_transform": "log",
+  "action_log_jacobian_included": true,
+  "crossfit": "stream parity two-fold",
+  "bootstrap_replicates": 2000,
+  "bootstrap_seed": 2026090291,
+  "equilibrium_kde_gate_pass": false,
+  "driven_kde_stability_gate_pass": false,
+  "driven_bounds": {
+    "lower": [
+      -13.211116502924698,
+      -17.63693036954288,
+      -16.8384385774573,
+      -3.141592653589793,
+      -3.141592653589793
+    ],
+    "upper": [
+      4.068147640392087,
+      4.0427028684601325,
+      3.8973738176529813,
+      3.141592653589793,
+      3.141592653589793
+    ],
+    "grid_shape": [
+      48,
+      48,
+      48,
+      32,
+      32
+    ],
+    "supported_pairs": 1000022,
+    "unsupported_pairs": 42
+  },
+  "driven_support": {
+    "n_blocks": 1000064,
+    "supported_pairs": 1000022,
+    "unsupported_pairs": 42,
+    "supported_fraction": 0.999958002687828
+  },
+  "total_two_sided_support_pass": false,
+  "detailed_reference_slope_ci_contains_one": false,
+  "integral_resolution_pass": false,
+  "integral_reference_ci_contains_zero": false,
+  "total_entropy_ft_validated": false,
+  "claim": "n=3 KDE total-entropy FT not reliably resolved under frozen gates"
+}

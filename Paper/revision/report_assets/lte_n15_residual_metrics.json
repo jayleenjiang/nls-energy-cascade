@@ -1,0 +1,50 @@
+{
+  "generated_from": "existing n=15 dense SIMD histograms",
+  "fit": "WLS log q = c + x log p6 over q_count>=1, p_count>=1, I_a,I_b<2.5; weights=q_count",
+  "display_mask": "q_count>=200 and p_count>=200 on theta slice",
+  "outputs": [
+    "Paper/revision_2026-06-19/report_assets/lte_n15_residual.png",
+    "Paper/revision_2026-06-19/report_assets/lte_n15_residual.pdf"
+  ],
+  "rows": [
+    {
+      "n": 15,
+      "j": 4,
+      "a_over_n": 0.26666666666666666,
+      "slope_x": 0.8628700705147188,
+      "weighted_r2": 0.992474024810104,
+      "six_over_x": 6.95353820352221,
+      "T_kin": 7.40572768809204,
+      "bins_used": 199993,
+      "q_source": "lte/n15 data/n15_j4.hist",
+      "p_source": "lte/n15 data/n15_eq_j4.hist",
+      "theta_slice": 0.039269874999999566
+    },
+    {
+      "n": 15,
+      "j": 7,
+      "a_over_n": 0.4666666666666667,
+      "slope_x": 0.9687135130895038,
+      "weighted_r2": 0.9893640514632969,
+      "six_over_x": 6.1937816691173095,
+      "T_kin": 6.709163979207389,
+      "bins_used": 199987,
+      "q_source": "lte/n15 data/n15_j7.hist",
+      "p_source": "lte/n15 data/n15_eq_j7.hist",
+      "theta_slice": 0.039269874999999566
+    },
+    {
+      "n": 15,
+      "j": 11,
+      "a_over_n": 0.7333333333333333,
+      "slope_x": 1.1638429535566859,
+      "weighted_r2": 0.9817429841547562,
+      "six_over_x": 5.155334731085576,
+      "T_kin": 5.56732063182747,
+      "bins_used": 199972,
+      "q_source": "lte/n15 data/n15_j11.hist",
+      "p_source": "lte/n15 data/n15_eq_j11.hist",
+      "theta_slice": 0.039269874999999566
+    }
+  ]
+}

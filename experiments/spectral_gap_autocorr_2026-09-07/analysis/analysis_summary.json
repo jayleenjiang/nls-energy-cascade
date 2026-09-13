@@ -1,0 +1,56 @@
+[
+  {
+    "case": "driven_T2_T8",
+    "streams": 64,
+    "snapshots_per_stream": 100001,
+    "means": {
+      "cos_theta1": -0.22225286915418588,
+      "sin_theta1": 0.05793354366870667,
+      "cos_theta3": -0.18444906229671149,
+      "cos_theta1_minus_theta3": 0.05102425065620705,
+      "I2": 1.7216246931143433,
+      "I1_plus_I3": 2.9713308464150545,
+      "I1_minus_I3": -0.3277318168086325
+    },
+    "common_plateau": {
+      "case": "driven_T2_T8",
+      "status": "NO COMMON PLATEAU",
+      "eligible": [
+        "I2",
+        "I1_plus_I3"
+      ]
+    }
+  },
+  {
+    "case": "equilibrium_T5_T5",
+    "streams": 64,
+    "snapshots_per_stream": 100001,
+    "means": {
+      "cos_theta1": -0.18275900274967,
+      "sin_theta1": -0.0013367682337659113,
+      "cos_theta3": -0.187389807763328,
+      "cos_theta1_minus_theta3": 0.042103498025962215,
+      "I2": 1.6763511163902856,
+      "I1_plus_I3": 2.957271454888865,
+      "I1_minus_I3": -0.00027054711610432136
+    },
+    "common_plateau": {
+      "case": "equilibrium_T5_T5",
+      "status": "NO COMMON PLATEAU",
+      "eligible": [
+        "cos_theta1",
+        "cos_theta3",
+        "I2"
+      ],
+      "common_time_start": 1.0,
+      "common_time_end": 1.68,
+      "rate_min": -1.187833087490744,
+      "rate_max": -0.9065189091397072,
+      "rate_spread_ok": false,
+      "ci_intersection_low": -0.9664823187975431,
+      "ci_intersection_high": -1.0159711098621902,
+      "ci_overlap": false,
+      "time_overlap": true
+    }
+  }
+]

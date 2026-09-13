@@ -1,0 +1,22 @@
+{
+  "expected_rows_per_case": 1000064,
+  "expected_streams": 128,
+  "expected_blocks_per_stream": 7813,
+  "block_time": 20.0,
+  "bootstrap_replicates": 5000,
+  "bootstrap_seed_base": 2026090191,
+  "balance_error": {
+    "T6": {
+      "minimum": -0.0022138318133571033,
+      "maximum": 0.002382004622267786,
+      "mean": -1.5062025817091133e-07,
+      "rms": 0.0002362029704304115
+    },
+    "T10": {
+      "minimum": -0.008432529505725483,
+      "maximum": 0.008635944762332315,
+      "mean": 1.1162012803211593e-06,
+      "rms": 0.0007432934102765286
+    }
+  }
+}

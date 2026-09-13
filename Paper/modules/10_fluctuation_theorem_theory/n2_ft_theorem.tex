@@ -1,0 +1,512 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,bm}
+\usepackage[hidelinks]{hyperref}
+\usepackage[nameinlink,noabbrev]{cleveref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\R}{\mathbb R}
+\newcommand{\E}{\mathbb E}
+\newcommand{\dd}{\,\mathrm d}
+\newcommand{\grad}{\nabla}
+\newcommand{\cL}{\mathcal L}
+\newcommand{\cP}{\mathcal P}
+\newcommand{\Thetaop}{\mathcal T}
+\newcommand{\SigmaM}{\Sigma^{\mathrm m}}
+\newcommand{\SigmaT}{\Sigma^{\mathrm{tot}}}
+
+\title{A two-site fluctuation theorem for the boundary-driven resonant NLS diffusion\\
+\large Existence of the NESS, finite-time path relations, and interior SCGF symmetry}
+\author{Working proof note}
+\date{30 August 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For the two-site projection-free Cartesian resonant NLS diffusion, both sites
+are directly thermostatted and the diffusion matrix is uniformly elliptic.
+We exploit this feature to close analytic assumptions that remain open for a
+long chain.  The quartic energy yields an exponential Foster--Lyapunov
+function, hence a unique nonequilibrium steady state with a smooth strictly
+positive density and exponential energy moments.  Time reversal then gives
+the finite-time forward--reverse fluctuation relation for total entropy.  For
+every tilt $k\in(0,1)$, a second exponential Lyapunov estimate verifies the
+compactness and minorization hypotheses for the medium-entropy
+Feynman--Kac kernel.  It has a simple principal growth exponent
+$\psi_2(k)$, and the exact adjoint identity implies
+\[
+  \psi_2(k)=\psi_2(1-k),\qquad 0<k<1.
+\]
+The theorem is continuous-time and model-specific.  It does not assert a
+same-forward-ensemble detailed relation at finite time, endpoint regularity
+at $k=0,1$, or a thermodynamic-limit theorem.
+\end{abstract}
+
+\section{Model and statement}
+
+Write $c_j=x_j+\mathrm i y_j$, $I_j=|c_j|^2$, $M=I_1+I_2$, and
+$z=(x_1,y_1,x_2,y_2)\in\R^4$.  The physical energy is
+\begin{equation}\label{eq:E}
+ E(z)=\frac12M^2-\frac14(I_1^2+I_2^2)
+ +\operatorname{Re}(c_2^2\overline{c_1^2}).
+\end{equation}
+Let $F_j=\nabla_jE$, let $J$ be block-diagonal with the standard
+two-dimensional symplectic block, and let $T_1,T_2,\gamma>0$.  The two-site
+diffusion is
+\begin{equation}\label{eq:SDE}
+ \dd z_t=J\nabla E(z_t)\dd t-\gamma\nabla E(z_t)\dd t
+ +\sqrt{2\gamma}\,D_T^{1/2}\dd W_t,
+ \qquad D_T=\operatorname{diag}(T_1,T_1,T_2,T_2).
+\end{equation}
+Its generator is
+\begin{equation}\label{eq:L}
+ \cL=(J\nabla E)\cdot\nabla
+ -\gamma\sum_{r=1}^2F_r\cdot\nabla_r
+ +\gamma\sum_{r=1}^2T_r\Delta_r.
+\end{equation}
+Complex conjugation defines the time reversal
+\[
+ \Theta(x_1,y_1,x_2,y_2)=(x_1,-y_1,x_2,-y_2),
+ \qquad (\Thetaop f)(z)=f(\Theta z).
+\]
+
+For heat positive into the system, set
+\begin{equation}\label{eq:heat}
+ \dd Q_r=F_r\circ\left[-\gamma F_r\dd t
+ +\sqrt{2\gamma T_r}\dd W_{r,t}\right],
+ \qquad
+ \SigmaM_t=-\frac{Q_1(t)}{T_1}-\frac{Q_2(t)}{T_2}.
+\end{equation}
+For $k\in\R$, define the positive kernel
+\begin{equation}\label{eq:Pt}
+ P_{t,k}f(z)=\E_z\!\left[e^{-k\SigmaM_t}f(Z_t)\right].
+\end{equation}
+
+\begin{theorem}[Two-site fluctuation theorem]\label{thm:main}
+The diffusion \eqref{eq:SDE} has a unique invariant probability measure
+$\mu$ with a smooth strictly positive density $\rho$.  If
+$T_{\max}=\max(T_1,T_2)$, then
+\begin{equation}\label{eq:exp-moment}
+ \int e^{aE(z)}\,\mu(\dd z)<\infty,
+ \qquad 0<a<T_{\max}^{-1}.
+\end{equation}
+For every finite time, the total entropy
+\begin{equation}\label{eq:total}
+ \SigmaT_t=\SigmaM_t+\log\rho(Z_0)-\log\rho(Z_t)
+\end{equation}
+obeys the forward--reverse Crooks relation and
+$\E_\mu[e^{-\SigmaT_t}]=1$.
+
+For every $k\in(0,1)$, the kernel \eqref{eq:Pt} admits a simple positive
+principal growth exponent and
+\begin{equation}\label{eq:scgf-def}
+ \psi_2(k)=\lim_{t\to\infty}\frac1t
+ \log\E_\mu e^{-k\SigmaM_t}
+\end{equation}
+exists and is finite.  It satisfies
+\begin{equation}\label{eq:GC}
+ \boxed{\psi_2(k)=\psi_2(1-k),\qquad 0<k<1.}
+\end{equation}
+\end{theorem}
+
+The remaining sections prove the theorem in the order: recurrence,
+finite-time path reversal, principal Feynman--Kac growth, and adjoint
+symmetry.
+
+\section{Quartic geometry and an exponential Lyapunov function}
+
+\begin{lemma}[Coercivity and gradient coercivity]\label{lem:geometry}
+The energy is a homogeneous polynomial of degree four and
+\begin{equation}\label{eq:coercive}
+ E\ge\frac14(I_1^2+I_2^2)\ge\frac18M^2.
+\end{equation}
+Moreover,
+\begin{equation}\label{eq:grad-coercive}
+ |\nabla E|^2\ge\frac{16E^2}{M}\ge\frac14M^3
+ \quad (M>0).
+\end{equation}
+At either site, $\Delta_rE=4M$.
+\end{lemma}
+
+\begin{proof}
+Writing $c_j=\sqrt{I_j}e^{\mathrm i\varphi_j}$ gives
+\[
+ E=\frac14(I_1^2+I_2^2)
+ +I_1I_2\{1+\cos[2(\varphi_2-\varphi_1)]\},
+\]
+which proves \eqref{eq:coercive}.  Every term in \eqref{eq:E} is quartic,
+so Euler's identity gives $z\cdot\nabla E=4E$.  Since $|z|^2=M$,
+Cauchy--Schwarz and \eqref{eq:coercive} imply
+\[
+ |\nabla E|^2\ge\frac{16E^2}{M}
+ \ge\frac{16(M^2/8)^2}{M}=\frac14M^3.
+\]
+The boundary-Laplacian identity follows by direct differentiation; for
+$n=2$ both sites are boundary sites.
+\end{proof}
+
+\begin{lemma}[Exponential drift]\label{lem:drift}
+For $W_a=e^{aE}$ and $0<a<T_{\max}^{-1}$,
+\begin{equation}\label{eq:LW}
+ \frac{\cL W_a}{W_a}
+ =-\gamma a\sum_{r=1}^2(1-aT_r)|F_r|^2
+ +4\gamma a(T_1+T_2)M,
+\end{equation}
+and therefore
+\begin{equation}\label{eq:LW-infty}
+ \frac{\cL W_a}{W_a}\longrightarrow-\infty
+ \qquad\text{as }|z|\to\infty.
+\end{equation}
+In particular, there are $\lambda,b>0$ and a compact set $C$ such that
+\begin{equation}\label{eq:geometric-drift}
+ \cL W_a\le-\lambda W_a+b\mathbf1_C.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+The Hamiltonian vector field annihilates every function of $E$.  Applying
+the two bath generators to $e^{aE}$ gives \eqref{eq:LW}.  Put
+$\delta=1-aT_{\max}>0$.  By \cref{lem:geometry},
+\[
+ \frac{\cL W_a}{W_a}
+ \le-\frac{\gamma a\delta}{4}M^3
+ +4\gamma a(T_1+T_2)M,
+\]
+which proves both claims.
+\end{proof}
+
+\begin{proposition}[Unique nonequilibrium steady state]\label{prop:NESS}
+The claims about $\mu$ and $\rho$ in the first sentence of
+\cref{thm:main}, including \eqref{eq:exp-moment}, hold.  In fact the process
+is geometrically ergodic in a $W_a$-weighted norm for every
+$0<a<T_{\max}^{-1}$.
+\end{proposition}
+
+\begin{proof}
+The diffusion covariance $2\gamma D_T$ is constant and strictly positive
+definite.  Smoothness and uniform ellipticity give the strong Feller
+property and a continuous strictly positive transition density.  Hence every
+compact set is petite, the process is topologically irreducible and its
+skeleton is aperiodic.  The Foster--Lyapunov estimate
+\eqref{eq:geometric-drift} then gives positive Harris recurrence, a unique
+invariant probability measure, and weighted geometric ergodicity by the
+continuous-time Foster--Lyapunov theorem~\cite{MeynTweedie1993}.  Integrating the drift inequality
+under invariant truncations gives $\mu(W_a)<\infty$.  Finally, elliptic
+regularity applied to $\cL^*\rho=0$ gives $\rho\in C^\infty$, and positivity
+of the transition density gives $\rho(z)>0$ everywhere.
+\end{proof}
+
+\begin{remark}
+The uniformly elliptic step is special to $n=2$: both sites are endpoints.
+For $n\ge3$ the covariance is degenerate, so this argument cannot simply be
+copied to a long chain.
+\end{remark}
+
+\section{Finite-time total-entropy relation}
+
+\begin{lemma}[Finite stationary entropy production]\label{lem:fisher}
+The invariant law has all polynomial energy moments and finite Fisher
+information in the bath metric:
+\begin{equation}\label{eq:fisher}
+ \sum_{r=1}^2\gamma T_r
+ \int |\nabla_r\log\rho|^2\rho\,\dd z<\infty.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Polynomial moments follow from \eqref{eq:exp-moment}.  Multiply the stationary
+Fokker--Planck equation by a compactly truncated $\log\rho$ and integrate by
+parts.  The Hamiltonian vector field has zero divergence, while
+$\operatorname{div}(-\gamma\nabla E)=-\gamma\Delta E$.  Sending the cutoff
+to infinity using the exponential moment yields
+\[
+ \sum_r\gamma T_r\int|\nabla_r\log\rho|^2\rho\,\dd z
+ =\gamma\int\Delta E\,\rho\,\dd z<\infty.
+\]
+Here $\Delta E=8M$, so the final integral is finite.
+\end{proof}
+
+Let $\mathfrak R$ act on a path by
+$(\mathfrak R\omega)_s=\Theta\omega_{t-s}$.  Denote the stationary forward
+path law by $\mathbb P$ and its conjugate reverse by
+$\mathbb P^{\mathrm R}=\mathbb P\circ\mathfrak R^{-1}$, with the reversed
+drift written in the standard stationary time-reversal form.
+
+\begin{proposition}[Crooks and integral fluctuation relations]\label{prop:path-ft}
+On every finite interval, $\mathbb P$ and $\mathbb P^{\mathrm R}$ are mutually
+absolutely continuous and
+\begin{equation}\label{eq:RN}
+ \log\frac{\dd\mathbb P}{\dd\mathbb P^{\mathrm R}}
+ =\SigmaM_t+\log\rho(Z_0)-\log\rho(Z_t)=\SigmaT_t.
+\end{equation}
+Consequently,
+\begin{equation}\label{eq:IFT}
+ \E_\mu e^{-\SigmaT_t}=1,
+\end{equation}
+and, as measures on $\R$,
+\begin{equation}\label{eq:Crooks}
+ \mathbb P(\SigmaT_t\in\dd s)
+ =e^s\mathbb P^{\mathrm R}(\SigmaT_t\in-\dd s).
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Uniform ellipticity, smooth positive stationary density, and
+\cref{lem:fisher} place the stationary diffusion in the finite-entropy class
+for which the reversed path is again a diffusion and the forward/reverse
+Radon--Nikodym derivative is well defined
+\cite{HaussmannPardoux1986,ChetriteGawedzki2008}.  The Hamiltonian part is
+divergence-free and odd under $\Theta$, hence contributes no irreversible
+path action.  The two additive Langevin baths give the local-detailed-balance
+increments $-\dd Q_r/T_r$ in the Stratonovich convention.  The initial and
+terminal stationary densities supply the remaining endpoint ratio, proving
+\eqref{eq:RN}.  Equation \eqref{eq:IFT} is normalization of the
+Radon--Nikodym derivative; applying $\mathfrak R$ gives \eqref{eq:Crooks}.
+\end{proof}
+
+\begin{remark}[What is not claimed at finite time]
+Equation \eqref{eq:Crooks} compares forward and conjugate-reverse ensembles.
+Unless the nonequilibrium stationary path law is itself invariant under
+$\mathfrak R$, it does not reduce to
+$P_{\mathrm F}(s)/P_{\mathrm F}(-s)=e^s$ within one forward ensemble.
+\end{remark}
+
+\section{Principal Feynman--Kac growth}
+
+The It\^o product formula for \eqref{eq:Pt} gives
+\begin{equation}\label{eq:Lk}
+ \cL_k=(J\nabla E)\cdot\nabla
+ +\sum_{r=1}^2\left[
+ \gamma T_r\Delta_r+\gamma(2k-1)F_r\cdot\nabla_r
+ +\gamma\beta_r(k^2-k)|F_r|^2+\gamma k\Delta_rE
+ \right].
+\end{equation}
+
+\begin{lemma}[Multiplicative Lyapunov estimate]\label{lem:tilted-lyap}
+Fix $k\in(0,1)$ and choose
+\begin{equation}\label{eq:a-range}
+ 0<a<\frac{1-k}{T_{\max}}.
+\end{equation}
+Then
+\begin{align}
+ \frac{\cL_kW_a}{W_a}
+ =\gamma\sum_{r=1}^2\Big[&
+ (T_ra+k)\Big(a-\frac{1-k}{T_r}\Big)|F_r|^2
+ \notag\\[-2mm]
+ &+4(aT_r+k)M\Big]
+ \longrightarrow-\infty
+ \quad\text{as }|z|\to\infty.\label{eq:tilted-drift}
+\end{align}
+If $0<a'<a$, then $W_{a'}/W_a\to0$ and
+$\cL_kW_{a'}/W_{a'}$ is bounded above.
+\end{lemma}
+
+\begin{proof}
+Apply \eqref{eq:Lk} to $e^{aE}$ and factor the coefficient of
+$|F_r|^2$:
+\[
+ T_ra^2+(2k-1)a+\frac{k^2-k}{T_r}
+ =(T_ra+k)\left(a-\frac{1-k}{T_r}\right).
+\]
+The first factor is positive and the second is uniformly negative under
+\eqref{eq:a-range}.  The negative multiple of $|\nabla E|^2$ dominates the
+$O(M)$ term by \eqref{eq:grad-coercive}.  The same argument applies to
+$a'$, while $e^{-(a-a')E}\to0$ by coercivity.
+\end{proof}
+
+\begin{proposition}[Principal entropy-tilted exponent]\label{prop:principal}
+For every $k\in(0,1)$, $P_{t,k}$ has a continuous strictly positive kernel
+and a simple positive principal eigenvalue $e^{t\psi_2(k)}$ on a suitable
+$W_a$-weighted space.  For every probability $\nu$ with $\nu(W_a)<\infty$,
+\begin{equation}\label{eq:mgf-growth}
+ \lim_{t\to\infty}\frac1t\log\nu(P_{t,k}\mathbf1)=\psi_2(k).
+\end{equation}
+In particular \eqref{eq:scgf-def} holds.
+\end{proposition}
+
+\begin{proof}
+Localize \eqref{eq:Pt} on energy sublevel sets.  Applying It\^o's formula to
+$e^{-k\SigmaM_t}W_{a'}(Z_t)$ and using the upper bound in
+\cref{lem:tilted-lyap} gives a nonnegative local supermartingale after a
+deterministic exponential compensation.  Fatou's lemma removes the stopping
+times and proves that the positive kernel is finite and bounded on the stated
+weighted space.  Thus \eqref{eq:Pt} is globally defined by the original
+nonexplosive diffusion; no potentially explosive change-of-drift process is
+needed.  Local parabolic regularity for the uniformly
+elliptic principal part of \eqref{eq:Lk}, followed by the strong maximum
+principle, gives a continuous strictly positive density.  Hence every compact
+set satisfies a minorization condition.
+
+The two conclusions of \cref{lem:tilted-lyap} are precisely the continuous
+multiplicative Lyapunov and majorization conditions for a positive
+Feynman--Kac semigroup: $W_a$ supplies compactness at infinity and $W_{a'}$
+controls the unbounded weight.  The Lyapunov--minorization theorem for
+Feynman--Kac semigroups~\cite{FerreRoussetStoltz2021} therefore gives a unique normalized eigenmeasure, a
+simple strictly positive eigenfunction, exponential convergence of the
+normalized semigroup, and \eqref{eq:mgf-growth}.  The invariant law $\mu$ is
+admissible because \cref{prop:NESS} gives $\mu(W_a)<\infty$.
+\end{proof}
+
+\begin{lemma}[$L^2$ compact realization]\label{lem:l2}
+Fix $k\in(0,1)$.  The closure of $\cL_k$ on $L^2(\R^4,\dd z)$ has compact
+resolvent after a sufficiently large scalar shift.  Its spectral bound is the
+same simple real eigenvalue $\psi_2(k)$ obtained in
+\cref{prop:principal}.  Moreover, the Hilbert-space adjoint is the closure of
+the formal adjoint on $C_c^\infty(\R^4)$.
+\end{lemma}
+
+\begin{proof}
+For real $f\in C_c^\infty$ (and by polarization for complex $f$), integration
+by parts gives
+\begin{align}\label{eq:l2-form}
+ \operatorname{Re}\langle f,-\cL_kf\rangle
+ ={}&\gamma\sum_{r=1}^2T_r\|\nabla_rf\|_2^2
+ +\gamma k(1-k)\sum_{r=1}^2\beta_r
+   \int|F_r|^2|f|^2\,\dd z\notag\\
+ &-\frac\gamma2\sum_{r=1}^2\int(\Delta_rE)|f|^2\,\dd z.
+\end{align}
+The Hamiltonian part is skew because it is divergence-free.  The coefficient
+$1/2$ in the last term follows from
+$-\tfrac12(2k-1)+k=\tfrac12$ and is independent of $k$.
+Using $\sum_r\Delta_rE=8M$ and
+\[
+ \sum_r\beta_r|F_r|^2
+ \ge T_{\max}^{-1}|\nabla E|^2
+ \ge(4T_{\max})^{-1}M^3,
+\]
+the $M^3$ term dominates the negative $O(M)$ term.  Thus, for a sufficiently
+large $C_k$, there is $c_k>0$ such that
+\begin{equation}\label{eq:l2-coercive}
+ \operatorname{Re}\langle f,(C_k-\cL_k)f\rangle
+ \ge c_k\left(\|f\|_{H^1}^2+
+ \int M^3|f|^2\,\dd z\right).
+\end{equation}
+Let
+\[
+ \mathcal V=H^1(\R^4)\cap L^2(\R^4,M^3\dd z).
+\]
+The polynomial bounds $|\nabla E|\le C M^{3/2}$ and
+$|\Delta E|\le C(1+M)$ show that the shifted nonsymmetric form
+$\langle f,(C_k-\cL_k)g\rangle$ is continuous on
+$\mathcal V\times\mathcal V$; for example,
+\[
+ \left|\int\overline f\,(J\nabla E)\cdot\nabla g\,\dd z\right|
+ \le C\|M^{3/2}f\|_2\|\nabla g\|_2.
+\]
+Estimate \eqref{eq:l2-coercive} makes that form coercive after increasing
+$C_k$ if necessary.  The closed-sectorial-form construction therefore gives
+the maximal $L^2$ realization and identifies its adjoint with the operator
+constructed from the adjoint form.  Since
+$\mathcal V\hookrightarrow L^2$ is compact (Rellich on a ball and the $M^3$
+term for the exterior tail), the resolvent is compact.  The form semigroup is
+the positive parabolic kernel of \cref{prop:principal} by uniqueness of weak
+solutions.  Strong positivity makes its leading eigenvalue simple, and the
+normalized-semigroup convergence in \cref{prop:principal} identifies that
+spectral bound with $\psi_2(k)$.  Finally, integration by parts on the form
+core $C_c^\infty$ identifies the Hilbert adjoint with the closure of the
+formal adjoint.
+This is the standard compact-embedding consequence of the representation
+theorem for closed sectorial forms~\cite{Kato1995}.
+\end{proof}
+
+\section{Gallavotti--Cohen symmetry}
+
+\begin{lemma}[Semigroup adjoint relation]\label{lem:adjoint}
+For $k\in(0,1)$, on compactly supported smooth functions,
+\begin{equation}\label{eq:formal-adjoint}
+ \cL_k^*=\Thetaop\cL_{1-k}\Thetaop.
+\end{equation}
+The corresponding positive kernels satisfy
+\begin{equation}\label{eq:kernel-duality}
+ p_{t,k}(x,y)=p_{t,1-k}(\Theta y,\Theta x).
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+The Hamiltonian vector field is divergence-free and odd under $\Theta$.
+For one bath,
+$(F_r\cdot\nabla_r)^*=-F_r\cdot\nabla_r-\Delta_rE$.
+Taking the adjoint changes the drift coefficient
+$\gamma(2k-1)$ into $\gamma(2(1-k)-1)$, changes the coefficient of
+$\Delta_rE$ from $\gamma k$ to $\gamma(1-k)$, and leaves
+$k^2-k=(1-k)^2-(1-k)$ unchanged.  This proves
+\eqref{eq:formal-adjoint}.  Uniqueness of the positive parabolic kernel in
+the Lyapunov class from \cref{lem:tilted-lyap} then gives
+\eqref{eq:kernel-duality}; this is the diffusion realization of the
+Lebowitz--Spohn adjoint mechanism~\cite{LebowitzSpohn1999}.
+\end{proof}
+
+\begin{proof}[Proof of \cref{thm:main}]
+The NESS and finite-time assertions are \cref{prop:NESS,prop:path-ft}.
+Fix $k\in(0,1)$.  By \cref{lem:l2}, both complementary tilted generators
+have compact $L^2$ realizations and their spectral bounds are respectively
+$\psi_2(k)$ and $\psi_2(1-k)$.  The involution $\Thetaop$ is unitary on
+$L^2(\dd z)$.  Therefore \eqref{eq:formal-adjoint}, extended to the closed
+domains by \cref{lem:l2}, shows that the two operators are related by unitary
+conjugation and Hilbert adjunction.  Their spectra, and in particular their
+simple real spectral bounds, coincide.  Hence
+$\psi_2(k)=\psi_2(1-k)$, which proves \eqref{eq:GC}.
+\end{proof}
+
+\section{Claim boundary and relation to the simulations}
+
+The result proves the continuous-time interior-tilt symmetry at $n=2$.
+The numerical pairs $(0.3,0.7)$ and $(0.4,0.6)$ lie strictly inside the
+proved interval.  The following are deliberately not folded into the
+theorem:
+\begin{enumerate}
+\item extending the SCGF statement to the endpoint moments $k=0,1$ without
+      a separate endpoint-domain argument;
+\item a same-forward finite-time detailed relation;
+\item the degenerate-noise NESS and spectral theory for $n\ge3$;
+\item uniformity in $n$ or a nontrivial $n\to\infty$ limit;
+\item any statement about the time-discrete numerical integrator without a
+      convergence estimate.
+\end{enumerate}
+
+\begin{thebibliography}{9}
+
+\bibitem{MeynTweedie1993}
+S.~P. Meyn and R.~L. Tweedie.
+\newblock Stability of Markovian processes III: Foster--Lyapunov criteria for
+continuous-time processes.
+\newblock \emph{Advances in Applied Probability}, 25:518--548, 1993.
+
+\bibitem{HaussmannPardoux1986}
+U.~G. Haussmann and E.~Pardoux.
+\newblock Time reversal of diffusions.
+\newblock \emph{The Annals of Probability}, 14:1188--1205, 1986.
+
+\bibitem{ChetriteGawedzki2008}
+R.~Chetrite and K.~Gaw\k{e}dzki.
+\newblock Fluctuation relations for diffusion processes.
+\newblock \emph{Communications in Mathematical Physics}, 282:469--518, 2008.
+
+\bibitem{FerreRoussetStoltz2021}
+G.~Ferr\'e, M.~Rousset, and G.~Stoltz.
+\newblock More on the long time stability of Feynman--Kac semigroups.
+\newblock \emph{Stochastics and Partial Differential Equations: Analysis and
+Computations}, 9:630--673, 2021.
+
+\bibitem{LebowitzSpohn1999}
+J.~L. Lebowitz and H.~Spohn.
+\newblock A Gallavotti--Cohen-type symmetry in the large deviation functional
+for stochastic dynamics.
+\newblock \emph{Journal of Statistical Physics}, 95:333--365, 1999.
+
+\bibitem{Kato1995}
+T.~Kato.
+\newblock \emph{Perturbation Theory for Linear Operators}.
+\newblock Springer, Berlin, 1995.
+
+\end{thebibliography}
+
+\end{document}

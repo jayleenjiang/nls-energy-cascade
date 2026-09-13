@@ -21,6 +21,17 @@ chains and to a 5D Fokker–Planck / eigenfunction study of the three-mode syste
 | `scripts/` | CMake build file and run scripts |
 | `paper/` | Working draft and the LTE results report (LaTeX) |
 
+## Paper-oriented research modules
+
+The non-destructive section-by-section research index is in
+`Paper/modules/README.md`.  It separates each manuscript section into its
+scientific question, canonical code, raw/processed data, figures, reports, and
+advisor-sync status.  Existing source and data directories are not moved.
+
+Run `bash Paper/modules/build_module_view.sh` to create the local navigation
+links, then `python3 Paper/modules/check_module_links.py` to verify that every
+registered source exists.
+
 ### C++ — `cpp/simulation/`
 - `main.cpp` — baseline Euler–Maruyama integrator for the `n`-mode closed chain.
 - `main_fixed.cpp` — same, with two corrections: boundary `φ`-drift sign and the

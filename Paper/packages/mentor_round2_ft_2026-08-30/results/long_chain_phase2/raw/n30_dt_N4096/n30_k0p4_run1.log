@@ -1,0 +1,15 @@
+Entropy cloning sampler (controlled_exact)
+  n=30 clones=4096 k=0.4 burnin=500 observation=60 selection=2 dt=0.00025 gauge_shift=0.1 control_scale=0.5 resample_threshold=1 seed=92101
+  time=6 psi=-0.0382332 weight ESS=2248.01 roots=1577 root-weight ESS=994.264 resampled=1
+  time=12 psi=-0.044996 weight ESS=2274.06 roots=985 root-weight ESS=591.998 resampled=1
+  time=18 psi=-0.0471902 weight ESS=2258.62 roots=709 root-weight ESS=385.364 resampled=1
+  time=24 psi=-0.0486603 weight ESS=2275.54 roots=549 root-weight ESS=287.429 resampled=1
+  time=30 psi=-0.0480426 weight ESS=2226.04 roots=464 root-weight ESS=230.507 resampled=1
+  time=36 psi=-0.0472723 weight ESS=2269.74 roots=372 root-weight ESS=188.208 resampled=1
+  time=42 psi=-0.0475406 weight ESS=2231.4 roots=318 root-weight ESS=152.232 resampled=1
+  time=48 psi=-0.0475457 weight ESS=2199.8 roots=262 root-weight ESS=124.064 resampled=1
+  time=54 psi=-0.0489275 weight ESS=2146.18 roots=224 root-weight ESS=105.647 resampled=1
+  time=60 psi=-0.0503624 weight ESS=2187.23 roots=199 root-weight ESS=97.3891 resampled=1
+real 710.31
+user 25644.38
+sys 85.72

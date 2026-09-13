@@ -1,0 +1,89 @@
+{
+  "action_profiles": {
+    "files": [
+      "Paper/revision_2026-06-19/action_profiles.pdf",
+      "Paper/revision_2026-06-19/action_profiles.png"
+    ],
+    "metrics": {
+      "n=25": {
+        "source": "experiments/lte/test_profile.txt",
+        "samples": 506880000,
+        "first": 0.737907,
+        "middle": 0.572656,
+        "last": 0.165409,
+        "min": 0.165409,
+        "max": 0.737907
+      },
+      "n=50": {
+        "source": "experiments/lte/simd_n50_profile.txt",
+        "samples": 1013760512,
+        "first": 0.514213,
+        "middle": 0.413972,
+        "last": 0.105599,
+        "min": 0.105599,
+        "max": 0.514213
+      },
+      "n=100": {
+        "source": "experiments/lte/n100_dt25_profile.txt",
+        "samples": 4055040000,
+        "first": 0.361686,
+        "middle": 0.288808,
+        "last": 0.0728212,
+        "min": 0.0728212,
+        "max": 0.361686
+      }
+    }
+  },
+  "cascade_embedding": {
+    "files": [
+      "Paper/revision_2026-06-19/cascade_embedding.pdf",
+      "Paper/revision_2026-06-19/cascade_embedding.png"
+    ],
+    "metrics": {
+      "source_files": [
+        "Energy Cascade/Rect Plots/rectangles_N5_R100_f1_to_f2.csv",
+        "Energy Cascade/Rect Plots/rectangles_N5_R100_f2_to_f3.csv",
+        "Energy Cascade/Rect Plots/rectangles_N5_R100_f3_to_f4.csv",
+        "Energy Cascade/Rect Plots/rectangles_N5_R100_f4_to_f5.csv"
+      ],
+      "point_count_with_repetitions": 128,
+      "real_range": [
+        -259.18602603550295,
+        120.0
+      ],
+      "imag_range": [
+        -188.16,
+        261.3141449356459
+      ]
+    }
+  },
+  "lte_residual_midchain": {
+    "files": [
+      "Paper/revision_2026-06-19/lte_residual_midchain.pdf",
+      "Paper/revision_2026-06-19/lte_residual_midchain.png"
+    ],
+    "metrics": {
+      "theta_slice": 0.039269874999999566,
+      "n=50, $a/n=0.48$": {
+        "q_source": "lte/n50 data/simd_n50_j24.hist",
+        "p_source": "lte/n50 data/simd_n50_eq_j24.hist",
+        "slope": 0.9318747692862865,
+        "intercept": -0.12714309253559472,
+        "weighted_r2": 0.9989064782358306,
+        "bins_used": 142077,
+        "displayed_bins": 893,
+        "masked_threshold": "q_count>=200 and p_count>=200 at theta slice"
+      },
+      "n=100, $a/n=0.48$": {
+        "q_source": "lte/n100 data/n100_j48.hist",
+        "p_source": "lte/n100 data/n100_eq_j48.hist",
+        "slope": 0.9307645665359338,
+        "intercept": -0.07270446979278594,
+        "weighted_r2": 0.9989541895316459,
+        "bins_used": 120823,
+        "displayed_bins": 605,
+        "masked_threshold": "q_count>=200 and p_count>=200 at theta slice"
+      }
+    }
+  }
+}

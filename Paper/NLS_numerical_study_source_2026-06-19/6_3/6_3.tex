@@ -1,0 +1,99 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{booktabs}
+
+\begin{document}
+\subsection*{Setup}
+
+
+\begin{itemize}
+
+\item Chain length $n=25$, closed chain, $\gamma=0.1$, $dt=0.001$,
+$T_{\mathrm{final}}=200000$, $T_{\mathrm{burnin}}=2000$
+\item $32$ groups of $W=16$ SIMD lanes, so $512$ independent chains
+\item for every step, accumulate into the histogram
+only on lanes for which $|\sum_j I_j - S| < \delta$, with $S = n/2 = 12.5$
+and $\delta = 0.01\,n = 0.25$
+\item Sites: $j=6, 12, 18$ 
+\item $1.01\times 10^{11}$ steps per chain set.
+accepted samples: $7.75\times 10^9$ (NESS, $7.6\%$ acceptance),
+$1.10\times 10^{10}$ (equilibrium, $10.8\%$ acceptance)
+
+\end{itemize}
+
+\subsection*{CI}
+For each bin $b$ in the masked fit region (counts $\geq 50$, $I<3.2$),
+the Agresti Coull 95\% interval on the bin proportion $p_b=n_b/N$ is
+\[
+\tilde p_b = \frac{n_b+2}{N+4}, \qquad
+\text{halfwidth}(p_b) = z\sqrt{\tilde p_b(1-\tilde p_b)/(N+4)}, \quad z=1.96.
+\]
+The 1-$\sigma$ standard error on $\log\rho_b$ is taken as
+$\sigma_b = \text{halfwidth}(p_b)/(z\,\hat p_b)$ 
+\begin{align*}
+\text{Form A (conjecture)} \quad
+& \log\rho = a_0 + a_1\!\left[-\tfrac{1}{4}(I_a^2+I_b^2) + I_a I_b\cos\theta\right] \\
+\text{Form B (strict local Gibbs)} \quad
+& \log\rho = b_0 + b_1\!\left[\tfrac{1}{4}(I_a^2+I_b^2) + I_a I_b(1+\cos\theta)\right] \\
+\text{Form C (general quadratic)} \quad
+& \log\rho = c_0 + c_1 I_a^2 + c_2 I_b^2 + c_3 I_a I_b + c_4 I_a I_b\cos\theta
+\end{align*}
+are fit by weighted least squares with weights $1/\sigma_b^2$.
+Coefficient covariances come from $(X^\top W X)^{-1}$; ratios and their
+errors come from the delta method
+
+
+\paragraph{weighted $R^2$}
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+       & NESS $j=6$ & NESS $j=12$ & NESS $j=18$ \\
+\midrule
+Form A & $0.475$ & $0.483$ & $0.478$ \\
+Form B & $0.801$ & $0.808$ & $0.795$ \\
+Form C & $0.876$ & $0.846$ & $0.814$ \\
+\bottomrule
+\end{tabular}
+\hspace{1em}
+\begin{tabular}{lccc}
+\toprule
+       & Eq $j=6$ & Eq $j=12$ & Eq $j=18$ \\
+\midrule
+Form A & $0.504$ & $0.509$ & $0.502$ \\
+Form B & $0.812$ & $0.820$ & $0.809$ \\
+Form C & $0.881$ & $0.877$ & $0.882$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\paragraph{Form C ratios}
+Strict local Gibbs: $c_1/c_2=1$, $c_3/c_4=1$, $c_1/c_3=1/4$
+
+Agresti--Coull 1-$\sigma$ errors are $\sim 10^{-4}$--$10^{-5}$ for every
+ratio below
+
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+NESS & $c_1/c_2$ & $c_3/c_4$ & $c_1/c_3$ \\
+\midrule
+$j=6$  & $0.9816$ & $1.5056$ & $0.4871$ \\
+$j=12$ & $0.9774$ & $1.2303$ & $0.4131$ \\
+$j=18$ & $0.9678$ & $1.1305$ & $0.3617$ \\
+\bottomrule
+\end{tabular}
+\hspace{1em}
+\begin{tabular}{lccc}
+\toprule
+Eq & $c_1/c_2$ & $c_3/c_4$ & $c_1/c_3$ \\
+\midrule
+$j=6$  & $1.0036$ & $1.6569$ & $0.4227$ \\
+$j=12$ & $1.0000$ & $1.5376$ & $0.4044$ \\
+$j=18$ & $0.9958$ & $1.7161$ & $0.4288$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+
+\end{document}

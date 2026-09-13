@@ -1,0 +1,52 @@
+{
+  "n": 100,
+  "complete": true,
+  "trajectory_count": 512,
+  "expected_trajectory_count": 512,
+  "base_seeds": [
+    2026090900,
+    2026090901
+  ],
+  "profile_samples_per_trajectory": [
+    200001
+  ],
+  "missing": [],
+  "integrity_errors": [],
+  "porting": {
+    "controlled_spatial_mean": 0.24598423468926767,
+    "simd_spatial_mean": 0.249219499939971,
+    "mean_relative_difference": 0.012981589528438208,
+    "mean_within_5_percent": true,
+    "controlled_relative_range": 0.01725499569223093,
+    "simd_relative_range": 0.0973137457,
+    "relative_range_pass": true,
+    "pass": true
+  },
+  "sine_control": {
+    "max_abs_z": 2.9840382311264846,
+    "max_abs_z_bond": 84,
+    "pointwise_critical": 1.9599639845,
+    "pointwise_failures": 5,
+    "bond_count": 99,
+    "bonferroni_critical": 3.4780633727349803,
+    "bonferroni_pass": true,
+    "controlled_se_min": 0.0001920112879628551,
+    "controlled_se_mean": 0.000638361639422201,
+    "controlled_se_max": 0.0006928598737867563,
+    "simd_se_min": 0.00019526042987600496,
+    "simd_se_mean": 0.0006874327777794653,
+    "simd_se_max": 0.000777341962217033,
+    "median_controlled_over_simd_se": 0.9310061305209533,
+    "simd_max_abs_z": 12.92852477395248,
+    "simd_pointwise_failures": 71
+  },
+  "numerics": {
+    "projection_count": 0,
+    "floor_count": 0,
+    "zero_radius_events": 0,
+    "min_sampled_action": 1.6830337173541308e-12,
+    "midpoint_failure_steps": 0,
+    "nonfinite_batches": 0
+  },
+  "numerical_pass": true
+}

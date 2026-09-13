@@ -1,0 +1,4 @@
+mode,n,horizon,selection_time,dt,k,gauge_shift,control_scale,resample_threshold,lower_clone_count,upper_clone_count,residual_delta_upper_minus_lower,combined_residual_se,late_half_delta_upper_minus_lower,combined_late_half_se,both_support_gate,pair_population_gate
+controlled_exact,30,20.0,2.0,0.0005,0.4,0.1,0.5,1.0,1024,2048,-0.0015682693617222535,0.004541917068121985,-0.0013711730813162695,0.007967972023961737,1,1
+controlled_exact,30,40.0,2.0,0.0005,0.4,0.1,0.5,1.0,1024,2048,-0.0038038943130663805,0.0039830034970652715,-0.0060395192644105145,0.005148896636067484,1,1
+controlled_exact,30,60.0,2.0,0.0005,0.4,0.1,0.5,1.0,1024,2048,-0.002327606322713789,0.0030470466053150454,-0.00187199987905063,0.002723344269874295,1,1

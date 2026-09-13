@@ -1,0 +1,27 @@
+{
+  "blocks": "/Users/jayleenjiang/Documents/NLS/experiments/entropy_ft_n3_direct_2026-08-31/raw/n3_blocks.csv",
+  "blocks_sha256": "4f728b3d0e007d704d90734b0888c00ec05b60f09385c6cfd079f3417d7a088f",
+  "summary": "/Users/jayleenjiang/Documents/NLS/experiments/entropy_ft_n3_direct_2026-08-31/raw/n3_summary.csv",
+  "summary_sha256": "0cfb2c26288cb4143ddf479fbef87aeb8af535d323ce4fcfd8f36dde5778b0c3",
+  "rows": 1000064,
+  "columns": 19,
+  "entropy_identity_max_abs_error": 2.842170943040401e-14,
+  "entropy_identity_roundoff_tolerance": 2.6626508244142243e-12,
+  "balance_identity_max_abs_error": 0.0,
+  "balance_identity_roundoff_tolerance": 1.4210854715202004e-14,
+  "linear_endpoint_continuity_max_abs_error": 0.0,
+  "angular_endpoint_continuity_max_abs_error": 0.0,
+  "endpoint_roundoff_tolerance": 2.7948871125579557e-13,
+  "minimum_saved_action": 6.621269099867432e-08,
+  "minimum_saved_angle": -3.1415921298830067,
+  "maximum_saved_angle": 3.1415911932604423,
+  "midpoint_failure_count": 0,
+  "integrity_pass": true,
+  "bootstrap_replicates": 2000,
+  "bootstrap_seed": 2026083193,
+  "feasibility_thresholds": {
+    "minimum_negative_blocks": 1000,
+    "minimum_symmetric_pairs": 8,
+    "minimum_count_each_side_per_pair": 20
+  }
+}

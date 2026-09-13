@@ -1,0 +1,7 @@
+started_utc=2026-09-01T04:45:44Z
+git_commit=9fd7d75a45a45473a82a380e615f7b97c4a4176c
+9ae5835ed708c8794c8b00ba799b23761482953aaf0ed47cd0b4ba3966d4eaf2  /Users/jayleenjiang/Documents/NLS/flux/NLS_entropy_ft.cpp
+15436d39cc59d263ca22825282db3bcb695c9dea396631eaf13c180a407be18e  /Users/jayleenjiang/Documents/NLS/experiments/entropy_ft_n3_direct_2026-08-31/bin/entropy_ft_n3
+command=/Users/jayleenjiang/Documents/NLS/experiments/entropy_ft_n3_direct_2026-08-31/bin/entropy_ft_n3 sample_n3 10 2 3 8 500 20 7813 0.0005 2026083133 8 /Users/jayleenjiang/Documents/NLS/experiments/entropy_ft_n3_direct_2026-08-31/raw/n3 1
+Apple clang version 17.0.0 (clang-1700.3.19.1)
+Apple M4

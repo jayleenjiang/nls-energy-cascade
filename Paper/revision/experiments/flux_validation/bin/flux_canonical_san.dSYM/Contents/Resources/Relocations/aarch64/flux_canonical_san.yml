@@ -1,0 +1,5 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     'Paper/revision_2026-06-19/experiments/flux_validation/bin/flux_canonical_san'
+relocations:     []
+...

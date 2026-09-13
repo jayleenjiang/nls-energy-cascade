@@ -1,0 +1,262 @@
+{
+  "started_unix": 1788813227.676237,
+  "python": "3.14.5 (main, May 10 2026, 10:21:34) [Clang 17.0.0 (clang-1700.6.4.2)]",
+  "platform": "macOS-15.6.1-arm64-arm-64bit-Mach-O",
+  "numpy": "2.4.6",
+  "scipy": "1.17.1",
+  "input": "/Users/jayleenjiang/Documents/NLS/experiments/spectral_gap_controlled_2026-09-07/raw",
+  "output": "/Users/jayleenjiang/Documents/NLS/experiments/edmd_oscillatory_extension_2026-09-07/analysis",
+  "cases": [
+    "driven_dt1e-3",
+    "driven_dt2p5e-4",
+    "equilibrium_dt1e-3",
+    "equilibrium_dt2p5e-4"
+  ],
+  "lags": [
+    0.02,
+    0.05,
+    0.1,
+    0.25,
+    0.5,
+    1.0
+  ],
+  "nyquist": {
+    "0.02": 157.07963267948966,
+    "0.05": 62.83185307179586,
+    "0.1": 31.41592653589793,
+    "0.25": 12.566370614359172,
+    "0.5": 6.283185307179586,
+    "1.0": 3.141592653589793
+  },
+  "origins_per_stream": 2048,
+  "bootstraps": 500,
+  "bootstrap_seed": 2026090702,
+  "cutoff": 1e-10,
+  "cutoff_sensitivity": [
+    1e-08,
+    1e-10,
+    1e-12
+  ],
+  "dictionaries": [
+    {
+      "label": "E1",
+      "nominal_K": 109
+    },
+    {
+      "label": "E2",
+      "nominal_K": 269
+    },
+    {
+      "label": "E3",
+      "nominal_K": 519
+    }
+  ],
+  "extra_features": [
+    "I1",
+    "I2",
+    "I3",
+    "I1_sq",
+    "I1_I2",
+    "I1_I3",
+    "I2_sq",
+    "I2_I3",
+    "I3_sq",
+    "dI",
+    "dI_cos_theta1",
+    "dI_sin_theta1",
+    "dI_cos_theta3",
+    "dI_sin_theta3",
+    "dI_cos_theta1_minus_theta3",
+    "dI_sin_theta1_minus_theta3",
+    "dI_sq",
+    "dI_sumI",
+    "dI_I2"
+  ],
+  "base_analysis_source": "/Users/jayleenjiang/Documents/NLS/experiments/edmd_three_mode_2026-09-07/run_edmd.py",
+  "base_analysis_sha256": "d4c53270ed902cbcf6692dcc64d7c1f423e40189504d03703c6e4f8cd50cc6ef",
+  "results": [
+    {
+      "case": "driven_dt1e-3",
+      "elapsed_seconds": 108.90186095237732,
+      "input_streams": 64,
+      "snapshot_count": 6400064,
+      "origin_count_per_stream": 2048,
+      "pair_count": 131072,
+      "oscillatory_reference": {
+        "lambda_real": -5.5195170492573435,
+        "lambda_imag": 5.037333497460582
+      },
+      "real_references": [
+        {
+          "mode": 0,
+          "lambda_real": -0.9003294425796398,
+          "lambda_imag": 0.0
+        },
+        {
+          "mode": 1,
+          "lambda_real": -1.7219560332019352,
+          "lambda_imag": 0.0
+        },
+        {
+          "mode": 2,
+          "lambda_real": -1.9826109179025015,
+          "lambda_imag": 0.0
+        },
+        {
+          "mode": 3,
+          "lambda_real": -2.4330203253846303,
+          "lambda_imag": 0.19025723976725073
+        },
+        {
+          "mode": 4,
+          "lambda_real": -2.6464198717560925,
+          "lambda_imag": 3.045678744368468
+        },
+        {
+          "mode": 5,
+          "lambda_real": -2.9498543094339507,
+          "lambda_imag": 5.367773635409873
+        },
+        {
+          "mode": 6,
+          "lambda_real": -2.9778280760975364,
+          "lambda_imag": 0.0
+        }
+      ]
+    },
+    {
+      "case": "driven_dt2p5e-4",
+      "elapsed_seconds": 108.24179601669312,
+      "input_streams": 64,
+      "snapshot_count": 6400064,
+      "origin_count_per_stream": 2048,
+      "pair_count": 131072,
+      "oscillatory_reference": {
+        "lambda_real": -5.581749738501255,
+        "lambda_imag": 5.695778969252528
+      },
+      "real_references": [
+        {
+          "mode": 0,
+          "lambda_real": -0.9226805184503813,
+          "lambda_imag": 0.0
+        },
+        {
+          "mode": 1,
+          "lambda_real": -1.3493022938056025,
+          "lambda_imag": 6.283185307179586
+        },
+        {
+          "mode": 2,
+          "lambda_real": -1.7807710567401813,
+          "lambda_imag": 0.0
+        },
+        {
+          "mode": 3,
+          "lambda_real": -1.9776322153425845,
+          "lambda_imag": 0.0
+        },
+        {
+          "mode": 4,
+          "lambda_real": -2.320247394247764,
+          "lambda_imag": 0.0
+        },
+        {
+          "mode": 5,
+          "lambda_real": -2.9438533246558065,
+          "lambda_imag": 0.18042077961838413
+        }
+      ]
+    },
+    {
+      "case": "equilibrium_dt1e-3",
+      "elapsed_seconds": 108.57560181617737,
+      "input_streams": 64,
+      "snapshot_count": 6400064,
+      "origin_count_per_stream": 2048,
+      "pair_count": 131072,
+      "oscillatory_reference": {
+        "lambda_real": -5.059998360061554,
+        "lambda_imag": 5.830968563564211
+      },
+      "real_references": [
+        {
+          "mode": 0,
+          "lambda_real": -0.905455076191947,
+          "lambda_imag": 0.0
+        },
+        {
+          "mode": 1,
+          "lambda_real": -1.8348107649636518,
+          "lambda_imag": 0.0
+        },
+        {
+          "mode": 2,
+          "lambda_real": -2.0035315885367884,
+          "lambda_imag": 0.0
+        },
+        {
+          "mode": 3,
+          "lambda_real": -2.4350963972733997,
+          "lambda_imag": 0.0
+        },
+        {
+          "mode": 4,
+          "lambda_real": -2.971366402513569,
+          "lambda_imag": 0.0
+        }
+      ]
+    },
+    {
+      "case": "equilibrium_dt2p5e-4",
+      "elapsed_seconds": 110.77290177345276,
+      "input_streams": 64,
+      "snapshot_count": 6400064,
+      "origin_count_per_stream": 2048,
+      "pair_count": 131072,
+      "oscillatory_reference": {
+        "lambda_real": -5.963038880424105,
+        "lambda_imag": 5.2927441071235695
+      },
+      "real_references": [
+        {
+          "mode": 0,
+          "lambda_real": -0.6068049349035554,
+          "lambda_imag": 6.283185307179586
+        },
+        {
+          "mode": 1,
+          "lambda_real": -0.8942375438345667,
+          "lambda_imag": 0.0
+        },
+        {
+          "mode": 2,
+          "lambda_real": -1.7588196974283548,
+          "lambda_imag": 0.0
+        },
+        {
+          "mode": 3,
+          "lambda_real": -2.0177933989876364,
+          "lambda_imag": 0.0
+        },
+        {
+          "mode": 4,
+          "lambda_real": -2.207551002910488,
+          "lambda_imag": 0.0
+        },
+        {
+          "mode": 5,
+          "lambda_real": -2.696224531804163,
+          "lambda_imag": 0.0
+        },
+        {
+          "mode": 6,
+          "lambda_real": -2.8630805404967816,
+          "lambda_imag": 1.1909400673641939
+        }
+      ]
+    }
+  ],
+  "elapsed_seconds": 436.5257148742676,
+  "analysis_source_sha256": "a986b0cc1d3f0e190223d348d7522b2ac81ce307e0628fd00852b2329aee2c57"
+}

@@ -1,0 +1,5 @@
+{
+  "part2_allowed": false,
+  "reason": "delta=0.20 did not pass for both cases at a common tested N<=2048",
+  "candidate_rules": []
+}

@@ -1,0 +1,4 @@
+case	T_left	T_right	delta_beta	dt	seed	bootstrap_seed	kind	blocks_file
+equilibrium_dt5e4	6	6	0	0.0005	2026090405	2026091099	baseline	../entropy_ft_window_length_2026-09-10/raw/dbeta_0p000000_n10_tau5_blocks.csv
+equilibrium_dt2p5e4	6	6	0	0.00025	2026091003	2026094103	baseline	../entropy_ft_timestep_bias_2026-09-10/raw/equilibrium_dt2p5e4_n10_tau5_blocks.csv
+

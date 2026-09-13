@@ -1,0 +1,15 @@
+{
+  "equilibrium_blocks": "experiments/entropy_ft_scgf_2026-08-27/total_entropy_n2_short/production/equilibrium_blocks.csv",
+  "driven_blocks": "experiments/entropy_ft_scgf_2026-08-27/total_entropy_n2_short/production/driven_blocks.csv",
+  "feature_family": {
+    "action_degree": 2,
+    "angular_harmonics": 1,
+    "quadrature_grid": [
+      42,
+      42,
+      64
+    ],
+    "ridge": 1e-08
+  },
+  "selection_boundary": "All feature and optimizer settings were fixed from equilibrium validation before applying the model to driven endpoints."
+}

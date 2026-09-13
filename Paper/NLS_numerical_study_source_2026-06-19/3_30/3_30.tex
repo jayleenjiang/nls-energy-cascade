@@ -1,0 +1,59 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+
+\begin{document}
+
+We use noise-compensating KDE to estimate the steady-state density: each MC sample in a box contributes Gaussian weight $K_\sigma(x - x_c)$ centered at the box center, with $\sigma = H_{\mathrm{box}}/3$.
+
+$T^*$ correction:
+\[
+T^* = T_{\mathrm{target}} - h^2 \langle I_1 I_2 \rangle < T_{\mathrm{target}}
+\]
+
+Experiment:
+On 2D conditional slice ($\theta_1, \theta_3$) with $I \approx 2$, $T_{\mathrm{target}} = 5$, $30 \times 30$ grid, we sweep $T_{\mathrm{run}}$ and compare both NC-KDE ($w = K_\sigma$) and plain histogram ($w = 1$) against the fixed theoretical density at $T_{\mathrm{target}}$
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.6\textwidth]{nckde_vs_plain.png}
+\end{figure}
+
+\bigskip
+
+standard KDE:
+\[
+\hat{f}(x_c) = \frac{1}{N} \sum_{i=1}^{N} K_h(x_c - X_i)
+\]
+with $E[\hat{f}(x_c)] = (f * K_h)(x_c)$
+
+\bigskip
+
+NC-KDE (each sample contributes only to its own bin)
+\[
+\hat{f}_j = \frac{1}{N} \sum_{X_i \in \mathrm{bin}\, j} K_\sigma(x_j - X_i)
+\]
+
+For comparison, we test a standard KDE by sweeping $T_{\mathrm{run}}$ with KDE at diff $h$:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{cccc}
+\toprule
+$h$ & $T^*$ (predicted) & $T_{\mathrm{opt}}$ (measured) & Difference \\
+\midrule
+0.1 & 4.963 & 5.134 & $+0.171$ \\
+0.2 & 4.850 & 4.936 & $+0.086$ \\
+0.3 & 4.662 & 4.834 & $+0.171$ \\
+0.5 & 4.062 & 4.319 & $+0.256$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The RMSE minimum shifts left with increasing $h$, consistent with $T^* = T - h^2\langle I_1 I_2 \rangle$
+
+
+\end{document}

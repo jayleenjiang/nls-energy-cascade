@@ -1,0 +1,1 @@
+clang++ -O3 -mcpu=native -std=c++17 -Wall -Wextra -Wpedantic -I/opt/homebrew/include/eigen3 src/NLS_bc1_cartesian_profile.cpp -o bin/NLS_bc1_cartesian_profile

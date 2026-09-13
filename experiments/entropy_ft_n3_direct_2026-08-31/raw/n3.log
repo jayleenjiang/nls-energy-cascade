@@ -1,0 +1,11 @@
+Joint entropy/action sampler
+model=gibbs-cartesian-entropy-ft-n3-endpoints-v1 n=3 T1=10 Tn=2 dt=0.0005 burnin=500 block_time=20 blocks_per_stream=7813 streams=128 total_blocks=1000064 bond=1 seed=2026083133 threads=8
+completed 1/8 batches
+completed 2/8 batches
+completed 3/8 batches
+completed 4/8 batches
+completed 5/8 batches
+completed 6/8 batches
+completed 7/8 batches
+completed 8/8 batches
+mean q_left rate=6.22091 mean q_right rate=-6.22091 mean entropy rate=2.48836 mean action current=1.25228 balance RMS rate=1.48691e-05 midpoint failures=0 mean midpoint iterations=5.39727 elapsed=1538.86 s

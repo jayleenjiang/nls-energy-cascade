@@ -1,0 +1,52 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "CMake Configure",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "-S",
+                ".",
+                "-B",
+                "build"
+            ],
+            "group": "build",
+            "problemMatcher": [],
+            "detail": "Configures the project using CMake."
+        },
+        {
+            "label": "Build with CMake",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "--build",
+                "build",
+                "--config",
+                "Release",
+                "-j" 
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "detail": "Builds the project using CMake and your system's compiler.",
+            "dependsOn": "CMake Configure"
+        },
+        {
+            "label": "Run Simulation",
+            "type": "shell",
+            "command": "./build/EnergyCascade",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "problemMatcher": [],
+            "detail": "Runs the compiled simulation executable.",
+            "dependsOn": "Build with CMake"
+        }
+    ]
+}

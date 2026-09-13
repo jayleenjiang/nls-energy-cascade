@@ -1,0 +1,13 @@
+{
+  "runs": 48,
+  "groups": 12,
+  "pairs": 6,
+  "supported_pairs": 6,
+  "passing_pairs": 4,
+  "population_member_comparisons": 6,
+  "passing_population_member_comparisons": 4,
+  "population_pair_comparisons": 3,
+  "passing_population_pair_comparisons": 3,
+  "time_convergence_comparisons": 2,
+  "passing_time_convergence_comparisons": 2
+}

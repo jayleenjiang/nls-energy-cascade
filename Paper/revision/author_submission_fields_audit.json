@@ -1,0 +1,75 @@
+{
+  "checks": [
+    {
+      "category": "manuscript-declarations",
+      "evidence": "Provisional approval sentence present in draft.tex, draft_siads_review.tex.",
+      "id": "author_approval_placeholder",
+      "required_action": "After both authors approve, replace with final target-journal wording.",
+      "status": "PENDING_AUTHOR_OR_EXTERNAL_ACTION"
+    },
+    {
+      "category": "manuscript-declarations",
+      "evidence": "Provisional competing-interest sentence present in draft.tex, draft_siads_review.tex.",
+      "id": "competing_interests_placeholder",
+      "required_action": "Confirm with authors and replace with final competing-interest declaration.",
+      "status": "PENDING_AUTHOR_OR_EXTERNAL_ACTION"
+    },
+    {
+      "category": "manuscript-declarations",
+      "evidence": "Provisional funding sentence present in draft.tex, draft_siads_review.tex.",
+      "id": "funding_placeholder",
+      "required_action": "Confirm funding/no-funding statement with authors and insert final wording.",
+      "status": "PENDING_AUTHOR_OR_EXTERNAL_ACTION"
+    },
+    {
+      "category": "front-matter",
+      "evidence": "Current author block gives Yao Li affiliation/email only.",
+      "id": "author_metadata_incomplete",
+      "required_action": "Confirm final author order, Jayleen affiliation/email, corresponding author, and ORCID choices.",
+      "status": "PENDING_AUTHOR_OR_EXTERNAL_ACTION"
+    },
+    {
+      "category": "data-availability",
+      "evidence": "Data availability currently cites the GitHub repository but no immutable release tag or DOI.",
+      "id": "data_release_route_unfinalized",
+      "required_action": "Choose GitHub release-only or DOI-backed raw-data archive route; update data availability and rerun the gate.",
+      "status": "PENDING_AUTHOR_OR_EXTERNAL_ACTION"
+    },
+    {
+      "category": "journal-system",
+      "evidence": "No target-journal choice can be proven from local manuscript text.",
+      "id": "target_journal_confirmation",
+      "required_action": "Authors must confirm target journal, article type, and whether SIADS review formatting is final.",
+      "status": "PENDING_AUTHOR_OR_EXTERNAL_ACTION"
+    },
+    {
+      "category": "external-service",
+      "evidence": "No iThenticate/Turnitin/journal similarity report is available in the repository.",
+      "id": "professional_similarity_screening",
+      "required_action": "Run professional similarity/self-plagiarism screening after final edits.",
+      "status": "PENDING_AUTHOR_OR_EXTERNAL_ACTION"
+    },
+    {
+      "category": "external-service",
+      "evidence": "A local raw-data .tar.gz build exists, but no DOI/upload can be proven locally.",
+      "id": "raw_data_doi_upload",
+      "required_action": "If the DOI route is chosen, upload the archive to Zenodo/OSF/journal storage and insert the DOI.",
+      "status": "PENDING_AUTHOR_OR_EXTERNAL_ACTION"
+    },
+    {
+      "category": "journal-system",
+      "evidence": "Current PDFs are local build artifacts before final author/journal edits.",
+      "id": "final_post_edit_pdf_review",
+      "required_action": "After final declarations and release metadata are inserted, rerun the gate and visually inspect the final PDF.",
+      "status": "PENDING_AUTHOR_OR_EXTERNAL_ACTION"
+    }
+  ],
+  "generated_at_utc": "2026-07-06T03:50:59.223504+00:00",
+  "script": "Paper/revision_2026-06-19/scripts/audit_author_submission_fields.py",
+  "status": "AUTHOR_CONFIRMATION_PENDING",
+  "summary": {
+    "pass_count": 0,
+    "pending_count": 9,
+    "total_checks": 9
+  }
+}

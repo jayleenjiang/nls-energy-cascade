@@ -1,0 +1,104 @@
+{
+  "status": "PASS",
+  "checks": [],
+  "cases": {
+    "driven_dt1e-3": {
+      "streams": 64,
+      "stream_size_ok": true,
+      "osc_bootstrap_rows": 500,
+      "osc_bootstrap_ok": true,
+      "real_bootstrap_rows": 3500,
+      "real_modes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "real_bootstrap_ok": true,
+      "aggregate_matrix_shapes_ok": true,
+      "spectrum_rows": 4042,
+      "finite_spectra": true,
+      "gram_rows": 22,
+      "constant_mode_ok": true,
+      "max_trivial_error": 4.860556401808935e-13,
+      "overall": true
+    },
+    "driven_dt2p5e-4": {
+      "streams": 64,
+      "stream_size_ok": true,
+      "osc_bootstrap_rows": 500,
+      "osc_bootstrap_ok": true,
+      "real_bootstrap_rows": 3000,
+      "real_modes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "real_bootstrap_ok": true,
+      "aggregate_matrix_shapes_ok": true,
+      "spectrum_rows": 4020,
+      "finite_spectra": true,
+      "gram_rows": 22,
+      "constant_mode_ok": true,
+      "max_trivial_error": 6.405986852087153e-13,
+      "overall": true
+    },
+    "equilibrium_dt1e-3": {
+      "streams": 64,
+      "stream_size_ok": true,
+      "osc_bootstrap_rows": 500,
+      "osc_bootstrap_ok": true,
+      "real_bootstrap_rows": 2500,
+      "real_modes": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "real_bootstrap_ok": true,
+      "aggregate_matrix_shapes_ok": true,
+      "spectrum_rows": 4061,
+      "finite_spectra": true,
+      "gram_rows": 22,
+      "constant_mode_ok": true,
+      "max_trivial_error": 1.2378986724570495e-13,
+      "overall": true
+    },
+    "equilibrium_dt2p5e-4": {
+      "streams": 64,
+      "stream_size_ok": true,
+      "osc_bootstrap_rows": 500,
+      "osc_bootstrap_ok": true,
+      "real_bootstrap_rows": 3500,
+      "real_modes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "real_bootstrap_ok": true,
+      "aggregate_matrix_shapes_ok": true,
+      "spectrum_rows": 4047,
+      "finite_spectra": true,
+      "gram_rows": 22,
+      "constant_mode_ok": true,
+      "max_trivial_error": 1.2734258092450546e-12,
+      "overall": true
+    }
+  },
+  "input_hash_count": 256,
+  "analysis_output_hash_count": 40,
+  "analysis_source_sha256": "a986b0cc1d3f0e190223d348d7522b2ac81ce307e0628fd00852b2329aee2c57",
+  "summary_source_sha256": "8fcc16da087e89dd292eadce1d87b1b7e31c4cd593e80f14c9ceed5b5e9004fa",
+  "figure_source_sha256": "8d5337a64dff29d1e6dee23a0986929eb871590b5d50a7964ee5b70f7325bcae"
+}

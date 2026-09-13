@@ -1,0 +1,25 @@
+{
+  "_instructions": [
+    "Copy this file to author_submission_fields.json after the authors confirm final submission metadata.",
+    "Fill every empty string and change boolean confirmations only after the corresponding author/external action is complete.",
+    "Run: python3 Paper/revision_2026-06-19/scripts/apply_author_submission_fields.py --input Paper/revision_2026-06-19/author_submission_fields.json",
+    "The command above is a dry run. Add --apply only after the dry run says ready_to_apply=true.",
+    "The apply script backs up draft.tex and draft_siads_review.tex before editing."
+  ],
+  "target_journal": "",
+  "article_type": "",
+  "author_latex": "\\author{Jayleen Jiang\\thanks{[Jayleen affiliation]. \\texttt{[Jayleen email]}} \\and Yao Li\\thanks{Department of Mathematics and Statistics, University of Massachusetts Amherst, Amherst, MA 01003, USA. \\texttt{liyao@umass.edu}}}",
+  "author_contributions_tex": "Jayleen Jiang performed the numerical experiments, assembled the computational artifacts, and drafted the manuscript. Yao Li supervised the project and contributed to the model formulation, theoretical framing, and interpretation. Both authors reviewed and approved the final submitted version.",
+  "competing_interests_tex": "The authors declare no competing interests.",
+  "funding_tex": "The authors received no external funding for this work.",
+  "data_release_route": "",
+  "data_availability_tex": "A public repository snapshot is maintained at \\href{[repository release URL]}{the project repository on GitHub}.",
+  "repository_release_url": "",
+  "raw_data_doi_or_accession": "",
+  "target_journal_confirmed": false,
+  "similarity_screening_completed": false,
+  "raw_data_upload_completed_if_applicable": false,
+  "final_pdf_review_completed": false,
+  "author_approval_confirmed": false,
+  "notes": ""
+}
