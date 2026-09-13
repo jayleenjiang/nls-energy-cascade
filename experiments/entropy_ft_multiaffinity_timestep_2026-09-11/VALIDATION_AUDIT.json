@@ -1,0 +1,169 @@
+{
+  "status": "PASS",
+  "new_raw_files": [
+    {
+      "path": "/Users/jayleenjiang/Documents/NLS/experiments/entropy_ft_multiaffinity_timestep_2026-09-11/raw/weak_dt2p5e4_n10_tau5_blocks.csv",
+      "rows": 4000256,
+      "streams": 128,
+      "finite": true,
+      "ids_contiguous": true,
+      "numeric_min": -130.90800026510018,
+      "numeric_max": 136.55545397908628,
+      "sha256": "c2c81dc939a8de7f2abf28656b4e5e3140824125586b2db887ea4061243c3f7d",
+      "status": "PASS"
+    },
+    {
+      "path": "/Users/jayleenjiang/Documents/NLS/experiments/entropy_ft_multiaffinity_timestep_2026-09-11/raw/weak_dt1p25e4_n10_tau5_blocks.csv",
+      "rows": 4000256,
+      "streams": 128,
+      "finite": true,
+      "ids_contiguous": true,
+      "numeric_min": -134.55353014597094,
+      "numeric_max": 135.83458355605032,
+      "sha256": "1b5251958787876634cc484e5c727a008492c33d3e92c3056ee7be5dd7f13192",
+      "status": "PASS"
+    },
+    {
+      "path": "/Users/jayleenjiang/Documents/NLS/experiments/entropy_ft_multiaffinity_timestep_2026-09-11/raw/moderate_dt2p5e4_n10_tau5_blocks.csv",
+      "rows": 4000256,
+      "streams": 128,
+      "finite": true,
+      "ids_contiguous": true,
+      "numeric_min": -170.20118613304706,
+      "numeric_max": 173.7368754888631,
+      "sha256": "8a7df0b5ec26aba57508702e2ea2552bf7c86b0baeaf4f46e358ef43c7c11b47",
+      "status": "PASS"
+    },
+    {
+      "path": "/Users/jayleenjiang/Documents/NLS/experiments/entropy_ft_multiaffinity_timestep_2026-09-11/raw/moderate_dt1p25e4_n10_tau5_blocks.csv",
+      "rows": 4000256,
+      "streams": 128,
+      "finite": true,
+      "ids_contiguous": true,
+      "numeric_min": -165.73195041727195,
+      "numeric_max": 164.05522585291078,
+      "sha256": "315bf4a25af37e6d9154ddb423f54cf9af8cd119be9e62f48420e5c17687bc3a",
+      "status": "PASS"
+    }
+  ],
+  "all_analysis_inputs": [
+    {
+      "case": "weak_dt5e4",
+      "path": "/Users/jayleenjiang/Documents/NLS/experiments/entropy_ft_window_length_2026-09-10/raw/dbeta_0p027972_n10_tau5_blocks.csv",
+      "rows_declared": 4000256,
+      "sha256": "84ee7b05c008a142bf6e18131e89510b0a4f420a330bf70ef87ec21e38870403",
+      "status": "PASS"
+    },
+    {
+      "case": "weak_dt2p5e4",
+      "path": "/Users/jayleenjiang/Documents/NLS/experiments/entropy_ft_multiaffinity_timestep_2026-09-11/raw/weak_dt2p5e4_n10_tau5_blocks.csv",
+      "rows_declared": 4000256,
+      "sha256": "c2c81dc939a8de7f2abf28656b4e5e3140824125586b2db887ea4061243c3f7d",
+      "status": "PASS"
+    },
+    {
+      "case": "weak_dt1p25e4",
+      "path": "/Users/jayleenjiang/Documents/NLS/experiments/entropy_ft_multiaffinity_timestep_2026-09-11/raw/weak_dt1p25e4_n10_tau5_blocks.csv",
+      "rows_declared": 4000256,
+      "sha256": "1b5251958787876634cc484e5c727a008492c33d3e92c3056ee7be5dd7f13192",
+      "status": "PASS"
+    },
+    {
+      "case": "moderate_dt5e4",
+      "path": "/Users/jayleenjiang/Documents/NLS/experiments/entropy_ft_window_length_2026-09-10/raw/dbeta_0p125000_n10_tau5_blocks.csv",
+      "rows_declared": 4000256,
+      "sha256": "336e934df7bd8555fa345dcb9652a7dcbe5d694f80b8700c5655f26ed833f53d",
+      "status": "PASS"
+    },
+    {
+      "case": "moderate_dt2p5e4",
+      "path": "/Users/jayleenjiang/Documents/NLS/experiments/entropy_ft_multiaffinity_timestep_2026-09-11/raw/moderate_dt2p5e4_n10_tau5_blocks.csv",
+      "rows_declared": 4000256,
+      "sha256": "8a7df0b5ec26aba57508702e2ea2552bf7c86b0baeaf4f46e358ef43c7c11b47",
+      "status": "PASS"
+    },
+    {
+      "case": "moderate_dt1p25e4",
+      "path": "/Users/jayleenjiang/Documents/NLS/experiments/entropy_ft_multiaffinity_timestep_2026-09-11/raw/moderate_dt1p25e4_n10_tau5_blocks.csv",
+      "rows_declared": 4000256,
+      "sha256": "315bf4a25af37e6d9154ddb423f54cf9af8cd119be9e62f48420e5c17687bc3a",
+      "status": "PASS"
+    },
+    {
+      "case": "equilibrium_dt5e4",
+      "path": "/Users/jayleenjiang/Documents/NLS/experiments/entropy_ft_window_length_2026-09-10/raw/dbeta_0p000000_n10_tau5_blocks.csv",
+      "rows_declared": 4000256,
+      "sha256": "87af7c2eadcea3967ed46b5399f41a9d5b3edee1dba490d0618b10cdb24c308b",
+      "status": "PASS"
+    },
+    {
+      "case": "equilibrium_dt2p5e4",
+      "path": "/Users/jayleenjiang/Documents/NLS/experiments/entropy_ft_timestep_bias_2026-09-10/raw/equilibrium_dt2p5e4_n10_tau5_blocks.csv",
+      "rows_declared": 4000256,
+      "sha256": "8f5024d0d4fa0f3f2429d7447f2a4cbf76ca3317aa64022a11ddd3f00b5d84a7",
+      "status": "PASS"
+    }
+  ],
+  "analysis_row_counts": [
+    {
+      "file": "per_tau_results.csv",
+      "rows": 72,
+      "status": "PASS"
+    },
+    {
+      "file": "slope_bootstrap.csv",
+      "rows": 8000,
+      "status": "PASS"
+    },
+    {
+      "file": "extrapolation_summary.csv",
+      "rows": 16,
+      "status": "PASS"
+    },
+    {
+      "file": "extrapolation_bootstrap.csv",
+      "rows": 16000,
+      "status": "PASS"
+    },
+    {
+      "file": "dt_zero_extrapolation.csv",
+      "rows": 4,
+      "status": "PASS"
+    },
+    {
+      "file": "dt_zero_bootstrap.csv",
+      "rows": 4000,
+      "status": "PASS"
+    },
+    {
+      "file": "three_affinity_finest_summary.csv",
+      "rows": 6,
+      "status": "PASS"
+    },
+    {
+      "file": "equilibrium_weighted_baseline.csv",
+      "rows": 2,
+      "status": "PASS"
+    },
+    {
+      "file": "equilibrium_baseline_difference.csv",
+      "rows": 1,
+      "status": "PASS"
+    },
+    {
+      "file": "input_hashes.csv",
+      "rows": 8,
+      "status": "PASS"
+    }
+  ],
+  "bootstrap_minimums": {
+    "resolved_per_tau_min_accepted": 1000,
+    "unresolved_per_tau_count": 9,
+    "extrapolation_min_accepted": 1000
+  },
+  "source_sha256": "98e7f8f5f915c8ce02bd8aa10722025c09fd739184b981961692869c9356c0d3",
+  "binary_sha256": "4c4880d721733897d200f2601690da873f5b226aaa1013df23df2351c1dfe7d1",
+  "report_pdf": "/Users/jayleenjiang/Documents/NLS/experiments/entropy_ft_multiaffinity_timestep_2026-09-11/report/multiaffinity_timestep_report.pdf",
+  "report_sha256": "a665cbc17ed8f538e526050ebc6ad5c36d8b864cb07582f9a4a72102ccc33b08",
+  "figure_count": 8
+}

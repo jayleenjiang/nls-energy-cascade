@@ -1,0 +1,2 @@
+coarse_case,fine_case,fine_minus_coarse,bootstrap_se,ci_low,ci_high,ci_contains_zero,bootstrap_accepted,bootstrap_total
+equilibrium_dt5e4,equilibrium_dt2p5e4,-0.0002115232109567413,0.00012822408903977888,-0.0004702495198992101,2.8096815636171613e-05,1,1000,1000

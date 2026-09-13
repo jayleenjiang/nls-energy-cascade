@@ -70,6 +70,7 @@ def main() -> None:
     verdict = json.loads((analysis / "VERDICT.json").read_text())
     manifest = json.loads((analysis / "analysis_manifest.json").read_text())
     production = read_key_values(root / "production_manifest.txt")
+    recovery = read_key_values(root / "recovery_manifest.txt")
 
     names = {"weak": r"$(6.5,5.5)$", "moderate": r"$(8,4)$", "mid": r"$(7,5)$"}
     per_tables = {}
@@ -178,7 +179,7 @@ def main() -> None:
 \newcommand{{\Db}}{{\Delta\beta}}
 \title{{Multi-affinity Timestep and Estimator-floor Audit}}
 \author{{Numerical audit report}}
-\date{{11 September 2026}}
+\date{{13 September 2026}}
 \begin{{document}}
 \sloppy
 \maketitle
@@ -351,6 +352,16 @@ the predeclared factor-three ``same order'' range.
 \section{{Protocol and provenance}}
 The freeze/launch commit is
 \path{{{production.get('repository_commit_at_launch', 'not-recorded')}}}.\par
+The original four-case pipeline completed both $dt=2.5\times10^{{-4}}$ runs
+but exited with status 1 after both $dt=1.25\times10^{{-4}}$ simulator
+processes terminated before producing block CSV files.  That failure is
+preserved in \texttt{{pipeline.exitcode}} and the
+\texttt{{*.initial\_failed.log}} files.  The two missing fine-timestep cases
+were then rerun with exactly the frozen parameters under
+\texttt{{RECOVERY\_AMENDMENT.md}}; the recovery completed with status 0 at
+\path{{{recovery.get('recovery_completed_utc', 'not-recorded')}}}.  The
+recovery amendment was pushed as commit
+\path{{103cd95}}.\par
 Production source SHA-256:\par
 \path{{98e7f8f5f915c8ce02bd8aa10722025c09fd739184b981961692869c9356c0d3}}.\par
 Binary SHA-256:\par
@@ -366,10 +377,15 @@ case & kind & rows & SHA-256\\
 \bottomrule
 \end{{tabular}}
 
-Exact commands and measured runtimes are in \texttt{{COMMANDS.tsv}} and
-\texttt{{RUNTIMES.tsv}}.  Complete per-window moments, raw symmetric-bin
-counts, all bootstrap draws, residuals, and hashes accompany this report.  No
-scientific setting or gate was changed after production began.
+Exact commands and measured runtimes for the original runs are in
+\texttt{{COMMANDS.tsv}} and \texttt{{RUNTIMES.tsv}}; the two recovered fine
+runs are recorded separately in \texttt{{RECOVERY\_COMMANDS.tsv}} and
+\texttt{{RECOVERY\_RUNTIMES.tsv}}.  The user-authorized power-policy override
+is documented in \texttt{{POWER\_POLICY\_OVERRIDE.md}}: it changed only when
+the already-running processes were allowed to execute, not any scientific
+setting.  Complete per-window moments, raw symmetric-bin counts, all bootstrap
+draws, residuals, and hashes accompany this report.  No scientific parameter,
+estimator rule, or acceptance gate was changed after production began.
 
 \end{{document}}
 """
@@ -378,4 +394,3 @@ scientific setting or gate was changed after production began.
 
 if __name__ == "__main__":
     main()
-
