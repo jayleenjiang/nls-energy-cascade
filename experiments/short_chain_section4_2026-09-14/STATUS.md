@@ -39,7 +39,8 @@
   Section 4 TeX generated.
 - [x] Standalone PDF visually verified and the complete reproducibility
   package archived with a tested compressed stream.
-- [ ] Scoped report/code artifacts committed and pushed.
+- [x] Scoped report/code artifacts committed and pushed to
+  `codex/paper-journal-revision` (deliverables commit `0c41a1f`).
 
 The frozen equilibrium density candidate matrix has terminated with the
 predeclared negative result `NO_ADMISSIBLE_CANDIDATE`. Blind density-test
