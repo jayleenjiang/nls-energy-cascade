@@ -1,0 +1,27 @@
+# Prefit audits and data preparation
+/opt/homebrew/bin/python3 scripts/audit_operator.py
+/opt/homebrew/bin/python3 scripts/smoke_density_model.py
+./scripts/run_direct_state_replay.sh
+/opt/homebrew/bin/python3 scripts/audit_direct_inputs.py
+/opt/homebrew/bin/python3 scripts/compute_ess.py
+/opt/homebrew/bin/python3 scripts/calibrate_weak_identities.py
+
+# Complete equilibrium candidate matrix and frozen selection
+./scripts/run_equilibrium_candidates.sh
+/Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11 scripts/select_density_candidate.py
+
+# Independent Section-4.3 branch
+/opt/homebrew/bin/python3 scripts/fit_validate_modes.py
+/opt/homebrew/bin/python3 scripts/evaluate_modes_blind.py
+/opt/homebrew/bin/python3 scripts/compute_blind_modal_weights.py
+
+# Tables, figures, and reports
+/opt/homebrew/bin/python3 scripts/make_section4_figures.py
+python3 /Users/jayleenjiang/.codex/plugins/cache/openai-bundled/latex/0.2.6/scripts/compile_latex.py /Users/jayleenjiang/Documents/NLS/experiments/short_chain_section4_2026-09-14/report/section4_validation_report.tex --compiler texlive
+python3 /Users/jayleenjiang/.codex/plugins/cache/openai-bundled/latex/0.2.6/scripts/compile_latex.py /Users/jayleenjiang/Documents/NLS/experiments/short_chain_section4_2026-09-14/report/section4_paper_smoke.tex --compiler texlive
+
+# Exact density-training commands, including seeds 4101--4103, are recorded in
+# provenance/equilibrium_candidate_commands.txt. Exact trajectory replay
+# commands and physical seeds 2026090801--2026090804 are recorded in
+# provenance/direct_state_commands.txt.
+

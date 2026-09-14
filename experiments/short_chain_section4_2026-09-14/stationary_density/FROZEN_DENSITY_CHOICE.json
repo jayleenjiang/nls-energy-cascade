@@ -1,0 +1,776 @@
+{
+  "candidate_summaries": [
+    {
+      "across_seed_se_nll": 0.014853861592922154,
+      "all_seed_admissible": false,
+      "components": 8,
+      "lambda_fp": 0.01,
+      "mean_validation_nll": 7.9042910103292146,
+      "median_validation_nll": 7.901016763361217,
+      "seeds": [
+        {
+          "best_validation_nll": 7.901016763361217,
+          "case": "equilibrium_dt2p5e-4",
+          "components": 8,
+          "epochs_completed": 81,
+          "fp_abs_median": 2.08481091073237,
+          "fp_abs_p90": 8.341281535280698,
+          "fp_abs_p99": 34.20886624416029,
+          "gibbs_bulk_bounds": [
+            -6.415778150627527,
+            -0.03981858445574488
+          ],
+          "gibbs_bulk_centered_log_rmse": 0.48341637206505783,
+          "gibbs_bulk_log_intercept": -6.35947294476084,
+          "gibbs_bulk_log_slope": 1.0370130474385386,
+          "gibbs_validation_additive_constant": -6.414169717152372,
+          "gibbs_validation_percentiles": {
+            "1": -5.657127091750077,
+            "25": -2.0513340768386086,
+            "5": -3.905745627033769,
+            "75": -0.6057864577813357,
+            "95": -0.179402079646184,
+            "99": -0.06319814459872965
+          },
+          "lambda_fp": 0.01,
+          "metrics_path": "stationary_density/equilibrium_candidates/K08_w64x64_l0p01_seed4101/validation_metrics.json",
+          "runtime_seconds": 409.8274998664856,
+          "seed": 4101,
+          "selection_admissible": false,
+          "training_rows": 3200032,
+          "validation_fp_sample": 20000,
+          "validation_rows": 1600016,
+          "validation_sample": 200000,
+          "widths": [
+            64,
+            64
+          ]
+        },
+        {
+          "best_validation_nll": 7.931499037058102,
+          "case": "equilibrium_dt2p5e-4",
+          "components": 8,
+          "epochs_completed": 81,
+          "fp_abs_median": 2.624142794219091,
+          "fp_abs_p90": 9.455572968019522,
+          "fp_abs_p99": 37.65704875990551,
+          "gibbs_bulk_bounds": [
+            -6.415778150627527,
+            -0.03981858445574488
+          ],
+          "gibbs_bulk_centered_log_rmse": 0.547106511205408,
+          "gibbs_bulk_log_intercept": -6.404722573906617,
+          "gibbs_bulk_log_slope": 1.0267363216604575,
+          "gibbs_validation_additive_constant": -6.444232708890163,
+          "gibbs_validation_percentiles": {
+            "1": -5.657127091750077,
+            "25": -2.0513340768386086,
+            "5": -3.905745627033769,
+            "75": -0.6057864577813357,
+            "95": -0.179402079646184,
+            "99": -0.06319814459872965
+          },
+          "lambda_fp": 0.01,
+          "metrics_path": "stationary_density/equilibrium_candidates/K08_w64x64_l0p01_seed4102/validation_metrics.json",
+          "runtime_seconds": 376.25036001205444,
+          "seed": 4102,
+          "selection_admissible": false,
+          "training_rows": 3200032,
+          "validation_fp_sample": 20000,
+          "validation_rows": 1600016,
+          "validation_sample": 200000,
+          "widths": [
+            64,
+            64
+          ]
+        },
+        {
+          "best_validation_nll": 7.880357230568324,
+          "case": "equilibrium_dt2p5e-4",
+          "components": 8,
+          "epochs_completed": 81,
+          "fp_abs_median": 1.88604794430029,
+          "fp_abs_p90": 8.096374032469106,
+          "fp_abs_p99": 36.6651542530715,
+          "gibbs_bulk_bounds": [
+            -6.415778150627527,
+            -0.03981858445574488
+          ],
+          "gibbs_bulk_centered_log_rmse": 0.4557771813903308,
+          "gibbs_bulk_log_intercept": -6.373693123163298,
+          "gibbs_bulk_log_slope": 1.0129026021540641,
+          "gibbs_validation_additive_constant": -6.392760201994116,
+          "gibbs_validation_percentiles": {
+            "1": -5.657127091750077,
+            "25": -2.0513340768386086,
+            "5": -3.905745627033769,
+            "75": -0.6057864577813357,
+            "95": -0.179402079646184,
+            "99": -0.06319814459872965
+          },
+          "lambda_fp": 0.01,
+          "metrics_path": "stationary_density/equilibrium_candidates/K08_w64x64_l0p01_seed4103/validation_metrics.json",
+          "runtime_seconds": 376.68112301826477,
+          "seed": 4103,
+          "selection_admissible": false,
+          "training_rows": 3200032,
+          "validation_fp_sample": 20000,
+          "validation_rows": 1600016,
+          "validation_sample": 200000,
+          "widths": [
+            64,
+            64
+          ]
+        }
+      ],
+      "widths": [
+        64,
+        64
+      ]
+    },
+    {
+      "across_seed_se_nll": 0.006846596819076989,
+      "all_seed_admissible": false,
+      "components": 8,
+      "lambda_fp": 0.1,
+      "mean_validation_nll": 7.948013140417818,
+      "median_validation_nll": 7.94873474016933,
+      "seeds": [
+        {
+          "best_validation_nll": 7.935810164460028,
+          "case": "equilibrium_dt2p5e-4",
+          "components": 8,
+          "epochs_completed": 81,
+          "fp_abs_median": 2.1838238495386775,
+          "fp_abs_p90": 8.321338917196329,
+          "fp_abs_p99": 33.89583115675706,
+          "gibbs_bulk_bounds": [
+            -6.415778150627527,
+            -0.03981858445574488
+          ],
+          "gibbs_bulk_centered_log_rmse": 0.5454406489513968,
+          "gibbs_bulk_log_intercept": -6.401667289302598,
+          "gibbs_bulk_log_slope": 1.0323162388916118,
+          "gibbs_validation_additive_constant": -6.449423258765542,
+          "gibbs_validation_percentiles": {
+            "1": -5.657127091750077,
+            "25": -2.0513340768386086,
+            "5": -3.905745627033769,
+            "75": -0.6057864577813357,
+            "95": -0.179402079646184,
+            "99": -0.06319814459872965
+          },
+          "lambda_fp": 0.1,
+          "metrics_path": "stationary_density/equilibrium_candidates/K08_w64x64_l0p1_seed4101/validation_metrics.json",
+          "runtime_seconds": 393.2469229698181,
+          "seed": 4101,
+          "selection_admissible": false,
+          "training_rows": 3200032,
+          "validation_fp_sample": 20000,
+          "validation_rows": 1600016,
+          "validation_sample": 200000,
+          "widths": [
+            64,
+            64
+          ]
+        },
+        {
+          "best_validation_nll": 7.9594945166241,
+          "case": "equilibrium_dt2p5e-4",
+          "components": 8,
+          "epochs_completed": 81,
+          "fp_abs_median": 2.4784002465902155,
+          "fp_abs_p90": 9.277013389405493,
+          "fp_abs_p99": 37.21162707220489,
+          "gibbs_bulk_bounds": [
+            -6.415778150627527,
+            -0.03981858445574488
+          ],
+          "gibbs_bulk_centered_log_rmse": 0.5953544661804904,
+          "gibbs_bulk_log_intercept": -6.4021533311336505,
+          "gibbs_bulk_log_slope": 1.0473669832661627,
+          "gibbs_validation_additive_constant": -6.472150839630766,
+          "gibbs_validation_percentiles": {
+            "1": -5.657127091750077,
+            "25": -2.0513340768386086,
+            "5": -3.905745627033769,
+            "75": -0.6057864577813357,
+            "95": -0.179402079646184,
+            "99": -0.06319814459872965
+          },
+          "lambda_fp": 0.1,
+          "metrics_path": "stationary_density/equilibrium_candidates/K08_w64x64_l0p1_seed4102/validation_metrics.json",
+          "runtime_seconds": 399.112765789032,
+          "seed": 4102,
+          "selection_admissible": false,
+          "training_rows": 3200032,
+          "validation_fp_sample": 20000,
+          "validation_rows": 1600016,
+          "validation_sample": 200000,
+          "widths": [
+            64,
+            64
+          ]
+        },
+        {
+          "best_validation_nll": 7.94873474016933,
+          "case": "equilibrium_dt2p5e-4",
+          "components": 8,
+          "epochs_completed": 81,
+          "fp_abs_median": 2.0184576005829635,
+          "fp_abs_p90": 8.043872987254533,
+          "fp_abs_p99": 36.025071549199566,
+          "gibbs_bulk_bounds": [
+            -6.415778150627527,
+            -0.03981858445574488
+          ],
+          "gibbs_bulk_centered_log_rmse": 0.5803765475962133,
+          "gibbs_bulk_log_intercept": -6.444942388441267,
+          "gibbs_bulk_log_slope": 1.0116879895659834,
+          "gibbs_validation_additive_constant": -6.462214549185845,
+          "gibbs_validation_percentiles": {
+            "1": -5.657127091750077,
+            "25": -2.0513340768386086,
+            "5": -3.905745627033769,
+            "75": -0.6057864577813357,
+            "95": -0.179402079646184,
+            "99": -0.06319814459872965
+          },
+          "lambda_fp": 0.1,
+          "metrics_path": "stationary_density/equilibrium_candidates/K08_w64x64_l0p1_seed4103/validation_metrics.json",
+          "runtime_seconds": 391.5049047470093,
+          "seed": 4103,
+          "selection_admissible": false,
+          "training_rows": 3200032,
+          "validation_fp_sample": 20000,
+          "validation_rows": 1600016,
+          "validation_sample": 200000,
+          "widths": [
+            64,
+            64
+          ]
+        }
+      ],
+      "widths": [
+        64,
+        64
+      ]
+    },
+    {
+      "across_seed_se_nll": 0.0025946166061777375,
+      "all_seed_admissible": false,
+      "components": 16,
+      "lambda_fp": 0.01,
+      "mean_validation_nll": 7.826465283186164,
+      "median_validation_nll": 7.825533163983826,
+      "seeds": [
+        {
+          "best_validation_nll": 7.8313522557409705,
+          "case": "equilibrium_dt2p5e-4",
+          "components": 16,
+          "epochs_completed": 83,
+          "fp_abs_median": 1.4003657129683966,
+          "fp_abs_p90": 5.075268047429059,
+          "fp_abs_p99": 17.066638114429878,
+          "gibbs_bulk_bounds": [
+            -6.415778150627527,
+            -0.03981858445574488
+          ],
+          "gibbs_bulk_centered_log_rmse": 0.3033567382918484,
+          "gibbs_bulk_log_intercept": -6.276016335165631,
+          "gibbs_bulk_log_slope": 1.0457359368457075,
+          "gibbs_validation_additive_constant": -6.34360353213766,
+          "gibbs_validation_percentiles": {
+            "1": -5.657127091750077,
+            "25": -2.0513340768386086,
+            "5": -3.905745627033769,
+            "75": -0.6057864577813357,
+            "95": -0.179402079646184,
+            "99": -0.06319814459872965
+          },
+          "lambda_fp": 0.01,
+          "metrics_path": "stationary_density/equilibrium_candidates/K16_w64x64_l0p01_seed4101/validation_metrics.json",
+          "runtime_seconds": 640.664577960968,
+          "seed": 4101,
+          "selection_admissible": false,
+          "training_rows": 3200032,
+          "validation_fp_sample": 20000,
+          "validation_rows": 1600016,
+          "validation_sample": 200000,
+          "widths": [
+            64,
+            64
+          ]
+        },
+        {
+          "best_validation_nll": 7.822510429833697,
+          "case": "equilibrium_dt2p5e-4",
+          "components": 16,
+          "epochs_completed": 81,
+          "fp_abs_median": 1.419367036751332,
+          "fp_abs_p90": 6.074811040825763,
+          "fp_abs_p99": 35.24976036620477,
+          "gibbs_bulk_bounds": [
+            -6.415778150627527,
+            -0.03981858445574488
+          ],
+          "gibbs_bulk_centered_log_rmse": 0.35202880943776454,
+          "gibbs_bulk_log_intercept": -6.2920108558173995,
+          "gibbs_bulk_log_slope": 1.0267781211660754,
+          "gibbs_validation_additive_constant": -6.331582760857805,
+          "gibbs_validation_percentiles": {
+            "1": -5.657127091750077,
+            "25": -2.0513340768386086,
+            "5": -3.905745627033769,
+            "75": -0.6057864577813357,
+            "95": -0.179402079646184,
+            "99": -0.06319814459872965
+          },
+          "lambda_fp": 0.01,
+          "metrics_path": "stationary_density/equilibrium_candidates/K16_w64x64_l0p01_seed4102/validation_metrics.json",
+          "runtime_seconds": 637.9634881019592,
+          "seed": 4102,
+          "selection_admissible": false,
+          "training_rows": 3200032,
+          "validation_fp_sample": 20000,
+          "validation_rows": 1600016,
+          "validation_sample": 200000,
+          "widths": [
+            64,
+            64
+          ]
+        },
+        {
+          "best_validation_nll": 7.825533163983826,
+          "case": "equilibrium_dt2p5e-4",
+          "components": 16,
+          "epochs_completed": 82,
+          "fp_abs_median": 1.252988269394205,
+          "fp_abs_p90": 5.470782140344263,
+          "fp_abs_p99": 21.9742565892915,
+          "gibbs_bulk_bounds": [
+            -6.415778150627527,
+            -0.03981858445574488
+          ],
+          "gibbs_bulk_centered_log_rmse": 0.3310326939780133,
+          "gibbs_bulk_log_intercept": -6.248047745482122,
+          "gibbs_bulk_log_slope": 1.0591616633332117,
+          "gibbs_validation_additive_constant": -6.335475078749273,
+          "gibbs_validation_percentiles": {
+            "1": -5.657127091750077,
+            "25": -2.0513340768386086,
+            "5": -3.905745627033769,
+            "75": -0.6057864577813357,
+            "95": -0.179402079646184,
+            "99": -0.06319814459872965
+          },
+          "lambda_fp": 0.01,
+          "metrics_path": "stationary_density/equilibrium_candidates/K16_w64x64_l0p01_seed4103/validation_metrics.json",
+          "runtime_seconds": 654.5238289833069,
+          "seed": 4103,
+          "selection_admissible": false,
+          "training_rows": 3200032,
+          "validation_fp_sample": 20000,
+          "validation_rows": 1600016,
+          "validation_sample": 200000,
+          "widths": [
+            64,
+            64
+          ]
+        }
+      ],
+      "widths": [
+        64,
+        64
+      ]
+    },
+    {
+      "across_seed_se_nll": 0.009092853000507247,
+      "all_seed_admissible": false,
+      "components": 16,
+      "lambda_fp": 0.1,
+      "mean_validation_nll": 7.914505025941701,
+      "median_validation_nll": 7.911191865943604,
+      "seeds": [
+        {
+          "best_validation_nll": 7.911191865943604,
+          "case": "equilibrium_dt2p5e-4",
+          "components": 16,
+          "epochs_completed": 81,
+          "fp_abs_median": 1.6096181380999317,
+          "fp_abs_p90": 5.885611762569648,
+          "fp_abs_p99": 33.09797869323378,
+          "gibbs_bulk_bounds": [
+            -6.415778150627527,
+            -0.03981858445574488
+          ],
+          "gibbs_bulk_centered_log_rmse": 0.5319199889429972,
+          "gibbs_bulk_log_intercept": -6.403226513585696,
+          "gibbs_bulk_log_slope": 1.0125502857965978,
+          "gibbs_validation_additive_constant": -6.421772949860763,
+          "gibbs_validation_percentiles": {
+            "1": -5.657127091750077,
+            "25": -2.0513340768386086,
+            "5": -3.905745627033769,
+            "75": -0.6057864577813357,
+            "95": -0.179402079646184,
+            "99": -0.06319814459872965
+          },
+          "lambda_fp": 0.1,
+          "metrics_path": "stationary_density/equilibrium_candidates/K16_w64x64_l0p1_seed4101/validation_metrics.json",
+          "runtime_seconds": 665.5266931056976,
+          "seed": 4101,
+          "selection_admissible": false,
+          "training_rows": 3200032,
+          "validation_fp_sample": 20000,
+          "validation_rows": 1600016,
+          "validation_sample": 200000,
+          "widths": [
+            64,
+            64
+          ]
+        },
+        {
+          "best_validation_nll": 7.900675897846293,
+          "case": "equilibrium_dt2p5e-4",
+          "components": 16,
+          "epochs_completed": 81,
+          "fp_abs_median": 1.4778227102374553,
+          "fp_abs_p90": 6.085459500654998,
+          "fp_abs_p99": 35.32743910025174,
+          "gibbs_bulk_bounds": [
+            -6.415778150627527,
+            -0.03981858445574488
+          ],
+          "gibbs_bulk_centered_log_rmse": 0.5281475339575438,
+          "gibbs_bulk_log_intercept": -6.3739514903763395,
+          "gibbs_bulk_log_slope": 1.0250560098326118,
+          "gibbs_validation_additive_constant": -6.410978510892011,
+          "gibbs_validation_percentiles": {
+            "1": -5.657127091750077,
+            "25": -2.0513340768386086,
+            "5": -3.905745627033769,
+            "75": -0.6057864577813357,
+            "95": -0.179402079646184,
+            "99": -0.06319814459872965
+          },
+          "lambda_fp": 0.1,
+          "metrics_path": "stationary_density/equilibrium_candidates/K16_w64x64_l0p1_seed4102/validation_metrics.json",
+          "runtime_seconds": 694.0162827968597,
+          "seed": 4102,
+          "selection_admissible": false,
+          "training_rows": 3200032,
+          "validation_fp_sample": 20000,
+          "validation_rows": 1600016,
+          "validation_sample": 200000,
+          "widths": [
+            64,
+            64
+          ]
+        },
+        {
+          "best_validation_nll": 7.931647314035208,
+          "case": "equilibrium_dt2p5e-4",
+          "components": 16,
+          "epochs_completed": 85,
+          "fp_abs_median": 1.1331754514967143,
+          "fp_abs_p90": 3.705144767214912,
+          "fp_abs_p99": 12.419410848832923,
+          "gibbs_bulk_bounds": [
+            -6.415778150627527,
+            -0.03981858445574488
+          ],
+          "gibbs_bulk_centered_log_rmse": 0.46460488657243154,
+          "gibbs_bulk_log_intercept": -6.3895421637740695,
+          "gibbs_bulk_log_slope": 1.0401377361720983,
+          "gibbs_validation_additive_constant": -6.448856507543311,
+          "gibbs_validation_percentiles": {
+            "1": -5.657127091750077,
+            "25": -2.0513340768386086,
+            "5": -3.905745627033769,
+            "75": -0.6057864577813357,
+            "95": -0.179402079646184,
+            "99": -0.06319814459872965
+          },
+          "lambda_fp": 0.1,
+          "metrics_path": "stationary_density/equilibrium_candidates/K16_w64x64_l0p1_seed4103/validation_metrics.json",
+          "runtime_seconds": 704.7937278747559,
+          "seed": 4103,
+          "selection_admissible": false,
+          "training_rows": 3200032,
+          "validation_fp_sample": 20000,
+          "validation_rows": 1600016,
+          "validation_sample": 200000,
+          "widths": [
+            64,
+            64
+          ]
+        }
+      ],
+      "widths": [
+        64,
+        64
+      ]
+    },
+    {
+      "across_seed_se_nll": 0.006053939064350357,
+      "all_seed_admissible": false,
+      "components": 16,
+      "lambda_fp": 0.01,
+      "mean_validation_nll": 7.832362456542412,
+      "median_validation_nll": 7.829103375905278,
+      "seeds": [
+        {
+          "best_validation_nll": 7.829103375905278,
+          "case": "equilibrium_dt2p5e-4",
+          "components": 16,
+          "epochs_completed": 83,
+          "fp_abs_median": 1.2745607543296376,
+          "fp_abs_p90": 5.064694537189913,
+          "fp_abs_p99": 17.64215797798466,
+          "gibbs_bulk_bounds": [
+            -6.415778150627527,
+            -0.03981858445574488
+          ],
+          "gibbs_bulk_centered_log_rmse": 0.30204962540756786,
+          "gibbs_bulk_log_intercept": -6.258332934650066,
+          "gibbs_bulk_log_slope": 1.0560237686821783,
+          "gibbs_validation_additive_constant": -6.341123181230384,
+          "gibbs_validation_percentiles": {
+            "1": -5.657127091750077,
+            "25": -2.0513340768386086,
+            "5": -3.905745627033769,
+            "75": -0.6057864577813357,
+            "95": -0.179402079646184,
+            "99": -0.06319814459872965
+          },
+          "lambda_fp": 0.01,
+          "metrics_path": "stationary_density/equilibrium_candidates/K16_w128x128_l0p01_seed4101/validation_metrics.json",
+          "runtime_seconds": 919.0213541984558,
+          "seed": 4101,
+          "selection_admissible": false,
+          "training_rows": 3200032,
+          "validation_fp_sample": 20000,
+          "validation_rows": 1600016,
+          "validation_sample": 200000,
+          "widths": [
+            128,
+            128
+          ]
+        },
+        {
+          "best_validation_nll": 7.844090725970876,
+          "case": "equilibrium_dt2p5e-4",
+          "components": 16,
+          "epochs_completed": 85,
+          "fp_abs_median": 1.174238511087387,
+          "fp_abs_p90": 4.551697039165718,
+          "fp_abs_p99": 15.427546329342064,
+          "gibbs_bulk_bounds": [
+            -6.415778150627527,
+            -0.03981858445574488
+          ],
+          "gibbs_bulk_centered_log_rmse": 0.35330354942113446,
+          "gibbs_bulk_log_intercept": -6.306128759898048,
+          "gibbs_bulk_log_slope": 1.0342219669234107,
+          "gibbs_validation_additive_constant": -6.356700957140354,
+          "gibbs_validation_percentiles": {
+            "1": -5.657127091750077,
+            "25": -2.0513340768386086,
+            "5": -3.905745627033769,
+            "75": -0.6057864577813357,
+            "95": -0.179402079646184,
+            "99": -0.06319814459872965
+          },
+          "lambda_fp": 0.01,
+          "metrics_path": "stationary_density/equilibrium_candidates/K16_w128x128_l0p01_seed4102/validation_metrics.json",
+          "runtime_seconds": 960.7928318977356,
+          "seed": 4102,
+          "selection_admissible": false,
+          "training_rows": 3200032,
+          "validation_fp_sample": 20000,
+          "validation_rows": 1600016,
+          "validation_sample": 200000,
+          "widths": [
+            128,
+            128
+          ]
+        },
+        {
+          "best_validation_nll": 7.82389326775108,
+          "case": "equilibrium_dt2p5e-4",
+          "components": 16,
+          "epochs_completed": 82,
+          "fp_abs_median": 1.4055459984769358,
+          "fp_abs_p90": 5.697987691402836,
+          "fp_abs_p99": 21.964422348653894,
+          "gibbs_bulk_bounds": [
+            -6.415778150627527,
+            -0.03981858445574488
+          ],
+          "gibbs_bulk_centered_log_rmse": 0.33193925738203145,
+          "gibbs_bulk_log_intercept": -6.2304994464883405,
+          "gibbs_bulk_log_slope": 1.0696211558011595,
+          "gibbs_validation_additive_constant": -6.333383504301081,
+          "gibbs_validation_percentiles": {
+            "1": -5.657127091750077,
+            "25": -2.0513340768386086,
+            "5": -3.905745627033769,
+            "75": -0.6057864577813357,
+            "95": -0.179402079646184,
+            "99": -0.06319814459872965
+          },
+          "lambda_fp": 0.01,
+          "metrics_path": "stationary_density/equilibrium_candidates/K16_w128x128_l0p01_seed4103/validation_metrics.json",
+          "runtime_seconds": 802.7130219936371,
+          "seed": 4103,
+          "selection_admissible": false,
+          "training_rows": 3200032,
+          "validation_fp_sample": 20000,
+          "validation_rows": 1600016,
+          "validation_sample": 200000,
+          "widths": [
+            128,
+            128
+          ]
+        }
+      ],
+      "widths": [
+        128,
+        128
+      ]
+    },
+    {
+      "across_seed_se_nll": 0.012908367614911667,
+      "all_seed_admissible": false,
+      "components": 16,
+      "lambda_fp": 0.1,
+      "mean_validation_nll": 7.938894976582866,
+      "median_validation_nll": 7.94938164427412,
+      "seeds": [
+        {
+          "best_validation_nll": 7.94938164427412,
+          "case": "equilibrium_dt2p5e-4",
+          "components": 16,
+          "epochs_completed": 87,
+          "fp_abs_median": 1.2848518178751211,
+          "fp_abs_p90": 3.7715685596823603,
+          "fp_abs_p99": 9.773533895809818,
+          "gibbs_bulk_bounds": [
+            -6.415778150627527,
+            -0.03981858445574488
+          ],
+          "gibbs_bulk_centered_log_rmse": 0.45109612167574364,
+          "gibbs_bulk_log_intercept": -6.44367448916288,
+          "gibbs_bulk_log_slope": 1.0161722630058145,
+          "gibbs_validation_additive_constant": -6.467573374823501,
+          "gibbs_validation_percentiles": {
+            "1": -5.657127091750077,
+            "25": -2.0513340768386086,
+            "5": -3.905745627033769,
+            "75": -0.6057864577813357,
+            "95": -0.179402079646184,
+            "99": -0.06319814459872965
+          },
+          "lambda_fp": 0.1,
+          "metrics_path": "stationary_density/equilibrium_candidates/K16_w128x128_l0p1_seed4101/validation_metrics.json",
+          "runtime_seconds": 830.5375919342041,
+          "seed": 4101,
+          "selection_admissible": false,
+          "training_rows": 3200032,
+          "validation_fp_sample": 20000,
+          "validation_rows": 1600016,
+          "validation_sample": 200000,
+          "widths": [
+            128,
+            128
+          ]
+        },
+        {
+          "best_validation_nll": 7.954082017525651,
+          "case": "equilibrium_dt2p5e-4",
+          "components": 16,
+          "epochs_completed": 82,
+          "fp_abs_median": 1.4642439517300665,
+          "fp_abs_p90": 4.869355871275037,
+          "fp_abs_p99": 25.41048391659246,
+          "gibbs_bulk_bounds": [
+            -6.415778150627527,
+            -0.03981858445574488
+          ],
+          "gibbs_bulk_centered_log_rmse": 0.585990294327616,
+          "gibbs_bulk_log_intercept": -6.412531433024231,
+          "gibbs_bulk_log_slope": 1.0368987913759957,
+          "gibbs_validation_additive_constant": -6.467059361230283,
+          "gibbs_validation_percentiles": {
+            "1": -5.657127091750077,
+            "25": -2.0513340768386086,
+            "5": -3.905745627033769,
+            "75": -0.6057864577813357,
+            "95": -0.179402079646184,
+            "99": -0.06319814459872965
+          },
+          "lambda_fp": 0.1,
+          "metrics_path": "stationary_density/equilibrium_candidates/K16_w128x128_l0p1_seed4102/validation_metrics.json",
+          "runtime_seconds": 776.8487827777863,
+          "seed": 4102,
+          "selection_admissible": false,
+          "training_rows": 3200032,
+          "validation_fp_sample": 20000,
+          "validation_rows": 1600016,
+          "validation_sample": 200000,
+          "widths": [
+            128,
+            128
+          ]
+        },
+        {
+          "best_validation_nll": 7.913221267948826,
+          "case": "equilibrium_dt2p5e-4",
+          "components": 16,
+          "epochs_completed": 82,
+          "fp_abs_median": 1.519953855285928,
+          "fp_abs_p90": 5.528703943738324,
+          "fp_abs_p99": 20.887549865411742,
+          "gibbs_bulk_bounds": [
+            -6.415778150627527,
+            -0.03981858445574488
+          ],
+          "gibbs_bulk_centered_log_rmse": 0.5250503942944176,
+          "gibbs_bulk_log_intercept": -6.331905472189845,
+          "gibbs_bulk_log_slope": 1.0628050709502808,
+          "gibbs_validation_additive_constant": -6.424716924057097,
+          "gibbs_validation_percentiles": {
+            "1": -5.657127091750077,
+            "25": -2.0513340768386086,
+            "5": -3.905745627033769,
+            "75": -0.6057864577813357,
+            "95": -0.179402079646184,
+            "99": -0.06319814459872965
+          },
+          "lambda_fp": 0.1,
+          "metrics_path": "stationary_density/equilibrium_candidates/K16_w128x128_l0p1_seed4103/validation_metrics.json",
+          "runtime_seconds": 791.6256830692291,
+          "seed": 4103,
+          "selection_admissible": false,
+          "training_rows": 3200032,
+          "validation_fp_sample": 20000,
+          "validation_rows": 1600016,
+          "validation_sample": 200000,
+          "widths": [
+            128,
+            128
+          ]
+        }
+      ],
+      "widths": [
+        128,
+        128
+      ]
+    }
+  ],
+  "protocol_version": "section4-v1",
+  "selected": null,
+  "selection_data": "equilibrium_dt2p5e-4 validation streams only",
+  "status": "NO_ADMISSIBLE_CANDIDATE"
+}

@@ -1,0 +1,12 @@
+{
+  "finite_complete_gradients": true,
+  "finite_log_prob": true,
+  "finite_residual": true,
+  "finite_samples": true,
+  "loss": 9.303492435526563,
+  "pass": true,
+  "positive_sampled_actions": true,
+  "residual_rms": 16.57102573592548,
+  "sampled_angles_in_principal_interval": true,
+  "trainable_variables": 7
+}

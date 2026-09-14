@@ -1,0 +1,436 @@
+# Frozen protocol: rebuilding Section 4 of the three-mode NLS study
+
+Protocol date: 2026-09-14  
+Protocol version: `section4-v1`  
+Repository state when written: `995dcdc643d9ef147bca1001f727f9cd010f6ad4`
+
+This protocol is written before fitting a new stationary-density model or
+performing a new held-out EDMD analysis.  Existing published and internal
+summaries were used to formulate the scientific questions, but no metric from
+the blind splits defined below may be inspected until the model, observable
+families, numerical thresholds, and selection rules are frozen here.
+
+The work has two parallel branches:
+
+1. **Section 4.1:** a normalized neural approximation of the five-dimensional
+   stationary density, with equilibrium known-answer calibration and a blind
+   nonequilibrium test;
+2. **Section 4.3:** held-out validation of relaxation modes and EDMD
+   eigenfunctions using the already generated controlled trajectories.
+
+Section 4.2 (stabilization by phase selection and current balance) depends on
+the Section-4.1 verdict.  Section 4.3 does not depend on the density estimate
+and therefore proceeds in parallel.
+
+No new stochastic simulation is part of the primary protocol.  The existing
+projection-free controlled trajectories are the frozen input.  A new
+simulation may be proposed only if an input-integrity or effective-sample-size
+gate fails; it must not be launched silently under this protocol.
+
+## 1. Frozen physical system and input data
+
+The reduced state is
+
+\[
+X=(I_1,I_2,I_3,\theta_1,\theta_3), \qquad
+\theta_1=2(\phi_1-\phi_2),\quad
+\theta_3=2(\phi_3-\phi_2).
+\]
+
+The controlled Cartesian source uses double-precision state, fixed timesteps,
+standard trigonometric functions, implicit midpoint Hamiltonian evolution,
+Cartesian bath updates, and no action projection or floor.  The saved files
+contain float32 observables reconstructed from the double-precision state.
+
+Frozen input root:
+
+`experiments/spectral_gap_controlled_2026-09-07/raw`
+
+Frozen cases:
+
+| Case | Baths | dt | Streams | Snapshots/stream | Base seed |
+|---|---:|---:|---:|---:|---:|
+| driven coarse | (2,8) | 1e-3 | 64 | 100001 | 2026090801 |
+| driven fine | (2,8) | 2.5e-4 | 64 | 100001 | 2026090802 |
+| equilibrium coarse | (5,5) | 1e-3 | 64 | 100001 | 2026090803 |
+| equilibrium fine | (5,5) | 2.5e-4 | 64 | 100001 | 2026090804 |
+
+Writing `S_I` for the saved `I1_plus_I3` column and `D_I` for the saved
+`I1_minus_I3` column, reconstruct
+
+\[
+I_1=(S_I+D_I)/2,\qquad I_3=(S_I-D_I)/2,
+\]
+
+and
+
+\[
+\theta_r=\operatorname{atan2}(\sin\theta_r,\cos\theta_r).
+\]
+
+The algebraic consistency of all redundant saved angular columns must be
+audited before use.  Every input file must have the declared shape, finite
+values, positive reconstructed actions, and a recorded SHA-256 hash.
+
+## 2. Trajectory-level splits and effective sample size
+
+Snapshots are never randomly split.  Each dataset is ranked by
+
+`SHA256("section4-v1|density|case|dt|stream_id")`
+
+and assigned exactly:
+
+- first 32 streams: training;
+- next 16 streams: validation/model selection and equilibrium calibration;
+- final 16 streams: blind test.
+
+The Section-4.3 branch uses the independent salt
+
+`SHA256("section4-v1|modes|case|dt|stream_id")`
+
+with the same 32/16/16 sizes.  Reuse of physical trajectories across the two
+scientifically distinct branches is allowed, but results from one branch may
+not be used to alter the other branch's frozen rules.
+
+For each split, report raw snapshot count, number of streams, integrated
+autocorrelation time, and effective sample size for the predeclared probes
+
+\[
+I_1,I_2,I_3,\log I_1,\log I_2,\log I_3,
+\cos\theta_1,\sin\theta_1,\cos\theta_3,\sin\theta_3,
+I_1-I_3,I_1+I_3.
+\]
+
+Autocorrelation sums use the initial-positive-sequence rule independently per
+stream and are combined by stationary-time weighting.  Uncertainties use
+whole-stream bootstrap.  The conservative effective sample size for a split is
+the minimum over the predeclared probes.  The blind-test ESS gate is at least
+5000 for each physical case at the primary fine timestep.  A failure blocks a
+precision claim and triggers a separate data-generation proposal; it does not
+permit changing the split.
+
+## 3. Reduced generator and stationary equation audit
+
+The physical energy is
+
+\[
+E=\frac12 M^2-\frac14\sum_{j=1}^3I_j^2
+  +I_1I_2\cos\theta_1+I_2I_3\cos\theta_3,
+\qquad M=I_1+I_2+I_3.
+\]
+
+At equal temperature the known invariant density is
+
+\[
+\rho_{\rm eq}(X)\propto \exp[-E(X)/T]
+                      =\exp[-H(X)/(2T)]
+\]
+
+with respect to the reduced canonical measure
+`dI1 dI2 dI3 dtheta1 dtheta3`; integrating the global phase contributes only a
+constant.
+
+Before training, the reduced Ito drift and diagonal diffusion coefficients
+must be derived independently from the controlled Cartesian SDE.  The audit
+must verify:
+
+1. the analytic drift against short-step conditional increments generated by
+   the Cartesian update;
+2. the analytic diffusion against short-step conditional covariance;
+3. `L^dagger rho_eq = 0` symbolically or to double-precision automatic-
+   differentiation accuracy on prespecified interior points;
+4. periodicity in both angles and natural zero-flux behavior at `I_j=0`;
+5. consistency of the notebook's existing operator with the audited operator.
+
+An operator-audit failure blocks training.  The operator may be repaired from
+the analytic derivation, but the repair and its tests must be committed before
+any production fit.
+
+## 4. Section 4.1: normalized neural stationary density
+
+### 4.1 Model family frozen before fitting
+
+The primary model is a normalized conditional mixture density in
+`u_j=log(I_j)`:
+
+\[
+p(u,\theta_1,\theta_3)
+=p_{\rm GMM}(u)
+ \sum_{k=1}^{K}\pi_k(u)
+   {\rm VM}(\theta_1;\mu_{1k}(u),\kappa_{1k}(u))
+   {\rm VM}(\theta_3;\mu_{3k}(u),\kappa_{3k}(u)),
+\]
+
+and
+
+\[
+\rho(I,\theta)=p(u,\theta)/(I_1I_2I_3).
+\]
+
+This construction is nonnegative, periodic, and normalized by construction.
+The conditional parameters are produced by an MLP.  The frozen candidate set
+is:
+
+- `K=8`, hidden widths `(64,64)`;
+- `K=16`, hidden widths `(64,64)`;
+- `K=16`, hidden widths `(128,128)`.
+
+Each candidate is trained with seeds `4101, 4102, 4103` on the fine-timestep
+equilibrium training split.  Candidate selection is performed only on the
+fine-timestep equilibrium validation split.  A candidate is admissible when
+all three seeds have Gibbs log-density slope in `[0.95,1.05]`, median bulk
+`|L^dagger rho/rho| <= 0.20`, and bulk 90th percentile `<= 1.00`.  Among
+admissible candidates, choose the lowest median validation NLL across seeds;
+if a candidate's median NLL is within the larger of its own and the numerical
+best candidate's across-seed SE of the numerical-best median, it belongs to
+the tie set.  Within that set choose the smallest `K`, then the narrowest
+network, then the smaller `lambda_FP`.
+The chosen architecture and physics weight are then frozen for driven and
+coarse-timestep training.  The blind test is evaluated once for the chosen
+candidate and for all three training seeds; no best-seed reporting is allowed.
+
+Training begins with trajectory likelihood.  A second stage adds the
+predeclared pointwise stationary-physics penalty without changing
+normalization:
+
+\[
+\mathcal L=\mathcal L_{\rm NLL}
+ +\lambda_{\rm FP}\,\mathbb E[(L^\dagger\rho/\rho)^2].
+\]
+
+The candidate weights are frozen to
+`lambda_FP in {0.01,0.1}`; they are part of the predeclared validation
+selection, not tuned on test data.  Weak identities remain independent
+validation gates and are not placed in the training loss, because doing so
+would make their later use circular.  Early stopping uses validation NLL with
+patience 30 and maximum 500 epochs, with 128 likelihood batches per epoch,
+likelihood batch size 4096, and pointwise-PDE batch size 512.  PDE collocation
+draws are 80% training states and 20% independent proposals: uniform angles
+and uniform log actions over the training split's `[0.1,99.9]` percentile
+box.  Training samples are thinned only for computational batches; stream
+weights preserve equal weight per trajectory.
+
+Every fit begins with 50 likelihood-only epochs, followed by at most 450 joint
+epochs.  Adam uses initial learning rate `1e-3`, gradient global-norm clipping
+at `10`, and reductions by a factor `0.5` after 15 validation epochs without
+improvement, with minimum learning rate `1e-5`.  These settings are fixed for
+all candidates and seeds.
+
+### 4.2 Frozen weak-identity family
+
+The test functions are fixed as
+
+\[
+\begin{split}
+&I_j,\ I_j^2\quad(j=1,2,3),\\
+&I_1I_2,\ I_2I_3,\ I_1I_3,\\
+&\sin\theta_r,\ \cos\theta_r,\
+ I_r\sin\theta_r,\ I_2\sin\theta_r,\
+ I_rI_2\sin\theta_r,\ I_rI_2\cos\theta_r
+ \quad(r=1,3),\\
+&M,\ M^2,\ E.
+\end{split}
+\]
+
+For a stationary state, `E[L f_m]=0`.  Estimates and standard errors are
+computed at whole-stream level.
+
+### 4.3 Equilibrium calibration before NESS
+
+Only the equilibrium validation streams are used to calibrate the weak-
+identity resolution.  For each timestep:
+
+1. compute direct-trajectory `E[Lf_m]` and whole-stream SE;
+2. compute the density-model integral and its Monte Carlo SE;
+3. use 2000 whole-stream bootstrap resamples to obtain the null distribution
+   of the maximum standardized residual over the complete function family;
+4. add the absolute coarse-versus-fine equilibrium discrepancy as a
+   discretization floor for each function.
+
+The frozen family-wise threshold is the larger of `3.0` and the 95th
+percentile of the equilibrium-validation max-|z| bootstrap distribution.  The
+absolute tolerance for function `m` is the larger of the corresponding
+threshold times its test SE and the calibrated discretization floor.  The
+equilibrium blind test must pass before the same rule is applied to NESS.
+
+### 4.4 Blind equilibrium density gates
+
+The exact Gibbs log density is known up to one additive normalizing constant.
+The constant is fitted on the validation split only and frozen before test.
+On the equilibrium fine-timestep blind test, all of the following are required
+for a full numerical-solution claim:
+
+1. bulk centered log-density RMSE no greater than `0.15`, where bulk is the
+   validation-frozen central 99% interval of exact Gibbs log density;
+2. fitted slope of learned log density against `-E/T` in `[0.98,1.02]`;
+3. at least 99% finite support and no normalized-density failure;
+4. every predeclared weak identity passes the calibrated simultaneous rule;
+5. all prespecified one-dimensional marginal means and variances agree with
+   held-out trajectories within the calibrated simultaneous 95% envelope;
+6. median `|L^dagger rho/rho| <= 0.10` and 90th percentile `<= 0.50` in the
+   frozen bulk region;
+7. all three training seeds satisfy gates 1--6; their pairwise bulk centered
+   log-density RMS disagreement is at most `0.10`.
+
+Tail log-density errors are reported by exact-density percentile bands
+`[1,5)`, `[5,25)`, `[25,75]`, `(75,95]`, and `(95,99]`; no tail value is hidden
+inside the bulk average.
+
+### 4.5 NESS held-out and numerical-convergence gates
+
+After equilibrium passes, the same selected family is trained on driven data.
+The primary result is the fine timestep.  The coarse timestep is a frozen
+numerical control.  A full claim requires:
+
+1. all NESS weak identities pass the equilibrium-calibrated simultaneous rule;
+2. test NLL is finite for every stream and all three seeds;
+3. model-generated and held-out trajectory means/variances for the Section-4.2
+   observables pass the same calibrated simultaneous rule;
+4. circular one-dimensional marginals and the `(theta1,theta3)` marginal have
+   total-variation distance at most `0.05` on the fixed grids `72` and
+   `72x72`, with raw trajectory uncertainty assessed by stream bootstrap;
+5. median bulk `|L^dagger rho/rho| <= 0.10` and 90th percentile `<= 0.50`;
+6. coarse/fine differences of the prespecified physical observables are within
+   the combined 95% stream intervals, and bulk centered log-density RMS after
+   importance reweighting is at most `0.15`;
+7. all three seeds pass and their pairwise bulk centered log-density RMS is at
+   most `0.10`.
+
+The prespecified moment family in gates 3 and 6 is
+
+\[
+I_1,I_2,I_3,M,E,\sin\theta_1,\cos\theta_1,
+\sin\theta_3,\cos\theta_3,I_1-I_3,
+I_1I_2\sin\theta_1,I_2I_3\sin\theta_3.
+\]
+
+Every trained seed generates `1,000,000` independent model samples using a
+recorded seed.  Moment comparisons combine whole-stream trajectory SE with
+model Monte Carlo SE and use the equilibrium-calibrated family-wise z
+threshold from Section 4.3.  The one-dimensional action grids contain 72 bins
+uniform in log action over validation-frozen `[0.1,99.9]` percentile limits;
+angle grids contain 72 uniform periodic bins on `[-pi,pi)`.  The two-angle
+grid is their fixed `72 x 72` product.  Underflow and overflow counts are
+reported rather than silently discarded.
+
+### 4.6 Frozen Section-4.1 verdict
+
+- **PASS / numerical solution:** all input, operator, ESS, equilibrium, NESS,
+  seed, and timestep gates pass.  Permitted wording: “a converged normalized
+  neural numerical approximation to the five-dimensional stationary
+  Fokker--Planck solution.”
+- **PARTIAL / bulk approximation:** the operator and equilibrium known-answer
+  gates pass, and NESS held-out marginals plus weak identities pass, but a
+  tail, pointwise-PDE, seed, or timestep gate fails.  Permitted wording:
+  “a neural approximation resolving the bulk stationary geometry.”
+- **FAIL:** the operator audit, equilibrium blind known-answer test,
+  normalization, ESS, or held-out NESS weak/marginal test fails.  No
+  quantitative density claim is permitted; exploratory slices may be retained
+  only with an explicit failed-validation label.
+
+No threshold or region definition may change after fitting begins.
+
+## 5. Section 4.3: relaxation modes in parallel
+
+No new simulation is performed.  The controlled trajectory matrix and the
+targeted extended EDMD dictionary already declared in
+`experiments/edmd_oscillatory_extension_2026-09-07/PROTOCOL.md` are reused.
+
+The branch asks two separate questions:
+
+1. Is the damped oscillation in `I1-I3` reproduced out of sample?
+2. Is a slow real EDMD mode near `-0.9` predictive on trajectories not used to
+   fit its eigenvector?
+
+The EDMD operator and eigenvectors are fit on 32 mode-training streams.
+Dictionary/regularization selection uses 16 mode-validation streams.  The
+chosen eigenvectors are frozen before evaluation on 16 blind mode-test
+streams.  The existing dictionaries, Gram cutoffs, lags, Nyquist rules,
+bootstrap count, and no-iteration rule remain unchanged.
+
+All feature preprocessing is fit on the 32 mode-training streams only.  In
+particular, the means and standard deviations of the log actions are computed
+from those streams and then applied unchanged to validation and test.  The
+predeclared candidates are the existing `E1`, `E2`, and targeted `E3`
+dictionaries at the existing Gram cutoffs.  For the oscillatory branch the
+primary lag is `tau=0.05`; the candidate is the eigenvalue in the fixed band
+`4.5 <= |Im lambda| <= 6.0` with the smallest validation Koopman residual.
+For the slow-real branch the primary lag is `tau=0.50`; the candidate is the
+nonconstant eigenvalue with `|Im lambda| <= 0.10` and largest real part among
+the modes that have negative real part and pass the existing conditioning
+gate.  Ties within 5% relative validation residual are resolved in favor of
+the smaller dictionary and then the stronger Gram cutoff.  No candidate may
+be selected by its blind-test autocorrelation or by closeness to a desired
+rate.
+
+Validation first checks the complete existing lag set.  A candidate is
+admissible only when it is matchable across `E2` and `E3`, across the relevant
+short-lag set (`0.02,0.05,0.10`) for the complex mode or long-lag set
+(`0.25,0.50,1.00`) for the real mode, and across timesteps under the existing
+matching tolerances.  If no candidate is admissible, the branch reports a
+failed completeness gate and the blind test is used only to document the
+failure, not to select a replacement.
+
+Blind-test diagnostics are:
+
+- Koopman residual `||K_tau q-exp(lambda tau)q||/||q||`;
+- test autocorrelation of `q`, using the existing frozen plateau rule;
+- damped-oscillation fit on the existing frozen interval `[0.05,1.00]`;
+- lag, dictionary, timestep, and training-seed stability;
+- modal weights for `I2`, `I1+I3`, `cos(theta3)`, and the cosine sum.
+
+The oscillatory mode is reportable only if its blind-test imaginary-part CI
+excludes zero, `Delta AIC <= -10`, it is not within 20% of a lag's Nyquist
+bound, and coarse/fine CIs overlap.  A slow real mode is reportable as an
+**EDMD-visible mode** only if the held-out Koopman residual does not exceed its
+validation value by more than 25%, the test autocorrelation resolves under the
+frozen rule, and coarse/fine CIs overlap.
+
+No unique spectral-gap claim is allowed unless a common controlled-
+autocorrelation plateau and the existing dictionary-completeness gate both
+pass.  Existing evidence says those gates do not pass; this protocol does not
+change them.
+
+## 6. Outputs and provenance
+
+Required outputs:
+
+- `INPUT_AUDIT.json` and complete input SHA-256 manifest;
+- `STREAM_SPLITS.csv`;
+- effective-sample-size tables;
+- operator derivation and executable unit tests;
+- model source, frozen configurations, checkpoints, and training logs;
+- raw per-seed validation tables, not averaged-only summaries;
+- equilibrium calibration and blind-test reports;
+- NESS held-out and convergence reports;
+- held-out Section-4.3 mode tables;
+- publication-quality PDF/PNG figures and underlying CSVs;
+- `FINAL_VERDICT.md`, `VALIDATION_REPORT.md`, and a rewritten Section 4 TeX;
+- exact commands, source/model/data hashes, package manifest, and visually
+  verified PDF.
+
+The existing dirty worktree is not cleaned or overwritten.  Only files under
+`experiments/short_chain_section4_2026-09-14` are created during execution;
+integration and pushing will use a clean worktree after the scientific verdict
+is complete.
+
+## 7. Execution order and stop rules
+
+The order is frozen as follows.
+
+1. audit inputs, splits, operator, model differentiation, and source hashes;
+2. compute split-level autocorrelation times and effective sample sizes;
+3. calibrate weak-identity resolution on equilibrium validation streams and
+   apply the resulting threshold once to the blind equilibrium streams;
+4. run a bounded smoke fit, then the complete equilibrium candidate matrix;
+5. choose the density candidate using validation data only, freeze the choice,
+   and evaluate the blind equilibrium density gates once;
+6. only after equilibrium passes, fit NESS and apply the frozen NESS gates;
+7. in parallel with steps 3--6, fit Section-4.3 modes on mode-training streams,
+   select on mode-validation streams, then evaluate mode-test streams once;
+8. write the verdict, figures, Section 4 TeX, and complete provenance package.
+
+An input, operator, normalization, equilibrium weak-identity, or equilibrium
+blind-density failure stops the full-density branch.  It does not authorize a
+new architecture, threshold, split, observable, or fit window.  A Section-4.3
+failure does not block Section 4.1 and vice versa.

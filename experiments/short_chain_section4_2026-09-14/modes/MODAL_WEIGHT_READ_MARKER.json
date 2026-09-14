@@ -1,0 +1,10 @@
+{
+  "additional_test_read": "modal weights only",
+  "blind_results_sha256": "352034ebbe0b8100c6edcffbcffc0f83730ba8ac1ca0bd4805a63fc3a7495f43",
+  "bootstrap_replicates": 500,
+  "bootstrap_seed": 2026091405,
+  "bootstrap_sha256": "e4a193db9eff4ec2fa7d94d2f1d13ade9df99e9496b4046f73474009b9d3679d",
+  "selection_sha256": "3278c2eab2ed2a8f6a8dd58c6d59a301d513ddbf0ec38715b16c21ac336bf555",
+  "status": "complete",
+  "summary_sha256": "831ba87a640d26bb601888fb1dceff3f0a670fd7482c3c02441c940bbbab3014"
+}

@@ -1,0 +1,35 @@
+{
+  "boundary_current_coefficients": {
+    "I1_b_minus_da_at_zero": 0.0,
+    "I2_drift_at_zero": 0.0,
+    "I3_b_minus_da_at_zero": 0.0
+  },
+  "comparisons": {
+    "driven": {
+      "max_abs_covariance_error": 2.9103830456733704e-11,
+      "max_abs_drift_error": 2.2737367544323206e-13,
+      "max_offdiagonal_covariance": 1.1502622501584266e-15,
+      "max_rel_drift_error": 2.4891637347969657e-14
+    },
+    "equilibrium": {
+      "max_abs_covariance_error": 1.4551915228366852e-11,
+      "max_abs_drift_error": 2.2737367544323206e-13,
+      "max_offdiagonal_covariance": 4.760819102349793e-16,
+      "max_rel_drift_error": 2.814997517433371e-14
+    }
+  },
+  "gibbs_relative_residual": {
+    "max_abs": 6.252776074688882e-13,
+    "rms": 1.5141121478008397e-14
+  },
+  "legacy_notebook_sha256": "2cccb0bbdce923ae4e5645819c1ba9d7639508530cfd978f13acf24d0a428931",
+  "pass": true,
+  "periodic_energy_max_abs_error": 8.526512829121202e-14,
+  "points": 20000,
+  "protocol_version": "section4-v1",
+  "source_sha256": "58c871882f1180701a7aae637a8f4be113315a72fb9d7815562f5fc90faf7976",
+  "state_action_range": [
+    0.00010001578259803387,
+    11.994673626872903
+  ]
+}
