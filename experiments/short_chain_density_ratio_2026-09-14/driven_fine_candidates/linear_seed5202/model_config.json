@@ -1,0 +1,12 @@
+{
+  "action_scales": [
+    1.0506052049246415,
+    1.2310950127206608,
+    1.0551956044674253
+  ],
+  "architecture": "linear",
+  "phase": "driven",
+  "seed": 5202,
+  "timestep": "fine",
+  "validation_logz": 0.0031539062174807952
+}

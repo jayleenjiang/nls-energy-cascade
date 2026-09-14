@@ -1,0 +1,9 @@
+/Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11 scripts/train_ratio.py --phase equilibrium --timestep fine --architecture linear --seed 5201 --output equilibrium_candidates/linear_seed5201 
+/Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11 scripts/train_ratio.py --phase equilibrium --timestep fine --architecture linear --seed 5202 --output equilibrium_candidates/linear_seed5202 
+/Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11 scripts/train_ratio.py --phase equilibrium --timestep fine --architecture linear --seed 5203 --output equilibrium_candidates/linear_seed5203 
+/Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11 scripts/train_ratio.py --phase equilibrium --timestep fine --architecture mlp32 --seed 5201 --output equilibrium_candidates/mlp32_seed5201 
+/Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11 scripts/train_ratio.py --phase equilibrium --timestep fine --architecture mlp32 --seed 5202 --output equilibrium_candidates/mlp32_seed5202 
+/Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11 scripts/train_ratio.py --phase equilibrium --timestep fine --architecture mlp32 --seed 5203 --output equilibrium_candidates/mlp32_seed5203 
+/Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11 scripts/train_ratio.py --phase equilibrium --timestep fine --architecture mlp64 --seed 5201 --output equilibrium_candidates/mlp64_seed5201 
+/Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11 scripts/train_ratio.py --phase equilibrium --timestep fine --architecture mlp64 --seed 5202 --output equilibrium_candidates/mlp64_seed5202 
+/Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11 scripts/train_ratio.py --phase equilibrium --timestep fine --architecture mlp64 --seed 5203 --output equilibrium_candidates/mlp64_seed5203 

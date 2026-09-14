@@ -1,0 +1,18 @@
+# Role manifest and smoke test
+/Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11 scripts/write_role_manifest.py
+/Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11 scripts/train_ratio.py --phase equilibrium --timestep fine --architecture linear --seed 5201 --output smoke/linear_seed5201_retry --smoke
+
+# Equilibrium production and frozen selector
+bash -x ./run_equilibrium_gate.sh
+
+# One-shot equilibrium blind gate, using the byte-identical verified cache
+NLS_SECTION4_RAW_CACHE=/Users/jayleenjiang/NLS_section4_density_cache/short_chain_section4_2026-09-14 /Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11 scripts/evaluate_equilibrium_blind.py
+
+# Driven fine-timestep validation candidates and frozen selector
+bash -x ./run_driven_candidates.sh
+NLS_SECTION4_RAW_CACHE=/Users/jayleenjiang/NLS_section4_density_cache/short_chain_section4_2026-09-14 /Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11 scripts/select_driven_validation.py
+
+# Report compile and visual rendering
+python3 /Users/jayleenjiang/.codex/plugins/cache/openai-bundled/latex/0.2.6/scripts/compile_latex.py /Users/jayleenjiang/Documents/NLS/experiments/short_chain_density_ratio_2026-09-14/report/section4_density_ratio_report.tex --compiler texlive
+pdftoppm -png -r 130 report/section4_density_ratio_report.pdf tmp/pdfs/section4_density_ratio
+
