@@ -1,0 +1,9 @@
+support,comparison,centered_log_ratio_rms,gate,pass
+fine,paired_seed_1,0.02601466642323468,0.1,1
+fine,paired_seed_2,0.026696282503596586,0.1,1
+fine,paired_seed_3,0.025806030229344724,0.1,1
+fine,ensemble_mean,0.02425706894830708,0.1,1
+coarse,paired_seed_1,0.02590159117111891,0.1,1
+coarse,paired_seed_2,0.026898500164705498,0.1,1
+coarse,paired_seed_3,0.02580488672389826,0.1,1
+coarse,ensemble_mean,0.024271500459609033,0.1,1

@@ -13,11 +13,13 @@ The equilibrium partition is `Z_eq = 514.3433631454566` with Monte Carlo SE
 
 ## Independent fine test, dt=2.5e-4
 
-All three driven models passed.  ESS fractions are 0.9160--0.9178; relative
-Fokker--Planck residual medians are 0.08875--0.09501; maximum absolute moment
-z-scores are 1.220--1.443; maximum marginal TVs are 0.02425--0.02440; and the
-maximum pairwise centered log-ratio RMS is 0.01273.  The exact equilibrium
-control also passed.
+R11 applied the same three-moment calibration used at the coarse timestep to
+the unchanged fine neural weights.  All three driven models passed.  ESS
+fractions are 0.9156--0.9173; relative Fokker--Planck residual medians are
+0.08869--0.09548; maximum absolute moment z-scores are 1.233--1.450; maximum
+marginal TVs are 0.02428--0.02442; and the maximum pairwise centered log-ratio
+RMS is 0.01264.  The exact equilibrium control also passed.  The previous
+two-moment artifacts remain available for comparison.
 
 ## Independent coarse test, dt=1e-3
 
@@ -32,8 +34,10 @@ are 2.652--2.830; maximum TVs are 0.02405--0.02419; and pairwise RMS is
 
 ## Timestep replication
 
-Fine/coarse ensemble centered log-density RMS is 0.024257 on the fine test
-support and 0.024272 on the coarse test support, passing the frozen 0.10 gate.
+With both estimators under the identical three-moment protocol, fine/coarse
+ensemble centered log-density RMS is 0.024355 on the fine test support and
+0.024353 on the coarse test support, passing the frozen 0.10 gate.  The change
+from the earlier asymmetric comparison is below 0.00010 on either support.
 
 ## Claim boundary
 

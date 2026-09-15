@@ -16,8 +16,7 @@ import numpy as np
 import tensorflow as tf
 from scipy.special import logsumexp
 
-from double_calibrated_transport_ratio_model import load_bundle as load_fine_bundle
-from triple_calibrated_transport_ratio_model import load_bundle as load_coarse_bundle
+from triple_calibrated_transport_ratio_model import load_bundle
 from v4_common import evaluation_roles as v4_roles, load_rows as v4_load
 from v6_common import evaluation_roles as v6_roles, load_rows as v6_load
 
@@ -25,7 +24,7 @@ ROOT = Path(__file__).resolve().parent.parent
 ANALYSIS = ROOT / "final_analysis"
 FIGURES = ROOT / "final_figures"
 COLORS = ("#0072B2", "#D55E00", "#009E73")
-FINE_MODELS = [ROOT / f"recovery_r9/factor_0.625/models/seed_{s}" for s in (8201, 8202, 8203)]
+FINE_MODELS = [ROOT / f"recovery_r11_fine/models/seed_{s}" for s in (8201, 8202, 8203)]
 COARSE_MODELS = [ROOT / f"recovery_r10_coarse/models/seed_{s}" for s in (8201, 8202, 8203)]
 
 
@@ -56,13 +55,11 @@ def load_test(timestep):
         tr, rr = v6_roles("driven", "fine", "test")
         target, target_streams = v6_load(tr); reference, reference_streams = v6_load(rr)
         paths = FINE_MODELS
-        loader = load_fine_bundle
     else:
         tr, rr = v4_roles("driven", "coarse", "test")
         target, target_streams = v4_load(tr); reference, reference_streams = v4_load(rr)
         paths = COARSE_MODELS
-        loader = load_coarse_bundle
-    return target, target_streams, reference, reference_streams, [loader(p) for p in paths]
+    return target, target_streams, reference, reference_streams, [load_bundle(p) for p in paths]
 
 
 def normalizers(models, reference_streams, timestep):

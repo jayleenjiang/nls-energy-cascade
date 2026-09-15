@@ -1,0 +1,14 @@
+R11 frozen analysis commands (executed from the experiment root)
+
+./run_recovery_r11_fine.sh
+
+./run_recovery_r11_fine_test.sh
+
+/Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11 scripts/compare_three_moment_timesteps.py --fine-model recovery_r11_fine/models/seed_8201 --fine-model recovery_r11_fine/models/seed_8202 --fine-model recovery_r11_fine/models/seed_8203 --coarse-model recovery_r10_coarse/models/seed_8201 --coarse-model recovery_r10_coarse/models/seed_8202 --coarse-model recovery_r10_coarse/models/seed_8203 --output recovery_r11_fine/timestep_comparison
+
+/Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11 scripts/summarize_r11_fine.py
+
+/Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11 scripts/build_final_density_artifacts.py
+
+/Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11 scripts/final_ness_density.py final_analysis/sample_states.csv final_analysis/sample_density_fine_r11.csv --timestep fine
+

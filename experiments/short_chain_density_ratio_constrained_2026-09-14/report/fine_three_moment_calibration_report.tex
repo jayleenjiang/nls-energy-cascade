@@ -1,0 +1,124 @@
+\documentclass[11pt]{article}
+\usepackage[margin=0.82in]{geometry}
+\usepackage{amsmath,booktabs,microtype,xcolor,xurl,hyperref}
+\usepackage[T1]{fontenc}
+\hypersetup{colorlinks=true,linkcolor=blue!55!black,urlcolor=blue!55!black}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5em}
+\title{Fine-Timestep Three-Moment Calibration Audit}
+\author{NLS numerical study}
+\date{15 September 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We re-evaluate the fine-timestep three-mode NESS estimator with exactly the
+three-moment exponential calibration required by the coarse replication.  No
+neural weight is retrained and no trajectory, split, shrink factor, normalizer,
+or gate is changed.  Fine validation and the declared final test pass, the
+equilibrium known-answer control passes, and the resulting three-moment
+fine/coarse centered log-density RMS remains 0.0244 against the frozen 0.10
+threshold.  The procedural asymmetry between timesteps is therefore removed.
+\end{abstract}
+
+\section{Frozen procedure and test access}
+
+For each base seed $8201,8202,8203$, the fixed neural correction is augmented
+by an exponential tilt in
+\[
+ I_1,\qquad I_1I_2\sin\theta_1,\qquad I_2I_3\sin\theta_3.
+\]
+The unshrunk coefficient vector is fitted on exactly the already opened rows
+used by the prior fine calibration and then multiplied by 0.625.  The new V6
+validation and test trajectories do not enter the fit.  Before any R11 value
+was read, the protocol authorized one additional and final test access only if
+driven and equilibrium validation both passed.  Both passed; their hashes were
+then recorded before the test was opened.  All prior two-moment artifacts are
+retained.
+
+\section{Blind-test diagnostics}
+
+\begin{table}[h]
+\centering\small
+\caption{Per-seed driven test diagnostics.  All thresholds are unchanged.}
+\begin{tabular}{@{}llrrrrr@{}}
+\toprule
+step/protocol & seed & ESS & FP med. & FP p90 & max $|z|$ & max TV\\
+\midrule
+fine, 2-moment & 8201 & 0.916008 & 0.088747 & 0.406029 & 1.342781 & 0.024294\\
+fine, 2-moment & 8202 & 0.916508 & 0.095015 & 0.408698 & 1.443345 & 0.024401\\
+fine, 2-moment & 8203 & 0.917796 & 0.091415 & 0.396536 & 1.220313 & 0.024247\\
+\midrule
+fine, 3-moment & 8201 & 0.915647 & 0.088694 & 0.400716 & 1.368753 & 0.024319\\
+fine, 3-moment & 8202 & 0.916244 & 0.095482 & 0.413261 & 1.450155 & 0.024421\\
+fine, 3-moment & 8203 & 0.917330 & 0.091638 & 0.401961 & 1.232539 & 0.024276\\
+\midrule
+coarse, 3-moment & 8201 & 0.908708 & 0.091214 & 0.408893 & 2.829839 & 0.024090\\
+coarse, 3-moment & 8202 & 0.909603 & 0.089429 & 0.402181 & 2.694922 & 0.024052\\
+coarse, 3-moment & 8203 & 0.911359 & 0.093102 & 0.434454 & 2.651876 & 0.024189\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Every fine three-moment gate passes.  The maximum pairwise centered log-ratio
+RMS is 0.012645, versus 0.012733 for fine two-moment and 0.013834 for coarse
+three-moment.
+
+\section{Calibration coefficients and induced shift}
+
+\begin{table}[h]
+\centering\small
+\caption{Shrunk standardized exponential-tilt coefficients.}
+\begin{tabular}{@{}rcc@{}}
+\toprule
+base seed & two-moment vector & three-moment vector\\
+\midrule
+8201 & $(-0.012283,\ 0.002684)$ & $(-0.012219,\ 0.002679,\ -0.001261)$\\
+8202 & $(-0.007364,\ 0.003292)$ & $(-0.007317,\ 0.003289,\ -0.000940)$\\
+8203 & $(-0.010441,\ 0.005026)$ & $(-0.010357,\ 0.005023,\ -0.001690)$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+On 50000 deterministic fine test states, the ensemble centered log-density
+shift has RMS 0.001518, absolute-shift p90 0.002103, p99 0.006155, and maximum
+0.023228.  Including the separately estimated normalizers gives RMS 0.001518
+and mean $-2.16\times10^{-6}$.  On coarse test support, the centered RMS is
+0.001543.  Thus the third calibration direction is measurable but small.
+
+\section{Timestep replication under an identical protocol}
+
+The three-moment fine/coarse ensemble centered log-density RMS is
+\[
+ 0.024355\quad\text{on fine support},\qquad
+ 0.024353\quad\text{on coarse support}.
+\]
+Both pass the 0.10 gate.  The previous two-versus-three-moment values were
+0.024257 and 0.024272, so the change is $9.8\times10^{-5}$ and
+$8.2\times10^{-5}$.
+
+\section{Equilibrium control and verdict}
+
+The same three-moment model class is used with zero base correction and zero
+calibration coefficients.  On test, ESS is 1, FP median is
+$8.88\times10^{-16}$, FP p90 is $3.55\times10^{-15}$, maximum moment
+$|z|=1.272210$, maximum TV is 0.033212, and seed disagreement is zero.  This
+checks the operator, diagnostics, and sampled Gibbs control; because $f=0$
+is imposed, it does not test the learned nonequilibrium correction.
+
+The R11 result is PASS.  Both timesteps now use the identical three-moment,
+0.625-shrunk calibration protocol.  The warranted claim remains a numerical
+NESS density on sampled stationary support, not global control in unsampled
+tails or an analytic stationary solution.
+
+\section*{Machine-readable evidence}
+
+Complete diagnostics, moment rows, marginal rows, seed comparisons,
+normalizers, coefficient tables, density-shift tables, source hashes, and exact
+commands are stored under
+\nolinkurl{recovery_r11_fine/},
+\nolinkurl{R11_SOURCE_HASHES.sha256}, and
+\nolinkurl{R11_COMMANDS.txt}.
+
+\end{document}

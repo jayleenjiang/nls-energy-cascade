@@ -11,6 +11,8 @@ publication figures, the standalone report, and the replacement paper section.
 - `final_analysis/normalizer_summary.csv`: ratio and absolute normalizers;
 - `final_analysis/final_gate_summary.csv`: all final fine/coarse/equilibrium gates;
 - `final_timestep_comparison/verdict.json`: final timestep gate;
+- `recovery_r11_fine/`: final fine three-moment calibration and held-out tests;
+- `R11_VALIDATION_REPORT.md`: identical-protocol calibration audit;
 - `FINAL_VERDICT.md` and `VALIDATION_REPORT.md`: claim and audit boundary.
 
 ## Density evaluation
@@ -22,8 +24,10 @@ Input CSV columns are `I1,I2,I3,theta1,theta3`.  From the experiment root:
   scripts/final_ness_density.py input.csv output.csv --timestep fine
 ```
 
-The output adds `log_rho_ss` and `rho_ss`.  The fine estimator is the primary
-result; the coarse estimator is the timestep replication.
+The output adds `log_rho_ss` and `rho_ss`.  The fine R11 three-moment estimator
+is the primary result; the coarse R10 three-moment estimator is the timestep
+replication.  The earlier fine two-moment model is retained as an auditable
+predecessor.
 
 ## Raw data
 

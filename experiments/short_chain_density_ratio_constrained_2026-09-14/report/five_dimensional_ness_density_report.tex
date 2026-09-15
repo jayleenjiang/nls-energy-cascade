@@ -17,10 +17,13 @@
 We construct an absolutely normalized numerical steady-state density for the
 driven three-mode chain in the complete reduced state
 \(x=(I_1,I_2,I_3,\theta_1,\theta_3)\).  The final estimator passes independent
-trajectory-level validation and blind tests at \(\Delta t=2.5\times10^{-4}\),
+trajectory-level validation and the declared final test at
+\(\Delta t=2.5\times10^{-4}\),
 the exact equilibrium known-answer control, and an independently fitted
-replication at \(\Delta t=10^{-3}\).  Fine/coarse centered log-density RMS is
-0.0243 on both test supports, below the frozen 0.10 gate.  The warranted claim
+replication at \(\Delta t=10^{-3}\).  Both timesteps use the same three-moment
+exponential calibration and fixed shrink factor.  Fine/coarse centered
+log-density RMS is 0.0244 on both test supports, below the frozen 0.10 gate.
+The warranted claim
 is a numerical solution on sampled stationary support, not an analytic global
 solution or a guarantee in unsampled tails.
 \end{abstract}
@@ -65,7 +68,10 @@ The three corrections \(f_m\) are independently seeded two-layer, 128-unit
 tanh networks with log-action, periodic-angle, and explicit transport
 features.  The Gibbs anchor enforces physically appropriate action-tail decay.
 Training combines the stationary Fokker--Planck residual and twelve moment
-constraints.  Complete trajectories, never individual snapshots, define the
+constraints.  The fixed neural output is finally calibrated by an exponential
+tilt in \(I_1\), \(I_1I_2\sin\theta_1\), and
+\(I_2I_3\sin\theta_3\), followed by the frozen 0.625 shrink factor.  Complete
+trajectories, never individual snapshots, define the
 training, validation, test, and bootstrap units.
 
 The equilibrium partition is evaluated independently as
@@ -77,7 +83,7 @@ The ratio normalizers \(Z_m\) are estimated on held-out equilibrium-reference
 streams.  Their values are
 \begin{align*}
  (\log Z_1,\log Z_2,\log Z_3)_{\rm fine}
-   &=(-0.0081525,-0.0040901,0.0019366),\\
+   &=(-0.0080323,-0.0040001,0.0020966),\\
  (\log Z_1,\log Z_2,\log Z_3)_{\rm coarse}
    &=(-0.0015192,0.0021328,0.0053924).
 \end{align*}
@@ -103,16 +109,23 @@ pipeline.  A test split is opened only after its validation stage passes.
 \toprule
 seed & ESS & FP median & FP p90 & max $|z|$ & max TV\\
 \midrule
-43201 & 0.9160 & 0.08875 & 0.4060 & 1.343 & 0.02429\\
-43202 & 0.9165 & 0.09501 & 0.4087 & 1.443 & 0.02440\\
-43203 & 0.9178 & 0.09141 & 0.3965 & 1.220 & 0.02425\\
+47201 & 0.9156 & 0.08869 & 0.4007 & 1.369 & 0.02432\\
+47202 & 0.9162 & 0.09548 & 0.4133 & 1.450 & 0.02442\\
+47203 & 0.9173 & 0.09164 & 0.4020 & 1.233 & 0.02428\\
 \bottomrule
 \end{tabular}
 \end{table}
 
 All fine-step gates pass.  The maximum pairwise centered log-ratio RMS is
-0.01273.  The exact equilibrium test also passes: FP residuals are at floating
+0.01264.  The exact equilibrium test also passes: FP residuals are at floating
 point zero, maximum \(|z|\) is 1.272, and maximum TV is 0.03321.
+
+The fine test had previously been opened for a two-moment calibration.  Before
+R11 validation, one additional and final access was declared for the fully
+specified three-moment transformation; no test statistic could alter it.  The
+third direction changes the final ensemble centered log density by RMS 0.00152
+on 50000 fine test states.  The earlier two-moment result and all access
+declarations are retained.
 
 \begin{figure}[p]
 \centering
@@ -180,12 +193,13 @@ and machine-zero stationary residual.
 \clearpage
 \section{Timestep consistency}
 
-The fine and coarse ensembles are compared after removing the physically
-irrelevant additive log-density constant.  On 50000 deterministic test states
+The fine and coarse ensembles, now using identical three-moment calibration,
+are compared after removing the physically irrelevant additive log-density
+constant.  On 50000 deterministic test states
 from each support, the ensemble centered log-density RMS values are
 \begin{equation}
- 0.024257\quad\text{(fine support)},\qquad
- 0.024272\quad\text{(coarse support)}.
+ 0.024355\quad\text{(fine support)},\qquad
+ 0.024353\quad\text{(coarse support)}.
 \end{equation}
 Both are well inside the frozen 0.10 bound.  All three paired-seed comparisons
 also pass, ranging from 0.0258 to 0.0269.

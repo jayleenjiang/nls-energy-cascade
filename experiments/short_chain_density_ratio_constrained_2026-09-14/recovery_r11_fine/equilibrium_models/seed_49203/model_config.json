@@ -1,0 +1,37 @@
+{
+  "action_scales": [
+    1.04783447230331,
+    1.2312375470265704,
+    1.054211968946341
+  ],
+  "architecture": "regular128",
+  "base_zero_model": "/Users/jayleenjiang/Documents/NLS/experiments/short_chain_density_ratio_constrained_2026-09-14/formal_v4_equilibrium_fine/models/seed_9203",
+  "base_zero_model_sha256": "33f6a6b4fa15c55051474155b50e64ee85d4324841a4aeb4c303460d220c23c7",
+  "calibration_alpha": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "calibration_center": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "calibration_observables": [
+    "I1",
+    "I1*I2*sin(theta1)",
+    "I2*I3*sin(theta3)"
+  ],
+  "calibration_scale": [
+    1.0,
+    1.0,
+    1.0
+  ],
+  "calibration_shrink_factor": 0.625,
+  "method": "R11 exact-equilibrium zero ratio in three-moment model class",
+  "model_type": "transport_hybrid_three_moment_calibration",
+  "phase": "equilibrium",
+  "seed": 49203,
+  "timestep": "fine",
+  "training_base_seed": 9203
+}

@@ -13,8 +13,7 @@ import numpy as np
 import tensorflow as tf
 from scipy.special import logsumexp
 
-from double_calibrated_transport_ratio_model import load_bundle as load_fine_bundle
-from triple_calibrated_transport_ratio_model import load_bundle as load_coarse_bundle
+from triple_calibrated_transport_ratio_model import load_bundle
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -35,14 +34,16 @@ class FinalNESSDensity:
             raise ValueError(timestep)
         tf.keras.backend.set_floatx("float64")
         if timestep == "fine":
-            paths = [ROOT / f"recovery_r9/factor_0.625/models/seed_{s}"
+            model_root = (ROOT / "models/fine" if (ROOT / "models/fine").exists()
+                          else ROOT / "recovery_r11_fine/models")
+            paths = [model_root / f"seed_{s}"
                      for s in (8201, 8202, 8203)]
-            loader = load_fine_bundle
         else:
-            paths = [ROOT / f"recovery_r10_coarse/models/seed_{s}"
+            model_root = (ROOT / "models/coarse" if (ROOT / "models/coarse").exists()
+                          else ROOT / "recovery_r10_coarse/models")
+            paths = [model_root / f"seed_{s}"
                      for s in (8201, 8202, 8203)]
-            loader = load_coarse_bundle
-        self.models = [loader(path) for path in paths]
+        self.models = [load_bundle(path) for path in paths]
         with (ROOT / "final_analysis/normalizer_summary.csv").open(newline="") as handle:
             rows = [row for row in csv.DictReader(handle) if row["timestep"] == timestep]
         rows.sort(key=lambda row: int(row["model"]))

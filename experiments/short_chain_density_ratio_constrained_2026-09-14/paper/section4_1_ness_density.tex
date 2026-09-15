@@ -23,7 +23,10 @@ integration of the Gibbs factor gives
 
 The correction is a two-hidden-layer, 128-unit tanh network acting on smooth
 log-action, periodic angular, and explicit bond-transport features.  Training
-combines the stationary Fokker--Planck residual with moment constraints.  We
+combines the stationary Fokker--Planck residual with moment constraints.  The
+fixed neural output is calibrated by the same three-observable exponential
+tilt at both timesteps, using \(I_1\), \(I_1I_2\sin\theta_1\), and
+\(I_2I_3\sin\theta_3\), with a frozen 0.625 shrink factor.  We
 split data by complete trajectories, not individual snapshots.  The final
 fine-step assessment uses a fresh 64-stream holdout at
 \(\Delta t=2.5\times10^{-4}\), divided into 32 validation and 32 test streams;
@@ -32,10 +35,10 @@ decisions and diagnostic thresholds were frozen before the corresponding test
 split was opened.
 
 On the independent fine-step test, all three models pass the preregistered
-criteria.  The effective-sample fractions are 0.9160--0.9178, the median
-absolute relative stationary-equation residuals are 0.08875--0.09501, the
+criteria.  The effective-sample fractions are 0.9156--0.9173, the median
+absolute relative stationary-equation residuals are 0.08869--0.09548, the
 largest of the twelve stream-bootstrap moment discrepancies is
-\(1.44\) standard errors, and the largest marginal total-variation distance is
+\(1.45\) standard errors, and the largest marginal total-variation distance is
 0.0244.  The maximum pairwise centered log-density-ratio RMS is 0.0127.  The
 same pipeline applied at equilibrium, where the exact correction is
 \(f=0\), also passes both validation and test.
@@ -81,8 +84,12 @@ calibration, without changing the neural weights or inspecting the coarse test.
 The recovered estimator then passed validation and its one-shot test.  On the
 coarse test its ESS is 0.9087--0.9114, residual median is 0.08943--0.09310,
 maximum moment discrepancy is 2.83 standard errors, and maximum marginal TV is
-0.0242.  More importantly, the centered fine/coarse ensemble log-density RMS
-is 0.02426 on the fine support and 0.02427 on the coarse support, well below
+0.0242.  We subsequently applied that same three-moment procedure to the fine
+model without retraining and declared one final test access before validation.
+It passed every gate and changed the fine ensemble centered log density by only
+0.00152 RMS.  More importantly, the resulting three-moment-to-three-moment
+fine/coarse ensemble log-density RMS is 0.02436 on the fine support and 0.02435
+on the coarse support, well below
 the predeclared 0.10 replication threshold.
 
 These tests support treating \(\widehat\rho_{\rm ss}\) as a numerical solution
