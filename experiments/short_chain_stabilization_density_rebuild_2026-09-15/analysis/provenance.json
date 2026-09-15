@@ -1,0 +1,17 @@
+{
+  "generated_at_utc": "2026-09-15T07:37:30.684140+00:00",
+  "python": "3.11.5",
+  "tensorflow": "2.21.0",
+  "numpy": "2.3.2",
+  "command": "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11 analyze_stabilization.py",
+  "v6_base_seeds": {
+    "driven": 2026091701,
+    "equilibrium": 2026091702
+  },
+  "density_training_seeds": [
+    8201,
+    8202,
+    8203
+  ],
+  "bootstrap_seed": 20260915042
+}

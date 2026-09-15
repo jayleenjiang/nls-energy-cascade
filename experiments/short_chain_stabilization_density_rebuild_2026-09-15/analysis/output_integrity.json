@@ -1,0 +1,121 @@
+{
+  "analysis_only": true,
+  "new_simulation": false,
+  "required_file_count": 45,
+  "missing": [],
+  "csv_audits": [
+    {
+      "path": "analysis/support_summary.csv",
+      "rows": 12,
+      "expected_rows": 12,
+      "row_count_pass": true,
+      "nonfinite_numeric_values": [],
+      "finite_pass": true
+    },
+    {
+      "path": "analysis/asymmetry_pointwise.csv",
+      "rows": 10,
+      "expected_rows": 10,
+      "row_count_pass": true,
+      "nonfinite_numeric_values": [],
+      "finite_pass": true
+    },
+    {
+      "path": "analysis/asymmetry_angular_tv.csv",
+      "rows": 12,
+      "expected_rows": 12,
+      "row_count_pass": true,
+      "nonfinite_numeric_values": [],
+      "finite_pass": true
+    },
+    {
+      "path": "analysis/phase_locking.csv",
+      "rows": 360,
+      "expected_rows": 360,
+      "row_count_pass": true,
+      "nonfinite_numeric_values": [],
+      "finite_pass": true
+    },
+    {
+      "path": "analysis/phase_histograms.csv",
+      "rows": 2592,
+      "expected_rows": 2592,
+      "row_count_pass": true,
+      "nonfinite_numeric_values": [],
+      "finite_pass": true
+    },
+    {
+      "path": "analysis/current_balance.csv",
+      "rows": 36,
+      "expected_rows": 36,
+      "row_count_pass": true,
+      "nonfinite_numeric_values": [],
+      "finite_pass": true
+    },
+    {
+      "path": "analysis/density_trajectory_comparisons.csv",
+      "rows": 62,
+      "expected_rows": 62,
+      "row_count_pass": true,
+      "nonfinite_numeric_values": [],
+      "finite_pass": true
+    },
+    {
+      "path": "analysis/current_balance_full_trajectory_audit.csv",
+      "rows": 6,
+      "expected_rows": 6,
+      "row_count_pass": true,
+      "nonfinite_numeric_values": [],
+      "finite_pass": true
+    },
+    {
+      "path": "analysis/current_balance_masked_comparison_audit.csv",
+      "rows": 2,
+      "expected_rows": 2,
+      "row_count_pass": true,
+      "nonfinite_numeric_values": [],
+      "finite_pass": true
+    },
+    {
+      "path": "analysis/report_asymmetry_summary.csv",
+      "rows": 6,
+      "expected_rows": 6,
+      "row_count_pass": true,
+      "nonfinite_numeric_values": [],
+      "finite_pass": true
+    },
+    {
+      "path": "analysis/report_phase_summary.csv",
+      "rows": 45,
+      "expected_rows": 45,
+      "row_count_pass": true,
+      "nonfinite_numeric_values": [],
+      "finite_pass": true
+    },
+    {
+      "path": "analysis/report_phase_failures.csv",
+      "rows": 3,
+      "expected_rows": 3,
+      "row_count_pass": true,
+      "nonfinite_numeric_values": [],
+      "finite_pass": true
+    },
+    {
+      "path": "analysis/report_current_summary.csv",
+      "rows": 24,
+      "expected_rows": 24,
+      "row_count_pass": true,
+      "nonfinite_numeric_values": [],
+      "finite_pass": true
+    },
+    {
+      "path": "analysis/report_gate_summary.csv",
+      "rows": 5,
+      "expected_rows": 5,
+      "row_count_pass": true,
+      "nonfinite_numeric_values": [],
+      "finite_pass": true
+    }
+  ],
+  "complete_pass": true
+}

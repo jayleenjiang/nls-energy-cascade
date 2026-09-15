@@ -1,0 +1,122 @@
+\subsection{Stabilization diagnostics from the reconstructed stationary density}
+\label{sec:short-chain-stabilization}
+
+We next use the normalized five-dimensional stationary density from
+Section~\ref{sec:short-chain-density} to characterize the nonequilibrium
+stabilization mechanism.  The analysis is performed for
+$(T_1,T_3)=(2,8)$ and is restricted to the validation-defined sampled-support
+mask, which contains $99.420\%$ of the held-out stationary probability and
+$99.422\%$ of the reconstructed probability.  All density-derived results are
+compared with independent held-out controlled-integrator trajectories; the
+equal-temperature case $(5,5)$ calibrates the numerical floor.  Uncertainties
+are obtained by resampling complete trajectories rather than individual time
+samples.
+
+\paragraph{Exchange-symmetry breaking.}
+Let
+$\sigma(I_1,I_2,I_3,\theta_1,\theta_3)
+=(I_3,I_2,I_1,\theta_3,\theta_1)$ and define
+\begin{equation}
+ A_\sigma(x)=\frac{|\rho_{\rm ss}(x)-\rho_{\rm ss}(\sigma x)|}
+ {\rho_{\rm ss}(x)+\rho_{\rm ss}(\sigma x)}.
+ \label{eq:exchange-asymmetry}
+\end{equation}
+For the driven density, the mean, median, and $90$th percentile of
+$A_\sigma$ are $0.1796$, $0.1153$, and $0.4471$, respectively; the three
+training seeds give angular total-variation asymmetries in the narrow range
+$0.1141$--$0.1157$.  The ensemble value, $0.1149$, agrees with the independent
+trajectory value $0.1159$.  At equilibrium the exact-density pointwise
+asymmetry is zero to floating-point precision, whereas the finite $60\times60$
+histogram produces a measured TV floor $0.0287$.  The driven-to-equilibrium
+point-estimate ratio is therefore $4.00$.  The deliberately conservative
+predeclared gate, however, compares the driven lower bootstrap limit with
+three times the equilibrium upper resampling floor; that ratio is only $2.44$.
+We consequently report robust descriptive symmetry breaking but do not label
+the strict three-times-floor gate as passed.
+
+\begin{figure}[t]
+ \centering
+ \includegraphics[width=\textwidth]{exchange_asymmetry_rebuilt.pdf}
+ \caption{Endpoint-exchange symmetry breaking in the angular stationary
+ marginal.  The validated density follows the held-out trajectory marginal,
+ while the equilibrium panel calibrates the finite-histogram floor.  All
+ density evaluations are confined to the sampled-support mask.}
+ \label{fig:short-chain-exchange}
+\end{figure}
+
+\paragraph{Energy-dependent phase locking.}
+We divide the sampled support into energy terciles fixed on the validation
+set and compare the conditional angle distributions with the high-energy
+branch
+\begin{equation}
+ \theta_0=\pi-\arcsin\!\left[
+ \frac{\sqrt{4\gamma^2+3}-\gamma}{2(1+\gamma^2)}\right]
+ =2.1912,
+ \label{eq:locking-angle}
+\end{equation}
+using a fixed angular window of half-width $\pi/6$.  The trajectory probability
+$P(|\theta_1-\theta_0|<\pi/6)$ increases from $0.2041$ in the low-energy
+tercile to $0.2505$ in the high-energy tercile.  The reconstructed values are
+$0.2043$ and $0.2447$, compared with $0.2006$ and $0.2230$ for the legacy
+density.  The analogous high-energy probability for
+$|\theta_3+2\pi/3|<\pi/6$ is $0.2189$ directly and $0.2182$ from the new
+density.  Thus the earlier phase-locking mechanism persists and is reproduced
+more accurately by the normalized density.
+
+The comparison is not perfect: $27$ of $30$ predeclared density/trajectory
+confidence intervals overlap.  The three failures are the low-energy
+$\theta_3$ circular mean (difference $0.0351$ rad), the middle-energy
+$\theta_1$ circular mean (difference $-0.0300$ rad), and the high-energy
+$\theta_1$ locking probability (difference $-0.00578$).  We retain these
+small but statistically resolved discrepancies rather than selecting only the
+agreeing observables.
+
+\begin{figure}[t]
+ \centering
+ \includegraphics[width=\textwidth]{phase_locking_rebuilt.pdf}
+ \caption{Energy-conditioned angular densities from held-out trajectories,
+ the validated stationary density, and the legacy density.  Energy sectors,
+ bins, and reference angles were fixed before test evaluation.}
+ \label{fig:short-chain-locking}
+\end{figure}
+
+\paragraph{Stationary current balance.}
+For the unforced middle mode, define
+$J_{12}=I_1I_2\sin\theta_1$ and
+$J_{23}=I_2I_3\sin\theta_3$.  Stationarity requires the global identity
+\begin{equation}
+ \langle J_{12}+J_{23}\rangle_{\rm ss}=0.
+ \label{eq:middle-current-balance}
+\end{equation}
+On the complete held-out driven trajectories we obtain
+$\langle J_{12}\rangle=0.232750$,
+$\langle J_{23}\rangle=-0.232733$, and
+$\langle J_{12}+J_{23}\rangle=1.70\times10^{-5}$ with a $95\%$ interval
+$[-2.70,3.17]\times10^{-4}$.  The global current-balance identity therefore
+passes directly.
+
+Density expectations cannot be extended outside the validated support.  On
+the common support mask, the direct current sum is $0.001926$ and the new
+density gives $-0.003847$; their difference is $-2.31$ bootstrap standard
+errors.  The legacy density gives $0.12375$ with a much larger uncertainty and
+only $3.37\%$ importance-sampling effective sample fraction.  Conditioning on
+the support mask destroys the exact zero identity, so the masked comparison is
+a reconstruction test rather than a second stationarity test.  That
+reconstruction test remains a declared failure, even though the new density
+is substantially closer than the legacy model.
+
+\begin{figure}[t]
+ \centering
+ \includegraphics[width=0.82\textwidth]{current_balance_rebuilt.pdf}
+ \caption{Current expectations on the validation-defined support mask.  The
+ validated density improves substantially over the legacy result, while the
+ residual masked density/trajectory discrepancy remains explicitly visible.}
+ \label{fig:short-chain-current}
+\end{figure}
+
+Taken together, the controlled data support the qualitative stabilization
+picture: the drive breaks endpoint-exchange symmetry, phase locking strengthens
+with energy, and the two bond currents balance globally.  Quantitative claims
+derived from the density are restricted to the sampled-support region and are
+reported together with the three phase discrepancies and the masked-current
+mismatch.

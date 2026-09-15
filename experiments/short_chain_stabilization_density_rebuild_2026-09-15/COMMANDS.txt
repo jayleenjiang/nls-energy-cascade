@@ -1,0 +1,13 @@
+# Analysis only; no simulator or trainer was invoked.
+
+cd /Users/jayleenjiang/Documents/NLS/experiments/short_chain_stabilization_density_rebuild_2026-09-15
+./run_analysis.sh
+./run_current_scope_audit.sh
+./run_report_summary.sh
+
+# Report compilation
+python3 /Users/jayleenjiang/.codex/plugins/cache/openai-bundled/latex/0.2.6/scripts/compile_latex.py /Users/jayleenjiang/Documents/NLS/experiments/short_chain_stabilization_density_rebuild_2026-09-15/report/stabilization_density_rebuild_report.tex --compiler texlive --output-directory /Users/jayleenjiang/Documents/NLS/experiments/short_chain_stabilization_density_rebuild_2026-09-15/report/build --json
+python3 /Users/jayleenjiang/.codex/plugins/cache/openai-bundled/latex/0.2.6/scripts/compile_latex.py /Users/jayleenjiang/Documents/NLS/experiments/short_chain_stabilization_density_rebuild_2026-09-15/report/section4_2_smoke.tex --compiler texlive --output-directory /Users/jayleenjiang/Documents/NLS/experiments/short_chain_stabilization_density_rebuild_2026-09-15/report/build --json
+
+# Integrity audit and package
+python3 audit_and_package.py
