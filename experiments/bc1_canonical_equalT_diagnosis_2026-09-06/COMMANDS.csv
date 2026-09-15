@@ -1,0 +1,6 @@
+n,replicate,seed,burnin,command
+25,0,2026090625,2000,"bin/NLS_flux_canonical_profile 6 6 25 16 2000 2000 0.0005 2026090625 4 raw/canonical_T6_T6_n25_rep0"
+25,1,2026090626,2000,"bin/NLS_flux_canonical_profile 6 6 25 16 2000 2000 0.0005 2026090626 4 raw/canonical_T6_T6_n25_rep1"
+100,0,2026090700,32000,"bin/NLS_flux_canonical_profile 6 6 100 16 32000 2000 0.0005 2026090700 4 raw/canonical_T6_T6_n100_rep0"
+100,1,2026090701,32000,"bin/NLS_flux_canonical_profile 6 6 100 16 32000 2000 0.0005 2026090701 4 raw/canonical_T6_T6_n100_rep1"
+

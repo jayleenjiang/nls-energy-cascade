@@ -1,0 +1,24 @@
+{
+  "command": [
+    "/Library/TeX/texbin/latexmk",
+    "-norc",
+    "-pdf",
+    "-interaction=nonstopmode",
+    "-halt-on-error",
+    "-outdir=/Users/jayleenjiang/Documents/NLS/tmp/siads_cover_letter_template",
+    "siads_cover_letter_template.tex"
+  ],
+  "generated_at_utc": "2026-07-06T03:51:03.065454+00:00",
+  "issues": [],
+  "log": "tmp/siads_cover_letter_template/siads_cover_letter_template.log",
+  "pdf": "tmp/siads_cover_letter_template/siads_cover_letter_template.pdf",
+  "pdf_exists": true,
+  "script": "Paper/revision_2026-06-19/scripts/build_siads_cover_letter_template.py",
+  "sha256": "cf31f9c90a742bf9ae9746c420dbc1c5613b1523208eec58ebe6b5867e5b643e",
+  "size_bytes": 118094,
+  "source": "Paper/revision_2026-06-19/siads_cover_letter_template.tex",
+  "status": "PASS",
+  "stderr_tail": "",
+  "stdout_tail": "Rc files read:\n  NONE\nLatexmk: This is Latexmk, John Collins, 7 Jan. 2023. Version 4.79.\nLatexmk: Nothing to do for 'siads_cover_letter_template.tex'.\nLatexmk: All targets () are up-to-date\n\n",
+  "template_not_final": true
+}

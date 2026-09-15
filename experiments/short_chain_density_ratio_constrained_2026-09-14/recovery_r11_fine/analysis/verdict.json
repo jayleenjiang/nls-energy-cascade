@@ -1,0 +1,8 @@
+{
+  "fine_validation_pass": true,
+  "fine_test_pass": true,
+  "equilibrium_validation_pass": true,
+  "equilibrium_test_pass": true,
+  "three_moment_timestep_pass": true,
+  "complete_pass": true
+}

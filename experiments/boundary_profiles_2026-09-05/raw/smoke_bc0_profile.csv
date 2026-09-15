@@ -1,0 +1,13 @@
+# bc_id=0
+# bc_label=BC1_canonical
+# b_I=2*gamma*(2*T-(2*M*I-I^2+2*I*I_neighbor*cos(delta)))
+# b_phi=gamma*(2*I_neighbor*sin(delta))
+# sigma_I=2*sqrt(2*gamma*T*I)
+# sigma_phi=sqrt(2*gamma*T/I)
+# n=4 T1=10 Tn=2 gamma=0.1 dt_max=0.0005 adaptive_dt=min(dt_max,1/max_drift),floor=1e-5
+# burnin=0.02 measure=0.04 seed=2026090500 requested_trajectories=16 valid_trajectories=16 discarded_trajectories=0 integration_step_samples=1296
+j,mean_I,se_mean_I,mean_sin_theta,se_mean_sin_theta
+1,1.2184942388263196,0.12550480643806058,0.27635287240551454,0.11141451824737783
+2,0.10344038540382444,0.0016534490111391662,-0.15120380652930451,0.013740132175872671
+3,0.09977964843036953,0.0001612625882632261,0.08282807039996655,0.13929383222807121
+4,0.10881366262594699,0.011808355747634286,,

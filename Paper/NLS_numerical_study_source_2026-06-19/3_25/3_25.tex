@@ -1,0 +1,58 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{booktabs}
+
+\begin{document}
+
+
+The conditional PDF at fixed $(I_1, I_2, I_3)$ is
+$$\rho(\theta_1,\theta_3) \propto \exp\!\left(-\frac{I_1 I_2 \cos\theta_1 + I_2 I_3 \cos\theta_3}{2T}\right)$$
+Near $\theta = \pi$ this is approximately Gaussian with $\sigma_1^2 = 2T/\langle I_1 I_2\rangle$. KDE smoothing with bandwidth $h$ adds $h^2$ to the variance, so we define $T^* = T - h^2\langle I_1 I_2\rangle/2$.
+
+\subsection*{Marginal PDF quadratic fit}
+
+we computed the marginal PDF of $(\theta_1,\theta_3)$ from MC (no slice, all 25.6B samples, $\gamma=0.1$, $T=5$) and did quadratic fitting of $\log(\text{PDF})$ near different regions.
+
+Near the valley $(\theta \approx 0)$: $\log\rho \approx C + A\theta_1^2 + B\theta_3^2$.
+
+Near the peak $(\theta \approx \pm\pi)$: $\log\rho \approx C - A(\theta_1-\pi)^2 - B(\theta_3-\pi)^2$.
+
+we also tried a global cos fit: $\log\rho \approx C - a_1\cos\theta_1 - a_3\cos\theta_3$.
+
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+Fit & Value $\to \langle I_1 I_2\rangle$ & $\langle I_1 I_2\rangle$ & Ratio \\
+\midrule
+Quadratic at valley ($A \times 2T$) & 1.05 & 2.30 & 0.46 \\
+Cos fit ($a_1 \times T$) & 1.84 & 2.30 & 0.80 \\
+\textbf{Quadratic at peak} ($A \times 2T$) & \textbf{2.30} & \textbf{2.30} & \textbf{0.999} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The peak-vicinity fit gives ratio = 0.999, which means $A \times 2T = \langle I_1 I_2\rangle$ almost exactly. The valley fit gives 0.46 because $\cos\theta \approx 1 - \theta^2/2$ is a bad approximation over $|\theta| < \pi/2$ and the density is very low there. The cos fit gives 0.80 because of the Jensen effect from $I$-averaging.
+
+\subsection*{NC-KDE with $T^*$ correction on slice}
+
+we ran NC-KDE ($\sigma = H/3$, $H = 2\pi/30$) on the slice $I_1 \approx I_2 \approx I_3 \approx 2$ ($\pm 0.1$), and compared MC density to theory using $T$ and $T^*$.
+
+Parameters: $\gamma = 0.1$, $T = 5$, 10.5M slice samples from 256B total steps.
+
+$$T^* = T - \frac{h^2 \langle I_1 I_2\rangle}{2} = 5 - \frac{0.0698^2 \times 3.99}{2} = 4.990$$
+
+\begin{center}
+\begin{tabular}{lcc}
+\toprule
+& Theory($T$) & Theory($T^*$) \\
+\midrule
+RMSE & 0.000854 & 0.000829 \\
+Corner ratio (MC/Theory) & 1.039 & 1.037 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The $T^*$ correction improves RMSE by 3\% and moves the corner ratio closer to 1. The correction is small because $h = \sigma_{\text{kde}} = 0.0698$ is small, so $T^* \approx T$. The remaining corner deviation ($\sim$4\%) is likely from the NC-KDE weighting bias, not from the KDE smoothing that $T^*$ corrects
+
+\end{document}

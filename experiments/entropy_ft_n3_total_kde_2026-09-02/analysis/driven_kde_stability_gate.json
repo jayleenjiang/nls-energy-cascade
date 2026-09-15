@@ -1,0 +1,11 @@
+{
+  "audit_stream_group": "stream_id mod 3 == 2",
+  "audit_blocks": 328146,
+  "common_supported_blocks": 328120,
+  "unsupported_by_either_estimator": 26,
+  "endpoint_disagreement_rmse": 0.22069914794035034,
+  "increment_disagreement_rmse": 0.3119758260377118,
+  "tail_increment_disagreement_rmse": 1.4671076264472491,
+  "increment_disagreement_q99_abs": 1.0056994650884592,
+  "pass": false
+}

@@ -1,0 +1,13 @@
+{
+  "frozen_masked_zero_gate_retained": false,
+  "scope_correction": "E[J12+J23]=0 is tested only on the unconditioned held-out trajectories; the support-conditioned density is tested only against the identically conditioned held-out trajectory estimate.",
+  "global_direct_zero_gate": {
+    "driven": true,
+    "equilibrium": true
+  },
+  "masked_density_trajectory_gate": {
+    "driven": false,
+    "equilibrium": true
+  },
+  "density_evaluated_outside_support": false
+}

@@ -1,0 +1,6 @@
+gate,value,reference,pass
+asymmetry_each_seed_above_equilibrium_upper_floor,0.1140501203730782,0.0466831442516441,True
+asymmetry_driven_lower_above_3x_equilibrium_upper_floor,0.1136942675996477,0.14004943275493228,False
+phase_density_trajectory_interval_overlap,27,30,False
+masked_current_density_trajectory_abs_z_le_1.96,2.305935665371991,1.96,False
+global_direct_current_identity_driven,1.7045505161284203e-05,0.0,True

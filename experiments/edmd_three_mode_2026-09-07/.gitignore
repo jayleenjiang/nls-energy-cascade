@@ -1,0 +1,8 @@
+__pycache__/
+run_edmd.log
+summarize_edmd.log
+report/build/
+report/rendered/
+analysis/*_eigenfunction_slices.csv
+!analysis/reportable_eigenfunction_slices.csv
+

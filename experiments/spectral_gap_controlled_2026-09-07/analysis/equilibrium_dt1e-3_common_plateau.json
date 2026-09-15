@@ -1,0 +1,18 @@
+{
+  "case": "equilibrium_dt1e-3",
+  "status": "NO COMMON PLATEAU",
+  "eligible": [
+    "I2",
+    "I1_plus_I3",
+    "cos_even_sum"
+  ],
+  "common_time_start": 1.0,
+  "common_time_end": 1.58,
+  "rate_min": -1.250081247502848,
+  "rate_max": -0.9359756362119129,
+  "rate_spread_ok": false,
+  "ci_intersection_low": -0.9930121986610686,
+  "ci_intersection_high": -1.1520978373042263,
+  "ci_overlap": false,
+  "time_overlap": true
+}

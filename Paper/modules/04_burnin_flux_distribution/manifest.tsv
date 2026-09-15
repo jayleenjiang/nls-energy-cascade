@@ -1,0 +1,9 @@
+role	path	status	note
+code	flux/NLS_flux_relaxation_tau.cpp	PRIMARY	Transient and tau-block simulator
+code	flux/analyze_burnin_ld.py	PRIMARY	Burn-in and empirical-survival analysis
+raw_data	Paper/revision/experiments/flux_validation/burnin_ld_2026-07-10	PILOT_COMPLETE	1024-trajectory pilot and analysis
+raw_data	Paper/revision/experiments/flux_validation/burnin_ld_full100k_2026-08-25	RUNNING	100000-trajectory production output directory
+figure	Paper/revision/experiments/flux_validation/burnin_ld_2026-07-10/analysis	PILOT_COMPLETE	Burn-in profiles, flux traces, and survival plots
+report	Paper/revision/experiments/flux_validation/burnin_ld_2026-07-10/README.md	PILOT_COMPLETE	Parameters, commands, and preliminary interpretation
+run_script	Paper/revision/experiments/flux_validation/burnin_ld_full100k_2026-08-25/run_full100k.sh	RUNNING	Overnight command sequence
+run_log	Paper/revision/experiments/flux_validation/burnin_ld_full100k_2026-08-25/full100k_run_tmux.log	RUNNING	Authoritative live log

@@ -1,0 +1,16 @@
+role	path	status	note
+code	cpp/fp5d	PRIMARY	Three-mode SIMD Monte Carlo and NC-KDE source family
+code	NN notebooks/FKE_5d_NLS.ipynb	PRIMARY	Neural stationary Fokker--Planck solver
+code	Paper/revision/scripts/recompute_short_chain_nn_metrics.py	LOCAL_ENHANCED	Recomputes saved-model diagnostics
+raw_data	KDE/4:15_NN/NLS_FP_boxes.txt	PRIMARY	Nonequilibrium density boxes
+raw_data	KDE/4:15_NN/NLS_FP_density.txt	PRIMARY	Nonequilibrium density targets
+raw_data	KDE/4:15_NN/eq/NLS_FP_boxes.txt	CONTROL	Equilibrium density boxes
+raw_data	KDE/4:15_NN/eq/NLS_FP_density.txt	CONTROL	Equilibrium density targets
+model	KDE/4:15_NN/h5_files/final.keras	PRIMARY	Saved nonequilibrium density model
+model	KDE/4:15_NN/h5_files_eq/final.keras	CONTROL	Saved equilibrium density model
+figure	Paper/revision/eq_validation.png	MANUSCRIPT_READY	Network versus Gibbs slices
+figure	Paper/revision/neq_density.png	MANUSCRIPT_READY	Equilibrium/NESS angular densities
+report	Paper/revision/short_chain_nn_rerun_metrics.json	LOCAL_ENHANCED	Saved-model diagnostic metrics
+report	Paper/revision/source_trace_metrics.json	LOCAL_ENHANCED	Hash and notebook-output provenance
+reference	Paper/zhai22a-3.pdf	PRIMARY_REFERENCE	Data-assisted neural FP method
+reference	Paper/1390904.pdf	PRIMARY_REFERENCE	Fast multivariate binned kernel estimation

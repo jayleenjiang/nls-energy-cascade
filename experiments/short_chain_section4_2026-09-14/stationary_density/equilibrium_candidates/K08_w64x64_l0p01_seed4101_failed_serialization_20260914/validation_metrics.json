@@ -1,0 +1,37 @@
+{
+  "best_validation_nll": 7.901016763361217,
+  "case": "equilibrium_dt2p5e-4",
+  "components": 8,
+  "epochs_completed": 81,
+  "fp_abs_median": 2.08481091073237,
+  "fp_abs_p90": 8.341281535280698,
+  "fp_abs_p99": 34.20886624416029,
+  "gibbs_bulk_bounds": [
+    -6.415778150627527,
+    -0.03981858445574488
+  ],
+  "gibbs_bulk_centered_log_rmse": 0.48341637206505783,
+  "gibbs_bulk_log_intercept": -6.35947294476084,
+  "gibbs_bulk_log_slope": 1.0370130474385386,
+  "gibbs_validation_additive_constant": -6.414169717152372,
+  "gibbs_validation_percentiles": {
+    "1": -5.657127091750077,
+    "25": -2.0513340768386086,
+    "5": -3.905745627033769,
+    "75": -0.6057864577813357,
+    "95": -0.179402079646184,
+    "99": -0.06319814459872965
+  },
+  "lambda_fp": 0.01,
+  "runtime_seconds": 656.6465950012207,
+  "seed": 4101,
+  "selection_admissible": false,
+  "training_rows": 3200032,
+  "validation_fp_sample": 20000,
+  "validation_rows": 1600016,
+  "validation_sample": 200000,
+  "widths": [
+    64,
+    64
+  ]
+}

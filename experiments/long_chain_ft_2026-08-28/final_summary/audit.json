@@ -1,0 +1,6 @@
+{
+  "pre_specified_rows": 4,
+  "compiled_rows": 4,
+  "passing_primary_rows": 3,
+  "all_primary_gates_pass": false
+}

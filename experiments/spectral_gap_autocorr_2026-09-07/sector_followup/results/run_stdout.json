@@ -1,0 +1,181 @@
+{
+  "even": [
+    {
+      "case": "driven_T2_T8",
+      "group": "even-candidate",
+      "requested_observables": [
+        "cos_theta1",
+        "cos_theta3",
+        "cos_theta1_minus_theta3",
+        "I2",
+        "I1_plus_I3"
+      ],
+      "accepted_observables": [
+        "I2",
+        "I1_plus_I3"
+      ],
+      "unresolved_observables": [
+        "cos_theta1",
+        "cos_theta3",
+        "cos_theta1_minus_theta3"
+      ],
+      "status": "NO COMMON PLATEAU",
+      "rate_min": -1.1088171244713736,
+      "rate_max": -0.9925655214195399,
+      "absolute_spread": 0.11625160305183369,
+      "relative_spread_over_abs_median": 0.1106429647919235,
+      "failure_reason": "fewer than three individually resolved observables"
+    },
+    {
+      "case": "equilibrium_T5_T5",
+      "group": "even-candidate",
+      "requested_observables": [
+        "cos_theta1",
+        "cos_theta3",
+        "cos_theta1_minus_theta3",
+        "I2",
+        "I1_plus_I3"
+      ],
+      "accepted_observables": [
+        "cos_theta1",
+        "cos_theta3",
+        "I2"
+      ],
+      "unresolved_observables": [
+        "cos_theta1_minus_theta3",
+        "I1_plus_I3"
+      ],
+      "status": "NO COMMON PLATEAU",
+      "rate_min": -1.187833087490744,
+      "rate_max": -0.9065189091397072,
+      "absolute_spread": 0.28131417835103667,
+      "relative_spread_over_abs_median": 0.24821290697980702,
+      "common_time_start": 1.0,
+      "common_time_end": 1.68,
+      "time_overlap": true,
+      "ci_intersection_low": -0.9664823187975431,
+      "ci_intersection_high": -1.0159711098621902,
+      "ci_overlap": false,
+      "rate_spread_ok": false,
+      "failure_reason": "rate spread exceeds 20%; 95% confidence intervals do not intersect"
+    }
+  ],
+  "odd": [
+    {
+      "case": "driven_T2_T8",
+      "observable": "sin_theta1",
+      "status": "FIT",
+      "fit_start": 0.05,
+      "fit_end": 1.0,
+      "n_time_points": 96,
+      "lambda_R": -4.2198863246073754,
+      "lambda_R_ci_low": -4.270064801306554,
+      "lambda_R_ci_high": -4.172443687189147,
+      "lambda_I": 3.3060299267150444,
+      "lambda_I_ci_low": 3.1119238382715095,
+      "lambda_I_ci_high": 3.4951862424648406,
+      "period": 1.900522816326324,
+      "period_ci_low": 1.7976682417783325,
+      "period_ci_high": 2.0190678286874544,
+      "delta_AIC_damped_minus_exponential": -617.7838383125073,
+      "bootstrap_accept": 2000,
+      "half_cycle_threshold": 3.306939635357677,
+      "oscillation_resolved": 0,
+      "mean_correlation_first_zero": 0.2725923598731792,
+      "fitted_first_zero": 0.2751500439475638,
+      "fitted_first_zero_ci_low": 0.2726352597284144,
+      "fitted_first_zero_ci_high": 0.2775186389929974,
+      "first_supported_negative_time": "0.28"
+    },
+    {
+      "case": "driven_T2_T8",
+      "observable": "I1_minus_I3",
+      "status": "FIT",
+      "fit_start": 0.05,
+      "fit_end": 1.0,
+      "n_time_points": 96,
+      "lambda_R": -4.910788398291361,
+      "lambda_R_ci_low": -5.145901339024785,
+      "lambda_R_ci_high": -4.6942620531973125,
+      "lambda_I": 5.355808524061243,
+      "lambda_I_ci_low": 5.2052036685979886,
+      "lambda_I_ci_high": 5.5070565601446235,
+      "period": 1.17315346113515,
+      "period_ci_low": 1.1409334984230814,
+      "period_ci_high": 1.2070969182406555,
+      "delta_AIC_damped_minus_exponential": -516.5420421747417,
+      "bootstrap_accept": 2000,
+      "half_cycle_threshold": 3.306939635357677,
+      "oscillation_resolved": 1,
+      "mean_correlation_first_zero": 0.4211250367363143,
+      "fitted_first_zero": 0.41889305793303605,
+      "fitted_first_zero_ci_low": 0.4128834576701084,
+      "fitted_first_zero_ci_high": 0.4253881965575603,
+      "first_supported_negative_time": "0.44"
+    },
+    {
+      "case": "equilibrium_T5_T5",
+      "observable": "sin_theta1",
+      "status": "FIT",
+      "fit_start": 0.05,
+      "fit_end": 1.0,
+      "n_time_points": 96,
+      "lambda_R": -5.006326008412776,
+      "lambda_R_ci_low": -5.068850432961708,
+      "lambda_R_ci_high": -4.945113565746509,
+      "lambda_I": 3.8959831728838954,
+      "lambda_I_ci_low": 3.714445490669748,
+      "lambda_I_ci_high": 4.066486954694771,
+      "period": 1.612734200422285,
+      "period_ci_low": 1.5451138481891922,
+      "period_ci_high": 1.6915540483666303,
+      "delta_AIC_damped_minus_exponential": -466.4175266769609,
+      "bootstrap_accept": 2000,
+      "half_cycle_threshold": 3.306939635357677,
+      "oscillation_resolved": 1,
+      "mean_correlation_first_zero": 0.23260819394052495,
+      "fitted_first_zero": 0.2355766577662378,
+      "fitted_first_zero_ci_low": 0.23390672535560256,
+      "fitted_first_zero_ci_high": 0.23721917690899347,
+      "first_supported_negative_time": "0.24"
+    },
+    {
+      "case": "equilibrium_T5_T5",
+      "observable": "I1_minus_I3",
+      "status": "FIT",
+      "fit_start": 0.05,
+      "fit_end": 1.0,
+      "n_time_points": 96,
+      "lambda_R": -4.2851710567622785,
+      "lambda_R_ci_low": -4.426926687101047,
+      "lambda_R_ci_high": -4.1465215228335675,
+      "lambda_I": 5.351229787443722,
+      "lambda_I_ci_low": 5.199777607550944,
+      "lambda_I_ci_high": 5.498835446921332,
+      "period": 1.1741572604343458,
+      "period_ci_low": 1.1426392675011567,
+      "period_ci_high": 1.2083565454905905,
+      "delta_AIC_damped_minus_exponential": -986.7582998771404,
+      "bootstrap_accept": 2000,
+      "half_cycle_threshold": 3.306939635357677,
+      "oscillation_resolved": 1,
+      "mean_correlation_first_zero": 0.38911455774326914,
+      "fitted_first_zero": 0.3891415711411121,
+      "fitted_first_zero_ci_low": 0.3852419333232274,
+      "fitted_first_zero_ci_high": 0.393514897479464,
+      "first_supported_negative_time": "0.4"
+    }
+  ],
+  "agreement": [
+    {
+      "case": "driven_T2_T8",
+      "lambda_R_ci_overlap": false,
+      "lambda_I_ci_overlap": false
+    },
+    {
+      "case": "equilibrium_T5_T5",
+      "lambda_R_ci_overlap": false,
+      "lambda_I_ci_overlap": false
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "action_scales": [
+    1.04783447230331,
+    1.2312375470265704,
+    1.054211968946341
+  ],
+  "architecture": "regular128",
+  "calibration_alpha": [
+    -0.010440809103386468,
+    0.00502622798990369
+  ],
+  "calibration_center": [
+    1.4829710519005395,
+    -0.001667751610412992
+  ],
+  "calibration_observables": [
+    "I1",
+    "I1*I2*sin(theta1)"
+  ],
+  "calibration_scale": [
+    1.4122871535617474,
+    2.3532736750896484
+  ],
+  "calibration_shrink_factor": 0.625,
+  "method": "R9 predeclared common-factor calibration shrinkage",
+  "model_type": "transport_hybrid_double_moment_calibration",
+  "seed": 43203,
+  "source_r8_bundle": "/Users/jayleenjiang/Documents/NLS/experiments/short_chain_density_ratio_constrained_2026-09-14/recovery_r8/seed_8203",
+  "source_r8_config_sha256": "c1d25c924619552fa4b9e6fdcffbf602cd4029605bb9e479e3817b259bb29e25",
+  "training_base_seed": 8203,
+  "unshrunk_calibration_alpha": [
+    -0.01670529456541835,
+    0.008041964783845904
+  ]
+}

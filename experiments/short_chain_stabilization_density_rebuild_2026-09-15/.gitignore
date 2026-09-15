@@ -1,0 +1,6 @@
+__pycache__/
+tmp/
+report/build/
+analysis/*.log
+/analysis.log
+package/section4_2_stabilization_rebuild_2026-09-15/

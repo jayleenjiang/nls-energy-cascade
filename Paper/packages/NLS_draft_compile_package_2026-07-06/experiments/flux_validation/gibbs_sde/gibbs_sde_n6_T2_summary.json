@@ -1,0 +1,19 @@
+{
+  "mcmc_profile": "Paper/revision_2026-06-19/experiments/flux_validation/gibbs_mcmc/n6_T2_medium_profile.csv",
+  "sde_profiles": [
+    "Paper/revision_2026-06-19/experiments/flux_validation/gibbs_sde/run01_profile.csv",
+    "Paper/revision_2026-06-19/experiments/flux_validation/gibbs_sde/run02_profile.csv",
+    "Paper/revision_2026-06-19/experiments/flux_validation/gibbs_sde/run03_profile.csv",
+    "Paper/revision_2026-06-19/experiments/flux_validation/gibbs_sde/run04_profile.csv",
+    "Paper/revision_2026-06-19/experiments/flux_validation/gibbs_sde/run05_profile.csv",
+    "Paper/revision_2026-06-19/experiments/flux_validation/gibbs_sde/run06_profile.csv",
+    "Paper/revision_2026-06-19/experiments/flux_validation/gibbs_sde/run07_profile.csv",
+    "Paper/revision_2026-06-19/experiments/flux_validation/gibbs_sde/run08_profile.csv"
+  ],
+  "independent_sde_runs": 8,
+  "max_abs_combined_z": 1.1003398967996028,
+  "rms_relative_profile_difference": 0.0026902512347567096,
+  "max_abs_relative_profile_difference": 0.004634093965264158,
+  "sde_reflection_max_abs_z": 2.3783317073580545,
+  "interpretation": "Combined z uses the between-chain MCMC SE and the between-run SDE SE. Agreement of profile means is a moment-level check of the Gibbs invariant measure, not a proof of full distributional equality."
+}

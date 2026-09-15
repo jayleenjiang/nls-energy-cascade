@@ -1,0 +1,54 @@
+{
+  "verdict": "MODERATE_AFFINITY_ASYMPTOTE_UNRESOLVED",
+  "all_three_primary_finest_pass": false,
+  "nominal_estimator_floor_absolute": 0.00010882848343548336,
+  "nominal_estimator_floor_fraction_of_dbeta_0p057143": 0.0019044984601209582,
+  "mid_affinity_finest_residual_absolute": 0.00024400699036265683,
+  "floor_to_mid_residual_ratio": 0.446005597109068,
+  "same_order_by_predeclared_factor_three_rule": true,
+  "equilibrium_baselines_statistically_consistent": true,
+  "primary_rows": [
+    {
+      "affinity": "weak",
+      "selection": "all_admissible",
+      "source": "weak_dt1p25e4",
+      "dt": 0.000125,
+      "a_inf_over_delta_beta": 0.993518647863165,
+      "ratio_ci_low": 0.9835824820554526,
+      "ratio_ci_high": 1.001209134175215,
+      "linear_reduced_chi2": 0.75259027743723,
+      "max_abs_standardized_residual": 1.7033337579043166,
+      "adequate": 1,
+      "contains_one": 1,
+      "finest_step_pass": 1
+    },
+    {
+      "affinity": "moderate",
+      "selection": "all_admissible",
+      "source": "moderate_dt1p25e4",
+      "dt": 0.000125,
+      "a_inf_over_delta_beta": 0.9598842840195734,
+      "ratio_ci_low": 0.9522887179464489,
+      "ratio_ci_high": 0.965475209083535,
+      "linear_reduced_chi2": 5.102764210190923,
+      "max_abs_standardized_residual": 3.2499337275459395,
+      "adequate": 0,
+      "contains_one": 0,
+      "finest_step_pass": 0
+    },
+    {
+      "affinity": "mid",
+      "selection": "all_admissible",
+      "source": "entropy_ft_timestep_bias_2026-09-10/driven_dt1p25e4",
+      "dt": "0.000125",
+      "a_inf_over_delta_beta": "0.9957298776686535",
+      "ratio_ci_low": "0.9885350632302762",
+      "ratio_ci_high": "1.0008819763582997",
+      "linear_reduced_chi2": "0.6445778986664232",
+      "max_abs_standardized_residual": "1.4613834722243662",
+      "adequate": 1,
+      "contains_one": 1,
+      "finest_step_pass": 1
+    }
+  ]
+}

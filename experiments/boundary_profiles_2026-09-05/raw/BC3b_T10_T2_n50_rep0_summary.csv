@@ -1,0 +1,2 @@
+bc_id,bc_label,n,T1,Tn,gamma,dt_max,burnin,measure,seed,requested_trajectories,valid_trajectories,nonfinite_trajectories,discarded_trajectories,integration_step_samples,projection_count,mean_flux,se_mean_flux,elapsed_seconds
+2,BC3b_no_global_with_phase_drift,50,10,2,0.10000000149011612,0.00050000002374872565,8000,2000,2026391000,256,256,0,0,1039518400,1596983,0.45492320024888261,0.0037171911002215133,171.88211999999999

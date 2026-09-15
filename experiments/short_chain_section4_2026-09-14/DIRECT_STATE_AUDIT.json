@@ -1,0 +1,128 @@
+{
+  "cases": [
+    {
+      "all_actions_strictly_positive": true,
+      "all_finite": true,
+      "cancellation_rows_positive": true,
+      "cancellation_values": [],
+      "case": "driven_dt1e-3",
+      "diagnostics_zero": true,
+      "format_ok": true,
+      "max_abs_difference": 0.0,
+      "max_abs_difference_by_old_column": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "minimum_action": 1.6428881439930773e-07,
+      "pass": true,
+      "tolerance": 5e-07
+    },
+    {
+      "all_actions_strictly_positive": true,
+      "all_finite": true,
+      "cancellation_rows_positive": true,
+      "cancellation_values": [],
+      "case": "driven_dt2p5e-4",
+      "diagnostics_zero": true,
+      "format_ok": true,
+      "max_abs_difference": 0.0,
+      "max_abs_difference_by_old_column": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "minimum_action": 1.1559099061786204e-07,
+      "pass": true,
+      "tolerance": 5e-07
+    },
+    {
+      "all_actions_strictly_positive": true,
+      "all_finite": true,
+      "cancellation_rows_positive": true,
+      "cancellation_values": [],
+      "case": "equilibrium_dt1e-3",
+      "diagnostics_zero": true,
+      "format_ok": true,
+      "max_abs_difference": 0.0,
+      "max_abs_difference_by_old_column": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "minimum_action": 5.1641367208515146e-08,
+      "pass": true,
+      "tolerance": 5e-07
+    },
+    {
+      "all_actions_strictly_positive": true,
+      "all_finite": true,
+      "cancellation_rows_positive": true,
+      "cancellation_values": [
+        {
+          "action": "I3",
+          "direct_value": 1.1709150955926485e-08,
+          "row_index": 40629,
+          "stream_id": 2
+        },
+        {
+          "action": "I1",
+          "direct_value": 7.379743621132773e-08,
+          "row_index": 46751,
+          "stream_id": 34
+        }
+      ],
+      "case": "equilibrium_dt2p5e-4",
+      "diagnostics_zero": true,
+      "format_ok": true,
+      "max_abs_difference": 1.1368683772161603e-13,
+      "max_abs_difference_by_old_column": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.1368683772161603e-13,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "minimum_action": 1.1709150955926485e-08,
+      "pass": true,
+      "tolerance": 5e-07
+    }
+  ],
+  "old_input_audit_preserved": "/Users/jayleenjiang/Documents/NLS/experiments/short_chain_section4_2026-09-14/INPUT_AUDIT.json",
+  "overall_pass": true,
+  "protocol_version": "section4-v1-amendment-001"
+}

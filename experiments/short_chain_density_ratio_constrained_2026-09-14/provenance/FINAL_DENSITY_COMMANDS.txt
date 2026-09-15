@@ -1,0 +1,19 @@
+# Final fine validation/test
+./run_formal_v7_validation.sh
+./run_formal_v7_test.sh
+
+# Coarse training, failed original validation, and audited R10 recovery
+./run_formal_v3_training.sh coarse
+./run_formal_v7_coarse_post.sh
+./run_recovery_r10_coarse.sh
+./run_recovery_r10_coarse_blind_test.sh
+
+# Cross-timestep gate
+/Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11 scripts/compare_final_timesteps.py --fine-model recovery_r9/factor_0.625/models/seed_8201 --fine-model recovery_r9/factor_0.625/models/seed_8202 --fine-model recovery_r9/factor_0.625/models/seed_8203 --coarse-model recovery_r10_coarse/models/seed_8201 --coarse-model recovery_r10_coarse/models/seed_8202 --coarse-model recovery_r10_coarse/models/seed_8203 --output final_timestep_comparison
+
+# Tables and figures
+/Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11 scripts/build_final_density_artifacts.py
+
+# Density evaluator smoke tests
+/Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11 scripts/final_ness_density.py final_analysis/sample_states.csv final_analysis/sample_density_fine.csv --timestep fine
+/Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11 scripts/final_ness_density.py final_analysis/sample_states.csv final_analysis/sample_density_coarse.csv --timestep coarse

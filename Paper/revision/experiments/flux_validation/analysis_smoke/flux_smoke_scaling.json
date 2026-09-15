@@ -1,0 +1,20 @@
+{
+  "model_version": "gibbs-canonical-v1",
+  "primary_dt": 0.001,
+  "chain_lengths": [
+    4,
+    6,
+    8
+  ],
+  "exponent": -0.954907213540908,
+  "prefactor": 3.9815596854730733,
+  "r_squared_log_fit": 0.9870565419309573,
+  "bootstrap_replicates_requested": 2000,
+  "bootstrap_replicates_valid": 2000,
+  "bootstrap_seed": 20260619,
+  "exponent_normalized_95_ci": [
+    -1.0139215098352075,
+    -0.8956239099506917
+  ],
+  "interpretation_scope": "Monte Carlo uncertainty conditional on the selected chain lengths, time window, timestep, and power-law model; it does not include finite-size or discretization-model uncertainty."
+}

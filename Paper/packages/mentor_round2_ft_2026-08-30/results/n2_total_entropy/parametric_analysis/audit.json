@@ -1,0 +1,56 @@
+{
+  "overall": "PASS_SMALL_CHAIN_NESS_TOTAL_ENTROPY_FT",
+  "checks": [
+    {
+      "check": "equilibrium_numerical",
+      "status": "PASS",
+      "detail": "rows=1048576/1048576, nonfinite=0, midpoint failures=0, formula max=1.33e-14, absolute balance RMS=2.76e-05"
+    },
+    {
+      "check": "driven_numerical",
+      "status": "PASS",
+      "detail": "rows=1048576/1048576, nonfinite=0, midpoint failures=0, formula max=1.51e-14, absolute balance RMS=3.06e-05"
+    },
+    {
+      "check": "independent_equilibrium_density_validation",
+      "status": "PASS",
+      "detail": "support=0.99979, RMSE=0.00826, slope=0.99941, correlation=0.99994"
+    },
+    {
+      "check": "density_optimizer",
+      "status": "PASS",
+      "detail": "equilibrium/heldout: success=1, |grad|=9.74e-07; driven/0: success=1, |grad|=7.92e-07; driven/1: success=1, |grad|=7.76e-07"
+    },
+    {
+      "check": "equilibrium_endpoint_error_budget",
+      "status": "PASS",
+      "detail": "log-IFT=3.41299e-05, CI=[3.33951e-05,3.50088e-05], ESS=524140.3, support=0.99979"
+    },
+    {
+      "check": "driven_ift",
+      "status": "PASS",
+      "detail": "log-IFT=0.00217456, CI=[-0.000744111,0.00525109], ESS=324604.3, support=0.99973"
+    },
+    {
+      "check": "exact_gibbs_control",
+      "status": "PASS",
+      "detail": "log-IFT=4.899e-09"
+    },
+    {
+      "check": "driven_detailed_ft",
+      "status": "PASS",
+      "detail": "bins=60, slope=0.994496+/-0.00738, intercept=-0.0221896"
+    },
+    {
+      "check": "density_model_sensitivity",
+      "status": "PASS",
+      "detail": "D2K1: IFT CI=[-0.0007441,0.005251], slope=0.9945; D2K2: IFT CI=[-0.0002062,0.005535], slope=0.9977; D3K2: IFT CI=[-0.001452,0.005606], slope=1.0035"
+    },
+    {
+      "check": "endpoint_stationarity",
+      "status": "PASS",
+      "detail": "maximum |stream-level z|=0.853"
+    }
+  ],
+  "scope": "Finite-time n=2 NESS total-entropy numerical verification; not a long-chain asymptotic GC proof."
+}

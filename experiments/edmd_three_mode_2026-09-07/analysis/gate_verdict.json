@@ -1,0 +1,54 @@
+{
+  "driven": {
+    "fine_reportable_modes": [
+      0
+    ],
+    "fine_rates": [
+      [
+        -0.9631910243268651,
+        0.0
+      ]
+    ],
+    "coarse_reportable_modes": [
+      0
+    ],
+    "coarse_rates": [
+      [
+        -0.9401735849314701,
+        0.0
+      ]
+    ]
+  },
+  "equilibrium": {
+    "fine_reportable_modes": [
+      0,
+      4
+    ],
+    "fine_rates": [
+      [
+        -0.9407584041517817,
+        0.0
+      ],
+      [
+        -2.862537701207786,
+        0.0
+      ]
+    ],
+    "coarse_reportable_modes": [
+      0,
+      3
+    ],
+    "coarse_rates": [
+      [
+        -0.95514893253253,
+        0.0
+      ],
+      [
+        -2.8338177497142727,
+        0.0
+      ]
+    ]
+  },
+  "oscillation_recovered_all": false,
+  "trivial_all_pass": true
+}

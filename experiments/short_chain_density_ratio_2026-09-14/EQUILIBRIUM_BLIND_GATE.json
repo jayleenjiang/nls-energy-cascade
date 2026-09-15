@@ -1,0 +1,111 @@
+{
+  "blind_opened": true,
+  "pass": true,
+  "protocol_version": "section4-density-ratio-v1",
+  "reference_streams": [
+    55,
+    58,
+    5,
+    18,
+    63,
+    19,
+    49,
+    46
+  ],
+  "rows": [
+    {
+      "architecture": "linear",
+      "auc": 0.5,
+      "blind_logz": 0.0,
+      "centered_log_ratio_rms": 0.0,
+      "ess_fraction": 1.0,
+      "finite": true,
+      "fp_abs_median": 8.881784197001252e-16,
+      "fp_abs_p90": 4.440892098500626e-15,
+      "max_weight_share": 1e-05,
+      "pass": true,
+      "seed": 5201,
+      "validation_logz": 0.0
+    },
+    {
+      "architecture": "linear",
+      "auc": 0.5,
+      "blind_logz": 0.0,
+      "centered_log_ratio_rms": 0.0,
+      "ess_fraction": 1.0,
+      "finite": true,
+      "fp_abs_median": 8.881784197001252e-16,
+      "fp_abs_p90": 4.440892098500626e-15,
+      "max_weight_share": 1e-05,
+      "pass": true,
+      "seed": 5202,
+      "validation_logz": 0.0
+    },
+    {
+      "architecture": "linear",
+      "auc": 0.5,
+      "blind_logz": 0.0,
+      "centered_log_ratio_rms": 0.0,
+      "ess_fraction": 1.0,
+      "finite": true,
+      "fp_abs_median": 8.881784197001252e-16,
+      "fp_abs_p90": 4.440892098500626e-15,
+      "max_weight_share": 1e-05,
+      "pass": true,
+      "seed": 5203,
+      "validation_logz": 0.0
+    },
+    {
+      "architecture": "mlp64",
+      "auc": 0.5,
+      "blind_logz": 0.0,
+      "centered_log_ratio_rms": 0.0,
+      "ess_fraction": 1.0,
+      "finite": true,
+      "fp_abs_median": 8.881784197001252e-16,
+      "fp_abs_p90": 4.440892098500626e-15,
+      "max_weight_share": 1e-05,
+      "pass": true,
+      "seed": 5201,
+      "validation_logz": 0.0
+    },
+    {
+      "architecture": "mlp64",
+      "auc": 0.5,
+      "blind_logz": 0.0,
+      "centered_log_ratio_rms": 0.0,
+      "ess_fraction": 1.0,
+      "finite": true,
+      "fp_abs_median": 8.881784197001252e-16,
+      "fp_abs_p90": 4.440892098500626e-15,
+      "max_weight_share": 1e-05,
+      "pass": true,
+      "seed": 5202,
+      "validation_logz": 0.0
+    },
+    {
+      "architecture": "mlp64",
+      "auc": 0.5025727561,
+      "blind_logz": 0.0004211676995211633,
+      "centered_log_ratio_rms": 0.008931620575552239,
+      "ess_fraction": 0.9999195210635098,
+      "finite": true,
+      "fp_abs_median": 0.05091600771644056,
+      "fp_abs_p90": 0.2009452931708795,
+      "max_weight_share": 1.0234700552888136e-05,
+      "pass": true,
+      "seed": 5203,
+      "validation_logz": 0.00036363930374960773
+    }
+  ],
+  "target_streams": [
+    41,
+    40,
+    7,
+    38,
+    22,
+    61,
+    4,
+    25
+  ]
+}

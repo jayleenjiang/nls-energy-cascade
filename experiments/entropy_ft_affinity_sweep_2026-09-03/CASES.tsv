@@ -1,0 +1,7 @@
+case	T_left	T_right	delta_beta	seed	status
+dbeta_0p027972	6.5	5.5	0.02797202797202797	2026090401	new_production
+dbeta_0p057143	7	5	0.05714285714285716	2026090402	new_production
+dbeta_0p125000	8	4	0.125	2026090403	new_production
+dbeta_0p222222	9	3	0.2222222222222222	2026090404	new_production
+dbeta_0p400000	10	2	0.4	2026082710	reuse_exact_production
+dbeta_0p000000	6	6	0	NA	unavailable_n10_production_not_found

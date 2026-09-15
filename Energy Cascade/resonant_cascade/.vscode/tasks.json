@@ -1,0 +1,35 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "cmake configure",
+            "type": "shell",
+            "command": "cmake",
+            "args": ["-B", "build", "-S", "."],
+            "group": "build"
+        },
+        {
+            "label": "cmake build",
+            "type": "shell",
+            "command": "cmake",
+            "args": ["--build", "build"],
+            "group": "build",
+            "dependsOn": ["cmake configure"]
+        },
+        {
+            "label": "run simulation",
+            "type": "shell",
+            "command": "./build/resonant_cascade",
+            "group": "test",
+            "dependsOn": ["cmake build"]
+        },
+        {
+            "label": "analyze results",
+            "type": "shell",
+            "command": "python",
+            "args": ["analyze.py"],
+            "group": "test",
+            "dependsOn": ["run simulation"]
+        }
+    ]
+}

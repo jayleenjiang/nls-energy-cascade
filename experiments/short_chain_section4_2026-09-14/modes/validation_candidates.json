@@ -1,0 +1,6266 @@
+[
+  {
+    "all_short_unaliased": true,
+    "candidate_id": "driven_dt1e-3:complex:E1:1e-08",
+    "case": "driven_dt1e-3",
+    "conditioning_pass": true,
+    "cutoff": 1e-08,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 1.1762056039753552,
+      "real_range": 0.0,
+      "real_tolerance": 0.9576007341242594,
+      "values": [
+        [
+          -4.788003670621297,
+          5.881028019876776
+        ],
+        [
+          -4.788003670621297,
+          5.881028019876776
+        ],
+        [
+          -4.788003670621297,
+          5.881028019876776
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E1",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 0.202920072730997,
+      "imag_tolerance": 1.1559135967022556,
+      "real_range": 1.4188840975640868,
+      "real_tolerance": 0.8157123243678508,
+      "values": [
+        [
+          -3.36911957305721,
+          5.678107947145779
+        ],
+        [
+          -4.788003670621297,
+          5.881028019876776
+        ]
+      ]
+    },
+    "dictionary_pass": false,
+    "eigen_index": 7,
+    "gram_condition": 65255.94445480358,
+    "gram_kept": 105,
+    "kind": "complex",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 0.6687999631064319,
+      "imag_tolerance": 1.263061147137425,
+      "real_range": 1.0787657557244934,
+      "real_tolerance": 0.8956423133778335,
+      "values": [
+        [
+          -3.7092379148968035,
+          6.315305735687124
+        ],
+        [
+          -4.788003670621297,
+          5.881028019876776
+        ],
+        [
+          -4.4782115668891675,
+          6.549827982983208
+        ]
+      ]
+    },
+    "lag_pass": false,
+    "lambda": [
+      -3.405168931018427,
+      5.4702725179190095
+    ],
+    "local_admissible": false,
+    "mu": [
+      0.8120939910408755,
+      0.22782857234432866
+    ],
+    "nominal_K": 109,
+    "tau": 0.05,
+    "trivial_error": 5.551115123125783e-15,
+    "validation_residual": 0.5378797770261577
+  },
+  {
+    "all_short_unaliased": true,
+    "candidate_id": "driven_dt1e-3:complex:E1:1e-10",
+    "case": "driven_dt1e-3",
+    "conditioning_pass": true,
+    "cutoff": 1e-10,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 1.1762056039753552,
+      "real_range": 0.0,
+      "real_tolerance": 0.9576007341242594,
+      "values": [
+        [
+          -4.788003670621297,
+          5.881028019876776
+        ],
+        [
+          -4.788003670621297,
+          5.881028019876776
+        ],
+        [
+          -4.788003670621297,
+          5.881028019876776
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E1",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 0.202920072730997,
+      "imag_tolerance": 1.1559135967022556,
+      "real_range": 1.4188840975640868,
+      "real_tolerance": 0.8157123243678508,
+      "values": [
+        [
+          -3.36911957305721,
+          5.678107947145779
+        ],
+        [
+          -4.788003670621297,
+          5.881028019876776
+        ]
+      ]
+    },
+    "dictionary_pass": false,
+    "eigen_index": 7,
+    "gram_condition": 65255.94445480358,
+    "gram_kept": 105,
+    "kind": "complex",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 0.6687999631064319,
+      "imag_tolerance": 1.263061147137425,
+      "real_range": 1.0787657557244934,
+      "real_tolerance": 0.8956423133778335,
+      "values": [
+        [
+          -3.7092379148968035,
+          6.315305735687124
+        ],
+        [
+          -4.788003670621297,
+          5.881028019876776
+        ],
+        [
+          -4.4782115668891675,
+          6.549827982983208
+        ]
+      ]
+    },
+    "lag_pass": false,
+    "lambda": [
+      -3.405168931018427,
+      5.4702725179190095
+    ],
+    "local_admissible": false,
+    "mu": [
+      0.8120939910408755,
+      0.22782857234432866
+    ],
+    "nominal_K": 109,
+    "tau": 0.05,
+    "trivial_error": 5.551115123125783e-15,
+    "validation_residual": 0.5378797770261577
+  },
+  {
+    "all_short_unaliased": true,
+    "candidate_id": "driven_dt1e-3:complex:E1:1e-12",
+    "case": "driven_dt1e-3",
+    "conditioning_pass": true,
+    "cutoff": 1e-12,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 1.1762056039753552,
+      "real_range": 0.0,
+      "real_tolerance": 0.9576007341242594,
+      "values": [
+        [
+          -4.788003670621297,
+          5.881028019876776
+        ],
+        [
+          -4.788003670621297,
+          5.881028019876776
+        ],
+        [
+          -4.788003670621297,
+          5.881028019876776
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E1",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 0.202920072730997,
+      "imag_tolerance": 1.1559135967022556,
+      "real_range": 1.4188840975640868,
+      "real_tolerance": 0.8157123243678508,
+      "values": [
+        [
+          -3.36911957305721,
+          5.678107947145779
+        ],
+        [
+          -4.788003670621297,
+          5.881028019876776
+        ]
+      ]
+    },
+    "dictionary_pass": false,
+    "eigen_index": 7,
+    "gram_condition": 65255.94445480358,
+    "gram_kept": 105,
+    "kind": "complex",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 0.6687999631064319,
+      "imag_tolerance": 1.263061147137425,
+      "real_range": 1.0787657557244934,
+      "real_tolerance": 0.8956423133778335,
+      "values": [
+        [
+          -3.7092379148968035,
+          6.315305735687124
+        ],
+        [
+          -4.788003670621297,
+          5.881028019876776
+        ],
+        [
+          -4.4782115668891675,
+          6.549827982983208
+        ]
+      ]
+    },
+    "lag_pass": false,
+    "lambda": [
+      -3.405168931018427,
+      5.4702725179190095
+    ],
+    "local_admissible": false,
+    "mu": [
+      0.8120939910408755,
+      0.22782857234432866
+    ],
+    "nominal_K": 109,
+    "tau": 0.05,
+    "trivial_error": 5.551115123125783e-15,
+    "validation_residual": 0.5378797770261577
+  },
+  {
+    "all_short_unaliased": true,
+    "candidate_id": "driven_dt1e-3:complex:E2:1e-08",
+    "case": "driven_dt1e-3",
+    "conditioning_pass": true,
+    "cutoff": 1e-08,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 1.1762056039753552,
+      "real_range": 0.0,
+      "real_tolerance": 0.9576007341242594,
+      "values": [
+        [
+          -4.788003670621297,
+          5.881028019876776
+        ],
+        [
+          -4.788003670621297,
+          5.881028019876776
+        ],
+        [
+          -4.788003670621297,
+          5.881028019876776
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E2",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 0.202920072730997,
+      "imag_tolerance": 1.1559135967022556,
+      "real_range": 1.4188840975640868,
+      "real_tolerance": 0.8157123243678508,
+      "values": [
+        [
+          -3.36911957305721,
+          5.678107947145779
+        ],
+        [
+          -4.788003670621297,
+          5.881028019876776
+        ]
+      ]
+    },
+    "dictionary_pass": false,
+    "eigen_index": 6,
+    "gram_condition": 67028.42963987641,
+    "gram_kept": 265,
+    "kind": "complex",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 0.6687999631064319,
+      "imag_tolerance": 1.263061147137425,
+      "real_range": 1.0787657557244934,
+      "real_tolerance": 0.8956423133778335,
+      "values": [
+        [
+          -3.7092379148968035,
+          6.315305735687124
+        ],
+        [
+          -4.788003670621297,
+          5.881028019876776
+        ],
+        [
+          -4.4782115668891675,
+          6.549827982983208
+        ]
+      ]
+    },
+    "lag_pass": false,
+    "lambda": [
+      -3.36911957305721,
+      5.678107947145779
+    ],
+    "local_admissible": false,
+    "mu": [
+      0.8111433860637398,
+      0.23668144070147243
+    ],
+    "nominal_K": 269,
+    "tau": 0.05,
+    "trivial_error": 2.6645352591003757e-15,
+    "validation_residual": 0.5384286057414223
+  },
+  {
+    "all_short_unaliased": true,
+    "candidate_id": "driven_dt1e-3:complex:E2:1e-10",
+    "case": "driven_dt1e-3",
+    "conditioning_pass": true,
+    "cutoff": 1e-10,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 1.1762056039753552,
+      "real_range": 0.0,
+      "real_tolerance": 0.9576007341242594,
+      "values": [
+        [
+          -4.788003670621297,
+          5.881028019876776
+        ],
+        [
+          -4.788003670621297,
+          5.881028019876776
+        ],
+        [
+          -4.788003670621297,
+          5.881028019876776
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E2",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 0.202920072730997,
+      "imag_tolerance": 1.1559135967022556,
+      "real_range": 1.4188840975640868,
+      "real_tolerance": 0.8157123243678508,
+      "values": [
+        [
+          -3.36911957305721,
+          5.678107947145779
+        ],
+        [
+          -4.788003670621297,
+          5.881028019876776
+        ]
+      ]
+    },
+    "dictionary_pass": false,
+    "eigen_index": 6,
+    "gram_condition": 67028.42963987641,
+    "gram_kept": 265,
+    "kind": "complex",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 0.6687999631064319,
+      "imag_tolerance": 1.263061147137425,
+      "real_range": 1.0787657557244934,
+      "real_tolerance": 0.8956423133778335,
+      "values": [
+        [
+          -3.7092379148968035,
+          6.315305735687124
+        ],
+        [
+          -4.788003670621297,
+          5.881028019876776
+        ],
+        [
+          -4.4782115668891675,
+          6.549827982983208
+        ]
+      ]
+    },
+    "lag_pass": false,
+    "lambda": [
+      -3.36911957305721,
+      5.678107947145779
+    ],
+    "local_admissible": false,
+    "mu": [
+      0.8111433860637398,
+      0.23668144070147243
+    ],
+    "nominal_K": 269,
+    "tau": 0.05,
+    "trivial_error": 2.6645352591003757e-15,
+    "validation_residual": 0.5384286057414223
+  },
+  {
+    "all_short_unaliased": true,
+    "candidate_id": "driven_dt1e-3:complex:E2:1e-12",
+    "case": "driven_dt1e-3",
+    "conditioning_pass": true,
+    "cutoff": 1e-12,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 1.1762056039753552,
+      "real_range": 0.0,
+      "real_tolerance": 0.9576007341242594,
+      "values": [
+        [
+          -4.788003670621297,
+          5.881028019876776
+        ],
+        [
+          -4.788003670621297,
+          5.881028019876776
+        ],
+        [
+          -4.788003670621297,
+          5.881028019876776
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E2",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 0.202920072730997,
+      "imag_tolerance": 1.1559135967022556,
+      "real_range": 1.4188840975640868,
+      "real_tolerance": 0.8157123243678508,
+      "values": [
+        [
+          -3.36911957305721,
+          5.678107947145779
+        ],
+        [
+          -4.788003670621297,
+          5.881028019876776
+        ]
+      ]
+    },
+    "dictionary_pass": false,
+    "eigen_index": 6,
+    "gram_condition": 67028.42963987641,
+    "gram_kept": 265,
+    "kind": "complex",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 0.6687999631064319,
+      "imag_tolerance": 1.263061147137425,
+      "real_range": 1.0787657557244934,
+      "real_tolerance": 0.8956423133778335,
+      "values": [
+        [
+          -3.7092379148968035,
+          6.315305735687124
+        ],
+        [
+          -4.788003670621297,
+          5.881028019876776
+        ],
+        [
+          -4.4782115668891675,
+          6.549827982983208
+        ]
+      ]
+    },
+    "lag_pass": false,
+    "lambda": [
+      -3.36911957305721,
+      5.678107947145779
+    ],
+    "local_admissible": false,
+    "mu": [
+      0.8111433860637398,
+      0.23668144070147243
+    ],
+    "nominal_K": 269,
+    "tau": 0.05,
+    "trivial_error": 2.6645352591003757e-15,
+    "validation_residual": 0.5384286057414223
+  },
+  {
+    "all_short_unaliased": true,
+    "candidate_id": "driven_dt1e-3:complex:E3:1e-08",
+    "case": "driven_dt1e-3",
+    "conditioning_pass": true,
+    "cutoff": 1e-08,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 1.1762056039753552,
+      "real_range": 0.0,
+      "real_tolerance": 0.9576007341242594,
+      "values": [
+        [
+          -4.788003670621297,
+          5.881028019876776
+        ],
+        [
+          -4.788003670621297,
+          5.881028019876776
+        ],
+        [
+          -4.788003670621297,
+          5.881028019876776
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E3",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 0.9461416168352956,
+      "imag_tolerance": 1.0815914422918258,
+      "real_range": 0.5774594147269028,
+      "real_tolerance": 1.0153466755969498,
+      "values": [
+        [
+          -5.3654630853482,
+          4.934886403041481
+        ],
+        [
+          -4.788003670621297,
+          5.881028019876776
+        ]
+      ]
+    },
+    "dictionary_pass": true,
+    "eigen_index": 25,
+    "gram_condition": 331013.51195782394,
+    "gram_kept": 515,
+    "kind": "complex",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 1.0206131734917747,
+      "imag_tolerance": 1.1762056039753552,
+      "real_range": 0.7471700338877545,
+      "real_tolerance": 0.9576007341242594,
+      "values": [
+        [
+          -5.225381600776922,
+          5.5292148094914335
+        ],
+        [
+          -4.788003670621297,
+          5.881028019876776
+        ],
+        [
+          -4.4782115668891675,
+          6.549827982983208
+        ]
+      ]
+    },
+    "lag_pass": true,
+    "lambda": [
+      -4.788003670621297,
+      5.881028019876776
+    ],
+    "local_admissible": true,
+    "mu": [
+      0.753315548049676,
+      0.22812679641068
+    ],
+    "nominal_K": 519,
+    "tau": 0.05,
+    "trivial_error": 1.2656542480726785e-14,
+    "validation_residual": 0.8500915003060121
+  },
+  {
+    "all_short_unaliased": true,
+    "candidate_id": "driven_dt1e-3:complex:E3:1e-10",
+    "case": "driven_dt1e-3",
+    "conditioning_pass": true,
+    "cutoff": 1e-10,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 1.1762056039753552,
+      "real_range": 0.0,
+      "real_tolerance": 0.9576007341242594,
+      "values": [
+        [
+          -4.788003670621297,
+          5.881028019876776
+        ],
+        [
+          -4.788003670621297,
+          5.881028019876776
+        ],
+        [
+          -4.788003670621297,
+          5.881028019876776
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E3",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 0.9461416168352956,
+      "imag_tolerance": 1.0815914422918258,
+      "real_range": 0.5774594147269028,
+      "real_tolerance": 1.0153466755969498,
+      "values": [
+        [
+          -5.3654630853482,
+          4.934886403041481
+        ],
+        [
+          -4.788003670621297,
+          5.881028019876776
+        ]
+      ]
+    },
+    "dictionary_pass": true,
+    "eigen_index": 25,
+    "gram_condition": 331013.51195782394,
+    "gram_kept": 515,
+    "kind": "complex",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 1.0206131734917747,
+      "imag_tolerance": 1.1762056039753552,
+      "real_range": 0.7471700338877545,
+      "real_tolerance": 0.9576007341242594,
+      "values": [
+        [
+          -5.225381600776922,
+          5.5292148094914335
+        ],
+        [
+          -4.788003670621297,
+          5.881028019876776
+        ],
+        [
+          -4.4782115668891675,
+          6.549827982983208
+        ]
+      ]
+    },
+    "lag_pass": true,
+    "lambda": [
+      -4.788003670621297,
+      5.881028019876776
+    ],
+    "local_admissible": true,
+    "mu": [
+      0.753315548049676,
+      0.22812679641068
+    ],
+    "nominal_K": 519,
+    "tau": 0.05,
+    "trivial_error": 1.2656542480726785e-14,
+    "validation_residual": 0.8500915003060121
+  },
+  {
+    "all_short_unaliased": true,
+    "candidate_id": "driven_dt1e-3:complex:E3:1e-12",
+    "case": "driven_dt1e-3",
+    "conditioning_pass": true,
+    "cutoff": 1e-12,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 1.1762056039753552,
+      "real_range": 0.0,
+      "real_tolerance": 0.9576007341242594,
+      "values": [
+        [
+          -4.788003670621297,
+          5.881028019876776
+        ],
+        [
+          -4.788003670621297,
+          5.881028019876776
+        ],
+        [
+          -4.788003670621297,
+          5.881028019876776
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E3",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 0.9461416168352956,
+      "imag_tolerance": 1.0815914422918258,
+      "real_range": 0.5774594147269028,
+      "real_tolerance": 1.0153466755969498,
+      "values": [
+        [
+          -5.3654630853482,
+          4.934886403041481
+        ],
+        [
+          -4.788003670621297,
+          5.881028019876776
+        ]
+      ]
+    },
+    "dictionary_pass": true,
+    "eigen_index": 25,
+    "gram_condition": 331013.51195782394,
+    "gram_kept": 515,
+    "kind": "complex",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 1.0206131734917747,
+      "imag_tolerance": 1.1762056039753552,
+      "real_range": 0.7471700338877545,
+      "real_tolerance": 0.9576007341242594,
+      "values": [
+        [
+          -5.225381600776922,
+          5.5292148094914335
+        ],
+        [
+          -4.788003670621297,
+          5.881028019876776
+        ],
+        [
+          -4.4782115668891675,
+          6.549827982983208
+        ]
+      ]
+    },
+    "lag_pass": true,
+    "lambda": [
+      -4.788003670621297,
+      5.881028019876776
+    ],
+    "local_admissible": true,
+    "mu": [
+      0.753315548049676,
+      0.22812679641068
+    ],
+    "nominal_K": 519,
+    "tau": 0.05,
+    "trivial_error": 1.2656542480726785e-14,
+    "validation_residual": 0.8500915003060121
+  },
+  {
+    "all_short_unaliased": null,
+    "candidate_id": "driven_dt1e-3:real:E1:1e-08",
+    "case": "driven_dt1e-3",
+    "conditioning_pass": true,
+    "cutoff": 1e-08,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.0,
+      "real_tolerance": 0.17944929340976487,
+      "values": [
+        [
+          -0.8972464670488243,
+          0.0
+        ],
+        [
+          -0.8972464670488243,
+          0.0
+        ],
+        [
+          -0.8972464670488243,
+          0.0
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E1",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.007293526021111996,
+      "real_tolerance": 0.18017864601187605,
+      "values": [
+        [
+          -0.9045399930699363,
+          0.0
+        ],
+        [
+          -0.8972464670488243,
+          0.0
+        ]
+      ]
+    },
+    "dictionary_pass": true,
+    "eigen_index": 1,
+    "gram_condition": 65255.94445480358,
+    "gram_kept": 105,
+    "kind": "real",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 0.04170203815579058,
+      "imag_tolerance": 0.5,
+      "real_range": 0.00859571650050428,
+      "real_tolerance": 0.17944929340976487,
+      "values": [
+        [
+          -0.8999769198340469,
+          0.04170203815579058
+        ],
+        [
+          -0.8972464670488243,
+          0.0
+        ],
+        [
+          -0.8913812033335426,
+          0.0
+        ]
+      ]
+    },
+    "lag_pass": true,
+    "lambda": [
+      -0.9138946031796822,
+      0.0
+    ],
+    "local_admissible": true,
+    "mu": [
+      0.6332137085392501,
+      0.0
+    ],
+    "nominal_K": 109,
+    "tau": 0.5,
+    "trivial_error": 1.3322676295501878e-15,
+    "validation_residual": 0.7809870409472499
+  },
+  {
+    "all_short_unaliased": null,
+    "candidate_id": "driven_dt1e-3:real:E1:1e-10",
+    "case": "driven_dt1e-3",
+    "conditioning_pass": true,
+    "cutoff": 1e-10,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.0,
+      "real_tolerance": 0.17944929340976487,
+      "values": [
+        [
+          -0.8972464670488243,
+          0.0
+        ],
+        [
+          -0.8972464670488243,
+          0.0
+        ],
+        [
+          -0.8972464670488243,
+          0.0
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E1",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.007293526021111996,
+      "real_tolerance": 0.18017864601187605,
+      "values": [
+        [
+          -0.9045399930699363,
+          0.0
+        ],
+        [
+          -0.8972464670488243,
+          0.0
+        ]
+      ]
+    },
+    "dictionary_pass": true,
+    "eigen_index": 1,
+    "gram_condition": 65255.94445480358,
+    "gram_kept": 105,
+    "kind": "real",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 0.04170203815579058,
+      "imag_tolerance": 0.5,
+      "real_range": 0.00859571650050428,
+      "real_tolerance": 0.17944929340976487,
+      "values": [
+        [
+          -0.8999769198340469,
+          0.04170203815579058
+        ],
+        [
+          -0.8972464670488243,
+          0.0
+        ],
+        [
+          -0.8913812033335426,
+          0.0
+        ]
+      ]
+    },
+    "lag_pass": true,
+    "lambda": [
+      -0.9138946031796822,
+      0.0
+    ],
+    "local_admissible": true,
+    "mu": [
+      0.6332137085392501,
+      0.0
+    ],
+    "nominal_K": 109,
+    "tau": 0.5,
+    "trivial_error": 1.3322676295501878e-15,
+    "validation_residual": 0.7809870409472499
+  },
+  {
+    "all_short_unaliased": null,
+    "candidate_id": "driven_dt1e-3:real:E1:1e-12",
+    "case": "driven_dt1e-3",
+    "conditioning_pass": true,
+    "cutoff": 1e-12,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.0,
+      "real_tolerance": 0.17944929340976487,
+      "values": [
+        [
+          -0.8972464670488243,
+          0.0
+        ],
+        [
+          -0.8972464670488243,
+          0.0
+        ],
+        [
+          -0.8972464670488243,
+          0.0
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E1",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.007293526021111996,
+      "real_tolerance": 0.18017864601187605,
+      "values": [
+        [
+          -0.9045399930699363,
+          0.0
+        ],
+        [
+          -0.8972464670488243,
+          0.0
+        ]
+      ]
+    },
+    "dictionary_pass": true,
+    "eigen_index": 1,
+    "gram_condition": 65255.94445480358,
+    "gram_kept": 105,
+    "kind": "real",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 0.04170203815579058,
+      "imag_tolerance": 0.5,
+      "real_range": 0.00859571650050428,
+      "real_tolerance": 0.17944929340976487,
+      "values": [
+        [
+          -0.8999769198340469,
+          0.04170203815579058
+        ],
+        [
+          -0.8972464670488243,
+          0.0
+        ],
+        [
+          -0.8913812033335426,
+          0.0
+        ]
+      ]
+    },
+    "lag_pass": true,
+    "lambda": [
+      -0.9138946031796822,
+      0.0
+    ],
+    "local_admissible": true,
+    "mu": [
+      0.6332137085392501,
+      0.0
+    ],
+    "nominal_K": 109,
+    "tau": 0.5,
+    "trivial_error": 1.3322676295501878e-15,
+    "validation_residual": 0.7809870409472499
+  },
+  {
+    "all_short_unaliased": null,
+    "candidate_id": "driven_dt1e-3:real:E2:1e-08",
+    "case": "driven_dt1e-3",
+    "conditioning_pass": true,
+    "cutoff": 1e-08,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.0,
+      "real_tolerance": 0.17944929340976487,
+      "values": [
+        [
+          -0.8972464670488243,
+          0.0
+        ],
+        [
+          -0.8972464670488243,
+          0.0
+        ],
+        [
+          -0.8972464670488243,
+          0.0
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E2",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.007293526021111996,
+      "real_tolerance": 0.18017864601187605,
+      "values": [
+        [
+          -0.9045399930699363,
+          0.0
+        ],
+        [
+          -0.8972464670488243,
+          0.0
+        ]
+      ]
+    },
+    "dictionary_pass": true,
+    "eigen_index": 1,
+    "gram_condition": 67028.42963987641,
+    "gram_kept": 265,
+    "kind": "real",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 0.04170203815579058,
+      "imag_tolerance": 0.5,
+      "real_range": 0.00859571650050428,
+      "real_tolerance": 0.17944929340976487,
+      "values": [
+        [
+          -0.8999769198340469,
+          0.04170203815579058
+        ],
+        [
+          -0.8972464670488243,
+          0.0
+        ],
+        [
+          -0.8913812033335426,
+          0.0
+        ]
+      ]
+    },
+    "lag_pass": true,
+    "lambda": [
+      -0.9045399930699363,
+      0.0
+    ],
+    "local_admissible": true,
+    "mu": [
+      0.6361823794966756,
+      0.0
+    ],
+    "nominal_K": 269,
+    "tau": 0.5,
+    "trivial_error": 2.220446049250313e-15,
+    "validation_residual": 0.7810541366254916
+  },
+  {
+    "all_short_unaliased": null,
+    "candidate_id": "driven_dt1e-3:real:E2:1e-10",
+    "case": "driven_dt1e-3",
+    "conditioning_pass": true,
+    "cutoff": 1e-10,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.0,
+      "real_tolerance": 0.17944929340976487,
+      "values": [
+        [
+          -0.8972464670488243,
+          0.0
+        ],
+        [
+          -0.8972464670488243,
+          0.0
+        ],
+        [
+          -0.8972464670488243,
+          0.0
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E2",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.007293526021111996,
+      "real_tolerance": 0.18017864601187605,
+      "values": [
+        [
+          -0.9045399930699363,
+          0.0
+        ],
+        [
+          -0.8972464670488243,
+          0.0
+        ]
+      ]
+    },
+    "dictionary_pass": true,
+    "eigen_index": 1,
+    "gram_condition": 67028.42963987641,
+    "gram_kept": 265,
+    "kind": "real",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 0.04170203815579058,
+      "imag_tolerance": 0.5,
+      "real_range": 0.00859571650050428,
+      "real_tolerance": 0.17944929340976487,
+      "values": [
+        [
+          -0.8999769198340469,
+          0.04170203815579058
+        ],
+        [
+          -0.8972464670488243,
+          0.0
+        ],
+        [
+          -0.8913812033335426,
+          0.0
+        ]
+      ]
+    },
+    "lag_pass": true,
+    "lambda": [
+      -0.9045399930699363,
+      0.0
+    ],
+    "local_admissible": true,
+    "mu": [
+      0.6361823794966756,
+      0.0
+    ],
+    "nominal_K": 269,
+    "tau": 0.5,
+    "trivial_error": 2.220446049250313e-15,
+    "validation_residual": 0.7810541366254916
+  },
+  {
+    "all_short_unaliased": null,
+    "candidate_id": "driven_dt1e-3:real:E2:1e-12",
+    "case": "driven_dt1e-3",
+    "conditioning_pass": true,
+    "cutoff": 1e-12,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.0,
+      "real_tolerance": 0.17944929340976487,
+      "values": [
+        [
+          -0.8972464670488243,
+          0.0
+        ],
+        [
+          -0.8972464670488243,
+          0.0
+        ],
+        [
+          -0.8972464670488243,
+          0.0
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E2",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.007293526021111996,
+      "real_tolerance": 0.18017864601187605,
+      "values": [
+        [
+          -0.9045399930699363,
+          0.0
+        ],
+        [
+          -0.8972464670488243,
+          0.0
+        ]
+      ]
+    },
+    "dictionary_pass": true,
+    "eigen_index": 1,
+    "gram_condition": 67028.42963987641,
+    "gram_kept": 265,
+    "kind": "real",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 0.04170203815579058,
+      "imag_tolerance": 0.5,
+      "real_range": 0.00859571650050428,
+      "real_tolerance": 0.17944929340976487,
+      "values": [
+        [
+          -0.8999769198340469,
+          0.04170203815579058
+        ],
+        [
+          -0.8972464670488243,
+          0.0
+        ],
+        [
+          -0.8913812033335426,
+          0.0
+        ]
+      ]
+    },
+    "lag_pass": true,
+    "lambda": [
+      -0.9045399930699363,
+      0.0
+    ],
+    "local_admissible": true,
+    "mu": [
+      0.6361823794966756,
+      0.0
+    ],
+    "nominal_K": 269,
+    "tau": 0.5,
+    "trivial_error": 2.220446049250313e-15,
+    "validation_residual": 0.7810541366254916
+  },
+  {
+    "all_short_unaliased": null,
+    "candidate_id": "driven_dt1e-3:real:E3:1e-08",
+    "case": "driven_dt1e-3",
+    "conditioning_pass": true,
+    "cutoff": 1e-08,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.0,
+      "real_tolerance": 0.17944929340976487,
+      "values": [
+        [
+          -0.8972464670488243,
+          0.0
+        ],
+        [
+          -0.8972464670488243,
+          0.0
+        ],
+        [
+          -0.8972464670488243,
+          0.0
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E3",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.007293526021111996,
+      "real_tolerance": 0.18017864601187605,
+      "values": [
+        [
+          -0.9045399930699363,
+          0.0
+        ],
+        [
+          -0.8972464670488243,
+          0.0
+        ]
+      ]
+    },
+    "dictionary_pass": true,
+    "eigen_index": 1,
+    "gram_condition": 331013.51195782394,
+    "gram_kept": 515,
+    "kind": "real",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 0.04170203815579058,
+      "imag_tolerance": 0.5,
+      "real_range": 0.00859571650050428,
+      "real_tolerance": 0.17944929340976487,
+      "values": [
+        [
+          -0.8999769198340469,
+          0.04170203815579058
+        ],
+        [
+          -0.8972464670488243,
+          0.0
+        ],
+        [
+          -0.8913812033335426,
+          0.0
+        ]
+      ]
+    },
+    "lag_pass": true,
+    "lambda": [
+      -0.8972464670488243,
+      0.0
+    ],
+    "local_admissible": true,
+    "mu": [
+      0.6385066212698373,
+      0.0
+    ],
+    "nominal_K": 519,
+    "tau": 0.5,
+    "trivial_error": 1.3322676295501878e-15,
+    "validation_residual": 0.7848044820449314
+  },
+  {
+    "all_short_unaliased": null,
+    "candidate_id": "driven_dt1e-3:real:E3:1e-10",
+    "case": "driven_dt1e-3",
+    "conditioning_pass": true,
+    "cutoff": 1e-10,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.0,
+      "real_tolerance": 0.17944929340976487,
+      "values": [
+        [
+          -0.8972464670488243,
+          0.0
+        ],
+        [
+          -0.8972464670488243,
+          0.0
+        ],
+        [
+          -0.8972464670488243,
+          0.0
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E3",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.007293526021111996,
+      "real_tolerance": 0.18017864601187605,
+      "values": [
+        [
+          -0.9045399930699363,
+          0.0
+        ],
+        [
+          -0.8972464670488243,
+          0.0
+        ]
+      ]
+    },
+    "dictionary_pass": true,
+    "eigen_index": 1,
+    "gram_condition": 331013.51195782394,
+    "gram_kept": 515,
+    "kind": "real",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 0.04170203815579058,
+      "imag_tolerance": 0.5,
+      "real_range": 0.00859571650050428,
+      "real_tolerance": 0.17944929340976487,
+      "values": [
+        [
+          -0.8999769198340469,
+          0.04170203815579058
+        ],
+        [
+          -0.8972464670488243,
+          0.0
+        ],
+        [
+          -0.8913812033335426,
+          0.0
+        ]
+      ]
+    },
+    "lag_pass": true,
+    "lambda": [
+      -0.8972464670488243,
+      0.0
+    ],
+    "local_admissible": true,
+    "mu": [
+      0.6385066212698373,
+      0.0
+    ],
+    "nominal_K": 519,
+    "tau": 0.5,
+    "trivial_error": 1.3322676295501878e-15,
+    "validation_residual": 0.7848044820449314
+  },
+  {
+    "all_short_unaliased": null,
+    "candidate_id": "driven_dt1e-3:real:E3:1e-12",
+    "case": "driven_dt1e-3",
+    "conditioning_pass": true,
+    "cutoff": 1e-12,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.0,
+      "real_tolerance": 0.17944929340976487,
+      "values": [
+        [
+          -0.8972464670488243,
+          0.0
+        ],
+        [
+          -0.8972464670488243,
+          0.0
+        ],
+        [
+          -0.8972464670488243,
+          0.0
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E3",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.007293526021111996,
+      "real_tolerance": 0.18017864601187605,
+      "values": [
+        [
+          -0.9045399930699363,
+          0.0
+        ],
+        [
+          -0.8972464670488243,
+          0.0
+        ]
+      ]
+    },
+    "dictionary_pass": true,
+    "eigen_index": 1,
+    "gram_condition": 331013.51195782394,
+    "gram_kept": 515,
+    "kind": "real",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 0.04170203815579058,
+      "imag_tolerance": 0.5,
+      "real_range": 0.00859571650050428,
+      "real_tolerance": 0.17944929340976487,
+      "values": [
+        [
+          -0.8999769198340469,
+          0.04170203815579058
+        ],
+        [
+          -0.8972464670488243,
+          0.0
+        ],
+        [
+          -0.8913812033335426,
+          0.0
+        ]
+      ]
+    },
+    "lag_pass": true,
+    "lambda": [
+      -0.8972464670488243,
+      0.0
+    ],
+    "local_admissible": true,
+    "mu": [
+      0.6385066212698373,
+      0.0
+    ],
+    "nominal_K": 519,
+    "tau": 0.5,
+    "trivial_error": 1.3322676295501878e-15,
+    "validation_residual": 0.7848044820449314
+  },
+  {
+    "all_short_unaliased": true,
+    "candidate_id": "driven_dt2p5e-4:complex:E1:1e-08",
+    "case": "driven_dt2p5e-4",
+    "conditioning_pass": true,
+    "cutoff": 1e-08,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 1.311962389428663,
+      "real_range": 0.0,
+      "real_tolerance": 0.849292144213946,
+      "values": [
+        [
+          -4.24646072106973,
+          6.559811947143315
+        ],
+        [
+          -4.24646072106973,
+          6.559811947143315
+        ],
+        [
+          -4.24646072106973,
+          6.559811947143315
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E1",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 0.9861326141840134,
+      "imag_tolerance": 1.2133491280102617,
+      "real_range": 0.9304419926769532,
+      "real_tolerance": 0.7562479449462507,
+      "values": [
+        [
+          -3.316018728392777,
+          5.573679332959301
+        ],
+        [
+          -4.24646072106973,
+          6.559811947143315
+        ]
+      ]
+    },
+    "dictionary_pass": false,
+    "eigen_index": 7,
+    "gram_condition": 61461.65269901727,
+    "gram_kept": 105,
+    "kind": "complex",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 0.895819279631759,
+      "imag_tolerance": 1.2891677800295618,
+      "real_range": 1.5649290246967031,
+      "real_tolerance": 0.849292144213946,
+      "values": [
+        [
+          -2.8022124819922056,
+          5.663992667511556
+        ],
+        [
+          -4.24646072106973,
+          6.559811947143315
+        ],
+        [
+          -4.367141506688909,
+          6.445838900147809
+        ]
+      ]
+    },
+    "lag_pass": false,
+    "lambda": [
+      -3.305935996351061,
+      5.465665054557896
+    ],
+    "local_admissible": false,
+    "mu": [
+      0.8161860521261535,
+      0.22877376492056592
+    ],
+    "nominal_K": 109,
+    "tau": 0.05,
+    "trivial_error": 4.6629367034256575e-15,
+    "validation_residual": 0.5355517744869096
+  },
+  {
+    "all_short_unaliased": true,
+    "candidate_id": "driven_dt2p5e-4:complex:E1:1e-10",
+    "case": "driven_dt2p5e-4",
+    "conditioning_pass": true,
+    "cutoff": 1e-10,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 1.311962389428663,
+      "real_range": 0.0,
+      "real_tolerance": 0.849292144213946,
+      "values": [
+        [
+          -4.24646072106973,
+          6.559811947143315
+        ],
+        [
+          -4.24646072106973,
+          6.559811947143315
+        ],
+        [
+          -4.24646072106973,
+          6.559811947143315
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E1",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 0.9861326141840134,
+      "imag_tolerance": 1.2133491280102617,
+      "real_range": 0.9304419926769532,
+      "real_tolerance": 0.7562479449462507,
+      "values": [
+        [
+          -3.316018728392777,
+          5.573679332959301
+        ],
+        [
+          -4.24646072106973,
+          6.559811947143315
+        ]
+      ]
+    },
+    "dictionary_pass": false,
+    "eigen_index": 7,
+    "gram_condition": 61461.65269901727,
+    "gram_kept": 105,
+    "kind": "complex",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 0.895819279631759,
+      "imag_tolerance": 1.2891677800295618,
+      "real_range": 1.5649290246967031,
+      "real_tolerance": 0.849292144213946,
+      "values": [
+        [
+          -2.8022124819922056,
+          5.663992667511556
+        ],
+        [
+          -4.24646072106973,
+          6.559811947143315
+        ],
+        [
+          -4.367141506688909,
+          6.445838900147809
+        ]
+      ]
+    },
+    "lag_pass": false,
+    "lambda": [
+      -3.305935996351061,
+      5.465665054557896
+    ],
+    "local_admissible": false,
+    "mu": [
+      0.8161860521261535,
+      0.22877376492056592
+    ],
+    "nominal_K": 109,
+    "tau": 0.05,
+    "trivial_error": 4.6629367034256575e-15,
+    "validation_residual": 0.5355517744869096
+  },
+  {
+    "all_short_unaliased": true,
+    "candidate_id": "driven_dt2p5e-4:complex:E1:1e-12",
+    "case": "driven_dt2p5e-4",
+    "conditioning_pass": true,
+    "cutoff": 1e-12,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 1.311962389428663,
+      "real_range": 0.0,
+      "real_tolerance": 0.849292144213946,
+      "values": [
+        [
+          -4.24646072106973,
+          6.559811947143315
+        ],
+        [
+          -4.24646072106973,
+          6.559811947143315
+        ],
+        [
+          -4.24646072106973,
+          6.559811947143315
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E1",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 0.9861326141840134,
+      "imag_tolerance": 1.2133491280102617,
+      "real_range": 0.9304419926769532,
+      "real_tolerance": 0.7562479449462507,
+      "values": [
+        [
+          -3.316018728392777,
+          5.573679332959301
+        ],
+        [
+          -4.24646072106973,
+          6.559811947143315
+        ]
+      ]
+    },
+    "dictionary_pass": false,
+    "eigen_index": 7,
+    "gram_condition": 61461.65269901727,
+    "gram_kept": 105,
+    "kind": "complex",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 0.895819279631759,
+      "imag_tolerance": 1.2891677800295618,
+      "real_range": 1.5649290246967031,
+      "real_tolerance": 0.849292144213946,
+      "values": [
+        [
+          -2.8022124819922056,
+          5.663992667511556
+        ],
+        [
+          -4.24646072106973,
+          6.559811947143315
+        ],
+        [
+          -4.367141506688909,
+          6.445838900147809
+        ]
+      ]
+    },
+    "lag_pass": false,
+    "lambda": [
+      -3.305935996351061,
+      5.465665054557896
+    ],
+    "local_admissible": false,
+    "mu": [
+      0.8161860521261535,
+      0.22877376492056592
+    ],
+    "nominal_K": 109,
+    "tau": 0.05,
+    "trivial_error": 4.6629367034256575e-15,
+    "validation_residual": 0.5355517744869096
+  },
+  {
+    "all_short_unaliased": true,
+    "candidate_id": "driven_dt2p5e-4:complex:E2:1e-08",
+    "case": "driven_dt2p5e-4",
+    "conditioning_pass": true,
+    "cutoff": 1e-08,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 1.311962389428663,
+      "real_range": 0.0,
+      "real_tolerance": 0.849292144213946,
+      "values": [
+        [
+          -4.24646072106973,
+          6.559811947143315
+        ],
+        [
+          -4.24646072106973,
+          6.559811947143315
+        ],
+        [
+          -4.24646072106973,
+          6.559811947143315
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E2",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 0.9861326141840134,
+      "imag_tolerance": 1.2133491280102617,
+      "real_range": 0.9304419926769532,
+      "real_tolerance": 0.7562479449462507,
+      "values": [
+        [
+          -3.316018728392777,
+          5.573679332959301
+        ],
+        [
+          -4.24646072106973,
+          6.559811947143315
+        ]
+      ]
+    },
+    "dictionary_pass": false,
+    "eigen_index": 6,
+    "gram_condition": 64220.0161997256,
+    "gram_kept": 265,
+    "kind": "complex",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 0.895819279631759,
+      "imag_tolerance": 1.2891677800295618,
+      "real_range": 1.5649290246967031,
+      "real_tolerance": 0.849292144213946,
+      "values": [
+        [
+          -2.8022124819922056,
+          5.663992667511556
+        ],
+        [
+          -4.24646072106973,
+          6.559811947143315
+        ],
+        [
+          -4.367141506688909,
+          6.445838900147809
+        ]
+      ]
+    },
+    "lag_pass": false,
+    "lambda": [
+      -3.316018728392777,
+      5.573679332959301
+    ],
+    "local_admissible": false,
+    "mu": [
+      0.8145278765242476,
+      0.23306087033292672
+    ],
+    "nominal_K": 269,
+    "tau": 0.05,
+    "trivial_error": 1.1324274851176597e-14,
+    "validation_residual": 0.544793432081257
+  },
+  {
+    "all_short_unaliased": true,
+    "candidate_id": "driven_dt2p5e-4:complex:E2:1e-10",
+    "case": "driven_dt2p5e-4",
+    "conditioning_pass": true,
+    "cutoff": 1e-10,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 1.311962389428663,
+      "real_range": 0.0,
+      "real_tolerance": 0.849292144213946,
+      "values": [
+        [
+          -4.24646072106973,
+          6.559811947143315
+        ],
+        [
+          -4.24646072106973,
+          6.559811947143315
+        ],
+        [
+          -4.24646072106973,
+          6.559811947143315
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E2",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 0.9861326141840134,
+      "imag_tolerance": 1.2133491280102617,
+      "real_range": 0.9304419926769532,
+      "real_tolerance": 0.7562479449462507,
+      "values": [
+        [
+          -3.316018728392777,
+          5.573679332959301
+        ],
+        [
+          -4.24646072106973,
+          6.559811947143315
+        ]
+      ]
+    },
+    "dictionary_pass": false,
+    "eigen_index": 6,
+    "gram_condition": 64220.0161997256,
+    "gram_kept": 265,
+    "kind": "complex",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 0.895819279631759,
+      "imag_tolerance": 1.2891677800295618,
+      "real_range": 1.5649290246967031,
+      "real_tolerance": 0.849292144213946,
+      "values": [
+        [
+          -2.8022124819922056,
+          5.663992667511556
+        ],
+        [
+          -4.24646072106973,
+          6.559811947143315
+        ],
+        [
+          -4.367141506688909,
+          6.445838900147809
+        ]
+      ]
+    },
+    "lag_pass": false,
+    "lambda": [
+      -3.316018728392777,
+      5.573679332959301
+    ],
+    "local_admissible": false,
+    "mu": [
+      0.8145278765242476,
+      0.23306087033292672
+    ],
+    "nominal_K": 269,
+    "tau": 0.05,
+    "trivial_error": 1.1324274851176597e-14,
+    "validation_residual": 0.544793432081257
+  },
+  {
+    "all_short_unaliased": true,
+    "candidate_id": "driven_dt2p5e-4:complex:E2:1e-12",
+    "case": "driven_dt2p5e-4",
+    "conditioning_pass": true,
+    "cutoff": 1e-12,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 1.311962389428663,
+      "real_range": 0.0,
+      "real_tolerance": 0.849292144213946,
+      "values": [
+        [
+          -4.24646072106973,
+          6.559811947143315
+        ],
+        [
+          -4.24646072106973,
+          6.559811947143315
+        ],
+        [
+          -4.24646072106973,
+          6.559811947143315
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E2",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 0.9861326141840134,
+      "imag_tolerance": 1.2133491280102617,
+      "real_range": 0.9304419926769532,
+      "real_tolerance": 0.7562479449462507,
+      "values": [
+        [
+          -3.316018728392777,
+          5.573679332959301
+        ],
+        [
+          -4.24646072106973,
+          6.559811947143315
+        ]
+      ]
+    },
+    "dictionary_pass": false,
+    "eigen_index": 6,
+    "gram_condition": 64220.0161997256,
+    "gram_kept": 265,
+    "kind": "complex",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 0.895819279631759,
+      "imag_tolerance": 1.2891677800295618,
+      "real_range": 1.5649290246967031,
+      "real_tolerance": 0.849292144213946,
+      "values": [
+        [
+          -2.8022124819922056,
+          5.663992667511556
+        ],
+        [
+          -4.24646072106973,
+          6.559811947143315
+        ],
+        [
+          -4.367141506688909,
+          6.445838900147809
+        ]
+      ]
+    },
+    "lag_pass": false,
+    "lambda": [
+      -3.316018728392777,
+      5.573679332959301
+    ],
+    "local_admissible": false,
+    "mu": [
+      0.8145278765242476,
+      0.23306087033292672
+    ],
+    "nominal_K": 269,
+    "tau": 0.05,
+    "trivial_error": 1.1324274851176597e-14,
+    "validation_residual": 0.544793432081257
+  },
+  {
+    "all_short_unaliased": true,
+    "candidate_id": "driven_dt2p5e-4:complex:E3:1e-08",
+    "case": "driven_dt2p5e-4",
+    "conditioning_pass": true,
+    "cutoff": 1e-08,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 1.1897565887277637,
+      "real_range": 0.0,
+      "real_tolerance": 1.0340861437918718,
+      "values": [
+        [
+          -5.170430718959359,
+          5.948782943638818
+        ],
+        [
+          -5.170430718959359,
+          5.948782943638818
+        ],
+        [
+          -5.170430718959359,
+          5.948782943638818
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E3",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 0.23585125769804538,
+      "imag_tolerance": 1.1661714629579591,
+      "real_range": 1.024088231154277,
+      "real_tolerance": 1.1364949669072997,
+      "values": [
+        [
+          -6.194518950113636,
+          5.712931685940773
+        ],
+        [
+          -5.170430718959359,
+          5.948782943638818
+        ]
+      ]
+    },
+    "dictionary_pass": true,
+    "eigen_index": 31,
+    "gram_condition": 306874.4185850828,
+    "gram_kept": 515,
+    "kind": "complex",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 0.5493695117096369,
+      "imag_tolerance": 1.1897565887277637,
+      "real_range": 0.20453341313994144,
+      "real_tolerance": 1.0463798832021693,
+      "values": [
+        [
+          -5.374964132099301,
+          6.198155629219284
+        ],
+        [
+          -5.170430718959359,
+          5.948782943638818
+        ],
+        [
+          -5.2318994160108465,
+          5.648786117509647
+        ]
+      ]
+    },
+    "lag_pass": true,
+    "lambda": [
+      -5.170430718959359,
+      5.948782943638818
+    ],
+    "local_admissible": true,
+    "mu": [
+      0.7382855403854016,
+      0.22630856143985445
+    ],
+    "nominal_K": 519,
+    "tau": 0.05,
+    "trivial_error": 1.199040866595169e-14,
+    "validation_residual": 0.7328717909023593
+  },
+  {
+    "all_short_unaliased": true,
+    "candidate_id": "driven_dt2p5e-4:complex:E3:1e-10",
+    "case": "driven_dt2p5e-4",
+    "conditioning_pass": true,
+    "cutoff": 1e-10,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 1.1897565887277637,
+      "real_range": 0.0,
+      "real_tolerance": 1.0340861437918718,
+      "values": [
+        [
+          -5.170430718959359,
+          5.948782943638818
+        ],
+        [
+          -5.170430718959359,
+          5.948782943638818
+        ],
+        [
+          -5.170430718959359,
+          5.948782943638818
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E3",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 0.23585125769804538,
+      "imag_tolerance": 1.1661714629579591,
+      "real_range": 1.024088231154277,
+      "real_tolerance": 1.1364949669072997,
+      "values": [
+        [
+          -6.194518950113636,
+          5.712931685940773
+        ],
+        [
+          -5.170430718959359,
+          5.948782943638818
+        ]
+      ]
+    },
+    "dictionary_pass": true,
+    "eigen_index": 31,
+    "gram_condition": 306874.4185850828,
+    "gram_kept": 515,
+    "kind": "complex",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 0.5493695117096369,
+      "imag_tolerance": 1.1897565887277637,
+      "real_range": 0.20453341313994144,
+      "real_tolerance": 1.0463798832021693,
+      "values": [
+        [
+          -5.374964132099301,
+          6.198155629219284
+        ],
+        [
+          -5.170430718959359,
+          5.948782943638818
+        ],
+        [
+          -5.2318994160108465,
+          5.648786117509647
+        ]
+      ]
+    },
+    "lag_pass": true,
+    "lambda": [
+      -5.170430718959359,
+      5.948782943638818
+    ],
+    "local_admissible": true,
+    "mu": [
+      0.7382855403854016,
+      0.22630856143985445
+    ],
+    "nominal_K": 519,
+    "tau": 0.05,
+    "trivial_error": 1.199040866595169e-14,
+    "validation_residual": 0.7328717909023593
+  },
+  {
+    "all_short_unaliased": true,
+    "candidate_id": "driven_dt2p5e-4:complex:E3:1e-12",
+    "case": "driven_dt2p5e-4",
+    "conditioning_pass": true,
+    "cutoff": 1e-12,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 1.1897565887277637,
+      "real_range": 0.0,
+      "real_tolerance": 1.0340861437918718,
+      "values": [
+        [
+          -5.170430718959359,
+          5.948782943638818
+        ],
+        [
+          -5.170430718959359,
+          5.948782943638818
+        ],
+        [
+          -5.170430718959359,
+          5.948782943638818
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E3",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 0.23585125769804538,
+      "imag_tolerance": 1.1661714629579591,
+      "real_range": 1.024088231154277,
+      "real_tolerance": 1.1364949669072997,
+      "values": [
+        [
+          -6.194518950113636,
+          5.712931685940773
+        ],
+        [
+          -5.170430718959359,
+          5.948782943638818
+        ]
+      ]
+    },
+    "dictionary_pass": true,
+    "eigen_index": 31,
+    "gram_condition": 306874.4185850828,
+    "gram_kept": 515,
+    "kind": "complex",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 0.5493695117096369,
+      "imag_tolerance": 1.1897565887277637,
+      "real_range": 0.20453341313994144,
+      "real_tolerance": 1.0463798832021693,
+      "values": [
+        [
+          -5.374964132099301,
+          6.198155629219284
+        ],
+        [
+          -5.170430718959359,
+          5.948782943638818
+        ],
+        [
+          -5.2318994160108465,
+          5.648786117509647
+        ]
+      ]
+    },
+    "lag_pass": true,
+    "lambda": [
+      -5.170430718959359,
+      5.948782943638818
+    ],
+    "local_admissible": true,
+    "mu": [
+      0.7382855403854016,
+      0.22630856143985445
+    ],
+    "nominal_K": 519,
+    "tau": 0.05,
+    "trivial_error": 1.199040866595169e-14,
+    "validation_residual": 0.7328717909023593
+  },
+  {
+    "all_short_unaliased": null,
+    "candidate_id": "driven_dt2p5e-4:real:E1:1e-08",
+    "case": "driven_dt2p5e-4",
+    "conditioning_pass": true,
+    "cutoff": 1e-08,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.0,
+      "real_tolerance": 0.1875427115854543,
+      "values": [
+        [
+          -0.9377135579272714,
+          0.0
+        ],
+        [
+          -0.9377135579272714,
+          0.0
+        ],
+        [
+          -0.9377135579272714,
+          0.0
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E1",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.008039992447854916,
+      "real_tolerance": 0.1883467108302398,
+      "values": [
+        [
+          -0.9457535503751263,
+          0.0
+        ],
+        [
+          -0.9377135579272714,
+          0.0
+        ]
+      ]
+    },
+    "dictionary_pass": true,
+    "eigen_index": 1,
+    "gram_condition": 61461.65269901727,
+    "gram_kept": 105,
+    "kind": "real",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.022067233451963597,
+      "real_tolerance": 0.1875427115854543,
+      "values": [
+        [
+          -0.9552504634716654,
+          0.0
+        ],
+        [
+          -0.9377135579272714,
+          0.0
+        ],
+        [
+          -0.9331832300197018,
+          0.0
+        ]
+      ]
+    },
+    "lag_pass": true,
+    "lambda": [
+      -0.951478623956966,
+      0.0
+    ],
+    "local_admissible": true,
+    "mu": [
+      0.6214254593073119,
+      0.0
+    ],
+    "nominal_K": 109,
+    "tau": 0.5,
+    "trivial_error": 3.774758283725532e-15,
+    "validation_residual": 0.7806370886658648
+  },
+  {
+    "all_short_unaliased": null,
+    "candidate_id": "driven_dt2p5e-4:real:E1:1e-10",
+    "case": "driven_dt2p5e-4",
+    "conditioning_pass": true,
+    "cutoff": 1e-10,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.0,
+      "real_tolerance": 0.1875427115854543,
+      "values": [
+        [
+          -0.9377135579272714,
+          0.0
+        ],
+        [
+          -0.9377135579272714,
+          0.0
+        ],
+        [
+          -0.9377135579272714,
+          0.0
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E1",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.008039992447854916,
+      "real_tolerance": 0.1883467108302398,
+      "values": [
+        [
+          -0.9457535503751263,
+          0.0
+        ],
+        [
+          -0.9377135579272714,
+          0.0
+        ]
+      ]
+    },
+    "dictionary_pass": true,
+    "eigen_index": 1,
+    "gram_condition": 61461.65269901727,
+    "gram_kept": 105,
+    "kind": "real",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.022067233451963597,
+      "real_tolerance": 0.1875427115854543,
+      "values": [
+        [
+          -0.9552504634716654,
+          0.0
+        ],
+        [
+          -0.9377135579272714,
+          0.0
+        ],
+        [
+          -0.9331832300197018,
+          0.0
+        ]
+      ]
+    },
+    "lag_pass": true,
+    "lambda": [
+      -0.951478623956966,
+      0.0
+    ],
+    "local_admissible": true,
+    "mu": [
+      0.6214254593073119,
+      0.0
+    ],
+    "nominal_K": 109,
+    "tau": 0.5,
+    "trivial_error": 3.774758283725532e-15,
+    "validation_residual": 0.7806370886658648
+  },
+  {
+    "all_short_unaliased": null,
+    "candidate_id": "driven_dt2p5e-4:real:E1:1e-12",
+    "case": "driven_dt2p5e-4",
+    "conditioning_pass": true,
+    "cutoff": 1e-12,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.0,
+      "real_tolerance": 0.1875427115854543,
+      "values": [
+        [
+          -0.9377135579272714,
+          0.0
+        ],
+        [
+          -0.9377135579272714,
+          0.0
+        ],
+        [
+          -0.9377135579272714,
+          0.0
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E1",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.008039992447854916,
+      "real_tolerance": 0.1883467108302398,
+      "values": [
+        [
+          -0.9457535503751263,
+          0.0
+        ],
+        [
+          -0.9377135579272714,
+          0.0
+        ]
+      ]
+    },
+    "dictionary_pass": true,
+    "eigen_index": 1,
+    "gram_condition": 61461.65269901727,
+    "gram_kept": 105,
+    "kind": "real",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.022067233451963597,
+      "real_tolerance": 0.1875427115854543,
+      "values": [
+        [
+          -0.9552504634716654,
+          0.0
+        ],
+        [
+          -0.9377135579272714,
+          0.0
+        ],
+        [
+          -0.9331832300197018,
+          0.0
+        ]
+      ]
+    },
+    "lag_pass": true,
+    "lambda": [
+      -0.951478623956966,
+      0.0
+    ],
+    "local_admissible": true,
+    "mu": [
+      0.6214254593073119,
+      0.0
+    ],
+    "nominal_K": 109,
+    "tau": 0.5,
+    "trivial_error": 3.774758283725532e-15,
+    "validation_residual": 0.7806370886658648
+  },
+  {
+    "all_short_unaliased": null,
+    "candidate_id": "driven_dt2p5e-4:real:E2:1e-08",
+    "case": "driven_dt2p5e-4",
+    "conditioning_pass": true,
+    "cutoff": 1e-08,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.0,
+      "real_tolerance": 0.1875427115854543,
+      "values": [
+        [
+          -0.9377135579272714,
+          0.0
+        ],
+        [
+          -0.9377135579272714,
+          0.0
+        ],
+        [
+          -0.9377135579272714,
+          0.0
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E2",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.008039992447854916,
+      "real_tolerance": 0.1883467108302398,
+      "values": [
+        [
+          -0.9457535503751263,
+          0.0
+        ],
+        [
+          -0.9377135579272714,
+          0.0
+        ]
+      ]
+    },
+    "dictionary_pass": true,
+    "eigen_index": 1,
+    "gram_condition": 64220.0161997256,
+    "gram_kept": 265,
+    "kind": "real",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.022067233451963597,
+      "real_tolerance": 0.1875427115854543,
+      "values": [
+        [
+          -0.9552504634716654,
+          0.0
+        ],
+        [
+          -0.9377135579272714,
+          0.0
+        ],
+        [
+          -0.9331832300197018,
+          0.0
+        ]
+      ]
+    },
+    "lag_pass": true,
+    "lambda": [
+      -0.9457535503751263,
+      0.0
+    ],
+    "local_admissible": true,
+    "mu": [
+      0.6232068609949107,
+      0.0
+    ],
+    "nominal_K": 269,
+    "tau": 0.5,
+    "trivial_error": 2.886579864025407e-15,
+    "validation_residual": 0.7817238237704245
+  },
+  {
+    "all_short_unaliased": null,
+    "candidate_id": "driven_dt2p5e-4:real:E2:1e-10",
+    "case": "driven_dt2p5e-4",
+    "conditioning_pass": true,
+    "cutoff": 1e-10,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.0,
+      "real_tolerance": 0.1875427115854543,
+      "values": [
+        [
+          -0.9377135579272714,
+          0.0
+        ],
+        [
+          -0.9377135579272714,
+          0.0
+        ],
+        [
+          -0.9377135579272714,
+          0.0
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E2",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.008039992447854916,
+      "real_tolerance": 0.1883467108302398,
+      "values": [
+        [
+          -0.9457535503751263,
+          0.0
+        ],
+        [
+          -0.9377135579272714,
+          0.0
+        ]
+      ]
+    },
+    "dictionary_pass": true,
+    "eigen_index": 1,
+    "gram_condition": 64220.0161997256,
+    "gram_kept": 265,
+    "kind": "real",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.022067233451963597,
+      "real_tolerance": 0.1875427115854543,
+      "values": [
+        [
+          -0.9552504634716654,
+          0.0
+        ],
+        [
+          -0.9377135579272714,
+          0.0
+        ],
+        [
+          -0.9331832300197018,
+          0.0
+        ]
+      ]
+    },
+    "lag_pass": true,
+    "lambda": [
+      -0.9457535503751263,
+      0.0
+    ],
+    "local_admissible": true,
+    "mu": [
+      0.6232068609949107,
+      0.0
+    ],
+    "nominal_K": 269,
+    "tau": 0.5,
+    "trivial_error": 2.886579864025407e-15,
+    "validation_residual": 0.7817238237704245
+  },
+  {
+    "all_short_unaliased": null,
+    "candidate_id": "driven_dt2p5e-4:real:E2:1e-12",
+    "case": "driven_dt2p5e-4",
+    "conditioning_pass": true,
+    "cutoff": 1e-12,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.0,
+      "real_tolerance": 0.1875427115854543,
+      "values": [
+        [
+          -0.9377135579272714,
+          0.0
+        ],
+        [
+          -0.9377135579272714,
+          0.0
+        ],
+        [
+          -0.9377135579272714,
+          0.0
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E2",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.008039992447854916,
+      "real_tolerance": 0.1883467108302398,
+      "values": [
+        [
+          -0.9457535503751263,
+          0.0
+        ],
+        [
+          -0.9377135579272714,
+          0.0
+        ]
+      ]
+    },
+    "dictionary_pass": true,
+    "eigen_index": 1,
+    "gram_condition": 64220.0161997256,
+    "gram_kept": 265,
+    "kind": "real",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.022067233451963597,
+      "real_tolerance": 0.1875427115854543,
+      "values": [
+        [
+          -0.9552504634716654,
+          0.0
+        ],
+        [
+          -0.9377135579272714,
+          0.0
+        ],
+        [
+          -0.9331832300197018,
+          0.0
+        ]
+      ]
+    },
+    "lag_pass": true,
+    "lambda": [
+      -0.9457535503751263,
+      0.0
+    ],
+    "local_admissible": true,
+    "mu": [
+      0.6232068609949107,
+      0.0
+    ],
+    "nominal_K": 269,
+    "tau": 0.5,
+    "trivial_error": 2.886579864025407e-15,
+    "validation_residual": 0.7817238237704245
+  },
+  {
+    "all_short_unaliased": null,
+    "candidate_id": "driven_dt2p5e-4:real:E3:1e-08",
+    "case": "driven_dt2p5e-4",
+    "conditioning_pass": true,
+    "cutoff": 1e-08,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.0,
+      "real_tolerance": 0.1875427115854543,
+      "values": [
+        [
+          -0.9377135579272714,
+          0.0
+        ],
+        [
+          -0.9377135579272714,
+          0.0
+        ],
+        [
+          -0.9377135579272714,
+          0.0
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E3",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.008039992447854916,
+      "real_tolerance": 0.1883467108302398,
+      "values": [
+        [
+          -0.9457535503751263,
+          0.0
+        ],
+        [
+          -0.9377135579272714,
+          0.0
+        ]
+      ]
+    },
+    "dictionary_pass": true,
+    "eigen_index": 1,
+    "gram_condition": 306874.4185850828,
+    "gram_kept": 515,
+    "kind": "real",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.022067233451963597,
+      "real_tolerance": 0.1875427115854543,
+      "values": [
+        [
+          -0.9552504634716654,
+          0.0
+        ],
+        [
+          -0.9377135579272714,
+          0.0
+        ],
+        [
+          -0.9331832300197018,
+          0.0
+        ]
+      ]
+    },
+    "lag_pass": true,
+    "lambda": [
+      -0.9377135579272714,
+      0.0
+    ],
+    "local_admissible": true,
+    "mu": [
+      0.6257171926039743,
+      0.0
+    ],
+    "nominal_K": 519,
+    "tau": 0.5,
+    "trivial_error": 3.552713678800501e-15,
+    "validation_residual": 0.7819028402867674
+  },
+  {
+    "all_short_unaliased": null,
+    "candidate_id": "driven_dt2p5e-4:real:E3:1e-10",
+    "case": "driven_dt2p5e-4",
+    "conditioning_pass": true,
+    "cutoff": 1e-10,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.0,
+      "real_tolerance": 0.1875427115854543,
+      "values": [
+        [
+          -0.9377135579272714,
+          0.0
+        ],
+        [
+          -0.9377135579272714,
+          0.0
+        ],
+        [
+          -0.9377135579272714,
+          0.0
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E3",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.008039992447854916,
+      "real_tolerance": 0.1883467108302398,
+      "values": [
+        [
+          -0.9457535503751263,
+          0.0
+        ],
+        [
+          -0.9377135579272714,
+          0.0
+        ]
+      ]
+    },
+    "dictionary_pass": true,
+    "eigen_index": 1,
+    "gram_condition": 306874.4185850828,
+    "gram_kept": 515,
+    "kind": "real",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.022067233451963597,
+      "real_tolerance": 0.1875427115854543,
+      "values": [
+        [
+          -0.9552504634716654,
+          0.0
+        ],
+        [
+          -0.9377135579272714,
+          0.0
+        ],
+        [
+          -0.9331832300197018,
+          0.0
+        ]
+      ]
+    },
+    "lag_pass": true,
+    "lambda": [
+      -0.9377135579272714,
+      0.0
+    ],
+    "local_admissible": true,
+    "mu": [
+      0.6257171926039743,
+      0.0
+    ],
+    "nominal_K": 519,
+    "tau": 0.5,
+    "trivial_error": 3.552713678800501e-15,
+    "validation_residual": 0.7819028402867674
+  },
+  {
+    "all_short_unaliased": null,
+    "candidate_id": "driven_dt2p5e-4:real:E3:1e-12",
+    "case": "driven_dt2p5e-4",
+    "conditioning_pass": true,
+    "cutoff": 1e-12,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.0,
+      "real_tolerance": 0.1875427115854543,
+      "values": [
+        [
+          -0.9377135579272714,
+          0.0
+        ],
+        [
+          -0.9377135579272714,
+          0.0
+        ],
+        [
+          -0.9377135579272714,
+          0.0
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E3",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.008039992447854916,
+      "real_tolerance": 0.1883467108302398,
+      "values": [
+        [
+          -0.9457535503751263,
+          0.0
+        ],
+        [
+          -0.9377135579272714,
+          0.0
+        ]
+      ]
+    },
+    "dictionary_pass": true,
+    "eigen_index": 1,
+    "gram_condition": 306874.4185850828,
+    "gram_kept": 515,
+    "kind": "real",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.022067233451963597,
+      "real_tolerance": 0.1875427115854543,
+      "values": [
+        [
+          -0.9552504634716654,
+          0.0
+        ],
+        [
+          -0.9377135579272714,
+          0.0
+        ],
+        [
+          -0.9331832300197018,
+          0.0
+        ]
+      ]
+    },
+    "lag_pass": true,
+    "lambda": [
+      -0.9377135579272714,
+      0.0
+    ],
+    "local_admissible": true,
+    "mu": [
+      0.6257171926039743,
+      0.0
+    ],
+    "nominal_K": 519,
+    "tau": 0.5,
+    "trivial_error": 3.552713678800501e-15,
+    "validation_residual": 0.7819028402867674
+  },
+  {
+    "all_short_unaliased": true,
+    "candidate_id": "equilibrium_dt1e-3:complex:E1:1e-08",
+    "case": "equilibrium_dt1e-3",
+    "conditioning_pass": true,
+    "cutoff": 1e-08,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 1.3950919955556291,
+      "real_range": 0.0,
+      "real_tolerance": 0.7979351286574841,
+      "values": [
+        [
+          -3.9896756432874203,
+          6.975459977778145
+        ],
+        [
+          -3.9896756432874203,
+          6.975459977778145
+        ],
+        [
+          -3.9896756432874203,
+          6.975459977778145
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E1",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 1.3934269199438853,
+      "imag_tolerance": 1.2557493035612408,
+      "real_range": 0.7414112571772962,
+      "real_tolerance": 0.7237940029397545,
+      "values": [
+        [
+          -3.248264386110124,
+          5.58203305783426
+        ],
+        [
+          -3.9896756432874203,
+          6.975459977778145
+        ]
+      ]
+    },
+    "dictionary_pass": false,
+    "eigen_index": 6,
+    "gram_condition": 44193.287909237166,
+    "gram_kept": 105,
+    "kind": "complex",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 2.516446803389419,
+      "imag_tolerance": 1.136427127817999,
+      "real_range": 0.5752333314696059,
+      "real_tolerance": 0.8113600597033734,
+      "values": [
+        [
+          -4.056800298516867,
+          4.459013174388726
+        ],
+        [
+          -3.9896756432874203,
+          6.975459977778145
+        ],
+        [
+          -4.564908974757026,
+          5.682135639089995
+        ]
+      ]
+    },
+    "lag_pass": false,
+    "lambda": [
+      -3.2780580008423192,
+      5.475066348750542
+    ],
+    "local_admissible": false,
+    "mu": [
+      0.8172167481863597,
+      0.22947704506417604
+    ],
+    "nominal_K": 109,
+    "tau": 0.05,
+    "trivial_error": 1.0658141036401503e-14,
+    "validation_residual": 0.5377024656878622
+  },
+  {
+    "all_short_unaliased": true,
+    "candidate_id": "equilibrium_dt1e-3:complex:E1:1e-10",
+    "case": "equilibrium_dt1e-3",
+    "conditioning_pass": true,
+    "cutoff": 1e-10,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 1.3950919955556291,
+      "real_range": 0.0,
+      "real_tolerance": 0.7979351286574841,
+      "values": [
+        [
+          -3.9896756432874203,
+          6.975459977778145
+        ],
+        [
+          -3.9896756432874203,
+          6.975459977778145
+        ],
+        [
+          -3.9896756432874203,
+          6.975459977778145
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E1",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 1.3934269199438853,
+      "imag_tolerance": 1.2557493035612408,
+      "real_range": 0.7414112571772962,
+      "real_tolerance": 0.7237940029397545,
+      "values": [
+        [
+          -3.248264386110124,
+          5.58203305783426
+        ],
+        [
+          -3.9896756432874203,
+          6.975459977778145
+        ]
+      ]
+    },
+    "dictionary_pass": false,
+    "eigen_index": 6,
+    "gram_condition": 44193.287909237166,
+    "gram_kept": 105,
+    "kind": "complex",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 2.516446803389419,
+      "imag_tolerance": 1.136427127817999,
+      "real_range": 0.5752333314696059,
+      "real_tolerance": 0.8113600597033734,
+      "values": [
+        [
+          -4.056800298516867,
+          4.459013174388726
+        ],
+        [
+          -3.9896756432874203,
+          6.975459977778145
+        ],
+        [
+          -4.564908974757026,
+          5.682135639089995
+        ]
+      ]
+    },
+    "lag_pass": false,
+    "lambda": [
+      -3.2780580008423192,
+      5.475066348750542
+    ],
+    "local_admissible": false,
+    "mu": [
+      0.8172167481863597,
+      0.22947704506417604
+    ],
+    "nominal_K": 109,
+    "tau": 0.05,
+    "trivial_error": 1.0658141036401503e-14,
+    "validation_residual": 0.5377024656878622
+  },
+  {
+    "all_short_unaliased": true,
+    "candidate_id": "equilibrium_dt1e-3:complex:E1:1e-12",
+    "case": "equilibrium_dt1e-3",
+    "conditioning_pass": true,
+    "cutoff": 1e-12,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 1.3950919955556291,
+      "real_range": 0.0,
+      "real_tolerance": 0.7979351286574841,
+      "values": [
+        [
+          -3.9896756432874203,
+          6.975459977778145
+        ],
+        [
+          -3.9896756432874203,
+          6.975459977778145
+        ],
+        [
+          -3.9896756432874203,
+          6.975459977778145
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E1",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 1.3934269199438853,
+      "imag_tolerance": 1.2557493035612408,
+      "real_range": 0.7414112571772962,
+      "real_tolerance": 0.7237940029397545,
+      "values": [
+        [
+          -3.248264386110124,
+          5.58203305783426
+        ],
+        [
+          -3.9896756432874203,
+          6.975459977778145
+        ]
+      ]
+    },
+    "dictionary_pass": false,
+    "eigen_index": 6,
+    "gram_condition": 44193.287909237166,
+    "gram_kept": 105,
+    "kind": "complex",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 2.516446803389419,
+      "imag_tolerance": 1.136427127817999,
+      "real_range": 0.5752333314696059,
+      "real_tolerance": 0.8113600597033734,
+      "values": [
+        [
+          -4.056800298516867,
+          4.459013174388726
+        ],
+        [
+          -3.9896756432874203,
+          6.975459977778145
+        ],
+        [
+          -4.564908974757026,
+          5.682135639089995
+        ]
+      ]
+    },
+    "lag_pass": false,
+    "lambda": [
+      -3.2780580008423192,
+      5.475066348750542
+    ],
+    "local_admissible": false,
+    "mu": [
+      0.8172167481863597,
+      0.22947704506417604
+    ],
+    "nominal_K": 109,
+    "tau": 0.05,
+    "trivial_error": 1.0658141036401503e-14,
+    "validation_residual": 0.5377024656878622
+  },
+  {
+    "all_short_unaliased": true,
+    "candidate_id": "equilibrium_dt1e-3:complex:E2:1e-08",
+    "case": "equilibrium_dt1e-3",
+    "conditioning_pass": true,
+    "cutoff": 1e-08,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 1.3950919955556291,
+      "real_range": 0.0,
+      "real_tolerance": 0.7979351286574841,
+      "values": [
+        [
+          -3.9896756432874203,
+          6.975459977778145
+        ],
+        [
+          -3.9896756432874203,
+          6.975459977778145
+        ],
+        [
+          -3.9896756432874203,
+          6.975459977778145
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E2",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 1.3934269199438853,
+      "imag_tolerance": 1.2557493035612408,
+      "real_range": 0.7414112571772962,
+      "real_tolerance": 0.7237940029397545,
+      "values": [
+        [
+          -3.248264386110124,
+          5.58203305783426
+        ],
+        [
+          -3.9896756432874203,
+          6.975459977778145
+        ]
+      ]
+    },
+    "dictionary_pass": false,
+    "eigen_index": 4,
+    "gram_condition": 46349.19888586364,
+    "gram_kept": 265,
+    "kind": "complex",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 2.516446803389419,
+      "imag_tolerance": 1.136427127817999,
+      "real_range": 0.5752333314696059,
+      "real_tolerance": 0.8113600597033734,
+      "values": [
+        [
+          -4.056800298516867,
+          4.459013174388726
+        ],
+        [
+          -3.9896756432874203,
+          6.975459977778145
+        ],
+        [
+          -4.564908974757026,
+          5.682135639089995
+        ]
+      ]
+    },
+    "lag_pass": false,
+    "lambda": [
+      -3.248264386110124,
+      5.58203305783426
+    ],
+    "local_admissible": false,
+    "mu": [
+      0.8171941978996602,
+      0.23419310471373614
+    ],
+    "nominal_K": 269,
+    "tau": 0.05,
+    "trivial_error": 1.1102230246251565e-15,
+    "validation_residual": 0.5419468429164841
+  },
+  {
+    "all_short_unaliased": true,
+    "candidate_id": "equilibrium_dt1e-3:complex:E2:1e-10",
+    "case": "equilibrium_dt1e-3",
+    "conditioning_pass": true,
+    "cutoff": 1e-10,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 1.3950919955556291,
+      "real_range": 0.0,
+      "real_tolerance": 0.7979351286574841,
+      "values": [
+        [
+          -3.9896756432874203,
+          6.975459977778145
+        ],
+        [
+          -3.9896756432874203,
+          6.975459977778145
+        ],
+        [
+          -3.9896756432874203,
+          6.975459977778145
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E2",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 1.3934269199438853,
+      "imag_tolerance": 1.2557493035612408,
+      "real_range": 0.7414112571772962,
+      "real_tolerance": 0.7237940029397545,
+      "values": [
+        [
+          -3.248264386110124,
+          5.58203305783426
+        ],
+        [
+          -3.9896756432874203,
+          6.975459977778145
+        ]
+      ]
+    },
+    "dictionary_pass": false,
+    "eigen_index": 4,
+    "gram_condition": 46349.19888586364,
+    "gram_kept": 265,
+    "kind": "complex",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 2.516446803389419,
+      "imag_tolerance": 1.136427127817999,
+      "real_range": 0.5752333314696059,
+      "real_tolerance": 0.8113600597033734,
+      "values": [
+        [
+          -4.056800298516867,
+          4.459013174388726
+        ],
+        [
+          -3.9896756432874203,
+          6.975459977778145
+        ],
+        [
+          -4.564908974757026,
+          5.682135639089995
+        ]
+      ]
+    },
+    "lag_pass": false,
+    "lambda": [
+      -3.248264386110124,
+      5.58203305783426
+    ],
+    "local_admissible": false,
+    "mu": [
+      0.8171941978996602,
+      0.23419310471373614
+    ],
+    "nominal_K": 269,
+    "tau": 0.05,
+    "trivial_error": 1.1102230246251565e-15,
+    "validation_residual": 0.5419468429164841
+  },
+  {
+    "all_short_unaliased": true,
+    "candidate_id": "equilibrium_dt1e-3:complex:E2:1e-12",
+    "case": "equilibrium_dt1e-3",
+    "conditioning_pass": true,
+    "cutoff": 1e-12,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 1.3950919955556291,
+      "real_range": 0.0,
+      "real_tolerance": 0.7979351286574841,
+      "values": [
+        [
+          -3.9896756432874203,
+          6.975459977778145
+        ],
+        [
+          -3.9896756432874203,
+          6.975459977778145
+        ],
+        [
+          -3.9896756432874203,
+          6.975459977778145
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E2",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 1.3934269199438853,
+      "imag_tolerance": 1.2557493035612408,
+      "real_range": 0.7414112571772962,
+      "real_tolerance": 0.7237940029397545,
+      "values": [
+        [
+          -3.248264386110124,
+          5.58203305783426
+        ],
+        [
+          -3.9896756432874203,
+          6.975459977778145
+        ]
+      ]
+    },
+    "dictionary_pass": false,
+    "eigen_index": 4,
+    "gram_condition": 46349.19888586364,
+    "gram_kept": 265,
+    "kind": "complex",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 2.516446803389419,
+      "imag_tolerance": 1.136427127817999,
+      "real_range": 0.5752333314696059,
+      "real_tolerance": 0.8113600597033734,
+      "values": [
+        [
+          -4.056800298516867,
+          4.459013174388726
+        ],
+        [
+          -3.9896756432874203,
+          6.975459977778145
+        ],
+        [
+          -4.564908974757026,
+          5.682135639089995
+        ]
+      ]
+    },
+    "lag_pass": false,
+    "lambda": [
+      -3.248264386110124,
+      5.58203305783426
+    ],
+    "local_admissible": false,
+    "mu": [
+      0.8171941978996602,
+      0.23419310471373614
+    ],
+    "nominal_K": 269,
+    "tau": 0.05,
+    "trivial_error": 1.1102230246251565e-15,
+    "validation_residual": 0.5419468429164841
+  },
+  {
+    "all_short_unaliased": true,
+    "candidate_id": "equilibrium_dt1e-3:complex:E3:1e-08",
+    "case": "equilibrium_dt1e-3",
+    "conditioning_pass": true,
+    "cutoff": 1e-08,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 1.130788443759126,
+      "real_range": 0.0,
+      "real_tolerance": 1.1351016033548582,
+      "values": [
+        [
+          -5.675508016774291,
+          5.653942218795629
+        ],
+        [
+          -5.675508016774291,
+          5.653942218795629
+        ],
+        [
+          -5.675508016774291,
+          5.653942218795629
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E3",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 0.3661081494881593,
+      "imag_tolerance": 1.09417762881031,
+      "real_range": 0.26742734439233473,
+      "real_tolerance": 1.1618443377940917,
+      "values": [
+        [
+          -5.942935361166626,
+          5.28783406930747
+        ],
+        [
+          -5.675508016774291,
+          5.653942218795629
+        ]
+      ]
+    },
+    "dictionary_pass": true,
+    "eigen_index": 21,
+    "gram_condition": 791847.4745023643,
+    "gram_kept": 515,
+    "kind": "complex",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 0.6403647443650753,
+      "imag_tolerance": 1.130788443759126,
+      "real_range": 0.517426065947153,
+      "real_tolerance": 1.1351016033548582,
+      "values": [
+        [
+          -5.4170061159025495,
+          5.792028361256583
+        ],
+        [
+          -5.675508016774291,
+          5.653942218795629
+        ],
+        [
+          -5.934432181849703,
+          5.151663616891508
+        ]
+      ]
+    },
+    "lag_pass": true,
+    "lambda": [
+      -5.675508016774291,
+      5.653942218795629
+    ],
+    "local_admissible": true,
+    "mu": [
+      0.7230491414803577,
+      0.21002894852410733
+    ],
+    "nominal_K": 519,
+    "tau": 0.05,
+    "trivial_error": 7.993605777301127e-15,
+    "validation_residual": 0.7944102717045528
+  },
+  {
+    "all_short_unaliased": true,
+    "candidate_id": "equilibrium_dt1e-3:complex:E3:1e-10",
+    "case": "equilibrium_dt1e-3",
+    "conditioning_pass": true,
+    "cutoff": 1e-10,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 1.130788443759126,
+      "real_range": 0.0,
+      "real_tolerance": 1.1351016033548582,
+      "values": [
+        [
+          -5.675508016774291,
+          5.653942218795629
+        ],
+        [
+          -5.675508016774291,
+          5.653942218795629
+        ],
+        [
+          -5.675508016774291,
+          5.653942218795629
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E3",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 0.3661081494881593,
+      "imag_tolerance": 1.09417762881031,
+      "real_range": 0.26742734439233473,
+      "real_tolerance": 1.1618443377940917,
+      "values": [
+        [
+          -5.942935361166626,
+          5.28783406930747
+        ],
+        [
+          -5.675508016774291,
+          5.653942218795629
+        ]
+      ]
+    },
+    "dictionary_pass": true,
+    "eigen_index": 21,
+    "gram_condition": 791847.4745023643,
+    "gram_kept": 515,
+    "kind": "complex",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 0.6403647443650753,
+      "imag_tolerance": 1.130788443759126,
+      "real_range": 0.517426065947153,
+      "real_tolerance": 1.1351016033548582,
+      "values": [
+        [
+          -5.4170061159025495,
+          5.792028361256583
+        ],
+        [
+          -5.675508016774291,
+          5.653942218795629
+        ],
+        [
+          -5.934432181849703,
+          5.151663616891508
+        ]
+      ]
+    },
+    "lag_pass": true,
+    "lambda": [
+      -5.675508016774291,
+      5.653942218795629
+    ],
+    "local_admissible": true,
+    "mu": [
+      0.7230491414803577,
+      0.21002894852410733
+    ],
+    "nominal_K": 519,
+    "tau": 0.05,
+    "trivial_error": 7.993605777301127e-15,
+    "validation_residual": 0.7944102717045528
+  },
+  {
+    "all_short_unaliased": true,
+    "candidate_id": "equilibrium_dt1e-3:complex:E3:1e-12",
+    "case": "equilibrium_dt1e-3",
+    "conditioning_pass": true,
+    "cutoff": 1e-12,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 1.130788443759126,
+      "real_range": 0.0,
+      "real_tolerance": 1.1351016033548582,
+      "values": [
+        [
+          -5.675508016774291,
+          5.653942218795629
+        ],
+        [
+          -5.675508016774291,
+          5.653942218795629
+        ],
+        [
+          -5.675508016774291,
+          5.653942218795629
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E3",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 0.3661081494881593,
+      "imag_tolerance": 1.09417762881031,
+      "real_range": 0.26742734439233473,
+      "real_tolerance": 1.1618443377940917,
+      "values": [
+        [
+          -5.942935361166626,
+          5.28783406930747
+        ],
+        [
+          -5.675508016774291,
+          5.653942218795629
+        ]
+      ]
+    },
+    "dictionary_pass": true,
+    "eigen_index": 21,
+    "gram_condition": 791847.4745023643,
+    "gram_kept": 515,
+    "kind": "complex",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 0.6403647443650753,
+      "imag_tolerance": 1.130788443759126,
+      "real_range": 0.517426065947153,
+      "real_tolerance": 1.1351016033548582,
+      "values": [
+        [
+          -5.4170061159025495,
+          5.792028361256583
+        ],
+        [
+          -5.675508016774291,
+          5.653942218795629
+        ],
+        [
+          -5.934432181849703,
+          5.151663616891508
+        ]
+      ]
+    },
+    "lag_pass": true,
+    "lambda": [
+      -5.675508016774291,
+      5.653942218795629
+    ],
+    "local_admissible": true,
+    "mu": [
+      0.7230491414803577,
+      0.21002894852410733
+    ],
+    "nominal_K": 519,
+    "tau": 0.05,
+    "trivial_error": 7.993605777301127e-15,
+    "validation_residual": 0.7944102717045528
+  },
+  {
+    "all_short_unaliased": null,
+    "candidate_id": "equilibrium_dt1e-3:real:E1:1e-08",
+    "case": "equilibrium_dt1e-3",
+    "conditioning_pass": true,
+    "cutoff": 1e-08,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.0,
+      "real_tolerance": 0.18380043622260145,
+      "values": [
+        [
+          -0.9190021811130072,
+          0.0
+        ],
+        [
+          -0.9190021811130072,
+          0.0
+        ],
+        [
+          -0.9190021811130072,
+          0.0
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E1",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.014318022181270096,
+      "real_tolerance": 0.18523223844072847,
+      "values": [
+        [
+          -0.9333202032942773,
+          0.0
+        ],
+        [
+          -0.9190021811130072,
+          0.0
+        ]
+      ]
+    },
+    "dictionary_pass": true,
+    "eigen_index": 1,
+    "gram_condition": 44193.287909237166,
+    "gram_kept": 105,
+    "kind": "real",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.027562463329315223,
+      "real_tolerance": 0.18380043622260145,
+      "values": [
+        [
+          -0.9435465537276992,
+          0.0
+        ],
+        [
+          -0.9190021811130072,
+          0.0
+        ],
+        [
+          -0.915984090398384,
+          0.0
+        ]
+      ]
+    },
+    "lag_pass": true,
+    "lambda": [
+      -0.9375725035651862,
+      0.0
+    ],
+    "local_admissible": true,
+    "mu": [
+      0.6257613242299198,
+      0.0
+    ],
+    "nominal_K": 109,
+    "tau": 0.5,
+    "trivial_error": 1.7763568394002505e-15,
+    "validation_residual": 0.7763177896066887
+  },
+  {
+    "all_short_unaliased": null,
+    "candidate_id": "equilibrium_dt1e-3:real:E1:1e-10",
+    "case": "equilibrium_dt1e-3",
+    "conditioning_pass": true,
+    "cutoff": 1e-10,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.0,
+      "real_tolerance": 0.18380043622260145,
+      "values": [
+        [
+          -0.9190021811130072,
+          0.0
+        ],
+        [
+          -0.9190021811130072,
+          0.0
+        ],
+        [
+          -0.9190021811130072,
+          0.0
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E1",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.014318022181270096,
+      "real_tolerance": 0.18523223844072847,
+      "values": [
+        [
+          -0.9333202032942773,
+          0.0
+        ],
+        [
+          -0.9190021811130072,
+          0.0
+        ]
+      ]
+    },
+    "dictionary_pass": true,
+    "eigen_index": 1,
+    "gram_condition": 44193.287909237166,
+    "gram_kept": 105,
+    "kind": "real",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.027562463329315223,
+      "real_tolerance": 0.18380043622260145,
+      "values": [
+        [
+          -0.9435465537276992,
+          0.0
+        ],
+        [
+          -0.9190021811130072,
+          0.0
+        ],
+        [
+          -0.915984090398384,
+          0.0
+        ]
+      ]
+    },
+    "lag_pass": true,
+    "lambda": [
+      -0.9375725035651862,
+      0.0
+    ],
+    "local_admissible": true,
+    "mu": [
+      0.6257613242299198,
+      0.0
+    ],
+    "nominal_K": 109,
+    "tau": 0.5,
+    "trivial_error": 1.7763568394002505e-15,
+    "validation_residual": 0.7763177896066887
+  },
+  {
+    "all_short_unaliased": null,
+    "candidate_id": "equilibrium_dt1e-3:real:E1:1e-12",
+    "case": "equilibrium_dt1e-3",
+    "conditioning_pass": true,
+    "cutoff": 1e-12,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.0,
+      "real_tolerance": 0.18380043622260145,
+      "values": [
+        [
+          -0.9190021811130072,
+          0.0
+        ],
+        [
+          -0.9190021811130072,
+          0.0
+        ],
+        [
+          -0.9190021811130072,
+          0.0
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E1",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.014318022181270096,
+      "real_tolerance": 0.18523223844072847,
+      "values": [
+        [
+          -0.9333202032942773,
+          0.0
+        ],
+        [
+          -0.9190021811130072,
+          0.0
+        ]
+      ]
+    },
+    "dictionary_pass": true,
+    "eigen_index": 1,
+    "gram_condition": 44193.287909237166,
+    "gram_kept": 105,
+    "kind": "real",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.027562463329315223,
+      "real_tolerance": 0.18380043622260145,
+      "values": [
+        [
+          -0.9435465537276992,
+          0.0
+        ],
+        [
+          -0.9190021811130072,
+          0.0
+        ],
+        [
+          -0.915984090398384,
+          0.0
+        ]
+      ]
+    },
+    "lag_pass": true,
+    "lambda": [
+      -0.9375725035651862,
+      0.0
+    ],
+    "local_admissible": true,
+    "mu": [
+      0.6257613242299198,
+      0.0
+    ],
+    "nominal_K": 109,
+    "tau": 0.5,
+    "trivial_error": 1.7763568394002505e-15,
+    "validation_residual": 0.7763177896066887
+  },
+  {
+    "all_short_unaliased": null,
+    "candidate_id": "equilibrium_dt1e-3:real:E2:1e-08",
+    "case": "equilibrium_dt1e-3",
+    "conditioning_pass": true,
+    "cutoff": 1e-08,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.0,
+      "real_tolerance": 0.18380043622260145,
+      "values": [
+        [
+          -0.9190021811130072,
+          0.0
+        ],
+        [
+          -0.9190021811130072,
+          0.0
+        ],
+        [
+          -0.9190021811130072,
+          0.0
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E2",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.014318022181270096,
+      "real_tolerance": 0.18523223844072847,
+      "values": [
+        [
+          -0.9333202032942773,
+          0.0
+        ],
+        [
+          -0.9190021811130072,
+          0.0
+        ]
+      ]
+    },
+    "dictionary_pass": true,
+    "eigen_index": 1,
+    "gram_condition": 46349.19888586364,
+    "gram_kept": 265,
+    "kind": "real",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.027562463329315223,
+      "real_tolerance": 0.18380043622260145,
+      "values": [
+        [
+          -0.9435465537276992,
+          0.0
+        ],
+        [
+          -0.9190021811130072,
+          0.0
+        ],
+        [
+          -0.915984090398384,
+          0.0
+        ]
+      ]
+    },
+    "lag_pass": true,
+    "lambda": [
+      -0.9333202032942773,
+      0.0
+    ],
+    "local_admissible": true,
+    "mu": [
+      0.6270932021386604,
+      0.0
+    ],
+    "nominal_K": 269,
+    "tau": 0.5,
+    "trivial_error": 0.0,
+    "validation_residual": 0.7774618149691431
+  },
+  {
+    "all_short_unaliased": null,
+    "candidate_id": "equilibrium_dt1e-3:real:E2:1e-10",
+    "case": "equilibrium_dt1e-3",
+    "conditioning_pass": true,
+    "cutoff": 1e-10,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.0,
+      "real_tolerance": 0.18380043622260145,
+      "values": [
+        [
+          -0.9190021811130072,
+          0.0
+        ],
+        [
+          -0.9190021811130072,
+          0.0
+        ],
+        [
+          -0.9190021811130072,
+          0.0
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E2",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.014318022181270096,
+      "real_tolerance": 0.18523223844072847,
+      "values": [
+        [
+          -0.9333202032942773,
+          0.0
+        ],
+        [
+          -0.9190021811130072,
+          0.0
+        ]
+      ]
+    },
+    "dictionary_pass": true,
+    "eigen_index": 1,
+    "gram_condition": 46349.19888586364,
+    "gram_kept": 265,
+    "kind": "real",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.027562463329315223,
+      "real_tolerance": 0.18380043622260145,
+      "values": [
+        [
+          -0.9435465537276992,
+          0.0
+        ],
+        [
+          -0.9190021811130072,
+          0.0
+        ],
+        [
+          -0.915984090398384,
+          0.0
+        ]
+      ]
+    },
+    "lag_pass": true,
+    "lambda": [
+      -0.9333202032942773,
+      0.0
+    ],
+    "local_admissible": true,
+    "mu": [
+      0.6270932021386604,
+      0.0
+    ],
+    "nominal_K": 269,
+    "tau": 0.5,
+    "trivial_error": 0.0,
+    "validation_residual": 0.7774618149691431
+  },
+  {
+    "all_short_unaliased": null,
+    "candidate_id": "equilibrium_dt1e-3:real:E2:1e-12",
+    "case": "equilibrium_dt1e-3",
+    "conditioning_pass": true,
+    "cutoff": 1e-12,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.0,
+      "real_tolerance": 0.18380043622260145,
+      "values": [
+        [
+          -0.9190021811130072,
+          0.0
+        ],
+        [
+          -0.9190021811130072,
+          0.0
+        ],
+        [
+          -0.9190021811130072,
+          0.0
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E2",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.014318022181270096,
+      "real_tolerance": 0.18523223844072847,
+      "values": [
+        [
+          -0.9333202032942773,
+          0.0
+        ],
+        [
+          -0.9190021811130072,
+          0.0
+        ]
+      ]
+    },
+    "dictionary_pass": true,
+    "eigen_index": 1,
+    "gram_condition": 46349.19888586364,
+    "gram_kept": 265,
+    "kind": "real",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.027562463329315223,
+      "real_tolerance": 0.18380043622260145,
+      "values": [
+        [
+          -0.9435465537276992,
+          0.0
+        ],
+        [
+          -0.9190021811130072,
+          0.0
+        ],
+        [
+          -0.915984090398384,
+          0.0
+        ]
+      ]
+    },
+    "lag_pass": true,
+    "lambda": [
+      -0.9333202032942773,
+      0.0
+    ],
+    "local_admissible": true,
+    "mu": [
+      0.6270932021386604,
+      0.0
+    ],
+    "nominal_K": 269,
+    "tau": 0.5,
+    "trivial_error": 0.0,
+    "validation_residual": 0.7774618149691431
+  },
+  {
+    "all_short_unaliased": null,
+    "candidate_id": "equilibrium_dt1e-3:real:E3:1e-08",
+    "case": "equilibrium_dt1e-3",
+    "conditioning_pass": true,
+    "cutoff": 1e-08,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.0,
+      "real_tolerance": 0.18380043622260145,
+      "values": [
+        [
+          -0.9190021811130072,
+          0.0
+        ],
+        [
+          -0.9190021811130072,
+          0.0
+        ],
+        [
+          -0.9190021811130072,
+          0.0
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E3",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.014318022181270096,
+      "real_tolerance": 0.18523223844072847,
+      "values": [
+        [
+          -0.9333202032942773,
+          0.0
+        ],
+        [
+          -0.9190021811130072,
+          0.0
+        ]
+      ]
+    },
+    "dictionary_pass": true,
+    "eigen_index": 1,
+    "gram_condition": 791847.4745023643,
+    "gram_kept": 515,
+    "kind": "real",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.027562463329315223,
+      "real_tolerance": 0.18380043622260145,
+      "values": [
+        [
+          -0.9435465537276992,
+          0.0
+        ],
+        [
+          -0.9190021811130072,
+          0.0
+        ],
+        [
+          -0.915984090398384,
+          0.0
+        ]
+      ]
+    },
+    "lag_pass": true,
+    "lambda": [
+      -0.9190021811130072,
+      0.0
+    ],
+    "local_admissible": true,
+    "mu": [
+      0.6315986774588676,
+      0.0
+    ],
+    "nominal_K": 519,
+    "tau": 0.5,
+    "trivial_error": 2.6645352591003757e-15,
+    "validation_residual": 0.7778938141710795
+  },
+  {
+    "all_short_unaliased": null,
+    "candidate_id": "equilibrium_dt1e-3:real:E3:1e-10",
+    "case": "equilibrium_dt1e-3",
+    "conditioning_pass": true,
+    "cutoff": 1e-10,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.0,
+      "real_tolerance": 0.18380043622260145,
+      "values": [
+        [
+          -0.9190021811130072,
+          0.0
+        ],
+        [
+          -0.9190021811130072,
+          0.0
+        ],
+        [
+          -0.9190021811130072,
+          0.0
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E3",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.014318022181270096,
+      "real_tolerance": 0.18523223844072847,
+      "values": [
+        [
+          -0.9333202032942773,
+          0.0
+        ],
+        [
+          -0.9190021811130072,
+          0.0
+        ]
+      ]
+    },
+    "dictionary_pass": true,
+    "eigen_index": 1,
+    "gram_condition": 791847.4745023643,
+    "gram_kept": 515,
+    "kind": "real",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.027562463329315223,
+      "real_tolerance": 0.18380043622260145,
+      "values": [
+        [
+          -0.9435465537276992,
+          0.0
+        ],
+        [
+          -0.9190021811130072,
+          0.0
+        ],
+        [
+          -0.915984090398384,
+          0.0
+        ]
+      ]
+    },
+    "lag_pass": true,
+    "lambda": [
+      -0.9190021811130072,
+      0.0
+    ],
+    "local_admissible": true,
+    "mu": [
+      0.6315986774588676,
+      0.0
+    ],
+    "nominal_K": 519,
+    "tau": 0.5,
+    "trivial_error": 2.6645352591003757e-15,
+    "validation_residual": 0.7778938141710795
+  },
+  {
+    "all_short_unaliased": null,
+    "candidate_id": "equilibrium_dt1e-3:real:E3:1e-12",
+    "case": "equilibrium_dt1e-3",
+    "conditioning_pass": true,
+    "cutoff": 1e-12,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.0,
+      "real_tolerance": 0.18380043622260145,
+      "values": [
+        [
+          -0.9190021811130072,
+          0.0
+        ],
+        [
+          -0.9190021811130072,
+          0.0
+        ],
+        [
+          -0.9190021811130072,
+          0.0
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E3",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.014318022181270096,
+      "real_tolerance": 0.18523223844072847,
+      "values": [
+        [
+          -0.9333202032942773,
+          0.0
+        ],
+        [
+          -0.9190021811130072,
+          0.0
+        ]
+      ]
+    },
+    "dictionary_pass": true,
+    "eigen_index": 1,
+    "gram_condition": 791847.4745023643,
+    "gram_kept": 515,
+    "kind": "real",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.027562463329315223,
+      "real_tolerance": 0.18380043622260145,
+      "values": [
+        [
+          -0.9435465537276992,
+          0.0
+        ],
+        [
+          -0.9190021811130072,
+          0.0
+        ],
+        [
+          -0.915984090398384,
+          0.0
+        ]
+      ]
+    },
+    "lag_pass": true,
+    "lambda": [
+      -0.9190021811130072,
+      0.0
+    ],
+    "local_admissible": true,
+    "mu": [
+      0.6315986774588676,
+      0.0
+    ],
+    "nominal_K": 519,
+    "tau": 0.5,
+    "trivial_error": 2.6645352591003757e-15,
+    "validation_residual": 0.7778938141710795
+  },
+  {
+    "all_short_unaliased": true,
+    "candidate_id": "equilibrium_dt2p5e-4:complex:E1:1e-08",
+    "case": "equilibrium_dt2p5e-4",
+    "conditioning_pass": true,
+    "cutoff": 1e-08,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.8847409809577713,
+      "real_range": 0.0,
+      "real_tolerance": 0.765518792184356,
+      "values": [
+        [
+          -3.8275939609217797,
+          4.423704904788856
+        ],
+        [
+          -3.8275939609217797,
+          4.423704904788856
+        ],
+        [
+          -3.8275939609217797,
+          4.423704904788856
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E1",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 1.26594081119919,
+      "imag_tolerance": 1.0113350620776902,
+      "real_range": 0.4751876590368296,
+      "real_tolerance": 0.718000026280673,
+      "values": [
+        [
+          -3.35240630188495,
+          5.689645715988046
+        ],
+        [
+          -3.8275939609217797,
+          4.423704904788856
+        ]
+      ]
+    },
+    "dictionary_pass": false,
+    "eigen_index": 10,
+    "gram_condition": 48686.98852800418,
+    "gram_kept": 105,
+    "kind": "complex",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 2.221227826301468,
+      "imag_tolerance": 1.2815413574712302,
+      "real_range": 0.6187125487106853,
+      "real_tolerance": 0.8683040148450056,
+      "values": [
+        [
+          -4.446306509632465,
+          6.40770678735615
+        ],
+        [
+          -3.8275939609217797,
+          4.423704904788856
+        ],
+        [
+          -4.341520074225028,
+          6.644932731090324
+        ]
+      ]
+    },
+    "lag_pass": false,
+    "lambda": [
+      -3.4134568923028032,
+      5.536414204724016
+    ],
+    "local_admissible": false,
+    "mu": [
+      0.8109999568003021,
+      0.2304174805671256
+    ],
+    "nominal_K": 109,
+    "tau": 0.05,
+    "trivial_error": 1.354472090042691e-14,
+    "validation_residual": 0.5460913292132966
+  },
+  {
+    "all_short_unaliased": true,
+    "candidate_id": "equilibrium_dt2p5e-4:complex:E1:1e-10",
+    "case": "equilibrium_dt2p5e-4",
+    "conditioning_pass": true,
+    "cutoff": 1e-10,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.8847409809577713,
+      "real_range": 0.0,
+      "real_tolerance": 0.765518792184356,
+      "values": [
+        [
+          -3.8275939609217797,
+          4.423704904788856
+        ],
+        [
+          -3.8275939609217797,
+          4.423704904788856
+        ],
+        [
+          -3.8275939609217797,
+          4.423704904788856
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E1",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 1.26594081119919,
+      "imag_tolerance": 1.0113350620776902,
+      "real_range": 0.4751876590368296,
+      "real_tolerance": 0.718000026280673,
+      "values": [
+        [
+          -3.35240630188495,
+          5.689645715988046
+        ],
+        [
+          -3.8275939609217797,
+          4.423704904788856
+        ]
+      ]
+    },
+    "dictionary_pass": false,
+    "eigen_index": 10,
+    "gram_condition": 48686.98852800418,
+    "gram_kept": 105,
+    "kind": "complex",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 2.221227826301468,
+      "imag_tolerance": 1.2815413574712302,
+      "real_range": 0.6187125487106853,
+      "real_tolerance": 0.8683040148450056,
+      "values": [
+        [
+          -4.446306509632465,
+          6.40770678735615
+        ],
+        [
+          -3.8275939609217797,
+          4.423704904788856
+        ],
+        [
+          -4.341520074225028,
+          6.644932731090324
+        ]
+      ]
+    },
+    "lag_pass": false,
+    "lambda": [
+      -3.4134568923028032,
+      5.536414204724016
+    ],
+    "local_admissible": false,
+    "mu": [
+      0.8109999568003021,
+      0.2304174805671256
+    ],
+    "nominal_K": 109,
+    "tau": 0.05,
+    "trivial_error": 1.354472090042691e-14,
+    "validation_residual": 0.5460913292132966
+  },
+  {
+    "all_short_unaliased": true,
+    "candidate_id": "equilibrium_dt2p5e-4:complex:E1:1e-12",
+    "case": "equilibrium_dt2p5e-4",
+    "conditioning_pass": true,
+    "cutoff": 1e-12,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.8847409809577713,
+      "real_range": 0.0,
+      "real_tolerance": 0.765518792184356,
+      "values": [
+        [
+          -3.8275939609217797,
+          4.423704904788856
+        ],
+        [
+          -3.8275939609217797,
+          4.423704904788856
+        ],
+        [
+          -3.8275939609217797,
+          4.423704904788856
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E1",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 1.26594081119919,
+      "imag_tolerance": 1.0113350620776902,
+      "real_range": 0.4751876590368296,
+      "real_tolerance": 0.718000026280673,
+      "values": [
+        [
+          -3.35240630188495,
+          5.689645715988046
+        ],
+        [
+          -3.8275939609217797,
+          4.423704904788856
+        ]
+      ]
+    },
+    "dictionary_pass": false,
+    "eigen_index": 10,
+    "gram_condition": 48686.98852800418,
+    "gram_kept": 105,
+    "kind": "complex",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 2.221227826301468,
+      "imag_tolerance": 1.2815413574712302,
+      "real_range": 0.6187125487106853,
+      "real_tolerance": 0.8683040148450056,
+      "values": [
+        [
+          -4.446306509632465,
+          6.40770678735615
+        ],
+        [
+          -3.8275939609217797,
+          4.423704904788856
+        ],
+        [
+          -4.341520074225028,
+          6.644932731090324
+        ]
+      ]
+    },
+    "lag_pass": false,
+    "lambda": [
+      -3.4134568923028032,
+      5.536414204724016
+    ],
+    "local_admissible": false,
+    "mu": [
+      0.8109999568003021,
+      0.2304174805671256
+    ],
+    "nominal_K": 109,
+    "tau": 0.05,
+    "trivial_error": 1.354472090042691e-14,
+    "validation_residual": 0.5460913292132966
+  },
+  {
+    "all_short_unaliased": true,
+    "candidate_id": "equilibrium_dt2p5e-4:complex:E2:1e-08",
+    "case": "equilibrium_dt2p5e-4",
+    "conditioning_pass": true,
+    "cutoff": 1e-08,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.8847409809577713,
+      "real_range": 0.0,
+      "real_tolerance": 0.765518792184356,
+      "values": [
+        [
+          -3.8275939609217797,
+          4.423704904788856
+        ],
+        [
+          -3.8275939609217797,
+          4.423704904788856
+        ],
+        [
+          -3.8275939609217797,
+          4.423704904788856
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E2",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 1.26594081119919,
+      "imag_tolerance": 1.0113350620776902,
+      "real_range": 0.4751876590368296,
+      "real_tolerance": 0.718000026280673,
+      "values": [
+        [
+          -3.35240630188495,
+          5.689645715988046
+        ],
+        [
+          -3.8275939609217797,
+          4.423704904788856
+        ]
+      ]
+    },
+    "dictionary_pass": false,
+    "eigen_index": 5,
+    "gram_condition": 50144.09318911145,
+    "gram_kept": 265,
+    "kind": "complex",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 2.221227826301468,
+      "imag_tolerance": 1.2815413574712302,
+      "real_range": 0.6187125487106853,
+      "real_tolerance": 0.8683040148450056,
+      "values": [
+        [
+          -4.446306509632465,
+          6.40770678735615
+        ],
+        [
+          -3.8275939609217797,
+          4.423704904788856
+        ],
+        [
+          -4.341520074225028,
+          6.644932731090324
+        ]
+      ]
+    },
+    "lag_pass": false,
+    "lambda": [
+      -3.35240630188495,
+      5.689645715988046
+    ],
+    "local_admissible": false,
+    "mu": [
+      0.8116847243201184,
+      0.23734760042559092
+    ],
+    "nominal_K": 269,
+    "tau": 0.05,
+    "trivial_error": 4.440892098500626e-15,
+    "validation_residual": 0.5496158326113786
+  },
+  {
+    "all_short_unaliased": true,
+    "candidate_id": "equilibrium_dt2p5e-4:complex:E2:1e-10",
+    "case": "equilibrium_dt2p5e-4",
+    "conditioning_pass": true,
+    "cutoff": 1e-10,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.8847409809577713,
+      "real_range": 0.0,
+      "real_tolerance": 0.765518792184356,
+      "values": [
+        [
+          -3.8275939609217797,
+          4.423704904788856
+        ],
+        [
+          -3.8275939609217797,
+          4.423704904788856
+        ],
+        [
+          -3.8275939609217797,
+          4.423704904788856
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E2",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 1.26594081119919,
+      "imag_tolerance": 1.0113350620776902,
+      "real_range": 0.4751876590368296,
+      "real_tolerance": 0.718000026280673,
+      "values": [
+        [
+          -3.35240630188495,
+          5.689645715988046
+        ],
+        [
+          -3.8275939609217797,
+          4.423704904788856
+        ]
+      ]
+    },
+    "dictionary_pass": false,
+    "eigen_index": 5,
+    "gram_condition": 50144.09318911145,
+    "gram_kept": 265,
+    "kind": "complex",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 2.221227826301468,
+      "imag_tolerance": 1.2815413574712302,
+      "real_range": 0.6187125487106853,
+      "real_tolerance": 0.8683040148450056,
+      "values": [
+        [
+          -4.446306509632465,
+          6.40770678735615
+        ],
+        [
+          -3.8275939609217797,
+          4.423704904788856
+        ],
+        [
+          -4.341520074225028,
+          6.644932731090324
+        ]
+      ]
+    },
+    "lag_pass": false,
+    "lambda": [
+      -3.35240630188495,
+      5.689645715988046
+    ],
+    "local_admissible": false,
+    "mu": [
+      0.8116847243201184,
+      0.23734760042559092
+    ],
+    "nominal_K": 269,
+    "tau": 0.05,
+    "trivial_error": 4.440892098500626e-15,
+    "validation_residual": 0.5496158326113786
+  },
+  {
+    "all_short_unaliased": true,
+    "candidate_id": "equilibrium_dt2p5e-4:complex:E2:1e-12",
+    "case": "equilibrium_dt2p5e-4",
+    "conditioning_pass": true,
+    "cutoff": 1e-12,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.8847409809577713,
+      "real_range": 0.0,
+      "real_tolerance": 0.765518792184356,
+      "values": [
+        [
+          -3.8275939609217797,
+          4.423704904788856
+        ],
+        [
+          -3.8275939609217797,
+          4.423704904788856
+        ],
+        [
+          -3.8275939609217797,
+          4.423704904788856
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E2",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 1.26594081119919,
+      "imag_tolerance": 1.0113350620776902,
+      "real_range": 0.4751876590368296,
+      "real_tolerance": 0.718000026280673,
+      "values": [
+        [
+          -3.35240630188495,
+          5.689645715988046
+        ],
+        [
+          -3.8275939609217797,
+          4.423704904788856
+        ]
+      ]
+    },
+    "dictionary_pass": false,
+    "eigen_index": 5,
+    "gram_condition": 50144.09318911145,
+    "gram_kept": 265,
+    "kind": "complex",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 2.221227826301468,
+      "imag_tolerance": 1.2815413574712302,
+      "real_range": 0.6187125487106853,
+      "real_tolerance": 0.8683040148450056,
+      "values": [
+        [
+          -4.446306509632465,
+          6.40770678735615
+        ],
+        [
+          -3.8275939609217797,
+          4.423704904788856
+        ],
+        [
+          -4.341520074225028,
+          6.644932731090324
+        ]
+      ]
+    },
+    "lag_pass": false,
+    "lambda": [
+      -3.35240630188495,
+      5.689645715988046
+    ],
+    "local_admissible": false,
+    "mu": [
+      0.8116847243201184,
+      0.23734760042559092
+    ],
+    "nominal_K": 269,
+    "tau": 0.05,
+    "trivial_error": 4.440892098500626e-15,
+    "validation_residual": 0.5496158326113786
+  },
+  {
+    "all_short_unaliased": true,
+    "candidate_id": "equilibrium_dt2p5e-4:complex:E3:1e-08",
+    "case": "equilibrium_dt2p5e-4",
+    "conditioning_pass": true,
+    "cutoff": 1e-08,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.9995766248719655,
+      "real_range": 0.0,
+      "real_tolerance": 1.0815753634256127,
+      "values": [
+        [
+          -5.407876817128063,
+          4.997883124359827
+        ],
+        [
+          -5.407876817128063,
+          4.997883124359827
+        ],
+        [
+          -5.407876817128063,
+          4.997883124359827
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E3",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 0.2547071821799296,
+      "imag_tolerance": 1.0250473430899585,
+      "real_range": 0.27202938658611053,
+      "real_tolerance": 1.1087783020842237,
+      "values": [
+        [
+          -5.679906203714173,
+          5.252590306539757
+        ],
+        [
+          -5.407876817128063,
+          4.997883124359827
+        ]
+      ]
+    },
+    "dictionary_pass": true,
+    "eigen_index": 14,
+    "gram_condition": 262462.36873481824,
+    "gram_kept": 515,
+    "kind": "complex",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 0.7147535833887009,
+      "imag_tolerance": 0.9995766248719655,
+      "real_range": 0.8905229323534352,
+      "real_tolerance": 1.0815753634256127,
+      "values": [
+        [
+          -4.959522423501786,
+          4.563585380396188
+        ],
+        [
+          -5.407876817128063,
+          4.997883124359827
+        ],
+        [
+          -5.8500453558552215,
+          5.278338963784889
+        ]
+      ]
+    },
+    "lag_pass": true,
+    "lambda": [
+      -5.407876817128063,
+      4.997883124359827
+    ],
+    "local_admissible": true,
+    "mu": [
+      0.7393766063188515,
+      0.1887104845902103
+    ],
+    "nominal_K": 519,
+    "tau": 0.05,
+    "trivial_error": 7.549516567451064e-15,
+    "validation_residual": 0.7128195117456729
+  },
+  {
+    "all_short_unaliased": true,
+    "candidate_id": "equilibrium_dt2p5e-4:complex:E3:1e-10",
+    "case": "equilibrium_dt2p5e-4",
+    "conditioning_pass": true,
+    "cutoff": 1e-10,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.9995766248719655,
+      "real_range": 0.0,
+      "real_tolerance": 1.0815753634256127,
+      "values": [
+        [
+          -5.407876817128063,
+          4.997883124359827
+        ],
+        [
+          -5.407876817128063,
+          4.997883124359827
+        ],
+        [
+          -5.407876817128063,
+          4.997883124359827
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E3",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 0.2547071821799296,
+      "imag_tolerance": 1.0250473430899585,
+      "real_range": 0.27202938658611053,
+      "real_tolerance": 1.1087783020842237,
+      "values": [
+        [
+          -5.679906203714173,
+          5.252590306539757
+        ],
+        [
+          -5.407876817128063,
+          4.997883124359827
+        ]
+      ]
+    },
+    "dictionary_pass": true,
+    "eigen_index": 14,
+    "gram_condition": 262462.36873481824,
+    "gram_kept": 515,
+    "kind": "complex",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 0.7147535833887009,
+      "imag_tolerance": 0.9995766248719655,
+      "real_range": 0.8905229323534352,
+      "real_tolerance": 1.0815753634256127,
+      "values": [
+        [
+          -4.959522423501786,
+          4.563585380396188
+        ],
+        [
+          -5.407876817128063,
+          4.997883124359827
+        ],
+        [
+          -5.8500453558552215,
+          5.278338963784889
+        ]
+      ]
+    },
+    "lag_pass": true,
+    "lambda": [
+      -5.407876817128063,
+      4.997883124359827
+    ],
+    "local_admissible": true,
+    "mu": [
+      0.7393766063188515,
+      0.1887104845902103
+    ],
+    "nominal_K": 519,
+    "tau": 0.05,
+    "trivial_error": 7.549516567451064e-15,
+    "validation_residual": 0.7128195117456729
+  },
+  {
+    "all_short_unaliased": true,
+    "candidate_id": "equilibrium_dt2p5e-4:complex:E3:1e-12",
+    "case": "equilibrium_dt2p5e-4",
+    "conditioning_pass": true,
+    "cutoff": 1e-12,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.9995766248719655,
+      "real_range": 0.0,
+      "real_tolerance": 1.0815753634256127,
+      "values": [
+        [
+          -5.407876817128063,
+          4.997883124359827
+        ],
+        [
+          -5.407876817128063,
+          4.997883124359827
+        ],
+        [
+          -5.407876817128063,
+          4.997883124359827
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E3",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 0.2547071821799296,
+      "imag_tolerance": 1.0250473430899585,
+      "real_range": 0.27202938658611053,
+      "real_tolerance": 1.1087783020842237,
+      "values": [
+        [
+          -5.679906203714173,
+          5.252590306539757
+        ],
+        [
+          -5.407876817128063,
+          4.997883124359827
+        ]
+      ]
+    },
+    "dictionary_pass": true,
+    "eigen_index": 14,
+    "gram_condition": 262462.36873481824,
+    "gram_kept": 515,
+    "kind": "complex",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 0.7147535833887009,
+      "imag_tolerance": 0.9995766248719655,
+      "real_range": 0.8905229323534352,
+      "real_tolerance": 1.0815753634256127,
+      "values": [
+        [
+          -4.959522423501786,
+          4.563585380396188
+        ],
+        [
+          -5.407876817128063,
+          4.997883124359827
+        ],
+        [
+          -5.8500453558552215,
+          5.278338963784889
+        ]
+      ]
+    },
+    "lag_pass": true,
+    "lambda": [
+      -5.407876817128063,
+      4.997883124359827
+    ],
+    "local_admissible": true,
+    "mu": [
+      0.7393766063188515,
+      0.1887104845902103
+    ],
+    "nominal_K": 519,
+    "tau": 0.05,
+    "trivial_error": 7.549516567451064e-15,
+    "validation_residual": 0.7128195117456729
+  },
+  {
+    "all_short_unaliased": null,
+    "candidate_id": "equilibrium_dt2p5e-4:real:E1:1e-08",
+    "case": "equilibrium_dt2p5e-4",
+    "conditioning_pass": true,
+    "cutoff": 1e-08,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.0,
+      "real_tolerance": 0.1793084327070288,
+      "values": [
+        [
+          -0.8965421635351438,
+          0.0
+        ],
+        [
+          -0.8965421635351438,
+          0.0
+        ],
+        [
+          -0.8965421635351438,
+          0.0
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E1",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.008617014635806997,
+      "real_tolerance": 0.18017013417060945,
+      "values": [
+        [
+          -0.9051591781709508,
+          0.0
+        ],
+        [
+          -0.8965421635351438,
+          0.0
+        ]
+      ]
+    },
+    "dictionary_pass": true,
+    "eigen_index": 1,
+    "gram_condition": 48686.98852800418,
+    "gram_kept": 105,
+    "kind": "real",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.008830530372170409,
+      "real_tolerance": 0.1793084327070288,
+      "values": [
+        [
+          -0.8883221146797832,
+          0.0
+        ],
+        [
+          -0.8965421635351438,
+          0.0
+        ],
+        [
+          -0.8971526450519536,
+          0.0
+        ]
+      ]
+    },
+    "lag_pass": true,
+    "lambda": [
+      -0.9085947602968656,
+      0.0
+    ],
+    "local_admissible": true,
+    "mu": [
+      0.6348939003274207,
+      0.0
+    ],
+    "nominal_K": 109,
+    "tau": 0.5,
+    "trivial_error": 1.3322676295501878e-15,
+    "validation_residual": 0.7773004043546059
+  },
+  {
+    "all_short_unaliased": null,
+    "candidate_id": "equilibrium_dt2p5e-4:real:E1:1e-10",
+    "case": "equilibrium_dt2p5e-4",
+    "conditioning_pass": true,
+    "cutoff": 1e-10,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.0,
+      "real_tolerance": 0.1793084327070288,
+      "values": [
+        [
+          -0.8965421635351438,
+          0.0
+        ],
+        [
+          -0.8965421635351438,
+          0.0
+        ],
+        [
+          -0.8965421635351438,
+          0.0
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E1",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.008617014635806997,
+      "real_tolerance": 0.18017013417060945,
+      "values": [
+        [
+          -0.9051591781709508,
+          0.0
+        ],
+        [
+          -0.8965421635351438,
+          0.0
+        ]
+      ]
+    },
+    "dictionary_pass": true,
+    "eigen_index": 1,
+    "gram_condition": 48686.98852800418,
+    "gram_kept": 105,
+    "kind": "real",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.008830530372170409,
+      "real_tolerance": 0.1793084327070288,
+      "values": [
+        [
+          -0.8883221146797832,
+          0.0
+        ],
+        [
+          -0.8965421635351438,
+          0.0
+        ],
+        [
+          -0.8971526450519536,
+          0.0
+        ]
+      ]
+    },
+    "lag_pass": true,
+    "lambda": [
+      -0.9085947602968656,
+      0.0
+    ],
+    "local_admissible": true,
+    "mu": [
+      0.6348939003274207,
+      0.0
+    ],
+    "nominal_K": 109,
+    "tau": 0.5,
+    "trivial_error": 1.3322676295501878e-15,
+    "validation_residual": 0.7773004043546059
+  },
+  {
+    "all_short_unaliased": null,
+    "candidate_id": "equilibrium_dt2p5e-4:real:E1:1e-12",
+    "case": "equilibrium_dt2p5e-4",
+    "conditioning_pass": true,
+    "cutoff": 1e-12,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.0,
+      "real_tolerance": 0.1793084327070288,
+      "values": [
+        [
+          -0.8965421635351438,
+          0.0
+        ],
+        [
+          -0.8965421635351438,
+          0.0
+        ],
+        [
+          -0.8965421635351438,
+          0.0
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E1",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.008617014635806997,
+      "real_tolerance": 0.18017013417060945,
+      "values": [
+        [
+          -0.9051591781709508,
+          0.0
+        ],
+        [
+          -0.8965421635351438,
+          0.0
+        ]
+      ]
+    },
+    "dictionary_pass": true,
+    "eigen_index": 1,
+    "gram_condition": 48686.98852800418,
+    "gram_kept": 105,
+    "kind": "real",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.008830530372170409,
+      "real_tolerance": 0.1793084327070288,
+      "values": [
+        [
+          -0.8883221146797832,
+          0.0
+        ],
+        [
+          -0.8965421635351438,
+          0.0
+        ],
+        [
+          -0.8971526450519536,
+          0.0
+        ]
+      ]
+    },
+    "lag_pass": true,
+    "lambda": [
+      -0.9085947602968656,
+      0.0
+    ],
+    "local_admissible": true,
+    "mu": [
+      0.6348939003274207,
+      0.0
+    ],
+    "nominal_K": 109,
+    "tau": 0.5,
+    "trivial_error": 1.3322676295501878e-15,
+    "validation_residual": 0.7773004043546059
+  },
+  {
+    "all_short_unaliased": null,
+    "candidate_id": "equilibrium_dt2p5e-4:real:E2:1e-08",
+    "case": "equilibrium_dt2p5e-4",
+    "conditioning_pass": true,
+    "cutoff": 1e-08,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.0,
+      "real_tolerance": 0.1793084327070288,
+      "values": [
+        [
+          -0.8965421635351438,
+          0.0
+        ],
+        [
+          -0.8965421635351438,
+          0.0
+        ],
+        [
+          -0.8965421635351438,
+          0.0
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E2",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.008617014635806997,
+      "real_tolerance": 0.18017013417060945,
+      "values": [
+        [
+          -0.9051591781709508,
+          0.0
+        ],
+        [
+          -0.8965421635351438,
+          0.0
+        ]
+      ]
+    },
+    "dictionary_pass": true,
+    "eigen_index": 1,
+    "gram_condition": 50144.09318911145,
+    "gram_kept": 265,
+    "kind": "real",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.008830530372170409,
+      "real_tolerance": 0.1793084327070288,
+      "values": [
+        [
+          -0.8883221146797832,
+          0.0
+        ],
+        [
+          -0.8965421635351438,
+          0.0
+        ],
+        [
+          -0.8971526450519536,
+          0.0
+        ]
+      ]
+    },
+    "lag_pass": true,
+    "lambda": [
+      -0.9051591781709508,
+      0.0
+    ],
+    "local_admissible": true,
+    "mu": [
+      0.6359854526563337,
+      0.0
+    ],
+    "nominal_K": 269,
+    "tau": 0.5,
+    "trivial_error": 1.3322676295501878e-15,
+    "validation_residual": 0.7772813748092496
+  },
+  {
+    "all_short_unaliased": null,
+    "candidate_id": "equilibrium_dt2p5e-4:real:E2:1e-10",
+    "case": "equilibrium_dt2p5e-4",
+    "conditioning_pass": true,
+    "cutoff": 1e-10,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.0,
+      "real_tolerance": 0.1793084327070288,
+      "values": [
+        [
+          -0.8965421635351438,
+          0.0
+        ],
+        [
+          -0.8965421635351438,
+          0.0
+        ],
+        [
+          -0.8965421635351438,
+          0.0
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E2",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.008617014635806997,
+      "real_tolerance": 0.18017013417060945,
+      "values": [
+        [
+          -0.9051591781709508,
+          0.0
+        ],
+        [
+          -0.8965421635351438,
+          0.0
+        ]
+      ]
+    },
+    "dictionary_pass": true,
+    "eigen_index": 1,
+    "gram_condition": 50144.09318911145,
+    "gram_kept": 265,
+    "kind": "real",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.008830530372170409,
+      "real_tolerance": 0.1793084327070288,
+      "values": [
+        [
+          -0.8883221146797832,
+          0.0
+        ],
+        [
+          -0.8965421635351438,
+          0.0
+        ],
+        [
+          -0.8971526450519536,
+          0.0
+        ]
+      ]
+    },
+    "lag_pass": true,
+    "lambda": [
+      -0.9051591781709508,
+      0.0
+    ],
+    "local_admissible": true,
+    "mu": [
+      0.6359854526563337,
+      0.0
+    ],
+    "nominal_K": 269,
+    "tau": 0.5,
+    "trivial_error": 1.3322676295501878e-15,
+    "validation_residual": 0.7772813748092496
+  },
+  {
+    "all_short_unaliased": null,
+    "candidate_id": "equilibrium_dt2p5e-4:real:E2:1e-12",
+    "case": "equilibrium_dt2p5e-4",
+    "conditioning_pass": true,
+    "cutoff": 1e-12,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.0,
+      "real_tolerance": 0.1793084327070288,
+      "values": [
+        [
+          -0.8965421635351438,
+          0.0
+        ],
+        [
+          -0.8965421635351438,
+          0.0
+        ],
+        [
+          -0.8965421635351438,
+          0.0
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E2",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.008617014635806997,
+      "real_tolerance": 0.18017013417060945,
+      "values": [
+        [
+          -0.9051591781709508,
+          0.0
+        ],
+        [
+          -0.8965421635351438,
+          0.0
+        ]
+      ]
+    },
+    "dictionary_pass": true,
+    "eigen_index": 1,
+    "gram_condition": 50144.09318911145,
+    "gram_kept": 265,
+    "kind": "real",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.008830530372170409,
+      "real_tolerance": 0.1793084327070288,
+      "values": [
+        [
+          -0.8883221146797832,
+          0.0
+        ],
+        [
+          -0.8965421635351438,
+          0.0
+        ],
+        [
+          -0.8971526450519536,
+          0.0
+        ]
+      ]
+    },
+    "lag_pass": true,
+    "lambda": [
+      -0.9051591781709508,
+      0.0
+    ],
+    "local_admissible": true,
+    "mu": [
+      0.6359854526563337,
+      0.0
+    ],
+    "nominal_K": 269,
+    "tau": 0.5,
+    "trivial_error": 1.3322676295501878e-15,
+    "validation_residual": 0.7772813748092496
+  },
+  {
+    "all_short_unaliased": null,
+    "candidate_id": "equilibrium_dt2p5e-4:real:E3:1e-08",
+    "case": "equilibrium_dt2p5e-4",
+    "conditioning_pass": true,
+    "cutoff": 1e-08,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.0,
+      "real_tolerance": 0.1793084327070288,
+      "values": [
+        [
+          -0.8965421635351438,
+          0.0
+        ],
+        [
+          -0.8965421635351438,
+          0.0
+        ],
+        [
+          -0.8965421635351438,
+          0.0
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E3",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.008617014635806997,
+      "real_tolerance": 0.18017013417060945,
+      "values": [
+        [
+          -0.9051591781709508,
+          0.0
+        ],
+        [
+          -0.8965421635351438,
+          0.0
+        ]
+      ]
+    },
+    "dictionary_pass": true,
+    "eigen_index": 1,
+    "gram_condition": 262462.36873481824,
+    "gram_kept": 515,
+    "kind": "real",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.008830530372170409,
+      "real_tolerance": 0.1793084327070288,
+      "values": [
+        [
+          -0.8883221146797832,
+          0.0
+        ],
+        [
+          -0.8965421635351438,
+          0.0
+        ],
+        [
+          -0.8971526450519536,
+          0.0
+        ]
+      ]
+    },
+    "lag_pass": true,
+    "lambda": [
+      -0.8965421635351438,
+      0.0
+    ],
+    "local_admissible": true,
+    "mu": [
+      0.6387315120937969,
+      0.0
+    ],
+    "nominal_K": 519,
+    "tau": 0.5,
+    "trivial_error": 2.886579864025407e-15,
+    "validation_residual": 0.7802420478034828
+  },
+  {
+    "all_short_unaliased": null,
+    "candidate_id": "equilibrium_dt2p5e-4:real:E3:1e-10",
+    "case": "equilibrium_dt2p5e-4",
+    "conditioning_pass": true,
+    "cutoff": 1e-10,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.0,
+      "real_tolerance": 0.1793084327070288,
+      "values": [
+        [
+          -0.8965421635351438,
+          0.0
+        ],
+        [
+          -0.8965421635351438,
+          0.0
+        ],
+        [
+          -0.8965421635351438,
+          0.0
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E3",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.008617014635806997,
+      "real_tolerance": 0.18017013417060945,
+      "values": [
+        [
+          -0.9051591781709508,
+          0.0
+        ],
+        [
+          -0.8965421635351438,
+          0.0
+        ]
+      ]
+    },
+    "dictionary_pass": true,
+    "eigen_index": 1,
+    "gram_condition": 262462.36873481824,
+    "gram_kept": 515,
+    "kind": "real",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.008830530372170409,
+      "real_tolerance": 0.1793084327070288,
+      "values": [
+        [
+          -0.8883221146797832,
+          0.0
+        ],
+        [
+          -0.8965421635351438,
+          0.0
+        ],
+        [
+          -0.8971526450519536,
+          0.0
+        ]
+      ]
+    },
+    "lag_pass": true,
+    "lambda": [
+      -0.8965421635351438,
+      0.0
+    ],
+    "local_admissible": true,
+    "mu": [
+      0.6387315120937969,
+      0.0
+    ],
+    "nominal_K": 519,
+    "tau": 0.5,
+    "trivial_error": 2.886579864025407e-15,
+    "validation_residual": 0.7802420478034828
+  },
+  {
+    "all_short_unaliased": null,
+    "candidate_id": "equilibrium_dt2p5e-4:real:E3:1e-12",
+    "case": "equilibrium_dt2p5e-4",
+    "conditioning_pass": true,
+    "cutoff": 1e-12,
+    "cutoff_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.0,
+      "real_tolerance": 0.1793084327070288,
+      "values": [
+        [
+          -0.8965421635351438,
+          0.0
+        ],
+        [
+          -0.8965421635351438,
+          0.0
+        ],
+        [
+          -0.8965421635351438,
+          0.0
+        ]
+      ]
+    },
+    "cutoff_pass": true,
+    "dictionary": "E3",
+    "dictionary_detail": {
+      "count": 2,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.008617014635806997,
+      "real_tolerance": 0.18017013417060945,
+      "values": [
+        [
+          -0.9051591781709508,
+          0.0
+        ],
+        [
+          -0.8965421635351438,
+          0.0
+        ]
+      ]
+    },
+    "dictionary_pass": true,
+    "eigen_index": 1,
+    "gram_condition": 262462.36873481824,
+    "gram_kept": 515,
+    "kind": "real",
+    "lag_detail": {
+      "count": 3,
+      "imag_range": 0.0,
+      "imag_tolerance": 0.5,
+      "real_range": 0.008830530372170409,
+      "real_tolerance": 0.1793084327070288,
+      "values": [
+        [
+          -0.8883221146797832,
+          0.0
+        ],
+        [
+          -0.8965421635351438,
+          0.0
+        ],
+        [
+          -0.8971526450519536,
+          0.0
+        ]
+      ]
+    },
+    "lag_pass": true,
+    "lambda": [
+      -0.8965421635351438,
+      0.0
+    ],
+    "local_admissible": true,
+    "mu": [
+      0.6387315120937969,
+      0.0
+    ],
+    "nominal_K": 519,
+    "tau": 0.5,
+    "trivial_error": 2.886579864025407e-15,
+    "validation_residual": 0.7802420478034828
+  }
+]

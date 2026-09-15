@@ -1,0 +1,82 @@
+{
+  "fit_window": [
+    0.05,
+    1.0
+  ],
+  "bootstrap_replicates": 2000,
+  "half_cycle_threshold": 3.306939635357677,
+  "even_candidate_results": [
+    {
+      "case": "driven_T2_T8",
+      "group": "even-candidate",
+      "requested_observables": [
+        "cos_theta1",
+        "cos_theta3",
+        "cos_theta1_minus_theta3",
+        "I2",
+        "I1_plus_I3"
+      ],
+      "accepted_observables": [
+        "I2",
+        "I1_plus_I3"
+      ],
+      "unresolved_observables": [
+        "cos_theta1",
+        "cos_theta3",
+        "cos_theta1_minus_theta3"
+      ],
+      "status": "NO COMMON PLATEAU",
+      "rate_min": -1.1088171244713736,
+      "rate_max": -0.9925655214195399,
+      "absolute_spread": 0.11625160305183369,
+      "relative_spread_over_abs_median": 0.1106429647919235,
+      "failure_reason": "fewer than three individually resolved observables"
+    },
+    {
+      "case": "equilibrium_T5_T5",
+      "group": "even-candidate",
+      "requested_observables": [
+        "cos_theta1",
+        "cos_theta3",
+        "cos_theta1_minus_theta3",
+        "I2",
+        "I1_plus_I3"
+      ],
+      "accepted_observables": [
+        "cos_theta1",
+        "cos_theta3",
+        "I2"
+      ],
+      "unresolved_observables": [
+        "cos_theta1_minus_theta3",
+        "I1_plus_I3"
+      ],
+      "status": "NO COMMON PLATEAU",
+      "rate_min": -1.187833087490744,
+      "rate_max": -0.9065189091397072,
+      "absolute_spread": 0.28131417835103667,
+      "relative_spread_over_abs_median": 0.24821290697980702,
+      "common_time_start": 1.0,
+      "common_time_end": 1.68,
+      "time_overlap": true,
+      "ci_intersection_low": -0.9664823187975431,
+      "ci_intersection_high": -1.0159711098621902,
+      "ci_overlap": false,
+      "rate_spread_ok": false,
+      "failure_reason": "rate spread exceeds 20%; 95% confidence intervals do not intersect"
+    }
+  ],
+  "sign_changing_pair_agreement": [
+    {
+      "case": "driven_T2_T8",
+      "lambda_R_ci_overlap": false,
+      "lambda_I_ci_overlap": false
+    },
+    {
+      "case": "equilibrium_T5_T5",
+      "lambda_R_ci_overlap": false,
+      "lambda_I_ci_overlap": false
+    }
+  ],
+  "symmetry_label_limitation": "sin(theta1) is not exchange odd by itself; the saved observable set does not span the exact exchange sectors"
+}

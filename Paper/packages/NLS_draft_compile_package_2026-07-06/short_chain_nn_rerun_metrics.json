@@ -1,0 +1,217 @@
+{
+  "generated_at_utc": "2026-06-19T15:52:55.599261+00:00",
+  "script": "Paper/revision_2026-06-19/scripts/recompute_short_chain_nn_metrics.py",
+  "runtime": {
+    "python": "3.11.5",
+    "platform": "macOS-15.6.1-arm64-arm-64bit",
+    "tensorflow": "2.21.0",
+    "keras": "3.14.0"
+  },
+  "source_files": {
+    "nonequilibrium_model": {
+      "path": "KDE/4:15_NN/h5_files/final.keras",
+      "exists": true,
+      "bytes": 506148,
+      "sha256": "906f5e606cf4631c9c3234ee5e09a6b8d19a5d18ed0b7897638d0e95bc07d536"
+    },
+    "equilibrium_model": {
+      "path": "KDE/4:15_NN/h5_files_eq/final.keras",
+      "exists": true,
+      "bytes": 506148,
+      "sha256": "d9b2294b789d3cea2e753820c8164eaf1191a070fbaf16d43345cc7321ced163"
+    },
+    "eigen_model": {
+      "path": "KDE/h5_files_eigen/final.keras",
+      "exists": true,
+      "bytes": 506192,
+      "sha256": "cbe65647e89d61b13fe054b74c0640bd9abd273ef3f3634441f731ced681e8ee"
+    },
+    "nonequilibrium_boxes": {
+      "path": "KDE/4:15_NN/NLS_FP_boxes.txt",
+      "exists": true,
+      "bytes": 1466322,
+      "sha256": "39972c12e7980e83e8436230db44bb48e5aec6a6c6c554ae3642447dff407829"
+    },
+    "nonequilibrium_density": {
+      "path": "KDE/4:15_NN/NLS_FP_density.txt",
+      "exists": true,
+      "bytes": 449045,
+      "sha256": "c00fcd478d82980b63f7710195fe3a64760ba7058c387ade22985a2e41a46c4b"
+    },
+    "equilibrium_density": {
+      "path": "KDE/4:15_NN/eq/NLS_FP_density.txt",
+      "exists": true,
+      "bytes": 411270,
+      "sha256": "6501d87e8b419e33e056eb41a9ac9054edc872b7eef43618bf8d569eedcbca94"
+    },
+    "eigen_X": {
+      "path": "KDE/backward_NLS_X.txt",
+      "exists": true,
+      "bytes": 4235394,
+      "sha256": "006a1763a992d46f3af1eb7022cd5598218a7316d5ad79273cc47f28604e47c0"
+    },
+    "eigen_Q1": {
+      "path": "KDE/backward_NLS_Q1.txt",
+      "exists": true,
+      "bytes": 858731,
+      "sha256": "a5920a892396854111185dcefc3624bacb5929cc2a622e21181fd891b25b4055"
+    }
+  },
+  "normalization": {
+    "nonequilibrium_log_density_mean": -10.091568946838379,
+    "nonequilibrium_log_density_std": 3.767906665802002,
+    "equilibrium_log_density_mean": -9.074328422546387,
+    "equilibrium_log_density_std": 2.32301664352417
+  },
+  "equilibrium_validation": [
+    {
+      "I": 0.5,
+      "mean_relative_error_percent": 1.4705729484558105,
+      "median_relative_error_percent": 1.263271689414978,
+      "max_relative_error_percent": 3.948901653289795,
+      "log_ratio_min": -0.03546571731567383,
+      "log_ratio_max": 0.038729190826416016,
+      "grid": 100
+    },
+    {
+      "I": 1.0,
+      "mean_relative_error_percent": 2.620353937149048,
+      "median_relative_error_percent": 2.3320131301879883,
+      "max_relative_error_percent": 7.1776909828186035,
+      "log_ratio_min": -0.05774402618408203,
+      "log_ratio_max": 0.06931781768798828,
+      "grid": 100
+    },
+    {
+      "I": 2.0,
+      "mean_relative_error_percent": 6.403645038604736,
+      "median_relative_error_percent": 5.212268352508545,
+      "max_relative_error_percent": 18.836673736572266,
+      "log_ratio_min": -0.07188224792480469,
+      "log_ratio_max": 0.17257976531982422,
+      "grid": 100
+    }
+  ],
+  "symmetry_breaking": {
+    "I": 2.0,
+    "grid": 100,
+    "unmasked_max_abs_asymmetry_percent": 67.18444061279297,
+    "unmasked_mean_abs_asymmetry_percent": 28.122753143310547,
+    "high_density_mask_threshold": "p+p.T >= 20% of max(p+p.T)",
+    "high_density_bins": 5253,
+    "masked_max_abs_asymmetry_percent": 56.23780059814453,
+    "masked_mean_abs_asymmetry_percent": 17.467784881591797
+  },
+  "angular_width_diagnostic": [
+    {
+      "I": 0.5,
+      "sigma_theta1": 2.56236242795653,
+      "sigma_theta3": 2.6666482348660456,
+      "sigma3_over_sigma1": 1.0406990852549625,
+      "sqrt_T3_over_T1": 2.0,
+      "theta_grid": 100,
+      "marginal_grid": 20
+    },
+    {
+      "I": 1.0,
+      "sigma_theta1": 2.0151504545367964,
+      "sigma_theta3": 2.1641638176152296,
+      "sigma3_over_sigma1": 1.0739465198456783,
+      "sqrt_T3_over_T1": 2.0,
+      "theta_grid": 100,
+      "marginal_grid": 20
+    },
+    {
+      "I": 2.0,
+      "sigma_theta1": 1.3289022372996635,
+      "sigma_theta3": 1.5052003641549423,
+      "sigma3_over_sigma1": 1.1326644819362466,
+      "sqrt_T3_over_T1": 2.0,
+      "theta_grid": 100,
+      "marginal_grid": 20
+    },
+    {
+      "I": 3.0,
+      "sigma_theta1": 1.0405919744305043,
+      "sigma_theta3": 1.172494345144038,
+      "sigma3_over_sigma1": 1.1267570517115715,
+      "sqrt_T3_over_T1": 2.0,
+      "theta_grid": 100,
+      "marginal_grid": 20
+    },
+    {
+      "I": 4.0,
+      "sigma_theta1": 1.2853214559645567,
+      "sigma_theta3": 1.3220664574742127,
+      "sigma3_over_sigma1": 1.0285881802868382,
+      "sqrt_T3_over_T1": 2.0,
+      "theta_grid": 100,
+      "marginal_grid": 20
+    }
+  ],
+  "phase_locking_diagnostic": {
+    "gamma": 0.1,
+    "stable_branch_theta0_rad": 2.191200837470542,
+    "stable_branch_theta0_deg": 125.5465600525935,
+    "rows": [
+      {
+        "I": 0.5,
+        "argmax_density_theta_rad": 2.411282539367676,
+        "argmax_density_theta_deg": 138.15631103515625,
+        "legacy_notebook_argmin_density_theta_deg": -33.54709243774414,
+        "note": "argmax is the density peak; legacy notebook printed argmin and is retained only for provenance comparison."
+      },
+      {
+        "I": 1.0,
+        "argmax_density_theta_rad": 2.4238741397857666,
+        "argmax_density_theta_deg": 138.87774658203125,
+        "legacy_notebook_argmin_density_theta_deg": -33.54709243774414,
+        "note": "argmax is the density peak; legacy notebook printed argmin and is retained only for provenance comparison."
+      },
+      {
+        "I": 2.0,
+        "argmax_density_theta_rad": 2.512014865875244,
+        "argmax_density_theta_deg": 143.92784118652344,
+        "legacy_notebook_argmin_density_theta_deg": -34.9899787902832,
+        "note": "argmax is the density peak; legacy notebook printed argmin and is retained only for provenance comparison."
+      },
+      {
+        "I": 3.0,
+        "argmax_density_theta_rad": 2.6127474308013916,
+        "argmax_density_theta_deg": 149.6993865966797,
+        "legacy_notebook_argmin_density_theta_deg": -19.118234634399414,
+        "note": "argmax is the density peak; legacy notebook printed argmin and is retained only for provenance comparison."
+      },
+      {
+        "I": 4.0,
+        "argmax_density_theta_rad": 2.914944648742676,
+        "argmax_density_theta_deg": 167.01402282714844,
+        "legacy_notebook_argmin_density_theta_deg": -10.460921287536621,
+        "note": "argmax is the density peak; legacy notebook printed argmin and is retained only for provenance comparison."
+      },
+      {
+        "I": 5.0,
+        "argmax_density_theta_rad": 2.9275362491607666,
+        "argmax_density_theta_deg": 167.73545837402344,
+        "legacy_notebook_argmin_density_theta_deg": -12.625249862670898,
+        "note": "argmax is the density peak; legacy notebook printed argmin and is retained only for provenance comparison."
+      }
+    ]
+  },
+  "mc_current_balance": {
+    "nonzero_density_boxes": 35485,
+    "E_I2_I1_sin_theta1": 0.1282244473695755,
+    "E_I2_I3_sin_theta3": -0.1396593153476715,
+    "sum": -0.011434867978096008,
+    "relative_imbalance_vs_first_current": 0.08917853189275173
+  },
+  "eigen_surrogate_data_fit": {
+    "data_points": 33603,
+    "Q1_min": -0.9251305460929871,
+    "Q1_max": 1.6053279638290405,
+    "Q1_mean": 0.034597333520650864,
+    "Q1_std": 0.5342271327972412,
+    "rmse": 0.38094013929367065,
+    "relative_rmse": 0.7130677494777328
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "forward_file": "experiments/long_chain_ft_2026-08-28/path_ratio_control/one_step_replication/n30_t1p25e4_dt1p25e4_N500k_forward.csv",
+  "reverse_file": "experiments/long_chain_ft_2026-08-28/path_ratio_control/one_step_replication/n30_t1p25e4_dt1p25e4_N500k_reverse.csv",
+  "analysis": {
+    "bins": 80,
+    "minimum_raw_count": 50,
+    "bootstrap_groups": 128,
+    "bootstrap_replicates": 3000,
+    "bootstrap_seed": 20260828
+  },
+  "forward_ift": {
+    "samples": 500000,
+    "mean_sigma": 0.08563613417897784,
+    "std_sigma": 0.42476144857033704,
+    "log_mean_exp_minus_sigma": 0.00020327246585472025,
+    "log_mean_exp_ci95": [
+      -0.0011964520505703179,
+      0.0015512578815758296
+    ],
+    "exponential_weight_ess": 413615.13710690395,
+    "maximum_weight_fraction": 5.392775744777037e-05,
+    "ift_ci_includes_zero": true
+  },
+  "reverse_ift": {
+    "samples": 500000,
+    "mean_sigma": 0.08550744849954568,
+    "std_sigma": 0.42488190140111265,
+    "log_mean_exp_minus_sigma": 0.0004468273507232112,
+    "log_mean_exp_ci95": [
+      -0.0007673808199429421,
+      0.0017251773559548767
+    ],
+    "exponential_weight_ess": 408938.4180750666,
+    "maximum_weight_fraction": 0.00012769664588025242,
+    "ift_ci_includes_zero": true
+  },
+  "crooks": {
+    "accepted_bins": 69,
+    "fit_available": true,
+    "intercept": -0.00018232405392633826,
+    "slope": 0.994051582632616,
+    "intercept_se": 0.002042756926001129,
+    "slope_se": 0.005376401957848326,
+    "chi_square": 61.78897185209808,
+    "degrees_of_freedom": 67,
+    "reduced_chi_square": 0.9222234604790758,
+    "identity_weighted_rmse": 0.01621656695725464
+  },
+  "numerical": {
+    "forward": {
+      "midpoint_failures": 0,
+      "maximum_abs_energy_balance_error": 2.2356179670168785e-05,
+      "rms_energy_balance_error": 3.4729812611336363e-07,
+      "mean_kernel_minus_heat": -5.744925265210706e-05,
+      "rms_kernel_minus_heat": 0.00029744699342527725
+    },
+    "reverse": {
+      "midpoint_failures": 0,
+      "maximum_abs_energy_balance_error": 2.295214244441013e-05,
+      "rms_energy_balance_error": 3.486232639719188e-07,
+      "mean_kernel_minus_heat": -5.736938221849586e-05,
+      "rms_kernel_minus_heat": 0.0002978899453908556
+    }
+  },
+  "gates": {
+    "numerical_integrity": true,
+    "forward_ift": true,
+    "reverse_ift": true,
+    "crooks_histogram": true,
+    "overall": true
+  }
+}

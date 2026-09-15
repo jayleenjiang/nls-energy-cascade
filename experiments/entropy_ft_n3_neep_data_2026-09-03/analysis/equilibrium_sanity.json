@@ -1,0 +1,86 @@
+{
+  "correlation": {
+    "I2": {
+      "delta_t_over_one_over_e_time": 0.5043269101310147,
+      "ips_cutoff_lag": 55,
+      "ips_found_nonpositive_pair": true,
+      "lag1_correlation": 0.6884526557276545,
+      "one_over_e_lag": 1.982840851661512,
+      "one_over_e_time": 0.1982840851661512,
+      "statistical_inefficiency_g": 10.62439613037335,
+      "stream_one_over_e_time_median": 0.1981410614132795,
+      "stream_one_over_e_time_q05": 0.19263609902612983,
+      "stream_one_over_e_time_q95": 0.2233976472582737,
+      "stream_tau_integrated_median": 0.5310201321812309,
+      "stream_tau_integrated_q05": 0.48576206762604807,
+      "stream_tau_integrated_q95": 0.6156450955624859,
+      "tau_integrated": 0.5312198065186675
+    },
+    "theta1_periodic": {
+      "delta_t_over_one_over_e_time": 0.7528127919885803,
+      "ips_cutoff_lag": 63,
+      "ips_found_nonpositive_pair": true,
+      "lag1_correlation": 0.46631545707986155,
+      "one_over_e_lag": 1.3283514980643014,
+      "one_over_e_time": 0.13283514980643016,
+      "statistical_inefficiency_g": 3.028853596607764,
+      "stream_one_over_e_time_median": 0.13281007423799723,
+      "stream_one_over_e_time_q05": 0.1306313556808918,
+      "stream_one_over_e_time_q95": 0.1350293253683835,
+      "stream_tau_integrated_median": 0.14916580228511217,
+      "stream_tau_integrated_q05": 0.1380477673169528,
+      "stream_tau_integrated_q95": 0.16457886849165343,
+      "tau_integrated": 0.1514426798303882
+    }
+  },
+  "delta_t": 0.1,
+  "first_law_residual": {
+    "max": 0.001907097526938628,
+    "max_abs": 0.001907097526938628,
+    "mean": -2.769470408060549e-09,
+    "median": -5.049988205385603e-12,
+    "min": -0.0016327128206086172,
+    "q001": -0.0002345585009298503,
+    "q01": -8.362513548004102e-05,
+    "q99": 8.349888833297575e-05,
+    "q999": 0.00023669815887144348,
+    "rms": 2.791772087022355e-05,
+    "rms_rate": 0.0002791772087022355,
+    "std": 2.7917723524592964e-05
+  },
+  "integration_steps_per_transition": 200,
+  "integrity": {
+    "all_values_finite": true,
+    "angles_in_minus_pi_pi": true,
+    "angular_endpoint_continuity_max_abs": 0.0,
+    "entropy_identity_max_abs": 8.881784197001252e-16,
+    "linear_endpoint_continuity_max_abs": 0.0,
+    "positive_actions": true,
+    "stored_vs_recomputed_balance_max_abs": 0.0,
+    "trigonometric_encoding_max_abs_error": 0.0,
+    "unit_circle_identity_max_abs_error": 2.220446049250313e-16
+  },
+  "label": "equilibrium",
+  "neep_archive": {
+    "compressed_bytes": 795952469,
+    "compressed_sha256": "fb63862ce01809ef2e2d05c0a35797d629b76a2dbe783d33c327a2e8d4a39738",
+    "decompressed_sha256": "0de7c9cfc05fef1b6493b4ef0a586b8b45be5a47725dced08c450b28773d2135",
+    "line_count_including_header": 5000065,
+    "path": "/Users/jayleenjiang/NLS_eq_runtime/experiments/entropy_ft_n3_neep_data_2026-09-03/raw/equilibrium_neep_transitions.csv.zst"
+  },
+  "raw_archive": {
+    "compressed_bytes": 580868493,
+    "compressed_sha256": "b590eb4c56c693bfff37e6bfef30c21517143767d4d38e314eb8eccb60198887",
+    "decompressed_sha256": "b9c1e5c73a9e77256095f87230539a1070e7f6e83f73677ea1f3a0463ce655e7",
+    "line_count_including_header": 5000065,
+    "path": "/Users/jayleenjiang/NLS_eq_runtime/experiments/entropy_ft_n3_neep_data_2026-09-03/raw/equilibrium_blocks.csv.zst"
+  },
+  "state_snapshots": 5000192,
+  "streams": 128,
+  "temperatures": [
+    6.0,
+    6.0
+  ],
+  "transition_rows": 5000064,
+  "transitions_per_stream": 39063
+}

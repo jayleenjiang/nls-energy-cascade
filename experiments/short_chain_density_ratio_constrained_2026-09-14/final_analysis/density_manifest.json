@@ -1,0 +1,16 @@
+{
+  "density_measure": "dI1 dI2 dI3 dtheta1 dtheta3",
+  "gibbs_temperature": 5.0,
+  "gibbs_log_partition": 6.242891064111767,
+  "fine_models": [
+    "/Users/jayleenjiang/Documents/NLS/experiments/short_chain_density_ratio_constrained_2026-09-14/recovery_r11_fine/models/seed_8201",
+    "/Users/jayleenjiang/Documents/NLS/experiments/short_chain_density_ratio_constrained_2026-09-14/recovery_r11_fine/models/seed_8202",
+    "/Users/jayleenjiang/Documents/NLS/experiments/short_chain_density_ratio_constrained_2026-09-14/recovery_r11_fine/models/seed_8203"
+  ],
+  "coarse_models": [
+    "/Users/jayleenjiang/Documents/NLS/experiments/short_chain_density_ratio_constrained_2026-09-14/recovery_r10_coarse/models/seed_8201",
+    "/Users/jayleenjiang/Documents/NLS/experiments/short_chain_density_ratio_constrained_2026-09-14/recovery_r10_coarse/models/seed_8202",
+    "/Users/jayleenjiang/Documents/NLS/experiments/short_chain_density_ratio_constrained_2026-09-14/recovery_r10_coarse/models/seed_8203"
+  ],
+  "ensemble_definition": "arithmetic mean of three separately normalized densities"
+}

@@ -1,0 +1,2 @@
+model_version,T_left,T_right,n,trajectories_per_direction,horizon,dt,steps,initial_mean_action,seed,threads,forward_mean_sigma_total,reverse_mean_sigma_total,forward_mean_kernel_minus_heat,reverse_mean_kernel_minus_heat,midpoint_failures,nonfinite_trajectories,elapsed_seconds
+nls-discrete-path-ft-v2,10,2,10,100000,0.000125,0.000125,1,1.5,2026083310,1,0.0086362826885238875,0.008277472112424104,-2.7082470066421164e-06,-2.5433246928063098e-06,0,0,0.65348066699999996

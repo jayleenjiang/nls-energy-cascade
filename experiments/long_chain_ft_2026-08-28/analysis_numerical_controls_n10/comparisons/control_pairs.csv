@@ -1,0 +1,3 @@
+control,n,clone_count,horizon,k,residual_delta_control_minus_baseline,combined_residual_se,late_half_delta_control_minus_baseline,combined_late_half_se,both_support_gate,all_member_gates,paired_control_gate
+timestep_halving,10,1024,60.0,0.3,-0.002137106034880376,0.004679858403948798,-0.0010359242726205864,0.005242883330461106,1,1,1
+selection_interval,10,1024,60.0,0.3,-0.003235494807467154,0.004234163662003647,-0.004047486680066131,0.00523911833326359,1,1,1

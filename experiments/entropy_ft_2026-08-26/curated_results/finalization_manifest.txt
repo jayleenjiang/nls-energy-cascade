@@ -1,0 +1,14 @@
+started_utc=2026-08-27T17:23:49Z
+run_dir=/Users/jayleenjiang/Documents/NLS/experiments/entropy_ft_2026-08-26/production
+analysis_dir=/Users/jayleenjiang/Documents/NLS/experiments/entropy_ft_2026-08-26/production/analysis
+validation_dir=/Users/jayleenjiang/Documents/NLS/experiments/entropy_ft_2026-08-26/validation
+expected_blocks_per_n=1000064
+require_hash_match=1
+10b0e09d0e0ffb22d42a33ef794ec25d79fe6105
+f13800455b198d30173a55807611f1d354f9679a90072d6bf6421bce623a9da4  /Users/jayleenjiang/Documents/NLS/flux/audit_entropy_ft_run.py
+296de0adb37fccf8f5b69ac1d3493824687e5ffed8f45ca9f2076c5fc47e52cc  /Users/jayleenjiang/Documents/NLS/flux/plot_entropy_ft_supplement.py
+8b626edd082223468fff80c73fc2a432193a5c605bbe770497ad4cc8e6a1d4da  /Users/jayleenjiang/Documents/NLS/flux/analyze_ft_adaptive_bins.py
+6cdcdafe6207c1d6b9aa647770388767ecb057c8f466d70881eeca4bfa80d733  /Users/jayleenjiang/Documents/NLS/flux/analyze_action_tail_time_scaling.py
+f775675e91173f7c3dfb7003063ef8d606a9b40f8a1244db0b213cf32643f760  /Users/jayleenjiang/Documents/NLS/flux/audit_entropy_ft_analysis.py
+0fb5889132dc288696e6215060fad1270947e447ed5047cbf275b9873442ef94  /Users/jayleenjiang/Documents/NLS/flux/build_entropy_ft_report.py
+completed_utc=2026-08-27T17:24:35Z

@@ -1,0 +1,7 @@
+affinity	case	T_left	T_right	delta_beta	dt	seed	bootstrap_seed	kind	blocks_file
+weak	weak_dt5e4	6.5	5.5	0.02797202797202797	0.0005	2026090401	2026092108	baseline	../entropy_ft_window_length_2026-09-10/raw/dbeta_0p027972_n10_tau5_blocks.csv
+weak	weak_dt2p5e4	6.5	5.5	0.02797202797202797	0.00025	2026091101	2026095102	new	raw/weak_dt2p5e4_n10_tau5_blocks.csv
+weak	weak_dt1p25e4	6.5	5.5	0.02797202797202797	0.000125	2026091102	2026095103	new	raw/weak_dt1p25e4_n10_tau5_blocks.csv
+moderate	moderate_dt5e4	8	4	0.125	0.0005	2026090403	2026094126	baseline	../entropy_ft_window_length_2026-09-10/raw/dbeta_0p125000_n10_tau5_blocks.csv
+moderate	moderate_dt2p5e4	8	4	0.125	0.00025	2026091103	2026095105	new	raw/moderate_dt2p5e4_n10_tau5_blocks.csv
+moderate	moderate_dt1p25e4	8	4	0.125	0.000125	2026091104	2026095106	new	raw/moderate_dt1p25e4_n10_tau5_blocks.csv

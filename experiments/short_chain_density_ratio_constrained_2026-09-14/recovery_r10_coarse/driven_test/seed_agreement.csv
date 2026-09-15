@@ -1,0 +1,4 @@
+left_model,right_model,centered_log_ratio_rms,gate,pass
+seed_46201,seed_46202,0.013098286659935387,0.1,1
+seed_46201,seed_46203,0.013834206565852722,0.1,1
+seed_46202,seed_46203,0.01295284955342365,0.1,1

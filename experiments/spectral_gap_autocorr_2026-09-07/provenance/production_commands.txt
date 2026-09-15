@@ -1,0 +1,7 @@
+2026-09-07T04:51:40Z
+b238c2fff9e5f9366cb2c8bafddcef90f7da5b12
+a1d558c267a4eca00c3b8f445e1236c1d097be50e72845f18ed4a4e12d7c9df1  /Users/jayleenjiang/Documents/NLS/experiments/spectral_gap_autocorr_2026-09-07/source/NLS_stationary_autocorr.cpp
+447ba1141ba5f126bccd6f39661c939eee4683ef96fcd12a1595420e7e532316  /Users/jayleenjiang/Documents/NLS/experiments/spectral_gap_autocorr_2026-09-07/bin/NLS_stationary_autocorr
+/Users/jayleenjiang/Documents/NLS/experiments/spectral_gap_autocorr_2026-09-07/bin/NLS_stationary_autocorr /Users/jayleenjiang/Documents/NLS/experiments/spectral_gap_autocorr_2026-09-07/raw/driven_T2_T8 2 8 0.1 0.001 500 1000 0.01 64 2026090701 8
+/Users/jayleenjiang/Documents/NLS/experiments/spectral_gap_autocorr_2026-09-07/bin/NLS_stationary_autocorr /Users/jayleenjiang/Documents/NLS/experiments/spectral_gap_autocorr_2026-09-07/raw/equilibrium_T5_T5 5 5 0.1 0.001 500 1000 0.01 64 2026090702 8
+python3 /Users/jayleenjiang/Documents/NLS/experiments/spectral_gap_autocorr_2026-09-07/analyze_autocorr.py --experiment /Users/jayleenjiang/Documents/NLS/experiments/spectral_gap_autocorr_2026-09-07

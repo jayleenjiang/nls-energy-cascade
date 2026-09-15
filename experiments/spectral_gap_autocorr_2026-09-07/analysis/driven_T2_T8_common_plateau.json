@@ -1,0 +1,8 @@
+{
+  "case": "driven_T2_T8",
+  "status": "NO COMMON PLATEAU",
+  "eligible": [
+    "I2",
+    "I1_plus_I3"
+  ]
+}

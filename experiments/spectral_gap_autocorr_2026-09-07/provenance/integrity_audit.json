@@ -1,0 +1,48 @@
+{
+  "status": "PASS",
+  "cases": {
+    "driven_T2_T8": {
+      "stream_file_count": 64,
+      "metadata_row_count": 64,
+      "all_exact_size": true,
+      "expected_bytes_per_stream": 2800028,
+      "all_values_finite": true,
+      "seeds_contiguous": true,
+      "nonfinite_flags": 0,
+      "projection_count": 91674,
+      "metadata_sha256": "49fcc46f62ceade88cb1f421811fc2c51a901d00a56ddb1f3e16b040617316ca"
+    },
+    "equilibrium_T5_T5": {
+      "stream_file_count": 64,
+      "metadata_row_count": 64,
+      "all_exact_size": true,
+      "expected_bytes_per_stream": 2800028,
+      "all_values_finite": true,
+      "seeds_contiguous": true,
+      "nonfinite_flags": 0,
+      "projection_count": 97047,
+      "metadata_sha256": "e630566121fc5c2cf2af6fe3b28a85367d251864e1d5ba18aed561c8c84ec019"
+    }
+  },
+  "analysis": {
+    "driven_T2_T8": {
+      "plateau_rows": 7,
+      "all_stationarity_gates_pass": true,
+      "accepted_plateau_observables": [
+        "I2",
+        "I1_plus_I3"
+      ],
+      "autocorrelation_csv_rows": 623
+    },
+    "equilibrium_T5_T5": {
+      "plateau_rows": 7,
+      "all_stationarity_gates_pass": true,
+      "accepted_plateau_observables": [
+        "cos_theta1",
+        "cos_theta3",
+        "I2"
+      ],
+      "autocorrelation_csv_rows": 623
+    }
+  }
+}

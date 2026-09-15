@@ -1,0 +1,9 @@
+role	path	status	note
+code	NN notebooks/FKE_4d.ipynb	PRIMARY	Reduced stabilization model
+code	NN notebooks/FKE_5d_NLS.ipynb	PRIMARY	Full short-chain density solver
+code	python/analysis/find_peak.py	DIAGNOSTIC	Angular peak analysis
+raw_data	KDE/4:15_NN/NLS_FP_density.txt	PRIMARY	Saved NESS density targets
+model	KDE/4:15_NN/h5_files/final.keras	PRIMARY	Saved NESS neural density
+figure	Paper/revision/symmetry_breaking.png	MANUSCRIPT_READY	Qualitative angular symmetry breaking
+report	Paper/revision/short_chain_nn_rerun_metrics.json	LOCAL_ENHANCED	Asymmetry, phase-locking, and balance diagnostics
+reference	Paper/Non-equilibrium steady state for a three-mode energy cascade model.pdf	PRIMARY_REFERENCE	Rigorous stabilization context

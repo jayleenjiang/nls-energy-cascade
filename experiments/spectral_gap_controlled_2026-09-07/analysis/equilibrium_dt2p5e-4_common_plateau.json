@@ -1,0 +1,18 @@
+{
+  "case": "equilibrium_dt2p5e-4",
+  "status": "NO COMMON PLATEAU",
+  "eligible": [
+    "cos_theta3",
+    "I2",
+    "I1_plus_I3"
+  ],
+  "common_time_start": 1.58,
+  "common_time_end": 1.8800000000000001,
+  "rate_min": -1.0081334718924035,
+  "rate_max": -0.8627195931761023,
+  "rate_spread_ok": true,
+  "ci_intersection_low": -0.9165408571669786,
+  "ci_intersection_high": -0.9466036208058038,
+  "ci_overlap": false,
+  "time_overlap": true
+}

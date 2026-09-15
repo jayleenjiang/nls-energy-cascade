@@ -1,0 +1,100 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{hyperref}
+
+\title{Outline}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+
+\section{Introduction}
+\begin{itemize}
+  \item Wave turbulence and energy cascades; motivation from NLS.
+  \item Kinetic-equation / KZ-spectrum approach vs.\ NESS approach
+        (cite 2505.16018).
+  \item Questions left open by the existence theorem: shape of the
+        invariant measure, transport across the chain, speed of
+        convergence
+\end{itemize}
+
+\section{Model}
+\begin{itemize}
+  \item Reduced ODE from resonant NLS (compressed derivation; cite
+        theory paper).
+  \item Two-thermostat stochastic perturbation; temperatures $T_1$, $T_n$.
+  \item SDE in $(I, \varphi)$ coordinates.
+  \item Observables:
+    \begin{itemize}
+      \item energy profile $\langle I_j \rangle$,
+      \item mid-chain flux $J_j = 4 I_{j-1} I_j \sin 2(\varphi_j -
+            \varphi_{j-1})$,
+      \item NESS density $p_{\text{ss}}(I, \varphi)$,
+      \item generator $\mathcal{L}$ and its spectrum.
+    \end{itemize}
+\end{itemize}
+
+
+\section{Long-chain}
+\begin{itemize}
+  \item Euler--Maruyama; ensemble averaging; burn-in.
+  \item Energy profile across modes -- the cascade itself.
+  \item Open-chain flux $\approx 0$ as sanity check (after burn-in,
+        95\% CI covers zero).
+  \item Closed-chain flux:
+    \begin{itemize}
+      \item $\langle J \rangle$ vs $\Delta T$ at fixed $n$
+            (non-monotonic; explained by $I_{j-1} I_j$ prefactor).
+      \item Headline scaling $\langle J \rangle \sim n^{-\alpha}$,
+            $\alpha \approx 1.75$, with $R^2 = 0.915$.
+      \item Comparison with Fourier's law ($\alpha = 1$).
+    \end{itemize}
+  \item Robustness of $\alpha$: across additional $(T_1, T_n)$ pairs,
+        across stable cases (1, 4, 7), and (if available) across
+        $\gamma$ values.
+  \item Discussion: anomalous conduction in nonlinear chains.
+\end{itemize}
+
+\section{Three-mode NESS via NN Fokker--Planck}
+\begin{itemize}
+  \item The 5D Fokker--Planck equation in $(I_1, I_2, I_3, \theta_1,
+        \theta_3)$.
+  \item NN solver with problem-specific
+        adaptations:
+    \begin{itemize}
+      \item periodic encoding for $\theta_1, \theta_3$,
+      \item log-normalized density targets,
+      \item MC reference points + PDE residual loss,
+      \item two-phase training (data-only pre-train, then joint).
+    \end{itemize}
+  \item Equilibrium validation: $T_1 = T_3 = 5$ recovers Gibbs density.
+  \item Non-equilibrium NESS at $T_1 = 2$, $T_3 = 8$:
+    \begin{itemize}
+      \item joint angle density $p(\theta_1, \theta_3)$,
+      \item $\theta_1$ vs $\theta_3$ asymmetry,
+      \item action marginals $p(I_1)$ vs $p(I_3)$,
+      \item quantitative phase locking compared against $\theta_0$
+            from eq.~(4.7) of the theoretical analysis.
+    \end{itemize}
+  \item Energy flux from the learned NESS, consistency with direct
+        time-averaged flux.
+\end{itemize}
+
+\section{Speed of convergence}
+\begin{itemize}
+  \item Spectral expansion of the transition kernel:
+        $\mathbb{E}_x[f(X_t)] - \langle f \rangle_{\text{ss}} \approx
+        Q_1(x) e^{\lambda_1 t}$.
+  \item Method: per-trajectory nonlinear regression over LHS-sampled
+        initial points.
+  \item Results 
+  \item Outlook: reconstructing $Q_1(x)$ globally via the same
+        NN-Fokker--Planck infrastructure.
+\end{itemize}
+
+
+\end{document}

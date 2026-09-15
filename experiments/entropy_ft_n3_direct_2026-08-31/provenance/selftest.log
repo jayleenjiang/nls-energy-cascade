@@ -1,0 +1,4 @@
+selftest maximum gradient error=1.55486956643e-10
+selftest Hamiltonian dE/dt=-9.02131476493e-17
+selftest maximum boundary Laplacian error=0.000529314434244
+SELFTEST PASS

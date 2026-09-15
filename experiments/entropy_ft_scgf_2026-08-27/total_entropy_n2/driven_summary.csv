@@ -1,0 +1,2 @@
+model_version,T1,Tn,n,streams,burnin,block_time,blocks_per_stream,dt,seed,threads,samples,mean_entropy_rate,mean_action_current,rms_energy_balance_error_rate,midpoint_failures,mean_midpoint_iterations,mean_hamiltonian_energy_error_rate
+gibbs-cartesian-entropy-cloning-v1,10,2,2,64,500,20,512,0.00050000000000000001,2026087004,4,32768,2.6044032589438388,1.4646172328192091,1.5118672613070353e-05,0,4.4311129924639197,3.8586222634722147e-06

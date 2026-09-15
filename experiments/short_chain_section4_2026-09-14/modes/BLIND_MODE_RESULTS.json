@@ -1,0 +1,257 @@
+{
+  "bootstrap_replicates": 500,
+  "bootstrap_seed": 2026091404,
+  "protocol_version": "section4-v1",
+  "summaries": {
+    "driven_dt1e-3:complex": {
+      "bootstrap_accept": 500,
+      "case": "driven_dt1e-3",
+      "delta_AIC_damped_minus_exponential": -16.741429054741822,
+      "fit_end": 1.0,
+      "fit_resolved": true,
+      "fit_start": 0.05,
+      "independent_difference": -0.3420251641775911,
+      "independent_lambda_I": 5.401,
+      "kind": "complex",
+      "lambda_I": 5.058974835822409,
+      "lambda_I_ci": [
+        0.00030785429014949653,
+        6.98343142231047
+      ],
+      "lambda_R": -7.067416764388441,
+      "lambda_R_ci": [
+        -10.804170479331557,
+        -4.451849060408029
+      ],
+      "period": 1.2419878554620571,
+      "reportable_oscillatory_mode": true,
+      "residual_gate_pass": true,
+      "residual_growth_ratio": 0.9496516824471753,
+      "selection_local_admissible": true,
+      "selection_timestep_pair_admissible": true,
+      "test_residual": 0.8072908234996479,
+      "test_residual_ci": [
+        0.6870472775571319,
+        0.9627483368863406
+      ],
+      "test_streams": 16,
+      "timestep_blind_ci_overlap": true,
+      "validation_residual": 0.8500915003060121
+    },
+    "driven_dt1e-3:real": {
+      "bootstrap_accept": 500,
+      "case": "driven_dt1e-3",
+      "intercept": -0.00956394192485758,
+      "kind": "real",
+      "lambda_R": -0.8840365867894349,
+      "lambda_R_ci": [
+        -0.9707476880389357,
+        -0.8102795753712801
+      ],
+      "plateau_end": 4.22,
+      "plateau_resolved": true,
+      "plateau_start": 1.0,
+      "reportable_edmd_visible_mode": true,
+      "residual_gate_pass": true,
+      "residual_growth_ratio": 0.9851460298907775,
+      "selection_local_admissible": true,
+      "selection_timestep_pair_admissible": true,
+      "test_residual": 0.7693862827853293,
+      "test_residual_ci": [
+        0.7587181176876788,
+        0.7796972700703918
+      ],
+      "test_streams": 16,
+      "timestep_blind_ci_overlap": true,
+      "validation_residual": 0.7809870409472499
+    },
+    "driven_dt2p5e-4:complex": {
+      "bootstrap_accept": 500,
+      "case": "driven_dt2p5e-4",
+      "delta_AIC_damped_minus_exponential": -127.49731283550761,
+      "fit_end": 1.0,
+      "fit_resolved": true,
+      "fit_start": 0.05,
+      "independent_difference": 0.7806038878383132,
+      "independent_lambda_I": 5.5,
+      "kind": "complex",
+      "lambda_I": 6.280603887838313,
+      "lambda_I_ci": [
+        5.3884960137583136,
+        6.8620024261913795
+      ],
+      "lambda_R": -7.1982111972009495,
+      "lambda_R_ci": [
+        -8.885166078144868,
+        -6.401045150390516
+      ],
+      "period": 1.0004110145118803,
+      "reportable_oscillatory_mode": true,
+      "residual_gate_pass": true,
+      "residual_growth_ratio": 0.9118065324597068,
+      "selection_local_admissible": true,
+      "selection_timestep_pair_admissible": true,
+      "test_residual": 0.6682372864002155,
+      "test_residual_ci": [
+        0.6448168951543525,
+        0.6903695858723942
+      ],
+      "test_streams": 16,
+      "timestep_blind_ci_overlap": true,
+      "validation_residual": 0.7328717909023593
+    },
+    "driven_dt2p5e-4:real": {
+      "bootstrap_accept": 500,
+      "case": "driven_dt2p5e-4",
+      "intercept": -0.01807866405247682,
+      "kind": "real",
+      "lambda_R": -0.9088249328401071,
+      "lambda_R_ci": [
+        -1.0139497337659673,
+        -0.8177719156747275
+      ],
+      "plateau_end": 3.98,
+      "plateau_resolved": true,
+      "plateau_start": 1.0,
+      "reportable_edmd_visible_mode": true,
+      "residual_gate_pass": true,
+      "residual_growth_ratio": 1.0044657465341336,
+      "selection_local_admissible": true,
+      "selection_timestep_pair_admissible": true,
+      "test_residual": 0.7841232160389905,
+      "test_residual_ci": [
+        0.7754782446399318,
+        0.793698303075549
+      ],
+      "test_streams": 16,
+      "timestep_blind_ci_overlap": true,
+      "validation_residual": 0.7806370886658648
+    },
+    "equilibrium_dt1e-3:complex": {
+      "bootstrap_accept": 500,
+      "case": "equilibrium_dt1e-3",
+      "delta_AIC_damped_minus_exponential": -78.27237705652796,
+      "fit_end": 1.0,
+      "fit_resolved": true,
+      "fit_start": 0.05,
+      "independent_difference": -0.6427424100516603,
+      "independent_lambda_I": 5.081,
+      "kind": "complex",
+      "lambda_I": 4.43825758994834,
+      "lambda_I_ci": [
+        0.024134837861876337,
+        6.603663766782522
+      ],
+      "lambda_R": -6.986001557231611,
+      "lambda_R_ci": [
+        -11.13653364650076,
+        -5.562591583725404
+      ],
+      "period": 1.4156873907926377,
+      "reportable_oscillatory_mode": true,
+      "residual_gate_pass": true,
+      "residual_growth_ratio": 0.9448141359385587,
+      "selection_local_admissible": true,
+      "selection_timestep_pair_admissible": true,
+      "test_residual": 0.7505700544412527,
+      "test_residual_ci": [
+        0.7038141875174772,
+        0.803377836650257
+      ],
+      "test_streams": 16,
+      "timestep_blind_ci_overlap": true,
+      "validation_residual": 0.7944102717045528
+    },
+    "equilibrium_dt1e-3:real": {
+      "bootstrap_accept": 500,
+      "case": "equilibrium_dt1e-3",
+      "intercept": 0.09603751757721142,
+      "kind": "real",
+      "lambda_R": -0.9507312934606321,
+      "lambda_R_ci": [
+        -1.0751248006643819,
+        -0.8419599371952068
+      ],
+      "plateau_end": 3.16,
+      "plateau_resolved": true,
+      "plateau_start": 1.0,
+      "reportable_edmd_visible_mode": true,
+      "residual_gate_pass": true,
+      "residual_growth_ratio": 0.9967117011169574,
+      "selection_local_admissible": true,
+      "selection_timestep_pair_admissible": true,
+      "test_residual": 0.773765024686239,
+      "test_residual_ci": [
+        0.7641776158514265,
+        0.7840178887381184
+      ],
+      "test_streams": 16,
+      "timestep_blind_ci_overlap": true,
+      "validation_residual": 0.7763177896066887
+    },
+    "equilibrium_dt2p5e-4:complex": {
+      "bootstrap_accept": 500,
+      "case": "equilibrium_dt2p5e-4",
+      "delta_AIC_damped_minus_exponential": -166.96271448489875,
+      "fit_end": 1.0,
+      "fit_resolved": true,
+      "fit_start": 0.05,
+      "independent_difference": -0.17610119931640789,
+      "independent_lambda_I": 5.264,
+      "kind": "complex",
+      "lambda_I": 5.087898800683592,
+      "lambda_I_ci": [
+        4.48683959124495,
+        5.558005918437489
+      ],
+      "lambda_R": -5.9669693434863165,
+      "lambda_R_ci": [
+        -7.085071968075576,
+        -5.261283838960857
+      ],
+      "period": 1.2349273350986067,
+      "reportable_oscillatory_mode": true,
+      "residual_gate_pass": true,
+      "residual_growth_ratio": 0.9756626823997281,
+      "selection_local_admissible": true,
+      "selection_timestep_pair_admissible": true,
+      "test_residual": 0.6954713968966477,
+      "test_residual_ci": [
+        0.6746303784498032,
+        0.7226398830960336
+      ],
+      "test_streams": 16,
+      "timestep_blind_ci_overlap": true,
+      "validation_residual": 0.7128195117456729
+    },
+    "equilibrium_dt2p5e-4:real": {
+      "bootstrap_accept": 500,
+      "case": "equilibrium_dt2p5e-4",
+      "intercept": -0.04609243047473319,
+      "kind": "real",
+      "lambda_R": -0.826371421037876,
+      "lambda_R_ci": [
+        -0.9083244481302255,
+        -0.7586767325708484
+      ],
+      "plateau_end": 2.37,
+      "plateau_resolved": true,
+      "plateau_start": 1.0,
+      "reportable_edmd_visible_mode": true,
+      "residual_gate_pass": true,
+      "residual_growth_ratio": 0.9947324906535915,
+      "selection_local_admissible": true,
+      "selection_timestep_pair_admissible": true,
+      "test_residual": 0.7732059672097009,
+      "test_residual_ci": [
+        0.7662504243555778,
+        0.78112025255571
+      ],
+      "test_streams": 16,
+      "timestep_blind_ci_overlap": true,
+      "validation_residual": 0.7773004043546059
+    }
+  },
+  "unique_gap_blocker": "the pre-existing common controlled-autocorrelation plateau gate fails",
+  "unique_spectral_gap_claim_allowed": false
+}

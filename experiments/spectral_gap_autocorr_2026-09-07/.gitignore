@@ -1,0 +1,12 @@
+bin/
+raw/**/*.f32
+raw/**/*.partial
+raw/**/*.failed
+raw/smoke/
+raw/*.log
+raw/**/run.log
+analysis/*.log
+analysis/*.npz
+pipeline.pid
+pipeline.exitcode
+__pycache__/

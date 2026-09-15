@@ -1,0 +1,13 @@
+case,observable,status,fit_start,fit_end,lambda_R,lambda_R_ci_low,lambda_R_ci_high,lambda_I,lambda_I_ci_low,lambda_I_ci_high,bootstrap_accept,frequency_half_cycle_threshold,delta_AIC_damped_minus_exponential,lambda_I_resolved
+equilibrium_dt1e-3,cos_theta1,FIT,1.0,2.82,-1.16492134934926,nan,nan,9.664953165266732e-09,nan,nan,0,1.7261498096647216,4.0000000000018545,0
+equilibrium_dt1e-3,sin_theta1,UNRESOLVED,,,,,,,,,,,,
+equilibrium_dt1e-3,cos_theta3,FIT,1.0,2.66,-0.7644187436039717,nan,nan,1.8533174662151523e-05,nan,nan,0,1.8925256949336102,2.813693955333463,0
+equilibrium_dt1e-3,sin_theta3,UNRESOLVED,,,,,,,,,,,,
+equilibrium_dt1e-3,cos_theta1_minus_theta3,FIT,1.0,2.37,-1.659000775088004,nan,nan,0.00032727275149875253,nan,nan,0,2.29313332378817,3.8805748859808027,0
+equilibrium_dt1e-3,I2,FIT,1.0,4.22,-1.1961838069198585,nan,nan,0.0033915717774709907,nan,nan,0,0.9756498924191905,-2.8126478445916305,0
+equilibrium_dt1e-3,I1_plus_I3,FIT,1.0,3.5500000000000003,-1.0738890607812397,nan,nan,9.415809577240963e-09,nan,nan,0,1.2319971190548207,3.9999999999999005,0
+equilibrium_dt1e-3,I1_minus_I3,UNRESOLVED,,,,,,,,,,,,
+equilibrium_dt1e-3,cos_even_sum,FIT,1.0,3.5500000000000003,-1.1775161799714406,nan,nan,1.0090543231914991e-08,nan,nan,0,1.2319971190548207,4.000000000007809,0
+equilibrium_dt1e-3,cos_odd_diff,UNRESOLVED,,,,,,,,,,,,
+equilibrium_dt1e-3,sin_even_sum,FIT,1.0,2.24,-4.57714355792281,nan,nan,0.010050744985992711,nan,nan,0,2.5335424625724134,2.407157032803399,0
+equilibrium_dt1e-3,sin_odd_diff,UNRESOLVED,,,,,,,,,,,,

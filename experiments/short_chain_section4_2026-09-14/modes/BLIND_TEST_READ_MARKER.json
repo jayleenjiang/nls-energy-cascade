@@ -1,0 +1,7 @@
+{
+  "blind_results": "modes/BLIND_MODE_RESULTS.json",
+  "selection_file": "modes/MODE_SELECTION.json",
+  "selection_sha256": "3278c2eab2ed2a8f6a8dd58c6d59a301d513ddbf0ec38715b16c21ac336bf555",
+  "status": "complete",
+  "test_streams_read_once": true
+}

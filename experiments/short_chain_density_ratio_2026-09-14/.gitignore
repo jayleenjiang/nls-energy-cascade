@@ -1,0 +1,11 @@
+scripts/__pycache__/
+tmp/
+report/*.aux
+report/*.fdb_latexmk
+report/*.fls
+report/*.log
+report/*.out
+report/*.synctex.gz
+pipeline.pid
+pipeline.log
+

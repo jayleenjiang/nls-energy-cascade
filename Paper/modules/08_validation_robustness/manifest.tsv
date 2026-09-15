@@ -1,0 +1,19 @@
+role	path	status	note
+code	flux/NLS_flux_canonical.cpp	PRIMARY	Common canonical simulator
+code	flux/analyze_canonical_flux.py	PRIMARY	Common scaling/statistics analysis
+code	flux/compare_gibbs_sde.py	VALIDATION	SDE versus Gibbs-MCMC profile comparison
+code	flux/gibbs_mcmc_reference.py	VALIDATION	Independent equilibrium reference
+code	Paper/revision/scripts/analyze_flux_scaling_sensitivity.py	VALIDATION	Larger-n fit sensitivity
+code	Paper/revision/scripts/run_gamma_robustness_production.py	VALIDATION	Gamma sweep production driver
+raw_data	Paper/revision/experiments/flux_validation/pilot	VALIDATION	Timestep and stationarity pilots
+raw_data	Paper/revision/experiments/flux_validation/larger_n_pilot_2026-06-20	VALIDATION_ONLY	n=50 runs
+raw_data	Paper/revision/experiments/flux_validation/larger_n60_pilot_2026-06-20	VALIDATION_ONLY	n=60 runs
+raw_data	Paper/revision/experiments/flux_validation/parameter_robustness_2026-06-20	VALIDATION_ONLY	Bath-temperature contrasts
+raw_data	Paper/revision/experiments/flux_validation/gamma_robustness_2026-06-21	VALIDATION_ONLY	gamma=0.05 and 0.2
+raw_data	Paper/revision/experiments/flux_validation/gibbs_mcmc	VALIDATION	Independent Gibbs samples
+raw_data	Paper/revision/experiments/flux_validation/gibbs_sde	VALIDATION	Equal-temperature SDE runs
+raw_data	Paper/revision/experiments/flux_validation/smoke	VALIDATION	Physical smoke tests
+report	Paper/revision/experiments/flux_validation/validation_report.md	LOCAL_ENHANCED	Consolidated validation interpretation
+report	Paper/revision/experiments/flux_validation/production_manifest.md	PRIMARY	Primary production provenance
+report	Paper/revision/experiments/flux_validation/gamma_robustness_2026-06-21/gamma_robustness_report.md	VALIDATION_ONLY	Gamma results and caveats
+report	Paper/revision/pre_submission_reviewer_audit_2026-06-21.md	LOCAL_ENHANCED	Reviewer-style local audit

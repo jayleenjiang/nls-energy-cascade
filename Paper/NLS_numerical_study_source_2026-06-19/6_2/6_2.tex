@@ -1,0 +1,140 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+
+\begin{document}
+\paragraph{Q1. Is the inner loop vectorized? 8/16 entries per cycle?}
+Two implementations were tested.
+
+\emph{Eigen version.} Compiled with
+\texttt{-O3 -mcpu=native -ffast-math}, which lets the compiler emit
+NEON/AVX instructions on the Eigen array operations over the $n=25$ modes.
+Two possible issues limit this? 1. the time-stepping loop allocates several temporary
+length-$n$ vectors at every step 2.$n=25$ is short relative to a SIMD
+register. not full $8/16$ lanes per cycle. Runtime: $\sim 2.5$ hours with
+$5\times 10^8$ samples
+
+\emph{SIMD version.} structure-of-arrays
+layout \texttt{I[mode*W + lane]} and \texttt{\#pragma omp simd} explicitly
+vectorizing across $W=16$ trajectory lanes,
+put 16 entries into one SIMD instruction (by trajectory, not by mode).
+Measured speedup: $1.01\times 10^9$ samples in $25$ minutes
+
+\paragraph{Q2. Fast sin / fast RNG?}
+\emph{RNG.} Both versions: \texttt{std::mt19937} +
+\texttt{std::normal\_distribution} replaced by a xoshiro256++ uniform
+generator and a Box--Muller Gaussian with one cached value.
+
+\emph{sin/cos.} Eigen version still calls \texttt{std::sin} and
+\texttt{std::cos} (with \texttt{-ffast-math} the compiler may fuse
+adjacent calls into \texttt{sincos}, but not a vectorized polynomial
+approximation). SIMD version uses a Bhaskara-style polynomial
+\texttt{fast\_sin}/\texttt{fast\_cos} (${\sim}10^{-3}$ accuracy) and
+\texttt{fast\_log} for the Box--Muller step.
+
+\paragraph{Q3. C++-side marginal histogram}
+
+
+\paragraph{Q4. $\sim 10^9$ sample points.}
+The Eigen version produces $5.07\times 10^8$ samples per site pair
+($\sim 0.5\times 10^9$). The SIMD version reaches $1.01\times 10^9$
+samples per site pair by default ($N_{\mathrm{GROUPS}}=32$, $W=16$,
+$T_{\mathrm{final}}=200000$). $10^9$ achieved.
+
+\section*{Setup}
+\begin{itemize}
+\item Chain length $n=25$, Case~0 (closed chain), $\gamma=0.1$, $dt=0.001$.
+\item Two conditions: NESS ($T_1=10$, $T_n=2$) and equilibrium ($T_1=T_n=6$).
+\item Eigen runs: $N_{\mathrm{traj}}=256$, $T_{\mathrm{burnin}}=2000$,
+$T_{\mathrm{final}}=200000$, sampling every $0.1$ time units;
+$5.07\times 10^8$ samples per site pair.
+\item SIMD runs: $32$ groups of $W=16$ lanes (512 chains),
+$T_{\mathrm{final}}=200000$, sampling every $0.1$ time units;
+$1.01\times 10^9$ samples per site pair.
+\item Three site pairs in the bulk: $j=6, 12, 18$.
+\item $80$ bins per axis on $[0,4]\times[0,4]\times[-\pi,\pi)$; overflow $<1\%$.
+\item Statistical errors via Poisson resampling of the bin counts
+($200$ bootstrap rounds).
+\end{itemize}
+
+\section*{Fit forms}
+We fit $\log\rho(I_a,I_b,\theta)$ for an adjacent pair $(I_a,I_b)=(I_j,I_{j+1})$,
+$\theta=\theta_j$, to three forms:
+\begin{align*}
+\text{Form A (conjecture)}\quad
+& \log\rho = a + b\bigl[-\tfrac{1}{4}(I_a^2+I_b^2) + I_a I_b\cos\theta\bigr], \\
+\text{Form B (strict local Gibbs)}\quad
+& \log\rho = a + b\bigl[\tfrac{1}{4}(I_a^2+I_b^2) + I_a I_b(1+\cos\theta)\bigr], \\
+\text{Form C (general quadratic)}\quad
+& \log\rho = c_0 + c_1 I_a^2 + c_2 I_b^2 + c_3 I_a I_b + c_4 I_a I_b\cos\theta .
+\end{align*}
+Form B is obtained by restricting the Hamiltonian (summary eq.~2.6) to the terms
+in $(I_{12}, I_{13}, \theta_{12})$. Form C lets the data choose all four
+coefficients; strict local Gibbs (Form B) requires $c_1=c_2$ and $c_3=c_4$, with
+$c_1/c_3 = 1/4$.
+
+\section*{Result -- double-precision (Eigen) version}
+\paragraph{Form A (conjecture) does not fit:} $R^2 \in [0.27, 0.33]$ across
+all sites and both conditions.
+
+\paragraph{At equilibrium:} All three sites give $c_3/c_4$ in the range
+$1.47$--$1.62$ and $c_1/c_3 \approx 0.33$--$0.36$, with a bootstrap standard
+deviation of ${\sim}0.0005$ on these ratios. The departures from $c_3/c_4=1$ and
+$c_1/c_3=0.25$ are hundreds of $\sigma$.
+
+\paragraph{At NESS:} The same ratios are smaller and depend on position.
+
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+ & $c_3/c_4$ & $c_1/c_3$ & $R^2$ (Form C) \\
+\midrule
+Eq, $j=6$  & $1.5735 \pm 0.0005$ & $0.3513 \pm 0.0001$ & $0.94$ \\
+Eq, $j=12$ & $1.4703 \pm 0.0004$ & $0.3340 \pm 0.0001$ & $0.94$ \\
+Eq, $j=18$ & $1.6245 \pm 0.0005$ & $0.3556 \pm 0.0001$ & $0.94$ \\[2pt]
+NESS, $j=6$  & $1.2223 \pm 0.0004$ & $0.4380 \pm 0.0002$ & $0.93$ \\
+NESS, $j=12$ & $1.0686 \pm 0.0002$ & $0.3489 \pm 0.0002$ & $0.91$ \\
+NESS, $j=18$ & $1.0322 \pm 0.0002$ & $0.2878 \pm 0.0001$ & $0.88$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The symmetry between $I_j$ and $I_{j+1}$ holds throughout:
+$c_1/c_2 \in [0.99, 1.00]$ everywhere.
+
+\begin{enumerate}
+\item Under NESS, $c_3/c_4$ decreases monotonically from the hot to the cold
+side ($1.22 \to 1.07 \to 1.03$), as does $c_1/c_3$ ($0.44 \to 0.35 \to 0.29$).
+At equilibrium the three sites are flat to within ${\sim}6\%$, with no
+monotonic trend.
+\item The NESS range $c_3/c_4\in[1.03,1.22]$ does not overlap the equilibrium
+range $[1.47,1.62]$.
+\end{enumerate}
+
+\section*{Result -- SIMD (float, $10^9$ samples) version}
+The SIMD runs were repeated at both conditions. At NESS, all three
+qualitative findings are reproduced: Form A still fails
+($R^2 \in [0.20, 0.25]$), strict local Gibbs is still rejected
+($c_3/c_4 \neq 1$ and $c_1/c_3 \neq 0.25$ at all sites), and the
+monotonic spatial gradient is reproduced with the same sign and
+ordering. The thermal profile $\langle I_j\rangle$ matches the Eigen
+run to $\sim 0.1\%$ at all $25$ modes.
+
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+ & $c_3/c_4$ (SIMD) & $c_1/c_3$ (SIMD) & $R^2_w$ (Form C) \\
+\midrule
+Eq, $j=6$  & $1.5894 \pm 0.0002$ & $0.3994 \pm 0.0001$ & $0.87$ \\
+Eq, $j=12$ & $1.4773 \pm 0.0001$ & $0.3840 \pm 0.0001$ & $0.87$ \\
+Eq, $j=18$ & $1.6430 \pm 0.0002$ & $0.4041 \pm 0.0001$ & $0.87$ \\[2pt]
+NESS, $j=6$  & $1.1337 \pm 0.0003$ & $0.4935 \pm 0.0002$ & $0.91$ \\
+NESS, $j=12$ & $1.0082 \pm 0.0002$ & $0.3867 \pm 0.0001$ & $0.85$ \\
+NESS, $j=18$ & $0.9752 \pm 0.0002$ & $0.3178 \pm 0.0001$ & $0.81$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\end{document}

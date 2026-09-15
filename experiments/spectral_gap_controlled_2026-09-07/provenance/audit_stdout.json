@@ -1,0 +1,97 @@
+{
+  "status": "PASS",
+  "cases": [
+    {
+      "case": "driven_dt1e-3",
+      "stream_count": 64,
+      "expected_stream_count": 64,
+      "bytes_per_stream": 4800048,
+      "size_pass": true,
+      "finite_pass": true,
+      "metadata_rows": 64,
+      "stream_ids_contiguous": true,
+      "projection_count": 0,
+      "floor_count": 0,
+      "zero_radius_events": 0,
+      "midpoint_failure_count": 0,
+      "nonfinite": 0,
+      "minimum_sampled_action": 1.6428881439930773e-07,
+      "max_float32_combination_roundoff": [
+        8.940696716308594e-08,
+        8.940696716308594e-08,
+        8.940696716308594e-08,
+        8.940696716308594e-08
+      ],
+      "pass": true
+    },
+    {
+      "case": "driven_dt2p5e-4",
+      "stream_count": 64,
+      "expected_stream_count": 64,
+      "bytes_per_stream": 4800048,
+      "size_pass": true,
+      "finite_pass": true,
+      "metadata_rows": 64,
+      "stream_ids_contiguous": true,
+      "projection_count": 0,
+      "floor_count": 0,
+      "zero_radius_events": 0,
+      "midpoint_failure_count": 0,
+      "nonfinite": 0,
+      "minimum_sampled_action": 1.1559099061786204e-07,
+      "max_float32_combination_roundoff": [
+        8.940696716308594e-08,
+        8.940696716308594e-08,
+        8.940696716308594e-08,
+        8.940696716308594e-08
+      ],
+      "pass": true
+    },
+    {
+      "case": "equilibrium_dt1e-3",
+      "stream_count": 64,
+      "expected_stream_count": 64,
+      "bytes_per_stream": 4800048,
+      "size_pass": true,
+      "finite_pass": true,
+      "metadata_rows": 64,
+      "stream_ids_contiguous": true,
+      "projection_count": 0,
+      "floor_count": 0,
+      "zero_radius_events": 0,
+      "midpoint_failure_count": 0,
+      "nonfinite": 0,
+      "minimum_sampled_action": 5.1641367208515146e-08,
+      "max_float32_combination_roundoff": [
+        8.940696716308594e-08,
+        8.940696716308594e-08,
+        8.940696716308594e-08,
+        8.940696716308594e-08
+      ],
+      "pass": true
+    },
+    {
+      "case": "equilibrium_dt2p5e-4",
+      "stream_count": 64,
+      "expected_stream_count": 64,
+      "bytes_per_stream": 4800048,
+      "size_pass": true,
+      "finite_pass": true,
+      "metadata_rows": 64,
+      "stream_ids_contiguous": true,
+      "projection_count": 0,
+      "floor_count": 0,
+      "zero_radius_events": 0,
+      "midpoint_failure_count": 0,
+      "nonfinite": 0,
+      "minimum_sampled_action": 1.1709150955926485e-08,
+      "max_float32_combination_roundoff": [
+        8.940696716308594e-08,
+        8.940696716308594e-08,
+        8.940696716308594e-08,
+        8.940696716308594e-08
+      ],
+      "pass": true
+    }
+  ]
+}

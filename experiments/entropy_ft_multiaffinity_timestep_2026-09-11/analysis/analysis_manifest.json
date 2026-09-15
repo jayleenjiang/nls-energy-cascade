@@ -1,0 +1,91 @@
+{
+  "analysis_source_sha256": "308d843a15fee0cce1ea589da00f3d88155d3cfb5593981d85e81d328cfa0fa7",
+  "protocol_sha256": "9e36b53483359763155490fac432cf6b7aecd8fafc09eaa226bbd8b13ff394c3",
+  "cases_sha256": "34e789bf4e57096fbfa73b4771339bccafe18b0654b6a55eb626a6ce3b09c836",
+  "equilibrium_cases_sha256": "90287b5a3ba8b5048506ecacf804fb81eadc23fb91e9877a99095b0c751d73d0",
+  "short_analysis_sha256": "100bc49fc4849d3e5f248600a7bb4000af6aadc9161415e1ce2b301de6f9863c",
+  "pooled_analysis_sha256": "dc9ed26c662a327459486f245ecf57e245cf4eb407601027de5684afc68d9730",
+  "mid_reference_sha256": "91f4413cb2275fcda19e20cadeaa18e88ed113f5e922bdafdf3552db2078d159",
+  "times": [
+    5,
+    10,
+    20,
+    25,
+    40,
+    80,
+    160,
+    320,
+    640
+  ],
+  "min_negative": 500,
+  "min_symmetric_pairs": 10,
+  "bootstrap": 1000,
+  "streams": 128,
+  "blocks_per_stream": 31252,
+  "inputs": [
+    {
+      "affinity": "weak",
+      "case": "weak_dt5e4",
+      "kind": "baseline",
+      "path": "/Users/jayleenjiang/Documents/NLS/experiments/entropy_ft_window_length_2026-09-10/raw/dbeta_0p027972_n10_tau5_blocks.csv",
+      "rows": 4000256,
+      "sha256": "84ee7b05c008a142bf6e18131e89510b0a4f420a330bf70ef87ec21e38870403"
+    },
+    {
+      "affinity": "weak",
+      "case": "weak_dt2p5e4",
+      "kind": "new",
+      "path": "/Users/jayleenjiang/Documents/NLS/experiments/entropy_ft_multiaffinity_timestep_2026-09-11/raw/weak_dt2p5e4_n10_tau5_blocks.csv",
+      "rows": 4000256,
+      "sha256": "c2c81dc939a8de7f2abf28656b4e5e3140824125586b2db887ea4061243c3f7d"
+    },
+    {
+      "affinity": "weak",
+      "case": "weak_dt1p25e4",
+      "kind": "new",
+      "path": "/Users/jayleenjiang/Documents/NLS/experiments/entropy_ft_multiaffinity_timestep_2026-09-11/raw/weak_dt1p25e4_n10_tau5_blocks.csv",
+      "rows": 4000256,
+      "sha256": "1b5251958787876634cc484e5c727a008492c33d3e92c3056ee7be5dd7f13192"
+    },
+    {
+      "affinity": "moderate",
+      "case": "moderate_dt5e4",
+      "kind": "baseline",
+      "path": "/Users/jayleenjiang/Documents/NLS/experiments/entropy_ft_window_length_2026-09-10/raw/dbeta_0p125000_n10_tau5_blocks.csv",
+      "rows": 4000256,
+      "sha256": "336e934df7bd8555fa345dcb9652a7dcbe5d694f80b8700c5655f26ed833f53d"
+    },
+    {
+      "affinity": "moderate",
+      "case": "moderate_dt2p5e4",
+      "kind": "new",
+      "path": "/Users/jayleenjiang/Documents/NLS/experiments/entropy_ft_multiaffinity_timestep_2026-09-11/raw/moderate_dt2p5e4_n10_tau5_blocks.csv",
+      "rows": 4000256,
+      "sha256": "8a7df0b5ec26aba57508702e2ea2552bf7c86b0baeaf4f46e358ef43c7c11b47"
+    },
+    {
+      "affinity": "moderate",
+      "case": "moderate_dt1p25e4",
+      "kind": "new",
+      "path": "/Users/jayleenjiang/Documents/NLS/experiments/entropy_ft_multiaffinity_timestep_2026-09-11/raw/moderate_dt1p25e4_n10_tau5_blocks.csv",
+      "rows": 4000256,
+      "sha256": "315bf4a25af37e6d9154ddb423f54cf9af8cd119be9e62f48420e5c17687bc3a"
+    },
+    {
+      "affinity": "equilibrium",
+      "case": "equilibrium_dt5e4",
+      "kind": "baseline",
+      "path": "/Users/jayleenjiang/Documents/NLS/experiments/entropy_ft_window_length_2026-09-10/raw/dbeta_0p000000_n10_tau5_blocks.csv",
+      "rows": 4000256,
+      "sha256": "87af7c2eadcea3967ed46b5399f41a9d5b3edee1dba490d0618b10cdb24c308b"
+    },
+    {
+      "affinity": "equilibrium",
+      "case": "equilibrium_dt2p5e4",
+      "kind": "baseline",
+      "path": "/Users/jayleenjiang/Documents/NLS/experiments/entropy_ft_timestep_bias_2026-09-10/raw/equilibrium_dt2p5e4_n10_tau5_blocks.csv",
+      "rows": 4000256,
+      "sha256": "8f5024d0d4fa0f3f2429d7447f2a4cbf76ca3317aa64022a11ddd3f00b5d84a7"
+    }
+  ]
+}

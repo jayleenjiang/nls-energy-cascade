@@ -1,0 +1,8 @@
+cell,n,clone_count,horizon,dt,selection_time,k,seeds,stage,purpose
+N20-DT,20,1024,60,0.00025,2,0.4;0.6,91001-91008,stage1,timestep_halving
+N20-SEL,20,1024,60,0.0005,1,0.4;0.6,91101-91108,stage1,selection_interval
+N30-POP,30,4096,60,0.0005,2,0.4;0.6,92001-92008,stage1,population_doubling
+N40-SEL,40,1024,120,0.0005,1,0.4;0.6,93001-93008,stage1,selection_interval
+N40-DT,40,1024,120,0.00025,2,0.4;0.6,93101-93108,stage1,timestep_halving
+N30-DT,30,4096,60,0.00025,2,0.4;0.6,92101-92108,n30-controls,timestep_halving
+N30-SEL,30,4096,60,0.0005,1,0.4;0.6,92201-92208,n30-controls,selection_interval

@@ -1,0 +1,19 @@
+{
+  "case": "driven_dt2p5e-4",
+  "status": "NO COMMON PLATEAU",
+  "eligible": [
+    "cos_theta3",
+    "I2",
+    "I1_plus_I3",
+    "cos_even_sum"
+  ],
+  "common_time_start": 1.26,
+  "common_time_end": 2.11,
+  "rate_min": -1.1217760728028505,
+  "rate_max": -0.9351391254983286,
+  "rate_spread_ok": true,
+  "ci_intersection_low": -0.9975492145992482,
+  "ci_intersection_high": -1.0145981335355443,
+  "ci_overlap": false,
+  "time_overlap": true
+}

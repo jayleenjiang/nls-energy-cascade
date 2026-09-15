@@ -1,0 +1,255 @@
+{
+  "legacy_analysis_sha256": "0a379e0e9e0356cf3240c353b14df699727e22453d7ca1908fd9683865b5a5b9",
+  "plateau_bootstraps": 2000,
+  "plateau_bootstrap_seed": 2026090811,
+  "early_fit_window": [
+    0.05,
+    1.0
+  ],
+  "early_fit_bootstraps": 2000,
+  "early_fit_bootstrap_seed": 2026090813,
+  "case_summaries": [
+    {
+      "case": "driven_dt1e-3",
+      "streams": 64,
+      "snapshots_per_stream": 100001,
+      "means": {
+        "cos_theta1": -0.214211236276291,
+        "sin_theta1": 0.060016975628347194,
+        "cos_theta3": -0.1826913062984084,
+        "sin_theta3": -0.047413936272693476,
+        "cos_theta1_minus_theta3": 0.048397748623251066,
+        "I2": 1.716895833640383,
+        "I1_plus_I3": 2.971218948556125,
+        "I1_minus_I3": -0.3354421517288373,
+        "cos_even_sum": -0.39690254259406105,
+        "cos_odd_diff": -0.03151992996357542,
+        "sin_even_sum": 0.012603039369686476,
+        "sin_odd_diff": 0.10743091191895787
+      },
+      "common_plateau": {
+        "case": "driven_dt1e-3",
+        "status": "NO COMMON PLATEAU",
+        "eligible": [
+          "cos_theta3",
+          "I2",
+          "I1_plus_I3",
+          "cos_even_sum"
+        ],
+        "common_time_start": 1.5,
+        "common_time_end": 1.8800000000000001,
+        "rate_min": -1.1878391136682045,
+        "rate_max": -0.9080200380173782,
+        "rate_spread_ok": false,
+        "ci_intersection_low": -0.9906218180573125,
+        "ci_intersection_high": -1.0931636528808408,
+        "ci_overlap": false,
+        "time_overlap": true
+      },
+      "bath_case": "driven",
+      "dt": 0.001
+    },
+    {
+      "case": "driven_dt2p5e-4",
+      "streams": 64,
+      "snapshots_per_stream": 100001,
+      "means": {
+        "cos_theta1": -0.21150082492263844,
+        "sin_theta1": 0.06044573945389706,
+        "cos_theta3": -0.17867780275467782,
+        "sin_theta3": -0.04717757609274084,
+        "cos_theta1_minus_theta3": 0.04951128309388729,
+        "I2": 1.711098404927044,
+        "I1_plus_I3": 2.9681841918957867,
+        "I1_minus_I3": -0.3237936390059214,
+        "cos_even_sum": -0.39017862766299694,
+        "cos_odd_diff": -0.032823022181463,
+        "sin_even_sum": 0.013268163368593551,
+        "sin_odd_diff": 0.10762331554285695
+      },
+      "common_plateau": {
+        "case": "driven_dt2p5e-4",
+        "status": "NO COMMON PLATEAU",
+        "eligible": [
+          "cos_theta3",
+          "I2",
+          "I1_plus_I3",
+          "cos_even_sum"
+        ],
+        "common_time_start": 1.26,
+        "common_time_end": 2.11,
+        "rate_min": -1.1217760728028505,
+        "rate_max": -0.9351391254983286,
+        "rate_spread_ok": true,
+        "ci_intersection_low": -0.9975492145992482,
+        "ci_intersection_high": -1.0145981335355443,
+        "ci_overlap": false,
+        "time_overlap": true
+      },
+      "bath_case": "driven",
+      "dt": 0.00025
+    },
+    {
+      "case": "equilibrium_dt1e-3",
+      "streams": 64,
+      "snapshots_per_stream": 100001,
+      "means": {
+        "cos_theta1": -0.18230051578879194,
+        "sin_theta1": 0.0011721368890446838,
+        "cos_theta3": -0.1817730731152136,
+        "sin_theta3": -0.00143391354603126,
+        "cos_theta1_minus_theta3": 0.040866450826467726,
+        "I2": 1.672515224962225,
+        "I1_plus_I3": 2.9539627812817355,
+        "I1_minus_I3": -0.00485148295115458,
+        "cos_even_sum": -0.36407358887925506,
+        "cos_odd_diff": -0.0005274426658241003,
+        "sin_even_sum": -0.00026177665876301936,
+        "sin_odd_diff": 0.0026060504349210167
+      },
+      "common_plateau": {
+        "case": "equilibrium_dt1e-3",
+        "status": "NO COMMON PLATEAU",
+        "eligible": [
+          "I2",
+          "I1_plus_I3",
+          "cos_even_sum"
+        ],
+        "common_time_start": 1.0,
+        "common_time_end": 1.58,
+        "rate_min": -1.250081247502848,
+        "rate_max": -0.9359756362119129,
+        "rate_spread_ok": false,
+        "ci_intersection_low": -0.9930121986610686,
+        "ci_intersection_high": -1.1520978373042263,
+        "ci_overlap": false,
+        "time_overlap": true
+      },
+      "bath_case": "equilibrium",
+      "dt": 0.001
+    },
+    {
+      "case": "equilibrium_dt2p5e-4",
+      "streams": 64,
+      "snapshots_per_stream": 100001,
+      "means": {
+        "cos_theta1": -0.18373856082541637,
+        "sin_theta1": -0.0010918731646976868,
+        "cos_theta3": -0.18531119032528048,
+        "sin_theta3": 0.0025594093268991682,
+        "cos_theta1_minus_theta3": 0.04460554761577375,
+        "I2": 1.6868798873582715,
+        "I1_plus_I3": 2.969299120991083,
+        "I1_minus_I3": -0.0013829054561687027,
+        "cos_even_sum": -0.36904975116516686,
+        "cos_odd_diff": 0.0015726295016124773,
+        "sin_even_sum": 0.0014675361712254596,
+        "sin_odd_diff": -0.003651282490296999
+      },
+      "common_plateau": {
+        "case": "equilibrium_dt2p5e-4",
+        "status": "NO COMMON PLATEAU",
+        "eligible": [
+          "cos_theta3",
+          "I2",
+          "I1_plus_I3"
+        ],
+        "common_time_start": 1.58,
+        "common_time_end": 1.8800000000000001,
+        "rate_min": -1.0081334718924035,
+        "rate_max": -0.8627195931761023,
+        "rate_spread_ok": true,
+        "ci_intersection_low": -0.9165408571669786,
+        "ci_intersection_high": -0.9466036208058038,
+        "ci_overlap": false,
+        "time_overlap": true
+      },
+      "bath_case": "equilibrium",
+      "dt": 0.00025
+    }
+  ],
+  "sector_common_plateaus": [
+    {
+      "case": "driven_dt1e-3:exchange_even",
+      "status": "NO COMMON PLATEAU",
+      "eligible": [
+        "I2",
+        "I1_plus_I3",
+        "cos_even_sum"
+      ],
+      "common_time_start": 1.26,
+      "common_time_end": 1.8800000000000001,
+      "rate_min": -1.1878391136682045,
+      "rate_max": -0.9440075863532579,
+      "rate_spread_ok": false,
+      "ci_intersection_low": -0.9906218180573125,
+      "ci_intersection_high": -1.0931636528808408,
+      "ci_overlap": false,
+      "time_overlap": true
+    },
+    {
+      "case": "driven_dt1e-3:exchange_odd",
+      "status": "NO COMMON PLATEAU",
+      "eligible": []
+    },
+    {
+      "case": "driven_dt2p5e-4:exchange_even",
+      "status": "NO COMMON PLATEAU",
+      "eligible": [
+        "I2",
+        "I1_plus_I3",
+        "cos_even_sum"
+      ],
+      "common_time_start": 1.26,
+      "common_time_end": 2.11,
+      "rate_min": -1.1217760728028505,
+      "rate_max": -0.9351391254983286,
+      "rate_spread_ok": true,
+      "ci_intersection_low": -0.9975492145992482,
+      "ci_intersection_high": -1.0145981335355443,
+      "ci_overlap": false,
+      "time_overlap": true
+    },
+    {
+      "case": "driven_dt2p5e-4:exchange_odd",
+      "status": "NO COMMON PLATEAU",
+      "eligible": []
+    },
+    {
+      "case": "equilibrium_dt1e-3:exchange_even",
+      "status": "NO COMMON PLATEAU",
+      "eligible": [
+        "I2",
+        "I1_plus_I3",
+        "cos_even_sum"
+      ],
+      "common_time_start": 1.0,
+      "common_time_end": 1.58,
+      "rate_min": -1.250081247502848,
+      "rate_max": -0.9359756362119129,
+      "rate_spread_ok": false,
+      "ci_intersection_low": -0.9930121986610686,
+      "ci_intersection_high": -1.1520978373042263,
+      "ci_overlap": false,
+      "time_overlap": true
+    },
+    {
+      "case": "equilibrium_dt1e-3:exchange_odd",
+      "status": "NO COMMON PLATEAU",
+      "eligible": []
+    },
+    {
+      "case": "equilibrium_dt2p5e-4:exchange_even",
+      "status": "NO COMMON PLATEAU",
+      "eligible": [
+        "I2",
+        "I1_plus_I3"
+      ]
+    },
+    {
+      "case": "equilibrium_dt2p5e-4:exchange_odd",
+      "status": "NO COMMON PLATEAU",
+      "eligible": []
+    }
+  ]
+}

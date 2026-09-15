@@ -1,0 +1,10 @@
+{
+  "sample_count_per_support": 50000,
+  "ensemble_rms_by_support": {
+    "fine": 0.02435511316705607,
+    "coarse": 0.024353304704018468
+  },
+  "maximum_ensemble_rms": 0.02435511316705607,
+  "gate": 0.1,
+  "complete_pass": true
+}

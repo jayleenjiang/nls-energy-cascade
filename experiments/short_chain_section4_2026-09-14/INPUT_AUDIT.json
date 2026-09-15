@@ -1,0 +1,141 @@
+{
+  "case_summaries": [
+    {
+      "all_finite": true,
+      "case": "driven_dt1e-3",
+      "format_failures": {},
+      "max_cos_difference_error": 1.0912058456824525e-07,
+      "max_redundancy_error": 8.940696716308594e-08,
+      "max_unit_circle_error": 8.418111363539538e-08,
+      "maximum_action": 17.681102752685547,
+      "metadata_ids_ok": true,
+      "minimum_action": 1.7881393432617188e-07,
+      "numeric_checks": {
+        "T1": true,
+        "T3": true,
+        "base_seed": true,
+        "dt": true
+      },
+      "pass": true,
+      "positive_reconstructed_actions": true,
+      "raw_snapshots": 6400064,
+      "snapshots_per_stream": 100001,
+      "streams": 64
+    },
+    {
+      "all_finite": true,
+      "case": "driven_dt2p5e-4",
+      "format_failures": {},
+      "max_cos_difference_error": 1.0335665479033196e-07,
+      "max_redundancy_error": 8.940696716308594e-08,
+      "max_unit_circle_error": 8.42171914428036e-08,
+      "maximum_action": 17.923723220825195,
+      "metadata_ids_ok": true,
+      "minimum_action": 1.1548399925231934e-07,
+      "numeric_checks": {
+        "T1": true,
+        "T3": true,
+        "base_seed": true,
+        "dt": true
+      },
+      "pass": true,
+      "positive_reconstructed_actions": true,
+      "raw_snapshots": 6400064,
+      "snapshots_per_stream": 100001,
+      "streams": 64
+    },
+    {
+      "all_finite": true,
+      "case": "equilibrium_dt1e-3",
+      "format_failures": {},
+      "max_cos_difference_error": 1.0752053469786915e-07,
+      "max_redundancy_error": 8.940696716308594e-08,
+      "max_unit_circle_error": 8.41755785074838e-08,
+      "maximum_action": 15.921411514282227,
+      "metadata_ids_ok": true,
+      "minimum_action": 5.960464477539063e-08,
+      "numeric_checks": {
+        "T1": true,
+        "T3": true,
+        "base_seed": true,
+        "dt": true
+      },
+      "pass": true,
+      "positive_reconstructed_actions": true,
+      "raw_snapshots": 6400064,
+      "snapshots_per_stream": 100001,
+      "streams": 64
+    },
+    {
+      "all_finite": true,
+      "case": "equilibrium_dt2p5e-4",
+      "format_failures": {},
+      "max_cos_difference_error": 1.0248306381299699e-07,
+      "max_redundancy_error": 8.940696716308594e-08,
+      "max_unit_circle_error": 8.406966856000508e-08,
+      "maximum_action": 14.914763927459717,
+      "metadata_ids_ok": true,
+      "minimum_action": 0.0,
+      "numeric_checks": {
+        "T1": true,
+        "T3": true,
+        "base_seed": true,
+        "dt": true
+      },
+      "pass": false,
+      "positive_reconstructed_actions": false,
+      "raw_snapshots": 6400064,
+      "snapshots_per_stream": 100001,
+      "streams": 64
+    }
+  ],
+  "expected_shape": [
+    100001,
+    12
+  ],
+  "input_root": "/Users/jayleenjiang/Documents/NLS/experiments/spectral_gap_controlled_2026-09-07/raw",
+  "overall_pass": false,
+  "protocol_version": "section4-v1",
+  "split_counts": {
+    "density:driven_dt1e-3": {
+      "test": 16,
+      "train": 32,
+      "validation": 16
+    },
+    "density:driven_dt2p5e-4": {
+      "test": 16,
+      "train": 32,
+      "validation": 16
+    },
+    "density:equilibrium_dt1e-3": {
+      "test": 16,
+      "train": 32,
+      "validation": 16
+    },
+    "density:equilibrium_dt2p5e-4": {
+      "test": 16,
+      "train": 32,
+      "validation": 16
+    },
+    "modes:driven_dt1e-3": {
+      "test": 16,
+      "train": 32,
+      "validation": 16
+    },
+    "modes:driven_dt2p5e-4": {
+      "test": 16,
+      "train": 32,
+      "validation": 16
+    },
+    "modes:equilibrium_dt1e-3": {
+      "test": 16,
+      "train": 32,
+      "validation": 16
+    },
+    "modes:equilibrium_dt2p5e-4": {
+      "test": 16,
+      "train": 32,
+      "validation": 16
+    }
+  }
+}

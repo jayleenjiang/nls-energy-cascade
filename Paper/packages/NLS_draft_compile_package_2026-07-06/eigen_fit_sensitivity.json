@@ -1,0 +1,83 @@
+{
+  "source": "KDE/NLS_backward_Y_train.txt",
+  "dt_eff": 0.01,
+  "model": "A * exp(lambda_R * t) + c",
+  "retention_rule": "-5 < lambda_R < 0",
+  "summaries": [
+    {
+      "start_index": 0,
+      "stop_index": 501,
+      "time_start": 0.0,
+      "time_stop": 5.0,
+      "valid_fits": 2895,
+      "total_curves": 4096,
+      "failed_optimizations": 0,
+      "median_lambda_R": -0.9344670167713216,
+      "mean_lambda_R": -1.4991500969191809,
+      "q25_lambda_R": -2.4810653703203487,
+      "q75_lambda_R": -0.3266705056060837,
+      "median_ssr": 0.0051029031283620135,
+      "label": "0--5"
+    },
+    {
+      "start_index": 0,
+      "stop_index": 201,
+      "time_start": 0.0,
+      "time_stop": 2.0,
+      "valid_fits": 2511,
+      "total_curves": 4096,
+      "failed_optimizations": 0,
+      "median_lambda_R": -1.5975805447568832,
+      "mean_lambda_R": -1.8207015496094354,
+      "q25_lambda_R": -3.1959702226202795,
+      "q75_lambda_R": -0.14080308726130242,
+      "median_ssr": 0.008726739404056914,
+      "label": "0--2"
+    },
+    {
+      "start_index": 10,
+      "stop_index": 201,
+      "time_start": 0.1,
+      "time_stop": 2.0,
+      "valid_fits": 2474,
+      "total_curves": 4096,
+      "failed_optimizations": 0,
+      "median_lambda_R": -1.2541144950706355,
+      "mean_lambda_R": -1.632793625887904,
+      "q25_lambda_R": -2.885272054728766,
+      "q75_lambda_R": -0.00033224556418820397,
+      "median_ssr": 0.002670955012006324,
+      "label": "0.1--2"
+    },
+    {
+      "start_index": 25,
+      "stop_index": 301,
+      "time_start": 0.25,
+      "time_stop": 3.0,
+      "valid_fits": 3100,
+      "total_curves": 4096,
+      "failed_optimizations": 1,
+      "median_lambda_R": -0.6941038809330393,
+      "mean_lambda_R": -1.3325938303134224,
+      "q25_lambda_R": -2.4309390005188796,
+      "q75_lambda_R": -0.01845151525334219,
+      "median_ssr": 0.0005583623038609327,
+      "label": "0.25--3"
+    },
+    {
+      "start_index": 50,
+      "stop_index": 501,
+      "time_start": 0.5,
+      "time_stop": 5.0,
+      "valid_fits": 3446,
+      "total_curves": 4096,
+      "failed_optimizations": 0,
+      "median_lambda_R": -0.6757623488098456,
+      "mean_lambda_R": -1.245158378308394,
+      "q25_lambda_R": -1.8732069275708823,
+      "q75_lambda_R": -0.49607985954018946,
+      "median_ssr": 9.331577251489408e-05,
+      "label": "0.5--5"
+    }
+  ]
+}

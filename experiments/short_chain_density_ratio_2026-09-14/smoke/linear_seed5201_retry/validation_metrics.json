@@ -1,0 +1,39 @@
+{
+  "action_scales": [
+    1.2356696437956984,
+    1.1054607665800673,
+    0.8857557773576153
+  ],
+  "architecture": "linear",
+  "best_epoch": 1,
+  "centered_log_ratio_rms": 0.0019401488210074543,
+  "epochs_completed": 1,
+  "finite": true,
+  "fp_abs_median": 0.010902623280222734,
+  "fp_abs_p90": 0.038837417837934485,
+  "max_weight_share": 0.0009811642038167218,
+  "phase": "equilibrium",
+  "protocol_version": "section4-density-ratio-v1",
+  "reference_train_streams": [
+    37
+  ],
+  "reference_validation_streams": [
+    35
+  ],
+  "reference_weight_ess": 1023.9962273097291,
+  "reference_weight_ess_fraction": 0.9999963157321573,
+  "runtime_seconds": 1.236814022064209,
+  "seed": 5201,
+  "smoke": true,
+  "target_train_streams": [
+    6
+  ],
+  "target_validation_streams": [
+    54
+  ],
+  "timestep": "fine",
+  "validation_admissible": false,
+  "validation_auc": 0.5284538269042969,
+  "validation_bce": 1.3862015022394096,
+  "validation_logz": 0.0009938462179857055
+}

@@ -1,0 +1,100 @@
+\documentclass[12pt]{amsart}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath,amsthm,amsfonts,bbm,bm,color,cite,enumerate}
+\usepackage[foot]{amsaddr}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{cor}[theorem]{Corollary}
+\newtheorem{lem}[theorem]{Lemma}
+\newtheorem{pro}[theorem]{Proposition}
+\newtheorem{conj}[theorem]{Conjecture}
+%\newtheorem{assumption}[theorem]{Assumption}
+\newtheorem{ex}[theorem]{Example}
+\theoremstyle{definition}
+\newtheorem{de}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{rem}[theorem]{Remark}
+\numberwithin{equation}{section}
+\usepackage[margin=1in]{geometry}
+\usepackage[nameinlink,noabbrev]{cleveref}
+
+\newtheorem{assumption}{Assumption}
+\crefname{assumption}{assumption}{assumptions}
+
+\title[NLS numerical]{Numerical study of a energy cascade model derived from dispersive equation}
+\author{Jayleen Jiang}
+\author{Yao Li}
+\thanks{Department of Mathematics and Statistics, University of Massachusetts Amherst, Amherst, Massachusetts, the United States, 01003}
+\email{liyao@umass.edu}
+
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+%skip it for now
+% derivation of energy cascade model, state the equation here
+
+
+% significance and challenge
+% known result
+
+\section{Preliminary}
+% (long chain) nonequilibrium thermodynamics: Thermal conductivity, Fourier's law, entropy production rate, Fluctuation theorem
+
+% Fokker-Planck equation, eigenvalue and eigenfunction decomposition
+
+% How to solve Fokker-Planck, how to find eigenfunction
+
+\section{Statistical physics properties of long cascade chain}
+\subsection{Nonequilibrium steady state}
+% 1.state how we did the simulation. How we confirm that the simulation is stabilized (expectation does not change much with the increasing sample size). What is the energy profile versus N for the "closed chain" (case 0)? What is the energy profile versus N for the "open chain" (case 4)
+
+% 2.terminal energy of open chain versus N. When $N$ gets larger in the "open chain", what is the "terminal energy"? Plot the "terminal energy" versus increasing N. (TODO:)Add some interpretation (connection between $\Lambda_n$ and the actual Fourier modes). Plot the location of the first N groups on a 2D plane. 
+
+
+% 3.local thermodynamic equilibrium. In a long chain (N = 25?), find the marginal probability density function of (I_12, I_13, theta_12), denoted by $\rho_{middle}$. Is $\log (\rho_{middle}) $  proportional to 
+%$$
+%-(I_{12}^2 + I_{13}^2)/4 + I_{12}I_{13} \cos \theta_{12}
+%$$
+%??
+
+
+1, Compare marginal PDF of $(I_a, I_{a+1}, \theta_a)$ and the 2-mode Gibbs by comparing $-\log(PDF)$ and $\frac{1}{2} (I_1 + I_2)^2 - \frac{1}{4} (I_1^2 + I_2^2) + I_1I_2\cos \theta_1$. (They are different)
+
+
+2, Compare marginal PDF of $(I_a, I_{a+1}, \theta_a)$ of NESS and the same marginal PDF of equilibrium by comparing the $-\log (PDF)$ of both. 
+
+Equilibrium: $p_\beta(I_a, I_{a+1}, \theta_a) : = \int_A \exp(-H/\beta) \mathrm{d}x$, where $A$ is the collection of variables other than $(I_a, I_{a+1}, \theta_a)$.
+
+Nonequilibrium: Does the marginal PDF of $(I_a, I_{a+1}, \theta_a)$, denoted by $q(I_a, I_{a+1}, \theta_a)$ approach to $p_{\beta_0}(I_a, I_{a+1}, \theta_a)$ of some $\beta_0$ as the length of the chain ($n$) increases?? How does $\beta_0$ depend on $(T_L, T_R, a/n)$? 
+
+
+
+Test: fix $a/n$. Let $n$ increase. Let $q_\beta$ be the equilibrium with boundary temperature $\beta$. Find the minimum of $\min_x\|\exp(x\log q) - p\|$. So the effective boundary temperature is $\beta_0:= \beta/x$. Compare $q_{\beta_0}$ and $p$.
+
+
+
+\subsection{Thermal conductivity}
+% Energy flux versus length of the chain, versus energy profile gradient 
+
+% Histogram of the energy flux. Is $P[ energy flux > C] \approx exp(-r C)$ ?
+
+\subsection{Entropy production and its fluctuation}
+
+% compute the entropy production rate as in the second law of thermodynamics
+
+% Does it satisfy fluctuation-dissipation theorem??
+
+
+\section{Detailed property of short chain}
+\subsection{Numerical solution of the noneqilibrium steady state}
+% Solution of Fokker-Planck
+
+\subsection{Mechansim of stabilization}
+% Mechanism of stabilization : high energy and low energy
+
+\subsection{Eigenfunction of the generator}
+% Eigenfunction of generator and interpretation ?
+
+\end{document}

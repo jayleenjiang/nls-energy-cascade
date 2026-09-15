@@ -1,0 +1,139 @@
+{
+  "method": "per-stream Geyer initial-positive-sequence IAT; stationary-time weighted combination",
+  "primary_gate_pass": true,
+  "protocol_version": "section4-v1",
+  "records": [
+    {
+      "case": "driven_dt1e-3",
+      "gate_pass": null,
+      "gate_threshold": null,
+      "limiting_probe": "I2",
+      "minimum_effective_samples": 13180.875435122009,
+      "primary_fine_test": false,
+      "raw_snapshots": 1600016,
+      "split": "test",
+      "streams": 16
+    },
+    {
+      "case": "driven_dt1e-3",
+      "gate_pass": null,
+      "gate_threshold": null,
+      "limiting_probe": "I2",
+      "minimum_effective_samples": 26572.188712218176,
+      "primary_fine_test": false,
+      "raw_snapshots": 3200032,
+      "split": "train",
+      "streams": 32
+    },
+    {
+      "case": "driven_dt1e-3",
+      "gate_pass": null,
+      "gate_threshold": null,
+      "limiting_probe": "I2",
+      "minimum_effective_samples": 13666.946299438625,
+      "primary_fine_test": false,
+      "raw_snapshots": 1600016,
+      "split": "validation",
+      "streams": 16
+    },
+    {
+      "case": "driven_dt2p5e-4",
+      "gate_pass": true,
+      "gate_threshold": 5000,
+      "limiting_probe": "I2",
+      "minimum_effective_samples": 11616.328977849798,
+      "primary_fine_test": true,
+      "raw_snapshots": 1600016,
+      "split": "test",
+      "streams": 16
+    },
+    {
+      "case": "driven_dt2p5e-4",
+      "gate_pass": null,
+      "gate_threshold": null,
+      "limiting_probe": "I2",
+      "minimum_effective_samples": 29267.394681239926,
+      "primary_fine_test": false,
+      "raw_snapshots": 3200032,
+      "split": "train",
+      "streams": 32
+    },
+    {
+      "case": "driven_dt2p5e-4",
+      "gate_pass": null,
+      "gate_threshold": null,
+      "limiting_probe": "I2",
+      "minimum_effective_samples": 13726.225313533849,
+      "primary_fine_test": false,
+      "raw_snapshots": 1600016,
+      "split": "validation",
+      "streams": 16
+    },
+    {
+      "case": "equilibrium_dt1e-3",
+      "gate_pass": null,
+      "gate_threshold": null,
+      "limiting_probe": "I2",
+      "minimum_effective_samples": 13014.528402870637,
+      "primary_fine_test": false,
+      "raw_snapshots": 1600016,
+      "split": "test",
+      "streams": 16
+    },
+    {
+      "case": "equilibrium_dt1e-3",
+      "gate_pass": null,
+      "gate_threshold": null,
+      "limiting_probe": "I2",
+      "minimum_effective_samples": 29376.613081663647,
+      "primary_fine_test": false,
+      "raw_snapshots": 3200032,
+      "split": "train",
+      "streams": 32
+    },
+    {
+      "case": "equilibrium_dt1e-3",
+      "gate_pass": null,
+      "gate_threshold": null,
+      "limiting_probe": "I2",
+      "minimum_effective_samples": 14186.27442693002,
+      "primary_fine_test": false,
+      "raw_snapshots": 1600016,
+      "split": "validation",
+      "streams": 16
+    },
+    {
+      "case": "equilibrium_dt2p5e-4",
+      "gate_pass": true,
+      "gate_threshold": 5000,
+      "limiting_probe": "I2",
+      "minimum_effective_samples": 13860.441067114803,
+      "primary_fine_test": true,
+      "raw_snapshots": 1600016,
+      "split": "test",
+      "streams": 16
+    },
+    {
+      "case": "equilibrium_dt2p5e-4",
+      "gate_pass": null,
+      "gate_threshold": null,
+      "limiting_probe": "I2",
+      "minimum_effective_samples": 26271.41851250819,
+      "primary_fine_test": false,
+      "raw_snapshots": 3200032,
+      "split": "train",
+      "streams": 32
+    },
+    {
+      "case": "equilibrium_dt2p5e-4",
+      "gate_pass": null,
+      "gate_threshold": null,
+      "limiting_probe": "I2",
+      "minimum_effective_samples": 12854.617071588285,
+      "primary_fine_test": false,
+      "raw_snapshots": 1600016,
+      "split": "validation",
+      "streams": 16
+    }
+  ]
+}

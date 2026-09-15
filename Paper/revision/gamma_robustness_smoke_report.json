@@ -1,0 +1,132 @@
+{
+  "generated_at_utc": "2026-06-20T21:31:49.465402+00:00",
+  "status": "PASS",
+  "scope": "SMOKE_ONLY_NOT_MANUSCRIPT_EVIDENCE",
+  "canonical_source": "flux/NLS_flux_canonical.cpp",
+  "expected_canonical_sha256": "76f937608280272397a555931b353ba770b06ee87d2f5b0dce08fe1e6bb3727e",
+  "observed_canonical_sha256": "76f937608280272397a555931b353ba770b06ee87d2f5b0dce08fe1e6bb3727e",
+  "canonical_sha_matches": true,
+  "run_dir": "tmp/gamma_robustness_smoke",
+  "runs": [
+    {
+      "gamma": 0.05,
+      "generated_source": "tmp/gamma_robustness_smoke/gamma0p05/NLS_flux_canonical_gamma.cpp",
+      "binary": "tmp/gamma_robustness_smoke/gamma0p05/flux_canonical_gamma",
+      "generated_source_sha256": "3d260b48347d74ae56ef7062b7e38377507f233e0804e6b8e1cfa2df74d0c9c7",
+      "compile": {
+        "args": [
+          "/usr/bin/clang++",
+          "-O2",
+          "-std=c++17",
+          "-Wall",
+          "-Wextra",
+          "-Wpedantic",
+          "-Xpreprocessor",
+          "-fopenmp",
+          "-I/opt/homebrew/include/eigen3",
+          "-I/opt/homebrew/opt/libomp/include",
+          "-L/opt/homebrew/opt/libomp/lib",
+          "-lomp",
+          "/Users/jayleenjiang/Documents/NLS/tmp/gamma_robustness_smoke/gamma0p05/NLS_flux_canonical_gamma.cpp",
+          "-o",
+          "/Users/jayleenjiang/Documents/NLS/tmp/gamma_robustness_smoke/gamma0p05/flux_canonical_gamma"
+        ],
+        "returncode": 0,
+        "stdout_tail": "",
+        "stderr_tail": ""
+      },
+      "run": {
+        "args": [
+          "/Users/jayleenjiang/Documents/NLS/tmp/gamma_robustness_smoke/gamma0p05/flux_canonical_gamma",
+          "10",
+          "2",
+          "6",
+          "1",
+          "1",
+          "1",
+          "0.01",
+          "20260630",
+          "1",
+          "/Users/jayleenjiang/Documents/NLS/tmp/gamma_robustness_smoke/gamma0p05/smoke_n6"
+        ],
+        "returncode": 0,
+        "stdout_tail": "Canonical NLS action-current simulation\nmodel=gibbs-canonical-v1-gamma0p05-smoke n=6 T1=10 Tn=2 bond=3 dt=0.01 burnin=1 measure=1 trajectories=16 seed=20260630 threads=1\ncompleted 1/1 batches\nmean action current = 0.5326551658\nsample SD = 1.157013086\nstandard error = 0.2892532714\nnormal 95% CI = [-0.03427082861, 1.09958116]\nsecond-half minus first-half current = 0.4139950542 +/- 1.026384631 (paired SE)\nprojection count = 32 (per-update rate 0.001666666667, events/trajectory/time 1)\nelapsed seconds = 0.000620542\nwrote prefix /Users/jayleenjiang/Documents/NLS/tmp/gamma_robustness_smoke/gamma0p05/smoke_n6\n",
+        "stderr_tail": "",
+        "parsed_summary": {
+          "summary_path": "tmp/gamma_robustness_smoke/gamma0p05/smoke_n6_summary.csv",
+          "samples_path": "tmp/gamma_robustness_smoke/gamma0p05/smoke_n6_samples.csv",
+          "model_version": "gibbs-canonical-v1-gamma0p05-smoke",
+          "gamma": 0.05,
+          "n": 6,
+          "n_trajectories": 16,
+          "mean_action_current": 0.5326551657790191,
+          "standard_error": 0.2892532714180685,
+          "projection_count": 32,
+          "elapsed_seconds": 0.000620542,
+          "basic_numeric_check": true,
+          "gamma_matches_requested": true
+        }
+      }
+    },
+    {
+      "gamma": 0.2,
+      "generated_source": "tmp/gamma_robustness_smoke/gamma0p2/NLS_flux_canonical_gamma.cpp",
+      "binary": "tmp/gamma_robustness_smoke/gamma0p2/flux_canonical_gamma",
+      "generated_source_sha256": "8e5ff6ee86002d18105e339843af39adc969acff1ad43d41f1d1634f4487b18b",
+      "compile": {
+        "args": [
+          "/usr/bin/clang++",
+          "-O2",
+          "-std=c++17",
+          "-Wall",
+          "-Wextra",
+          "-Wpedantic",
+          "-Xpreprocessor",
+          "-fopenmp",
+          "-I/opt/homebrew/include/eigen3",
+          "-I/opt/homebrew/opt/libomp/include",
+          "-L/opt/homebrew/opt/libomp/lib",
+          "-lomp",
+          "/Users/jayleenjiang/Documents/NLS/tmp/gamma_robustness_smoke/gamma0p2/NLS_flux_canonical_gamma.cpp",
+          "-o",
+          "/Users/jayleenjiang/Documents/NLS/tmp/gamma_robustness_smoke/gamma0p2/flux_canonical_gamma"
+        ],
+        "returncode": 0,
+        "stdout_tail": "",
+        "stderr_tail": ""
+      },
+      "run": {
+        "args": [
+          "/Users/jayleenjiang/Documents/NLS/tmp/gamma_robustness_smoke/gamma0p2/flux_canonical_gamma",
+          "10",
+          "2",
+          "6",
+          "1",
+          "1",
+          "1",
+          "0.01",
+          "20260630",
+          "1",
+          "/Users/jayleenjiang/Documents/NLS/tmp/gamma_robustness_smoke/gamma0p2/smoke_n6"
+        ],
+        "returncode": 0,
+        "stdout_tail": "Canonical NLS action-current simulation\nmodel=gibbs-canonical-v1-gamma0p2-smoke n=6 T1=10 Tn=2 bond=3 dt=0.01 burnin=1 measure=1 trajectories=16 seed=20260630 threads=1\ncompleted 1/1 batches\nmean action current = 0.6117653786\nsample SD = 2.232362131\nstandard error = 0.5580905327\nnormal 95% CI = [-0.4820719657, 1.705602723]\nsecond-half minus first-half current = -3.165989116 +/- 2.657515175 (paired SE)\nprojection count = 109 (per-update rate 0.005677083333, events/trajectory/time 3.40625)\nelapsed seconds = 0.000217292\nwrote prefix /Users/jayleenjiang/Documents/NLS/tmp/gamma_robustness_smoke/gamma0p2/smoke_n6\n",
+        "stderr_tail": "",
+        "parsed_summary": {
+          "summary_path": "tmp/gamma_robustness_smoke/gamma0p2/smoke_n6_summary.csv",
+          "samples_path": "tmp/gamma_robustness_smoke/gamma0p2/smoke_n6_samples.csv",
+          "model_version": "gibbs-canonical-v1-gamma0p2-smoke",
+          "gamma": 0.2,
+          "n": 6,
+          "n_trajectories": 16,
+          "mean_action_current": 0.611765378601208,
+          "standard_error": 0.5580905327281221,
+          "projection_count": 109,
+          "elapsed_seconds": 0.000217292,
+          "basic_numeric_check": true,
+          "gamma_matches_requested": true
+        }
+      }
+    }
+  ]
+}

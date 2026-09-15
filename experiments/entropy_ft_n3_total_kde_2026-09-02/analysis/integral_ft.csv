@@ -1,0 +1,3 @@
+observable,log_mean_exp_minus,bootstrap_ci_low,bootstrap_ci_high,exponential_weight_ess,ess_fraction,maximum_single_weight_share,maximum_leave_one_stream_change,resolution_pass,analysis_status
+medium_entropy,-5.773560490380543,-8.087315723975657,-4.862444823713278,2.2880261946545044,2.287879770349202e-06,0.6155082349477355,0.9480925344456921,0,computed
+total_entropy_kde,nan,nan,nan,nan,nan,nan,nan,0,not_computed_no_kde_extrapolation

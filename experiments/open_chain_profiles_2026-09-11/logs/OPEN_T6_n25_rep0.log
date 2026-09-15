@@ -1,0 +1,26 @@
+=== Boundary-profile SIMD production ===
+BC: OPEN_left_BC1_right_free (id=4)
+left:b_I=2*gamma*(2*T_left-(2*M*I_1-I_1^2+2*I_1*I_2*cos(delta_1)));right:b_I=0
+left:b_phi=gamma*(2*I_2*sin(delta_1));right:b_phi=0
+left:sigma_I=2*sqrt(2*gamma*T_left*I_1),sigma_phi=sqrt(2*gamma*T_left/I_1);right:sigma_I=0,sigma_phi=0
+right_boundary_bath=none;right_b_I=right_b_phi=right_sigma_I=right_sigma_phi=0
+n=25 T1=6 Tn=0 gamma=0.10000000149011612 dt_max=0.00050000002374872565 burnin=2000 measure=2000
+batches=16 lanes=16 trajectories=256 seed=2026091425 threads=2 prefix=/Users/jayleenjiang/Documents/NLS/experiments/open_chain_profiles_2026-09-11/raw/OPEN_T6_n25_rep0
+completed_batch=2/16
+completed_batch=1/16
+completed_batch=3/16
+completed_batch=4/16
+completed_batch=5/16
+completed_batch=6/16
+completed_batch=8/16
+completed_batch=7/16
+completed_batch=9/16
+completed_batch=10/16
+completed_batch=11/16
+completed_batch=12/16
+completed_batch=13/16
+completed_batch=14/16
+completed_batch=15/16
+completed_batch=16/16
+valid_trajectories=256 nonfinite_trajectories=0 discarded_trajectories=0 projection_count=1798104 mean_flux=8.5531352648625679e-05 se_flux=7.9830193349628232e-05 elapsed_seconds=181.94336699999999
+wrote_prefix=/Users/jayleenjiang/Documents/NLS/experiments/open_chain_profiles_2026-09-11/raw/OPEN_T6_n25_rep0

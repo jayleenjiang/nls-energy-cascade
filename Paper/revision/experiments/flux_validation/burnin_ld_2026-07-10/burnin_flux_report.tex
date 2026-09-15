@@ -1,0 +1,163 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+\title{Burn-in and finite-time flux-tail diagnostic}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{1 \quad Burn-in time}
+
+\subsection*{Setup}
+
+\begin{itemize}
+    \item Closed chain, $T_1=10$, $T_n=2$, $\gamma=0.1$.
+    \item Conserved action current across the middle bond
+    \[
+        J_m = 4I_{m-1}I_m
+        \sin\!\big(2(\varphi_m-\varphi_{m-1})\big).
+    \]
+    \item Time step $dt=5\times 10^{-4}$.
+    \item No burn-in.  Start from the deterministic initial condition used in
+    the canonical current code.
+    \item For $n=10,20,40,80$, simulate $1024$ trajectories and record
+    profiles and flux at times $t=50,100,150,\ldots,500$.
+\end{itemize}
+
+\subsection*{Results}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{rrrrr}
+\toprule
+$n$ & stable profile time & stable flux time & final cumulative $J$ & last-window $J$ at $t=500$ \\
+\midrule
+10 & $\sim 100$ & $\sim 100$ & 0.3958 & 0.3978 \\
+20 & $100$--$200$ & $100$--$200$ & 0.1175 & 0.1230 \\
+40 & $200$--$300$ & $200$--$300$ & 0.0282 & 0.0302 \\
+80 & $\gtrsim 200$ & not fully resolved & 0.0057 & 0.0061 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{analysis/burnin_terminal_profile.pdf}
+\caption{No-burn-in terminal action profiles.  The curves show
+$\mathbb{E}[I_j(t)]$ at $t=50,100,\ldots,500$.}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{analysis/burnin_flux_timeseries.pdf}
+\caption{No-burn-in current relaxation.  Left: cumulative average over
+$[0,t]$.  Right: average over the last interval of length $50$.}
+\end{figure}
+
+\begin{itemize}
+    \item The relaxation time grows with chain length.
+    \item For $n=10,20$, both profile and current stabilize quickly.
+    \item For $n=40$, the current is still biased low at early times; by
+    about $t=200$--$300$ the last-window current is close to the later values.
+    \item For $n=80$, $t=50$ is clearly too short.  The profile shape becomes
+    much closer to later profiles after about $t=150$--$200$, but the current
+    is small and noisy.
+    \item For the flux-tail pilot below, we therefore use the conservative
+    common burn-in $B=500$ for $n\le 40$.
+\end{itemize}
+
+\section*{2 \quad Probability distribution of flux}
+
+\subsection*{Setup}
+
+\begin{itemize}
+    \item Same closed-chain parameters: $T_1=10$, $T_n=2$, $\gamma=0.1$.
+    \item Burn-in $B=500$ from the diagnostic above.
+    \item For $n=10,20,30,40$, simulate $1024$ trajectories.
+    \item Measurement length $200$, divided into ten blocks of length $20$.
+    \item Construct prefix averages
+    \[
+        \overline J_\tau
+        = \frac{1}{\tau}\int_B^{B+\tau} J_m(t)\,dt,
+        \qquad
+        \tau=20,40,\ldots,200.
+    \]
+    \item For thresholds $A=0.01,0.02,\ldots$, sort the samples and estimate
+    $P[\overline J_\tau>A]$.
+\end{itemize}
+
+\subsection*{Results at $\tau=200$}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{rrrrrc}
+\toprule
+$n$ & mean $J$ & std & $\lambda$ & $R^2$ & fit window in $A$ \\
+\midrule
+10 & 0.3959 & 0.0607 & 31.4  & 0.9918 & $[0.45,\,0.55]$ \\
+20 & 0.1175 & 0.0303 & 62.0  & 0.9909 & $[0.15,\,0.19]$ \\
+30 & 0.0539 & 0.0204 & 91.0  & 0.9955 & $[0.08,\,0.10]$ \\
+40 & 0.0298 & 0.0163 & 126.1 & 1.0000 & $[0.05,\,0.07]$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Here $\lambda$ is the descriptive slope magnitude from a linear fit
+\[
+    \log P[\overline J_\tau>A] \approx -\lambda A+c
+\]
+over the listed upper-middle-tail window.  It is not a transport exponent.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{analysis/tau_tail_survival_n40.pdf}
+\caption{Example for $n=40$: survival plots
+$\log P[\overline J_\tau>A]$ versus threshold $A$ for
+$\tau=20,40,\ldots,200$.}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.72\textwidth]{analysis/tau_logprob_vs_tau_n40.pdf}
+\caption{Example for $n=40$: fixed-threshold dependence on $\tau$.}
+\end{figure}
+
+\begin{itemize}
+    \item For fixed $\tau$, $\log P[\overline J_\tau>A]$ decreases with
+    threshold $A$.
+    \item The upper-middle tail is locally close to linear in $A$ on the log
+    survival plot, but the full distribution is not exponential.
+    \item As $\tau$ increases, the time-averaged current distribution narrows.
+    \item If $A$ is below the mean current, $P[\overline J_\tau>A]$ can
+    increase with $\tau$ because the distribution concentrates near a positive
+    mean.
+    \item If $A$ is above the mean current, $P[\overline J_\tau>A]$ decreases
+    with $\tau$.
+    \item The rate proxy
+    \[
+        -\frac{1}{\tau}\log P[\overline J_\tau>A]
+    \]
+    does not yet show a clean collapse across $\tau$ in this $1024$-trajectory
+    pilot.  Therefore these plots should be described as finite-time
+    flux-tail diagnostics, not as a large-deviation result.
+\end{itemize}
+
+\section*{Takeaway}
+
+\begin{itemize}
+    \item Burn-in matters, especially for longer chains.
+    \item The diagnostic suggests that $B=500$ is a reasonable conservative
+    burn-in for the present $n\le 40$ finite-time tail pilot.
+    \item The finite-time flux tails have locally exponential-looking
+    upper-middle regions, but a large-deviation claim would require many more
+    trajectories and clearer $\tau$-scaling.
+    \item A $10^5$-trajectory run is the natural next step if we want to
+    resolve smaller probabilities reliably.
+\end{itemize}
+
+\end{document}

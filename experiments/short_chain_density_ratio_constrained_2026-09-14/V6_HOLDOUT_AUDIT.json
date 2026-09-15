@@ -1,0 +1,33 @@
+{
+  "cases": [
+    {
+      "case": "driven_fine",
+      "stream_files": 64,
+      "metadata_rows": 64,
+      "shape_per_stream": [
+        100001,
+        5
+      ],
+      "all_finite": true,
+      "all_actions_positive": true,
+      "minimum_action": 2.616256804716525e-07,
+      "diagnostics_zero": true,
+      "pass": true
+    },
+    {
+      "case": "equilibrium_fine",
+      "stream_files": 64,
+      "metadata_rows": 64,
+      "shape_per_stream": [
+        100001,
+        5
+      ],
+      "all_finite": true,
+      "all_actions_positive": true,
+      "minimum_action": 2.4537116327935275e-07,
+      "diagnostics_zero": true,
+      "pass": true
+    }
+  ],
+  "overall_pass": true
+}

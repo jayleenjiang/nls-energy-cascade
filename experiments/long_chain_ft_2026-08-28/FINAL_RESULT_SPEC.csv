@@ -1,0 +1,5 @@
+n,k,clone_count,horizon,analysis_dir
+10,0.3,2048,60,analysis_selection2_n10_population
+20,0.4,1024,60,analysis_n20_k04_06_population
+30,0.4,2048,60,analysis_n30_k04_06_remedial
+40,0.4,1024,120,analysis_n40_k04_06_remedial

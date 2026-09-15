@@ -1,0 +1,13 @@
+# bc_id=2
+# bc_label=BC3b_no_global_with_phase_drift
+# b_I=2*gamma*(2*T-I^2)
+# b_phi=gamma*(2*I_neighbor*sin(delta))
+# sigma_I=2*sqrt(2*gamma*T*I)
+# sigma_phi=sqrt(2*gamma*T/I)
+# n=4 T1=10 Tn=2 gamma=0.1 dt_max=0.0005 adaptive_dt=min(dt_max,1/max_drift),floor=1e-5
+# burnin=0.02 measure=0.04 seed=2026090502 requested_trajectories=16 valid_trajectories=16 discarded_trajectories=0 integration_step_samples=1296
+j,mean_I,se_mean_I,mean_sin_theta,se_mean_sin_theta
+1,1.375844825450101,0.15424334080130078,0.22055635109728303,0.10400674415644448
+2,0.10312242997971213,0.0014431182446579451,-0.16288144704253402,0.012930235606344176
+3,0.099816035180364124,0.00013288453920309192,-0.022448946644960253,0.11049778076198076
+4,0.10813124184008943,0.013884248838438426,,

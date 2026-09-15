@@ -1,0 +1,16 @@
+{
+  "generated_at_utc": "2026-09-15T07:19:49.984752+00:00",
+  "analysis_only": true,
+  "new_simulation": false,
+  "bootstrap_replicates": 1000,
+  "bootstrap_seed": 20260915042,
+  "theta0_radians": 2.191200837470542,
+  "theta0_degrees": 125.5465600525935,
+  "asymmetry_gate_pass": false,
+  "current_balance_gate_pass": false,
+  "phase_comparison_count": 30,
+  "phase_comparison_failures": 3,
+  "phase_density_trajectory_gate_pass": false,
+  "overall_pass": false,
+  "claim_boundary": "validated on the explicit sampled-support mask only"
+}

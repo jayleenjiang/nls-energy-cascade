@@ -1,0 +1,8 @@
+started_utc=2026-09-04T07:53:57Z
+experiment_repository_commit=cf5282d3ab77ce93c05578ff15fb6598026081c7
+protocol_amendment=AMENDMENT_001_EQUILIBRIUM.md
+production_source_commit=1905cf4e606a4a7f4dd8930caa64bd4cc861e9d4
+production_source_sha256=98e7f8f5f915c8ce02bd8aa10722025c09fd739184b981961692869c9356c0d3
+binary_sha256=5fdcd596f0b4da39357a7217fb8b475f14e7b381da08a1208351fccbc008080e
+parameters=T_left=6 T_right=6 n=10 gamma=0.1 dt=0.0005 burnin=500 block_time=20 batches=8 lanes=16 streams=128 blocks_per_stream=7813 blocks=1000064 threads=2 bond=5 seed=2026090405
+completed_utc=2026-09-04T10:31:55Z
