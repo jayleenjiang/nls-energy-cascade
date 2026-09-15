@@ -1,0 +1,6 @@
+phase,status,failing_quantity,value,gate,action,test_used_for_recovery
+fine_R8,failed,FP_abs_median_seed_43202,0.100997,0.100000,R9_fixed_shrink_grid_then_fresh_V6_holdout,no
+fine_R9_V7,passed,all_frozen_gates,1,1,final_fine_model,no
+coarse_original,failed,I2_I3_sin_theta3_abs_z_seed_45202,3.962779,3.748287,R10_add_fixed_right_transport_calibration,no
+coarse_R10,passed,all_frozen_gates,1,1,final_coarse_model,no
+cross_timestep,passed,max_ensemble_centered_log_ratio_RMS,0.024272,0.100000,final_replication_gate,no

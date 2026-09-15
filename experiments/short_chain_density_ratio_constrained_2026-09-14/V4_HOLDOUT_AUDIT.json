@@ -1,0 +1,61 @@
+{
+  "cases": [
+    {
+      "case": "driven_fine",
+      "stream_files": 64,
+      "metadata_rows": 64,
+      "shape_per_stream": [
+        100001,
+        5
+      ],
+      "all_finite": true,
+      "all_actions_positive": true,
+      "minimum_action": 1.561443678974631e-08,
+      "diagnostics_zero": true,
+      "pass": true
+    },
+    {
+      "case": "equilibrium_fine",
+      "stream_files": 64,
+      "metadata_rows": 64,
+      "shape_per_stream": [
+        100001,
+        5
+      ],
+      "all_finite": true,
+      "all_actions_positive": true,
+      "minimum_action": 2.5773212204714644e-09,
+      "diagnostics_zero": true,
+      "pass": true
+    },
+    {
+      "case": "driven_coarse",
+      "stream_files": 64,
+      "metadata_rows": 64,
+      "shape_per_stream": [
+        100001,
+        5
+      ],
+      "all_finite": true,
+      "all_actions_positive": true,
+      "minimum_action": 2.3369240784370723e-08,
+      "diagnostics_zero": true,
+      "pass": true
+    },
+    {
+      "case": "equilibrium_coarse",
+      "stream_files": 64,
+      "metadata_rows": 64,
+      "shape_per_stream": [
+        100001,
+        5
+      ],
+      "all_finite": true,
+      "all_actions_positive": true,
+      "minimum_action": 2.586648418160966e-07,
+      "diagnostics_zero": true,
+      "pass": true
+    }
+  ],
+  "overall_pass": true
+}

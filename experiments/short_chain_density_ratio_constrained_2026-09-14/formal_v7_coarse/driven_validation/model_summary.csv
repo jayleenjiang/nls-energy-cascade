@@ -1,0 +1,4 @@
+model,model_path,training_base_seed,model_seed,log_normalizer,ess_fraction,fp_abs_median,fp_abs_p90,max_abs_moment_z,max_marginal_tv,per_model_pass
+seed_45201,/Users/jayleenjiang/Documents/NLS/experiments/short_chain_density_ratio_constrained_2026-09-14/formal_v7_coarse/models/seed_8201,8201,45201,-0.0024042349570070343,0.9115803540673009,0.09360233417294017,0.42259389837116895,2.8710969762244645,0.024138643209134777,True
+seed_45202,/Users/jayleenjiang/Documents/NLS/experiments/short_chain_density_ratio_constrained_2026-09-14/formal_v7_coarse/models/seed_8202,8202,45202,0.0010903524309302526,0.9129395170910041,0.09300747640568963,0.4288232440122404,3.9627791904787157,0.02407048552077002,False
+seed_45203,/Users/jayleenjiang/Documents/NLS/experiments/short_chain_density_ratio_constrained_2026-09-14/formal_v7_coarse/models/seed_8203,8203,45203,0.004394212383068918,0.914508533498049,0.09429089443213678,0.455774907360023,3.389574512384473,0.0240741686746236,True

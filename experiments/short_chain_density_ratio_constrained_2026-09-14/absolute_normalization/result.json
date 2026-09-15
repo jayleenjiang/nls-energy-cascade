@@ -1,0 +1,11 @@
+{
+  "measure": "dI1 dI2 dI3 dtheta1 dtheta3",
+  "temperature": 5.0,
+  "proposal": "independent exponential",
+  "proposal_scale": 2.0,
+  "seed_base": 2026091501,
+  "partition": 514.3433631454566,
+  "partition_se": 1.1432018568877294e-05,
+  "log_partition": 6.242891064111767,
+  "relative_se": 2.2226433522861096e-08
+}
