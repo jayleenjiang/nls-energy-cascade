@@ -1,0 +1,7 @@
+bath drift vs Sec. 3.1 formulas (BC1, BC2, BC3, BC3b): max relative deviation 2.22026e-07  OK
+streamed KDE vs brute force (n = 3, reflection): max relative difference 9.56744e-16  OK
+co-rotating vs fixed frame (n = 5, t = 0.5): max |dI| 1.1839e-08, max |dtheta| 4.63401e-08, max |dM| 1.08891e-12, common-phase offset - M: 1.34081e-08  OK
+midpoint_failures 0
+nonfinite 0
+elapsed_seconds 487.2617723
+mean_I 1.48264138 1.68279944 1.482687346

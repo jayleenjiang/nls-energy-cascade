@@ -1,0 +1,49 @@
+{
+  "analysis_source_sha256": "153bf608bc9f7a03b124904416e48f7edcd945faf5d6bc30373d35df4d657e36",
+  "protocol_sha256": "b98b6417b1ee82a4a7e0df90ed3f78ec232db07a5c4e22eab12b30db6014adde",
+  "cases_sha256": "259ad1df49940421a3ca47f9d435da2cbdc8fc6f3d771e61e5f04b16d51e2402",
+  "externally_quoted_baselines_sha256": "83d378bba1bdbcb5d21f6bee72f29c024c561b034244665957c3bd4cf3db8788",
+  "short_analysis_path": "/Users/jayleenjiang/Documents/NLS/experiments/entropy_ft_window_length_2026-09-10/analyze_window_dependence.py",
+  "short_analysis_sha256": "100bc49fc4849d3e5f248600a7bb4000af6aadc9161415e1ce2b301de6f9863c",
+  "pooled_analysis_path": "/Users/jayleenjiang/Documents/NLS/experiments/entropy_ft_pooled_extrapolation_2026-09-10/analyze_pooled_extrapolation.py",
+  "pooled_analysis_sha256": "dc9ed26c662a327459486f245ecf57e245cf4eb407601027de5684afc68d9730",
+  "times": [
+    5,
+    10,
+    20,
+    25,
+    40,
+    80,
+    160,
+    320,
+    640
+  ],
+  "min_negative": 500,
+  "min_symmetric_pairs": 10,
+  "bootstrap": 1000,
+  "streams": 128,
+  "blocks_per_stream": 31252,
+  "inputs": [
+    {
+      "case": "equilibrium_dt5e4",
+      "kind": "existing",
+      "path": "/Users/jayleenjiang/Documents/NLS/experiments/entropy_ft_window_length_2026-09-10/raw/dbeta_0p000000_n10_tau5_blocks.csv",
+      "rows": 4000256,
+      "sha256": "87af7c2eadcea3967ed46b5399f41a9d5b3edee1dba490d0618b10cdb24c308b"
+    },
+    {
+      "case": "equilibrium_dt2p5e4",
+      "kind": "existing",
+      "path": "/Users/jayleenjiang/Documents/NLS/experiments/entropy_ft_timestep_bias_2026-09-10/raw/equilibrium_dt2p5e4_n10_tau5_blocks.csv",
+      "rows": 4000256,
+      "sha256": "8f5024d0d4fa0f3f2429d7447f2a4cbf76ca3317aa64022a11ddd3f00b5d84a7"
+    },
+    {
+      "case": "equilibrium_dt1p25e4",
+      "kind": "new",
+      "path": "/Users/jayleenjiang/Documents/NLS/experiments/entropy_ft_equilibrium_finest_baseline_2026-09-13/raw/equilibrium_dt1p25e4_n10_tau5_blocks.csv",
+      "rows": 4000256,
+      "sha256": "53d67292cc06685e8adb082e0ae8e7be76596384afb37c5af7a7f6d0af19ba28"
+    }
+  ]
+}

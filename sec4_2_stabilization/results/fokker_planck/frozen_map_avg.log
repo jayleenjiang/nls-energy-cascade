@@ -1,0 +1,9 @@
+averaging 0
+averaging 50
+averaging 100
+averaging 150
+averaging 200
+averaging 250
+averaging 300
+averaging 350
+averaging check T=5: {'mean_F': -2.355736541042181, 'se': 0.07733804878729636, 'draws': 400}

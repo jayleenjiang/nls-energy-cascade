@@ -1,0 +1,35 @@
+drain	n4_E10	--n 4 --T1 2 --Tn 8 --init 0.01,10,0.01,0.01 --dt 1e-4 --burn 0 --measure 10 --interval 0.002 --streams 256 --seed 52
+drain	n4_E30	--n 4 --T1 2 --Tn 8 --init 0.01,30,0.01,0.01 --dt 1e-4 --burn 0 --measure 10 --interval 0.002 --streams 256 --seed 52
+drain	n4_E100	--n 4 --T1 2 --Tn 8 --init 0.01,100,0.01,0.01 --dt 1e-4 --burn 0 --measure 10 --interval 0.002 --streams 256 --seed 52
+ness	n3_T2_8	--n 3 --T1 2 --Tn 8 --dt 1e-3 --burn 50 --measure 2000 --interval 0.1 --streams 256 --seed 61
+ness	n4_T2_8	--n 4 --T1 2 --Tn 8 --dt 1e-3 --burn 50 --measure 2000 --interval 0.1 --streams 256 --seed 62
+events	n3_T2_8	--n 3 --T1 2 --Tn 8 --dt 1e-3 --burn 50 --measure 1000 --interval 0.01 --streams 64 --seed 71
+events	n3_T5_5	--n 3 --T1 5 --Tn 5 --dt 1e-3 --burn 50 --measure 1000 --interval 0.01 --streams 64 --seed 72
+events	n4_T2_8	--n 4 --T1 2 --Tn 8 --dt 1e-3 --burn 50 --measure 1000 --interval 0.01 --streams 64 --seed 73
+trap	n4_E20	--n 4 --T1 2 --Tn 8 --init 0.01,20,0.01,0.01 --dt 1e-4 --burn 0 --measure 200 --interval 0.05 --streams 64 --seed 81
+trap	n4_E30	--n 4 --T1 2 --Tn 8 --init 0.01,30,0.01,0.01 --dt 1e-4 --burn 0 --measure 200 --interval 0.05 --streams 64 --seed 81
+trap	n4_E50	--n 4 --T1 2 --Tn 8 --init 0.01,50,0.01,0.01 --dt 1e-4 --burn 0 --measure 200 --interval 0.05 --streams 64 --seed 81
+trap	n4_E100	--n 4 --T1 2 --Tn 8 --init 0.01,100,0.01,0.01 --dt 1e-4 --burn 0 --measure 200 --interval 0.05 --streams 64 --seed 81
+trap	n4_E200	--n 4 --T1 2 --Tn 8 --init 0.01,200,0.01,0.01 --dt 5e-5 --burn 0 --measure 200 --interval 0.05 --streams 64 --seed 81
+e0scan	n4_E50	--n 4 --T1 2 --Tn 8 --gamma 0.1 --init 0.01,50,0.01,0.01 --dt 1e-4 --burn 0 --measure 300 --interval 0.05 --streams 128 --seed 91
+e0scan	n4_E70	--n 4 --T1 2 --Tn 8 --gamma 0.1 --init 0.01,70,0.01,0.01 --dt 1e-4 --burn 0 --measure 300 --interval 0.05 --streams 128 --seed 91
+e0scan	n4_E100	--n 4 --T1 2 --Tn 8 --gamma 0.1 --init 0.01,100,0.01,0.01 --dt 1e-4 --burn 0 --measure 400 --interval 0.05 --streams 128 --seed 91
+e0scan	n4_E140	--n 4 --T1 2 --Tn 8 --gamma 0.1 --init 0.01,140,0.01,0.01 --dt 5e-5 --burn 0 --measure 400 --interval 0.05 --streams 128 --seed 91
+e0scan	n4_E200	--n 4 --T1 2 --Tn 8 --gamma 0.1 --init 0.01,200,0.01,0.01 --dt 5e-5 --burn 0 --measure 500 --interval 0.05 --streams 128 --seed 91
+e0scan	n4_E280	--n 4 --T1 2 --Tn 8 --gamma 0.1 --init 0.01,280,0.01,0.01 --dt 2.5e-5 --burn 0 --measure 600 --interval 0.05 --streams 128 --seed 91
+e0scan	n4_E400	--n 4 --T1 2 --Tn 8 --gamma 0.1 --init 0.01,400,0.01,0.01 --dt 2.5e-5 --burn 0 --measure 800 --interval 0.05 --streams 128 --seed 91
+e0scan	n4_E400_dt1.25e-5	--n 4 --T1 2 --Tn 8 --gamma 0.1 --init 0.01,400,0.01,0.01 --dt 1.25e-5 --burn 0 --measure 100 --interval 0.05 --streams 128 --seed 91
+gscan	n4_E100_g0.05	--n 4 --T1 2 --Tn 8 --gamma 0.05 --init 0.01,100,0.01,0.01 --dt 1e-4 --burn 0 --measure 800 --interval 0.1 --streams 128 --seed 91
+gscan	n4_E200_g0.05	--n 4 --T1 2 --Tn 8 --gamma 0.05 --init 0.01,200,0.01,0.01 --dt 5e-5 --burn 0 --measure 1000 --interval 0.1 --streams 128 --seed 91
+gscan	n4_E100_g0.02	--n 4 --T1 2 --Tn 8 --gamma 0.02 --init 0.01,100,0.01,0.01 --dt 1e-4 --burn 0 --measure 2000 --interval 0.1 --streams 128 --seed 91
+gscan	n4_E200_g0.02	--n 4 --T1 2 --Tn 8 --gamma 0.02 --init 0.01,200,0.01,0.01 --dt 5e-5 --burn 0 --measure 2500 --interval 0.1 --streams 128 --seed 91
+tscan	n4_E100_T1_1	--n 4 --T1 1 --Tn 1 --gamma 0.1 --init 0.01,100,0.01,0.01 --dt 1e-4 --burn 0 --measure 400 --interval 0.05 --streams 128 --seed 91
+tscan	n4_E100_T5_5	--n 4 --T1 5 --Tn 5 --gamma 0.1 --init 0.01,100,0.01,0.01 --dt 1e-4 --burn 0 --measure 400 --interval 0.05 --streams 128 --seed 91
+tscan	n4_E100_T8_2	--n 4 --T1 8 --Tn 2 --gamma 0.1 --init 0.01,100,0.01,0.01 --dt 1e-4 --burn 0 --measure 400 --interval 0.05 --streams 128 --seed 91
+n5	n5_ness	--n 5 --T1 2 --Tn 8 --gamma 0.1 --burn 50 --measure 500 --interval 0.1 --streams 128 --seed 92 --dt 1e-3
+n5	n5_I3_E50	--n 5 --T1 2 --Tn 8 --gamma 0.1 --init 0.01,0.01,50,0.01,0.01 --dt 1e-4 --burn 0 --measure 300 --interval 0.05 --streams 128 --seed 93
+n5	n5_I2_E50	--n 5 --T1 2 --Tn 8 --gamma 0.1 --init 0.01,50,0.01,0.01,0.01 --dt 1e-4 --burn 0 --measure 300 --interval 0.05 --streams 128 --seed 93
+n5	n5_I3_E100	--n 5 --T1 2 --Tn 8 --gamma 0.1 --init 0.01,0.01,100,0.01,0.01 --dt 1e-4 --burn 0 --measure 400 --interval 0.05 --streams 128 --seed 93
+n5	n5_I2_E100	--n 5 --T1 2 --Tn 8 --gamma 0.1 --init 0.01,100,0.01,0.01,0.01 --dt 1e-4 --burn 0 --measure 400 --interval 0.05 --streams 128 --seed 93
+n5	n5_I3_E200	--n 5 --T1 2 --Tn 8 --gamma 0.1 --init 0.01,0.01,200,0.01,0.01 --dt 5e-5 --burn 0 --measure 500 --interval 0.05 --streams 128 --seed 93
+n5	n5_I2_E200	--n 5 --T1 2 --Tn 8 --gamma 0.1 --init 0.01,200,0.01,0.01,0.01 --dt 5e-5 --burn 0 --measure 500 --interval 0.05 --streams 128 --seed 93

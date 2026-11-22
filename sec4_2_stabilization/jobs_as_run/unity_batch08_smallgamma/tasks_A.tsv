@@ -1,0 +1,11 @@
+g1e-3	n3_worst	--n 3 --T1 2 --Tn 8 --gamma 1e-3 --init 0.01,100,0.01 --dt 1e-4 --burn 0 --measure 30000 --interval 1 --streams 32 --seed 801 --phases 2.094395102393,0.000000000000,2.094395102393
+g1e-3	n3_random	--n 3 --T1 2 --Tn 8 --gamma 1e-3 --init 0.01,100,0.01 --dt 1e-4 --burn 0 --measure 30000 --interval 1 --streams 32 --seed 801
+g1e-3	n4_worst	--n 4 --T1 2 --Tn 8 --gamma 1e-3 --init 0.01,50,50,0.01 --dt 1e-4 --burn 0 --measure 30000 --interval 1 --streams 32 --seed 801 --phases 2.094395102393,0.000000000000,2.094395102393,4.188790204786
+g1e-3	n4_anti	--n 4 --T1 2 --Tn 8 --gamma 1e-3 --init 0.01,50,50,0.01 --dt 1e-4 --burn 0 --measure 30000 --interval 1 --streams 32 --seed 801 --phases 2.094395102393,0.000000000000,1.570796326795,3.665191429188
+g1e-3	n4_random	--n 4 --T1 2 --Tn 8 --gamma 1e-3 --init 0.01,50,50,0.01 --dt 1e-4 --burn 0 --measure 30000 --interval 1 --streams 32 --seed 801
+g1e-3	n5_worst	--n 5 --T1 2 --Tn 8 --gamma 1e-3 --init 0.01,33.33333333,33.33333333,33.33333333,0.01 --dt 1e-4 --burn 0 --measure 30000 --interval 1 --streams 32 --seed 801 --phases 2.094395102393,0.000000000000,2.094395102393,4.188790204786,6.283185307180
+g1e-3	n5_anti	--n 5 --T1 2 --Tn 8 --gamma 1e-3 --init 0.01,33.33333333,33.33333333,33.33333333,0.01 --dt 1e-4 --burn 0 --measure 30000 --interval 1 --streams 32 --seed 801 --phases 2.094395102393,0.000000000000,1.570796326795,3.141592653590,5.235987755983
+g1e-3	n5_random	--n 5 --T1 2 --Tn 8 --gamma 1e-3 --init 0.01,33.33333333,33.33333333,33.33333333,0.01 --dt 1e-4 --burn 0 --measure 30000 --interval 1 --streams 32 --seed 801
+g1e-3	n6_worst	--n 6 --T1 2 --Tn 8 --gamma 1e-3 --init 0.01,25,25,25,25,0.01 --dt 1e-4 --burn 0 --measure 30000 --interval 1 --streams 32 --seed 801 --phases 2.094395102393,0.000000000000,2.094395102393,4.188790204786,6.283185307180,8.377580409573
+g1e-3	n6_anti	--n 6 --T1 2 --Tn 8 --gamma 1e-3 --init 0.01,25,25,25,25,0.01 --dt 1e-4 --burn 0 --measure 30000 --interval 1 --streams 32 --seed 801 --phases 2.094395102393,0.000000000000,1.570796326795,3.141592653590,4.712388980385,6.806784082778
+g1e-3	n6_random	--n 6 --T1 2 --Tn 8 --gamma 1e-3 --init 0.01,25,25,25,25,0.01 --dt 1e-4 --burn 0 --measure 30000 --interval 1 --streams 32 --seed 801

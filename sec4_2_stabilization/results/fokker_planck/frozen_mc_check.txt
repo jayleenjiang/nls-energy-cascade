@@ -1,0 +1,8 @@
+canonical 3.0 3.0 dt 0.001 MC F = -3.3551 +- 0.0026
+canonical 3.0 3.0 dt 0.0005 MC F = -3.3619 +- 0.0028
+hlns 3.0 3.0 dt 0.001 MC F = -3.4306 +- 0.0075
+hlns 3.0 3.0 dt 0.0005 MC F = -3.4402 +- 0.0099
+canonical 0.5 2.0 dt 0.001 MC F = -1.3825 +- 0.0007
+canonical 0.5 2.0 dt 0.0005 MC F = -1.3818 +- 0.0006
+
+[exited with code 0]

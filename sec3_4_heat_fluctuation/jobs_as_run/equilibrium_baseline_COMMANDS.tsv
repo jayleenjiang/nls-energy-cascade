@@ -1,0 +1,2 @@
+case	command
+equilibrium_dt1p25e4	/Users/jayleenjiang/Documents/NLS/experiments/entropy_ft_equilibrium_finest_baseline_2026-09-13/../entropy_ft_window_length_2026-09-10/bin/entropy_ft_window sample 6 6 10 8 500 5 31252 0.000125 2026091301 2 /Users/jayleenjiang/Documents/NLS/experiments/entropy_ft_equilibrium_finest_baseline_2026-09-13/raw/equilibrium_dt1p25e4_n10_tau5 5

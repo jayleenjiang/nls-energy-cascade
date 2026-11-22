@@ -1,0 +1,20 @@
+{
+  "action_scales": [
+    1.0521711707115173,
+    1.2246150374412537,
+    1.0517207384109497
+  ],
+  "anchor_temperature": 5.0,
+  "case": "eq",
+  "depth": 3,
+  "feature_version": "phase_regular_v4_n3",
+  "hI": 0.2,
+  "hT": 0.2,
+  "label_samples": 1000000000,
+  "labels": "../unified_v2/density/n3_eq_kde_kde.bin",
+  "queries": "../unified_v2/density/n3_queries_eq.bin",
+  "rcut": 4.0,
+  "script": "train_kde_nn_n3.py",
+  "seed": 1,
+  "width": 128
+}

@@ -1,0 +1,20 @@
+{
+  "seed": 2026101001,
+  "temperature": 5.0,
+  "chains": 64,
+  "burn_steps": 100000,
+  "sample_steps": 200000,
+  "thin": 20,
+  "saved_samples": 640000,
+  "burn_acceptance": 0.5386471875,
+  "sample_acceptance": 0.35810171875,
+  "final_scale_y": 1.0,
+  "final_scale_theta": 1.5,
+  "mean_actions": [
+    1.2237886190414429,
+    1.3379606008529663,
+    1.3395177125930786,
+    1.2205690145492554
+  ],
+  "max_between_chain_action_mean_range": 0.08915723206128878
+}

@@ -1,0 +1,30 @@
+program rk4a_chain_v2 (schemes4 RK4_A + Cartesian bath; --phases)
+n 3
+T1 2
+Tn 8
+gamma 1e-05
+dt 0.0001
+burn 0
+measure 0.3
+streams 64
+seed 701
+hold
+init 0.01 100 0.01
+phases
+substep_events 0
+floor 0
+reflections_at_floor 0
+nonfinite_steps 0
+elapsed_seconds 0.094323
+meanI_1 26.5821 0.537693
+rate_1 24.7658 0.632574
+Sleft_1 0 0
+Sright_1 -6.19144 0.158143
+meanI_2 46.5234 0.927515
+rate_2 -4.66703 0.515783
+Sleft_2 0.626693 0.122168
+Sright_2 0.540065 0.0969552
+meanI_3 26.8955 0.579835
+rate_3 24.6422 0.646222
+Sleft_3 -6.16054 0.161555
+Sright_3 0 0

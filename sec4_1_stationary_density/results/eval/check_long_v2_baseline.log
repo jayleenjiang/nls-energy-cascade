@@ -1,0 +1,10 @@
+3 eq n3_eq z_rms(long) = 1.36  [val-se only 4.49]  old 1.08  ESS 1.00
+3 eq long A vs B z_rms = 0.84   long vs Gibbs exact z_rms = 1.22
+3 neq n3_neq_s1 z_rms(long) = 4.79  [val-se only 355.87]  old 2.28  ESS 0.00
+3 neq n3_neq_s2 z_rms(long) = 1.98  [val-se only 6.75]  old 2.25  ESS 0.92
+3 neq long A vs B z_rms = 0.60 
+4 eq n4_eq z_rms(long) = 0.68  [val-se only 2.29]  old 0.71  ESS 1.00
+4 eq long A vs B z_rms = 0.66   long vs Gibbs exact z_rms = 1.02
+4 neq n4_neq_s1 z_rms(long) = 5.72  [val-se only 23.35]  old 1.85  ESS 0.84
+4 neq n4_neq_s2 z_rms(long) = 2.98  [val-se only 12.74]  old 1.51  ESS 0.81
+4 neq long A vs B z_rms = 1.07 

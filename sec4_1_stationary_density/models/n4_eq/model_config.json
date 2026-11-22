@@ -1,0 +1,21 @@
+{
+  "action_scales": [
+    0.8476533591747284,
+    0.9317372143268585,
+    0.9343164563179016,
+    0.8477332293987274
+  ],
+  "case": "eq",
+  "depth": 3,
+  "feature_version": "phase_regular_v4",
+  "hI": 0.2,
+  "hT": 0.2,
+  "label_samples": 1000000000,
+  "labels": "../unified_v2/density/n4_eq_kde_kde.bin",
+  "linear_skip": false,
+  "queries": "../unified_v2/density/n4_queries_eq.bin",
+  "rcut": 4.0,
+  "script": "train_kde_nn_v3.py",
+  "seed": 1,
+  "width": 128
+}

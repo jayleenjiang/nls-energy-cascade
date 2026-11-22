@@ -1,0 +1,12 @@
+canonical I3=0.5: exact 1D E[sin th3] = -0.150850   2D FP with I1=1e-4: -0.150836   diff +1.4e-05
+canonical I3=2.0: exact 1D E[sin th3] = -0.700761   2D FP with I1=1e-4: -0.700710   diff +5.0e-05
+canonical I3=6.0: exact 1D E[sin th3] = -0.850939   2D FP with I1=1e-4: -0.850947   diff -7.9e-06
+hlns I3=0.5: exact 1D E[sin th3] = -0.831160   2D FP with I1=1e-4: -0.831169   diff -8.8e-06
+hlns I3=2.0: exact 1D E[sin th3] = -0.857609   2D FP with I1=1e-4: -0.857616   diff -7.6e-06
+hlns I3=6.0: exact 1D E[sin th3] = -0.863239   2D FP with I1=1e-4: -0.863246   diff -7.4e-06
+canonical (I1,I3)=(0.1,6.0): F at N=128/256/512 = -5.10586 / -5.10571 / -5.10567
+canonical (I1,I3)=(3.0,3.0): F at N=128/256/512 = -3.39158 / -3.36668 / -3.35997
+canonical (I1,I3)=(0.5,2.0): F at N=128/256/512 = -1.38336 / -1.38316 / -1.38311
+hlns (I1,I3)=(0.1,6.0): F at N=128/256/512 = -5.17964 / -5.17949 / -5.17944
+hlns (I1,I3)=(3.0,3.0): F at N=128/256/512 = -3.67991 / -3.51243 / -3.44800
+hlns (I1,I3)=(0.5,2.0): F at N=128/256/512 = -1.71744 / -1.71624 / -1.71592

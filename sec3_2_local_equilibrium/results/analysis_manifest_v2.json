@@ -1,0 +1,10 @@
+{
+  "analysis_source_sha256": "b68c3ee3b8b8fe0ce9478b78db10f75ab99f3c0420c4372894edfb246ce8ea03",
+  "bootstrap_replicates": 1000,
+  "bootstrap_seed": 2026091800,
+  "bootstrap_unit": "independent 16-trajectory batch",
+  "min_count_per_aggregate_side": 50,
+  "core_action_max": 2.5,
+  "histogram_bins_per_axis": 80,
+  "summary_rows": 9
+}

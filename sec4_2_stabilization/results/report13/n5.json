@@ -1,0 +1,637 @@
+{
+ "n5_ness_mean_M": 5.726619415667843,
+ "n5_ness_mean_I": [
+  0.8115511650220706,
+  1.169166447662883,
+  1.2109008983020837,
+  1.231709205753561,
+  1.3032916989272452
+ ],
+ "n5_I2_E100": {
+  "leak_by_pair": {
+   "2-3": {
+    "dMdt_fd": -0.17105665466633965,
+    "se": 0.003590989216852942,
+    "pred": -0.15625,
+    "snapshots": 325860
+   },
+   "3-4": {
+    "dMdt_fd": -0.6871785775301472,
+    "se": 0.04097934592107348,
+    "pred": -0.625,
+    "snapshots": 22024
+   }
+  },
+  "tau_M_median": 117.17500000000001,
+  "tau_M_q75": 271.52500000000003,
+  "tau_M_q90": 309.42,
+  "not_relaxed": 0,
+  "T_run": 400.0,
+  "cluster_at_t5": {
+   "5": {
+    "fraction": 0.0078125,
+    "anti_phase_fraction": 1.0,
+    "tau_M_median": 1.5
+   },
+   "2-3": {
+    "fraction": 0.53125,
+    "anti_phase_fraction": 1.0,
+    "tau_M_median": 268.625
+   },
+   "3-4": {
+    "fraction": 0.171875,
+    "anti_phase_fraction": 1.0,
+    "tau_M_median": 70.325
+   },
+   "4-5": {
+    "fraction": 0.0078125,
+    "anti_phase_fraction": 0.0,
+    "tau_M_median": 1.4500000000000002
+   },
+   "1-2-3": {
+    "fraction": 0.0234375,
+    "anti_phase_fraction": 0.3333333333333333,
+    "tau_M_median": 1.6500000000000001
+   },
+   "2-3-4": {
+    "fraction": 0.0234375,
+    "anti_phase_fraction": 0.3333333333333333,
+    "tau_M_median": 2.25
+   },
+   "3-4-5": {
+    "fraction": 0.046875,
+    "anti_phase_fraction": 0.16666666666666666,
+    "tau_M_median": 1.7000000000000002
+   },
+   "1-2-3-4": {
+    "fraction": 0.046875,
+    "anti_phase_fraction": 0.0,
+    "tau_M_median": 1.6
+   },
+   "2-3-4-5": {
+    "fraction": 0.0625,
+    "anti_phase_fraction": 0.0,
+    "tau_M_median": 1.55
+   },
+   "1-2-3-4-5": {
+    "fraction": 0.078125,
+    "anti_phase_fraction": 0.0,
+    "tau_M_median": 1.4000000000000001
+   }
+  },
+  "cluster_while_M>20_after_t5": {
+   "1-2": {
+    "time_fraction": 9.1098741926374e-06,
+    "anti_phase": 1.0
+   },
+   "2-3": {
+    "time_fraction": 0.9300452760747374,
+    "anti_phase": 0.9999412294792932
+   },
+   "3-4": {
+    "time_fraction": 0.06649297173206038,
+    "anti_phase": 0.9988126227337079
+   },
+   "4-5": {
+    "time_fraction": 0.00021560035589241846,
+    "anti_phase": 0.9154929577464789
+   },
+   "1-2-3": {
+    "time_fraction": 0.0010385256579606636,
+    "anti_phase": 0.6228070175438597
+   },
+   "2-3-4": {
+    "time_fraction": 0.0013512980052412143,
+    "anti_phase": 0.7078651685393258
+   },
+   "3-4-5": {
+    "time_fraction": 0.0004403105859774743,
+    "anti_phase": 0.7448275862068966
+   },
+   "1-2-3-4": {
+    "time_fraction": 7.28789935410992e-05,
+    "anti_phase": 0.125
+   },
+   "2-3-4-5": {
+    "time_fraction": 0.00033402872039670463,
+    "anti_phase": 0.02727272727272727
+   }
+  }
+ },
+ "n5_I2_E200": {
+  "leak_by_pair": {
+   "2-3": {
+    "dMdt_fd": -0.16119186760666063,
+    "se": 0.001776941938378666,
+    "pred": -0.15625,
+    "snapshots": 740385
+   },
+   "3-4": {
+    "dMdt_fd": -0.6689890239778077,
+    "se": 0.14379631788832445,
+    "pred": -0.625,
+    "snapshots": 41334
+   }
+  },
+  "tau_M_median": 492.1,
+  "tau_M_q75": NaN,
+  "tau_M_q90": NaN,
+  "not_relaxed": 63,
+  "T_run": 500.0,
+  "cluster_at_t5": {
+   "4": {
+    "fraction": 0.0078125,
+    "anti_phase_fraction": 1.0,
+    "tau_M_median": 2.0500000000000003
+   },
+   "1-2": {
+    "fraction": 0.0078125,
+    "anti_phase_fraction": 0.0,
+    "tau_M_median": 1.6500000000000001
+   },
+   "2-3": {
+    "fraction": 0.609375,
+    "anti_phase_fraction": 1.0,
+    "tau_M_median": Infinity
+   },
+   "3-4": {
+    "fraction": 0.1171875,
+    "anti_phase_fraction": 1.0,
+    "tau_M_median": 173.65
+   },
+   "1-2-3": {
+    "fraction": 0.0078125,
+    "anti_phase_fraction": 0.0,
+    "tau_M_median": 1.8
+   },
+   "2-3-4": {
+    "fraction": 0.0390625,
+    "anti_phase_fraction": 0.2,
+    "tau_M_median": 1.6500000000000001
+   },
+   "3-4-5": {
+    "fraction": 0.0234375,
+    "anti_phase_fraction": 0.0,
+    "tau_M_median": 1.8
+   },
+   "1-2-3-4": {
+    "fraction": 0.0546875,
+    "anti_phase_fraction": 0.0,
+    "tau_M_median": 1.6
+   },
+   "2-3-4-5": {
+    "fraction": 0.0625,
+    "anti_phase_fraction": 0.0,
+    "tau_M_median": 1.75
+   },
+   "1-2-3-4-5": {
+    "fraction": 0.0703125,
+    "anti_phase_fraction": 0.0,
+    "tau_M_median": 1.85
+   }
+  },
+  "cluster_while_M>20_after_t5": {
+   "1-2": {
+    "time_fraction": 3.859588181940987e-06,
+    "anti_phase": 0.6666666666666666
+   },
+   "2-3": {
+    "time_fraction": 0.9459348887473706,
+    "anti_phase": 0.9999809591423998
+   },
+   "3-4": {
+    "time_fraction": 0.05328418791048328,
+    "anti_phase": 0.9993722384528092
+   },
+   "4-5": {
+    "time_fraction": 7.461870485085909e-05,
+    "anti_phase": 0.9310344827586207
+   },
+   "1-2-3": {
+    "time_fraction": 0.00014409129212579683,
+    "anti_phase": 0.625
+   },
+   "2-3-4": {
+    "time_fraction": 0.00036794740667837406,
+    "anti_phase": 0.6748251748251748
+   },
+   "3-4-5": {
+    "time_fraction": 0.00014151823333783618,
+    "anti_phase": 0.8363636363636363
+   },
+   "1-2-3-4": {
+    "time_fraction": 1.157876454582296e-05,
+    "anti_phase": 0.0
+   },
+   "2-3-4-5": {
+    "time_fraction": 3.730935242542954e-05,
+    "anti_phase": 0.13793103448275862
+   }
+  }
+ },
+ "n5_I2_E50": {
+  "leak_by_pair": {
+   "2-3": {
+    "dMdt_fd": -0.17554012252892526,
+    "se": 0.00530305090038524,
+    "pred": -0.15625,
+    "snapshots": 113106
+   },
+   "3-4": {
+    "dMdt_fd": -0.325056044059109,
+    "se": 0.09460449428650147,
+    "pred": -0.625,
+    "snapshots": 1959
+   }
+  },
+  "tau_M_median": 49.175,
+  "tau_M_q75": 89.825,
+  "tau_M_q90": 120.65,
+  "not_relaxed": 0,
+  "T_run": 300.0,
+  "cluster_at_t5": {
+   "2-3": {
+    "fraction": 0.5859375,
+    "anti_phase_fraction": 1.0,
+    "tau_M_median": 86.2
+   },
+   "3-4": {
+    "fraction": 0.1328125,
+    "anti_phase_fraction": 0.9411764705882353,
+    "tau_M_median": 11.8
+   },
+   "1-2-3": {
+    "fraction": 0.015625,
+    "anti_phase_fraction": 0.5,
+    "tau_M_median": 4.675000000000001
+   },
+   "2-3-4": {
+    "fraction": 0.046875,
+    "anti_phase_fraction": 0.16666666666666666,
+    "tau_M_median": 3.8000000000000007
+   },
+   "3-4-5": {
+    "fraction": 0.0625,
+    "anti_phase_fraction": 0.25,
+    "tau_M_median": 1.5
+   },
+   "1-2-3-4": {
+    "fraction": 0.046875,
+    "anti_phase_fraction": 0.0,
+    "tau_M_median": 1.55
+   },
+   "2-3-4-5": {
+    "fraction": 0.0703125,
+    "anti_phase_fraction": 0.0,
+    "tau_M_median": 1.4000000000000001
+   },
+   "1-2-3-4-5": {
+    "fraction": 0.0390625,
+    "anti_phase_fraction": 0.0,
+    "tau_M_median": 1.35
+   }
+  },
+  "cluster_while_M>20_after_t5": {
+   "1-2": {
+    "time_fraction": 2.08853291005733e-05,
+    "anti_phase": 1.0
+   },
+   "2-3": {
+    "time_fraction": 0.9715228537713683,
+    "anti_phase": 0.9999677537244448
+   },
+   "3-4": {
+    "time_fraction": 0.017909169703741606,
+    "anti_phase": 0.9889212827988338
+   },
+   "4-5": {
+    "time_fraction": 0.0004699199047628993,
+    "anti_phase": 0.7111111111111111
+   },
+   "1-2-3": {
+    "time_fraction": 0.0037802445672037678,
+    "anti_phase": 0.6767955801104972
+   },
+   "2-3-4": {
+    "time_fraction": 0.004156180491014087,
+    "anti_phase": 0.7713567839195979
+   },
+   "3-4-5": {
+    "time_fraction": 0.0008667411576737921,
+    "anti_phase": 0.5903614457831325
+   },
+   "1-2-3-4": {
+    "time_fraction": 0.0002506239492068796,
+    "anti_phase": 0.125
+   },
+   "2-3-4-5": {
+    "time_fraction": 0.0010233811259280918,
+    "anti_phase": 0.05102040816326531
+   }
+  }
+ },
+ "n5_I3_E100": {
+  "leak_by_pair": {
+   "2-3": {
+    "dMdt_fd": -0.17070759393810817,
+    "se": 0.0032412715472724487,
+    "pred": -0.15625,
+    "snapshots": 335432
+   },
+   "3-4": {
+    "dMdt_fd": -0.7127218662238629,
+    "se": 0.017338384622389007,
+    "pred": -0.625,
+    "snapshots": 57634
+   }
+  },
+  "tau_M_median": 117.5,
+  "tau_M_q75": 299.625,
+  "tau_M_q90": 382.71000000000004,
+  "not_relaxed": 7,
+  "T_run": 400.0,
+  "cluster_at_t5": {
+   "2-3": {
+    "fraction": 0.3984375,
+    "anti_phase_fraction": 1.0,
+    "tau_M_median": 344.15000000000003
+   },
+   "3-4": {
+    "fraction": 0.4765625,
+    "anti_phase_fraction": 1.0,
+    "tau_M_median": 71.35000000000001
+   },
+   "4-5": {
+    "fraction": 0.0078125,
+    "anti_phase_fraction": 0.0,
+    "tau_M_median": 1.55
+   },
+   "1-2-3": {
+    "fraction": 0.0078125,
+    "anti_phase_fraction": 0.0,
+    "tau_M_median": 2.4000000000000004
+   },
+   "3-4-5": {
+    "fraction": 0.03125,
+    "anti_phase_fraction": 0.0,
+    "tau_M_median": 1.925
+   },
+   "1-2-3-4": {
+    "fraction": 0.03125,
+    "anti_phase_fraction": 0.0,
+    "tau_M_median": 2.1500000000000004
+   },
+   "2-3-4-5": {
+    "fraction": 0.03125,
+    "anti_phase_fraction": 0.0,
+    "tau_M_median": 1.625
+   },
+   "1-2-3-4-5": {
+    "fraction": 0.015625,
+    "anti_phase_fraction": 0.0,
+    "tau_M_median": 1.6
+   }
+  },
+  "cluster_while_M>20_after_t5": {
+   "1-2": {
+    "time_fraction": 1.0691385149131458e-05,
+    "anti_phase": 0.75
+   },
+   "2-3": {
+    "time_fraction": 0.8415964376304683,
+    "anti_phase": 0.9999333055969308
+   },
+   "3-4": {
+    "time_fraction": 0.15404682292126062,
+    "anti_phase": 0.9993406669674151
+   },
+   "4-5": {
+    "time_fraction": 0.0005987175683513617,
+    "anti_phase": 0.8883928571428571
+   },
+   "1-2-3": {
+    "time_fraction": 0.0009381690468362855,
+    "anti_phase": 0.6524216524216524
+   },
+   "2-3-4": {
+    "time_fraction": 0.0016838931609882046,
+    "anti_phase": 0.726984126984127
+   },
+   "3-4-5": {
+    "time_fraction": 0.0006869214958316962,
+    "anti_phase": 0.754863813229572
+   },
+   "1-2-3-4": {
+    "time_fraction": 7.751254233120307e-05,
+    "anti_phase": 0.20689655172413793
+   },
+   "2-3-4-5": {
+    "time_fraction": 0.00036083424878318674,
+    "anti_phase": 0.05185185185185185
+   }
+  }
+ },
+ "n5_I3_E200": {
+  "leak_by_pair": {
+   "2-3": {
+    "dMdt_fd": -0.16117242511781188,
+    "se": 0.001706165536777755,
+    "pred": -0.15625,
+    "snapshots": 435586
+   },
+   "3-4": {
+    "dMdt_fd": -0.6598165845925817,
+    "se": 0.009019867592762751,
+    "pred": -0.625,
+    "snapshots": 198001
+   }
+  },
+  "tau_M_median": 206.425,
+  "tau_M_q75": NaN,
+  "tau_M_q90": NaN,
+  "not_relaxed": 40,
+  "T_run": 500.0,
+  "cluster_at_t5": {
+   "1": {
+    "fraction": 0.0078125,
+    "anti_phase_fraction": 1.0,
+    "tau_M_median": 1.8
+   },
+   "2-3": {
+    "fraction": 0.3515625,
+    "anti_phase_fraction": 1.0,
+    "tau_M_median": Infinity
+   },
+   "3-4": {
+    "fraction": 0.4921875,
+    "anti_phase_fraction": 1.0,
+    "tau_M_median": 191.20000000000002
+   },
+   "1-2-3": {
+    "fraction": 0.0078125,
+    "anti_phase_fraction": 0.0,
+    "tau_M_median": 1.7000000000000002
+   },
+   "2-3-4": {
+    "fraction": 0.0234375,
+    "anti_phase_fraction": 0.0,
+    "tau_M_median": 2.0
+   },
+   "3-4-5": {
+    "fraction": 0.03125,
+    "anti_phase_fraction": 0.0,
+    "tau_M_median": 3.9000000000000004
+   },
+   "1-2-3-4": {
+    "fraction": 0.015625,
+    "anti_phase_fraction": 0.0,
+    "tau_M_median": 1.6750000000000003
+   },
+   "2-3-4-5": {
+    "fraction": 0.046875,
+    "anti_phase_fraction": 0.0,
+    "tau_M_median": 1.4500000000000002
+   },
+   "1-2-3-4-5": {
+    "fraction": 0.0234375,
+    "anti_phase_fraction": 0.0,
+    "tau_M_median": 2.15
+   }
+  },
+  "cluster_while_M>20_after_t5": {
+   "2-3": {
+    "time_fraction": 0.6820261448320467,
+    "anti_phase": 0.9999416066577753
+   },
+   "3-4": {
+    "time_fraction": 0.3158264487824461,
+    "anti_phase": 0.9997326675241482
+   },
+   "4-5": {
+    "time_fraction": 0.0003010829427751245,
+    "anti_phase": 0.9153439153439153
+   },
+   "1-2-3": {
+    "time_fraction": 0.00021824530772588389,
+    "anti_phase": 0.6423357664233577
+   },
+   "2-3-4": {
+    "time_fraction": 0.0009749352432718317,
+    "anti_phase": 0.7336601307189542
+   },
+   "3-4-5": {
+    "time_fraction": 0.0005814564767879388,
+    "anti_phase": 0.7534246575342466
+   },
+   "1-2-3-4": {
+    "time_fraction": 2.070940876231015e-05,
+    "anti_phase": 0.0
+   },
+   "2-3-4-5": {
+    "time_fraction": 5.0977006184148066e-05,
+    "anti_phase": 0.125
+   }
+  }
+ },
+ "n5_I3_E50": {
+  "leak_by_pair": {
+   "2-3": {
+    "dMdt_fd": -0.18917463800889583,
+    "se": 0.0056230466469451516,
+    "pred": -0.15625,
+    "snapshots": 78907
+   },
+   "3-4": {
+    "dMdt_fd": -0.5511375695433379,
+    "se": 0.0728346843583937,
+    "pred": -0.625,
+    "snapshots": 4551
+   }
+  },
+  "tau_M_median": 20.1,
+  "tau_M_q75": 76.025,
+  "tau_M_q90": 106.605,
+  "not_relaxed": 0,
+  "T_run": 300.0,
+  "cluster_at_t5": {
+   "2-3": {
+    "fraction": 0.375,
+    "anti_phase_fraction": 1.0,
+    "tau_M_median": 85.575
+   },
+   "3-4": {
+    "fraction": 0.2578125,
+    "anti_phase_fraction": 0.9696969696969697,
+    "tau_M_median": 22.1
+   },
+   "1-2-3": {
+    "fraction": 0.0234375,
+    "anti_phase_fraction": 0.0,
+    "tau_M_median": 1.8
+   },
+   "2-3-4": {
+    "fraction": 0.0546875,
+    "anti_phase_fraction": 0.2857142857142857,
+    "tau_M_median": 2.5
+   },
+   "3-4-5": {
+    "fraction": 0.0625,
+    "anti_phase_fraction": 0.375,
+    "tau_M_median": 4.35
+   },
+   "1-2-3-4": {
+    "fraction": 0.078125,
+    "anti_phase_fraction": 0.0,
+    "tau_M_median": 1.9250000000000003
+   },
+   "2-3-4-5": {
+    "fraction": 0.0859375,
+    "anti_phase_fraction": 0.0,
+    "tau_M_median": 1.8
+   },
+   "1-2-3-4-5": {
+    "fraction": 0.0625,
+    "anti_phase_fraction": 0.0,
+    "tau_M_median": 2.3500000000000005
+   }
+  },
+  "cluster_while_M>20_after_t5": {
+   "1-2": {
+    "time_fraction": 1.3727024392922346e-05,
+    "anti_phase": 1.0
+   },
+   "2-3": {
+    "time_fraction": 0.9252151711073591,
+    "anti_phase": 0.9996587587721251
+   },
+   "3-4": {
+    "time_fraction": 0.06071462888989554,
+    "anti_phase": 0.9911824553470495
+   },
+   "4-5": {
+    "time_fraction": 0.0010569808782550207,
+    "anti_phase": 0.8051948051948052
+   },
+   "1-2-3": {
+    "time_fraction": 0.003404302049444742,
+    "anti_phase": 0.6733870967741935
+   },
+   "2-3-4": {
+    "time_fraction": 0.005916347513349531,
+    "anti_phase": 0.7447795823665894
+   },
+   "3-4-5": {
+    "time_fraction": 0.0024571373663331,
+    "anti_phase": 0.7541899441340782
+   },
+   "1-2-3-4": {
+    "time_fraction": 0.00023335941467967988,
+    "anti_phase": 0.058823529411764705
+   },
+   "2-3-4-5": {
+    "time_fraction": 0.0009883457562904088,
+    "anti_phase": 0.013888888888888888
+   }
+  }
+ }
+}

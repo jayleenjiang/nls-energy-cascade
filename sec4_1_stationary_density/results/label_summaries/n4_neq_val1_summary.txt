@@ -1,0 +1,26 @@
+program nls_cartesian
+n 4
+bc BC1
+closed 0
+T1 2
+Tn 8
+T4 8
+gamma 0.1
+dt 0.001
+burn 20
+measure 156.25
+interval 0.005
+batches 2
+streams 32
+seed 2026101042
+threads 2
+samples 1000000
+snapshots_per_stream 31250
+midpoint_failures 0
+mean_midpoint_iterations 6.500700709
+nonfinite 0
+elapsed_seconds 0.575092327
+mean_I 1.012002865 1.39169779 1.455535221 1.429646099
+se_I 0.01036255175 0.02083877443 0.03288636856 0.01391038419
+mean_current -0.8271354194 -0.8266611662 -0.8254996618
+checkpoint_1_mean_I 1.012002865 1.39169779 1.455535221 1.429646099

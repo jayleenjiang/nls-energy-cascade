@@ -1,0 +1,19 @@
+{
+  "fine_case": "equilibrium_dt1p25e4",
+  "fine_dt": 0.000125,
+  "fine_weighted_mean_slope": 6.512832132670464e-05,
+  "fine_ci": [
+    -0.00010737677678436236,
+    0.0002487837727889021
+  ],
+  "fine_differs_from_zero": false,
+  "fine_fraction_of_dbeta_0p057143": 0.0011397456232173308,
+  "magnitude_strictly_shrinks_with_dt": false,
+  "signs_in_dt_order": [
+    1,
+    -1,
+    1
+  ],
+  "quoted_coarse_values_reproduced": false,
+  "interpretation_rule": "compare driven residuals to fine baseline only after reporting the quoted-versus-local coarse-baseline discrepancy"
+}

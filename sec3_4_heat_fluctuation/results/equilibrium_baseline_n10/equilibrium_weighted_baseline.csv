@@ -1,0 +1,4 @@
+case,kind,dt,weighted_mean_slope,bootstrap_se,ci_low,ci_high,ci_contains_zero,z_from_zero,positive_windows,negative_windows,zero_windows,sign_pattern_tau_order,fraction_of_dbeta_0p057143,bootstrap_accepted,bootstrap_total,weight_rule
+equilibrium_dt5e4,existing,0.0005,0.00010269472752125795,8.293063503140587e-05,-5.636146620822457e-05,0.00025555121000441167,1,1.238320766293028,7,2,0,+;+;+;+;-;+;+;-;+,0.0017971577316220136,1000,1000,fixed_inverse_bootstrap_variance_all_nine_tau
+equilibrium_dt2p5e4,existing,0.00025,-0.00010882848343548336,9.809217254458167e-05,-0.0003069064079465053,8.705811697037203e-05,1,-1.109451249905003,0,9,0,-;-;-;-;-;-;-;-;-,-0.0019044984601209582,1000,1000,fixed_inverse_bootstrap_variance_all_nine_tau
+equilibrium_dt1p25e4,new,0.000125,6.512832132670464e-05,8.894884258150902e-05,-0.00010737677678436236,0.0002487837727889021,1,0.7321997615317339,5,4,0,-;+;+;+;-;+;-;+;-,0.0011397456232173308,1000,1000,fixed_inverse_bootstrap_variance_all_nine_tau

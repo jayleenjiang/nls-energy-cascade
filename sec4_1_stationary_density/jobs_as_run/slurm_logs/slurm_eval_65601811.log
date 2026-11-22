@@ -1,0 +1,24 @@
+3 eq n3_eq z_rms(long) = 1.36  [val-se only 4.49]  old 1.08  ESS 1.00
+3 eq long A vs B z_rms = 0.84   long vs Gibbs exact z_rms = 1.22
+3 neq n3_neq_s1 z_rms(long) = 4.79  [val-se only 355.87]  old 2.28  ESS 0.00
+3 neq n3_neq_s2 z_rms(long) = 1.98  [val-se only 6.75]  old 2.25  ESS 0.92
+3 neq long A vs B z_rms = 0.60 
+4 eq n4_eq z_rms(long) = 0.68  [val-se only 2.29]  old 0.71  ESS 1.00
+4 eq long A vs B z_rms = 0.66   long vs Gibbs exact z_rms = 1.02
+4 neq n4_neq_s1 z_rms(long) = 5.72  [val-se only 23.35]  old 1.85  ESS 0.84
+4 neq n4_neq_s2 z_rms(long) = 2.98  [val-se only 12.74]  old 1.51  ESS 0.81
+4 neq long A vs B z_rms = 1.07 
+3 eq n3_eq z_rms(long) = 1.11  [val-se only 3.82]  old 9.35  ESS 1.00
+3 eq long A vs B z_rms = 0.84   long vs Gibbs exact z_rms = 1.22
+3 neq n3_neq_s1 z_rms(long) = 2.53  [val-se only 7.87]  old 10.09  ESS 0.91
+3 neq n3_neq_s2 z_rms(long) = 3.25  [val-se only 10.02]  old 11.78  ESS 0.91
+3 neq long A vs B z_rms = 0.60 
+4 eq n4_eq z_rms(long) = 0.65  [val-se only 1.97]  old 4.91  ESS 1.00
+4 eq long A vs B z_rms = 0.66   long vs Gibbs exact z_rms = 1.02
+4 neq n4_neq_s1 z_rms(long) = 3.86  [val-se only 16.00]  old 18.97  ESS 0.82
+4 neq n4_neq_s2 z_rms(long) = 2.76  [val-se only 10.99]  old 13.45  ESS 0.82
+4 neq long A vs B z_rms = 1.07 
+== n4_neq_s1 weak z: {'Psin2_c0.25': -5.23, 'Psin3_c0.25': -2.69, 'Psin4_c0.25': -2.38, 'Pcos2_c0.25': -3.24, 'Pcos3_c0.25': 1.0, 'Pcos4_c0.25': 2.18, 'Psin2_c1.0': -4.44, 'Psin3_c1.0': -2.03, 'Psin4_c1.0': -3.07, 'Pcos2_c1.0': -4.02, 'Pcos3_c1.0': 0.69, 'Pcos4_c1.0': 1.98}
+== n4_neq_s2 weak z: {'Psin2_c0.25': -4.95, 'Psin3_c0.25': -2.48, 'Psin4_c0.25': -1.03, 'Pcos2_c0.25': -3.3, 'Pcos3_c0.25': 0.86, 'Pcos4_c0.25': 2.44, 'Psin2_c1.0': -4.27, 'Psin3_c1.0': -1.75, 'Psin4_c1.0': -1.51, 'Pcos2_c1.0': -4.16, 'Pcos3_c1.0': 0.61, 'Pcos4_c1.0': 2.49}
+== n4_neq_s1 weak z: {'Psin2_c0.25': 0.98, 'Psin3_c0.25': -1.19, 'Psin4_c0.25': 0.35, 'Pcos2_c0.25': 2.32, 'Pcos3_c0.25': 0.45, 'Pcos4_c0.25': 1.26, 'Psin2_c1.0': 1.68, 'Psin3_c1.0': -0.73, 'Psin4_c1.0': -0.12, 'Pcos2_c1.0': 2.14, 'Pcos3_c1.0': 0.15, 'Pcos4_c1.0': 1.31}
+== n4_neq_s2 weak z: {'Psin2_c0.25': 0.92, 'Psin3_c0.25': -1.58, 'Psin4_c0.25': 0.55, 'Pcos2_c0.25': 1.28, 'Pcos3_c0.25': 0.31, 'Pcos4_c0.25': 0.68, 'Psin2_c1.0': 1.5, 'Psin3_c1.0': -0.98, 'Psin4_c1.0': -0.01, 'Pcos2_c1.0': 0.96, 'Pcos3_c1.0': -0.0, 'Pcos4_c1.0': 0.79}
